@@ -1,0 +1,262 @@
+<div class="m-500">
+    <h1 class="fs-700">Variabler og klasser</h1>
+    <p-tabView [scrollable]="true">
+
+        <!-- HOW TO -->
+        <p-tabPanel>
+            <ng-template pTemplate="header">
+                <span class="fw-semi-bold">How to</span>
+            </ng-template>
+            <div class="howTo">
+                <p>Ulike klasser og variabler du kan putte på ulike elementer i koden.</p>
+            </div>
+        </p-tabPanel>
+
+        <!-- FLEXBOX -->
+        <p-tabPanel>
+            <ng-template pTemplate="header">
+                <i class="pi pi-check-circle"></i>
+                <span>Flexbox</span>
+            </ng-template>
+
+            <p class="fw-semi-bold fs-500">Uten noen klasser på containeren:</p>
+            <div class="container">
+                <div class="box"></div>
+                <div class="box green"></div>
+                <div class="box yellow"></div>
+            </div>
+
+            <p class="flex"><span class="type">class="flex"</span></p>
+            <div class="container flex">
+                <div class="box"></div>
+                <div class="box green"></div>
+                <div class="box yellow"></div>
+            </div>
+
+            <p class="flex"><span class="type">class="flex f-column"</span></p>
+            <div class="container flex f-column">
+                <div class="box"></div>
+                <div class="box green"></div>
+                <div class="box yellow"></div>
+            </div>
+        
+            <p class="flex"><span class="type">class="flex f-align-center"</span></p>
+            <div class="container flex f-align-center">
+                <div class="box"></div>
+                <div class="box green"></div>
+                <div class="box yellow"></div>
+            </div>
+          
+            <p class="flex"><span class="type">class="flex f-justify-center"</span></p>
+            <div class="container flex f-justify-center">
+                <div class="box"></div>
+                <div class="box green"></div>
+                <div class="box yellow"></div>
+            </div>
+
+            <p class="flex"><span class="type">class="flex f-space-between"</span></p>
+            <div class="container flex f-space-between">
+                <div class="box"></div>
+                <div class="box green"></div>
+                <div class="box yellow"></div>
+            </div>
+
+            <p class="flex"><span class="type">class="flex f-wrap"</span></p>
+            <div class="container flex f-wrap">
+                <div class="box"></div>
+                <div class="box green"></div>
+                <div class="box yellow"></div>
+            </div>
+
+            <p class="flex"><span class="type">class="flex gap-400"</span></p>
+            <div class="container flex gap-400">
+                <div class="box"></div>
+                <div class="box green"></div>
+                <div class="box yellow"></div>
+            </div>
+
+            <p class="flex"><span class="type">class="flex gap-500"</span></p>
+            <div class="container flex gap-500">
+                <div class="box"></div>
+                <div class="box green"></div>
+                <div class="box yellow"></div>
+            </div>
+
+       
+        </p-tabPanel>
+
+        <!-- MARGIN -->
+        <p-tabPanel>
+            <ng-template pTemplate="header">
+                <i class="pi pi-check-circle"></i>
+                <span>Margin</span>
+            </ng-template>
+
+            <p class="fw-semi-bold fs-500">Margin creates extra space around an element.</p>
+
+            <pre>
+                <code>
+                    <span class="fw-semi-bold">HTML:</span>
+                    {{ '<' }}div class="container"{{ '>' }}
+                        {{ '<' }}div class="box m-400"{{ '>' }}
+                            Content
+                        {{ '<' }}div{{ '>' }}
+                    {{ '<' }}div{{ '>' }}
+                </code>
+            </pre>
+
+            <!-- margin -->
+            <p class="flex"><span class="type">class="m-400"</span></p>
+            <div class="containerMargin">
+                <div class="box m-400"></div>
+            </div>
+
+            <p class="flex"><span class="type">class="m-500"</span></p>
+            <div class="containerMargin">
+                <div class="box m-500"></div>
+            </div>
+
+            <p class="flex"><span class="type">class="m-600"</span></p>
+            <div class="containerMargin">
+                <div class="box m-600"></div>
+            </div>
+
+            <!-- margin block -->
+            <p class="flex"><span class="type">class="m-block-400"</span></p>
+            <div class="containerMargin">
+                <div class="box m-block-400"></div>
+            </div>
+
+            <p class="flex"><span class="type">class="m-block-500"</span></p>
+            <div class="containerMargin">
+                <div class="box m-block-500"></div>
+            </div>
+
+            <p class="flex"><span class="type">class="m-block-600"</span></p>
+            <div class="containerMargin">
+                <div class="box m-block-600"></div>
+            </div>
+
+            <!-- margin inline -->
+            <p class="flex"><span class="type">class="m-inline-400"</span></p>
+            <div class="containerMargin">
+                <div class="box m-inline-400"></div>
+            </div>
+
+            <p class="flex"><span class="type">class="m-inline-500"</span></p>
+            <div class="containerMargin">
+                <div class="box m-inline-500"></div>
+            </div>
+
+            <p class="flex"><span class="type">class="m-inline-600"</span></p>
+            <div class="containerMargin">
+                <div class="box m-inline-600"></div>
+            </div>
+        </p-tabPanel>
+
+        <!-- PADDING -->
+        <p-tabPanel>
+            <ng-template pTemplate="header">
+                <i class="pi pi-check-circle"></i>
+                <span>Padding</span>
+            </ng-template>
+
+            <p class="fw-semi-bold fs-500">Padding creates extra space within an element.</p>
+            <pre>
+                <code>
+                    <span class="fw-semi-bold">HTML:</span>
+                    {{ '<' }}div class="container p-400"{{ '>' }}
+                        {{ '<' }}div class="box"{{ '>' }}
+                            Content
+                        {{ '<' }}div{{ '>' }}
+                    {{ '<' }}div{{ '>' }}
+                </code>
+            </pre>
+
+            <!-- padding -->
+            <p class="flex"><span class="type">class="p-400"</span></p>
+            <div class="containerPadding p-400">
+                <div class="box"></div>
+            </div>
+
+            <p class="flex"><span class="type">class="p-500"</span></p>
+            <div class="containerPadding p-500">
+                <div class="box"></div>
+            </div>
+
+            <p class="flex"><span class="type">class="p-600"</span></p>
+            <div class="containerPadding p-600">
+                <div class="box"></div>
+            </div>
+
+            <!-- padding block -->
+            <p class="flex"><span class="type">class="p-block-400"</span></p>
+            <div class="containerPadding p-block-400">
+                <div class="box"></div>
+            </div>
+
+            <p class="flex"><span class="type">class="p-block-500"</span></p>
+            <div class="containerPadding p-block-500">
+                <div class="box"></div>
+            </div>
+
+            <p class="flex"><span class="type">class="p-block-600"</span></p>
+            <div class="containerPadding p-block-600">
+                <div class="box"></div>
+            </div>
+
+            <!-- padding inline -->
+            <p class="flex"><span class="type">class="p-inline-400"</span></p>
+            <div class="containerPadding p-inline-400">
+                <div class="box"></div>
+            </div>
+
+            <p class="flex"><span class="type">class="p-inline-500"</span></p>
+            <div class="containerPadding p-inline-500">
+                <div class="box"></div>
+            </div>
+
+            <p class="flex"><span class="type">class="p-inline-600"</span></p>
+            <div class="containerPadding p-inline-600">
+                <div class="box"></div>
+            </div>
+        </p-tabPanel>
+
+        <!-- VARIABLER -->
+        <p-tabPanel>
+            <ng-template pTemplate="header">
+                <i class="pi pi-question-circle"></i>
+                <span>Variabler</span>
+            </ng-template>
+
+            <p>--space-300: 4px;</p>
+            <p>--space-400: 8px;</p>
+            <p>--space-500: 16px;</p>
+            <p>--space-600: 32px;</p>
+            
+            <p>--radius-400: 8px;</p>
+        </p-tabPanel>
+
+        <!-- VISUALLY HIDDEN -->
+        <p-tabPanel>
+            <ng-template pTemplate="header">
+                <i class="pi pi-times-circle"></i>
+                <span>Visually hidden</span>
+            </ng-template>
+
+            // Bruk denne på ting som kun skal være tilgjengelig for skjermleser
+<!-- .visually-hidden:not(:focus):not(:active) {
+	clip: rect(0 0 0 0);
+	clip-path: inset(50%);
+	height: 1px;
+	width: 1px;
+	overflow: hidden;
+	position: absolute;
+	white-space: nowrap;
+} -->
+       
+        </p-tabPanel>
+
+    </p-tabView>
+
+</div>

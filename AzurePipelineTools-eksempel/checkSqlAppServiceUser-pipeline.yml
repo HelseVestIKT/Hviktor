@@ -1,0 +1,258 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger: none
+    
+variables:
+  #Common variables
+  buildConfiguration: 'Release'
+
+  #skipComponentGovernanceDetection: true #To avoid some internal warnings
+  HOST_POOL: 'windows-latest'
+  WORKINGDIRECTORY: '$(System.DefaultWorkingDirectory)/'
+  
+  #Dev environment variables - service connectin mangler
+  AZURE_CREDENTIALS_DEV: 'HVI-UTVIKLING-DEV-ServiceConnection-SIMPLE'
+  AZURE_SUBSCRIPTION_ID_DEV: '470ca611-e54c-49b1-b5e5-07fcfb8c3c08'
+  AZURE_RESOURCE_GROUP_DEV: 'HVI-UTVIKLING-DEV-Simple-rg'
+
+  #QA environment variables - ikke satt opp  og mangler
+  AZURE_CREDENTIALS_QA: 'HVI-UTVIKLING-QA-ServiceConnection-SIMPLE'
+  AZURE_SUBSCRIPTION_ID_QA: '387bb2d3-0a0b-47ba-84a6-225535b77763'
+  AZURE_RESOURCE_GROUP_QA: 'HVI-UTVIKLING-QA-Simple-rg'
+
+  #PROD environment variables
+  #AZURE_CREDENTIALS_PROD: 'HVI-UTVIKLING-PROD-ServiceConnection-Simple'
+  #AZURE_SUBSCRIPTION_ID_PROD: 'fc1fa7c8-2924-42a9-a988-c2944d8db9e3'
+  #AZURE_RESOURCE_GROUP_PROD: 'HVI-UTVIKLING-PROD-Simple-rg'
+
+#Build stage
+stages:
+- stage: BuildStage  
+  displayName: Build
+  jobs:
+  - job: CopyBicepFiles
+    displayName: 'Copy Bicep files'
+    pool: 
+      vmImage: 'windows-latest'
+
+    steps:   
+
+    - checkout: self
+      clean: true
+
+    - task:  CopyFiles@2
+      displayName: 'Copy Bicep Templates'
+      inputs:
+        sourceFolder: '$(System.DefaultWorkingDirectory)/AzurePipelineTools/bicep'     
+        targetFolder: '$(Build.ArtifactStagingDirectory)/AzurePipelineTools/bicep'
+
+    - task: PublishPipelineArtifact@1
+      displayName: 'Publish Artifacts Bicep'
+      inputs:
+        targetPath: '$(Build.ArtifactStagingDirectory)'
+        artifact: 'bicep'
+        publishLocation: 'pipeline'
+
+# Dev-Deployment stage
+#This block below can be repeated for Test, Acceptance, Production deployments
+- stage: Development
+  displayName: Development
+  dependsOn: BuildStage
+  condition: |
+    and
+    (
+      succeeded('BuildStage'),
+      eq(variables['Build.SourceBranch'], 'refs/heads/develop')
+    )  
+  jobs:
+  - deployment: Deploy
+    displayName: Check access in Development
+    environment: 'Development'
+    pool:
+      vmImage: $(HOST_POOL)
+    variables:
+      apiUrl: '$(WebAppDeployStep.webApiPath)'
+      tenant: '$(WebAppDeployStep.b2cTenant)'
+      clientid: '$(WebAppDeployStep.b2cClientId)'
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+            - task: AzureCLI@2
+              displayName: Get Web App info from Bicep
+              name: WebAppDeployStep
+              inputs:
+                azureSubscription: '$(AZURE_CREDENTIALS_DEV)'
+                scriptType: pscore
+                scriptLocation: inlineScript
+                inlineScript: |                  
+                  az deployment group create -n ADOWebAppDeployment -f $(Pipeline.Workspace)/bicep/AzurePipelineTools/bicep/checkSqlAppServiceUser.bicep  -p $(Pipeline.Workspace)/bicep/AzurePipelineTools/bicep/checkSqlAppServiceUser/checkUserParameters.dev.json -g $(AZURE_RESOURCE_GROUP_DEV)
+                  $WEBAPP_APINAME=(az deployment group show -n ADOWebAppDeployment -g $(AZURE_RESOURCE_GROUP_DEV) --query properties.outputs.apiAppName.value -o tsv)
+                  $SQL_FQDN=(az deployment group show -n ADOWebAppDeployment -g $(AZURE_RESOURCE_GROUP_DEV) --query properties.outputs.sqlServerFullyQualifiedDomainName.value -o tsv)
+                  $DB_NAME=(az deployment group show -n ADOWebAppDeployment -g $(AZURE_RESOURCE_GROUP_DEV) --query properties.outputs.dbName.value -o tsv)
+                         
+                  Write-Host "##vso[task.setvariable variable=apiAppName;isOutput=true]$WEBAPP_APINAME"
+                  Write-Host "##vso[task.setvariable variable=sqlFQDN;isOutput=true]$SQL_FQDN"  
+                  Write-Host "##vso[task.setvariable variable=dbName;isOutput=true]$DB_NAME"  
+                  
+
+            - task: AzureCLI@2
+              displayName: Retrieve Web App-, SQL- and DB name
+              inputs:
+                azureSubscription: '$(AZURE_CREDENTIALS_DEV)'
+                scriptType: pscore
+                scriptLocation: inlineScript
+                inlineScript: |                  
+                  Write-Host "API App Provisioned: $(WebAppDeployStep.apiAppName)"                   
+                  Write-Host "SQL FQN: $(WebAppDeployStep.sqlFQDN)"
+                  Write-Host "Database Name: $(WebAppDeployStep.dbName)"
+
+            - task: SqlAzureDacpacDeployment@1
+              displayName: Create database user if not exists 
+              inputs:
+                azureSubscription: '$(AZURE_CREDENTIALS_DEV)'
+                AuthenticationType: 'servicePrincipal'
+                ServerName: $(WebAppDeployStep.sqlFQDN)
+                DatabaseName: $(WebAppDeployStep.dbName)
+                deployType: 'sqlTask'
+                SqlFile: '$(Pipeline.Workspace)/bicep/bicep/modules/sql/create_user.sql'
+                SqlAdditionalArguments: -Variable @("AppServiceName=$(WebAppDeployStep.apiAppName)") -verbose
+                IpDetectionMethod: 'AutoDetect' 
+
+
+# QA-Deployment stage
+- stage: QA
+  displayName: QA
+  dependsOn: 
+    - BuildStage    
+  condition: |
+    and
+    (
+      succeeded('BuildStage'),
+      eq(variables['Build.SourceBranch'], 'refs/heads/master')
+    ) 
+  jobs:
+  - deployment: Deploy
+    displayName: Check access in QA
+    environment: 'QA'
+    pool:
+      vmImage: $(HOST_POOL)
+    variables:
+      apiUrl: '$(WebAppDeployStep.webApiPath)'
+      tenant: '$(WebAppDeployStep.b2cTenant)'
+      clientid: '$(WebAppDeployStep.b2cClientId)'
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+            - task: AzureCLI@2
+              displayName: Get Web App info from Bicep
+              name: WebAppDeployStep
+              inputs:
+                azureSubscription: '$(AZURE_CREDENTIALS_QA)'
+                scriptType: pscore
+                scriptLocation: inlineScript
+                inlineScript: |
+                  az deployment group create -n ADOWebAppDeployment -f $(Pipeline.Workspace)/bicep/AzurePipelineTools/bicep/checkSqlAppServiceUser.bicep  -p $(Pipeline.Workspace)/bicep/AzurePipelineTools/bicep/checkSqlAppServiceUser/checkUserParameters.dev.json -g $(AZURE_RESOURCE_GROUP_QA)                  
+                  $WEBAPP_APINAME=(az deployment group show -n ADOWebAppDeployment -g $(AZURE_RESOURCE_GROUP_QA) --query properties.outputs.apiAppName.value -o tsv)
+                  $SQL_FQDN=(az deployment group show -n ADOWebAppDeployment -g $(AZURE_RESOURCE_GROUP_QA) --query properties.outputs.sqlServerFullyQualifiedDomainName.value -o tsv)
+                  $DB_NAME=(az deployment group show -n ADOWebAppDeployment -g $(AZURE_RESOURCE_GROUP_QA) --query properties.outputs.dbName.value -o tsv)
+                         
+                  Write-Host "##vso[task.setvariable variable=apiAppName;isOutput=true]$WEBAPP_APINAME"
+                  Write-Host "##vso[task.setvariable variable=sqlFQDN;isOutput=true]$SQL_FQDN"  
+                  Write-Host "##vso[task.setvariable variable=dbName;isOutput=true]$DB_NAME"  
+                  
+
+            - task: AzureCLI@2
+              displayName: Retrieve Web App-, SQL- and DB name
+              inputs:
+                azureSubscription: '$(AZURE_CREDENTIALS_QA)'
+                scriptType: pscore
+                scriptLocation: inlineScript
+                inlineScript: |                  
+                  Write-Host "API App Provisioned: $(WebAppDeployStep.apiAppName)"                   
+                  Write-Host "SQL FQN: $(WebAppDeployStep.sqlFQDN)"
+                  Write-Host "Database Name: $(WebAppDeployStep.dbName)"
+
+            - task: SqlAzureDacpacDeployment@1
+              displayName: Create database user if not exists 
+              inputs:
+                azureSubscription: '$(AZURE_CREDENTIALS_QA)'
+                AuthenticationType: 'servicePrincipal'
+                ServerName: $(WebAppDeployStep.sqlFQDN)
+                DatabaseName: $(WebAppDeployStep.dbName)
+                deployType: 'sqlTask'
+                SqlFile: '$(Pipeline.Workspace)/bicep/bicep/modules/sql/create_user.sql'
+                SqlAdditionalArguments: -Variable @("AppServiceName=$(WebAppDeployStep.apiAppName)") -verbose
+                IpDetectionMethod: 'AutoDetect'       
+
+# Prod-deployment stage
+# - stage: Production
+#   displayName: Production
+#   dependsOn: 
+#     - BuildStage
+#     - QA    
+#   condition: |
+#     and
+#     (
+#       succeeded('BuildStage'),
+#       eq(variables['Build.SourceBranch'], 'refs/heads/master'),
+#       succeeded('QA')
+#     ) 
+#   jobs:
+#   - deployment: Deploy
+#     displayName: Check access in Production
+#     environment: 'Production'
+#     pool:
+#       vmImage: $(HOST_POOL)
+#     variables:
+#       apiUrl: '$(WebAppDeployStep.webApiPath)'
+#       tenant: '$(WebAppDeployStep.b2cTenant)'
+#       clientid: '$(WebAppDeployStep.b2cClientId)'
+#     strategy:
+#       runOnce:
+#         deploy:
+#           steps:
+#             - task: AzureCLI@2
+#               displayName: Get Web App info from Bicep
+#               name: WebAppDeployStep
+#               inputs:
+#                 azureSubscription: '$(AZURE_CREDENTIALS_PROD)'
+#                 scriptType: pscore
+#                 scriptLocation: inlineScript
+#                 inlineScript: |
+#                   az deployment group create -n ADOWebAppDeployment -f $(Pipeline.Workspace)/bicep/bicep/checkSqlAppServiceUser/checkSqlAppServiceUser.bicep  -p $(Pipeline.Workspace)/bicep/bicep/checkSqlAppServiceUser/checkUserParameters.prod.json -g $(AZURE_RESOURCE_GROUP_PROD)
+#                   $WEBAPP_APINAME=(az deployment group show -n ADOWebAppDeployment -g $(AZURE_RESOURCE_GROUP_PROD) --query properties.outputs.apiAppName.value -o tsv)
+#                   $SQL_FQDN=(az deployment group show -n ADOWebAppDeployment -g $(AZURE_RESOURCE_GROUP_PROD) --query properties.outputs.sqlServerFullyQualifiedDomainName.value -o tsv)
+#                   $DB_NAME=(az deployment group show -n ADOWebAppDeployment -g $(AZURE_RESOURCE_GROUP_PROD) --query properties.outputs.dbName.value -o tsv)
+                         
+#                   Write-Host "##vso[task.setvariable variable=apiAppName;isOutput=true]$WEBAPP_APINAME"
+#                   Write-Host "##vso[task.setvariable variable=sqlFQDN;isOutput=true]$SQL_FQDN"  
+#                   Write-Host "##vso[task.setvariable variable=dbName;isOutput=true]$DB_NAME"  
+
+#             - task: AzureCLI@2
+#               displayName: Retrieve Web App- SQL- and Db name
+#               inputs:
+#                 azureSubscription: '$(AZURE_CREDENTIALS_PROD)'
+#                 scriptType: pscore
+#                 scriptLocation: inlineScript
+#                 inlineScript: |
+#                   Write-Host "API App Provisioned: $(WebAppDeployStep.apiAppName)"                   
+#                   Write-Host "SQL FQN: $(WebAppDeployStep.sqlFQDN)"
+#                   Write-Host "Database Name: $(WebAppDeployStep.dbName)"
+
+         
+#             - task: SqlAzureDacpacDeployment@1
+#               displayName: Create database user if not exists 
+#               inputs:
+#                 azureSubscription: '$(AZURE_CREDENTIALS_PROD)'
+#                 AuthenticationType: 'servicePrincipal'
+#                 ServerName: $(WebAppDeployStep.sqlFQDN)
+#                 DatabaseName: $(WebAppDeployStep.dbName)
+#                 deployType: 'sqlTask'                
+#                 SqlFile: '$(Pipeline.Workspace)/bicep/bicep/modules/sql/create_user.sql'
+#                 SqlAdditionalArguments: -Variable @("AppServiceName=$(WebAppDeployStep.apiAppName)") -verbose
+#                 IpDetectionMethod: 'AutoDetect'       

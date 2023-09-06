@@ -1,0 +1,52 @@
+.howTo {
+    pre {
+      background-color: var(--clr-neutral-300);
+      border: 1px solid var(--clr-neutral-500);
+      border-radius: var(--radius-400);
+      width: -moz-fit-content;
+      width: fit-content;
+      padding: 20px 50px 0 0;
+    }
+}
+
+.font-variants,
+.font-size,
+.font-weight {
+    margin-bottom: var(--space-600);
+}
+
+.type {
+    font-weight: var(--fw-bold);
+    background-color: var(--clr-neutral-300);
+    border: 1px solid var(--clr-neutral-500);
+    border-radius: var(--radius-400);
+    padding: var(--space-400);
+    margin-right: var(--space-400);
+    margin-bottom: var(--space-400);
+    width: 200px;
+}
+
+.font-variants>*,
+.font-size>*,
+.font-weight>* {
+    display: flex;
+    align-items: center;
+}
+
+.lighter {
+    color: var(--clr-neutral-500);
+}
+
+.pi.pi-check-circle { color: var(--clr-success-400); margin-right: var(--space-400); }
+.pi.pi-question-circle { color: var(--clr-warning-400); margin-right: var(--space-400); }
+.pi.pi-times-circle { color: var(--clr-danger-400); margin-right: var(--space-400); }
+
+//TODO: fjern når bug er fiksa
+.warningBlock {
+    border: 1px solid var(--clr-warning-400);
+    width: -moz-fit-content;
+    width: fit-content;
+    padding: var(--space-400);
+    border-radius: var(--radius-400);
+    background-color: var(--clr-warning-300);
+}

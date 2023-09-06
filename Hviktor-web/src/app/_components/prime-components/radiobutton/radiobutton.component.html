@@ -1,0 +1,88 @@
+<div class="m-500">
+    <h1 class="fs-700">Radiobutton</h1>
+    <p class="p-block-400"><a href="https://primeng.org/radiobutton" target="_blank" rel="noopener noreferrer"><i
+                class="pi pi-prime | p-inline-400"></i>https://primeng.org/radiobutton</a></p>
+    <p class="p-block-400"><a
+            href="https://dev.azure.com/hvikt-utv/_git/Hviktor?path=/Hviktor-web/src/app/_components/prime-components/radiobutton"
+            target="_blank" rel="noopener noreferrer"><i class="pi pi-code | p-inline-400"></i>Kode i repo</a></p>
+
+    <p-divider></p-divider>
+
+    <div class="flex f-column gap-500">
+        <div class="flex f-align-center gap-400 | warningBlock">
+            <p>Funker ikkje heilt enda, så refresh sida for å vise koden skikkelig og få fram "Copy" knappen.</p>
+            <p-button icon="pi pi-refresh" (click)="refresh()"
+                styleClass="p-button-rounded p-button-outlined"></p-button>
+        </div>
+
+        <p-card>
+            <form class="flex f-column gap-500" [formGroup]="formGroup">
+                <div *ngFor="let category of categories" class="field-checkbox gap-400 flex">
+                    <p-radioButton [inputId]="category.key" [value]="category" formControlName="selectedCategory"></p-radioButton>
+                    <label [for]="category.key" class="ml-2">{{ category.name }}</label>
+                </div>
+            </form>
+            
+            <pre class="language-html line-numbers">
+                <code class="language-html">
+                    &lt;form class=&quot;flex f-column gap-500&quot; [formGroup]=&quot;formGroup&quot;&gt;
+                        &lt;div *ngFor=&quot;let category of categories&quot; class=&quot;field-checkbox gap-400 flex&quot;&gt;
+                            &lt;p-radioButton [inputId]=&quot;category.key&quot; [value]=&quot;category&quot; formControlName=&quot;selectedCategory&quot;&gt;&lt;/p-radioButton&gt;
+                            &lt;label [for]=&quot;category.key&quot; class=&quot;ml-2&quot;&gt; &#123; &#123; category.name &#125; &#125; &lt;/label&gt;
+                        &lt;/div&gt;
+                    &lt;/form&gt;
+                </code>
+            </pre>
+            <pre class="language-typescript line-numbers">
+                <code class="language-typescript">
+                    import &#123; Component &#125; from '@angular/core';
+                    import &#123; FormControl, FormGroup &#125; from '@angular/forms';
+
+                    @Component(&#123;
+                        selector: 'app-radiobutton',
+                        templateUrl: './radiobutton.component.html',
+                        styleUrls: ['./radiobutton.component.scss']
+                    &#125;)
+
+                    export class RadiobuttonComponent &#123;
+
+                        formGroup!: FormGroup;
+
+                        categories: any[] = [
+                            &#123; name: 'Accounting', key: 'A' &#125;,
+                            &#123; name: 'Marketing', key: 'M' &#125;,
+                            &#123; name: 'Production', key: 'P' &#125;,
+                            &#123; name: 'Research', key: 'R' &#125;
+                        ];
+
+                        ngOnInit() &#123;
+                            this.formGroup = new FormGroup(&#123;
+                                selectedCategory: new FormControl()
+                            &#125;);
+                        &#125;
+                    &#125;
+                </code>
+            </pre>
+        </p-card>
+
+        <p-card>
+            <form class="flex gap-500" [formGroup]="formGroup">
+                <div *ngFor="let category of categories" class="field-checkbox gap-400 flex">
+                    <p-radioButton [inputId]="category.key" [value]="category" formControlName="selectedCategory"></p-radioButton>
+                    <label [for]="category.key" class="ml-2">{{ category.name }}</label>
+                </div>
+            </form>
+            
+            <pre class="language-html line-numbers">
+                <code class="language-html">
+                    &lt;form class=&quot;flex gap-500&quot; [formGroup]=&quot;formGroup&quot;&gt;
+                        &lt;div *ngFor=&quot;let category of categories&quot; class=&quot;field-checkbox gap-400 flex&quot;&gt;
+                            &lt;p-radioButton [inputId]=&quot;category.key&quot; [value]=&quot;category&quot; formControlName=&quot;selectedCategory&quot;&gt;&lt;/p-radioButton&gt;
+                            &lt;label [for]=&quot;category.key&quot; class=&quot;ml-2&quot;&gt; &#123; &#123; category.name &#125; &#125; &lt;/label&gt;
+                        &lt;/div&gt;
+                    &lt;/form&gt;
+                </code>
+            </pre>
+        </p-card>
+    </div>
+</div>

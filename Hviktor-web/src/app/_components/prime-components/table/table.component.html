@@ -1,0 +1,166 @@
+<div class="m-500">
+    <h1 class="fs-700">Table</h1>
+    <p class="p-block-400"><a href="https://primeng.org/table" target="_blank" rel="noopener noreferrer"><i
+                class="pi pi-prime | p-inline-400"></i>https://primeng.org/table</a></p>
+    <p class="p-block-400"><a
+            href="https://dev.azure.com/hvikt-utv/_git/Hviktor?path=/Hviktor-web/src/app/_components/prime-components/table"
+            target="_blank" rel="noopener noreferrer"><i class="pi pi-code | p-inline-400"></i>Kode i repo</a></p>
+
+    <p-divider></p-divider>
+
+    <div class="flex f-column gap-500">
+        <div class="flex f-align-center gap-400 | warningBlock">
+            <p>Funker ikkje heilt enda, så refresh sida for å vise koden skikkelig og få fram "Copy" knappen.</p>
+            <p-button icon="pi pi-refresh" (click)="refresh()"
+                styleClass="p-button-rounded p-button-outlined"></p-button>
+        </div>
+
+        <p-card>
+            <p class="fs-500 fw-semi-bold">Small table:</p>
+            <div class="card" style="margin-bottom: var(--space-600);">
+                <p-table [value]="products" styleClass="p-datatable-sm" [tableStyle]="{ 'min-width': '50rem' }">
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th>Code</th>
+                            <th pSortableColumn="name">Name <p-sortIcon field="name"></p-sortIcon></th>
+                            <th>Category</th>
+                            <th>Quantity</th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-product>
+                        <tr>
+                            <td>{{ product.code }}</td>
+                            <td>{{ product.name }}</td>
+                            <td>{{ product.category }}</td>
+                            <td>{{ product.quantity }}</td>
+                        </tr>
+                    </ng-template>
+                </p-table>
+            </div>
+            <pre class="language-html line-numbers">
+                <code class="language-html">
+                    &lt;p-table [value]=&quot;products&quot; styleClass=&quot;p-datatable-sm&quot; [tableStyle]=&quot;&#123; 'min-width': '50rem' &#125;&quot;&gt;
+                        &lt;ng-template pTemplate=&quot;header&quot;&gt;
+                            &lt;tr&gt;
+                                &lt;th&gt;Code&lt;/th&gt;
+                                &lt;th pSortableColumn=&quot;name&quot;&gt;Name &lt;p-sortIcon field=&quot;name&quot;&gt;&lt;/p-sortIcon&gt;&lt;/th&gt;
+                                &lt;th&gt;Category&lt;/th&gt;
+                                &lt;th&gt;Quantity&lt;/th&gt;
+                            &lt;/tr&gt;
+                        &lt;/ng-template&gt;
+                        &lt;ng-template pTemplate=&quot;body&quot; let-product&gt;
+                            &lt;tr&gt;
+                                &lt;td&gt; &#123; &#123; product.code &#125; &#125; &lt;/td&gt;
+                                &lt;td&gt; &#123; &#123; product.name &#125; &#125; &lt;/td&gt;
+                                &lt;td&gt; &#123; &#123; product.category &#125; &#125; &lt;/td&gt;
+                                &lt;td&gt; &#123; &#123; product.quantity &#125; &#125; &lt;/td&gt;
+                            &lt;/tr&gt;
+                        &lt;/ng-template&gt;
+                    &lt;/p-table&gt;
+                </code>
+            </pre>
+            <pre class="language-typescript line-numbers">
+                <code class="language-typescript">
+                    import &#123; Component &#125; from '@angular/core';
+
+                    interface Product &#123;
+                        id?: number,
+                        code?: string,
+                        name?: string,
+                        description?: string,
+                        price?: number,
+                        category?: string,
+                        quantity?: number,
+                        inventoryStatus?: string,
+                        rating?: number
+                    &#125;
+
+                    @Component(&#123;
+                        selector: 'app-table',
+                        templateUrl: './table.component.html',
+                        styleUrls: ['./table.component.scss']
+                    &#125;)
+
+                    export class TableComponent &#123;
+                        products!: Product[];
+
+                        ngOnInit() &#123;
+                            this.products = [
+                                &#123;
+                                    id: 1000,
+                                    code: 'f230fh0g3',
+                                    name: 'Bamboo Watch',
+                                    description: 'Product Description',
+                                    price: 65,
+                                    category: 'Accessories',
+                                    quantity: 24,
+                                    inventoryStatus: 'INSTOCK',
+                                    rating: 5
+                                &#125;,
+                                &#123;
+                                    id: 1001,
+                                    code: 'nvklal433',
+                                    name: 'Black Watch',
+                                    description: 'Product Description',
+                                    price: 48,
+                                    category: 'Accessories',
+                                    quantity: 61,
+                                    inventoryStatus: 'INSTOCK',
+                                    rating: 4
+                                &#125;,
+                            ]
+                        &#125;
+                    &#125;
+                </code>
+            </pre>
+        </p-card>
+
+        <p-card>
+            <p class="fs-500 fw-semi-bold">Regular table:</p>
+            <div class="card">
+                <p-table [value]="products" [tableStyle]="{ 'min-width': '50rem' }">
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th>Code</th>
+                            <th pSortableColumn="name">Name <p-sortIcon field="name"></p-sortIcon></th>
+                            <th>Category</th>
+                            <th>Quantity</th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-product>
+                        <tr>
+                            <td>{{ product.code }}</td>
+                            <td>{{ product.name }}</td>
+                            <td>{{ product.category }}</td>
+                            <td>{{ product.quantity }}</td>
+                        </tr>
+                    </ng-template>
+                </p-table>
+            </div>
+
+
+            <pre class="language-html line-numbers">
+                <code class="language-html">
+                    &lt;p-table [value]=&quot;products&quot; [tableStyle]=&quot;&#123; 'min-width': '50rem' &#125;&quot;&gt;
+                        &lt;ng-template pTemplate=&quot;header&quot;&gt;
+                            &lt;tr&gt;
+                                &lt;th&gt;Code&lt;/th&gt;
+                                &lt;th pSortableColumn=&quot;name&quot;&gt;Name &lt;p-sortIcon field=&quot;name&quot;&gt;&lt;/p-sortIcon&gt;&lt;/th&gt;
+                                &lt;th&gt;Category&lt;/th&gt;
+                                &lt;th&gt;Quantity&lt;/th&gt;
+                            &lt;/tr&gt;
+                        &lt;/ng-template&gt;
+                        &lt;ng-template pTemplate=&quot;body&quot; let-product&gt;
+                            &lt;tr&gt;
+                                &lt;td&gt; &#123; &#123; product.code &#125; &#125; &lt;/td&gt;
+                                &lt;td&gt; &#123; &#123; product.name &#125; &#125; &lt;/td&gt;
+                                &lt;td&gt; &#123; &#123; product.category &#125; &#125; &lt;/td&gt;
+                                &lt;td&gt; &#123; &#123; product.quantity &#125; &#125; &lt;/td&gt;
+                            &lt;/tr&gt;
+                        &lt;/ng-template&gt;
+                    &lt;/p-table&gt;
+                </code>
+            </pre>
+        </p-card>
+    </div>
+</div>

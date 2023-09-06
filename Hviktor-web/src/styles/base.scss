@@ -1,0 +1,393 @@
+/* You can add global styles to this file, and also import other style files */
+@font-face {
+    font-family: "PublicSans-Thin";
+    src: url(../assets/static/PublicSans-Thin.ttf);
+    font-weight: 100;
+}
+
+@font-face {
+    font-family: "PublicSans-ExtraLight";
+    src: url(../assets/static/PublicSans-ExtraLight.ttf);
+    font-weight: 200;
+}
+
+@font-face {
+    font-family: "PublicSans-Light";
+    src: url(../assets/static/PublicSans-Light.ttf);
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: "PublicSans-Regular";
+    src: url(../assets/static/PublicSans-Regular.ttf);
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: "PublicSans-Medium";
+    src: url(../assets/static/PublicSans-Medium.ttf);
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: "PublicSans-SemiBold";
+    src: url(../assets/static/PublicSans-SemiBold.ttf);
+    font-weight: 600;
+}
+
+@font-face {
+    font-family: "PublicSans-Bold";
+    src: url(../assets/static/PublicSans-Bold.ttf);
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: "PublicSans-ExtraBold";
+    src: url(../assets/static/PublicSans-ExtraBold.ttf);
+    font-weight: 800;
+}
+
+@font-face {
+    font-family: "PublicSans-Black";
+    src: url(../assets/static/PublicSans-Black.ttf);
+    font-weight: 900;
+}
+
+* {
+    /*
+    **
+    ** UTILITY VARIABLES
+    **
+    */
+
+    // FONT SIZES
+    // --fs-100: .625rem; //10px
+    // --fs-200: .75rem; // 12px
+    // --fs-300: .875rem; // 14px
+    // --fs-400: 1rem; // 16px
+    // --fs-500: 1.125rem; // 18px
+    // --fs-600: 1.5rem; // 24px
+    // --fs-700: 1.875rem; // 30px
+    // --fs-800: 2.5rem; // 40px
+    // --fs-900: 4rem; // 64px
+
+    --fs-800: 3.250rem;
+    --fs-750: 2.875rem;
+    --fs-700: 2.250rem;
+    --fs-650: 2.000rem;
+    --fs-600: 1.812rem;
+    --fs-550: 1.625rem;
+    --fs-500: 1.438rem;
+    --fs-450: 1.250rem;
+    --fs-400: 1.000rem;
+    --fs-350: 0.875rem;
+    font-size: var(--fs-400);
+
+    // FONT FAMILIES
+    --ff-thin: 'PublicSans-Thin';
+    --ff-extra-light: 'PublicSans-ExtraLight';
+    --ff-light: 'PublicSans-Light';
+    --ff-regular: 'PublicSans-Regular';
+    --ff-medium: 'PublicSans-Medium';
+    --ff-semi-bold: 'PublicSans-SemiBold';
+    --ff-bold: 'PublicSans-Bold';
+    --ff-extra-bold: 'PublicSans-ExtraBold';
+    --ff-black: 'PublicSans-Black';
+    font-family: var(--ff-regular);
+
+    --ff-accent: 'PublicSans-Bold';
+
+    // FONT WEIGHTS
+    --fw-thin: 100;
+    --fw-extra-light: 200;
+    --fw-light: 300;
+    --fw-regular: 400;
+    --fw-medium: 500;
+    --fw-semi-bold: 600;
+    --fw-bold: 700;
+    --fw-extra-bold: 800;
+    --fw-black: 900;
+    font-weight: var(--fw-regular);
+
+    // RADIUS
+    --radius-400: 8px;
+
+    // SPACING
+    --space-300: 4px;
+    --space-400: 8px;
+    --space-500: 16px;
+    --space-600: 32px;
+
+    // LINE HEIGHT
+    --line-height-400: 150%;
+    line-height: var(--line-height-400);
+
+    /*
+    **
+    ** COLORS
+    **
+    */
+    --clr-primary-200: #ECF2F9;
+    --clr-primary-300: #E3EBF2;
+    --clr-primary-400: #003087;
+    --clr-primary-500: #02376A;
+
+    --clr-neutral-200: #FFFFFF;
+    --clr-neutral-300: #F4F4F4;
+    --clr-neutral-400: #E6E6E6;
+    --clr-neutral-500: #999999;
+    --clr-neutral-600: #202020;
+
+    --clr-success-200: #ECF9EC;
+    --clr-success-300: #E6F1EC;
+    --clr-success-400: #0F8A0F;
+    --clr-success-500: #0A5C0A;
+
+    --clr-warning-300: #FFFBCC;
+    --clr-warning-400: #F2C833;
+    --clr-warning-500: #893D06;
+
+    --clr-danger-300: #F9ECEC;
+    --clr-danger-400: #B81414;
+    --clr-danger-500: #8A0F0F;
+
+    // FONT COLORS
+    color: var(--clr-neutral-600);
+}
+
+/*
+**
+** FONT
+**
+*/
+
+.uppercase {
+    text-transform: uppercase;
+}
+
+a {
+    color: var(--clr-primary-800);
+}
+
+label {
+    font-weight: var(--fw-bold);
+    font-family: var(--ff-bold);
+}
+
+// FONT SIZES
+// .fs-100 {
+//     font-size: var(--fs-100);
+// }
+
+// .fs-200 {
+//     font-size: var(--fs-200);
+// }
+
+.fs-350 {
+    font-size: var(--fs-350);
+}
+
+.fs-400 {
+    font-size: var(--fs-400);
+}
+
+.fs-450 {
+    font-size: var(--fs-450);
+}
+
+.fs-500 {
+    font-size: var(--fs-500);
+}
+
+.fs-550 {
+    font-size: var(--fs-550);
+}
+
+.fs-600 {
+    font-size: var(--fs-600);
+}
+
+.fs-650 {
+    font-size: var(--fs-650);
+}
+
+.fs-700 {
+    font-size: var(--fs-700);
+}
+
+.fs-750 {
+    font-size: var(--fs-750);
+}
+
+.fs-800 {
+    font-size: var(--fs-800);
+}
+
+// .fs-900 {
+//     font-size: var(--fs-900);
+// }
+
+// FONT WEIGHTS
+.fw-thin {
+    font-weight: var(--fw-thin);
+    font-family: var(--ff-thin);
+}
+
+.fw-extra-light {
+    font-weight: var(--fw-extra-light);
+    font-family: var(--ff-extra-light);
+}
+
+.fw-light {
+    font-weight: var(--fw-light);
+    font-family: var(--ff-light);
+}
+
+.fw-regular {
+    font-weight: var(--fw-regular);
+    font-family: var(--ff-regular);
+}
+
+.fw-medium {
+    font-weight: var(--fw-medium);
+    font-family: var(--ff-medium);
+}
+
+.fw-semi-bold {
+    font-weight: var(--fw-semi-bold);
+    font-family: var(--ff-semi-bold);
+}
+
+.fw-bold {
+    font-weight: var(--fw-bold);
+    font-family: var(--ff-bold);
+}
+
+.fw-extra-bold {
+    font-weight: var(--fw-extra-bold);
+    font-family: var(--ff-extra-bold);
+}
+
+.fw-black {
+    font-weight: var(--fw-black);
+    font-family: var(--ff-black);
+}
+
+
+/*
+**
+** NEW COLOURS
+**
+*/
+.clr-primary-200 {
+    background-color: var(--clr-primary-200);
+}
+.clr-primary-300 {
+    background-color: var(--clr-primary-300);
+}
+.clr-primary-400 {
+    background-color: var(--clr-primary-400);
+}
+.clr-primary-500 {
+    background-color: var(--clr-primary-500);
+}
+
+.clr-neutral-200 {
+    background-color: var(--clr-neutral-200);
+}
+.clr-neutral-300 {
+    background-color: var(--clr-neutral-300);
+}
+.clr-neutral-400 {
+    background-color: var(--clr-neutral-400);
+}
+.clr-neutral-500 {
+    background-color: var(--clr-neutral-500);
+}
+.clr-neutral-600 {
+    background-color: var(--clr-neutral-600);
+}
+
+.clr-success-200 {
+    background-color: var(--clr-success-200);
+}
+.clr-success-300 {
+    background-color: var(--clr-success-300);
+}
+.clr-success-400 {
+    background-color: var(--clr-success-400);
+}
+.clr-success-500 {
+    background-color: var(--clr-success-500);
+}
+
+.clr-warning-300 {
+    background-color: var(--clr-warning-300);
+}
+.clr-warning-400 {
+    background-color: var(--clr-warning-400);
+}
+.clr-warning-500 {
+    background-color: var(--clr-warning-500);
+}
+
+.clr-danger-300 {
+    background-color: var(--clr-danger-300);
+}
+.clr-danger-400 {
+    background-color: var(--clr-danger-400);
+}
+.clr-danger-500 {
+    background-color: var(--clr-danger-500);
+}
+
+
+//flex
+.flex { display: flex; }
+.f-align-center { align-items: center; }
+.f-justify-center { justify-content: center; }
+.f-column { flex-direction: column; }
+.f-wrap { flex-wrap: wrap; }
+.f-space-between { justify-content: space-between; }
+.gap-400 { gap: var(--space-400); }
+.gap-500 { gap: var(--space-500); }
+.gap-600 { gap: var(--space-600); }
+
+
+//spacing
+//margin
+.m-400 { margin: var(--space-400); }
+.m-500 { margin: var(--space-500); }
+.m-600 { margin: var(--space-600); }
+//margin top and bottom
+.m-block-400 { margin-block: var(--space-400); }
+.m-block-500 { margin-block: var(--space-500); }
+.m-block-600 { margin-block: var(--space-600); }
+//margin left and right
+.m-inline-400 { margin-inline: var(--space-400); }
+.m-inline-500 { margin-inline: var(--space-500); }
+.m-inline-600 { margin-inline: var(--space-600); }
+//padding
+.p-400 { padding: var(--space-400); }
+.p-500 { padding: var(--space-500); }
+.p-600 { padding: var(--space-600); }
+//padding top and bottom
+.p-block-400 { padding-block: var(--space-400); }
+.p-block-500 { padding-block: var(--space-500); }
+.p-block-600 { padding-block: var(--space-600); }
+//padding left and right
+.p-inline-400 { padding-inline: var(--space-400); }
+.p-inline-500 { padding-inline: var(--space-500); }
+.p-inline-600 { padding-inline: var(--space-600); }
+
+
+// Bruk denne på ting som kun skal være tilgjengelig for skjermleser
+.visually-hidden:not(:focus):not(:active) {
+	clip: rect(0 0 0 0);
+	clip-path: inset(50%);
+	height: 1px;
+	width: 1px;
+	overflow: hidden;
+	position: absolute;
+	white-space: nowrap;
+}

@@ -1,0 +1,26 @@
+.type {
+    background-color: var(--clr-neutral-300);
+    border: 1px solid var(--clr-neutral-500);
+    border-radius: var(--radius-400);
+    padding: var(--space-400);
+    margin-right: var(--space-400);
+    margin-bottom: var(--space-400);
+    text-align: center;
+    width: 350px;
+}
+
+.icon {
+    .pi {
+        font-size: 1.5rem;
+    }
+
+}
+
+.maxWidth {
+    max-width: 1525px;
+}
+
+
+.pi.pi-check-circle { color: var(--clr-success-400); margin-right: var(--space-400); }
+.pi.pi-question-circle { color: var(--clr-warning-400); margin-right: var(--space-400); }
+.pi.pi-times-circle { color: var(--clr-danger-400); margin-right: var(--space-400); }

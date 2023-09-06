@@ -1,0 +1,57 @@
+<div class="m-500">
+    <h1 class="fs-700">Checkbox</h1>
+    <p class="p-block-400"><a href="https://primeng.org/checkbox" target="_blank" rel="noopener noreferrer"><i
+                class="pi pi-prime | p-inline-400"></i>https://primeng.org/checkbox</a></p>
+    <p class="p-block-400"><a
+            href="https://dev.azure.com/hvikt-utv/_git/Hviktor?path=/Hviktor-web/src/app/_components/prime-components/checkbox"
+            target="_blank" rel="noopener noreferrer"><i class="pi pi-code | p-inline-400"></i>Kode i repo</a></p>
+
+    <p-divider></p-divider>
+
+    <div class="flex f-column gap-500">
+
+        <div class="flex f-align-center gap-400 | warningBlock">
+            <p>Funker ikkje heilt enda, så refresh sida for å vise koden skikkelig og få fram "Copy" knappen.</p>
+            <p-button icon="pi pi-refresh" (click)="refresh()"
+                styleClass="p-button-rounded p-button-outlined"></p-button>
+        </div>
+
+        <p-card>
+            <form class="flex gap-400 f-wrap" [formGroup]="formGroup">
+                <p-checkbox formControlName="checkbox" value="Standard checkbox" inputId="defaultCheckbox"></p-checkbox>
+                <label for="defaultCheckbox">Standard checkbox</label>
+            </form>
+           
+            <pre class="language-html line-numbers">
+                <code class="language-html">
+                    &lt;form class=&quot;flex gap-400 f-wrap&quot; [formGroup]=&quot;formGroup&quot;&gt;
+                        &lt;p-checkbox formControlName=&quot;checkbox&quot; value=&quot;Standard checkbox&quot; inputId=&quot;defaultCheckbox&quot;&gt;&lt;/p-checkbox&gt;
+                        &lt;label for=&quot;defaultCheckbox&quot;&gt;Standard checkbox&lt;/label&gt;
+                    &lt;/form&gt;
+                </code>
+            </pre>
+            <pre class="language-typescript line-numbers">
+                <code class="language-typescript">
+                    import &#123; Component &#125; from '@angular/core';
+                    import &#123; FormControl, FormGroup &#125; from '@angular/forms';
+
+                    @Component(&#123;
+                        selector: 'app-checkbox',
+                        templateUrl: './checkbox.component.html',
+                        styleUrls: ['./checkbox.component.scss']
+                    &#125;)
+                    export class CheckboxComponent &#123;
+                    
+                        formGroup!: FormGroup;
+
+                        ngOnInit() &#123;
+                                this.formGroup = new FormGroup(&#123;
+                                checkbox: new FormControl&lt;string | null&gt;(null)
+                            &#125;);
+                        &#125;
+                    &#125;
+                </code>
+            </pre>
+        </p-card>
+    </div>
+</div>

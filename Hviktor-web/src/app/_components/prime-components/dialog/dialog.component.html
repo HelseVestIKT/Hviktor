@@ -1,0 +1,66 @@
+<div class="m-500">
+    <h1 class="fs-700">Dialog</h1>
+    <p class="p-block-400"><a href="https://primeng.org/dialog" target="_blank" rel="noopener noreferrer"><i
+                class="pi pi-prime | p-inline-400"></i>https://primeng.org/dialog</a></p>
+    <p class="p-block-400"><a
+            href="https://dev.azure.com/hvikt-utv/_git/Hviktor?path=/Hviktor-web/src/app/_components/prime-components/dialog"
+            target="_blank" rel="noopener noreferrer"><i class="pi pi-code | p-inline-400"></i>Kode i repo</a></p>
+
+    <p-divider></p-divider>
+
+    <div class="flex f-column gap-500">
+        <div class="flex f-align-center gap-400 | warningBlock">
+            <p>Funker ikkje heilt enda, så refresh sida for å vise koden skikkelig og få fram "Copy" knappen.</p>
+            <p-button icon="pi pi-refresh" (click)="refresh()"
+                styleClass="p-button-rounded p-button-outlined"></p-button>
+        </div>
+
+        <p-card>
+            <p-button (click)="showDialog()" label="Åpne modal"></p-button>
+            <p-dialog header="Modal" [(visible)]="visible" [modal]="true" [style]="{ width: '50vw' }"
+                [draggable]="false" [resizable]="false">
+                <p class="m-0">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                    labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                    laboris nisi ut aliquip ex ea commodo
+                    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+                    fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+                    deserunt mollit anim id est laborum.
+                </p>
+            </p-dialog>
+            <pre class="language-html line-numbers">
+                <code class="language-html">
+                    &lt;p-button (click)=&quot;showDialog()&quot; label=&quot;&Aring;pne modal&quot;&gt;&lt;/p-button&gt;
+                    &lt;p-dialog header=&quot;Modal&quot; [(visible)]=&quot;visible&quot; [modal]=&quot;true&quot; [style]=&quot;&#123; width: '50vw' &#125;&quot; [draggable]=&quot;false&quot; [resizable]=&quot;false&quot;&gt;
+                        &lt;p class=&quot;m-0&quot;&gt;
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                            et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                            aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+                            culpa qui officia deserunt mollit anim id est laborum.
+                        &lt;/p&gt;
+                    &lt;/p-dialog&gt;
+                </code>
+            </pre>
+            <pre class="language-typescript line-numbers">
+                <code class="language-typescript">
+                    import &#123; Component &#125; from '@angular/core';
+
+                    @Component(&#123;
+                        selector: 'app-dialog',
+                        templateUrl: './dialog.component.html',
+                        styleUrls: ['./dialog.component.scss']
+                    &#125;)
+                    
+                    export class DialogComponent &#123;
+                        visible: boolean = false;
+
+                        showDialog() &#123;
+                            this.visible = true;
+                        &#125;
+                    &#125;
+                </code>
+            </pre>
+        </p-card>
+    </div>
+</div>

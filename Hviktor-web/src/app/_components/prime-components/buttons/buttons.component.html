@@ -1,0 +1,123 @@
+<div class="m-500">
+    <h1 class="fs-700">Buttons</h1>
+    <p class="p-block-400"><a href="https://primeng.org/button" target="_blank" rel="noopener noreferrer"><i
+                class="pi pi-prime | p-inline-400"></i>https://primeng.org/button</a></p>
+    <p class="p-block-400"><a
+            href="https://dev.azure.com/hvikt-utv/_git/Hviktor?path=/Hviktor-web/src/app/_components/prime-components/buttons"
+            target="_blank" rel="noopener noreferrer"><i class="pi pi-code | p-inline-400"></i>Kode i repo</a></p>
+
+    <p-divider></p-divider>
+
+    <div class="flex f-column gap-500">
+
+        <div class="flex f-align-center gap-400 | warningBlock">
+            <p>Funker ikkje heilt enda, så refresh sida for å vise koden skikkelig og få fram "Copy" knappen.</p>
+            <p-button icon="pi pi-refresh" (click)="refresh()"
+                styleClass="p-button-rounded p-button-outlined"></p-button>
+        </div>
+
+        <p-card>
+            <p class="fs-500 fw-semi-bold">Regular buttons:</p>
+            <div class="flex gap-400 m-sm-bottom">
+                <p-button label="Primary"></p-button>
+                <p-button label="Secondary" styleClass="p-button-secondary"></p-button>
+                <p-button label="Tertiary" styleClass="p-button-text"></p-button>
+                <p-button label="Danger" styleClass="p-button-danger"></p-button>
+            </div>
+            <div class="flex gap-400 m-bottom">
+                <p-button label="Primary" [disabled]="true"></p-button>
+                <p-button label="Secondary" styleClass="p-button-secondary" [disabled]="true"></p-button>
+                <p-button label="Tertiary" styleClass="p-button-text" [disabled]="true"></p-button>
+                <p-button label="Danger" styleClass="p-button-danger" [disabled]="true"></p-button>
+            </div>
+            <pre class="language-html line-numbers">
+                    <code class="language-html">
+                        &lt;p-button label=&quot;Primary&quot;&gt;&lt;/p-button&gt;
+                        &lt;p-button label=&quot;Secondary&quot; styleClass=&quot;p-button-secondary&quot;&gt;&lt;/p-button&gt;
+                        &lt;p-button label=&quot;Tertiary&quot; styleClass=&quot;p-button-text&quot;&gt;&lt;/p-button&gt;
+                        &lt;p-button label=&quot;Danger&quot; styleClass=&quot;p-button-danger&quot;&gt;&lt;/p-button&gt;
+
+                        &lt;!-- disabled --&gt;
+                        &lt;p-button label=&quot;Primary&quot; [disabled]=&quot;true&quot;&gt;&lt;/p-button&gt;
+                        &lt;p-button label=&quot;Secondary&quot; styleClass=&quot;p-button-secondary&quot; [disabled]=&quot;true&quot;&gt;&lt;/p-button&gt;
+                        &lt;p-button label=&quot;Tertiary&quot; styleClass=&quot;p-button-text&quot; [disabled]=&quot;true&quot;&gt;&lt;/p-button&gt;
+                        &lt;p-button label=&quot;Danger&quot; styleClass=&quot;p-button-danger&quot; [disabled]=&quot;true&quot;&gt;&lt;/p-button&gt;
+                    </code>
+                </pre>
+        </p-card>
+
+        <p-card>
+            <p class="fs-500 fw-semi-bold">Regular icon buttons:</p>
+            <div class="flex gap-400 m-sm-bottom">
+                <p-button icon="pi pi-check" styleClass="p-button-rounded"></p-button>
+                <p-button icon="pi pi-bookmark" styleClass="p-button-rounded p-button-secondary"></p-button>
+                <p-button icon="pi pi-times" styleClass="p-button-rounded p-button-danger"></p-button>
+            </div>
+            <div class="flex gap-400 m-bottom">
+                <p-button icon="pi pi-check" styleClass="p-button-rounded" [disabled]="true"></p-button>
+                <p-button icon="pi pi-bookmark" styleClass="p-button-rounded p-button-secondary"
+                    [disabled]="true"></p-button>
+                <p-button icon="pi pi-times" styleClass="p-button-rounded p-button-danger" [disabled]="true"></p-button>
+            </div>
+            <pre class="language-html line-numbers">
+                    <code class="language-html">
+                        &lt;p-button icon=&quot;pi pi-check&quot; styleClass=&quot;p-button-rounded&quot;&gt;&lt;/p-button&gt;
+                        &lt;p-button icon=&quot;pi pi-bookmark&quot; styleClass=&quot;p-button-rounded p-button-secondary&quot;&gt;&lt;/p-button&gt;
+                        &lt;p-button icon=&quot;pi pi-times&quot; styleClass=&quot;p-button-rounded p-button-danger&quot;&gt;&lt;/p-button&gt;
+    
+                        &lt;!-- disabled --&gt;
+                        &lt;p-button icon=&quot;pi pi-check&quot; styleClass=&quot;p-button-rounded&quot; [disabled]=&quot;true&quot;&gt;&lt;/p-button&gt;
+                        &lt;p-button icon=&quot;pi pi-bookmark&quot; styleClass=&quot;p-button-rounded p-button-secondary&quot; [disabled]=&quot;true&quot;&gt;&lt;/p-button&gt;
+                        &lt;p-button icon=&quot;pi pi-times&quot; styleClass=&quot;p-button-rounded p-button-danger&quot; [disabled]=&quot;true&quot;&gt;&lt;/p-button&gt;
+                    </code>
+                </pre>
+        </p-card>
+
+        <p-card>
+            <p class="fs-500 fw-semi-bold">Outlined icon buttons:</p>
+            <div class="flex gap-400 m-sm-bottom">
+                <p-button icon="pi pi-check" styleClass="p-button-rounded p-button-outlined"></p-button>
+                <p-button icon="pi pi-times" styleClass="p-button-rounded p-button-danger p-button-outlined"></p-button>
+            </div>
+            <div class="flex gap-400 m-bottom">
+                <p-button icon="pi pi-check" styleClass="p-button-rounded p-button-outlined"
+                    [disabled]="true"></p-button>
+                <p-button icon="pi pi-times" styleClass="p-button-rounded p-button-danger p-button-outlined"
+                    [disabled]="true"></p-button>
+            </div>
+            <pre class="language-html line-numbers">
+                    <code class="language-html">
+                        &lt;p-button icon=&quot;pi pi-check&quot; styleClass=&quot;p-button-rounded p-button-outlined&quot;&gt;&lt;/p-button&gt;
+                        &lt;p-button icon=&quot;pi pi-times&quot; styleClass=&quot;p-button-rounded p-button-danger p-button-outlined&quot;&gt;&lt;/p-button&gt;
+                                
+                        &lt;!-- disabled --&gt;
+                        &lt;p-button icon=&quot;pi pi-check&quot; styleClass=&quot;p-button-rounded p-button-outlined&quot; [disabled]=&quot;true&quot;&gt;&lt;/p-button&gt;
+                        &lt;p-button icon=&quot;pi pi-times&quot; styleClass=&quot;p-button-rounded p-button-danger p-button-outlined&quot; [disabled]=&quot;true&quot;&gt;&lt;/p-button&gt;
+                    </code>
+                </pre>
+        </p-card>
+
+        <p-card>
+            <p class="fs-500 fw-semi-bold">Text icon buttons:</p>
+            <div class="flex gap-400 m-sm-bottom">
+                <p-button icon="pi pi-check" styleClass="p-button-rounded p-button-text"></p-button>
+                <p-button icon="pi pi-times" styleClass="p-button-rounded p-button-danger p-button-text"></p-button>
+            </div>
+            <div class="flex gap-400 m-bottom">
+                <p-button icon="pi pi-check" styleClass="p-button-rounded p-button-text" [disabled]="true"></p-button>
+                <p-button icon="pi pi-times" styleClass="p-button-rounded p-button-danger p-button-text"
+                    [disabled]="true"></p-button>
+            </div>
+            <pre class="language-html line-numbers">
+                    <code class="language-html">
+                        &lt;p-button icon=&quot;pi pi-check&quot; styleClass=&quot;p-button-rounded p-button-text&quot;&gt;&lt;/p-button&gt;
+                        &lt;p-button icon=&quot;pi pi-times&quot; styleClass=&quot;p-button-rounded p-button-danger p-button-text&quot;&gt;&lt;/p-button&gt;
+                               
+                        &lt;!-- disabled --&gt;
+                        &lt;p-button icon=&quot;pi pi-check&quot; styleClass=&quot;p-button-rounded p-button-text&quot; [disabled]=&quot;true&quot;&gt;&lt;/p-button&gt;
+                        &lt;p-button icon=&quot;pi pi-times&quot; styleClass=&quot;p-button-rounded p-button-danger p-button-text&quot; [disabled]=&quot;true&quot;&gt;&lt;/p-button&gt;
+                    </code>
+                </pre>
+        </p-card>
+    </div>
+</div>

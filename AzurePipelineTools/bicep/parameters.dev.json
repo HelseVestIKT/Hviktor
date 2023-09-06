@@ -1,0 +1,18 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "appServicePlanId": {
+            "value": "/subscriptions/470ca611-e54c-49b1-b5e5-07fcfb8c3c08/resourceGroups/HVI-UTVIKLING-DEV-FELLES-rg/providers/Microsoft.Web/serverfarms/HVI-UTVIKLING-DEV-dotnet5-AppServicePlan"
+        },
+        "environment": {
+            "value": "-dev"
+        },   
+        "resourceGroupName": {
+            "value": "HVI-UTVIKLING-DEV-Hviktor-rg"
+        }   ,   
+        "hviLogAnalyticsIdParam" : {
+            "value": "/subscriptions/58e0188f-72c9-470f-afc1-16338c215f7e/resourcegroups/hvi-management-la/providers/microsoft.operationalinsights/workspaces/hvi-loganalyticsworkspace"
+        }    
+    }
+}

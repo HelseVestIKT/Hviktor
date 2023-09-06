@@ -1,0 +1,9 @@
+//TODO: fjern når bug er fiksa
+.warningBlock {
+    border: 1px solid var(--clr-warning-400);
+    width: -moz-fit-content;
+    width: fit-content;
+    padding: var(--space-400);
+    border-radius: var(--radius-400);
+    background-color: var(--clr-warning-300);
+}

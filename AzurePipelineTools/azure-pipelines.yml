@@ -1,0 +1,174 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+  branches:
+    include:
+    - develop
+    - master
+
+name: Hviktor pipeline
+
+variables:
+  #Common variables
+  buildConfiguration: 'Release'
+
+  #skipComponentGovernanceDetection: true #To avoid some internal warnings
+  HOST_POOL: 'windows-latest'
+  WORKINGDIRECTORY: '$(System.DefaultWorkingDirectory)/'
+  
+  #Dev environment variables - service connectin mangler
+  AZURE_CREDENTIALS_DEV: 'HVI-UTVIKLING-DEV-ServiceConnection-Hviktor' #her endrer du navn til den som ligger i ditt prosjekt
+  AZURE_SUBSCRIPTION_ID_DEV: '470ca611-e54c-49b1-b5e5-07fcfb8c3c08' #skal ikke være nødvendig å endre
+  AZURE_RESOURCE_GROUP_DEV: 'HVI-UTVIKLING-DEV-Hviktor-rg' #her endrer du til aktuell resource group 
+
+
+#Build stage
+stages:
+- stage: BuildStage
+  displayName: Build
+  jobs:
+  - job: CopyBicepFiles
+    displayName: 'Copy Bicep files'
+    pool:
+      vmImage: 'windows-latest'
+
+    steps:
+    - checkout: self
+      clean: true
+
+    - task:  CopyFiles@2
+      displayName: 'Copy Bicep Templates'
+      inputs:
+        sourceFolder: '$(System.DefaultWorkingDirectory)/AzurePipelineTools/bicep'
+        targetFolder: '$(Build.ArtifactStagingDirectory)/AzurePipelineTools/bicep'
+
+    - task: PublishPipelineArtifact@1
+      displayName: 'Publish Artifacts Bicep'
+      inputs:
+        targetPath: '$(Build.ArtifactStagingDirectory)'
+        artifact: 'bicep'
+        publishLocation: 'pipeline'
+
+  - job: HviktorWeb    
+    displayName: 'Build Hviktor-web'
+    pool:
+      vmImage: 'windows-latest'
+  
+    steps:
+    
+    - task: NodeTool@0
+      displayName: 'Use Node 14'
+      inputs:
+        versionSpec: 14.x
+
+    - task: Npm@1
+      displayName: 'install angular cli'
+      inputs:
+        command: custom
+        workingDir: 'Hviktor-web'
+        verbose: false
+        customCommand: 'install @angular/cli --force'
+
+    - task: Npm@1
+      displayName: 'npm install'
+      inputs:
+        workingDir: 'Hviktor-web'
+        verbose: false
+
+    - task: RaulARuiz.angular-cli-1.angular-cli-build-task.AngularCLI@1
+      displayName: 'ng build frontend'
+      inputs:
+        command: custom
+        project: 'Hviktor-web'
+        custom: 'build --configuration production'
+
+    - task: Npm@0
+      displayName: npm install express
+      inputs:
+        cwd: Hviktor-web/dist/Hviktor-web
+
+    - task: ArchiveFiles@2
+      displayName: 'Archive Hviktor-web/dist/Hviktor-web'
+      inputs:
+        rootFolderOrFile: 'Hviktor-web/dist/Hviktor-web'
+
+    - task: PublishPipelineArtifact@1
+      displayName: 'Publish Artifacts'
+      inputs:
+        targetPath: '$(Build.ArtifactStagingDirectory)'
+        artifact: 'Hviktor-web'
+        publishLocation: 'pipeline'
+
+
+# Dev-Deployment stage
+#This block below can be repeated for Test, Acceptance, Production deployments
+- stage: Development
+  displayName: Deploy to Development
+  dependsOn: BuildStage
+  condition: |
+    and
+    (
+      succeeded('BuildStage'),
+      eq(variables['Build.SourceBranch'], 'refs/heads/master')
+    )
+  jobs:
+  - deployment: Deploy
+    displayName: Deploy to Development
+    environment: 'Development'
+    pool:
+      vmImage: $(HOST_POOL)
+    variables:      
+      buildTime: # will be set by script
+    strategy:
+      runOnce:
+        deploy:
+          steps:
+            - task: AzureCLI@2
+              displayName: Provision Web App from Bicep
+              name: WebAppDeployStep
+              inputs:
+                azureSubscription: '$(AZURE_CREDENTIALS_DEV)'
+                scriptType: pscore
+                scriptLocation: inlineScript
+                inlineScript: |
+                  az deployment sub create -l norwayeast -n ADOWebAppDeployment -f $(Pipeline.Workspace)/bicep/AzurePipelineTools/bicep/main.bicep -p $(Pipeline.Workspace)/bicep/AzurePipelineTools/bicep/parameters.dev.json
+                  $WEBAPP_NAME=(az deployment sub show -n ADOWebAppDeployment --query properties.outputs.webAppName.value -o tsv)
+                  $WEBAPP_URL=(az deployment sub show -n ADOWebAppDeployment --query properties.outputs.webURL.value -o tsv)
+
+                  Write-Host "##vso[task.setvariable variable=webAppName;isOutput=true]$WEBAPP_NAME"
+                  Write-Host "##vso[task.setvariable variable=webAppURL;isOutput=true]$WEBAPP_URL"
+
+            - task: AzureCLI@2
+              displayName: Retrieve Web App name
+              inputs:
+                azureSubscription: '$(AZURE_CREDENTIALS_DEV)'
+                scriptType: pscore
+                scriptLocation: inlineScript
+                inlineScript: |
+                  Write-Host "Hviktor-Web App Provisioned: $(WebAppDeployStep.webAppName)"
+                  Write-Host "Web URL: $(WebAppDeployStep.webAppURL)"
+        
+            - task: ExtractFiles@1
+              displayName: 'Extract zip archive '
+              inputs:
+                archiveFilePatterns: '$(Pipeline.Workspace)/Hviktor-web/*.zip'
+                destinationFolder: '$(Pipeline.Workspace)/Hviktor-web/deploy'
+
+            - task: qetza.replacetokens.replacetokens-task.replacetokens@3
+              displayName: 'Replace tokens in main.*.js'            
+              inputs:
+                rootDirectory: '$(Pipeline.Workspace)/Hviktor-web/deploy/Hviktor-web'                
+                targetFiles: 'main.*.js'
+          
+            - task: AzureWebApp@1
+              displayName: 'Deploy Hviktor-web'
+              inputs:
+                azureSubscription: '$(AZURE_CREDENTIALS_DEV)'
+                appType: webApp
+                appName: $(WebAppDeployStep.webAppName)
+                package: '$(Pipeline.Workspace)/Hviktor-web/deploy/*'  
+                TakeAppOfflineFlag: false
+                RemoveAdditionalFilesFlag: true

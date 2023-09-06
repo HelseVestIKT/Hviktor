@@ -1,0 +1,96 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "appServicePlanId": {
+            "value": "/subscriptions/fc1fa7c8-2924-42a9-a988-c2944d8db9e3/resourceGroups/HVI-UTVIKLING-PROD-FELLES-rg/providers/Microsoft.Web/serverfarms/HVI-UTVIKLING-PROD-Shared_1-AppServicePlan"
+        },
+        "environment": {
+            "value": "-prod"
+        },
+        "fellesResourceGroupName": {
+            "value": "HVI-UTVIKLING-PROD-FELLES-rg"
+        },
+        "fellesKeyVaultName": {
+            "value": "HVI-UTV-PROD-FELLES-kv"
+        },
+        "dbServerMIName": {
+            "value": "felles-db-server-prod-managedid"
+        },       
+        "storageAccountName": {
+            "value": "hvisimpleprodstorage"
+        },
+         "hviLogAnalyticsIdParam" : {
+            "value": "/subscriptions/58e0188f-72c9-470f-afc1-16338c215f7e/resourcegroups/hvi-management-la/providers/microsoft.operationalinsights/workspaces/hvi-loganalyticsworkspace"
+        },
+        "hviLogAnalyticsNameParam" : {
+            "value": "HVI-LogAnalyticsWorkspace"
+        },
+        "aspNetCoreEnvironment" : {
+            "value": "Prod"
+        } ,
+        "b2cTenantNameParam": { 
+            "value": "helsevestlogin"
+        },
+        "apiB2CSUSIPolicy": {
+            "value": "B2C_1_Simple_signIn"
+        },
+        "apiB2CRedirectApiUri": {
+            "value": "https://simple-solli-api-prod.azurewebsites.net"
+        },
+        "apiB2CRedirectAppUri": {
+            "value": "https://simple-solli-prod.azurewebsites.net"
+        },
+        "apiB2CAppClientIdParam": {
+            "value": "bf00d458-07bb-46e7-bde6-40e9c16386b4"
+        },
+        "apiB2CClientIdParam" : {
+            "value": "ceca0ca9-2e26-4990-9f50-21eea245c089"
+        },
+        "apiB2CTenantIdParam" : {
+            "value": "d4163618-c0aa-47e8-bd08-dfbf19fdb7d3"
+        },
+        "apiappSettingsAppIdParam" : {
+            "value": "1e6a2b72-78e0-40fe-aeba-d2387e4a9492"
+        },
+        "apiappSettingsClientSecretParam" : {
+            "value": "mm87Q~.n54AGc3aReWVPZP6lE6nn1nD5rFNXX"
+        },
+        "apiappSettingsExtensionAppClientIdParam" : {
+            "value": "cd04415e-84e5-4ac3-9d32-7a0bbc44f347"
+        },
+        "NotificationMail": {
+            "value": "ebukett@helse-vest-ikt.no"
+        },
+        "ApiClientId": {
+            "value": "c9c66fc6-09ab-4299-87a3-e1a6fa7a114c"
+        },
+        "MailboxObjectId": {
+            "value": "14e4b1c3-1723-4574-bb01-d8da4e86497f"
+        },
+        "ClientSecret": {
+            "value": "OEE8Q~ZLAzZi0fNFQw5B0Cvtl-y7f4VgADfG~c-d"
+        },
+        "Authority": {
+            "value": "https://login.microsoftonline.com/bdcbe535-f3cf-49f5-8a6a-fb6d98dc7837/oauth2/v2.0/token&grant_type=client_credentials&resource=https://graph.microsoft.com"
+        },
+        "Scope": {
+            "value": ".default"
+        },
+        "GraphBaseAddress": {
+            "value": "https://graph.microsoft.com"
+        },
+        "Sender": {
+            "value": "noreplysimple@helse-vest-ikt.no"
+        },
+        "Subject": {
+            "value": "IS: Vennligst verifiser e-post"
+        },
+        "Logo": {
+            "value": "https://hvisimpleprodstorage.blob.core.windows.net/root/assets/logo.jpg"
+        },
+        "InviteTemplateUrl": {
+            "value": "https://hvisimpleprodstorage.blob.core.windows.net/root/invite.html"
+        }
+    }
+}
