@@ -17,6 +17,7 @@ param applicationName string = 'Hviktor'
 param resourceGroupName string = ''
 param location string = deployment().location
 param hviLogAnalyticsIdParam string = ''
+param allowIPParam string = ''
 
 param resourceTags object = {
   'Application': 'Hviktor'
@@ -51,7 +52,8 @@ module webAppServiceModule 'modules/webAppService.bicep' = {
       tags: resourceTags
       appInsightsInstrumentationKey: appInsightsModule.outputs.appInsightsInstrumentationKey
       appServicePlanId: appServicePlanId  
-      location: location        
+      location: location 
+      allowIPParam: allowIPParam       
     }
     
 }

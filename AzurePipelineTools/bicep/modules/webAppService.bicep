@@ -3,6 +3,8 @@ param location string
 param appInsightsInstrumentationKey string
 param applicationName string
 param appServicePlanId string
+param allowIPParam string
+
 
 resource webAppService 'Microsoft.Web/sites@2021-01-01' = {
   name: applicationName  
@@ -17,7 +19,17 @@ resource webAppService 'Microsoft.Web/sites@2021-01-01' = {
     siteConfig: {
       websiteTimeZone: 'Central Europe Standard Time'
       minTlsVersion: '1.2'
-      netFrameworkVersion: 'V5.0'      
+      netFrameworkVersion: 'V5.0'    
+      ipSecurityRestrictions: [
+        {
+            ipAddress: allowIPParam,
+            action: 'Allow',            
+            priority: 101,
+            name: 'Proxy'
+            description: 'Only allow traffic from HVIKT proxy (for onpremise access)'
+        }
+   
+    ],
        appSettings: [       
         {
           name: 'APPINSIGHTS_INSTRUMENTATIONKEY'

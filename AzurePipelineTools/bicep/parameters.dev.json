@@ -10,9 +10,12 @@
         },   
         "resourceGroupName": {
             "value": "HVI-UTVIKLING-DEV-Hviktor-rg"
-        }   ,   
+        },   
         "hviLogAnalyticsIdParam" : {
             "value": "/subscriptions/58e0188f-72c9-470f-afc1-16338c215f7e/resourcegroups/hvi-management-la/providers/microsoft.operationalinsights/workspaces/hvi-loganalyticsworkspace"
+        },
+        "allowIPParam" : {
+            "value": "161.4.82.8/32"
         }    
     }
 }
