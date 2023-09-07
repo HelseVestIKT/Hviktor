@@ -28,7 +28,7 @@ resource webAppService 'Microsoft.Web/sites@2021-01-01' = {
             name: 'Proxy'
             description: 'Only allow traffic from HVIKT proxy (for onpremise access)'
       }   
-      ],
+      ]
        appSettings: [       
         {
           name: 'APPINSIGHTS_INSTRUMENTATIONKEY'
