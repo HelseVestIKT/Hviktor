@@ -5,11 +5,24 @@
     <ol>
         <li>npm install -g @angular/cli</li>
         <li>ng new my-app</li>
+        <ul>
+            <li>Would you like to add Angular routing? <p class="fw-bold">Yes</p></li>
+            <li>Which stylesheet format would you like to use? <p class="fw-bold">SCSS</p></li>
+        </ul>
         <li>npm install primeng</li>
         <li>npm install primeicons</li>
         <li>Kopier font-filene i <a href="https://dev.azure.com/hvikt-utv/_git/Hviktor?path=/Hviktor-web/src/assets/static" target="_blank" rel="noopener noreferrer">assets\static\ mappa</a> og legg inn i prosjektet ditt.</li>
         <li>Kopier style-filene i <a href="https://dev.azure.com/hvikt-utv/_git/Hviktor?path=/Hviktor-web/src/styles" target="_blank" rel="noopener noreferrer">styles mappa</a> og legg inn i prosjektet ditt.</li>
-    
+        <li>Oppdater angular.json med:<pre><code>"styles": [
+        "node_modules/primeicons/primeicons.css",
+        "src/styles/prime-theme.scss",
+        "node_modules/primeng/resources/primeng.min.css",
+        "src/styles/css-reset.scss",
+        "src/styles/base.scss",
+        "src/styles/styles.scss"
+    ],
+        </code></pre>
+        </li>
         <p class="fw-bold">NB: prismjs er ikkje nødvendig å ta med i prosjektet.</p>
     </ol>
 </main>
