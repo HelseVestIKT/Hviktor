@@ -1,1 +1,316 @@
 /* You can add global styles to this file, and also import other style files */
+
+/**
+ * MIT License
+ * Copyright (c) 2018 Sarah Drasner
+ * Sarah Drasner's[@sdras] Night Owl
+ * Ported by Sara vieria [@SaraVieira]
+ * Added by Souvik Mandal [@SimpleIndian]
+ */
+
+ ::ng-deep .token.punctuation{
+    color: hsl(65deg 82% 75%);
+  }
+  ::ng-deep .token.tag {
+    color: hsl(65deg 82% 75%);
+  }
+  ::ng-deep .token.selector,
+  ::ng-deep .token.attr-name,
+  ::ng-deep .token.string,
+  ::ng-deep .token.char,
+  ::ng-deep .token.builtin,
+  ::ng-deep .token.inserted {
+    color: hsl(170deg 70% 60%);
+  }
+//     pre {
+//       background: #333;
+//       color: #FFF;
+//       padding: 8px;
+//       border-radius: 8px;
+//     } 
+
+ code[class*="language-"],
+ pre[class*="language-"] {
+     font-family: var(--font-mono);
+     font-size: inherit;
+     -webkit-hyphens: none;
+     hyphens: none;
+    //  line-height: 1.6;
+     color: #d6deeb;
+     text-align: left;
+     word-break: normal;
+     word-wrap: normal;
+     tab-size: 4;
+     tab-size: 4;
+     tab-size: 4;
+     white-space: pre;
+     word-spacing: normal;
+     border: none;
+     -webkit-font-smoothing: auto;
+ }
+ 
+ pre[class*="language-"]::selection,
+ pre[class*="language-"] ::selection,
+ code[class*="language-"]::selection,
+ code[class*="language-"] ::selection {
+     text-shadow: none;
+     background: rgb(29 59 83 / 99%);
+ }
+ 
+ pre[class*="language-"]::selection,
+ pre[class*="language-"] ::selection,
+ code[class*="language-"]::selection,
+ code[class*="language-"] ::selection {
+     text-shadow: none;
+     background: rgb(29 59 83 / 99%);
+ }
+ 
+ @media print {
+     code[class*="language-"],
+     pre[class*="language-"] {
+         text-shadow: none;
+     }
+ }
+ 
+ /* Code blocks */
+ pre[class*="language-"] {
+    //  padding: 25px;
+    //  margin-top: 3.2vmin;
+    //  overflow: auto;
+ }
+ 
+ :not(pre) > code[class*="language-"],
+ pre[class*="language-"] {
+     color: white;
+     background: #011627;
+ }
+ 
+ :not(pre) > code[class*="language-"] {
+    //  padding: 0.1em;
+     white-space: normal;
+     border-radius: 0.3em;
+ }
+ 
+ .token.comment,
+ .token.prolog,
+ .token.cdata {
+     font-style: italic;
+     color: rgb(99 119 119);
+ }
+ 
+ .token.punctuation {
+     color: rgb(199 146 234);
+ }
+ 
+ .namespace {
+     color: rgb(178 204 214);
+ }
+ 
+ .token.deleted {
+     font-style: italic;
+     color: rgb(239 83 80 / 56%);
+ }
+ 
+ .token.symbol,
+ .token.property {
+     color: rgb(128 203 196);
+ }
+ 
+ .token.tag,
+ .token.operator,
+ .token.keyword {
+     color: rgb(127 219 202);
+ }
+ 
+ .token.boolean {
+     color: rgb(255 88 116);
+ }
+ 
+ .token.number {
+     color: rgb(247 140 108);
+ }
+ 
+ .token.constant,
+ .token.function,
+ .token.builtin,
+ .token.char {
+     color: rgb(130 170 255);
+ }
+ 
+ .token.selector,
+ .token.doctype {
+     font-style: italic;
+     color: rgb(199 146 234);
+ }
+ 
+ .token.attr-name,
+ .token.inserted {
+     font-style: italic;
+     color: rgb(173 219 103);
+ }
+ 
+ .token.string,
+ .token.url,
+ .token.entity,
+ .language-css .token.string,
+ .style .token.string {
+     color: rgb(173 219 103);
+ }
+ 
+ .token.class-name,
+ .token.atrule,
+ .token.attr-value {
+     color: rgb(255 203 139);
+ }
+ 
+ .token.regex,
+ .token.important,
+ .token.variable {
+     color: rgb(214 222 235);
+ }
+ 
+ .token.important,
+ .token.bold {
+     font-weight: 700;
+ }
+ 
+ .token.italic {
+     font-style: italic;
+ }
+ 
+ /* Custom styles for theme */
+ .code-wrapper {
+     position: relative;
+     overflow: hidden;
+     border-radius: 8px;
+ }
+ 
+ .code-wrapper > pre[class*="language-"] {
+     margin-top: 0;
+ }
+
+
+div.code-toolbar{
+    position:relative
+}
+div.code-toolbar>.toolbar{
+    position:absolute;
+    z-index:10;
+    top:.3em;
+    right:.2em;
+    transition:opacity .3s ease-in-out;
+    opacity:1
+}
+
+div.code-toolbar>.toolbar>.toolbar-item{
+    display:inline-block
+}
+div.code-toolbar>.toolbar>.toolbar-item>a{
+    cursor:pointer
+}
+
+/* feature styles for buttons */
+
+/* icon copy */
+div.code-toolbar>.toolbar>.toolbar-item>button > span
+{
+    color: transparent;
+    background-color:#e6caa8;
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='none' d='M0 0h24v24H0z'%3E%3C/path%3E%3Cpath d='M7 6V3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1h-3v3c0 .552-.45 1-1.007 1H4.007A1.001 1.001 0 0 1 3 21l.003-14c0-.552.45-1 1.007-1H7zM5.003 8L5 20h10V8H5.003zM9 6h8v10h2V4H9v2z' fill='currentColor'%3E%3C/path%3E%3C/svg%3E");
+    -webkit-mask-repeat: no-repeat no-repeat;
+    mask-repeat: no-repeat no-repeat;
+    -webkit-mask-position: center right;
+    mask-position: center right;
+}
+
+/* hide icon copy */
+div.code-toolbar>.toolbar>.toolbar-item>button[data-copy-state=copy-success] > span ,
+div.code-toolbar>.toolbar>.toolbar-item>button[data-copy-state=copy-success]:hover > span
+{
+    -webkit-mask-image: none;
+    mask-image: none;
+    color: #e6caa8;
+    background-color: transparent;
+}
+
+/* color of "Copied!" */
+.copy-to-clipboard-button[data-copy-state~=copy-success] span {
+    color: #e6caa8;
+}
+    div.code-toolbar > .toolbar > .toolbar-item > button:hover {
+        cursor: pointer;
+        span {
+                 background-color: rgb(255, 203, 139);
+        }
+       
+    }
+
+/* text copy is hidden */
+.copy-to-clipboard-button[data-copy-state=copy] span {
+    color: transparent;
+}
+
+/* default item color */
+div.code-toolbar>.toolbar>.toolbar-item {
+   color: #e6caa8; 
+}
+
+/* remove toolbar items decoration*/
+div.code-toolbar > .toolbar > .toolbar-item > a, 
+div.code-toolbar > .toolbar > .toolbar-item > button, 
+div.code-toolbar > .toolbar > .toolbar-item > span {
+    background-color: transparent;
+    border: 0;
+    box-shadow: none;
+}
+
+
+/**
+ * prism.js default theme for JavaScript, CSS and HTML
+ * Based on dabblet (http://dabblet.com)
+ * @author Lea Verou
+ */
+
+
+ pre.line-numbers {
+     position: relative;
+     padding-left: 3.8em;
+     counter-reset: linenumber;
+    //  line-height: 1.6;
+ }
+ 
+ pre.line-numbers > code {
+     position: relative;
+ }
+ 
+ .line-numbers .line-numbers-rows {
+     position: absolute;
+     pointer-events: none;
+    //  line-height: 1.6;
+     top: 0;
+     font-size: 100%;
+     left: -3.8em;
+     width: 3em; /* works for line-numbers below 1000 lines */
+     letter-spacing: -1px;
+     border-right: 1px solid #999;
+ 
+     -webkit-user-select: none;
+     -moz-user-select: none;
+     -ms-user-select: none;
+     user-select: none;
+ 
+ }
+ 
+     .line-numbers-rows > span {
+         pointer-events: none;
+         display: block;
+         counter-increment: linenumber;
+     }
+ 
+         .line-numbers-rows > span:before {
+             content: counter(linenumber);
+             color: #999;
+             display: block;
+             padding-right: 0.8em;
+             text-align: right;
+         }

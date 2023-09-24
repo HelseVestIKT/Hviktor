@@ -6,5 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./variables.component.scss']
 })
 export class VariablesComponent {
-
+  refresh(){
+    window.location.reload();
+  }
 }

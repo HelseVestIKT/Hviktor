@@ -38,7 +38,8 @@
               "node_modules/primeng/resources/primeng.min.css",
               "src/styles/css-reset.scss",
               "src/styles/base.scss",
-              "src/styles/styles.scss"
+              "src/styles/styles.scss",
+              "src/styles.scss"
             ],
             "scripts": [
               "node_modules/prismjs/prism.js",
@@ -115,7 +116,8 @@
               "node_modules/primeng/resources/primeng.min.css",
               "src/styles/css-reset.scss",
               "src/styles/base.scss",
-              "src/styles/styles.scss"
+              "src/styles/styles.scss",
+              "src/styles.scss"
             ],
             "scripts": []
           }
