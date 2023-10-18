@@ -15,8 +15,4 @@ export class CheckboxComponent {
       checkbox: new FormControl<string | null>(null)
     });
   }
-
-  refresh(){
-    window.location.reload();
-  }
 }

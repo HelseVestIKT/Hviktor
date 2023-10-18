@@ -5,18 +5,13 @@
     <p class="p-block-400"><a
             href="https://dev.azure.com/hvikt-utv/_git/Hviktor?path=/Hviktor-web/src/app/_components/prime-components/accordion"
             target="_blank" rel="noopener noreferrer"><i class="pi pi-code | p-inline-400"></i>Kode i repo</a></p>
+    <pre class="language-typescript line-numbers">
+        <code class="language-typescript">import &#123; AccordionModule &#125; from 'primeng/accordion';</code>
+    </pre>
 
     <p-divider></p-divider>
 
-
     <div class="flex f-column gap-500">
-        <div class="flex f-align-center gap-400 | warningBlock">
-            <p>Funker ikkje heilt enda, så refresh sida for å vise koden skikkelig og få fram "Copy" knappen.</p>
-            <p-button icon="pi pi-refresh" (click)="refresh()"
-                styleClass="p-button-rounded p-button-outlined"></p-button>
-        </div>
-
-
         <p-card>
             <p-accordion [activeIndex]="0">
                 <p-accordionTab header="Header I">

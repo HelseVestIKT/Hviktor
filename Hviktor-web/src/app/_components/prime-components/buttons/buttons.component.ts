@@ -7,8 +7,4 @@ import { Component } from '@angular/core';
 })
 export class ButtonsComponent {
 
-  refresh(){
-    window.location.reload();
-  }
-
 }

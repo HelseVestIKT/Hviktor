@@ -11,9 +11,4 @@ export class DialogComponent {
   showDialog() {
       this.visible = true;
   }
-
-  refresh(){
-    window.location.reload();
-  }
-
 }

@@ -57,8 +57,4 @@ export class MenubarComponent {
       },
     ];
   }
-
-  refresh(){
-    window.location.reload();
-  }
 }

@@ -7,8 +7,4 @@ import { Component } from '@angular/core';
 })
 export class TabsComponent {
 
-  refresh(){
-    window.location.reload();
-  }
-
 }

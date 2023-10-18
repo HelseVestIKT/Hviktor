@@ -22,9 +22,4 @@ export class RadiobuttonComponent {
       selectedCategory: new FormControl()
     });
   }
-
-  refresh(){
-    window.location.reload();
-  }
-
 }

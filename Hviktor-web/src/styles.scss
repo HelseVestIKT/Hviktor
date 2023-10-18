@@ -74,7 +74,7 @@
  
  /* Code blocks */
  pre[class*="language-"] {
-    //  padding: 25px;
+    //  padding-right: 60px;
     //  margin-top: 3.2vmin;
     //  overflow: auto;
  }
@@ -191,7 +191,9 @@
 
 
 div.code-toolbar{
-    position:relative
+    position:relative;
+    // width: -moz-fit-content;
+    // width: fit-content;
 }
 div.code-toolbar>.toolbar{
     position:absolute;

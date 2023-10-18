@@ -29,8 +29,4 @@ export class DropdownComponent implements OnInit {
             selectedCity: new FormControl<City | null>(null)
         });
     }
-
-    refresh(){
-      window.location.reload();
-    }
 }

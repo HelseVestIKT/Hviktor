@@ -45,9 +45,4 @@ export class TableComponent {
       },
     ]
   }
-
-  refresh(){
-    window.location.reload();
-  }
-
 }

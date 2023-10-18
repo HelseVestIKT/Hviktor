@@ -23,9 +23,4 @@ export class MultiselectComponent {
           {name: 'Paris', code: 'PRS'}
       ];
   }
-
-  refresh(){
-    window.location.reload();
-  }
-
 }

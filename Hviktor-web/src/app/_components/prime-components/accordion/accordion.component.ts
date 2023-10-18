@@ -5,9 +5,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./accordion.component.scss']
 })
 export class AccordionComponent {
-  refresh(){
-    window.location.reload();
-  }
-
 
 }
