@@ -58,11 +58,11 @@ stages:
       vmImage: 'windows-latest'
   
     steps:
-    
-    - task: NodeTool@0
-      displayName: 'Use Node 14'
-      inputs:
-        versionSpec: 14.x
+    # Skal du bruke en spesifikk node versjon, legg tilbake dette som er kommentert ut nedenfor
+    # - task: NodeTool@0
+    #   displayName: 'Use Node 14'
+    #   inputs:
+    #     versionSpec: 14.x
 
     - task: Npm@1
       displayName: 'install angular cli'
