@@ -1,4 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
+
+//PublicSans font-face
 @font-face {
     font-family: "PublicSans-Thin";
     src: url(../assets/static/PublicSans-Thin.ttf);
@@ -53,6 +55,62 @@
     font-weight: 900;
 }
 
+//AlbertSans font-face:
+@font-face {
+    font-family: "AlbertSans-Thin";
+    src: url(../assets/static/AlbertSans-Thin.ttf);
+    font-weight: 100;
+}
+
+@font-face {
+    font-family: "AlbertSans-ExtraLight";
+    src: url(../assets/static/AlbertSans-ExtraLight.ttf);
+    font-weight: 200;
+}
+
+@font-face {
+    font-family: "AlbertSans-Light";
+    src: url(../assets/static/AlbertSans-Light.ttf);
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: "AlbertSans-Regular";
+    src: url(../assets/static/AlbertSans-Regular.ttf);
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: "AlbertSans-Medium";
+    src: url(../assets/static/AlbertSans-Medium.ttf);
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: "AlbertSans-SemiBold";
+    src: url(../assets/static/AlbertSans-SemiBold.ttf);
+    font-weight: 600;
+}
+
+@font-face {
+    font-family: "AlbertSans-Bold";
+    src: url(../assets/static/AlbertSans-Bold.ttf);
+    font-weight: 700;
+}
+
+@font-face {
+    font-family: "AlbertSans-ExtraBold";
+    src: url(../assets/static/AlbertSans-ExtraBold.ttf);
+    font-weight: 800;
+}
+
+@font-face {
+    font-family: "AlbertSans-Black";
+    src: url(../assets/static/AlbertSans-Black.ttf);
+    font-weight: 900;
+}
+
+
 * {
     /*
     **
@@ -83,7 +141,7 @@
     --fs-350: 0.875rem;
     font-size: var(--fs-400);
 
-    // FONT FAMILIES
+    // FONT FAMILIES FOR PublicSans
     --ff-thin: 'PublicSans-Thin';
     --ff-extra-light: 'PublicSans-ExtraLight';
     --ff-light: 'PublicSans-Light';
@@ -96,6 +154,19 @@
     font-family: var(--ff-regular);
 
     --ff-accent: 'PublicSans-Bold';
+
+    // FONT FAMILIES FOR AlbertSans:
+    --albert-sans-thin: 'AlbertSans-Thin';
+    --albert-sans-extra-light: 'AlbertSans-ExtraLight';
+    --albert-sans-light: 'AlbertSans-Light';
+    --albert-sans-regular: 'AlbertSans-Regular';
+    --albert-sans-medium: 'AlbertSans-Medium';
+    --albert-sans-semi-bold: 'AlbertSans-SemiBold';
+    --albert-sans-bold: 'AlbertSans-Bold';
+    --albert-sans-extra-bold: 'AlbertSans-ExtraBold';
+    --albert-sans-black: 'AlbertSans-Black';
+
+    
 
     // FONT WEIGHTS
     --fw-thin: 100;
@@ -174,6 +245,43 @@ label {
     font-family: var(--ff-bold);
 }
 
+//AlbertSans FONT CLASSES
+.as-thin {
+    font-family: var(--albert-sans-thin);
+}
+
+.as-extra-light {
+    font-family: var(--albert-sans-extra-light);
+}
+
+.as-light {
+    font-family: var(--albert-sans-light);
+}
+
+.as-regular {
+    font-family: var(--albert-sans-regular);
+}
+
+.as-medium {
+    font-family: var(--albert-sans-medium);
+}
+
+.as-semi-bold {
+    font-family: var(--albert-sans-semi-bold);
+}
+
+.as-bold {
+    font-family: var(--albert-sans-bold);
+}
+
+.as-extra-bold {
+    font-family: var(--albert-sans-extra-bold);
+}
+
+.as-black {
+    font-family: var(--albert-sans-black);
+}
+
 // FONT SIZES
 // .fs-100 {
 //     font-size: var(--fs-100);
@@ -230,47 +338,38 @@ label {
 // FONT WEIGHTS
 .fw-thin {
     font-weight: var(--fw-thin);
-    font-family: var(--ff-thin);
 }
 
 .fw-extra-light {
     font-weight: var(--fw-extra-light);
-    font-family: var(--ff-extra-light);
 }
 
 .fw-light {
     font-weight: var(--fw-light);
-    font-family: var(--ff-light);
 }
 
 .fw-regular {
     font-weight: var(--fw-regular);
-    font-family: var(--ff-regular);
 }
 
 .fw-medium {
     font-weight: var(--fw-medium);
-    font-family: var(--ff-medium);
 }
 
 .fw-semi-bold {
     font-weight: var(--fw-semi-bold);
-    font-family: var(--ff-semi-bold);
 }
 
 .fw-bold {
     font-weight: var(--fw-bold);
-    font-family: var(--ff-bold);
 }
 
 .fw-extra-bold {
     font-weight: var(--fw-extra-bold);
-    font-family: var(--ff-extra-bold);
 }
 
 .fw-black {
     font-weight: var(--fw-black);
-    font-family: var(--ff-black);
 }
 
 
