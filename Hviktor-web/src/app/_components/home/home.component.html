@@ -1,69 +1,89 @@
 <main class="m-500">
     <h1 class="as-light fs-700">Bibliotek for Hviktor</h1>
+    
+    <p-tabView>
+        <p-tabPanel>
+            <ng-template pTemplate="header">
+                <span>Nytt siden sist</span>
+            </ng-template>
+            <p-card>
+                <span class="fw-semi-bold fs-350">17.01.2024</span>
 
-    <p>Hviktor støtter <span class="fw-bold">angular/cli&#64;16.2.7</span>og <span class="fw-bold">primeng&#64;16.5.1</span>.</p>
-    <p-card>
-        <h2 class="as-medium fs-500 fw-semi-bold">1. Opprett et nytt prosjekt med Angular</h2>
-        <p>💎 npm install -g &#64;angular/cli&#64;16.2.7</p>
-        <p>💎 ng new my-app</p>
-        <p>💎 Would you like to add Angular routing? <span class="fw-bold">Yes</span></p>
-        <p>💎 Which stylesheet format would you like to use? <span class="fw-bold">SCSS</span></p>
-        <img src="../../../assets/img/angular.PNG" alt="">
-    </p-card>
+                <h2 class="as-medium fs-500 fw-semi-bold">Oppdatert til v17</h2>
+                <p>Vi har oppdatert Hviktor til <span class="fw-bold">angular/cli&#64;17.0.10</span> og <span class="fw-bold">primeng&#64;17.3.2</span></p>
+            </p-card>
+        </p-tabPanel>
 
-    <p-card>
-        <h2 class="as-medium fs-500 fw-semi-bold">2. Legg til primeng i prosjektet</h2>
-        <p>💎 Gå inn i prosjektet du oppretta: cd my-app</p>
-        <p>💎 npm install primeng&#64;16.5.1</p>
-        <p>💎 npm install primeicons</p>
-    </p-card>
+        <p-tabPanel>
+            <ng-template pTemplate="header">
+                <span>Kom i gang</span>
+            </ng-template>
 
-    <p-card>
-        <h2 class="as-medium fs-500 fw-semi-bold">3. Legg inn font fra HVIKTOR</h2>
-        <p>💎 Last ned font-filene i <a href="https://dev.azure.com/hvikt-utv/_git/Hviktor?path=/Hviktor-web/src/assets/static" target="_blank"
-        rel="noopener noreferrer">assets\static\ mappa</a>.</p>
-        <p>💎 Trykk på de tre prikkene til høyre for static og last ned som zip.
-        <p>💎 Pakk ut mappen i assets-mappen til prosjektet ditt.</p>
-        <img src="../../../assets/img/staticZip.png" alt="">
-    </p-card>
+            <p-card>
+                <h2 class="as-medium fs-500 fw-semi-bold">1. Opprett et nytt prosjekt med Angular</h2>
+                <p>💎 npm install -g &#64;angular/cli&#64;17.0.10</p>
+                <p>💎 ng new my-app</p>
+                <p>💎 Would you like to add Angular routing? <span class="fw-bold">Yes</span></p>
+                <p>💎 Which stylesheet format would you like to use? <span class="fw-bold">SCSS</span></p>
+                <img src="../../../assets/img/angular.PNG" alt="">
+            </p-card>
+        
+            <p-card>
+                <h2 class="as-medium fs-500 fw-semi-bold">2. Legg til primeng i prosjektet</h2>
+                <p>💎 Gå inn i prosjektet du oppretta: cd my-app</p>
+                <p>💎 npm install primeng&#64;17.3.2</p>
+                <p>💎 npm install primeicons</p>
+            </p-card>
+        
+            <p-card>
+                <h2 class="as-medium fs-500 fw-semi-bold">3. Legg inn font fra HVIKTOR</h2>
+                <p>💎 Last ned font-filene i <a href="https://dev.azure.com/hvikt-utv/_git/Hviktor?path=/Hviktor-web/src/assets/static" target="_blank"
+                rel="noopener noreferrer">assets\static\ mappa</a>.</p>
+                <p>💎 Trykk på de tre prikkene til høyre for static og last ned som zip.
+                <p>💎 Pakk ut mappen i assets-mappen til prosjektet ditt.</p>
+                <img src="../../../assets/img/staticZip.png" alt="">
+            </p-card>
+        
+            <p-card>
+                <h2 class="as-medium fs-500 fw-semi-bold">4. Legg inn styles fra HVIKTOR</h2>
+                <p>💎 Last ned style-filene i <a href="https://dev.azure.com/hvikt-utv/_git/Hviktor?path=/Hviktor-web/src/styles"
+                    target="_blank" rel="noopener noreferrer">styles mappa</a>.</p>
+                <p>💎 Trykk på de tre prikkene til høyre for styles og last ned som zip.</p>
+                <p>💎 Pakk den ut i src-mappen til prosjektet ditt.</p>
+                <p>💎 Vi anbefaler at man ikke gjør egne lokale endringer i disse filene.</p>
+                <img src="../../../assets/img/stylesZip.png" alt="">
+            </p-card>
+        
+            <p-card>
+                <h2 class="as-medium fs-500 fw-semi-bold">5. Oppdater angular.json</h2>
+                <p>💎 Oppdater angular.json med:</p>
+                    <pre><code>"styles": [
+                "node_modules/primeicons/primeicons.css",
+                "src/styles/prime-theme.scss",
+                "node_modules/primeng/resources/primeng.min.css",
+                "src/styles/css-reset.scss",
+                "src/styles/base.scss",
+                "src/styles/styles.scss",
+                "src/styles.scss"
+            ],
+                </code></pre>
+                <p>💎 Vi anbefaler at hvis man skal gjøre egne lokale stil-endringer,
+                     at det gjøres i et komponents egen stil-fil eller i prosjektes styles.scss som ligger under "src". </p>
+            </p-card>
+        
+            <p-card>
+                <h2 class="as-medium fs-500 fw-semi-bold">6. Legg til BrowserAnimationsModule</h2>
+                <p>💎 For at enkelte prime-komponentet skal fungere må du importere BrowserAnimationsModule i app.modules filen.</p>
+                <img src="../../../assets/img/browseranimation.PNG" alt="">
+            </p-card>
+        
+            <p-card>
+                <h2 class="as-medium fs-500 fw-semi-bold">7. Legg til primeng-komponenter i app.module</h2>
+                <p>💎 Primeng komponentene som du skal bruke i prosjektet, må legges til og importeres i app.module.ts-filen</p>
+                <p>💎 Eksempel ved knapp:</p>
+                <img src="../../../assets/img/primeModules.png" alt="">
+            </p-card>
 
-    <p-card>
-        <h2 class="as-medium fs-500 fw-semi-bold">4. Legg inn styles fra HVIKTOR</h2>
-        <p>💎 Last ned style-filene i <a href="https://dev.azure.com/hvikt-utv/_git/Hviktor?path=/Hviktor-web/src/styles"
-            target="_blank" rel="noopener noreferrer">styles mappa</a>.</p>
-        <p>💎 Trykk på de tre prikkene til høyre for styles og last ned som zip.</p>
-        <p>💎 Pakk den ut i src-mappen til prosjektet ditt.</p>
-        <p>💎 Vi anbefaler at man ikke gjør egne lokale endringer i disse filene.</p>
-        <img src="../../../assets/img/stylesZip.png" alt="">
-    </p-card>
-
-    <p-card>
-        <h2 class="as-medium fs-500 fw-semi-bold">5. Oppdater angular.json</h2>
-        <p>💎 Oppdater angular.json med:</p>
-            <pre><code>"styles": [
-        "node_modules/primeicons/primeicons.css",
-        "src/styles/prime-theme.scss",
-        "node_modules/primeng/resources/primeng.min.css",
-        "src/styles/css-reset.scss",
-        "src/styles/base.scss",
-        "src/styles/styles.scss",
-        "src/styles.scss"
-    ],
-        </code></pre>
-        <p>💎 Vi anbefaler at hvis man skal gjøre egne lokale stil-endringer,
-             at det gjøres i et komponents egen stil-fil eller i prosjektes styles.scss som ligger under "src". </p>
-    </p-card>
-
-    <p-card>
-        <h2 class="as-medium fs-500 fw-semi-bold">6. Legg til BrowserAnimationsModule</h2>
-        <p>💎 For at enkelte prime-komponentet skal fungere må du importere BrowserAnimationsModule i app.modules filen.</p>
-        <img src="../../../assets/img/browseranimation.PNG" alt="">
-    </p-card>
-
-    <p-card>
-        <h2 class="as-medium fs-500 fw-semi-bold">7. Legg til primeng-komponenter i app.module</h2>
-        <p>💎 Primeng komponentene som du skal bruke i prosjektet, må legges til og importeres i app.module.ts-filen</p>
-        <p>💎 Eksempel ved knapp:</p>
-        <img src="../../../assets/img/primeModules.png" alt="">
-    </p-card>
+        </p-tabPanel>
+    </p-tabView>
 </main>

@@ -70,7 +70,7 @@
   }
   
   .p-disabled, .p-component:disabled {
-    opacity: 0.6;
+    // opacity: 0.6;
   }
   .p-button.p-disabled,
   .p-button.p-button-secondary.p-disabled,
@@ -81,7 +81,7 @@
   background-color: var(--clr-neutral-400);
     border-color: var(--clr-neutral-400);
     .p-button-label, .pi {
-      color: var(--clr-neutral-600);
+      color: var(--clr-neutral-500);
     }
   }
   
@@ -2067,7 +2067,7 @@
     border: 1px solid var(--clr-primary-400);
   }
   .p-button.p-button-secondary:enabled:hover, .p-buttonset.p-button-secondary > .p-button:enabled:hover, .p-splitbutton.p-button-secondary > .p-button:enabled:hover {
-    background: transparent;
+    background: var(--clr-primary-200);
     color: var(--clr-neutral-600);
     border-color: var(--clr-neutral-600);
     .p-button-label, .pi {

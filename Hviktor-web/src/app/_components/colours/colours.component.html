@@ -1,16 +1,5 @@
 <div class="m-500">
     <h1 class="as-light fs-700">Farger</h1>
-    <p-tabView [scrollable]="true">
-
-       
-
-        <!-- PRIMARY -->
-        <p-tabPanel>
-            <ng-template pTemplate="header">
-                <!-- <div class="clrChip | clr-primary-400"></div> -->
-                <i class="pi pi-check-circle"></i>
-                <span>Colours</span>
-            </ng-template>
 
             <div class="color">
                 <div class="clr-neutral-200">
@@ -110,52 +99,5 @@
                     <p class="name">--clr-danger-500</p>
                 </div>
             </div>
-        </p-tabPanel>
-
-         <!-- HOW TO -->
-         <p-tabPanel>
-            <ng-template pTemplate="header">
-                <span class="fw-semi-bold">How to</span>
-            </ng-template>
-            <div class="howTo">
-                <div>
-
-
-                    <p class="fw-semi-bold fs-500">Eksempel 1:</p>
-                    <pre>
-                <code>
-                    <span class="fw-semi-bold">CSS:</span>
-                    .testComponent {{ '{' }}
-                        background-color: var(--clr-primary-400);
-                        color: var(--clr-neutral-200);
-                    {{ '}' }}
-                </code>
-            </pre>
-                    <p class=" fw-semi-bold fs-500">Resultat:</p>
-                    <div class="testComponent">
-                        Test Component
-                    </div>
-                </div>
-                <div>
-
-
-                    <p class="fw-semi-bold fs-500">Eksempel 2:</p>
-                    <pre>
-                <code>
-                    <span class="fw-semi-bold">HTML:</span>
-                    {{ '<' }}div class="clr-primary-200"{{ '>' }}
-                        Test Component Background
-                    {{ '<' }}div{{ '>' }}
-
-                </code>
-            </pre>
-                    <p class=" fw-semi-bold fs-500">Resultat:</p>
-                    <div class="testComponentBg | clr-primary-200" style="width: fit-content; padding: 10px;">
-                        Test Component Background
-                    </div>
-                </div>
-            </div>
-        </p-tabPanel>
-    </p-tabView>
 
 </div>

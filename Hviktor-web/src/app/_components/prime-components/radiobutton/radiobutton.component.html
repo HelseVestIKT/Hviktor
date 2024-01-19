@@ -6,23 +6,30 @@
             href="https://dev.azure.com/hvikt-utv/_git/Hviktor?path=/Hviktor-web/src/app/_components/prime-components/radiobutton"
             target="_blank" rel="noopener noreferrer"><i class="pi pi-code | p-inline-400"></i>Kode i repo</a></p>
 
-    <!-- import til app.module -->
-    <pre class="language-typescript line-numbers">
-        <code class="language-typescript">import &#123; RadioButtonModule &#125; from 'primeng/radiobutton';</code>
-    </pre>
+    <p-tabView>
+        <p-tabPanel>
+            <ng-template pTemplate="header">
+                <span>Kode</span>
+            </ng-template>
 
-    <p-divider></p-divider>
+            <!-- import til app.module -->
+            <pre class="language-typescript line-numbers">
+                <code class="language-typescript">import &#123; RadioButtonModule &#125; from 'primeng/radiobutton';</code>
+            </pre>
 
-    <div class="flex f-column gap-500">
-        <p-card>
-            <form class="flex f-column gap-500" [formGroup]="formGroup">
-                <div *ngFor="let category of categories" class="field-checkbox gap-400 flex">
-                    <p-radioButton [inputId]="category.key" [value]="category" formControlName="selectedCategory"></p-radioButton>
-                    <label [for]="category.key" class="ml-2">{{ category.name }}</label>
-                </div>
-            </form>
-            
-            <pre class="language-html line-numbers">
+            <p-divider></p-divider>
+
+            <div class="flex f-column gap-500">
+                <p-card>
+                    <form class="flex f-column gap-500" [formGroup]="formGroup">
+                        <div *ngFor="let category of categories" class="field-checkbox gap-400 flex">
+                            <p-radioButton [inputId]="category.key" [value]="category"
+                                formControlName="selectedCategory"></p-radioButton>
+                            <label [for]="category.key" class="ml-2">{{ category.name }}</label>
+                        </div>
+                    </form>
+
+                    <pre class="language-html line-numbers">
                 <code class="language-html">
                     &lt;form class=&quot;flex f-column gap-500&quot; [formGroup]=&quot;formGroup&quot;&gt;
                         &lt;div *ngFor=&quot;let category of categories&quot; class=&quot;field-checkbox gap-400 flex&quot;&gt;
@@ -32,7 +39,7 @@
                     &lt;/form&gt;
                 </code>
             </pre>
-            <pre class="language-typescript line-numbers">
+                    <pre class="language-typescript line-numbers">
                 <code class="language-typescript">
                     import &#123; Component &#125; from '&#64;angular/core';
                     import &#123; FormControl, FormGroup &#125; from '&#64;angular/forms';
@@ -62,17 +69,18 @@
                     &#125;
                 </code>
             </pre>
-        </p-card>
+                </p-card>
 
-        <p-card>
-            <form class="flex gap-500" [formGroup]="formGroup">
-                <div *ngFor="let category of categories" class="field-checkbox gap-400 flex">
-                    <p-radioButton [inputId]="category.key" [value]="category" formControlName="selectedCategory"></p-radioButton>
-                    <label [for]="category.key" class="ml-2">{{ category.name }}</label>
-                </div>
-            </form>
-            
-            <pre class="language-html line-numbers">
+                <p-card>
+                    <form class="flex gap-500" [formGroup]="formGroup">
+                        <div *ngFor="let category of categories" class="field-checkbox gap-400 flex">
+                            <p-radioButton [inputId]="category.key" [value]="category"
+                                formControlName="selectedCategory"></p-radioButton>
+                            <label [for]="category.key" class="ml-2">{{ category.name }}</label>
+                        </div>
+                    </form>
+
+                    <pre class="language-html line-numbers">
                 <code class="language-html">
                     &lt;form class=&quot;flex gap-500&quot; [formGroup]=&quot;formGroup&quot;&gt;
                         &lt;div *ngFor=&quot;let category of categories&quot; class=&quot;field-checkbox gap-400 flex&quot;&gt;
@@ -82,6 +90,23 @@
                     &lt;/form&gt;
                 </code>
             </pre>
-        </p-card>
-    </div>
+                </p-card>
+            </div>
+        </p-tabPanel>
+
+        <p-tabPanel>
+            <ng-template pTemplate="header">
+                <span>Info</span>
+            </ng-template>
+            <p>Her skriver vi litt om hvordan komponenten bør brukes og UX/a11y prinsipp du bør tenke på.</p>
+        </p-tabPanel>
+
+        <p-tabPanel>
+            <ng-template pTemplate="header">
+                <span>Ren HTML/CSS</span>
+            </ng-template>
+            <p>Her kommer kode for komponenten uten tilknyttet rammeverk.</p>
+        </p-tabPanel>
+    </p-tabView>
+
 </div>

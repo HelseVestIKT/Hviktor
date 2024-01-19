@@ -35,19 +35,19 @@ export class HeaderComponent {
           {
             label: 'Accordion',
             routerLink: 'components/accordion',
-            icon: 'pi pi-check-circle',
+            icon: 'pi pi-question-circle',
             command:  () => this.newRefresh()
           },
           {
             label: 'Buttons',
             routerLink: 'components/buttons',
-            icon: 'pi pi-check-circle',
+            icon: 'pi pi-question-circle',
             command:  () => this.newRefresh()
           },
           {
             label: 'Checkbox',
             routerLink: 'components/checkbox',
-            icon: 'pi pi-check-circle',
+            icon: 'pi pi-question-circle',
             command:  () => this.newRefresh()
           },
           {
@@ -59,44 +59,44 @@ export class HeaderComponent {
           {
             label: 'Dialog',
             routerLink: 'components/dialog',
-            icon: 'pi pi-check-circle',
+            icon: 'pi pi-question-circle',
             command:  () => this.newRefresh()
           },
           {
             label: 'Dropdown',
             routerLink: 'components/dropdown',
-            icon: 'pi pi-check-circle',
+            icon: 'pi pi-question-circle',
             command:  () => this.newRefresh()
           },
           {
             label: 'Menubar',
             routerLink: 'components/menubar',
-            icon: 'pi pi-check-circle',
+            icon: 'pi pi-question-circle',
             command:  () => this.newRefresh()
           },
           {
             label: 'Multiselect',
             routerLink: 'components/multiselect',
-            icon: 'pi pi-check-circle',
+            icon: 'pi pi-question-circle',
             command:  () => this.newRefresh()
           },
           {
             label: 'Radiobutton',
             routerLink: 'components/radiobutton',
-            icon: 'pi pi-check-circle',
+            icon: 'pi pi-question-circle',
             command:  () => this.newRefresh()
           },
 
           {
             label: 'Table',
             routerLink: 'components/table',
-            icon: 'pi pi-check-circle',
+            icon: 'pi pi-question-circle',
             command:  () => this.newRefresh()
           },
           {
             label: 'Tabs',
             routerLink: 'components/tabs',
-            icon: 'pi pi-check-circle',
+            icon: 'pi pi-question-circle',
             command:  () => this.newRefresh()
           },
         ]

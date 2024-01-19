@@ -6,22 +6,28 @@
             href="https://dev.azure.com/hvikt-utv/_git/Hviktor?path=/Hviktor-web/src/app/_components/prime-components/menubar"
             target="_blank" rel="noopener noreferrer"><i class="pi pi-code | p-inline-400"></i>Kode i repo</a></p>
 
-    <!-- import til app.module -->
-    <pre class="language-typescript line-numbers">
-        <code class="language-typescript">import &#123; MenubarModule &#125; from 'primeng/menubar';</code>
-    </pre>
+    <p-tabView>
+        <p-tabPanel>
+            <ng-template pTemplate="header">
+                <span>Kode</span>
+            </ng-template>
 
-    <p-divider></p-divider>
+            <!-- import til app.module -->
+            <pre class="language-typescript line-numbers">
+                <code class="language-typescript">import &#123; MenubarModule &#125; from 'primeng/menubar';</code>
+            </pre>
 
-    <div class="flex f-column gap-500">
-        <p-card>
-            <p-menubar [model]="items">
-                <ng-template pTemplate="start">
-                    <img src="../../../assets/img/logo.png" routerLink="" height="48px" alt="Hviktor logo"/>
-                </ng-template> 
-            </p-menubar>
-            
-            <pre class="language-html line-numbers">
+            <p-divider></p-divider>
+
+            <div class="flex f-column gap-500">
+                <p-card>
+                    <p-menubar [model]="items">
+                        <ng-template pTemplate="start">
+                            <img src="../../../assets/img/logo.png" routerLink="" height="48px" alt="Hviktor logo" />
+                        </ng-template>
+                    </p-menubar>
+
+                    <pre class="language-html line-numbers">
                 <code class="language-html">
                     &lt;p-menubar [model]=&quot;items&quot;&gt;
                         &lt;ng-template pTemplate=&quot;start&quot;&gt;
@@ -30,7 +36,7 @@
                     &lt;/p-menubar&gt;
                 </code>
             </pre>
-            <pre class="language-typescript line-numbers">
+                    <pre class="language-typescript line-numbers">
                 <code class="language-typescript">
                     import &#123; Component &#125; from '&#64;angular/core';
                     import &#123; MenuItem &#125; from 'primeng/api';
@@ -95,6 +101,22 @@
                     &#125;
                 </code>
             </pre>
-        </p-card>
-    </div>
+                </p-card>
+            </div>
+        </p-tabPanel>
+
+        <p-tabPanel>
+            <ng-template pTemplate="header">
+                <span>Info</span>
+            </ng-template>
+            <p>Her skriver vi litt om hvordan komponenten bør brukes og UX/a11y prinsipp du bør tenke på.</p>
+        </p-tabPanel>
+
+        <p-tabPanel>
+            <ng-template pTemplate="header">
+                <span>Ren HTML/CSS</span>
+            </ng-template>
+            <p>Her kommer kode for komponenten uten tilknyttet rammeverk.</p>
+        </p-tabPanel>
+    </p-tabView>
 </div>
