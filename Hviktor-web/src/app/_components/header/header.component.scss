@@ -1,9 +1,9 @@
 
 
 // midlertidig
-::ng-deep .p-menubar .p-menuitem-link .p-menuitem-icon.pi.pi-check-circle { color: var(--clr-success-400); }
-::ng-deep .p-menubar .p-menuitem-link .p-menuitem-icon.pi.pi-question-circle { color: var(--clr-warning-400); }
-::ng-deep .p-menubar .p-menuitem-link .p-menuitem-icon.pi.pi-times-circle { color: var(--clr-danger-400); }
+::ng-deep .p-menubar .p-menuitem-link .p-menuitem-icon.pi.pi-check-circle { color: var(--clr-green-400); }
+::ng-deep .p-menubar .p-menuitem-link .p-menuitem-icon.pi.pi-question-circle { color: var(--clr-yellow-400); }
+::ng-deep .p-menubar .p-menuitem-link .p-menuitem-icon.pi.pi-times-circle { color: var(--clr-red-400); }
 
 //TODO: fjern når bug er fiksa
 .warningBlock {
@@ -12,5 +12,5 @@
     width: fit-content;
     padding: var(--space-400);
     border-radius: var(--radius-400);
-    background-color: var(--clr-primary-200);
+    background-color: var(--clr-primary-300);
 }

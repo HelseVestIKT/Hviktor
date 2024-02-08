@@ -4,7 +4,7 @@
   margin-top: 40px;
 
   pre {
-    background-color: var(--clr-neutral-300);
+    background-color: var(--clr-neutral-400);
     border: 1px solid var(--clr-neutral-400);
     border-radius: var(--radius-400);
     width: -moz-fit-content;
@@ -13,7 +13,7 @@
   }
   .testComponent {
     background-color: var(--clr-primary-400);
-    color: var(--clr-neutral-200);
+    color: var(--clr-neutral-400);
     width: -moz-fit-content;
     width: fit-content;
     padding: 10px;
@@ -25,6 +25,15 @@
   height: 20px;
   border-radius: 4px;
   margin-right: 4px;
+}
+
+.color-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-600);
+  margin-bottom: var(--space-400);
+
+  
 }
   
   .color {
@@ -62,10 +71,10 @@
   }
   
   .color>div.default:is(.clr-primary-800) .name {
-    color: var(--clr-neutral-300);
+    color: var(--clr-neutral-400);
     background-color: rgba(255, 255, 255, 0.2);
   }
 
-.pi.pi-check-circle { color: var(--clr-success-400); margin-right: var(--space-400); }
-.pi.pi-question-circle { color: var(--clr-warning-400); margin-right: var(--space-400); }
-.pi.pi-times-circle { color: var(--clr-danger-400); margin-right: var(--space-400); }
+.pi.pi-check-circle { color: var(--clr-green-400); margin-right: var(--space-400); }
+.pi.pi-question-circle { color: var(--clr-yellow-400); margin-right: var(--space-400); }
+.pi.pi-times-circle { color: var(--clr-red-400); margin-right: var(--space-400); }

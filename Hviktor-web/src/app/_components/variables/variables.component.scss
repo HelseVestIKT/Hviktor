@@ -1,6 +1,6 @@
 .container {
     margin-bottom: var(--space-600);
-    background-color: var(--clr-neutral-300);
+    background-color: var(--clr-neutral-400);
     border-radius: var(--radius-400);
     width: 200px;
     padding: var(--space-400);
@@ -12,18 +12,18 @@
 }
 
 .box {
-    background-color: var(--clr-warning-400);
+    background-color: var(--clr-yellow-400);
     width: 20px;
     height: 20px;
     border-radius: var(--radius-400);
 }
 
 .box.green {
-    background-color: var(--clr-warning-500);
+    background-color: var(--clr-yellow-500);
 }
 
 .box.yellow  {
-    background-color: var(--clr-danger-400);
+    background-color: var(--clr-red-400);
 }
 
 .containerMargin {
@@ -35,12 +35,12 @@
 }
 
 .containerMargin .box {
-    border: 2px solid var(--clr-neutral-600);
-    background-color: var(--clr-warning-400);
+    border: 2px solid var(--clr-neutral-900);
+    background-color: var(--clr-yellow-400);
 }
 
 .containerPadding {
-    border: 2px solid var(--clr-neutral-600);
+    border: 2px solid var(--clr-neutral-900);
     width: -moz-fit-content;
     width: fit-content;
     border-radius: var(--radius-400);

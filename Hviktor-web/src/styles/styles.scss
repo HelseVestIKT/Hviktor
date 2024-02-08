@@ -27,11 +27,7 @@ body {
 
 //Green chip:
 .chip-green {
-        background-color: var(--clr-success-300);
-}
-
-.chip-green.p-chip .p-chip-text {
-        color: var(--clr-green-800);
+        background-color: var(--clr-teal-300);
 }
 
 //Thinner font-weight for chip label:
@@ -87,12 +83,12 @@ body {
 
 //styling for active tab
 .tabVertical .p-tabview .p-tabview-nav li.p-highlight .p-tabview-nav-link {
-        background-color: var(--clr-neutral-200);
+        background-color: var(--clr-neutral-50);
 }
 
 //styling for innholdet i tabben
 .tabVertical .p-tabview-panels {
-        background-color: var(--clr-neutral-200);
+        background-color: var(--clr-neutral-50);
         width: fill-available;
 }
 
