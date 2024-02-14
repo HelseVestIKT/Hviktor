@@ -25,45 +25,34 @@
         
             <p-card>
                 <h2 class="as-medium fs-500 fw-semi-bold">2. Legg til primeng i prosjektet</h2>
-                <p>💎 Gå inn i prosjektet du oppretta: cd my-app</p>
+                <p>💎 Gå inn i prosjektet du opprettet: cd my-app</p>
                 <p>💎 npm install primeng&#64;17.3.2</p>
                 <p>💎 npm install primeicons</p>
             </p-card>
-        
+
             <p-card>
-                <h2 class="as-medium fs-500 fw-semi-bold">3. Legg inn font fra HVIKTOR</h2>
-                <p>💎 Last ned font-filene i <a href="https://dev.azure.com/hvikt-utv/_git/Hviktor?path=/Hviktor-web/src/assets/static" target="_blank"
-                rel="noopener noreferrer">assets\static\ mappa</a>.</p>
-                <p>💎 Trykk på de tre prikkene til høyre for static og last ned som zip.
-                <p>💎 Pakk ut mappen i assets-mappen til prosjektet ditt.</p>
-                <img src="../../../assets/img/staticZip.png" alt="">
-            </p-card>
-        
-            <p-card>
-                <h2 class="as-medium fs-500 fw-semi-bold">4. Legg inn styles fra HVIKTOR</h2>
-                <p>💎 Last ned style-filene i <a href="https://dev.azure.com/hvikt-utv/_git/Hviktor?path=/Hviktor-web/src/styles"
-                    target="_blank" rel="noopener noreferrer">styles mappa</a>.</p>
-                <p>💎 Trykk på de tre prikkene til høyre for styles og last ned som zip.</p>
-                <p>💎 Pakk den ut i src-mappen til prosjektet ditt.</p>
-                <p>💎 Vi anbefaler at man ikke gjør egne lokale endringer i disse filene.</p>
-                <img src="../../../assets/img/stylesZip.png" alt="">
+                <h2 class="as-medium fs-500 fw-semi-bold">3.Legg til HVIKTOR fra npm</h2>
+                <p>💎 Stilfilene og fontene for HVIKTOR er nå tilgjengelig fra <a href="https://www.npmjs.com/package/@helsevestikt/hviktor-library" target="_blank"
+                rel="noopener noreferrer">npm &#64;helsevestikt/hviktor-library</a>.</p>
+                <p>💎 legg til i prosjektet ditt: npm i &#64;helsevestikt/hviktor-library
+                <img src="../../../assets/img/npm.PNG" alt="">
             </p-card>
         
             <p-card>
                 <h2 class="as-medium fs-500 fw-semi-bold">5. Oppdater angular.json</h2>
                 <p>💎 Oppdater angular.json med:</p>
                     <pre><code>"styles": [
-                "node_modules/primeicons/primeicons.css",
-                "src/styles/prime-theme.scss",
-                "node_modules/primeng/resources/primeng.min.css",
-                "src/styles/css-reset.scss",
-                "src/styles/base.scss",
-                "src/styles/styles.scss",
-                "src/styles.scss"
+                    "node_modules/primeicons/primeicons.css",
+                    "node_modules/&#64;helsevestikt/hviktor-library/styles/prime-theme.scss",
+                    "node_modules/primeng/resources/primeng.min.css",
+                    "node_modules/&#64;helsevestikt/hviktor-library/styles/css-reset.scss",
+                    "node_modules/&#64;helsevestikt/hviktor-library/styles/base.scss",
+                    "node_modules/&#64;helsevestikt/hviktor-library/styles/styles.scss",
+                    "src/styles.scss"
             ],
                 </code></pre>
-                <p>💎 Vi anbefaler at hvis man skal gjøre egne lokale stil-endringer,
-                     at det gjøres i et komponents egen stil-fil eller i prosjektes styles.scss som ligger under "src". </p>
+                <!-- <p>💎 Vi anbefaler at hvis man skal gjøre egne lokale stil-endringer,
+                     at det gjøres i et komponents egen stil-fil eller i prosjektes styles.scss som ligger under "src". </p> -->
             </p-card>
         
             <p-card>
