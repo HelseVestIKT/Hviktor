@@ -689,7 +689,7 @@
   .p-checkbox {
     width: 24px;
     height: 24px;
-    svg path { fill: white;}
+    svg path { fill: var(--clr-primary-500);}
   }
 
   svg.p-checkbox-icon.p-icon {
@@ -697,34 +697,49 @@
     height: 18px;
   }
   .p-checkbox .p-checkbox-box {
-    border: 2px solid #d4d4d8;
+    border: 1px solid var(--clr-primary-500);
     background: #ffffff;
     width: 24px;
     height: 24px;
-    border-radius: 0.375rem;
+    border-radius: 4px;
     transition: none;
+  }
+  .p-checkbox-disabled .p-checkbox-box{
+    border: 1px solid var(--clr-neutral-600);
+    background: var(--clr-neutral-500);
   }
   .p-checkbox .p-checkbox-box .p-checkbox-icon {
     transition-duration: 0.2s;
-    color: #ffffff;
+    color: var(--clr-primary-500);
   }
   .p-checkbox .p-checkbox-box.p-highlight {
-    border-color: var(--clr-primary-400);
-    background: var(--clr-primary-400);
+    border-color: var(--clr-primary-500);
+    background: #ffffff
   }
   .p-checkbox:not(.p-checkbox-disabled) .p-checkbox-box:hover {
-    border-color: #d4d4d8;
+    border-color: var(--clr-primary-500);
+    background: var(--clr-primary-300);
   }
   .p-checkbox:not(.p-checkbox-disabled) .p-checkbox-box.p-focus {
     outline: 0 none;
     outline-offset: 0;
-    box-shadow: 0 0 0 1px var(--clr-primary-400);
-    border-color: var(--clr-primary-400);
+    box-shadow: 0 0 0 1px var(--clr-primary-500);
+    border-color: var(--clr-primary-500);
+    border: 2px solid var(--clr-primary-500);
+    background: var(--clr-primary-300);
   }
   .p-checkbox:not(.p-checkbox-disabled) .p-checkbox-box.p-highlight:hover {
-    border-color: var(--clr-primary-400);
-    background: var(--clr-primary-400);
-    color: #ffffff;
+    border-color: var(--clr-primary-500);
+    background: #ffffff;
+    color: var(--clr-primary-500);
+  }
+  p-checkbox.p-element:hover .p-checkbox-disabled .p-checkbox-box { //To prevent a hover effect on disabled checkboxes when hovering the label of the checkbox
+    border: 1px solid var(--clr-neutral-600);
+    background: var(--clr-neutral-500);
+  }
+  p-checkbox.p-element:hover .p-checkbox-box { //To get a hover effect on checkbox when hovering the label of the checkbox
+    border-color: var(--clr-primary-500);
+    background: var(--clr-primary-300);
   }
   
   p-checkbox.ng-dirty.ng-invalid > .p-checkbox > .p-checkbox-box {
@@ -746,6 +761,14 @@
   
   .p-checkbox-label {
     margin-left: 0.5rem;
+    color: var(--clr-primary-500);
+    font-weight: var(--fw-regular);
+    font-family: var(--fw-regular);
+    cursor: pointer;
+  }
+
+  label.p-checkbox-label.p-disabled{ //To set the label color to the disabled color
+    color: var(--clr-neutral-700);
   }
   
   .p-chips .p-chips-multiple-container {
@@ -6428,10 +6451,10 @@
   }
   
   .p-checkbox .p-checkbox-box {
-    border-radius: 0.25rem;
+    border-radius: 4px;
   }
   .p-checkbox:not(.p-checkbox-disabled) .p-checkbox-box.p-focus {
-    box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px var(--clr-neutral-900), 0 1px 2px 0 rgba(0, 0, 0, 0);
+    //box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px var(--clr-neutral-900), 0 1px 2px 0 rgba(0, 0, 0, 0);
   }
   
   .p-radiobutton:not(.p-radiobutton-disabled) .p-radiobutton-box.p-focus {
