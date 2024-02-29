@@ -5,6 +5,10 @@
     <p class="p-block-400"><a
             href="https://dev.azure.com/hvikt-utv/_git/Hviktor?path=/Hviktor-web/src/app/_components/prime-components/radiobutton"
             target="_blank" rel="noopener noreferrer"><i class="pi pi-code | p-inline-400"></i>Kode i repo</a></p>
+    <p class="p-block-400">
+        <a href="https://www.figma.com/file/Dm9AHEGWKbzw2Re2t7Pz6f/HVIKTOR?type=design&node-id=249%3A571&mode=design&t=w556SgyQ18pleeal-1" target="_blank" rel="noopener noreferrer"><i
+            class="pi pi-image | p-inline-400"></i>Figma</a>
+    </p>
 
     <p-tabView>
         <p-tabPanel>
@@ -20,22 +24,59 @@
             <p-divider></p-divider>
 
             <div class="flex f-column gap-500">
+                <!--Standard radiobutton-->
                 <p-card>
-                    <form class="flex f-column gap-500" [formGroup]="formGroup">
-                        <div *ngFor="let category of categories" class="field-checkbox gap-400 flex">
-                            <p-radioButton [inputId]="category.key" [value]="category"
-                                formControlName="selectedCategory"></p-radioButton>
-                            <label [for]="category.key" class="ml-2">{{ category.name }}</label>
+                    <h2 class="as-light fs-500">Standard radiobutton</h2>
+                    <p>Radiobutton fra primeng stylet etter Hviktor. Sett inn label for å få tilhørende label til radiobutton, og sett inn ariaLabel slik at radiobutton er tilgjengelig for skjermleser.</p>
+                        <div class="flex gap-400 f-column p-600">
+                            <p-radioButton label="Standard radiobutton" ariaLabel="standard radiobutton" [(ngModel)]="category"></p-radioButton>
                         </div>
+
+                    <pre class="language-html line-numbers">
+                        <code class="language-html">
+                        &lt;p-radioButton value=&quot;radiobutton&quot; label=&quot;Standard radiobutton&quot; ariaLabel=&quot;Standard radiobutton&quot; [(ngModel)]=&quot;category&quot;&gt;&lt;/p-radioButton&gt;
+                        </code>
+                    </pre>
+                </p-card>
+
+                <!--Disabled radiobutton-->
+                <p-card>
+                    <h2 class="as-light fs-500">Disabled radiobutton</h2>
+                    <p>Sett inn [disabled] for å definere når en checkbox er deaktivert.</p>
+                    <div class="flex gap-400 f-column p-600">
+                        <p-radioButton value="radiobutton" label="Disabled radiobutton" ariaLabel="disabled radiobutton" [(ngModel)]="category" [disabled]="true"></p-radioButton>
+                    </div>
+
+                    <pre class="language-html line-numbers">
+                        <code class="language-html">
+                        &lt;p-radioButton value=&quot;radiobutton&quot; label=&quot;Disabled radiobutton&quot; ariaLabel=&quot;Disabled radiobutton&quot; [(ngModel)]=&quot;category&quot; [disabled]=&quot;true&quot;&gt;&lt;/p-radioButton&gt;
+                        </code>
+                    </pre>
+                </p-card> 
+
+                <!--Radiobuttons i formgroup-->
+                <p-card>
+                    <h2 class="as-light fs-500">Radiobuttons i form</h2>
+                    <p>Bruk fieldset- og legend-tag for å definere en gruppe med tilhørende radiobuttons.</p>
+                    <p>Se primeng sin dokumentasjon for mer informasjon om dynamisk bruk av radiobuttons og Reactive Forms</p>
+                    <form [formGroup]="formGroup" class="p-400">
+                        <fieldset class="flex f-column p-400 gap-500">
+                            <legend>Velg kategori</legend>
+                            <div *ngFor="let category of categories">
+                                <p-radioButton [value]="category" formControlName="selectedCategory" [label]="category.name"></p-radioButton>
+                            </div>
+                        </fieldset>
                     </form>
 
                     <pre class="language-html line-numbers">
                 <code class="language-html">
-                    &lt;form class=&quot;flex f-column gap-500&quot; [formGroup]=&quot;formGroup&quot;&gt;
-                        &lt;div *ngFor=&quot;let category of categories&quot; class=&quot;field-checkbox gap-400 flex&quot;&gt;
-                            &lt;p-radioButton [inputId]=&quot;category.key&quot; [value]=&quot;category&quot; formControlName=&quot;selectedCategory&quot;&gt;&lt;/p-radioButton&gt;
-                            &lt;label [for]=&quot;category.key&quot; class=&quot;ml-2&quot;&gt; &#123; &#123; category.name &#125; &#125; &lt;/label&gt;
-                        &lt;/div&gt;
+                    &lt;form [formGroup]=&quot;formGroup&quot; class=&quot;p-400&quot;&gt;
+                        &lt;fieldset class=&quot;flex f-column p-400 gap-500&quot;&gt;
+                            &lt;legend&gt;Velg kategori&lt;/legend&gt;
+                            &lt;div *ngFor=&quot;let category of categories&quot;&gt;
+                                &lt;p-radioButton [value]=&quot;category&quot; formControlName=&quot;selectedCategory&quot; [label]=&quot;category.name&quot;&gt;&lt;/p-radioButton&gt;
+                            &lt;/div&gt;
+                        &lt;/fieldset&gt;
                     &lt;/form&gt;
                 </code>
             </pre>
@@ -69,30 +110,9 @@
                     &#125;
                 </code>
             </pre>
-                </p-card>
-
-                <p-card>
-                    <form class="flex gap-500" [formGroup]="formGroup">
-                        <div *ngFor="let category of categories" class="field-checkbox gap-400 flex">
-                            <p-radioButton [inputId]="category.key" [value]="category"
-                                formControlName="selectedCategory"></p-radioButton>
-                            <label [for]="category.key" class="ml-2">{{ category.name }}</label>
-                        </div>
-                    </form>
-
-                    <pre class="language-html line-numbers">
-                <code class="language-html">
-                    &lt;form class=&quot;flex gap-500&quot; [formGroup]=&quot;formGroup&quot;&gt;
-                        &lt;div *ngFor=&quot;let category of categories&quot; class=&quot;field-checkbox gap-400 flex&quot;&gt;
-                            &lt;p-radioButton [inputId]=&quot;category.key&quot; [value]=&quot;category&quot; formControlName=&quot;selectedCategory&quot;&gt;&lt;/p-radioButton&gt;
-                            &lt;label [for]=&quot;category.key&quot; class=&quot;ml-2&quot;&gt; &#123; &#123; category.name &#125; &#125; &lt;/label&gt;
-                        &lt;/div&gt;
-                    &lt;/form&gt;
-                </code>
-            </pre>
-                </p-card>
-            </div>
-        </p-tabPanel>
+        </p-card>
+    </div>
+    </p-tabPanel>
 
         <p-tabPanel>
             <ng-template pTemplate="header">
@@ -108,5 +128,4 @@
             <p>Her kommer kode for komponenten uten tilknyttet rammeverk.</p>
         </p-tabPanel>
     </p-tabView>
-
 </div>

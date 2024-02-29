@@ -43,17 +43,19 @@
                 <!--Checkbox i formgroup-->
                 <p-card>
                     <h2 class="as-light fs-500">Checkbox i formgroup</h2>
-                    <p>Bruk en legend tag for å beskrive en gruppe med checkboxer.</p>
+                    <p>Bruk fieldset- og legend-tag for å definere en gruppe med tilhørende checkboxer.</p>
                     <p>Se primeng sin dokumentasjon for mer informasjon om dynamisk bruk av checkbox og Reactive Forms</p>
-                    <form class="flex f-column gap-500 p-600" [formGroup]="formGroup">
-                        <legend>Velg alternativer</legend>
-                        <p-checkbox label="Alternativ 1" formControlName="checkbox" value="alternativ 1" ariaLabel="alternativ 1"></p-checkbox>
-                        <p-checkbox label="Alternativ 2" formControlName="checkbox" value="alternativ 2" ariaLabel="alternativ 2"></p-checkbox>
+                    <form [formGroup]="formGroup" class="p-400">
+                        <fieldset class="flex f-column p-400 gap-500">
+                            <legend>Velg alternativer</legend>
+                            <p-checkbox label="Alternativ 1" formControlName="checkbox" value="alternativ 1" ariaLabel="alternativ 1"></p-checkbox>
+                            <p-checkbox label="Alternativ 2" formControlName="checkbox" value="alternativ 2" ariaLabel="alternativ 2"></p-checkbox>
+                        </fieldset>
                     </form>
 
                     <pre class="language-html line-numbers">
                 <code class="language-html">
-                    &lt;form class=&quot;flex f-column gap-500&quot; [formGroup]=&quot;formGroup&quot;&gt;
+                    &lt;form [formGroup]=&quot;formGroup&quot; class=&quot;flex f-column p-400 gap-500&quot;&gt;
                         &lt;legend&gt;Velg alternativer&lt;/legend&gt;
                         &lt;p-checkbox label=&quot;Alternativ 1&quot; formControlName=&quot;checkbox&quot; value=&quot;alternativ 1&quot; ariaLabel=&quot;alternativ 1&quot; &gt;&lt;/p-checkbox&gt;
                         &lt;p-checkbox label=&quot;Alternativ 2&quot; formControlName=&quot;checkbox&quot; value=&quot;alternativ 2&quot; ariaLabel=&quot;alternativ 2&quot; &gt;&lt;/p-checkbox&gt;

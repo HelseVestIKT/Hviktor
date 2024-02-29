@@ -9,6 +9,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 export class RadiobuttonComponent {
 
   formGroup!: FormGroup;
+  category!: string;
 
   categories: any[] = [
     { name: 'Accounting', key: 'A' },
