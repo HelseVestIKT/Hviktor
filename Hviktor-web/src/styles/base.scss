@@ -451,6 +451,8 @@ label, legend {
 .f-column { flex-direction: column; }
 .f-wrap { flex-wrap: wrap; }
 .f-space-between { justify-content: space-between; }
+.f-space-around { justify-content: space-around; }
+.gap-300 { gap: var(--space-300); }
 .gap-400 { gap: var(--space-400); }
 .gap-500 { gap: var(--space-500); }
 .gap-600 { gap: var(--space-600); }
@@ -458,29 +460,89 @@ label, legend {
 
 //spacing
 //margin
+.m-300 { margin: var(--space-300); }
 .m-400 { margin: var(--space-400); }
 .m-500 { margin: var(--space-500); }
 .m-600 { margin: var(--space-600); }
+.m-700 { margin: var(--space-700); }
 //margin top and bottom
+.m-block-300 { margin-block: var(--space-300); }
 .m-block-400 { margin-block: var(--space-400); }
 .m-block-500 { margin-block: var(--space-500); }
 .m-block-600 { margin-block: var(--space-600); }
+.m-block-700 { margin-block: var(--space-700); }
 //margin left and right
+.m-inline-300 { margin-inline: var(--space-300); }
 .m-inline-400 { margin-inline: var(--space-400); }
 .m-inline-500 { margin-inline: var(--space-500); }
 .m-inline-600 { margin-inline: var(--space-600); }
+.m-inline-700 { margin-inline: var(--space-700); }
+//margin top
+.m-top-300 { margin-top: var(--space-300); }
+.m-top-400 { margin-top: var(--space-400); }
+.m-top-500 { margin-top: var(--space-500); }
+.m-top-600 { margin-top: var(--space-600); }
+.m-top-700 { margin-top: var(--space-700); }
+//margin bottom
+.m-bottom-300 { margin-bottom: var(--space-300); }
+.m-bottom-400 { margin-bottom: var(--space-400); }
+.m-bottom-500 { margin-bottom: var(--space-500); }
+.m-bottom-600 { margin-bottom: var(--space-600); }
+.m-bottom-700 { margin-bottom: var(--space-700); }
+//margin left
+.m-left-300 { margin-left: var(--space-300); }
+.m-left-400 { margin-left: var(--space-400); }
+.m-left-500 { margin-left: var(--space-500); }
+.m-left-600 { margin-left: var(--space-600); }
+.m-left-700 { margin-left: var(--space-700); }
+//margin right
+.m-right-300 { margin-right: var(--space-300); }
+.m-right-400 { margin-right: var(--space-400); }
+.m-right-500 { margin-right: var(--space-500); }
+.m-right-600 { margin-right: var(--space-600); }
+.m-right-700 { margin-right: var(--space-700); }
 //padding
+.p-300 { padding: var(--space-300); }
 .p-400 { padding: var(--space-400); }
 .p-500 { padding: var(--space-500); }
 .p-600 { padding: var(--space-600); }
+.p-700 { padding: var(--space-700); }
 //padding top and bottom
+.p-block-300 { padding-block: var(--space-300); }
 .p-block-400 { padding-block: var(--space-400); }
 .p-block-500 { padding-block: var(--space-500); }
 .p-block-600 { padding-block: var(--space-600); }
+.p-block-700 { padding-block: var(--space-700); }
 //padding left and right
+.p-inline-300 { padding-inline: var(--space-300); }
 .p-inline-400 { padding-inline: var(--space-400); }
 .p-inline-500 { padding-inline: var(--space-500); }
 .p-inline-600 { padding-inline: var(--space-600); }
+.p-inline-700 { padding-inline: var(--space-700); }
+//padding top
+.p-top-300 { padding-top: var(--space-300); }
+.p-top-400 { padding-top: var(--space-400); }
+.p-top-500 { padding-top: var(--space-500); }
+.p-top-600 { padding-top: var(--space-600); }
+.p-top-700 { padding-top: var(--space-700); }
+//padding bottom
+.p-bottom-300 { padding-bottom: var(--space-300); }
+.p-bottom-400 { padding-bottom: var(--space-400); }
+.p-bottom-500 { padding-bottom: var(--space-500); }
+.p-bottom-600 { padding-bottom: var(--space-600); }
+.p-bottom-700 { padding-bottom: var(--space-700); }
+//padding left
+.p-left-300 { padding-left: var(--space-300); }
+.p-left-400 { padding-left: var(--space-400); }
+.p-left-500 { padding-left: var(--space-500); }
+.p-left-600 { padding-left: var(--space-600); }
+.p-left-700 { padding-left: var(--space-700); }
+//padding right
+.p-right-300 { padding-right: var(--space-300); }
+.p-right-400 { padding-right: var(--space-400); }
+.p-right-500 { padding-right: var(--space-500); }
+.p-right-600 { padding-right: var(--space-600); }
+.p-right-700 { padding-right: var(--space-700); }
 
 
 // Bruk denne på ting som kun skal være tilgjengelig for skjermleser
