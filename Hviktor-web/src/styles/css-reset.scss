@@ -87,6 +87,11 @@ video {
   display: block;
 }
 
+/*Remove the border that comes by default with a fieldset tag*/
+fieldset {
+  border: none;
+}
+
 /* Inherit fonts for inputs and buttons */
 input,
 button,

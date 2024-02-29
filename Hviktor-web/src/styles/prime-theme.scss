@@ -1570,39 +1570,55 @@
     height: 24px;
   }
   .p-radiobutton .p-radiobutton-box {
-    border: 1px solid #d4d4d8;
+    border: 1px solid var(--clr-primary-500);
     background: #ffffff;
     width: 24px;
     height: 24px;
-    color: #463f3f;
     border-radius: 50%;
     transition: none;
   }
+
+  .p-radiobutton-disabled .p-radiobutton-box { //Disabled radiobutton colors
+    border: 1px solid var(--clr-neutral-600);
+    background: var(--clr-neutral-500);
+  }
+
   .p-radiobutton .p-radiobutton-box:not(.p-disabled):not(.p-highlight):hover {
-    border-color: #d4d4d8;
+    border-color: var(--clr-primary-500);
+    background-color: var(--clr-primary-300);
   }
   .p-radiobutton .p-radiobutton-box:not(.p-disabled).p-focus {
     outline: 0 none;
     outline-offset: 0;
-    // box-shadow: 0 0 0 1px #6366F1;
-    border-color: var(--clr-primary-400);
+    border: 2px solid var(--clr-primary-500);
+    background-color: var(--clr-primary-300);
   }
   .p-radiobutton .p-radiobutton-box .p-radiobutton-icon {
-    width: 22px;
-    height: 22px;
+    width: 20px;
+    height: 20px;
     border-radius: 50%;
     border: 3px solid #fff;
     transition-duration: 0.2s;
-    background-color: var(--clr-primary-400);
+    background-color: var(--clr-primary-500);
   }
   .p-radiobutton .p-radiobutton-box.p-highlight {
-    border-color: var(--clr-primary-400);
-    background: var(--clr-primary-400);
+    border-color: var(--clr-primary-500);
   }
   .p-radiobutton .p-radiobutton-box.p-highlight:not(.p-disabled):hover {
-    border-color: var(--clr-primary-400);
-    background: var(--clr-primary-400);
+    border-color: var(--clr-primary-500);
     color: #ffffff;
+  }
+
+  p-radiobutton.p-element:hover .p-radiobutton-disabled .p-radiobutton-box { //To prevent a hover effect on disabled radiobuttons when hovering the label of the radiobutton
+    border: 1px solid var(--clr-neutral-600);
+    background: var(--clr-neutral-500);
+  }
+  p-radiobutton.p-element:hover .p-radiobutton-disabled {
+    cursor: default;
+  }
+  p-radiobutton.p-element:hover .p-radiobutton-box { //To get a hover effect on radiobutton when hovering the label of the radiobutton
+    border-color: var(--clr-primary-500);
+    background: var(--clr-primary-300);
   }
   
   p-radiobutton.ng-dirty.ng-invalid > .p-radiobutton > .p-radiobutton-box {
@@ -1624,6 +1640,14 @@
   
   .p-radiobutton-label {
     margin-left: 0.5rem;
+    color: var(--clr-primary-500);
+    font-weight: var(--fw-regular);
+    font-family: var(--fw-regular);
+    cursor: pointer;
+  }
+
+  label.p-radiobutton-label.p-disabled{ //To set the label color to the disabled color
+    color: var(--clr-neutral-700);
   }
   
   .p-rating .p-rating-icon {
@@ -6470,7 +6494,7 @@
   }
   
   .p-radiobutton:not(.p-radiobutton-disabled) .p-radiobutton-box.p-focus {
-    box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px var(--clr-primary-400), 0 1px 2px 0 rgba(0, 0, 0, 0);
+    //box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px var(--clr-primary-400), 0 1px 2px 0 rgba(0, 0, 0, 0);
   }
   
   .p-datatable .p-datatable-tbody > tr.p-datatable-dragpoint-top > td {
