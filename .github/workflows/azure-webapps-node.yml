@@ -32,7 +32,7 @@ permissions:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
     - uses: actions/checkout@v4
 
@@ -48,7 +48,7 @@ jobs:
       run: |
         npm install
         npm run build --if-present
-        
+
 # denne hører egentlig til i scriptet, altså
 # npm run test --if-present
 
