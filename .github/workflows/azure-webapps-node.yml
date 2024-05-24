@@ -57,7 +57,7 @@ jobs:
       with:
         name: node-app
         path: ./Hviktor-web
-        compression-level: 1
+        compression-level: 0
 
   # deploy:
   #   permissions:
