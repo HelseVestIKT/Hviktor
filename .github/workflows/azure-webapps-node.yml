@@ -79,7 +79,7 @@ jobs:
     - uses: azure/arm-deploy@v1
       with:
         template: 'AzurePipelineTools/azuredeploy.bicep'
-        parameters: 'AzurePipelineTools/azuredeploy.parameters.json'
+        #parameters: 'AzurePipelineTools/azuredeploy.parameters.json'
         deploymentMode: 'Incremental'
         scope: 'subscription'
         region: 'Norway East'
