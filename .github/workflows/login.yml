@@ -12,7 +12,10 @@ jobs:
   build-and-deploy:
       runs-on: [self-hosted-windows]
       steps:
-      
+      - name: Print PATH variable
+        run: echo $Env:PATH
+        shell: powershell
+
       - name: Azure Login
         uses: azure/login@v2
         with:
