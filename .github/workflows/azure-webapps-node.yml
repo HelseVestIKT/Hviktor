@@ -19,8 +19,9 @@
 
 on:
   push:
-    #branches: [ "main" ]
-  workflow_dispatch:
+    branches: [ "main", "develop"] # Kjører ved push til main eller develop branch
+  workflow_dispatch: # Manuell kjøring av workflow begrenset til develop branch
+    branches: [ "develop" ]
 
 env:
   AZURE_WEBAPP_NAME: Hviktor    # set this to your application's name
@@ -37,22 +38,19 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    - name: Get current date and time
-      id: date
-      run: echo "::set-output name=date::$(Get-Date -Format 'yyyy-MM-dd HH:mm:ss')"
+    - uses: ./.github/workflows/build-angular.yml
+    # - name: Set up Node.js
+    #   uses: actions/setup-node@v4
+    #   with:
+    #     cache-dependency-path: ./Hviktor-web/package-lock.json
+    #     node-version: ${{ env.NODE_VERSION }}
+    #     cache: 'npm'
 
-    - name: Set up Node.js
-      uses: actions/setup-node@v4
-      with:
-        cache-dependency-path: ./Hviktor-web/package-lock.json
-        node-version: ${{ env.NODE_VERSION }}
-        cache: 'npm'
-
-    - name: npm install, build, and test
-      working-directory: ./Hviktor-web
-      run: |
-        npm install
-        npm run build --if-present
+    # - name: npm install, build, and test
+    #   working-directory: ./Hviktor-web
+    #   run: |
+    #     npm install
+    #     npm run build --if-present
     
 #     # zip hviktor-web and attach date to the name
 #     - name: Zip hviktor-web
