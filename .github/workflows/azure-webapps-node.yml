@@ -39,13 +39,13 @@ jobs:
     steps: [run: echo]
     outputs: 
       node-version: ${{ env.NODE_VERSION }}
-      working-directory: './Hviktor-web'
+      #working-directory: './Hviktor-web'
 
   call-reusable-workflow:
     needs: variables
     uses: ./.github/workflows/node-js-setup-build.yml
     with:
-      working-directory: ${{needs.variables.outputs.working-directory}}
+      working-directory: './Hviktor-web'
       node-version: ${{needs.variables.outputs.node-version}} }}
   build:
     needs: call-reusable-workflow
