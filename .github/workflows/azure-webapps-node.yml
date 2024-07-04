@@ -53,7 +53,7 @@ jobs:
 
 # azure-webapps-node.yml
 
-      - uses: ./.github/workflows/nodejs-setup-build.yml@main
+      - uses: ./.github/workflows/node-js-setup-build.yml@main
         with:
           node-version: ${{ env.NODE_VERSION }}
           working-directory: './Hviktor-web'      
