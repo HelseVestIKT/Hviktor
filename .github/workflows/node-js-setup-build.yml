@@ -1,13 +1,6 @@
 name: Node.js Setup and Build Workflow
 on:
   workflow_call:
-    inputs:
-      node-version:
-        required: true
-        type: string
-      working-directory:
-        required: true
-        type: string
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -18,12 +11,12 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: ${{ inputs.node-version }}
+          node-version: '14'
           cache: 'npm'
-          cache-dependency-path: ${{ inputs.working-directory }}/package-lock.json
+          cache-dependency-path: './Hviktor-web/package-lock.json'
 
       - name: npm install, build, and test
-        working-directory: ${{ inputs.working-directory }}
+        working-directory: './Hviktor-web'
         run: |
           npm install
           npm run build --if-present
