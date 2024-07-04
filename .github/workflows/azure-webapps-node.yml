@@ -36,23 +36,20 @@ jobs:
   build:
     runs-on: [self-hosted, Linux]
     steps:
-    - uses: actions/checkout@v4
-
-    # use build-angular.yml
-    uses: ./.github/workflows/build-angular.yml
+      - uses: actions/checkout@v4
     
-    # - name: Set up Node.js
-    #   uses: actions/setup-node@v4
-    #   with:
-    #     cache-dependency-path: ./Hviktor-web/package-lock.json
-    #     node-version: ${{ env.NODE_VERSION }}
-    #     cache: 'npm'
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          cache-dependency-path: ./Hviktor-web/package-lock.json
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
 
-    # - name: npm install, build, and test
-    #   working-directory: ./Hviktor-web
-    #   run: |
-    #     npm install
-    #     npm run build --if-present
+      - name: npm install, build, and test
+        working-directory: ./Hviktor-web
+        run: |
+          npm install
+          npm run build --if-present
     
 #     # zip hviktor-web and attach date to the name
 #     - name: Zip hviktor-web
@@ -63,12 +60,12 @@ jobs:
 # # denne hører egentlig til i scriptet, altså
 # # npm run test --if-present
 
-    - name: Upload artifact for deployment job
-      uses: actions/upload-artifact@v4 #v4 virker på ubuntu-latest og self-hosted Linux, IKKE windows
-      with:
-        name: node-app
-        path: ./Hviktor-web
-        compression-level: 0            # 9 er maks, 1 er min og 0 er ingen. Er satt til 0 for den er kjappest
+      - name: Upload artifact for deployment job
+        uses: actions/upload-artifact@v4 #v4 virker på ubuntu-latest og self-hosted Linux, IKKE windows
+        with:
+          name: node-app
+          path: ./Hviktor-web
+          compression-level: 0            # 9 er maks, 1 er min og 0 er ingen. Er satt til 0 for den er kjappest
 
   deploy:
     runs-on: [self-hosted, Windows]
