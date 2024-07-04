@@ -2,9 +2,9 @@ name: Node.js Setup and Build Workflow
 on:
   workflow_call:
     inputs:
-      # node-version:
-      #   required: true
-      #   type: string
+      node-version:
+        required: true
+        type: string
       working-directory:
         required: true
         type: string    
