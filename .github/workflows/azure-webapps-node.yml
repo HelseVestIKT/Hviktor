@@ -34,13 +34,12 @@ permissions:
 
 jobs:
   call-reusable-workflow:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: ./.github/workflows/node-js-setup-build.yml@main
-        with:
-          node-version: '14'
-          working-directory: 'path/to/your/project'
+    uses: ./.github/workflows/node-js-setup-build.yml@main
+    with:
+       node-version: '14'
+       working-directory: 'path/to/your/project'
   build:
+    needs: call-reusable-workflow
     runs-on: [self-hosted, Linux]
     steps:
       - uses: actions/checkout@v4
