@@ -34,7 +34,7 @@ permissions:
 
 jobs:
   # fancy måte å sende env variables til neste reusable workflow: https://www.sethduke.io/github-reusable-workflows-environment-variables-workaround/
-    variables:
+  variables:
     runs-on: ubuntu-latest
     steps: [run: echo]
     outputs: 
