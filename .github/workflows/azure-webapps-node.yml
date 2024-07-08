@@ -95,7 +95,9 @@ jobs:
     needs: call-reusable-workflow
     uses: ./.github/workflows/configure-azure-env.yml
     with:
-      environment: 'DEV'
+      client_id: ${{ secrets.AZURE_CLIENT_ID_DEV }}
+      tenant_id: ${{ secrets.AZURE_TENANT_ID_DEV }}
+      subscription_id: ${{ secrets.AZURE_SUBSCRIPTION_ID_DEV }}
 
     # runs-on: [self-hosted, Windows]    
     # steps:

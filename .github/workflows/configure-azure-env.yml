@@ -5,7 +5,13 @@ name: Azure Environment Configuration Workflow
 on:
   workflow_call:
     inputs:
-      environment:
+      client_id:
+        required: true
+        type: string
+      tenant_id:
+        required: true
+        type: string
+      subscription_id:
         required: true
         type: string
 jobs:
@@ -15,9 +21,9 @@ jobs:
     - uses: actions/checkout@v4
     - uses: azure/login@v1
       with:
-        client-id: ${{ secrets.AZURE_CLIENT_ID_DEV }}
-        tenant-id: ${{ secrets.AZURE_TENANT_ID_DEV }}
-        subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID_DEV }}
+        client-id: ${{ inputs.client_id }}
+        tenant-id: ${{ inputs.tenant_id }}
+        subscription-id: ${{ inputs.subscription_id }}
       
     - uses: azure/arm-deploy@v1
       with:
