@@ -1,5 +1,4 @@
-# Slik denne fungerer nå forventer den at det er en mappe som heter dist i working-directory hvor output av npm run build blir lagret
-# Denne mappen blir så zippet og lastet opp som artifact som heter angular-app og kan hentes i neste jobb
+# Logger på azure med oidc og kjører en bicep-fil som konfigurerer azure-ressurser
 
 name: Azure Environment Configuration Workflow
 on:
@@ -15,6 +14,14 @@ on:
         required: true
         type: string
 jobs:
+  print-variables:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Print variables
+      run: |
+        echo "Client ID: ${{ inputs.client_id }}"
+        echo "Tenant ID: ${{ inputs.tenant_id }}"
+        echo "Subscription ID: ${{ inputs.subscription_id }}"
   configure-azure:
     runs-on: self-hosted-windows      
     steps:
