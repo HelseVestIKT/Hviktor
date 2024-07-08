@@ -20,7 +20,7 @@
 on:
   push:
     branches: [ "main", "develop"] # Kjører ved push til main eller develop branch
-  workflow_dispatch: # Manuell kjøring av workflow 
+  workflow_dispatch: # Tillater manuell kjøring av workflow 
     
 
 env:
@@ -47,11 +47,11 @@ jobs:
     with:
       working-directory: './Hviktor-web'
       node-version: ${{needs.variables.outputs.node-version}} }}
-  build:
-    needs: call-reusable-workflow
-    runs-on: [self-hosted, Linux]
-    steps:
-      - uses: actions/checkout@v4
+  # build:
+  #   needs: call-reusable-workflow
+  #   runs-on: [self-hosted, Linux]
+  #   steps:
+  #     - uses: actions/checkout@v4
     
       # - name: Set up Node.js
       #   uses: actions/setup-node@v4
@@ -82,12 +82,12 @@ jobs:
 # # denne hører egentlig til i scriptet, altså
 # # npm run test --if-present
 
-      - name: Upload artifact for deployment job
-        uses: actions/upload-artifact@v4 #v4 virker på ubuntu-latest og self-hosted Linux, IKKE windows
-        with:
-          name: node-app
-          path: ./Hviktor-web
-          compression-level: 0            # 9 er maks, 1 er min og 0 er ingen. Er satt til 0 for den er kjappest
+      # - name: Upload artifact for deployment job
+      #   uses: actions/upload-artifact@v4 #v4 virker på ubuntu-latest og self-hosted Linux, IKKE windows
+      #   with:
+      #     name: node-app
+      #     path: ./Hviktor-web
+      #     compression-level: 0            # 9 er maks, 1 er min og 0 er ingen. Er satt til 0 for den er kjappest
 
   deploy:
     needs: build
