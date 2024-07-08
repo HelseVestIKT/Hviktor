@@ -13,9 +13,7 @@ on:
     #   subscription_id:
     #     required: true
     #     type: string
-    #   node-version:
-    #     required: true
-    #     type: string
+
 jobs:
   configure-azure:
     runs-on: self-hosted-windows      
