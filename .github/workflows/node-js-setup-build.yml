@@ -32,6 +32,6 @@ jobs:
         uses: actions/upload-artifact@v4 #v4 virker på ubuntu-latest og self-hosted Linux, IKKE windows
         with:
           name: node-app
-          path: '${{ inputs.working-directory }}'
+          path: '${{ inputs.working-directory }}/dist/Hviktor-web'
           compression-level: 0            # 9 er maks, 1 er min og 0 er ingen. Er satt til 0 for den er kjappest
   
