@@ -3,38 +3,29 @@
 name: Azure Environment Configuration Workflow
 on:
   workflow_call:
-    inputs:
-      client_id:
-        required: true
-        type: string
-      tenant_id:
-        required: true
-        type: string
-      subscription_id:
-        required: true
-        type: string
-      node-version:
-        required: true
-        type: string
+    # inputs:
+    #   client_id:
+    #     required: true
+    #     type: string
+    #   tenant_id:
+    #     required: true
+    #     type: string
+    #   subscription_id:
+    #     required: true
+    #     type: string
+    #   node-version:
+    #     required: true
+    #     type: string
 jobs:
-  print-variables:
-    runs-on: ubuntu-latest
-    steps:
-    - name: Print variables
-      run: |
-        echo "Client ID: ${{ inputs.client_id }}"
-        echo "Tenant ID: ${{ inputs.tenant_id }}"
-        echo "Subscription ID: ${{ inputs.subscription_id }}"
-        echo "Node Version: ${{ inputs.node-version }}"
   configure-azure:
     runs-on: self-hosted-windows      
     steps:
     - uses: actions/checkout@v4
     - uses: azure/login@v1
       with:
-        client-id: ${{ inputs.client_id }}
-        tenant-id: ${{ inputs.tenant_id }}
-        subscription-id: ${{ inputs.subscription_id }}
+        client-id: ${{ secrets.AZURE_CLIENT_ID_DEV }}
+        tenant-id: ${{ secrets.AZURE_TENANT_ID_DEV }}
+        subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID_DEV }}
       
     - uses: azure/arm-deploy@v1
       with:

@@ -47,23 +47,14 @@ jobs:
       client_id: ${{ secrets.AZURE_CLIENT_ID_DEV }} 
       tenant_id: ${{ secrets.AZURE_TENANT_ID_DEV }} 
       subscription_id: ${{ secrets.AZURE_SUBSCRIPTION_ID_DEV }} 
-      
-  print-variables:
-    needs: azure-variables
-    runs-on: ubuntu-latest
-    steps:
-      - name: Print variables
-        run: |
-            echo "Client ID: ${{ needs.azure-variables.outputs.client_id }}"
-            echo "Tenant ID: ${{ needs.azure-variables.outputs.tenant_id }}"
-            echo "Subscription ID: ${{ needs.azure-variables.outputs.subscription_id }}"         
+    
 
   call-reusable-workflow:
-    needs: [variables, print-variables]
+    needs: variables
     uses: ./.github/workflows/node-js-setup-build.yml
     with:
       working-directory: './Hviktor-web'
-      node-version: ${{needs.variables.outputs.node-version}} 
+      node-version: ${{needs.variables.outputs.node-version}}
       # må stemme overens med output-path i angular.json
       output-path: 'dist'
   # build:
@@ -108,14 +99,14 @@ jobs:
       #     path: ./Hviktor-web
       #     compression-level: 0            # 9 er maks, 1 er min og 0 er ingen. Er satt til 0 for den er kjappest
 
-  # deploy:  
-  #   needs: [azure-variables, variables, call-reusable-workflow]
-  #   uses: ./.github/workflows/configure-azure-env.yml
-  #   with:
-  #     client_id: ${{ needs.azure-variables.outputs.client_id }}
-  #     tenant_id: ${{ needs.azure-variables.outputs.tenant_id }}
-  #     subscription_id: ${{ needs.azure-variables.outputs.subscription_id }}
-  #     node-version: ${{ needs.variables.outputs.node-version }}
+  deploy:  
+    needs: [azure-variables, variables, call-reusable-workflow]
+    uses: ./.github/workflows/configure-azure-env.yml
+    # with:
+    #   client_id: ${{ needs.azure-variables.outputs.client_id }}
+    #   tenant_id: ${{ needs.azure-variables.outputs.tenant_id }}
+    #   subscription_id: ${{ needs.azure-variables.outputs.subscription_id }}
+    #   node-version: ${{ needs.variables.outputs.node-version }}
 
     # runs-on: [self-hosted, Windows]    
     # steps:
