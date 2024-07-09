@@ -56,11 +56,19 @@ jobs:
     needs: [build-angular-app]
     uses: ./.github/workflows/configure-azure-env.yml
     secrets: inherit
-    
-  deploy:
-    needs: [build-angular-app, configure-azure-env]
-    uses: ./.github/workflows/deploy-app-to-azure.yml
-    secrets: inherit
+
+  download-artifact:
+      runs-on: ubuntu-latest
+      steps:
+          - name: Download artifact from build job
+            uses: actions/download-artifact@v3
+            with:
+                name: angular-app
+
+  # deploy:
+  #   needs: [build-angular-app, configure-azure-env]
+  #   uses: ./.github/workflows/deploy-app-to-azure.yml
+  #   secrets: inherit
   #   permissions:
   #     contents: none
   #   runs-on: ubuntu-latest
