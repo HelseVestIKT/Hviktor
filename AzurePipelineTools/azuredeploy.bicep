@@ -11,8 +11,8 @@ param location string = 'norwayeast'
 param allowIPParam string = ''
 
 param resourceTags object = {
-  'Application': 'Hviktor'
-  'createdBy': 'Morten'
+  Application: 'Hviktor'
+  createdBy: 'Morten'
 }
 
 //variables
