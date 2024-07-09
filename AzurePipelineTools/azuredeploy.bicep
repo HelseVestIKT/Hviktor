@@ -8,7 +8,7 @@ param resourceGroupName string = 'HVI-UTV-Hviktor-GH-rg'
 //param location string = deployment().location
 param location string = 'norwayeast'
 //param hviLogAnalyticsIdParam string = ''
-param allowIPParam string = ''
+// param allowIPParam string = ''
 
 param resourceTags object = {
   Application: 'Hviktor'
@@ -44,7 +44,7 @@ module webAppServiceModule '../AzurePipelineTools/bicep/modules/webAppService.bi
       appInsightsInstrumentationKey: appInsightsModule.outputs.appInsightsInstrumentationKey
       appServicePlanId: appServicePlanId  
       location: location 
-      allowIPParam: allowIPParam       
+      // allowIPParam: allowIPParam       
     }
     
 }
