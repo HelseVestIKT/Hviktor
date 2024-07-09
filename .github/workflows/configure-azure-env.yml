@@ -29,6 +29,6 @@ jobs:
         #parameters: 'AzurePipelineTools/azuredeploy.parameters.json'
         deploymentMode: 'Complete'
         scope: 'resourcegroup'
-        #resourceGroupName: 'HVI-UTV-Hviktor-GH-rg' #kun for subscription
+        resourceGroupName: 'HVI-UTV-Hviktor-GH-rg' #kun for subscription
         region: 'norway-east'
         additionalArguments: '--verbose --rollback-on-error'
