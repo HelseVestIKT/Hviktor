@@ -28,7 +28,7 @@ jobs:
         template: 'AzurePipelineTools/azuredeploy.bicep'
         #parameters: 'AzurePipelineTools/azuredeploy.parameters.json'
         deploymentMode: 'Complete'
-        scope: 'resourcegroup'
+        scope: 'subscription'
         resourceGroupName: 'HVI-UTV-Hviktor-GH-rg' #kun for subscription
         region: 'norway-east'
         additionalArguments: '--verbose --rollback-on-error'

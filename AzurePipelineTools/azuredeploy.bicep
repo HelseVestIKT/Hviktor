@@ -1,4 +1,4 @@
-targetScope = 'resourceGroup'
+targetScope = 'subscription'
 
 //parameters
 param appServicePlanId string = '/subscriptions/470ca611-e54c-49b1-b5e5-07fcfb8c3c08/resourceGroups/HVI-UTVIKLING-DEV-FELLES-rg/providers/Microsoft.Web/serverfarms/HVI-UTVIKLING-DEV-dotnet5-AppServicePlan'
