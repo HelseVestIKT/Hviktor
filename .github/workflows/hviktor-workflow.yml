@@ -66,10 +66,10 @@ jobs:
             with:
                 name: angular-app
 
-  # deploy:
-  #   needs: [build-angular-app, configure-azure-env]
-  #   uses: ./.github/workflows/deploy-app-to-azure.yml
-  #   secrets: inherit
+  deploy:
+    needs: [build-angular-app, configure-azure-env]
+    uses: ./.github/workflows/deploy-app-to-azure.yml
+    secrets: inherit
   #   permissions:
   #     contents: none
   #   runs-on: ubuntu-latest

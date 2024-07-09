@@ -13,12 +13,21 @@ jobs:
       with:
         client-id: ${{ secrets.AZURE_CLIENT_ID_DEV }}
         tenant-id: ${{ secrets.AZURE_TENANT_ID_DEV }}
-        subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID_DEV }}
+        subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID_DEV }}        
+    - uses: azure/CLI@v1
+      with:
+        inlineScript:        
+          #!/bin/bash
+          az group create --name HVI-UTV-Hviktor-GH-rg --location norway-east
+          echo "Azure resource group created"
+        
       
-    - uses: azure/arm-deploy@v1
+    - uses: azure/arm-deploy@v2
       with:
         template: 'AzurePipelineTools/azuredeploy.bicep'
         #parameters: 'AzurePipelineTools/azuredeploy.parameters.json'
-        deploymentMode: 'Incremental'
-        scope: 'subscription'
-        region: 'Norway East'
+        deploymentMode: 'Complete'
+        scope: 'resource-group'
+        #resourceGroupName: 'HVI-UTV-Hviktor-GH-rg' #kun for subscription
+        region: 'norway-east'
+        additionalArguments: '--verbose --rollback-on-error'
