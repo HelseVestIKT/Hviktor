@@ -40,15 +40,6 @@ jobs:
     outputs: 
       node-version: ${{ env.NODE_VERSION }}
 
-  azure-variables:
-    runs-on: self-hosted-windows
-    steps: [run: Write-Host]
-    outputs: 
-      client_id: ${{ secrets.AZURE_CLIENT_ID_DEV }} 
-      tenant_id: ${{ secrets.AZURE_TENANT_ID_DEV }} 
-      subscription_id: ${{ secrets.AZURE_SUBSCRIPTION_ID_DEV }} 
-    
-
   call-reusable-workflow:
     needs: variables
     uses: ./.github/workflows/node-js-setup-build.yml
@@ -100,19 +91,10 @@ jobs:
       #     compression-level: 0            # 9 er maks, 1 er min og 0 er ingen. Er satt til 0 for den er kjappest
 
   deploy:  
-    needs: [azure-variables, variables, call-reusable-workflow]
+    needs: [call-reusable-workflow]
     uses: ./.github/workflows/configure-azure-env.yml
-    # with:
-    #   client_id: ${{ needs.azure-variables.outputs.client_id }}
-    #   tenant_id: ${{ needs.azure-variables.outputs.tenant_id }}
-    #   subscription_id: ${{ needs.azure-variables.outputs.subscription_id }}      
     secrets: inherit
     
-    # with:
-    #   client_id: ${{ needs.azure-variables.outputs.client_id }}
-    #   tenant_id: ${{ needs.azure-variables.outputs.tenant_id }}
-    #   subscription_id: ${{ needs.azure-variables.outputs.subscription_id }}
-    #   node-version: ${{ needs.variables.outputs.node-version }}
 
     # runs-on: [self-hosted, Windows]    
     # steps:
