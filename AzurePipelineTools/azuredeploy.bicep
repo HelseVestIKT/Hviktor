@@ -36,7 +36,7 @@ module appInsightsModule '../AzurePipelineTools/bicep/modules/appInsights.bicep'
 
 // web app - WEB
 module webAppServiceModule '../AzurePipelineTools/bicep/modules/webAppService.bicep' = {
-    name: '${applicationName}${environment} Deploy'  
+    name: '${applicationName}${environment}Deploy'  
     scope: resourceGroup(rg.name)  
     params: {
       applicationName: '${applicationName}${environment}'  
