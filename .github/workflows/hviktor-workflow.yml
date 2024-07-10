@@ -53,18 +53,18 @@ jobs:
 # # npm run test --if-present
 
   configure-azure-env:  
-    needs: [variables]
+    # needs: [variables]
     uses: ./.github/workflows/configure-azure-env.yml
     secrets: inherit
 
-  download-artifact:
-      needs: [build-angular-app]
-      runs-on: ubuntu-latest
-      steps:
-          - name: Download artifact from build job
-            uses: actions/download-artifact@v4
-            with:
-                name: angular-app
+  # download-artifact:
+  #     needs: [build-angular-app]
+  #     runs-on: ubuntu-latest
+  #     steps:
+  #         - name: Download artifact from build job
+  #           uses: actions/download-artifact@v4
+  #           with:
+  #               name: angular-app
 
   deploy:
     needs: [build-angular-app, configure-azure-env]
