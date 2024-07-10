@@ -13,10 +13,6 @@ jobs:
                 client-id: ${{ secrets.AZURE_CLIENT_ID_DEV }}
                 tenant-id: ${{ secrets.AZURE_TENANT_ID_DEV }}
                 subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID_DEV }}                
-
-    download-artifact:
-        runs-on: ubuntu-latest
-        steps:
             - name: Download artifact from build job
               uses: actions/download-artifact@v4
               with:
