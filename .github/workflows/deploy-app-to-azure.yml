@@ -3,20 +3,24 @@ on:
     workflow_call:
 
 jobs:
-    azure-login:
+    deploy-to-azure:
         runs-on: ubuntu-latest
         steps:
             - name: Checkout code
               uses: actions/checkout@v2
-            - uses: azure/login@v1
+
+            - name: Azure login
+              uses: azure/login@v1
               with:
                 client-id: ${{ secrets.AZURE_CLIENT_ID_DEV }}
                 tenant-id: ${{ secrets.AZURE_TENANT_ID_DEV }}
                 subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID_DEV }}                
+
             - name: Download artifact from build job
               uses: actions/download-artifact@v4
               with:
                 name: angular-app
+
             - name: Deploy webapp
               uses: azure/webapps-deploy@v3
               with:
