@@ -8,7 +8,7 @@ param resourceGroupName string = 'HVI-UTV-Hviktor-GH-rg'
 //param location string = deployment().location
 param location string = 'norwayeast'
 //param hviLogAnalyticsIdParam string = ''
-param allowIPParam string = '10.84.228.27'
+param allowIPParam string = '10.84.228.27/32'
 
 param resourceTags object = {
   Application: 'Hviktor'
