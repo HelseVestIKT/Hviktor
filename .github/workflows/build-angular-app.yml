@@ -5,6 +5,9 @@ name: Build angular app with node
 on:
   workflow_call:
     inputs:
+      app-name:
+        required: true
+        type: string
       node-version:
         required: true
         type: string
@@ -25,7 +28,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20.x'
+          node-version: ${{ inputs.node-version }}
           cache: 'npm'
           cache-dependency-path: '${{ inputs.working-directory }}/package-lock.json'
 
@@ -38,7 +41,7 @@ jobs:
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4 #v4 virker på ubuntu-latest og self-hosted Linux, IKKE windows
         with:
-          name: angular-app
+          name: ${{inputs.app-name}}
           path: '${{ inputs.working-directory }}/${{ inputs.output-path }}'
           compression-level: 0            # 9 er maks, 1 er min og 0 er ingen. Er satt til 0 for den er kjappest
   
