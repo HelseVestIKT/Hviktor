@@ -18,7 +18,7 @@ jobs:
       with:
         inlineScript:        
           #!/bin/bash
-          az group create --name 'HVI-UTV-Hviktor-GH-rg' --location norwayeast          
+          az group create --name 'HVI-UTV-DEV-Hviktor-GH-rg' --location norwayeast          
         
       
     - uses: azure/arm-deploy@v2
