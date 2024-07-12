@@ -21,7 +21,7 @@ var appInsightsName = 'hviktor-test-gh-appinsights-${environment}'
 //   location: location  
 // }
 
-module appInsightsModule '../AzurePipelineTools/bicep/modules/appInsights.bicep' = {
+module appInsightsModule './modules/appInsights.bicep' = {
   name: 'appInsightsDeploy'
   scope: resourceGroup(resourceGroupName)
   params: {
@@ -32,7 +32,7 @@ module appInsightsModule '../AzurePipelineTools/bicep/modules/appInsights.bicep'
 }
 
 // web app - WEB
-module webAppServiceModule '../AzurePipelineTools/bicep/modules/webAppService.bicep' = {
+module webAppServiceModule './modules/webAppService.bicep' = {
     name: '${applicationName}${environment}Deploy'  
     scope: resourceGroup(resourceGroupName)  
     params: {
