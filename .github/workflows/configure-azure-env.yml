@@ -23,9 +23,9 @@ jobs:
       
     - uses: azure/arm-deploy@v2
       with:
-        template: 'AzurePipelineTools/azure-config.bicep'
-        parameters: 'AzurePipelineTools/azure-config.parameters.json'
-        deploymentMode: 'Complete'
+        template: '.github/workflows/bicep/azure-config.bicep'
+        parameters: '.github/workflows/bicep/azure-config.parameters.json'
+        deploymentMode: 'Complete' # Complete fungerer bare med scope resourcegroup og ikke subscription. Incremental fungerer med subscription og resourcegroup
         scope: 'resourcegroup'
         resourceGroupName: 'HVI-UTV-Hviktor-GH-rg' #kun for subscription
         failOnStdErr: false
