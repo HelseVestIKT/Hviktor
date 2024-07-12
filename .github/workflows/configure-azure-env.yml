@@ -26,8 +26,8 @@ jobs:
         template: 'AzurePipelineTools/azure-config.bicep'
         parameters: 'AzurePipelineTools/azure-config.parameters.json'
         deploymentMode: 'Complete'
-        scope: 'subscription'
+        scope: 'resourcegroup'
         resourceGroupName: 'HVI-UTV-Hviktor-GH-rg' #kun for subscription
         failOnStdErr: false
-        region: 'norwayeast'
+        #region: 'norwayeast'
         additionalArguments: '--verbose'

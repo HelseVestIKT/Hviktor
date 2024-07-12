@@ -1,4 +1,4 @@
-targetScope = 'subscription'
+targetScope = 'resourceGroup'
 
 //parameters
 param appServicePlanId string
@@ -16,14 +16,14 @@ param resourceTags object = {
 //variables
 var appInsightsName = 'hviktor-test-gh-appinsights'
 
-resource rg 'Microsoft.Resources/resourceGroups@2021-04-01' = {
-  name: resourceGroupName
-  location: location  
-}
+// resource rg 'Microsoft.Resources/resourceGroups@2021-04-01' = {
+//   name: resourceGroupName
+//   location: location  
+// }
 
 module appInsightsModule '../AzurePipelineTools/bicep/modules/appInsights.bicep' = {
   name: 'appInsightsDeploy'
-  scope: resourceGroup(rg.name)
+  scope: resourceGroup(resourceGroupName)
   params: {
     appInsightsName: appInsightsName  
     tags: resourceTags
@@ -34,7 +34,7 @@ module appInsightsModule '../AzurePipelineTools/bicep/modules/appInsights.bicep'
 // web app - WEB
 module webAppServiceModule '../AzurePipelineTools/bicep/modules/webAppService.bicep' = {
     name: '${applicationName}${environment}Deploy'  
-    scope: resourceGroup(rg.name)  
+    scope: resourceGroup(resourceGroupName)  
     params: {
       applicationName: applicationName
       tags: resourceTags
