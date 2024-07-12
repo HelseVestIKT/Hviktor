@@ -3,6 +3,11 @@
 name: Azure Environment Configuration Workflow
 on:
   workflow_call:
+    inputs:
+      environment:
+        required: true
+        type: string
+
 
 jobs:
   configure-azure:
@@ -13,12 +18,13 @@ jobs:
       with:
         client-id: ${{ secrets.AZURE_CLIENT_ID_DEV }}
         tenant-id: ${{ secrets.AZURE_TENANT_ID_DEV }}
-        subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID_DEV }}        
+        subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID_DEV }}
+    # Dette gjøres for å sikre at vi har en resource group å jobbe med        
     - uses: azure/cli@v2
       with:
         inlineScript:        
           #!/bin/bash
-          az group create --name 'HVI-UTV-DEV-Hviktor-GH-rg' --location norwayeast          
+          az group create --name 'HVI-UTV-${{inputs.environment}}-Hviktor-GH-rg' --location norwayeast          
         
       
     - uses: azure/arm-deploy@v2

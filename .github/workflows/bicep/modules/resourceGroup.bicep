@@ -8,5 +8,5 @@ resource rg 'Microsoft.Resources/resourceGroups@2021-04-01' = {
   location: location  
 }
 
-output resourceGroupCreated string = rg.name
-output resourceGrouplocation string = rg.location
+// output resourceGroupCreated string = rg.name
+// output resourceGrouplocation string = rg.location

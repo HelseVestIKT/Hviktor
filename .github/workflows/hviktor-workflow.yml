@@ -9,6 +9,7 @@ env:
   AZURE_WEBAPP_PACKAGE_PATH: '.'      # set this to the path to your web app project, defaults to the repository root
   NODE_VERSION: '20.x'  # set this to the node version to use
   ANGULAR-APP: 'hviktor-angular' # set this to the name of the angular app
+  ENVIRONMENT: 'DEV' # set this to the environment you are deploying to
 
 permissions:
   contents: read
@@ -23,6 +24,7 @@ jobs:
       node-version: ${{ env.NODE_VERSION }}
       webapp-name: ${{ env.AZURE_WEBAPP_NAME }}
       angular-app: ${{ env.ANGULAR-APP }}
+      environment: ${{ env.ENVIRONMENT }}
 
   build-angular-app:
     needs: variables
@@ -38,7 +40,10 @@ jobs:
 # # npm run test --if-present
 
   configure-azure-env:  
+    needs: variables
     uses: ./.github/workflows/configure-azure-env.yml
+    with:
+      environment: ${{needs.variables.outputs.environment}}
     secrets: inherit
 
   deploy:
