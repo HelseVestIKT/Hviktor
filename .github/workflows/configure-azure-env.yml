@@ -15,13 +15,15 @@ jobs:
     steps: [run: echo]
     outputs: 
       clientid-secret-name: secrets.AZURE_CLIENT_ID_${{inputs.environment}}
+      test: 'test'
   configure-azure:
+    needs: variables
     runs-on: ubuntu-latest      
     steps:
     - uses: actions/checkout@v4
     - uses: azure/login@v1
       with:
-        client-id: clientid-secret-name
+        client-id: ${{ needs.variables.outputs.clientid-secret-name}}
         tenant-id: ${{ secrets.AZURE_TENANT_ID_DEV }}
         subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID_DEV }}
     # Dette gjøres for å sikre at vi har en resource group å jobbe med        
