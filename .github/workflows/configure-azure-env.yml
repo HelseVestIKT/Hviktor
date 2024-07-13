@@ -15,8 +15,8 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    - name: Login in to Azure environment
-      uses: ./.github/workflows/azure-env-login.yml
+    - uses: ./.github/workflows/azure-env-login.yml
+      name: Login to Azure
       with:
         environment: ${{inputs.environment}}
         secrets: inherit
