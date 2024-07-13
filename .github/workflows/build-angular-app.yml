@@ -33,6 +33,11 @@ jobs:
           cache: 'npm'
           cache-dependency-path: '${{ inputs.working-directory }}/package-lock.json'
 
+      # - name: SonarCloud Scan
+      #   uses: SonarSource/sonarcloud-github-action@master
+      #   env: 
+      #       SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
       - name: npm install, build, and test
         working-directory: '${{ inputs.working-directory }}'
         run: |
