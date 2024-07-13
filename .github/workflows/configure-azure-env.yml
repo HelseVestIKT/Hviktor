@@ -11,7 +11,7 @@ on:
 
 jobs:
   configure-azure:
-    runs-on: ubuntu-latest      
+    runs-on: HVI-SKY-TJENESTER-RUNNER      
     steps:
     - uses: actions/checkout@v4
 

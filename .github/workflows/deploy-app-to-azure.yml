@@ -14,7 +14,7 @@ on:
 
 jobs:
     deploy-to-azure:
-        runs-on: ubuntu-latest
+        runs-on: HVI-SKY-TJENESTER-RUNNER
         steps:
             - name: Checkout code
               uses: actions/checkout@v2
