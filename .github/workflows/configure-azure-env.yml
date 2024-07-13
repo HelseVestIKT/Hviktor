@@ -10,20 +10,13 @@ on:
 
 
 jobs:
-  variables: 
-    runs-on: ubuntu-latest
-    steps: [run: echo]
-    outputs: 
-      clientid-secret-name: secrets.AZURE_CLIENT_ID_${{inputs.environment}}
-      test: 'test'
   configure-azure:
-    needs: variables
     runs-on: ubuntu-latest      
     steps:
     - uses: actions/checkout@v4
-    
+
     - name: DEV environment login    
-      if: ${{inputs == 'DEV'}}      
+      if: ${{inputs.environment == 'DEV'}}      
       uses: azure/login@v1
       with:
         client-id: ${{ secrets.AZURE_CLIENT_ID_DEV}}
@@ -31,7 +24,7 @@ jobs:
         subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID_DEV }}
 
     - name: QA environment login
-      if: ${{inputs == 'QA'}}      
+      if: ${{inputs.environment == 'QA'}}      
       uses: azure/login@v1
       with:
         client-id: ${{ secrets.AZURE_CLIENT_ID_QA}}
@@ -39,7 +32,7 @@ jobs:
         subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID_QA }}
           
     - name: PROD environment login
-      if: ${{inputs == 'PROD'}}      
+      if: ${{inputs.environment == 'PROD'}}      
       uses: azure/login@v1
       with:
         client-id: ${{ secrets.AZURE_CLIENT_ID_PROD}}
