@@ -47,7 +47,7 @@ jobs:
       environment: ${{needs.variables.outputs.environment}}
     secrets: inherit
 
-  deploy:
+  deploy-dev:
     needs: [build-angular-app, configure-azure-env,variables]
     uses: ./.github/workflows/deploy-app-to-azure.yml
     secrets: inherit
@@ -55,3 +55,21 @@ jobs:
       artifact-name: ${{needs.variables.outputs.angular-app }}
       webapp-name: ${{needs.variables.outputs.webapp-name}}
       environment: ${{needs.variables.outputs.environment}}
+  
+  deploy-qa:    
+    needs: deploy-dev
+    uses: ./.github/workflows/deploy-app-to-azure.yml
+    secrets: inherit
+    with:
+        artifact-name: ${{needs.variables.outputs.angular-app }}
+        webapp-name: ${{needs.variables.outputs.webapp-name}}
+        environment: 'QA'
+  
+  deploy-prod:
+    needs: deploy-qa
+    uses: ./.github/workflows/deploy-app-to-azure.yml
+    secrets: inherit
+    with:
+        artifact-name: ${{needs.variables.outputs.angular-app }}
+        webapp-name: ${{needs.variables.outputs.webapp-name}}
+        environment: 'PROD'

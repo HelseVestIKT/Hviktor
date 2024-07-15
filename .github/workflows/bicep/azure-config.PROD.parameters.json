@@ -2,23 +2,20 @@
     "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-      "allowIPParam": {
-        "value": "10.84.228.27/28"
-      }, 
       "environment": {
-        "value": "DEV"
+        "value": "PROD"
       },
       "applicationName": {
         "value": "Hviktor"
       },
       "resourceGroupName": {
-        "value": "HVI-UTV-DEV-Hviktor-GH-rg"
+        "value": "HVI-UTV-PROD-Hviktor-GH-rg"
       },
       "location": {
         "value": "norwayeast"
       },
       "appServicePlanId": {
-        "value": "/subscriptions/470ca611-e54c-49b1-b5e5-07fcfb8c3c08/resourceGroups/HVI-UTVIKLING-DEV-FELLES-rg/providers/Microsoft.Web/serverfarms/HVI-UTVIKLING-DEV-dotnet5-AppServicePlan"
+        "value": "/subscriptions/470ca611-e54c-49b1-b5e5-07fcfb8c3c08/resourceGroups/HVI-UTVIKLING-PROD-FELLES-rg/providers/Microsoft.Web/serverfarms/HVI-UTVIKLING-DEV-dotnet5-AppServicePlan"
       }
     }
   }
