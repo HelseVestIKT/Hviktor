@@ -6,11 +6,11 @@ on:
     
 
 env:
-  AZURE_WEBAPP_NAME: Hviktor    # set this to your application's name
-  AZURE_WEBAPP_PACKAGE_PATH: '.'      # set this to the path to your web app project, defaults to the repository root
+  # AZURE_WEBAPP_NAME: Hviktor    # set this to your application's name
+  # AZURE_WEBAPP_PACKAGE_PATH: '.'      # set this to the path to your web app project, defaults to the repository root
   NODE_VERSION: '20.x'  # set this to the node version to use
-  ANGULAR-APP: 'hviktor-angular' # set this to the name of the angular app
-  ENVIRONMENT: 'DEV' # set this to the environment you are deploying to
+  ANGULAR_APP: 'hviktor-angular' # set this to the name of the angular app
+  # ENVIRONMENT: 'DEV' # set this to the environment you are deploying to
 
 permissions:
   contents: read
@@ -23,9 +23,9 @@ jobs:
     steps: [run: echo]
     outputs: 
       node-version: ${{ env.NODE_VERSION }}
-      webapp-name: ${{ env.AZURE_WEBAPP_NAME }}
-      angular-app: ${{ env.ANGULAR-APP }}
-      environment: ${{ env.ENVIRONMENT }}
+      # webapp-name: ${{ env.AZURE_WEBAPP_NAME }}
+      angular-app: ${{ env.ANGULAR_APP }}
+      # environment: ${{ env.ENVIRONMENT }}
 
   build-angular-app:
     needs: variables
@@ -37,42 +37,46 @@ jobs:
       # må stemme overens med output-path i angular.json
       output-path: 'dist'
 
-# # denne hører egentlig til i scriptet, altså. bør inn i build-angular-app.yml
-# # npm run test --if-present
+# denne hører egentlig til i scriptet, altså. bør inn i build-angular-app.yml
+# npm run test --if-present
 
-  configure-azure-env:  
-    needs: variables
-    uses: ./.github/workflows/configure-azure-env.yml
-    with:
-      environment: ${{needs.variables.outputs.environment}}
-    secrets: inherit
+  # configure-azure-env:  
+  #   needs: variables
+  #   uses: ./.github/workflows/configure-azure-env.yml
+  #   with:
+  #     environment: ${{needs.variables.outputs.environment}}
+  #   secrets: inherit
 
-  deploy-dev:
-    needs: [build-angular-app, configure-azure-env,variables]
-    uses: ./.github/workflows/deploy-app-to-azure.yml
-    secrets: inherit
-    with:
-      artifact-name: ${{needs.variables.outputs.angular-app }}
-      webapp-name: ${{needs.variables.outputs.webapp-name}}
-      environment: ${{needs.variables.outputs.environment}}
+  # deploy-dev:
+  #   needs: [build-angular-app, configure-azure-env,variables]
+  #   uses: ./.github/workflows/deploy-app-to-azure.yml
+  #   secrets: inherit
+  #   with:
+  #     artifact-name: ${{needs.variables.outputs.angular-app }}
+  #     webapp-name: ${{needs.variables.outputs.webapp-name}}
+  #     environment: ${{needs.variables.outputs.environment}}
 
-  deploy-qa:
-    needs: [deploy-dev, variables]
-    environment: 'QA'
-    runs-on: HVI-SKY-TJENESTER-RUNNER
-    steps:
-      - name: Deploy to QA
-        uses: ./.github/workflows/deploy-app-to-azure.yml
-        with:
-          artifact-name: ${{needs.variables.outputs.angular-app }}
-          webapp-name: ${{needs.variables.outputs.webapp-name}}
-          environment: ${{needs.variables.outputs.environment}}    
+  # deploy-qa:
+  #   needs: [deploy-dev, variables]
+  #   environment: 'QA'
+  #   runs-on: HVI-SKY-TJENESTER-RUNNER
+  #   steps:
+  #     - name: Configure env
+  #       uses: ./.github/workflows/configure-azure-env.yml
+  #       with:
+  #         environment: 'QA'    
+  #     - name: Deploy to Azure
+  #       uses: ./.github/workflows/deploy-app-to-azure.yml
+  #       with:
+  #         artifact-name: ${{needs.variables.outputs.angular-app }}
+  #         webapp-name: ${{needs.variables.outputs.webapp-name}}
+  #         environment: 'QA'
   
-  deploy-prod:
-    needs: deploy-qa
-    uses: ./.github/workflows/deploy-app-to-azure.yml
-    secrets: inherit
-    with:
-        artifact-name: ${{needs.variables.outputs.angular-app }}
-        webapp-name: ${{needs.variables.outputs.webapp-name}}
-        environment: 'PROD'
+  # deploy-prod:
+  #   needs: deploy-qa
+  #   uses: ./.github/workflows/deploy-app-to-azure.yml
+  #   secrets: inherit
+  #   with:
+  #       artifact-name: ${{needs.variables.outputs.angular-app }}
+  #       webapp-name: ${{needs.variables.outputs.webapp-name}}
+  #       environment: 'PROD'
