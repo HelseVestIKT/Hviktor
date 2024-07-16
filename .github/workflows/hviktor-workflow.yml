@@ -4,7 +4,7 @@ on:
     branches: [ "main", "develop"] # Kjører ved push til main eller develop branch
   workflow_dispatch: # Tillater manuell kjøring av workflow 
     
-
+# Dette er egentlig konstanter som gjelder for alle workflowene, men jeg vet ikke hvordan jeg kan sette det globalt
 env:
   # AZURE_WEBAPP_NAME: Hviktor    # set this to your application's name
   # AZURE_WEBAPP_PACKAGE_PATH: '.'      # set this to the path to your web app project, defaults to the repository root
@@ -12,6 +12,7 @@ env:
   ANGULAR_APP: 'hviktor-angular' # set this to the name of the angular app
   # ENVIRONMENT: 'DEV' # set this to the environment you are deploying to
 
+# Tillater bruk av secrets i workflowene
 permissions:
   contents: read
   id-token: write
