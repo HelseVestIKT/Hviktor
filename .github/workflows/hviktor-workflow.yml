@@ -40,8 +40,10 @@ jobs:
   configure-azure-dev:
     needs: [variables, build-angular-app]
     uses: ./.github/workflows/configure-azure-env.yml
+    secrets: inherit
     with:
       environment: 'DEV'
+    
 
   deploy-to-dev:    
     needs: [configure-azure-dev, variables]    
