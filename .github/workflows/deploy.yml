@@ -86,5 +86,5 @@ jobs:
       with:
         app-name: ${{ inputs.webapp-name }}
         type: 'zip'
-        package: './${{ inputs.artifact-name }}.zip'
+        package: 'hviktor-angular.zip'
 
