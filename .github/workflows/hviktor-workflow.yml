@@ -38,37 +38,14 @@ jobs:
       # må stemme overens med output-path i angular.json
       output-path: 'dist'
 
-  update-dev:
-    needs: [build-angular-app]
-    runs-on: HVI-SKY-TJENESTER-RUNNER
-    environment: DEV
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-      - name: Update dev
-        run: |
-          echo "Updating dev
-      - name: Update azure
-        uses: ./.github/workflows/configure-azure-env.yml
-        with:
-          environment: 'DEV'
-          secrets: inherit
-      - name: Deploy to dev
-        uses: ./.github/workflows/deploy-app-to-azure.yml
-        with:
-          artifact-name: ${{needs.build-angular-app.outputs.angular-app }}
-          webapp-name: 'Hviktor-gh-DEV'
-          environment: 'DEV'
-          secrets: inherit
-
-
-  # configure-azure-dev:
-  #   needs: [build-angular-app]
-  #   uses: ./.github/workflows/configure-azure-env.yml
-  #   secrets: inherit
-  #   with:
-  #     environment: 'DEV'
-    
+  configure-azure-dev:
+    needs: [build-angular-app, variables]    
+    uses: ./.github/workflows/configure-azure-env.yml
+    secrets: inherit
+    with:
+      environment: 'DEV'
+      webapp-name: 'Hviktor-gh-DEV'
+      artifact-name: ${{needs.variables.outputs.angular-app }}    
 
   # deploy-to-dev:    
   #   needs: [configure-azure-dev, variables]    
