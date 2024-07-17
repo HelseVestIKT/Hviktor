@@ -56,38 +56,38 @@ jobs:
   #     webapp-name: 'Hviktor-gh-DEV'
   #     environment: 'DEV'
 
-  configure-azure-qa:
-    needs: [build-angular-app]
-    uses: ./.github/workflows/configure-azure-env.yml
-    secrets: inherit
-    with:
-      environment: 'QA'
+  # configure-azure-qa:
+  #   needs: [build-angular-app]
+  #   uses: ./.github/workflows/configure-azure-env.yml
+  #   secrets: inherit
+  #   with:
+  #     environment: 'QA'
     
 
-  deploy-to-qa:    
-    needs: [configure-azure-qa, variables]    
-    uses: ./.github/workflows/deploy-app-to-azure.yml
-    secrets: inherit
-    with:
-      artifact-name: ${{needs.variables.outputs.angular-app }}
-      webapp-name: 'Hviktor-gh-QA'
-      environment: 'QA'
+  # deploy-to-qa:    
+  #   needs: [configure-azure-qa, variables]    
+  #   uses: ./.github/workflows/deploy-app-to-azure.yml
+  #   secrets: inherit
+  #   with:
+  #     artifact-name: ${{needs.variables.outputs.angular-app }}
+  #     webapp-name: 'Hviktor-gh-QA'
+  #     environment: 'QA'
 
-  configure-azure-prod:
-      needs: [deploy-to-qa]
-      uses: ./.github/workflows/configure-azure-env.yml
-      secrets: inherit
-      with:
-        environment: 'PROD'
+  # configure-azure-prod:
+  #     needs: [deploy-to-qa]
+  #     uses: ./.github/workflows/configure-azure-env.yml
+  #     secrets: inherit
+  #     with:
+  #       environment: 'PROD'
       
-  deploy-to-prod:
-    needs: [configure-azure-prod, variables]    
-    uses: ./.github/workflows/deploy-app-to-azure.yml
-    secrets: inherit
-    with:
-      artifact-name: ${{needs.variables.outputs.angular-app }}
-      webapp-name: 'Hviktor-gh-PROD'
-      environment: 'PROD'
+  # deploy-to-prod:
+  #   needs: [configure-azure-prod, variables]    
+  #   uses: ./.github/workflows/deploy-app-to-azure.yml
+  #   secrets: inherit
+  #   with:
+  #     artifact-name: ${{needs.variables.outputs.angular-app }}
+  #     webapp-name: 'Hviktor-gh-PROD'
+  #     environment: 'PROD'
     
     
 
