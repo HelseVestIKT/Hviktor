@@ -17,6 +17,7 @@ permissions:
   contents: read
   id-token: write
 
+
 jobs:
   # fancy måte å sende env variables til neste reusable workflow: https://www.sethduke.io/github-reusable-workflows-environment-variables-workaround/
   variables:
@@ -34,11 +35,11 @@ jobs:
     with:
       working-directory: './Hviktor-web'
       node-version: ${{needs.variables.outputs.node-version}}
-      app-name: ${{needs.variables.outputs.angular-app}} # må stemme overens med navn til f.eks. deploy
+      app-name: ${{env.ANGULAR_APP}} # må stemme overens med navn til f.eks. deploy
       # må stemme overens med output-path i angular.json
       output-path: 'dist'
 
-  configure-azure-dev:
+  deploy-dev:
     needs: [build-angular-app, variables]    
     uses: ./.github/workflows/configure-azure-env.yml
     secrets: inherit
@@ -46,6 +47,25 @@ jobs:
       environment: 'DEV'
       webapp-name: 'Hviktor-gh-DEV'
       artifact-name: ${{needs.variables.outputs.angular-app }}    
+
+  deploy-qa:
+    needs: [deploy-dev, variables]    
+    uses: ./.github/workflows/configure-azure-env.yml
+    secrets: inherit
+    with:
+      environment: 'QA'
+      webapp-name: 'Hviktor-gh-QA'
+      artifact-name: ${{needs.variables.outputs.angular-app }}    
+
+  deplopy-prod:
+    needs: [deploy-qa, variables]    
+    uses: ./.github/workflows/configure-azure-env.yml
+    secrets: inherit
+    with:
+      environment: 'QA'
+      webapp-name: 'Hviktor-gh-PROD'
+      artifact-name: ${{needs.variables.outputs.angular-app }}    
+        
 
   # deploy-to-dev:    
   #   needs: [configure-azure-dev, variables]    
