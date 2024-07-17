@@ -17,7 +17,8 @@ on:
 
 jobs:
   configure-azure:
-    runs-on: HVI-SKY-TJENESTER-RUNNER      
+    runs-on: HVI-SKY-TJENESTER-RUNNER  
+    environment: ${{inputs.environment}}
     steps:
     - uses: actions/checkout@v4
     # Må bruke if-statement for å kunne logge på riktig subscription basert på input-parameter. Eneste måten jeg har funnet så langt.
