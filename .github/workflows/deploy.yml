@@ -79,7 +79,7 @@ jobs:
     
     # List content of current directory
     - name: List files in artifact directory
-      run: ls -R
+      run: ls -R ./artifact
 
     - name: Deploy webapp
       uses: azure/webapps-deploy@v3
