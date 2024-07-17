@@ -59,7 +59,7 @@ jobs:
           az group create --name 'HVI-UTV-${{inputs.environment}}-Hviktor-GH-rg' --location norwayeast          
         
       
-    - uses: azure/arm-deploy@v2
+    - uses: azure/arm-deploy@zv2
       with:
         template: '.github/workflows/bicep/azure-config.bicep'
         parameters: '.github/workflows/bicep/azure-config.${{inputs.environment}}.parameters.json'
@@ -68,7 +68,8 @@ jobs:
         resourceGroupName: 'HVI-UTV-${{inputs.environment}}-Hviktor-GH-rg' #kun for subscription
         failOnStdErr: false
         #region: 'norwayeast'
-        additionalArguments: '--verbose'
+        
+
 
     - name: Download artifact from build job
       uses: actions/download-artifact@v4
