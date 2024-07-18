@@ -75,16 +75,16 @@ jobs:
       uses: actions/download-artifact@v4
       with:
         name: ${{ inputs.artifact-name }}
-        path: './${{ inputs.artifact-name }}.zip'
-    
+        path: './artifact/${{ inputs.artifact-name }}.zip'
+    - name: Unzip
+      run: unzip ./artifact/${{ inputs.artifact-name }}.zip
     # List content of current directory
     - name: List files in artifact directory
-      run: ls -R .
+      run: ls -R ./artifact
 
     - name: Deploy webapp
       uses: azure/webapps-deploy@v3
       with:
         app-name: ${{ inputs.webapp-name }}
-        type: 'zip'
-        package: 'hviktor-angular.zip'
+        package: './artifact/'
 
