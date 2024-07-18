@@ -3,7 +3,7 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
       "allowIPParam": {
-        "value": "10.84.228.27/28"
+        "value": "0.0.0.0/0"
       }, 
       "environment": {
         "value": "DEV"
