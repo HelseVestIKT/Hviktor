@@ -20,6 +20,17 @@ on:
         type: string    
   
 jobs:
+  sonarcloud:
+    runs-on: HVI-SKY-TJENESTER-RUNNER  
+      - name: Checkout
+        uses: actions/checkout@v4
+          fetch-depth: 0
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@v3.0.0
+        env: 
+            SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        args: >
+          -Dsonar.qualitygate.wait=true
   build:
     runs-on: HVI-SKY-TJENESTER-RUNNER
     steps:
@@ -32,11 +43,6 @@ jobs:
           node-version: ${{ inputs.node-version }}
           cache: 'npm'
           cache-dependency-path: '${{ inputs.working-directory }}/package-lock.json'
-
-      # - name: SonarCloud Scan
-      #   uses: SonarSource/sonarcloud-github-action@master
-      #   env: 
-      #       SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
       - name: npm install, build, and test
         working-directory: '${{ inputs.working-directory }}'
