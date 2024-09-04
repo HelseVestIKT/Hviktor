@@ -27,6 +27,7 @@ jobs:
   build-angular-app:
     needs: variables
     uses: ./.github/workflows/build-angular-app.yml
+    secrets: inherit
     with:
       working-directory: './Hviktor-web'
       node-version: ${{needs.variables.outputs.node-version}}
