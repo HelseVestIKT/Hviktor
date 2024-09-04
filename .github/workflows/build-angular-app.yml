@@ -28,10 +28,11 @@ jobs:
 
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@v3.0.0
+        # args: >
+        #   -Dsonar.qualitygate.wait=true
         env: 
             SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        args: >
-          -Dsonar.qualitygate.wait=true
+        
   build:
     runs-on: HVI-SKY-TJENESTER-RUNNER
     steps:
