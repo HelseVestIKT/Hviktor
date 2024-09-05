@@ -31,7 +31,8 @@ jobs:
         with:
           args: >
             -Dsonar.qualitygate.wait=true
-            -Dsonar.organization='Helse%20Vest%20IKT'
+            -Dsonar.organizationkey='helse-vest-ikt'
+            -Dsonar.projectKey='HelseVestIKT_Hviktor'
         env: 
             SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         
