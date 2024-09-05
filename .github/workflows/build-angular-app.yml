@@ -36,7 +36,7 @@ jobs:
             SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         
   build:
-    depends-on: sonarcloud
+    needs: sonarcloud
     runs-on: HVI-SKY-TJENESTER-RUNNER
     steps:
       - name: Checkout
