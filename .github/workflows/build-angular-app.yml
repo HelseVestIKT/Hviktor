@@ -31,7 +31,7 @@ jobs:
         with:
           args: >
             -Dsonar.qualitygate.wait=true
-            -Dsonar.organization='Helse%20Vest%20IKT'
+            -Dsonar.organization=Helse%20Vest%20IKT
             -Dsonar.projectKey=HelseVestIKT_Hviktor
             -Dsonar.branch.name=main
         env: 
