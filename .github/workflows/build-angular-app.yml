@@ -32,8 +32,8 @@ jobs:
           args: >
             -Dsonar.qualitygate.wait=true
             -Dsonar.organization='Helse%20Vest%20IKT'
-            -Dsonar.projectKey='Hviktor'
-            -Dsonar.branch.name='main'
+            -Dsonar.projectKey=HelseVestIKT_Hviktor
+            -Dsonar.branch.name=main
         env: 
             SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         
