@@ -199,6 +199,7 @@
     ** COLORS
     **
     */
+
     --clr-primary-300: #ECF2F9;
     --clr-primary-400: #1466B8;
     --clr-primary-500: #02376A;
@@ -446,7 +447,7 @@ label, legend {
 
 //flex
 .flex { display: flex; }
-.f-align-center { align-items: center; }
+.f-align-center { align-items: center; } 
 .f-justify-center { justify-content: center; }
 .f-column { flex-direction: column; }
 .f-wrap { flex-wrap: wrap; }

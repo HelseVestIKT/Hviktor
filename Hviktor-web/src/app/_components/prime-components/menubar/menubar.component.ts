@@ -1,8 +1,15 @@
 import { Component } from '@angular/core';
 import { MenuItem } from 'primeng/api';
+import { CardModule } from 'primeng/card';
+import { DividerModule } from 'primeng/divider';
+import { MenubarModule } from 'primeng/menubar';
+import { TabViewModule } from 'primeng/tabview';
+import { ComponentHeaderComponent } from '../_common/component-header/component-header.component';
 
 @Component({
   selector: 'app-menubar',
+  standalone: true,
+  imports: [TabViewModule, DividerModule, CardModule, MenubarModule, ComponentHeaderComponent],
   templateUrl: './menubar.component.html',
   styleUrls: ['./menubar.component.scss']
 })

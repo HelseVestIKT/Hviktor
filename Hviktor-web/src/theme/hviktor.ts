@@ -1,0 +1,21 @@
+import { Nora } from "primeng/themes/nora";
+import { definePreset } from 'primeng/themes';
+import { colors } from "./colors/colors";
+import { primaryColor } from "./colors/primaryColor";
+import { colorScheme } from "./colors/colorScheme";
+import { button } from "./components/button";
+import { menubar } from "./components/menubar";
+
+export const Hviktor = definePreset(Nora, {
+    primitive: {
+        ...colors,
+    },
+    semantic: {
+        primary: primaryColor,
+        colorScheme: colorScheme,
+    },
+    components: {
+        button: button,
+        menubar: menubar,
+    },
+})

@@ -1,11 +1,10 @@
-<div class="m-500">
-    <h1 class="as-light fs-700">Menubar</h1>
-    <p class="p-block-400"><a href="https://primeng.org/menubar" target="_blank" rel="noopener noreferrer"><i
-                class="pi pi-prime | p-inline-400"></i>https://primeng.org/menubar</a></p>
-    <p class="p-block-400"><a
-            href="https://dev.azure.com/hvikt-utv/_git/Hviktor?path=/Hviktor-web/src/app/_components/prime-components/menubar"
-            target="_blank" rel="noopener noreferrer"><i class="pi pi-code | p-inline-400"></i>Kode i repo</a></p>
-
+<div class="m-4">
+    <app-component-header
+        title="Menubar"
+        primengPath="menubar"
+        codePath="menubar"
+  ></app-component-header>
+  
     <p-tabView>
         <p-tabPanel>
             <ng-template pTemplate="header">
@@ -19,11 +18,11 @@
 
             <p-divider></p-divider>
 
-            <div class="flex f-column gap-500">
+            <div class="flex flex-col gap-4">
                 <p-card>
                     <p-menubar [model]="items">
                         <ng-template pTemplate="start">
-                            <img src="../../../assets/img/logo.png" routerLink="" height="48px" alt="Hviktor logo" />
+                            <img src="../../../assets/img/logo.png" routerLink="" width="48px" alt="Hviktor logo" />
                         </ng-template>
                     </p-menubar>
 

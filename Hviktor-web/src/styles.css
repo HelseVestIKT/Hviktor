@@ -8,6 +8,21 @@
  * Added by Souvik Mandal [@SimpleIndian]
  */
 
+@import './styles/base.css';
+@import './styles/css-reset.css';
+@import './styles/font-faces.css';
+ 
+@layer tailwind-base, primeng, tailwind-utilities;
+
+@layer tailwind-base {
+@tailwind base;
+}
+
+@layer tailwind-utilities {
+@tailwind components;
+@tailwind utilities;
+}
+
  ::ng-deep .token.punctuation{
     color: hsl(65deg 82% 75%);
   }
@@ -22,12 +37,15 @@
   ::ng-deep .token.inserted {
     color: hsl(170deg 70% 60%);
   }
-//     pre {
-//       background: #333;
-//       color: #FFF;
-//       padding: 8px;
-//       border-radius: 8px;
-//     } 
+
+/**     
+    pre {
+        background: #333;
+        color: #FFF;
+        padding: 8px;
+        border-radius: 8px;
+        } 
+*/
 
  code[class*="language-"],
  pre[class*="language-"] {
@@ -35,7 +53,7 @@
      font-size: inherit;
      -webkit-hyphens: none;
      hyphens: none;
-    //  line-height: 1.6;
+    /*  line-height: 1.6; */
      color: #d6deeb;
      text-align: left;
      word-break: normal;
@@ -73,11 +91,12 @@
  }
  
  /* Code blocks */
- pre[class*="language-"] {
-    //  padding-right: 60px;
-    //  margin-top: 3.2vmin;
-    //  overflow: auto;
- }
+ /** pre[class*="language-"] {
+        padding-right: 60px;
+        margin-top: 3.2vmin;
+        overflow: auto; 
+    }
+*/
  
  :not(pre) > code[class*="language-"],
  pre[class*="language-"] {
@@ -86,7 +105,7 @@
  }
  
  :not(pre) > code[class*="language-"] {
-    //  padding: 0.1em;
+    /*  padding: 0.1em; */
      white-space: normal;
      border-radius: 0.3em;
  }
@@ -192,8 +211,8 @@
 
 div.code-toolbar{
     position:relative;
-    // width: -moz-fit-content;
-    // width: fit-content;
+    /* width: -moz-fit-content; */
+    /* width: fit-content; */
 }
 div.code-toolbar>.toolbar{
     position:absolute;
@@ -278,7 +297,7 @@ div.code-toolbar > .toolbar > .toolbar-item > span {
      position: relative;
      padding-left: 3.8em;
      counter-reset: linenumber;
-    //  line-height: 1.6;
+    /* line-height: 1.6; */
  }
  
  pre.line-numbers > code {
@@ -288,7 +307,7 @@ div.code-toolbar > .toolbar > .toolbar-item > span {
  .line-numbers .line-numbers-rows {
      position: absolute;
      pointer-events: none;
-    //  line-height: 1.6;
+    /* line-height: 1.6; */
      top: 0;
      font-size: 100%;
      left: -3.8em;
@@ -319,13 +338,3 @@ div.code-toolbar > .toolbar > .toolbar-item > span {
 
 
 
-@layer tailwind-base, primeng, tailwind-utilities;
-
-@layer tailwind-base {
-@tailwind base;
-}
-
-@layer tailwind-utilities {
-@tailwind components;
-@tailwind utilities;
-}

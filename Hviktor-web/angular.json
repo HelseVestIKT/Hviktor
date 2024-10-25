@@ -37,13 +37,8 @@
             "styles": [
               "node_modules/prismjs/themes/prism-dark.css",
               "node_modules/primeicons/primeicons.css",
-              "src/styles/lara-light-blue.scss",
-              "src/styles/prime-theme.scss",
-            
-              "src/styles/css-reset.scss",
-              "src/styles/base.scss",
               "src/styles/styles.scss",
-              "src/styles.scss"
+              "src/styles.css"
             ],
             "scripts": [
               "node_modules/prismjs/prism.js",
@@ -115,17 +110,16 @@
             ],
             "styles": [
               "node_modules/primeicons/primeicons.css",
-              "src/styles/lara-light-blue.scss",
-              "src/styles/prime-theme.scss",
-              "src/styles/css-reset.scss",
-              "src/styles/base.scss",
               "src/styles/styles.scss",
-              "src/styles.scss"
+              "src/styles.css"
             ],
             "scripts": []
           }
         }
       }
     }
+  },
+  "cli": {
+    "analytics": false
   }
 }

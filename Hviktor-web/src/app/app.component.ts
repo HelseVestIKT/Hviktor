@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { PrimeNGConfig } from 'primeng/api';
-import { Nora } from 'primeng/themes/nora';
+import { Hviktor } from 'src/theme/hviktor';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +11,7 @@ export class AppComponent {
 
   constructor(private primengConfig: PrimeNGConfig) {
     this.primengConfig.theme.set({
-      preset: Nora,
+      preset: Hviktor,
       options: {
         cssLayer: {
           name: 'primeng',

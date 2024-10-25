@@ -1,0 +1,16 @@
+@layer hviktor-base {
+    body { @apply text-neutral-900 text-base font-sans; }
+    main { @apply m-2; }
+
+    h1 { @apply font-as font-light text-4xl; }
+    h2 { @apply font-as font-semibold text-3xl; }
+    h3 { @apply font-as font-medium text-2xl; }
+    h4 { @apply font-as text-xl; }
+    h5 { @apply font-as text-lg; }
+    h6 { @apply font-as text-base; }
+
+    a { @apply text-primary-400 underline; }
+    label { @apply font-sans; }
+
+    p-button { @apply font-as font-light; }
+  }
