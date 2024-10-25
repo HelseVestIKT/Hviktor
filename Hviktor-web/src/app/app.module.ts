@@ -56,7 +56,6 @@ import { ComingSoonComponent } from './_components/hviktor-components/coming-soo
     DialogComponent,
     TableComponent,
     MultiselectComponent,
-    MenubarComponent,
     AccordionComponent,
     IconsComponent,
     VariablesComponent,
