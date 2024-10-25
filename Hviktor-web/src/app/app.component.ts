@@ -15,7 +15,7 @@ export class AppComponent {
       options: {
         cssLayer: {
           name: 'primeng',
-          order: 'tailwind-base, primeng, tailwind-utilities'
+          order: 'tailwind-base, hviktor-base, primeng, tailwind-utilities'
         }
       }
     })
