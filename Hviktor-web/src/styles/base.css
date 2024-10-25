@@ -12,5 +12,5 @@
     a { @apply text-primary-400 underline; }
     label { @apply font-sans; }
 
-    p-button { @apply font-as font-light; }
+    .p-button-label { @apply font-as font-light; }
   }

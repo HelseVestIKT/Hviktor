@@ -15,12 +15,12 @@
 @layer tailwind-base, primeng, tailwind-utilities;
 
 @layer tailwind-base {
-@tailwind base;
+    @tailwind base;
 }
 
 @layer tailwind-utilities {
-@tailwind components;
-@tailwind utilities;
+    @tailwind components;
+    @tailwind utilities;
 }
 
  ::ng-deep .token.punctuation{
