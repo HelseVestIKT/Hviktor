@@ -14,14 +14,14 @@
             <p-divider></p-divider>
 
             <!-- Innhold i kodedel -->
-            <ng-content></ng-content>
+            <ng-content select="[tabContent0]"></ng-content>
 
         </p-tabpanel>
         <p-tabpanel value="1">
-            <p>Her skriver vi litt om hvordan komponenten bør brukes og UX/a11y prinsipp du bør tenke på.</p>
+            <ng-content select="[tabContent1]"></ng-content>
         </p-tabpanel>
         <p-tabpanel value="2">
-            <p>Her kommer kode for komponenten uten tilknyttet rammeverk.</p>
+            <ng-content select="[tabContent2]"></ng-content>
         </p-tabpanel>
     </p-tabpanels>
 </p-tabs>

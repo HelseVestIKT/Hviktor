@@ -4,11 +4,12 @@ import { CardModule } from 'primeng/card';
 import { DividerModule } from 'primeng/divider';
 import { TabViewModule } from 'primeng/tabview';
 import { ComponentHeaderComponent } from '../_common/component-header/component-header.component';
+import { ComponentTabsComponent } from '../_common/component-tabs/component-tabs.component';
 
 @Component({
   selector: 'app-buttons',
   standalone: true,
-  imports: [TabViewModule, DividerModule, ButtonModule, CardModule, ComponentHeaderComponent],
+  imports: [TabViewModule, DividerModule, ButtonModule, CardModule, ComponentHeaderComponent, ComponentTabsComponent],
   templateUrl: './buttons.component.html',
   styleUrls: ['./buttons.component.scss']
 })

@@ -5,11 +5,12 @@ import { DividerModule } from 'primeng/divider';
 import { MenubarModule } from 'primeng/menubar';
 import { TabViewModule } from 'primeng/tabview';
 import { ComponentHeaderComponent } from '../_common/component-header/component-header.component';
+import { ComponentTabsComponent } from '../_common/component-tabs/component-tabs.component';
 
 @Component({
   selector: 'app-menubar',
   standalone: true,
-  imports: [TabViewModule, DividerModule, CardModule, MenubarModule, ComponentHeaderComponent],
+  imports: [TabViewModule, DividerModule, CardModule, MenubarModule, ComponentHeaderComponent, ComponentTabsComponent],
   templateUrl: './menubar.component.html',
   styleUrls: ['./menubar.component.scss']
 })
