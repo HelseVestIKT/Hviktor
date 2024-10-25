@@ -1,144 +1,113 @@
-<div class="m-500">
-    <h1 class="as-light fs-700">Tabs</h1>
-    <p class="p-block-400"><a href="https://primeng.org/tabview" target="_blank" rel="noopener noreferrer"><i
-                class="pi pi-prime | p-inline-400"></i>https://primeng.org/tabview</a></p>
-    <p class="p-block-400"><a
-            href="https://dev.azure.com/hvikt-utv/_git/Hviktor?path=/Hviktor-web/src/app/_components/prime-components/tabs"
-            target="_blank" rel="noopener noreferrer"><i class="pi pi-code | p-inline-400"></i>Kode i repo</a></p>
-
-    <p-tabView>
-        <p-tabPanel>
-            <ng-template pTemplate="header">
-                <span>Kode</span>
-            </ng-template>
-
-            <!-- import til app.module -->
-            <pre class="language-typescript line-numbers">
-                <code class="language-typescript">import &#123; TabViewModule &#125; from 'primeng/tabview';</code>
-            </pre>
-
-            <p-divider></p-divider>
-
-            <div class="flex f-column gap-500">
-                <p-card>
-                    <p-tabView>
-                        <p-tabPanel>
-                            <ng-template pTemplate="header">
-                                <span>Tab 1</span>
-                            </ng-template>
-                            <p>Content tab 1...</p>
-                        </p-tabPanel>
-
-                        <p-tabPanel>
-                            <ng-template pTemplate="header">
-                                <span>Tab 2</span>
-                            </ng-template>
-                            <p>Content tab 2...</p>
-
-                        </p-tabPanel>
-
-                        <p-tabPanel>
-                            <ng-template pTemplate="header">
-                                <span>Tab 3</span>
-                            </ng-template>
-                            <p>Content tab 3...</p>
-                        </p-tabPanel>
-                    </p-tabView>
-
-                    <pre class="language-html line-numbers">
-                <code class="language-html">
-                    &lt;p-tabView&gt;
-                        &lt;p-tabPanel&gt;
-                            &lt;ng-template pTemplate=&quot;header&quot;&gt;
-                                &lt;span&gt;Tab 1&lt;/span&gt;
-                            &lt;/ng-template&gt;
-                            &lt;p&gt;Content tab 1...&lt;/p&gt;
-                        &lt;/p-tabPanel&gt;
-            
-                        &lt;p-tabPanel&gt;
-                            &lt;ng-template pTemplate=&quot;header&quot;&gt;
-                                &lt;span&gt;Tab 2&lt;/span&gt;
-                            &lt;/ng-template&gt;
-                            &lt;p&gt;Content tab 2...&lt;/p&gt;
-                        &lt;/p-tabPanel&gt;
-            
-                        &lt;p-tabPanel&gt;
-                            &lt;ng-template pTemplate=&quot;header&quot;&gt;
-                                &lt;span&gt;Tab 3&lt;/span&gt;
-                            &lt;/ng-template&gt;
-                            &lt;p&gt;Content tab 3...&lt;/p&gt;
-                        &lt;/p-tabPanel&gt;
-                    &lt;/p-tabView&gt;
-                </code>
-            </pre>
-            </p-card>
-
-                <p-card>
-                    <p-tabView class="tabVertical">
-                        <p-tabPanel>
-                            <ng-template pTemplate="header">
-                                <span>Tab 1</span>
-                            </ng-template>
-                            <p>Vertikal styling av tabs. Legg til klassen "tabVertical" på p-tabwiev for å få riktig styling. Den bør plasserast på en bakgrunn som ikkje er kvit.</p>
-                        </p-tabPanel>
-                        <p-tabPanel>
-                            <ng-template pTemplate="header">
-                                <span>Tab 2</span>
-                            </ng-template>
-                            <p>Content tab 2...</p>
-                        </p-tabPanel>
-                        <p-tabPanel>
-                            <ng-template pTemplate="header">
-                                <span>Tab 3</span>
-                            </ng-template>
-                            <p>Content tab 3...</p>
-                        </p-tabPanel>
-                    </p-tabView>
-                
-
-                <pre class="language-html line-numbers">
-                    <code class="language-html">
-                        &lt;p-tabView class=&quot;tabVertical&quot;&gt;
-                            &lt;p-tabPanel&gt;
-                                &lt;ng-template pTemplate=&quot;header&quot;&gt;
-                                    &lt;span&gt;Tab 1&lt;/span&gt;
-                                &lt;/ng-template&gt;
-                                &lt;p&gt;Content tab 1...&lt;/p&gt;
-                            &lt;/p-tabPanel&gt;
-                
-                            &lt;p-tabPanel&gt;
-                                &lt;ng-template pTemplate=&quot;header&quot;&gt;
-                                    &lt;span&gt;Tab 2&lt;/span&gt;
-                                &lt;/ng-template&gt;
-                                &lt;p&gt;Content tab 2...&lt;/p&gt;
-                            &lt;/p-tabPanel&gt;
-            
-                            &lt;p-tabPanel&gt;
-                                &lt;ng-template pTemplate=&quot;header&quot;&gt;
-                                    &lt;span&gt;Tab 3&lt;/span&gt;
-                                &lt;/ng-template&gt;
-                                &lt;p&gt;Content tab 3...&lt;/p&gt;
-                            &lt;/p-tabPanel&gt;
-                        &lt;/p-tabView&gt;
-                    </code>
+<div class="m-2">
+    <app-component-header
+        title="Tabs"
+        primengPath="tabs"
+        codePath="tabs">
+    </app-component-header>
+    <p-tabs value="0">
+        <p-tablist>
+            <p-tab value="0">Kode</p-tab>
+            <p-tab value="1">Info</p-tab>
+            <p-tab value="2">Ren HTML/CSS</p-tab>
+        </p-tablist>
+        <p-tabpanels>
+            <p-tabpanel value="0">  
+                <!-- import til app.module -->
+                <pre class="language-typescript line-numbers">
+                    <code class="language-typescript">import &#123; TabViewModule &#125; from 'primeng/tabview';</code>
                 </pre>
-            </p-card>
-            </div>
-        </p-tabPanel>
+    
+                <p-divider></p-divider>
 
-        <p-tabPanel>
-            <ng-template pTemplate="header">
-                <span>Info</span>
-            </ng-template>
-            <p>Her skriver vi litt om hvordan komponenten bør brukes og UX/a11y prinsipp du bør tenke på.</p>
-        </p-tabPanel>
-
-        <p-tabPanel>
-            <ng-template pTemplate="header">
-                <span>Ren HTML/CSS</span>
-            </ng-template>
-            <p>Her kommer kode for komponenten uten tilknyttet rammeverk.</p>
-        </p-tabPanel>
-    </p-tabView>
-
+                <div class="flex flex-col gap-2">
+                    <p-card>
+                        <p-tabs value="0">
+                            <p-tablist>
+                                <p-tab value="0">Tab 1</p-tab>
+                                <p-tab value="1">Tab 2</p-tab>
+                                <p-tab value="2">Tab 3</p-tab>
+                            </p-tablist>
+                            <p-tabpanels>
+                                <p-tabpanel value="0">
+                                    <p>Content tab 1...</p>
+                                </p-tabpanel>
+                                <p-tabpanel value="1">
+                                    <p>Content tab 2...</p>
+                                </p-tabpanel>
+                                <p-tabpanel value="2">
+                                    <p>Content tab 3...</p>
+                                </p-tabpanel>
+                            </p-tabpanels>
+                        </p-tabs>
+                        <pre class="language-html line-numbers"> 
+                            <code class="language-html"> 
+                                &lt;p-tabs value=&quot;0&quot;&gt; 
+                                    &lt;p-tablist&gt;
+                                        &lt;p-tab value=&quot;0&quot;&gt;Tab 1&lt;/p-tab&gt;
+                                        &lt;p-tab value=&quot;1&quot;&gt;Tab 2&lt;/p-tab&gt;
+                                        &lt;p-tab value=&quot;2&quot;&gt;Tab 3&lt;/p-tab&gt;
+                                    &lt;/p-tablist&gt;
+                                    &lt;p-tabpanels&gt;
+                                        &lt;p-tabpanel value=&quot;0&quot;&gt;
+                                            &lt;p&gt;Content tab 1...&lt;/p&gt;
+                                        &lt;/p-tabpanel&gt;
+                                        &lt;p-tabpanel value=&quot;1&quot;&gt;
+                                            &lt;p&gt;Content tab 2...&lt;/p&gt;
+                                        &lt;/p-tabpanel&gt;
+                                        &lt;p-tabpanel value=&quot;2&quot;&gt;
+                                            &lt;p&gt;Content tab 3...&lt;/p&gt;
+                                        &lt;/p-tabpanel&gt; 
+                                    &lt;/p-tabpanels&gt; 
+                                &lt;/p-tabs&gt; 
+                            </code>
+                        </pre>
+                    </p-card>
+    
+                    <p-card>
+                        <p-tabs value="0" class="tabVertical">
+                            <p-tablist>
+                                <p-tab value="0">Tab 1</p-tab>
+                                <p-tab value="1">Tab 2</p-tab>
+                                <p-tab value="2">Tab 3</p-tab>
+                            </p-tablist>
+                            <p-tabpanels>
+                                <p-tabpanel value="0">
+                                    <p>Content tab 1...</p>
+                                </p-tabpanel>
+                                <p-tabpanel value="1">
+                                    <p>Content tab 2...</p>
+                                </p-tabpanel>
+                                <p-tabpanel value="2">
+                                    <p>Content tab 3...</p>
+                                </p-tabpanel>
+                            </p-tabpanels>
+                        </p-tabs>
+                    
+                        <pre class="language-html line-numbers"> 
+                            <code class="language-html"> 
+                                &lt;p-tabs value=&quot;0&quot; class=&quot;tabVertical&quot;&gt; 
+                                    &lt;p-tablist&gt;
+                                        &lt;p-tab value=&quot;0&quot;&gt;Tab 1&lt;/p-tab&gt;
+                                        &lt;p-tab value=&quot;1&quot;&gt;Tab 2&lt;/p-tab&gt;
+                                        &lt;p-tab value=&quot;2&quot;&gt;Tab 3&lt;/p-tab&gt;
+                                    &lt;/p-tablist&gt;
+                                    &lt;p-tabpanels&gt;
+                                        &lt;p-tabpanel value=&quot;0&quot;&gt;
+                                            &lt;p&gt;Content tab 1...&lt;/p&gt;
+                                        &lt;/p-tabpanel&gt;
+                                        &lt;p-tabpanel value=&quot;1&quot;&gt;
+                                            &lt;p&gt;Content tab 2...&lt;/p&gt;
+                                        &lt;/p-tabpanel&gt;
+                                        &lt;p-tabpanel value=&quot;2&quot;&gt;
+                                            &lt;p&gt;Content tab 3...&lt;/p&gt;
+                                        &lt;/p-tabpanel&gt; 
+                                    &lt;/p-tabpanels&gt; 
+                                &lt;/p-tabs&gt; 
+                            </code>
+                        </pre>
+                    </p-card>
+                </div>
+            </p-tabpanel>
+        </p-tabpanels>
+    </p-tabs>
 </div>
