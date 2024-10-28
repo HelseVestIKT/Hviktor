@@ -12,4 +12,5 @@ import { TabsModule } from 'primeng/tabs';
 })
 export class ComponentTabsComponent {
   @Input() import: string | undefined;
+  @Input() defaultTabIndex: string = "0";
 }

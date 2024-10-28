@@ -1,9 +1,10 @@
 import { Component, Input } from '@angular/core';
+import { DividerModule } from 'primeng/divider';
 
 @Component({
   selector: 'app-component-header',
   standalone: true,
-  imports: [],
+  imports: [DividerModule],
   templateUrl: './component-header.component.html',
   styleUrl: './component-header.component.scss'
 })
