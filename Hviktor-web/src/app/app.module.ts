@@ -47,7 +47,6 @@ import { ComingSoonComponent } from './_components/hviktor-components/coming-soo
 @NgModule({
   declarations: [
     AppComponent,
-    TypographyComponent,
     HeaderComponent,
     DropdownComponent,
     DialogComponent,
