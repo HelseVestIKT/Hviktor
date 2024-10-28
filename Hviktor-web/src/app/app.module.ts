@@ -56,7 +56,6 @@ import { ComingSoonComponent } from './_components/hviktor-components/coming-soo
     CheckboxComponent,
     RadiobuttonComponent,
     ChipComponent,
-    ComingSoonComponent,
     // PrismComponent,
   ],
   imports: [

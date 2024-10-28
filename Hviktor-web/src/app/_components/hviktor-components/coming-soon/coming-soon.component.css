@@ -1,0 +1,67 @@
+.options {
+    a {
+        height: 150px;
+        width: 270px;
+        @apply
+            flex
+            flex-col
+            justify-center
+            items-center
+            no-underline
+            bg-neutral-50
+            border
+            border-neutral-500
+            rounded-lg
+            gap-4
+            p-4;
+        }
+
+        :hover:not(.disabled), :focus {
+            @apply cursor-pointer bg-neutral-400;
+    }
+
+    a.disabled {
+        @apply relative;
+
+        p {
+            @apply text-neutral-600;
+        }
+
+        img {
+            @apply opacity-40;
+        }
+        :hover, :focus {
+            @apply cursor-default bg-transparent;
+        }
+    }
+
+    .ribbon {
+        width: 140px;
+        height: 90px;
+        @apply
+            overflow-hidden
+            absolute;
+    }
+
+    .ribbon span {
+        width: 225px;
+        font-size: 10px;
+        padding: 10px 0;
+        @apply
+            absolute
+            block
+            bg-yellow-300
+            text-neutral-900
+            text-center;
+    }
+
+    .ribbon-top-right {
+        @apply top-0 right-0;
+    }
+
+    .ribbon-top-right span {
+        left: -15px;
+        top: 15px;
+        transform: rotate(35deg);
+    }
+}
