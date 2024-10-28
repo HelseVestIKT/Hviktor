@@ -7,7 +7,7 @@ import { DividerModule } from 'primeng/divider';
   standalone: true,
   imports: [DividerModule, CardModule],
   templateUrl: './typography.component.html',
-  styleUrls: ['./typography.component.scss']
+  styleUrls: ['./typography.component.css']
 })
 export class TypographyComponent {
 
