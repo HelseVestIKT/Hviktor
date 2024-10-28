@@ -5,6 +5,7 @@ import { primaryColor } from "./colors/primaryColor";
 import { colorScheme } from "./colors/colorScheme";
 import { button } from "./components/button";
 import { menubar } from "./components/menubar";
+import { tabs } from "./components/tabs";
 
 export const Hviktor = definePreset(Nora, {
     primitive: {
@@ -17,5 +18,6 @@ export const Hviktor = definePreset(Nora, {
     components: {
         button: button,
         menubar: menubar,
+        tabs: tabs,
     },
 })

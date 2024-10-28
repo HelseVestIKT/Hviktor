@@ -1,0 +1,27 @@
+<p-tabs value="0">
+    <p-tablist>
+        <p-tab value="0">Kode</p-tab>
+        <p-tab value="1">Info</p-tab>
+        <p-tab value="2">Ren HTML/CSS</p-tab>
+    </p-tablist>
+    <p-tabpanels>
+        <p-tabpanel value="0">  
+            <!-- Import statement -->
+            <pre class="language-typescript line-numbers">
+                <code class="language-typescript">{{ import }}</code>
+            </pre>
+
+            <p-divider></p-divider>
+
+            <!-- Innhold i kodedel -->
+            <ng-content select="[tabContent0]"></ng-content>
+
+        </p-tabpanel>
+        <p-tabpanel value="1">
+            <ng-content select="[tabContent1]"></ng-content>
+        </p-tabpanel>
+        <p-tabpanel value="2">
+            <ng-content select="[tabContent2]"></ng-content>
+        </p-tabpanel>
+    </p-tabpanels>
+</p-tabs>

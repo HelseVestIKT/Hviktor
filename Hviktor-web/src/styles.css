@@ -322,19 +322,66 @@ div.code-toolbar > .toolbar > .toolbar-item > span {
  
  }
  
-     .line-numbers-rows > span {
-         pointer-events: none;
-         display: block;
-         counter-increment: linenumber;
-     }
- 
-         .line-numbers-rows > span:before {
-             content: counter(linenumber);
-             color: #999;
-             display: block;
-             padding-right: 0.8em;
-             text-align: right;
-         }
+.line-numbers-rows > span {
+    pointer-events: none;
+    display: block;
+    counter-increment: linenumber;
+}
 
+.line-numbers-rows > span:before {
+    content: counter(linenumber);
+    color: #999;
+    display: block;
+    padding-right: 0.8em;
+    text-align: right;
+}
 
+/* START - Styleclasses for tab component*/
+.tabVertical {
+    width: fill-available;
+}
+
+/* heile tabviewet */
+.tabVertical .p-tabview {
+    display: flex;
+    width: fill-available;
+}
+
+/* får tabs til å legge seg horisontalt */
+.tabVertical .p-tabview .p-tabview-nav {
+    flex-direction: column;
+}
+
+/* tab container for alle tabs */
+.tabVertical .p-tabview-nav-container {
+    width: 300px;
+}
+
+/* styling per tab */
+.tabVertical .p-tabview .p-tabview-nav li .p-tabview-nav-link {
+    background-color: var(--clr-primary-300);
+    border: none;
+    border-radius: 0;
+    justify-content: start;
+    width: 100%;
+}
+
+/* styling hover og focus per tab */
+.tabVertical .p-tabview .p-tabview-nav li:not(.p-highlight) .p-tabview-nav-link:hover,
+.tabVertical .p-tabview .p-tabview-nav li:not(.p-highlight) .p-tabview-nav-link:focus {
+    text-decoration: underline;
+}
+
+/* styling for active tab */
+.tabVertical .p-tabview .p-tabview-nav li.p-highlight .p-tabview-nav-link {
+    background-color: var(--clr-neutral-50);
+}
+
+/* styling for innholdet i tabben */
+.tabVertical .p-tabview-panels {
+    background-color: var(--clr-neutral-50);
+    width: fill-available;
+}
+
+/* END - Styleclasses for tab component*/
 
