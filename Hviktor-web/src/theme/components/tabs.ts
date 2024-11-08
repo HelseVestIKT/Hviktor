@@ -4,16 +4,15 @@ export const tabs = {
     },
     tab: {
         background: '{neutral.50}',
-        hoverBackground: '{primary.300}',
-        color: '{neutral.700}',
-        activeColor: '{primary.400}',
+        hoverBackground: '{primary.50}',
+        activeColor: '{primary.500}',
         fontWeight: '500',
-        hoverColor: '{primary.400}',   
-        hoverBorderColor: '{primary.400}',
+        hoverColor: '{primary.500}',   
+        hoverBorderColor: '{primary.500}',
         padding: '1rem',
     },
     activeBar: {
         height: '2px',
-        background: '{primary.400}',
+        background: '{primary.500}',
     },
 }
