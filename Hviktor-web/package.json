@@ -9,7 +9,8 @@
     "test": "ng test",
     "lint": "eslint \"src/**/*.{ts,js,html}\"",
     "lint-fix": "eslint \"src/**/*.{ts,js,html}\" --fix",
-    "format": "prettier --write \"src/**/*.{ts,js,html,css,scss}\""
+    "format": "prettier --write \"src/**/*.{ts,js,html,css,scss}\"",
+    "prepare": "husky"
   },
   "private": true,
   "dependencies": {
