@@ -76,7 +76,7 @@ import { Hviktor } from 'src/theme/hviktor';
         options: {
           cssLayer: {
             name: 'primeng',
-            order: 'tailwind-base, primeng, hviktor-base, tailwind-utilities',
+            order: 'tailwind-base, hviktor-base, primeng, tailwind-utilities',
           },
         },
       },
