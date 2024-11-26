@@ -7,7 +7,4 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Hviktor-web';
-  logSomething() {
-    console.log('Something');
-  }
 }
