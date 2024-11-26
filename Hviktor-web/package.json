@@ -1,5 +1,5 @@
 {
-  "name": "Hviktor-web",
+  "name": "hviktor-web",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -19,9 +19,10 @@
     "@angular/platform-browser": "^18.2.9",
     "@angular/platform-browser-dynamic": "^18.2.9",
     "@angular/router": "^18.2.9",
+    "@primeng/themes": "^18.0.0-rc.1",
     "npm": "^10.2.1",
     "primeicons": "^6.0.1",
-    "primeng": "^18.0.0-beta.3",
+    "primeng": "^18.0.0-rc.1",
     "rxjs": "~7.8.0",
     "tailwindcss-primeui": "^0.3.4",
     "tslib": "^2.3.0",
