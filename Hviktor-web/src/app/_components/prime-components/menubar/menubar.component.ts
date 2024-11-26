@@ -10,9 +10,16 @@ import { ComponentTabsComponent } from '../_common/component-tabs/component-tabs
 @Component({
   selector: 'app-menubar',
   standalone: true,
-  imports: [TabViewModule, DividerModule, CardModule, MenubarModule, ComponentHeaderComponent, ComponentTabsComponent],
+  imports: [
+    TabViewModule,
+    DividerModule,
+    CardModule,
+    MenubarModule,
+    ComponentHeaderComponent,
+    ComponentTabsComponent,
+  ],
   templateUrl: './menubar.component.html',
-  styleUrls: ['./menubar.component.scss']
+  styleUrls: ['./menubar.component.scss'],
 })
 export class MenubarComponent {
   items: MenuItem[] = [];
@@ -58,7 +65,7 @@ export class MenubarComponent {
             routerLink: '',
             icon: 'pi pi-check-circle',
           },
-        ]
+        ],
       },
       {
         label: 'Backend',

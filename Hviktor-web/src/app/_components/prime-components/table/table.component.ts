@@ -1,20 +1,20 @@
 import { Component } from '@angular/core';
 
 interface Product {
-  id?: number,
-  code?: string,
-  name?: string,
-  description?: string,
-  price?: number,
-  category?: string,
-  quantity?: number,
-  inventoryStatus?: string,
-  rating?: number
+  id?: number;
+  code?: string;
+  name?: string;
+  description?: string;
+  price?: number;
+  category?: string;
+  quantity?: number;
+  inventoryStatus?: string;
+  rating?: number;
 }
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
-  styleUrls: ['./table.component.scss']
+  styleUrls: ['./table.component.scss'],
 })
 export class TableComponent {
   products!: Product[];
@@ -30,7 +30,7 @@ export class TableComponent {
         category: 'Accessories',
         quantity: 24,
         inventoryStatus: 'INSTOCK',
-        rating: 5
+        rating: 5,
       },
       {
         id: 1001,
@@ -41,8 +41,8 @@ export class TableComponent {
         category: 'Accessories',
         quantity: 61,
         inventoryStatus: 'INSTOCK',
-        rating: 4
+        rating: 4,
       },
-    ]
+    ];
   }
 }

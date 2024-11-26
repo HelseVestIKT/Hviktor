@@ -8,9 +8,9 @@ import { TabsModule } from 'primeng/tabs';
   standalone: true,
   imports: [TabsModule, CardModule, DividerModule],
   templateUrl: './component-tabs.component.html',
-  styleUrl: './component-tabs.component.scss'
+  styleUrl: './component-tabs.component.scss',
 })
 export class ComponentTabsComponent {
   @Input() import: string | undefined;
-  @Input() defaultTabIndex: string = "0";
+  @Input() defaultTabIndex: string = '0';
 }

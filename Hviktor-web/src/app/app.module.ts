@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -15,7 +15,6 @@ import { AccordionComponent } from './_components/prime-components/accordion/acc
 import { CheckboxComponent } from './_components/prime-components/checkbox/checkbox.component';
 import { RadiobuttonComponent } from './_components/prime-components/radiobutton/radiobutton.component';
 import { ChipComponent } from './_components/prime-components/chip/chip.component';
-
 
 //PRIME
 import { ButtonModule } from 'primeng/button';
@@ -65,11 +64,11 @@ import { Hviktor } from 'src/theme/hviktor';
     CardModule,
     CheckboxModule,
     RadioButtonModule,
-    ChipModule
+    ChipModule,
   ],
   bootstrap: [AppComponent],
   providers: [
-    provideAnimationsAsync(),     
+    provideAnimationsAsync(),
     providePrimeNG({
       theme: {
         preset: Hviktor,
@@ -81,7 +80,6 @@ import { Hviktor } from 'src/theme/hviktor';
         },
       },
     }),
-  ]
+  ],
 })
-
-export class AppModule { }
+export class AppModule {}

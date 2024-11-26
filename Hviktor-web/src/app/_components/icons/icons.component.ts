@@ -7,8 +7,6 @@ import { TabsModule } from 'primeng/tabs';
   standalone: true,
   imports: [TabsModule, DividerModule],
   templateUrl: './icons.component.html',
-  styleUrls: ['./icons.component.css']
+  styleUrls: ['./icons.component.css'],
 })
-export class IconsComponent {
-
-}
+export class IconsComponent {}

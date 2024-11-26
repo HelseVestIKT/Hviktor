@@ -1,30 +1,34 @@
 <div class="m-4">
-   
-    <app-component-header
-        title="Buttons"
-        primengPath="buttons"
-        codePath="buttons">
-    </app-component-header>
+  <app-component-header
+    title="Buttons"
+    primengPath="buttons"
+    codePath="buttons">
+  </app-component-header>
 
-    <app-component-tabs
-        import="import &#123; ButtonModule &#125; from 'primeng/button';">
-        
-        <div tabContent0 class="flex flex-col gap-4">
-            <p-card>
-                <p class="text-2xl font-semibold">Regular buttons:</p>
-                <div class="flex gap-2 mb-2">
-                    <p-button label="Primary"></p-button>
-                    <p-button label="Secondary" severity="secondary"></p-button>
-                    <p-button label="Tertiary" [text]="true"></p-button>
-                    <p-button label="Danger" severity="danger"></p-button>
-                </div>
-                <div class="flex gap-2 mb-6">
-                    <p-button label="Primary" [disabled]="true"></p-button>
-                    <p-button label="Secondary" severity="secondary" [disabled]="true"></p-button>
-                    <p-button label="Tertiary" [text]="true" [disabled]="true"></p-button>
-                    <p-button label="Danger" severity="danger" [disabled]="true"></p-button>
-                </div>
-                <pre class="language-html line-numbers">
+  <app-component-tabs
+    import="import &#123; ButtonModule &#125; from 'primeng/button';">
+    <div tabContent0 class="flex flex-col gap-4">
+      <p-card>
+        <p class="text-2xl font-semibold">Regular buttons:</p>
+        <div class="mb-2 flex gap-2">
+          <p-button label="Primary"></p-button>
+          <p-button label="Secondary" severity="secondary"></p-button>
+          <p-button label="Tertiary" [text]="true"></p-button>
+          <p-button label="Danger" severity="danger"></p-button>
+        </div>
+        <div class="mb-6 flex gap-2">
+          <p-button label="Primary" [disabled]="true"></p-button>
+          <p-button
+            label="Secondary"
+            severity="secondary"
+            [disabled]="true"></p-button>
+          <p-button label="Tertiary" [text]="true" [disabled]="true"></p-button>
+          <p-button
+            label="Danger"
+            severity="danger"
+            [disabled]="true"></p-button>
+        </div>
+        <pre class="language-html line-numbers">
                 <code class="language-html">
                     &lt;p-button label=&quot;Primary&quot;&gt;&lt;/p-button&gt;
                     &lt;p-button label=&quot;Secondary&quot; severity=&quot;secondary&quot;&gt;&lt;/p-button&gt;
@@ -38,22 +42,38 @@
                     &lt;p-button label=&quot;Danger&quot; severity=&quot;danger&quot; [outlined]=&quot;true&quot; [disabled]=&quot;true&quot;&gt;&lt;/p-button&gt;
                 </code>
             </pre>
-            </p-card>
+      </p-card>
 
-            <p-card>
-                <p class="text-2xl font-semibold">Regular icon buttons:</p>
-                <div class="flex gap-2 mb-2">
-                    <p-button icon="pi pi-check" [rounded]="true"></p-button>
-                    <p-button icon="pi pi-bookmark" [rounded]="true" severity="secondary"></p-button>
-                    <p-button icon="pi pi-times" [rounded]="true" severity="danger"></p-button>
-                </div>
-                <div class="flex gap-2 mb-6">
-                    <p-button icon="pi pi-check" [rounded]="true" [disabled]="true"></p-button>
-                    <p-button icon="pi pi-bookmark" [rounded]="true" severity="secondary"
-                        [disabled]="true"></p-button>
-                    <p-button icon="pi pi-times" [rounded]="true" severity="danger" [disabled]="true"></p-button>
-                </div>
-                <pre class="language-html line-numbers">
+      <p-card>
+        <p class="text-2xl font-semibold">Regular icon buttons:</p>
+        <div class="mb-2 flex gap-2">
+          <p-button icon="pi pi-check" [rounded]="true"></p-button>
+          <p-button
+            icon="pi pi-bookmark"
+            [rounded]="true"
+            severity="secondary"></p-button>
+          <p-button
+            icon="pi pi-times"
+            [rounded]="true"
+            severity="danger"></p-button>
+        </div>
+        <div class="mb-6 flex gap-2">
+          <p-button
+            icon="pi pi-check"
+            [rounded]="true"
+            [disabled]="true"></p-button>
+          <p-button
+            icon="pi pi-bookmark"
+            [rounded]="true"
+            severity="secondary"
+            [disabled]="true"></p-button>
+          <p-button
+            icon="pi pi-times"
+            [rounded]="true"
+            severity="danger"
+            [disabled]="true"></p-button>
+        </div>
+        <pre class="language-html line-numbers">
                 <code class="language-html">
                     &lt;p-button icon=&quot;pi pi-check&quot; [rounded]=&quot;true&quot;&gt;&lt;/p-button&gt;
                     &lt;p-button icon=&quot;pi pi-bookmark&quot; [rounded]=&quot;true&quot; severity=&quot;secondary&quot;&gt;&lt;/p-button&gt;
@@ -65,20 +85,35 @@
                     &lt;p-button icon=&quot;pi pi-times&quot; [rounded]=&quot;true&quot; severity=&quot;danger&quot; [disabled]=&quot;true&quot;&gt;&lt;/p-button&gt;
                 </code>
             </pre>
-            </p-card>
+      </p-card>
 
-            <p-card>
-                <p class="text-2xl font-semibold">Outlined icon buttons:</p>
-                <div class="flex gap-2 mb-2">
-                    <p-button icon="pi pi-check" [rounded]="true" [outlined]="true"></p-button>
-                    <p-button icon="pi pi-times" [rounded]="true" [outlined]="true" severity="danger"></p-button>
-                </div>
-                <div class="flex gap-2 mb-6">
-                    <p-button icon="pi pi-check" [rounded]="true" [outlined]="true" [disabled]="true"></p-button>
-                    <p-button icon="pi pi-times" [rounded]="true" [outlined]="true" severity="danger"
-                        [disabled]="true"></p-button>
-                </div>
-                <pre class="language-html line-numbers">
+      <p-card>
+        <p class="text-2xl font-semibold">Outlined icon buttons:</p>
+        <div class="mb-2 flex gap-2">
+          <p-button
+            icon="pi pi-check"
+            [rounded]="true"
+            [outlined]="true"></p-button>
+          <p-button
+            icon="pi pi-times"
+            [rounded]="true"
+            [outlined]="true"
+            severity="danger"></p-button>
+        </div>
+        <div class="mb-6 flex gap-2">
+          <p-button
+            icon="pi pi-check"
+            [rounded]="true"
+            [outlined]="true"
+            [disabled]="true"></p-button>
+          <p-button
+            icon="pi pi-times"
+            [rounded]="true"
+            [outlined]="true"
+            severity="danger"
+            [disabled]="true"></p-button>
+        </div>
+        <pre class="language-html line-numbers">
                 <code class="language-html">
                     &lt;p-button icon=&quot;pi pi-check&quot; [rounded]=&quot;true&quot; [outlined]=&quot;true&quot;&gt;&lt;/p-button&gt;
                     &lt;p-button icon=&quot;pi pi-times&quot; [rounded]=&quot;true&quot; [outlined]=&quot;true&quot; severity=&quot;danger&quot;&gt;&lt;/p-button&gt;
@@ -88,20 +123,35 @@
                     &lt;p-button icon=&quot;pi pi-times&quot; [rounded]=&quot;true&quot; [outlined]=&quot;true&quot; [disabled]=&quot;true&quot; severity=&quot;danger&quot;&gt;&lt;/p-button&gt;
                 </code>
             </pre>
-            </p-card>
+      </p-card>
 
-            <p-card>
-                <p class="text-2xl font-semibold">Text icon buttons:</p>
-                <div class="flex gap-2 mb-2">
-                    <p-button icon="pi pi-check" [rounded]="true" [text]="true"></p-button>
-                    <p-button icon="pi pi-times" [rounded]="true" [text]="true" severity="danger"></p-button>
-                </div>
-                <div class="flex gap-2 mb-6">
-                    <p-button icon="pi pi-check" [rounded]="true" [text]="true" [disabled]="true"></p-button>
-                    <p-button icon="pi pi-times" [rounded]="true" [text]="true" severity="danger"
-                        [disabled]="true"></p-button>
-                </div>
-                <pre class="language-html line-numbers">
+      <p-card>
+        <p class="text-2xl font-semibold">Text icon buttons:</p>
+        <div class="mb-2 flex gap-2">
+          <p-button
+            icon="pi pi-check"
+            [rounded]="true"
+            [text]="true"></p-button>
+          <p-button
+            icon="pi pi-times"
+            [rounded]="true"
+            [text]="true"
+            severity="danger"></p-button>
+        </div>
+        <div class="mb-6 flex gap-2">
+          <p-button
+            icon="pi pi-check"
+            [rounded]="true"
+            [text]="true"
+            [disabled]="true"></p-button>
+          <p-button
+            icon="pi pi-times"
+            [rounded]="true"
+            [text]="true"
+            severity="danger"
+            [disabled]="true"></p-button>
+        </div>
+        <pre class="language-html line-numbers">
                 <code class="language-html">
                     &lt;p-button icon=&quot;pi pi-check&quot; [rounded]=&quot;true&quot; [text]=&quot;true&quot;&gt;&lt;/p-button&gt;
                     &lt;p-button icon=&quot;pi pi-times&quot; [rounded]=&quot;true&quot; [text]=&quot;true&quot; severity=&quot;danger&quot;&gt;&lt;/p-button&gt;
@@ -111,10 +161,15 @@
                     &lt;p-button icon=&quot;pi pi-times&quot; [rounded]=&quot;true&quot; [text]=&quot;true&quot; severity=&quot;danger&quot; [disabled]=&quot;true&quot;&gt;&lt;/p-button&gt;
                 </code>
             </pre>
-            </p-card>
-        </div>
-        
-        <p tabContent1>Her skriver vi litt om hvordan komponenten bør brukes og UX/a11y prinsipp du bør tenke på.</p>
-        <p tabContent2>Her kommer kode for komponenten uten tilknyttet rammeverk.</p>
-    </app-component-tabs>
+      </p-card>
+    </div>
+
+    <p tabContent1>
+      Her skriver vi litt om hvordan komponenten bør brukes og UX/a11y prinsipp
+      du bør tenke på.
+    </p>
+    <p tabContent2>
+      Her kommer kode for komponenten uten tilknyttet rammeverk.
+    </p>
+  </app-component-tabs>
 </div>

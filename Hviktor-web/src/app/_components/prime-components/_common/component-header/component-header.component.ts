@@ -6,7 +6,7 @@ import { DividerModule } from 'primeng/divider';
   standalone: true,
   imports: [DividerModule],
   templateUrl: './component-header.component.html',
-  styleUrl: './component-header.component.scss'
+  styleUrl: './component-header.component.scss',
 })
 export class ComponentHeaderComponent {
   @Input() title: string | undefined;
@@ -20,5 +20,4 @@ export class ComponentHeaderComponent {
   get repoUrl(): string {
     return `https://github.com/HelseVestIKT/Hviktor/tree/main/Hviktor-web/src/app/_components/prime-components/${this.codePath}`;
   }
-
 }

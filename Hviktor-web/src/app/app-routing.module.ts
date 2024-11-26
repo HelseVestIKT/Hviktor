@@ -26,26 +26,28 @@ const routes: Routes = [
   { path: 'variables', component: VariablesComponent },
 
   // PRIME components
-  { path: 'components/accordion', pathMatch: 'full', component: AccordionComponent },
+  {
+    path: 'components/accordion',
+    pathMatch: 'full',
+    component: AccordionComponent,
+  },
   { path: 'components/buttons', component: ButtonsComponent },
   { path: 'components/checkbox', component: CheckboxComponent },
-  { path: 'components/chip', component: ChipComponent},
+  { path: 'components/chip', component: ChipComponent },
   { path: 'components/dialog', component: DialogComponent },
   { path: 'components/dropdown', component: DropdownComponent },
   { path: 'components/menubar', component: MenubarComponent },
   { path: 'components/multiselect', component: MultiselectComponent },
   { path: 'components/radiobutton', component: RadiobuttonComponent },
-  { path: 'components/table', component: TableComponent },  
+  { path: 'components/table', component: TableComponent },
   { path: 'components/tabs', component: TabsComponent },
 
   // HVIKTOR components
-  { path: 'components/coming-soon', component: ComingSoonComponent},
-  
- 
+  { path: 'components/coming-soon', component: ComingSoonComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

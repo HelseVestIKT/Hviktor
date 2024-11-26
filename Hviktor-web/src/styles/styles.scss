@@ -2,8 +2,8 @@
 // @import "prismjs/themes/prism-dark.css";
 
 p {
-        font-size: 1rem;
-        max-width: 75ch;
+  font-size: 1rem;
+  max-width: 75ch;
 }
 
 /* a {
@@ -11,85 +11,91 @@ p {
 } */
 
 ::placeholder {
-        color: var(--clr-gray-600);
+  color: var(--clr-gray-600);
 }
 
 main {
-        margin: var(--space-400);
+  margin: var(--space-400);
 }
 
 body {
-        font-family: var(--ff-regular);
+  font-family: var(--ff-regular);
 }
-
 
 /* START - Styleclasses for chip component*/
 
 //Green chip:
 .chip-green {
-        background-color: var(--clr-teal-300);
+  background-color: var(--clr-teal-300);
 }
 
 //Thinner font-weight for chip label:
 .fw-regular.p-chip .p-chip-text {
-        font-weight: var(--fw-regular);
+  font-weight: var(--fw-regular);
 }
 
 /*Chip component in different sizes:*/
 
 //medium chip:
 .chip-md.p-chip .p-chip-text {
-        font-size: 16px;
+  font-size: 16px;
 }
 
 /* END - Styleclasses for chip component*/
 
-
 /* START - Styleclasses for tab component*/
 .tabVertical {
-        width: fill-available;
+  width: fill-available;
 }
 
 //heile tabviewet
 .tabVertical .p-tabview {
-        display: flex;
-        width: fill-available;
+  display: flex;
+  width: fill-available;
 }
 
 //får tabs til å legge seg horisontalt
 .tabVertical .p-tabview .p-tabview-nav {
-        flex-direction: column;
+  flex-direction: column;
 }
 
 //tab container for alle tabs
 .tabVertical .p-tabview-nav-container {
-        width: 300px;
+  width: 300px;
 }
 
 //styling per tab
 .tabVertical .p-tabview .p-tabview-nav li .p-tabview-nav-link {
-        background-color: var(--clr-primary-300);
-        border: none;
-        border-radius: 0;
-        justify-content: start;
-        width: 100%;
+  background-color: var(--clr-primary-300);
+  border: none;
+  border-radius: 0;
+  justify-content: start;
+  width: 100%;
 }
 
 //styling hover og focus per tab
-.tabVertical .p-tabview .p-tabview-nav li:not(.p-highlight) .p-tabview-nav-link:hover,
-.tabVertical .p-tabview .p-tabview-nav li:not(.p-highlight) .p-tabview-nav-link:focus {
-        text-decoration: underline;
+.tabVertical
+  .p-tabview
+  .p-tabview-nav
+  li:not(.p-highlight)
+  .p-tabview-nav-link:hover,
+.tabVertical
+  .p-tabview
+  .p-tabview-nav
+  li:not(.p-highlight)
+  .p-tabview-nav-link:focus {
+  text-decoration: underline;
 }
 
 //styling for active tab
 .tabVertical .p-tabview .p-tabview-nav li.p-highlight .p-tabview-nav-link {
-        background-color: var(--clr-neutral-50);
+  background-color: var(--clr-neutral-50);
 }
 
 //styling for innholdet i tabben
 .tabVertical .p-tabview-panels {
-        background-color: var(--clr-neutral-50);
-        width: fill-available;
+  background-color: var(--clr-neutral-50);
+  width: fill-available;
 }
 
 /* END - Styleclasses for tab component*/

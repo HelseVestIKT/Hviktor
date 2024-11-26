@@ -7,10 +7,13 @@ import { ComponentTabsComponent } from '../../prime-components/_common/component
 @Component({
   selector: 'app-coming-soon',
   standalone: true,
-  imports: [TabsModule, CardModule, ComponentHeaderComponent, ComponentTabsComponent],
+  imports: [
+    TabsModule,
+    CardModule,
+    ComponentHeaderComponent,
+    ComponentTabsComponent,
+  ],
   templateUrl: './coming-soon.component.html',
-  styleUrl: './coming-soon.component.css'
+  styleUrl: './coming-soon.component.css',
 })
-export class ComingSoonComponent {
-
-}
+export class ComingSoonComponent {}

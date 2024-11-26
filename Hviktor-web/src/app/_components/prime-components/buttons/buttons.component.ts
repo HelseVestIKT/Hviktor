@@ -9,10 +9,15 @@ import { ComponentTabsComponent } from '../_common/component-tabs/component-tabs
 @Component({
   selector: 'app-buttons',
   standalone: true,
-  imports: [TabViewModule, DividerModule, ButtonModule, CardModule, ComponentHeaderComponent, ComponentTabsComponent],
+  imports: [
+    TabViewModule,
+    DividerModule,
+    ButtonModule,
+    CardModule,
+    ComponentHeaderComponent,
+    ComponentTabsComponent,
+  ],
   templateUrl: './buttons.component.html',
-  styleUrls: ['./buttons.component.scss']
+  styleUrls: ['./buttons.component.scss'],
 })
-export class ButtonsComponent {
-
-}
+export class ButtonsComponent {}

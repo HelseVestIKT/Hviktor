@@ -6,8 +6,6 @@ import { DividerModule } from 'primeng/divider';
   standalone: true,
   imports: [DividerModule],
   templateUrl: './colours.component.html',
-  styleUrls: ['./colours.component.css']
+  styleUrls: ['./colours.component.css'],
 })
-export class ColoursComponent {
-
-}
+export class ColoursComponent {}

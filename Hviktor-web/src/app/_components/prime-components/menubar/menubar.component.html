@@ -1,22 +1,25 @@
 <div class="m-4">
-    <app-component-header
-        title="Menubar"
-        primengPath="menubar"
-        codePath="menubar">
-    </app-component-header>
+  <app-component-header
+    title="Menubar"
+    primengPath="menubar"
+    codePath="menubar">
+  </app-component-header>
 
-    <app-component-tabs
-        import="import &#123; MenubarModule &#125; from 'primeng/menubar';">
+  <app-component-tabs
+    import="import &#123; MenubarModule &#125; from 'primeng/menubar';">
+    <div tabContent0 class="flex flex-col gap-4">
+      <p-card>
+        <p-menubar [model]="items">
+          <ng-template pTemplate="start">
+            <img
+              src="../../../assets/img/logo.png"
+              routerLink=""
+              width="48px"
+              alt="Hviktor logo" />
+          </ng-template>
+        </p-menubar>
 
-        <div tabContent0 class="flex flex-col gap-4">
-            <p-card>
-                <p-menubar [model]="items">
-                    <ng-template pTemplate="start">
-                        <img src="../../../assets/img/logo.png" routerLink="" width="48px" alt="Hviktor logo" />
-                    </ng-template>
-                </p-menubar>
-
-                <pre class="language-html line-numbers">
+        <pre class="language-html line-numbers">
                     <code class="language-html">
                         &lt;p-menubar [model]=&quot;items&quot;&gt;
                             &lt;ng-template pTemplate=&quot;start&quot;&gt;
@@ -25,7 +28,7 @@
                         &lt;/p-menubar&gt;
                     </code>
                 </pre>
-                <pre class="language-typescript line-numbers">
+        <pre class="language-typescript line-numbers">
                     <code class="language-typescript">
                         import &#123; Component &#125; from '&#64;angular/core';
                         import &#123; MenuItem &#125; from 'primeng/api';
@@ -90,10 +93,15 @@
                         &#125;
                     </code>
                 </pre>
-            </p-card>
-        </div>
-        
-        <p tabContent1>Her skriver vi litt om hvordan komponenten bør brukes og UX/a11y prinsipp du bør tenke på.</p>
-        <p tabContent2>Her kommer kode for komponenten uten tilknyttet rammeverk.</p>
-    </app-component-tabs>
+      </p-card>
+    </div>
+
+    <p tabContent1>
+      Her skriver vi litt om hvordan komponenten bør brukes og UX/a11y prinsipp
+      du bør tenke på.
+    </p>
+    <p tabContent2>
+      Her kommer kode for komponenten uten tilknyttet rammeverk.
+    </p>
+  </app-component-tabs>
 </div>

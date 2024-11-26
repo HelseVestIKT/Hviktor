@@ -1,112 +1,112 @@
 /* PublicSans font-face */
 @font-face {
-    font-family: 'PublicSans';
-    src: url('../assets/static/PublicSans-Thin.ttf') format('truetype');
-    font-weight: 100;
-    font-style: normal;
-  }
-@font-face {
-    font-family: 'PublicSans';
-    src: url('../assets/static/PublicSans-ExtraLight.ttf') format('truetype');
-    font-weight: 200;
-    font-style: normal;
+  font-family: 'PublicSans';
+  src: url('../assets/static/PublicSans-Thin.ttf') format('truetype');
+  font-weight: 100;
+  font-style: normal;
 }
 @font-face {
-    font-family: 'PublicSans';
-    src: url('../assets/static/PublicSans-Light.ttf') format('truetype');
-    font-weight: 300;
-    font-style: normal;
+  font-family: 'PublicSans';
+  src: url('../assets/static/PublicSans-ExtraLight.ttf') format('truetype');
+  font-weight: 200;
+  font-style: normal;
 }
 @font-face {
-    font-family: 'PublicSans';
-    src: url('../assets/static/PublicSans-Regular.ttf') format('truetype');
-    font-weight: 400;
-    font-style: normal;
+  font-family: 'PublicSans';
+  src: url('../assets/static/PublicSans-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
 }
 @font-face {
-    font-family: 'PublicSans';
-    src: url('../assets/static/PublicSans-Medium.ttf') format('truetype');
-    font-weight: 500;
-    font-style: normal;
+  font-family: 'PublicSans';
+  src: url('../assets/static/PublicSans-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
 }
 @font-face {
-    font-family: 'PublicSans';
-    src: url('../assets/static/PublicSans-SemiBold.ttf') format('truetype');
-    font-weight: 600;
-    font-style: normal;
-}
-    @font-face {
-    font-family: 'PublicSans';
-    src: url('../assets/static/PublicSans-Bold.ttf') format('truetype');
-    font-weight: 700;
-    font-style: normal;
+  font-family: 'PublicSans';
+  src: url('../assets/static/PublicSans-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
 }
 @font-face {
-    font-family: 'PublicSans';
-    src: url('../assets/static/PublicSans-ExtraBold.ttf') format('truetype');
-    font-weight: 800;
-    font-style: normal;
+  font-family: 'PublicSans';
+  src: url('../assets/static/PublicSans-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
 }
 @font-face {
-    font-family: 'PublicSans';
-    src: url('../assets/static/PublicSans-Black.ttf') format('truetype');
-    font-weight: 900;
-    font-style: normal;
+  font-family: 'PublicSans';
+  src: url('../assets/static/PublicSans-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'PublicSans';
+  src: url('../assets/static/PublicSans-ExtraBold.ttf') format('truetype');
+  font-weight: 800;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'PublicSans';
+  src: url('../assets/static/PublicSans-Black.ttf') format('truetype');
+  font-weight: 900;
+  font-style: normal;
 }
 
 /* AlbertSans font-face: */
 
 @font-face {
-    font-family: "AlbertSans";
-    src: url(../assets/static/AlbertSans-Thin.ttf);
-    font-weight: 100;
-    font-style: normal;
+  font-family: 'AlbertSans';
+  src: url(../assets/static/AlbertSans-Thin.ttf);
+  font-weight: 100;
+  font-style: normal;
 }
 @font-face {
-    font-family: "AlbertSans";
-    src: url(../assets/static/AlbertSans-ExtraLight.ttf);
-    font-weight: 200;
-    font-style: normal;
+  font-family: 'AlbertSans';
+  src: url(../assets/static/AlbertSans-ExtraLight.ttf);
+  font-weight: 200;
+  font-style: normal;
 }
 @font-face {
-    font-family: "AlbertSans";
-    src: url(../assets/static/AlbertSans-Light.ttf);
-    font-weight: 300;
-    font-style: normal;
+  font-family: 'AlbertSans';
+  src: url(../assets/static/AlbertSans-Light.ttf);
+  font-weight: 300;
+  font-style: normal;
 }
 @font-face {
-    font-family: "AlbertSans";
-    src: url(../assets/static/AlbertSans-Regular.ttf);
-    font-weight: 400;
-    font-style: normal;
+  font-family: 'AlbertSans';
+  src: url(../assets/static/AlbertSans-Regular.ttf);
+  font-weight: 400;
+  font-style: normal;
 }
 @font-face {
-    font-family: "AlbertSans";
-    src: url(../assets/static/AlbertSans-Medium.ttf);
-    font-weight: 500;
-    font-style: normal;
+  font-family: 'AlbertSans';
+  src: url(../assets/static/AlbertSans-Medium.ttf);
+  font-weight: 500;
+  font-style: normal;
 }
 @font-face {
-    font-family: "AlbertSans";
-    src: url(../assets/static/AlbertSans-SemiBold.ttf);
-    font-weight: 600;
-    font-style: normal;
+  font-family: 'AlbertSans';
+  src: url(../assets/static/AlbertSans-SemiBold.ttf);
+  font-weight: 600;
+  font-style: normal;
 }
 @font-face {
-    font-family: "AlbertSans";
-    src: url(../assets/static/AlbertSans-Bold.ttf);
-    font-weight: 700;
-    font-style: normal;
+  font-family: 'AlbertSans';
+  src: url(../assets/static/AlbertSans-Bold.ttf);
+  font-weight: 700;
+  font-style: normal;
 }
 @font-face {
-    font-family: "AlbertSans";
-    src: url(../assets/static/AlbertSans-ExtraBold.ttf);
-    font-weight: 800;
-    font-style: normal;
+  font-family: 'AlbertSans';
+  src: url(../assets/static/AlbertSans-ExtraBold.ttf);
+  font-weight: 800;
+  font-style: normal;
 }
 @font-face {
-    font-family: "AlbertSans";
-    src: url(../assets/static/AlbertSans-Black.ttf);
-    font-weight: 900;
-    font-style: normal;
+  font-family: 'AlbertSans';
+  src: url(../assets/static/AlbertSans-Black.ttf);
+  font-weight: 900;
+  font-style: normal;
 }

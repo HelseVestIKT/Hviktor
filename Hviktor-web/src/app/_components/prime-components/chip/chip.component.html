@@ -1,48 +1,55 @@
 <div class="m-500">
-    <h1 class="as-light fs-700">Chip</h1>
-    <p class="p-block-400">
-        <a href="https://primeng.org/chip" target="_blank" rel="noopener noreferrer"><i
-                class="pi pi-prime | p-inline-400"></i>https://primeng.org/chip
-        </a>
-    </p>
-    <p class="p-block-400">
-        <a
-            href="https://dev.azure.com/hvikt-utv/_git/Hviktor?path=/Hviktor-web/src/app/_components/prime-components/chip"
-            target="_blank" rel="noopener noreferrer"><i class="pi pi-code | p-inline-400"></i>Kode i repo
-        </a>
-    </p>
-    <p class="p-block-400">
-        <a href="https://www.figma.com/file/Dm9AHEGWKbzw2Re2t7Pz6f/HVIKTOR?type=design&node-id=255-1017&mode=design&t=ZA5YlFy0QBhEwxwY-0" target="_blank" rel="noopener noreferrer"><i
-        class="pi pi-image | p-inline-400"></i>Figma
-        </a>
-    </p>
+  <h1 class="as-light fs-700">Chip</h1>
+  <p class="p-block-400">
+    <a href="https://primeng.org/chip" target="_blank" rel="noopener noreferrer"
+      ><i class="pi pi-prime | p-inline-400"></i>https://primeng.org/chip
+    </a>
+  </p>
+  <p class="p-block-400">
+    <a
+      href="https://dev.azure.com/hvikt-utv/_git/Hviktor?path=/Hviktor-web/src/app/_components/prime-components/chip"
+      target="_blank"
+      rel="noopener noreferrer"
+      ><i class="pi pi-code | p-inline-400"></i>Kode i repo
+    </a>
+  </p>
+  <p class="p-block-400">
+    <a
+      href="https://www.figma.com/file/Dm9AHEGWKbzw2Re2t7Pz6f/HVIKTOR?type=design&node-id=255-1017&mode=design&t=ZA5YlFy0QBhEwxwY-0"
+      target="_blank"
+      rel="noopener noreferrer"
+      ><i class="pi pi-image | p-inline-400"></i>Figma
+    </a>
+  </p>
 
-    <p-tabView>
-        <p-tabPanel>
-            <ng-template pTemplate="header">
-                <span>Kode</span>
-            </ng-template>
-    
-        <!-- import til app.module -->
-        <pre class="language-typescript line-numbers">
+  <p-tabView>
+    <p-tabPanel>
+      <ng-template pTemplate="header">
+        <span>Kode</span>
+      </ng-template>
+
+      <!-- import til app.module -->
+      <pre class="language-typescript line-numbers">
             <code class="language-typescript">import &#123; ChipModule &#125; from 'primeng/chip';</code>
         </pre>
 
-        <p-divider></p-divider>
+      <p-divider></p-divider>
 
-        <div class="flex f-column gap-500">
-            <!--Standard chip-->
-            <p-card>
-                <h2 class="as-light fs-500 p-400">Standard chip</h2>
-                <p class="p-400">Standard chip kommer i en primær blåfarge, og har en label for teksten til chipen.
-                    En chip kan også ha en "remove" knapp som fjerner chipen. Dette gjøres ved å sette [removable]="true". 
-                    </p>
-                <div class="flex gap-400 f-wrap">
-                    <p-chip label="Kun tekst"></p-chip>
-                    <p-chip label="Chip som kan fjernes" [removable]="true"></p-chip>
-                </div>
-            
-                <pre class="language-html line-numbers">
+      <div class="f-column gap-500 flex">
+        <!--Standard chip-->
+        <p-card>
+          <h2 class="as-light fs-500 p-400">Standard chip</h2>
+          <p class="p-400">
+            Standard chip kommer i en primær blåfarge, og har en label for
+            teksten til chipen. En chip kan også ha en "remove" knapp som
+            fjerner chipen. Dette gjøres ved å sette [removable]="true".
+          </p>
+          <div class="gap-400 f-wrap flex">
+            <p-chip label="Kun tekst"></p-chip>
+            <p-chip label="Chip som kan fjernes" [removable]="true"></p-chip>
+          </div>
+
+          <pre class="language-html line-numbers">
                     <code class="language-html">
                         &lt;div class=&quot;flex gap-400 f-wrap&quot;&gt;
                             &lt;p-chip label=&quot;Kun tekst&quot;&gt;&lt;/p-chip&gt;
@@ -50,38 +57,48 @@
                         &lt;/div&gt;
                     </code>
                 </pre>
-            </p-card>
+        </p-card>
 
-                    <!--Chip med Ikon-->
-                    <p-card>
-                        <h2 class="as-light fs-500 p-400">Chip med ikon</h2>
-                        <p class="p-400">Det er flere muligheter for å legge til et ikon på en chip.<br></p>
-                            <ul>
-                                <li>
-                                    💎 Ikoner som kommer fra primeng kan legges direkte inn på chip-elementet ved å bruke icon="pi pi-ikonnavn".
-                                </li>
-                                <li>
-                                    💎 Svg-ikoner man har importert i prosjektet sitt, kan også legges direkte inn på chip-elementet ved å bruke image="filsti/ikonnavn.svg".
-                                </li>
-                                <li>
-                                    💎 Hvis man har lagt til et annet ikonbibliotek i prosjektet sitt (f. eks. Google Material Icons), så kan man tilpasse chipen, hvis det er
-                                        behov for det. Vær oppmerksom på at man gjerne må gjøre egne lokale tilpasninger dersom ikonet f. eks. har større font-size enn 16px for 
-                                        å få chipen lik som de andre.
-                                </li>
-                            </ul>
-                        <div class="flex gap-400 f-wrap">
-                            <p-chip label="Chip med ikon fra primeng" icon="pi pi-heart"></p-chip>
-                            <p-chip label="Chip med importert svg-ikon" image="assets/icons/trolley.svg"></p-chip>
-                            <p-chip>
-                                <span class="material-icons p-chip-icon" style="font-size: 16px;">
-                                    favorite
-                                </span>
-                                <span class="p-chip-text">Chip med ikon fra material icons</span>
-                            </p-chip>
-                            
-                        </div>
-                    
-                        <pre class="language-html line-numbers">
+        <!--Chip med Ikon-->
+        <p-card>
+          <h2 class="as-light fs-500 p-400">Chip med ikon</h2>
+          <p class="p-400">
+            Det er flere muligheter for å legge til et ikon på en chip.<br />
+          </p>
+          <ul>
+            <li>
+              💎 Ikoner som kommer fra primeng kan legges direkte inn på
+              chip-elementet ved å bruke icon="pi pi-ikonnavn".
+            </li>
+            <li>
+              💎 Svg-ikoner man har importert i prosjektet sitt, kan også legges
+              direkte inn på chip-elementet ved å bruke
+              image="filsti/ikonnavn.svg".
+            </li>
+            <li>
+              💎 Hvis man har lagt til et annet ikonbibliotek i prosjektet sitt
+              (f. eks. Google Material Icons), så kan man tilpasse chipen, hvis
+              det er behov for det. Vær oppmerksom på at man gjerne må gjøre
+              egne lokale tilpasninger dersom ikonet f. eks. har større
+              font-size enn 16px for å få chipen lik som de andre.
+            </li>
+          </ul>
+          <div class="gap-400 f-wrap flex">
+            <p-chip
+              label="Chip med ikon fra primeng"
+              icon="pi pi-heart"></p-chip>
+            <p-chip
+              label="Chip med importert svg-ikon"
+              image="assets/icons/trolley.svg"></p-chip>
+            <p-chip>
+              <span class="material-icons p-chip-icon" style="font-size: 16px">
+                favorite
+              </span>
+              <span class="p-chip-text">Chip med ikon fra material icons</span>
+            </p-chip>
+          </div>
+
+          <pre class="language-html line-numbers">
                             <code class="language-html">
                                 &lt;div class=&quot;flex gap-400 f-wrap&quot;&gt;
                                     &lt;p-chip label=&quot;Chip med ikon fra primeng&quot; icon=&quot;pi pi-heart&quot;&gt;&lt;/p-chip&gt;
@@ -98,39 +115,50 @@
                                 &lt;/div&gt;
                             </code>
                         </pre>
-                    </p-card>
+        </p-card>
 
-            <!--Andre farger-->
-            <p-card>
-                <h2 class="as-light fs-500 p-400">Chip i andre farger</h2>
-                <p class="p-400">Bruk styleClass på chip-elementet for å få chip i andre farger. Foreløpig har vi kun en annen farge på chip, men her vil det komme flere etter hvert. 
-                    <br>
-                </p>
-                <div class="flex gap-400 f-wrap">
-                    <p-chip styleClass="chip-green" label="Grønn chip"></p-chip>
-                </div>
-            
-                <pre class="language-html line-numbers">
+        <!--Andre farger-->
+        <p-card>
+          <h2 class="as-light fs-500 p-400">Chip i andre farger</h2>
+          <p class="p-400">
+            Bruk styleClass på chip-elementet for å få chip i andre farger.
+            Foreløpig har vi kun en annen farge på chip, men her vil det komme
+            flere etter hvert.
+            <br />
+          </p>
+          <div class="gap-400 f-wrap flex">
+            <p-chip styleClass="chip-green" label="Grønn chip"></p-chip>
+          </div>
+
+          <pre class="language-html line-numbers">
                     <code class="language-html">
                         &lt;div class=&quot;flex gap-400 f-wrap&quot;&gt;
                             &lt;p-chip styleClass=&quot;chip-green&quot; label=&quot;Grønn chip&quot;&gt;&lt;/p-chip&gt;
                         &lt;/div&gt;
                     </code>
                 </pre>
-                <p class="p-400">Hvis man har behov for chip i en annen farge enn de som er tilgjengelig nå, så anbefaler vi at man lager en egen klasse for dette i ditt prosjekts lokale styles.scss fil,
-                    og legger til klassen i styleClass på chip-elementet.</p>
-            </p-card>
+          <p class="p-400">
+            Hvis man har behov for chip i en annen farge enn de som er
+            tilgjengelig nå, så anbefaler vi at man lager en egen klasse for
+            dette i ditt prosjekts lokale styles.scss fil, og legger til klassen
+            i styleClass på chip-elementet.
+          </p>
+        </p-card>
 
-            <!--Font-weights-->
-            <p-card>
-                <h2 class="as-light fs-500 p-400">Chip font-weight</h2>
-                <p class="p-400">Standard font-weight på label i chip er 700. Ved å legge til styleClass="fw-regular" på chip-elementet, kan man få en smalere label med font-weight 500.</p>
-                <div class="flex gap-400 f-wrap">
-                    <p-chip label="Standard font-weight 700"></p-chip>
-                    <p-chip styleClass="fw-regular" label="font-weight 500"></p-chip>
-                </div>
-            
-                <pre class="language-html line-numbers">
+        <!--Font-weights-->
+        <p-card>
+          <h2 class="as-light fs-500 p-400">Chip font-weight</h2>
+          <p class="p-400">
+            Standard font-weight på label i chip er 700. Ved å legge til
+            styleClass="fw-regular" på chip-elementet, kan man få en smalere
+            label med font-weight 500.
+          </p>
+          <div class="gap-400 f-wrap flex">
+            <p-chip label="Standard font-weight 700"></p-chip>
+            <p-chip styleClass="fw-regular" label="font-weight 500"></p-chip>
+          </div>
+
+          <pre class="language-html line-numbers">
                     <code class="language-html">
                         &lt;div class=&quot;flex gap-400 f-wrap&quot;&gt;
                             &lt;p-chip label=&quot;Standard font-weight 700&quot;&gt;&lt;/p-chip&gt;
@@ -138,20 +166,22 @@
                         &lt;/div&gt;
                     </code>
                 </pre>
-            </p-card>
+        </p-card>
 
-                    <!--Chip størrelser-->
-                    <p-card>
-                        <h2 class="as-light fs-500 p-400">Chip størrelse</h2>
-                        <p class="p-400">Standard chip har font-size 14px. <br>Skriv StyleClass="chip-md" på chip-elementet for å få en medium chip med font-size 16px.
-                        </p>
-                        <div class="flex gap-400 f-wrap">
-                            <p-chip label="standard chip"></p-chip>
-                            <p-chip styleClass="chip-md" label="medium chip"></p-chip>
-                            <!-- <p-chip styleClass="chip-lg" label="Stor chip"></p-chip> -->
-                        </div>
-                    
-                        <pre class="language-html line-numbers">
+        <!--Chip størrelser-->
+        <p-card>
+          <h2 class="as-light fs-500 p-400">Chip størrelse</h2>
+          <p class="p-400">
+            Standard chip har font-size 14px. <br />Skriv StyleClass="chip-md"
+            på chip-elementet for å få en medium chip med font-size 16px.
+          </p>
+          <div class="gap-400 f-wrap flex">
+            <p-chip label="standard chip"></p-chip>
+            <p-chip styleClass="chip-md" label="medium chip"></p-chip>
+            <!-- <p-chip styleClass="chip-lg" label="Stor chip"></p-chip> -->
+          </div>
+
+          <pre class="language-html line-numbers">
                             <code class="language-html">
                                 &lt;div class=&quot;flex gap-400 f-wrap&quot;&gt;
                                     &lt;p-chip label=&quot;Standard chip&quot;&gt;&lt;/p-chip&gt;
@@ -159,23 +189,25 @@
                                 &lt;/div&gt;
                             </code>
                         </pre>
-                    </p-card>
-                
-            </div>
-        </p-tabPanel>
+        </p-card>
+      </div>
+    </p-tabPanel>
 
-        <p-tabPanel>
-            <ng-template pTemplate="header">
-                <span>Info</span>
-            </ng-template>
-            <p>Her skriver vi litt om hvordan komponenten bør brukes og UX/a11y prinsipp du bør tenke på.</p>
-        </p-tabPanel>
+    <p-tabPanel>
+      <ng-template pTemplate="header">
+        <span>Info</span>
+      </ng-template>
+      <p>
+        Her skriver vi litt om hvordan komponenten bør brukes og UX/a11y
+        prinsipp du bør tenke på.
+      </p>
+    </p-tabPanel>
 
-        <p-tabPanel>
-            <ng-template pTemplate="header">
-                <span>Ren HTML/CSS</span>
-            </ng-template>
-            <p>Her kommer kode for komponenten uten tilknyttet rammeverk.</p>
-        </p-tabPanel>
-    </p-tabView>
+    <p-tabPanel>
+      <ng-template pTemplate="header">
+        <span>Ren HTML/CSS</span>
+      </ng-template>
+      <p>Her kommer kode for komponenten uten tilknyttet rammeverk.</p>
+    </p-tabPanel>
+  </p-tabView>
 </div>

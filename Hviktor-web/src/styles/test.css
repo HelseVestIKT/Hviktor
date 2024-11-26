@@ -14,7 +14,8 @@
     font-size: 1rem;
     font-family: inherit;
     font-feature-settings: inherit;
-    transition: background var(--p-button-transition-duration),
+    transition:
+      background var(--p-button-transition-duration),
       color var(--p-button-transition-duration),
       border-color var(--p-button-transition-duration),
       outline-color var(--p-button-transition-duration),
@@ -500,7 +501,7 @@
   .p-button-icon-right {
     order: 1;
   }
-  p-button[iconpos="right"] spinnericon {
+  p-button[iconpos='right'] spinnericon {
     order: 1;
   }
 }

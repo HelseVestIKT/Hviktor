@@ -8,8 +8,6 @@ import { ChipModule } from 'primeng/chip';
   standalone: true,
   imports: [CardModule, CheckboxModule, ChipModule],
   templateUrl: './news-feed.component.html',
-  styleUrl: './news-feed.component.scss'
+  styleUrl: './news-feed.component.scss',
 })
-export class NewsFeedComponent {
-
-}
+export class NewsFeedComponent {}

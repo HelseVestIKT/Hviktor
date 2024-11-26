@@ -1,48 +1,34 @@
 .container {
-    @apply 
-        bg-neutral-500 
-        rounded-lg 
-        p-4 
-        mb-6 
-        w-48 
-        min-h-16;
+  @apply mb-6 min-h-16 w-48 rounded-lg bg-neutral-500 p-4;
 }
 .container.flex.flex-wrap {
-    width: 70px;
-    align-content: flex-start;
+  width: 70px;
+  align-content: flex-start;
 }
 
 .box {
-    @apply 
-        w-5 
-        h-5 
-        rounded-lg
-        bg-yellow-500;
+  @apply h-5 w-5 rounded-lg bg-yellow-500;
 }
 
 .box.green {
-    @apply bg-green-500;
+  @apply bg-green-500;
 }
 
-.box.red  {
-    @apply bg-red-500;
+.box.red {
+  @apply bg-red-500;
 }
 
-.containerMargin, .containerPadding {
-    width: -moz-fit-content;
-    @apply
-        border-neutral-900
-        w-fit
-        bg-neutral-500
-        rounded-lg
-        mb-6
+.containerMargin,
+.containerPadding {
+  width: -moz-fit-content;
+  @apply mb-6 w-fit rounded-lg border-neutral-900 bg-neutral-500;
 }
 
 .containerMargin .box {
-    @apply border-neutral-900 bg-yellow-500;
+  @apply border-neutral-900 bg-yellow-500;
 }
 
 .radius {
-    background-color: var(--clr-neutral-400);
-    width: 70px;
+  background-color: var(--clr-neutral-400);
+  width: 70px;
 }

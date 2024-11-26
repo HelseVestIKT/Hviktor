@@ -1,24 +1,19 @@
 .type {
-    @apply 
-        bg-neutral-400 
-        p-2 
-        mr-4 
-        my-2 
-        text-center 
-        w-96 
-        rounded-md
-        border
-        border-neutral-600;
+  @apply my-2 mr-4 w-96 rounded-md border border-neutral-600 bg-neutral-400 p-2 text-center;
 }
 
 .icon {
-    .pi {
-        font-size: 1.5rem;
-    }
-
+  .pi {
+    font-size: 1.5rem;
+  }
 }
 
-
-.pi.pi-check-circle { @apply text-green-500 }
-.pi.pi-question-circle { @apply text-yellow-500 }
-.pi.pi-times-circle { @apply text-red-500 }
+.pi.pi-check-circle {
+  @apply text-green-500;
+}
+.pi.pi-question-circle {
+  @apply text-yellow-500;
+}
+.pi.pi-times-circle {
+  @apply text-red-500;
+}

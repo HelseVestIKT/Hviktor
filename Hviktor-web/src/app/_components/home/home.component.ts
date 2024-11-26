@@ -8,8 +8,6 @@ import { NewsFeedComponent } from '../news-feed/news-feed.component';
   standalone: true,
   imports: [TabsModule, CardModule, NewsFeedComponent],
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrls: ['./home.component.scss'],
 })
-export class HomeComponent {
-
-}
+export class HomeComponent {}

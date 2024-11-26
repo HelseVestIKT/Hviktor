@@ -8,10 +8,9 @@ describe('NewsFeedComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [NewsFeedComponent]
-    })
-    .compileComponents();
-    
+      imports: [NewsFeedComponent],
+    }).compileComponents();
+
     fixture = TestBed.createComponent(NewsFeedComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
