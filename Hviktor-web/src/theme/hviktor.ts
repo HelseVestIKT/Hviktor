@@ -1,5 +1,5 @@
-import { Nora } from "primeng/themes/nora";
-import { definePreset } from 'primeng/themes';
+import { definePreset } from '@primeng/themes';
+import Nora from '@primeng/themes/nora';
 import { colors } from "./colors/colors";
 import { primaryColor } from "./colors/primaryColor";
 import { colorScheme } from "./colors/colorScheme";

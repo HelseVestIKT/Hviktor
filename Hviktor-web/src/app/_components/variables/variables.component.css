@@ -1,6 +1,6 @@
 .container {
     @apply 
-        bg-neutral-400 
+        bg-neutral-500 
         rounded-lg 
         p-4 
         mb-6 
@@ -17,15 +17,15 @@
         w-5 
         h-5 
         rounded-lg
-        bg-yellow-400;
+        bg-yellow-500;
 }
 
 .box.green {
-    @apply bg-green-400;
+    @apply bg-green-500;
 }
 
 .box.red  {
-    @apply bg-red-400;
+    @apply bg-red-500;
 }
 
 .containerMargin, .containerPadding {
@@ -33,13 +33,13 @@
     @apply
         border-neutral-900
         w-fit
-        bg-neutral-400
+        bg-neutral-500
         rounded-lg
         mb-6
 }
 
 .containerMargin .box {
-    @apply border-neutral-900 bg-yellow-400;
+    @apply border-neutral-900 bg-yellow-500;
 }
 
 .radius {

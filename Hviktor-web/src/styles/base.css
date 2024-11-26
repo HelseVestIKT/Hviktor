@@ -14,7 +14,7 @@
     h5 { @apply text-xl; }
     h6 { @apply text-lg; }
 
-    a { @apply text-primary-400 underline; }
+    a { @apply text-primary-500 underline; }
     label { @apply font-sans; }
 
     .p-button-label { @apply font-normal !important; }

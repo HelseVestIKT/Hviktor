@@ -19,6 +19,6 @@
 }
 
 
-.pi.pi-check-circle { @apply text-green-400 }
-.pi.pi-question-circle { @apply text-yellow-400 }
-.pi.pi-times-circle { @apply text-red-400 }
+.pi.pi-check-circle { @apply text-green-500 }
+.pi.pi-question-circle { @apply text-yellow-500 }
+.pi.pi-times-circle { @apply text-red-500 }

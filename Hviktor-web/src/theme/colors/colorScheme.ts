@@ -14,13 +14,13 @@ export const colorScheme = {
         950: '{slate.950}'
     },
     primary: {
-        color: '{primary.400}',
+        color: '{primary.500}',
         contrastColor: '#ffffff',
-        hoverColor: '{primary.300}',
+        hoverColor: '{primary.600}',
         activeColor: '{primary.800}'
     },
     highlight: {
-        background: '{primary.400}',
+        background: '{primary.500}',
         focusBackground: '{primary.700}',
         color: '#ffffff',
         focusColor: '#ffffff'
