@@ -7,7 +7,8 @@
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
-          "style": "scss"
+          "style": "css",
+          "skipTests": true
         },
         "@schematics/angular:application": {
           "strict": true
@@ -24,6 +25,7 @@
               "base": "dist"
             },
             "index": "src/index.html",
+            "browser": "src/main.ts",
             "polyfills": [
               "src/polyfills.ts"
             ],
@@ -49,8 +51,7 @@
               "node_modules/prismjs/components/prism-typescript.js",
               "node_modules/prismjs/components/prism-scss.js",
               "node_modules/prismjs/components/prism-bash.js"
-            ],
-            "browser": "src/main.ts"
+            ]
           },
           "configurations": {
             "production": {
