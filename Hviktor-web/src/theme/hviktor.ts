@@ -1,8 +1,8 @@
 import { definePreset } from '@primeng/themes';
 import Nora from '@primeng/themes/nora';
 import { colors } from './colors/colors';
-import { primaryColor } from './colors/primaryColor';
 import { colorScheme } from './colors/colorScheme';
+import { primaryColor } from './colors/primaryColor';
 import { button } from './components/button';
 import { menubar } from './components/menubar';
 import { tabs } from './components/tabs';
