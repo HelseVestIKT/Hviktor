@@ -9,5 +9,21 @@
     "@digdir/designsystemet-css": "^1.9.0",
     "tslib": "^2.3.0"
   },
-  "sideEffects": false
+  "exports": {
+    ".": {
+      "types": "./index.d.ts",
+      "default": "./fesm2022/helsevestikt-hviktor.mjs"
+    },
+    "./styles.css": "./styles.css"
+  },
+  "files": [
+    "fesm2022/",
+    "index.d.ts",
+    "styles.css",
+    "README.md",
+    "package.json"
+  ],
+  "sideEffects": [
+    "**/*.css"
+  ]
 }

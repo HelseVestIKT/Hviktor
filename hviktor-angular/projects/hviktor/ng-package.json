@@ -3,5 +3,13 @@
   "dest": "../../dist/hviktor",
   "lib": {
     "entryFile": "src/public-api.ts"
-  }
+  },
+
+  "assets": [
+    { "glob": "styles.css", "input": "src", "output": "."}
+  ],
+
+    "allowedNonPeerDependencies": [
+    "@digdir/designsystemet-css"
+    ]
 }
