@@ -7,6 +7,7 @@
   },
   "dependencies": {
     "@digdir/designsystemet-css": "^1.9.0",
+    "@digdir/designsystemet-theme": "^1.9.0",
     "tslib": "^2.3.0"
   },
   "exports": {
@@ -15,6 +16,7 @@
       "default": "./fesm2022/helsevestikt-hviktor.mjs"
     },
     "./styles.css": "./styles.css"
+    
   },
   "files": [
     "fesm2022/",

@@ -4,7 +4,7 @@ import { HviButton } from '@helsevestikt/hviktor';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, HviButton],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })

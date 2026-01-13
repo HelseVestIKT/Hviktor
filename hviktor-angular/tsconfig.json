@@ -5,9 +5,13 @@
   "compilerOptions": {
     "strict": true,
     "paths": {
-      "hviktor": [
+      "@helsevestikt/hviktor": [
         "./dist/hviktor",
-        "./dist/hviktor"
+        "./projects/hviktor/src/public-api"
+      ],
+      "@helsevestikt/hviktor/*": [
+        "./dist/hviktor/*",
+        "./projects/hviktor/src/*"
       ]
     },
     "noImplicitOverride": true,
