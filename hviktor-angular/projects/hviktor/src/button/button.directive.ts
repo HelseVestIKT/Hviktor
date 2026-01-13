@@ -1,22 +1,5 @@
 import { booleanAttribute, Directive, HostBinding, Input } from "@angular/core";
 
-/**
- * Direktive som gjør at vanlige `<button>`- og `<a>`-elementer får DS-knappestiler samt attributter
- * for størrelse, variant, farge og ikon/loader-tilstander slik at de kan kodes som design tokens.
- *
- * @remarks
- * Som utvikler kan du bruke `hviButton` for å holde markup ren mens du styrer visuell
- * fremtoning via inputs. Direktiven binder automatisk riktige klasser og aria-attributter basert
- * på prop-verdiene, slik at knappene både ser riktige ut og gir god tilgjengelighet.
- *
- * @property size Justerer knappens størrelse (`'sm' | 'md' | 'lg'`) ved å sette `data-size`.
- * @property variant Setter visuell variant (`'primary' | 'secondary' | 'tertiary'`) via `data-variant`.
- * @property type Angir knappetype (`'button' | 'submit' | 'reset'`) og eksponeres som `type`.
- * @property color Velger fargetema (`'accent' | 'brand1' | 'brand2' | 'brand3' | 'neutral' | 'danger'`) på `data-color`.
- * @property icon Flag som markerer ikonknapp med `data-icon`.
- * @property loading Aktiverer `aria-busy="true"` og viser lastestatus når satt.
- * @property fullWidth Stretcher knappen til full bredde via `data-fullWidth`.
- */
 @Directive({
     selector: 'button[hviButton], a[hviButton]',
     standalone: true,
