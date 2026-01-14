@@ -1,0 +1,26 @@
+{
+  "name": "@helsevestikt/hviktor",
+  "version": "0.0.1",
+  "peerDependencies": {
+    "@angular/common": "^21.0.0",
+    "@angular/core": "^21.0.0"
+  },
+  "dependencies": {
+    "@digdir/designsystemet-css": "^1.9.0",
+    "@digdir/designsystemet-theme": "^1.9.0",
+    "tslib": "^2.3.0"
+  },
+  "exports": {
+    "./styles.css": "./styles.css"
+  },
+  "files": [
+    "fesm2022/",
+    "index.d.ts",
+    "styles.css",
+    "README.md",
+    "package.json"
+  ],
+  "sideEffects": [
+    "**/*.css"
+  ]
+}
