@@ -1,11 +1,11 @@
 <article class="max-w-4xl mx-auto space-y-12 py-8">
     <header>
-        <h1 class="text-4xl">Hviktor Angular Demo</h1>
-        <p>Viser komponenter fra Hviktor designbiblioteket i en Angular-applikasjon. Bygger på designsystemet.no.</p>
+        <h1 hviHeading size="xl">Hviktor Angular Demo</h1>
+        <p hviParagraph>Viser komponenter fra Hviktor designbiblioteket i en Angular-applikasjon. Bygger på designsystemet.no.</p>
     </header>
 
     <section class="space-y-2">
-        <h2 class="text-3xl">Alert</h2>
+        <h2 hviHeading size="lg">Alert</h2>
         <div class="flex gap-2 flex-wrap">
             <hvi-alert>
                 Dette er en info alert
@@ -23,17 +23,28 @@
     </section>
 
     <section class="space-y-2">
-        <h2 class="text-3xl">Avatar</h2>
+        <h2 hviHeading size="lg">Avatar</h2>
         <div class="flex gap-4 items-center">
-            <hvi-avatar ariaLabel="Erlend Johnsen" initials="EJ" color="brand2"></hvi-avatar>
+            <hvi-avatar ariaLabel="Erlend Johnsen" />
+            <hvi-avatar variant="square" ariaLabel="Erlend Johnsen" />
+            <hvi-avatar initials="EJ" ariaLabel="Erlend Johnsen" />
+            <hvi-avatar initials="xs" ariaLabel="Erlend Johnsen" size="xs" />
+            <hvi-avatar initials="sm" ariaLabel="Erlend Johnsen" size="sm" />
+            <hvi-avatar initials="md" ariaLabel="Erlend Johnsen" size="md" />
+            <hvi-avatar initials="lg" ariaLabel="Erlend Johnsen" size="lg" />
         </div>
+        
+        <button hviButton variant="secondary">
+            <hvi-avatar initials="EJ" ariaLabel="Erlend Johnsen" size="sm" />
+            Button with Avatar
+        </button>
     </section>
 
     <section class="space-y-4">
-        <h2 class="text-3xl">Button</h2>
+        <h2 hviHeading size="lg">Button</h2>
        
         <section class="space-y-2">
-            <h3 class="text-2xl">Variant</h3>
+            <h3 hviHeading size="md">Variant</h3>
             <div class="flex gap-2 flex-wrap">
                 <button hviButton>Plain hviButton</button>
                 <button hviButton variant="secondary">Secondary</button>
@@ -42,7 +53,7 @@
         </section>
 
         <section class="space-y-2">
-            <h3 class="text-2xl">Color</h3>        
+            <h3 hviHeading size="md">Color</h3>        
             <div class="flex gap-2 flex-wrap">
                 <button hviButton color="brand1">Brand1</button>
                 <button hviButton color="brand2">Brand2</button>
@@ -53,7 +64,7 @@
         </section>
 
         <section class="space-y-2">        
-            <h3 class="text-2xl">Size</h3>
+            <h3 hviHeading size="md">Size</h3>
             <div class="flex gap-2 flex-wrap">
                 <button hviButton size="sm">Small</button>
                 <button hviButton size="md">Medium (Default)</button>
@@ -62,13 +73,38 @@
         </section>
 
         <section class="space-y-2">
-            <h3 class="text-2xl">Div</h3>       
+            <h3 hviHeading size="lg">Div</h3>       
             <div class="flex gap-2 flex-wrap">
                 <button hviButton icon>⚙️</button>
                 <button hviButton loading>Loading...</button>
                 <button hviButton fullWidth>Full Width</button>
             </div>
         </section>
+    </section>
+
+    <section class="space-y-2">
+        <h2 hviHeading size="lg">Card</h2>
+        <div class="flex flex-wrap gap-2">
+            <hvi-card maxWidth="320px">
+                <h2 hviHeading>Lykkeland Barnehage</h2>
+                <p hviParagraph>Lykkeland Barneskole er ein trygg og inkluderande nærskule der leik, læring og nysgjerrigheit går hand i hand.</p>
+                <p hviParagraph size="sm">Solslett kommune</p>
+            </hvi-card>
+
+            <hvi-card color="accent" variant="tinted" maxWidth="320px">
+                <div hviCardBlock>
+                    <video controls width="100%">
+                        <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div hviCardBlock>
+                    <h3 hviHeading>Se en film</h3>
+                    <p hviParagraph>En veldig, veldig, veldig gøy film!</p>
+                    <button hviButton variant="secondary">Handling</button>
+                </div>
+            </hvi-card>
+
+        </div>
     </section>
 
     <footer>

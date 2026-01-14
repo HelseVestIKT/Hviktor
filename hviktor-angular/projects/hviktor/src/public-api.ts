@@ -5,3 +5,6 @@
 export * from './button';
 export * from './alert';
 export * from './avatar';
+export * from './heading';
+export * from './paragraph';
+export * from './card';

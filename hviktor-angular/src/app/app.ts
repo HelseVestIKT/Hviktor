@@ -1,11 +1,11 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { HviAvatar, HviButton } from '@helsevestikt/hviktor';
+import { HviAvatar, HviButton, HviHeading, HviParagraph, HviCard, HviCardBlock } from '@helsevestikt/hviktor';
 import { HviAlert } from '@helsevestikt/hviktor';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, HviButton, HviAlert, HviAvatar],
+  imports: [RouterOutlet, HviButton, HviAlert, HviAvatar, HviHeading, HviParagraph, HviCard, HviCardBlock],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
