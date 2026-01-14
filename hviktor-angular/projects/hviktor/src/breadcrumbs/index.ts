@@ -1,0 +1,1 @@
+export { HviBreadcrumbs } from './breadcrumbs.component';
