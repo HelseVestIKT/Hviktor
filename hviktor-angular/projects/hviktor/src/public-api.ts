@@ -8,3 +8,4 @@ export * from './avatar';
 export * from './heading';
 export * from './paragraph';
 export * from './card';
+export * from './label';

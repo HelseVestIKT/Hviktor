@@ -1,0 +1,1 @@
+export { HviLabel } from "./label.directive";
