@@ -25,8 +25,19 @@
     <section class="space-y-2">
         <h2 class="text-3xl">Avatar</h2>
         <div class="flex gap-4 items-center">
-            <hvi-avatar ariaLabel="Erlend Johnsen" initials="EJ" color="brand2"></hvi-avatar>
+            <hvi-avatar ariaLabel="Erlend Johnsen" />
+            <hvi-avatar variant="square" ariaLabel="Erlend Johnsen" />
+            <hvi-avatar initials="EJ" ariaLabel="Erlend Johnsen" />
+            <hvi-avatar initials="xs" ariaLabel="Erlend Johnsen" size="xs" />
+            <hvi-avatar initials="sm" ariaLabel="Erlend Johnsen" size="sm" />
+            <hvi-avatar initials="md" ariaLabel="Erlend Johnsen" size="md" />
+            <hvi-avatar initials="lg" ariaLabel="Erlend Johnsen" size="lg" />
         </div>
+        
+        <button hviButton variant="secondary">
+            <hvi-avatar initials="EJ" ariaLabel="Erlend Johnsen" size="sm" />
+            Button with Avatar
+        </button>
     </section>
 
     <section class="space-y-4">
