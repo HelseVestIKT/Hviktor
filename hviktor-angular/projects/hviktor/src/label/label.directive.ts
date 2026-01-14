@@ -1,7 +1,7 @@
 import { Directive, Input } from "@angular/core";
 
 @Directive({
-    selector: 'label[hviLabel]',
+    selector: 'label[hviLabel], legend[hviLabel]',
     standalone: true,
     host: {
         class: 'ds-label',
