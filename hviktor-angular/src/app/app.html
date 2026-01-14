@@ -1,24 +1,54 @@
-<div class="flex gap-2 flex-wrap my-8">
-    <button hviButton>Plain hviButton</button>
-    <button hviButton variant="secondary">Secondary</button>
-    <button hviButton variant="tertiary">Tertiary</button>
-</div>
-<div class="flex gap-2 flex-wrap my-8">
-    <button hviButton color="brand1">Brand1</button>
-    <button hviButton color="brand2">Brand2</button>
-    <button hviButton color="brand3">Brand3</button>
-    <button hviButton color="neutral">Neutral</button>
-    <button hviButton color="danger">Danger</button>
-</div>
-<div class="flex gap-2 flex-wrap my-8">
-    <button hviButton size="sm">Small</button>
-    <button hviButton size="md">Medium (Default)</button>
-    <button hviButton size="lg">Large</button>
-</div>
-<div class="flex gap-2 flex-wrap my-8">
-    <button hviButton icon>⚙️</button>
-    <button hviButton loading>Loading...</button>
-    <button hviButton fullWidth>Full Width</button>
-</div>
+<article class="max-w-4xl mx-auto space-y-12 py-8">
+    <header>
+        <h1 class="text-4xl">Hviktor Angular Demo</h1>
+        <p>Viser komponenter fra Hviktor designbiblioteket i en Angular-applikasjon. Bygger på designsystemet.no.</p>
+    </header>
 
-<router-outlet />
+    <section class="space-y-4">
+        <h2 class="text-3xl">Button</h2>
+        <p>Button er laget som et Angular directive. Det vil si at en bruker et vanlig button html-element, og gir det en del egenskaper ved å slenge på hviButton</p>
+        
+        <section class="space-y-2">
+            <h3 class="text-2xl">Variant</h3>
+            <div class="flex gap-2 flex-wrap">
+                <button hviButton>Plain hviButton</button>
+                <button hviButton variant="secondary">Secondary</button>
+                <button hviButton variant="tertiary">Tertiary</button>
+            </div>
+        </section>
+
+        <section class="space-y-2">
+            <h3 class="text-2xl">Color</h3>        
+            <div class="flex gap-2 flex-wrap">
+                <button hviButton color="brand1">Brand1</button>
+                <button hviButton color="brand2">Brand2</button>
+                <button hviButton color="brand3">Brand3</button>
+                <button hviButton color="neutral">Neutral</button>
+                <button hviButton color="danger">Danger</button>
+            </div>
+        </section>
+
+        <section class="space-y-2">        
+            <h3 class="text-2xl">Size</h3>
+            <div class="flex gap-2 flex-wrap">
+                <button hviButton size="sm">Small</button>
+                <button hviButton size="md">Medium (Default)</button>
+                <button hviButton size="lg">Large</button>
+            </div>
+        </section>
+
+        <section class="space-y-2">
+            <h3 class="text-2xl">Div</h3>       
+            <div class="flex gap-2 flex-wrap">
+                <button hviButton icon>⚙️</button>
+                <button hviButton loading>Loading...</button>
+                <button hviButton fullWidth>Full Width</button>
+            </div>
+        </section>
+    </section>
+
+    <footer>
+        <router-outlet />
+    </footer>
+
+</article>
