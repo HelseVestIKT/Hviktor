@@ -1,3 +1,5 @@
+// Copied from https://github.com/digdir/designsystemet/blob/main/packages/react/src/components/field/field-observer.ts
+
 export function fieldObserver(fieldElement: HTMLElement | null) {
   if (!fieldElement) return;
 
