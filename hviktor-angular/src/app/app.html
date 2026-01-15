@@ -100,6 +100,87 @@
         </button>
     </section>
 
+    <section class="space-y-2">
+        <h2 hviHeading size="lg">Badge</h2>
+        <div class="flex gap-4 items-center">
+            <hvi-badge color="neutral" count="9+" variant="base"></hvi-badge>
+            <hvi-badge color="neutral" count="9+" variant="tinted"></hvi-badge>
+            <hvi-badge color="danger" count="9+" variant="base"></hvi-badge>
+            <hvi-badge color="danger" count="9+" variant="tinted"></hvi-badge>
+            <hvi-badge color="info" count="9+" variant="base"></hvi-badge>
+            <hvi-badge color="info" count="9+" variant="tinted"></hvi-badge>
+            <hvi-badge color="warning" count="9+" variant="base"></hvi-badge>
+            <hvi-badge color="warning" count="9+" variant="tinted"></hvi-badge>
+            <hvi-badge color="brand1" count="9+" variant="base"></hvi-badge>
+            <hvi-badge color="brand1" count="9+" variant="tinted"></hvi-badge>
+            <hvi-badge color="brand2" count="9+" variant="base"></hvi-badge>
+            <hvi-badge color="brand2" count="9+" variant="tinted"></hvi-badge>
+            <hvi-badge color="brand3" count="9+" variant="base"></hvi-badge>
+            <hvi-badge color="brand3" count="9+" variant="tinted"></hvi-badge>
+            <hvi-badge color="accent" count="9+" variant="base"></hvi-badge>
+            <hvi-badge color="accent" count="9+" variant="tinted"></hvi-badge>
+            <div class="flex gap-2 items-center">
+                <hvi-badge color="success" variant="base"></hvi-badge>
+                <p>Aktiv</p>
+            </div>
+
+            <hvi-badge-position 
+                placement="top-left">
+                <hvi-badge
+                color="danger"
+                count="3"
+                >
+            </hvi-badge>
+            <div>
+                <p>test</p>
+            </div>
+            </hvi-badge-position>
+        </div>
+    </section>
+
+    <section class="space-y-4">
+        <h2 hviHeading size="lg">Chip</h2>
+
+        <section class="space-y-2">
+            <h3 hviHeading size="md">Radio</h3>
+            <div class="flex gap-2 flex-wrap">
+                <label hviChip>
+                    <input hviInput type="radio" value="nynorsk" checked="" name="my-radio" />
+                  Nynorsk
+                </label>
+                <label hviChip>
+                    <input hviInput type="radio" value="bokmål" name="my-radio" />
+                  Bokmål
+                </label>
+            </div>
+        </section>
+
+        <section class="space-y-2">
+            <h3 hviHeading size="md">Checkbox</h3>
+            <div class="flex gap-2 flex-wrap">
+                <label hviChip>
+                    <input hviInput type="checkbox"/>
+                    Nynorsk
+                </label>
+            </div>
+        </section>
+
+        <section class="space-y-2">
+            <h3 hviHeading size="md">Button</h3>
+            <div class="flex gap-2 flex-wrap">
+                <button hviChip>Tøm alle filtre</button>
+            </div>
+        </section>
+
+        <section class="space-y-2">
+            <h3 hviHeading size="md">Button removable</h3>
+            <div class="flex gap-2 flex-wrap">
+                <button hviChip removable="true" aria-label="Slett Norge">Norge</button>
+            </div>
+        </section>
+
+    </section>
+
     <section class="space-y-4">
         <h2 hviHeading size="lg">Button</h2>
        
@@ -140,7 +221,7 @@
                 <button hviButton fullWidth>Full Width</button>
             </div>
         </section>
-    </section>
+    </section>  
 
     <section class="space-y-2">
         <h2 hviHeading size="lg">Card</h2>
@@ -165,6 +246,45 @@
             </hvi-card>
 
         </div>
+    </section>
+
+    <section class="space-y-2">
+        <h2 hviHeading size="lg">Forms</h2>
+        <fieldset hviFieldset>
+            <legend hviLabel>Hva bruker du penger på?</legend>
+            <p hviParagraph variant="default">
+                Dette vil hjelpe oss å gi deg et bedre tilbud.
+            </p>
+            <hvi-field>
+                <label hviLabel weight="medium">Mat</label>
+                <p hviFieldDescription>Hvor mye bruker du på mat hver måned?</p>
+                <hvi-field-affixes>
+                    <hvi-field-affix>NOK</hvi-field-affix>
+                    <input hviInput type="number" placeholder="Beløp" />
+                    <hvi-field-affix>pr. mnd.</hvi-field-affix>
+                </hvi-field-affixes>
+                <span hviFieldOptional>Valgfritt</span>
+            </hvi-field>
+        </fieldset>
+
+        <fieldset hviFieldset>
+            <legend hviLabel>Kjønn</legend>
+            <p hviParagraph>Hva er du, egentlig?</p>
+
+            <hvi-field>
+                <input hviInput type="checkbox" value="male" name="gender" />
+                <label hviLabel weight="medium">Mann</label>
+            </hvi-field>
+            <hvi-field>
+                <input hviInput type="checkbox" value="female" name="gender" />
+                <label hviLabel weight="medium">Kvinne</label>
+            </hvi-field>
+            <hvi-field>
+                <input hviInput type="checkbox" value="other" name="gender" />
+                <label hviLabel weight="medium">Annet</label>
+            </hvi-field>
+        </fieldset>
+        
     </section>
 
     <footer>

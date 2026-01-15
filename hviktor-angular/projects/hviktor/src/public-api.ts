@@ -2,6 +2,7 @@
  * Public API Surface of hviktor
  */
 
+export * from './badge';
 export * from './button';
 export * from './alert';
 export * from './avatar';
@@ -12,3 +13,7 @@ export * from './card';
 export * from './label';
 export * from './fieldset';
 export * from './details';
+export * from './forms/fieldset';
+export * from './forms/field';
+export * from './forms/input';
+export * from './chip';

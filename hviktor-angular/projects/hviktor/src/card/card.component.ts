@@ -1,5 +1,19 @@
 import { Component, Input } from "@angular/core";
 
+/**
+ * Card fremhever informasjon eller oppgaver som hører sammen. 
+ * Komponenten finnes i to varianter og kan inneholde tekst, bilde, tekstfelt, knapper og lenker.
+ * 
+ * Eksempel på bruk:
+ * ```html
+ * <hvi-card variant="tinted" color="brand1" maxWidth="400px">
+ *  <h2>Dette er et kort</h2>
+ *  <p>Innholdet i kortet går her.</p>
+ * </hvi-card>
+ * ```
+ * 
+ * Dokumentasjon: https://designsystemet.no/no/components/docs/card/overview
+ */
 @Component({
     selector: 'hvi-card',
     standalone: true,
@@ -13,13 +27,13 @@ import { Component, Input } from "@angular/core";
 })
 
 export class HviCard {
-    /** Change the background color of the card. */
+    /** Setter bakgrunn på kortet */
     @Input() variant?: 'default' | 'tinted';
 
-    /** The color theme of the card */
+    /** Fargetemaet på kortet */
     @Input() color?: 'accent' | 'brand1' | 'brand2' | 'brand3' | 'neutral';
     
     
-    /** The maximum width of the card, for example '320px' or '20rem' */
+    /** Maksimal bredde på kortet, for eksempel '320px' eller '20rem' */
     @Input() maxWidth?: string;
 }

@@ -1,5 +1,22 @@
 import { Component, Input } from "@angular/core";
 
+
+/**
+ * Avatar viser et bilde, initialer eller ikon for en person, enhet eller profil.
+ * 
+ * Eksempel på bruk:
+ * ```html
+ * <hvi-avatar 
+ *  ariaLabel="Ola Nordmann"
+ *  variant="circle"
+ *  initials="ON"
+ *  size="md"
+ *  color="brand1">
+ * </hvi-avatar>
+ * ```
+ * 
+ * Dokumentasjon: https://designsystemet.no/no/components/docs/avatar/overview
+ */
 @Component({
   selector: 'hvi-avatar',
   standalone: true,
@@ -15,18 +32,18 @@ import { Component, Input } from "@angular/core";
     },
 })
 export class HviAvatar {
-    /** The name of the person the avatar represents */
+    /** Navnet på personen avataren representerer */
     @Input() ariaLabel?: string;
 
-    /** The shape of the avatar */
+    /** Formen på avataren */
     @Input() variant?: 'circle' | 'square';
 
-    /** Initials to display inside the avatar */
+    /** Initialer som vises inne i avataren */
     @Input() initials?: string;
 
-    /** The size of the avatar */
+    /** Størrelsen på avataren */
     @Input() size?: 'xs' | 'sm' | 'md' | 'lg';
 
-    /** The color theme of the avatar */
+    /** Fargetemaet på avataren */
     @Input() color?: 'accent' | 'brand1' | 'brand2' | 'brand3' | 'neutral' | 'danger';
 }

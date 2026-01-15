@@ -47,7 +47,7 @@ const toPascal = (value) =>
     .join('');
 
 const pascalName = toPascal(baseName);
-const className = `Hvi${pascalName}${type === 'component' ? 'Component' : 'Directive'}`;
+const className = `Hvi${pascalName}`;
 const typeSuffix = type === 'component' ? 'component' : 'directive';
 const fileStem = `${baseName}.${typeSuffix}`;
 const mainFilePath = path.join(targetDir, `${fileStem}.ts`);
@@ -55,10 +55,22 @@ const indexFilePath = path.join(targetDir, 'index.ts');
 
 const selector = type === 'component' ? `hvi-${baseName}` : `[hvi${pascalName}]`;
 
+const docComment = `/**
+ * Info
+ *
+ * Eksempel på bruk:
+ * \`\`\`html
+ * <${selector}></${selector}>
+ * \`\`\`
+ *
+ * Dokumentasjon: https://designsystemet.no/no/components/docs/input/overview
+ */
+`;
 const mainFileTemplate =
   type === 'component'
     ? `import { Component } from '@angular/core';
 
+${docComment}
 @Component({
   selector: '${selector}',
   standalone: true,
@@ -69,6 +81,7 @@ export class ${className} {}
 `
     : `import { Directive } from '@angular/core';
 
+${docComment}
 @Directive({
   selector: '${selector}',
   standalone: true,
