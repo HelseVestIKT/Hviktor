@@ -220,14 +220,42 @@
     </section>
 
     <section class="space-y-2">
-        <h2 hviHeading size="lg">Label</h2>
-        <div class="flex gap-4 flex-wrap">
-            <span hviLabel>Default</span>
-            <span hviLabel color="success">Success</span>
-            <span hviLabel color="warning">Warning</span>
-            <span hviLabel color="danger">Danger</span>
-            <span hviLabel color="info">Info</span>
-        </div>
+        <h2 hviHeading size="lg">Forms</h2>
+        <fieldset hviFieldset>
+            <legend hviLabel>Hva bruker du penger på?</legend>
+            <p hviParagraph variant="default">
+                Dette vil hjelpe oss å gi deg et bedre tilbud.
+            </p>
+            <hvi-field>
+                <label hviLabel weight="medium">Mat</label>
+                <p hviFieldDescription>Hvor mye bruker du på mat hver måned?</p>
+                <hvi-field-affixes>
+                    <hvi-field-affix>NOK</hvi-field-affix>
+                    <input hviInput type="number" placeholder="Beløp" />
+                    <hvi-field-affix>pr. mnd.</hvi-field-affix>
+                </hvi-field-affixes>
+                <span hviFieldOptional>Valgfritt</span>
+            </hvi-field>
+        </fieldset>
+
+        <fieldset hviFieldset>
+            <legend hviLabel>Kjønn</legend>
+            <p hviParagraph>Hva er du, egentlig?</p>
+
+            <hvi-field>
+                <input hviInput type="checkbox" value="male" name="gender" />
+                <label hviLabel weight="medium">Mann</label>
+            </hvi-field>
+            <hvi-field>
+                <input hviInput type="checkbox" value="female" name="gender" />
+                <label hviLabel weight="medium">Kvinne</label>
+            </hvi-field>
+            <hvi-field>
+                <input hviInput type="checkbox" value="other" name="gender" />
+                <label hviLabel weight="medium">Annet</label>
+            </hvi-field>
+        </fieldset>
+        
     </section>
 
     <footer>

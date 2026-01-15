@@ -1,11 +1,10 @@
-import { Directive } from "@angular/core";
+import { Directive } from '@angular/core';
 
 @Directive({
     selector: '[hviFieldDescription]',
     standalone: true,
     host: {
-        '[attr.data-field]': 'description',
-        id: 'field-description',
+        'data-field': 'description',
     },
 })
 export class HviFieldDescription {}
