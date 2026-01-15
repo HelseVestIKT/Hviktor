@@ -47,7 +47,7 @@ const toPascal = (value) =>
     .join('');
 
 const pascalName = toPascal(baseName);
-const className = `Hvi${pascalName}${type === 'component' ? 'Component' : 'Directive'}`;
+const className = `Hvi${pascalName}`;
 const typeSuffix = type === 'component' ? 'component' : 'directive';
 const fileStem = `${baseName}.${typeSuffix}`;
 const mainFilePath = path.join(targetDir, `${fileStem}.ts`);
