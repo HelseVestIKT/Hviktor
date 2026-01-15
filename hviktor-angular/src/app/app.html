@@ -25,6 +25,46 @@
     </section>
 
     <section class="space-y-2">
+        <h2 hviHeading size="lg">Details</h2>
+            <hvi-details variant="tinted">
+                <hvi-details-summary>
+                    <p size="md">Detaljer</p>
+                </hvi-details-summary>
+                <hvi-details-content>
+                    <p>Her er innholdet i detaljene.</p>
+                </hvi-details-content>
+            </hvi-details>
+            <hvi-details>
+                <hvi-details-summary>
+                    <p size="md">Detaljer</p>
+                </hvi-details-summary>
+                <hvi-details-content>
+                    <p>Her er innholdet i detaljene.</p>
+                </hvi-details-content>
+            </hvi-details>
+
+            <h3 hviHeading size="md">Details i card</h3>
+            <hvi-card color="brand2">
+                <hvi-details variant="tinted">
+                    <hvi-details-summary>
+                        <p size="md">Detaljer</p>
+                    </hvi-details-summary>
+                    <hvi-details-content>
+                        <p>Her er innholdet i detaljene.</p>
+                    </hvi-details-content>
+                </hvi-details>
+                <hvi-details [open]="true">
+                    <hvi-details-summary>
+                        <p size="md">Detaljer</p>
+                    </hvi-details-summary>
+                    <hvi-details-content>
+                        <p>Her er innholdet i detaljene.</p>
+                    </hvi-details-content>
+                </hvi-details>
+            </hvi-card>
+    </section>
+
+    <section class="space-y-2">
         <h2 hviHeading size="lg">Alert</h2>
         <div class="flex gap-2 flex-wrap">
             <hvi-alert>

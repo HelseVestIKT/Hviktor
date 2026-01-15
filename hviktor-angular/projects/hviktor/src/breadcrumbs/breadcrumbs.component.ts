@@ -44,13 +44,16 @@ export interface BreadcrumbItem {
 })
 
 export class HviBreadcrumbs {
- @Input() ariaLabel = 'Du er her:';
+    /** Accessible label for the breadcrumb navigation */
+    @Input() ariaLabel = 'Du er her:';
 
-  @Input() backLink?: {
-    label: string;
-    href: string;
-    ariaLabel?: string;
+    /** Optional back link object */
+    @Input() backLink?: {
+        label: string;
+        href: string;
+        ariaLabel?: string;
   };
 
-  @Input() items: BreadcrumbItem[] = [];
+    /** Array of breadcrumb items */
+    @Input() items: BreadcrumbItem[] = [];
 }
