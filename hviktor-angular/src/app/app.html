@@ -61,7 +61,7 @@
     </section>
 
     <section class="space-y-2">
-        <h2 class="text-3xl">Badge</h2>
+        <h2 hviHeading size="lg">Badge</h2>
         <div class="flex gap-4 items-center">
             <hvi-badge color="neutral" count="9+" variant="base"></hvi-badge>
             <hvi-badge color="neutral" count="9+" variant="tinted"></hvi-badge>
@@ -96,6 +96,60 @@
             </div>
             </hvi-badge-position>
         </div>
+    </section>
+
+    <section class="space-y-4">
+        <h2 hviHeading size="lg">Chip</h2>
+
+        <section class="space-y-2">
+            <h3 hviHeading size="md">Radio</h3>
+            <div class="flex gap-2 flex-wrap">
+                <label hviChip>
+                    <input
+                    class="ds-input"
+                    type="radio"
+                    value="nynorsk"
+                    checked=""
+                    name="my-radio"
+                  >
+                  Nynorsk
+                </label>
+                <label hviChip>
+                    <input
+                    class="ds-input"
+                    type="radio"
+                    value="bokmål"
+                    name="my-radio"
+                  >
+                  Bokmål
+                </label>
+            </div>
+        </section>
+
+        <section class="space-y-2">
+            <h3 hviHeading size="md">Checkbox</h3>
+            <div class="flex gap-2 flex-wrap">
+                <label hviChip>
+                    <input class="ds-input" type="checkbox">
+                    Nynorsk
+                </label>
+            </div>
+        </section>
+
+        <section class="space-y-2">
+            <h3 hviHeading size="md">Button</h3>
+            <div class="flex gap-2 flex-wrap">
+                <button hviChip>Tøm alle filtre</button>
+            </div>
+        </section>
+
+        <section class="space-y-2">
+            <h3 hviHeading size="md">Button removable</h3>
+            <div class="flex gap-2 flex-wrap">
+                <button hviChip removable="true" aria-label="Slett Norge">Norge</button>
+            </div>
+        </section>
+
     </section>
 
     <section class="space-y-4">

@@ -13,3 +13,4 @@ export * from './card';
 export * from './label';
 export * from './fieldset';
 export * from './field';
+export * from './chip';
