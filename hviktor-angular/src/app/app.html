@@ -128,7 +128,7 @@
     </section>
 
     <section class="space-y-2">
-        <h2 hviHeading size="lg">Fieldset, Field, Field Description</h2>
+        <h2 hviHeading size="lg">Forms</h2>
         <fieldset hviFieldset>
             <legend hviLabel>Hvilken fjordarm bor du ved?</legend>
             <p hviParagraph variant="default">
@@ -136,10 +136,11 @@
             </p>
             <hvi-field>
                 <label hviLabel weight="medium">Fjordarm</label>
-                <input class="ds-input" type="text" placeholder="Skriv fjordarmen din" />
+                <p hviFieldDescription>Fjordarm kan ikke inneholde mellomrom</p>
+                <input class="ds-input" maxLength="10" type="text" placeholder="Skriv fjordarmen din" maxlength="100" />
                 <span hviFieldOptional>Valgfritt</span>
                 <p hviFieldValidation>Dette feltet er obligatorisk.</p>
-                <p hviFieldCounter>0 / 100</p>
+                <p hviFieldCounter></p>
             </hvi-field>
         </fieldset>
         
