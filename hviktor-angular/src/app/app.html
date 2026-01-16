@@ -297,7 +297,7 @@
 
     <section class="space-y-2">
         <h2 hviHeading size="lg">Dialog</h2>
-        <button hviButton type="button" aria-haspopup="dialog" (click)="openDialog()">
+        <button hviButton type="button" aria-haspopup="dialog" (click)="toggleDialog(true)">
             Open dialog
         </button>
 
@@ -306,21 +306,21 @@
             id="demoDialog"
             aria-labelledby="demoDialogTitle"
             [open]="dialogOpen()"
-            (openChange)="handleDialogChange($event)"
+            (openChange)="toggleDialog($event)"
         >
-            <div class="ds-dialog__block">
+            <div hviDialogBlock>
                 <h3 hviHeading size="md" id="demoDialogTitle">En enkel dialog</h3>
             </div>
-            <div class="ds-dialog__block">
+            <div hviDialogBlock>
                 <p hviParagraph size="md">
                     Her kan innholdet ditt ligge. Dialogen er modal og styrt med hviDialog-direktivet.
                 </p>
             </div>
-            <div class="ds-dialog__block flex gap-2 justify-end">
-                <button hviButton variant="secondary" type="button" (click)="closeDialog()">
+            <div hviDialogBlock class="flex gap-2 justify-end">
+                <button hviButton variant="secondary" type="button" (click)="toggleDialog(false)">
                     Lukk
                 </button>
-                <button hviButton type="button" (click)="closeDialog()">
+                <button hviButton type="button" (click)="toggleDialog(false)">
                     Fortsett
                 </button>
             </div>
