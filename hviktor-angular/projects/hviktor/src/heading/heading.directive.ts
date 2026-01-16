@@ -1,14 +1,14 @@
 import { Directive, Input } from "@angular/core";
 
 /**
- * Heading brukes til å strukturere innhold og skape hierarki på siden.
+ * Heading is used to structure content and create hierarchy on a page.
  * 
- * Eksempel på bruk:
+ * @example
  * ```html
- * <h1 hviHeading size="xl">Dette er en overskrift</h1>
+ * <h1 hviHeading size="xl">This is a heading</h1>
  * ```
  * 
- * Dokumentasjon: https://designsystemet.no/no/components/docs/heading/overview
+ * Documentation: https://designsystemet.no/en/components/docs/heading/overview
  */
 @Directive({
     selector: 'h1[hviHeading], h2[hviHeading], h3[hviHeading], h4[hviHeading], h5[hviHeading], h6[hviHeading]',
@@ -19,6 +19,6 @@ import { Directive, Input } from "@angular/core";
     },
 })
 export class HviHeading {
-    /** Størrelsen på overskriften */
+    /** The size of the heading */
     @Input() size?: '2xs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl';
 }

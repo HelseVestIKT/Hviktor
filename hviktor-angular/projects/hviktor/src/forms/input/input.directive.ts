@@ -1,16 +1,16 @@
 import { Directive, Input } from '@angular/core';
 
 /**
- * Input er et skjemaelement for å samle inn brukerdata. 
- * Det tilbyr grunnleggende funksjonalitet og er ideell når du trenger full kontroll over komponentens oppsett og validering, 
- * noe som gjør den ideell for bygging av spesialtilpassede elementer.
+ * Input is a form element used to collect user data. 
+ * It offers basic functionality and is ideal when you need full control over the component's layout and validation, 
+ * making it suitable for building custom elements.
  *
- * Eksempel på bruk:
+ * @example
  * ```html
- * <input hviInput type="text" placeholder="Skriv noe her..." />
+ * <input hviInput type="text" placeholder="Type something here..." />
  * ```
  * 
- * Dokumentasjon: https://designsystemet.no/no/components/docs/input/overview
+ * Documentation: https://designsystemet.no/en/components/docs/input/overview
  */
 @Directive({
   selector: 'input[hviInput]',
@@ -21,6 +21,6 @@ import { Directive, Input } from '@angular/core';
   },
 })
 export class HviInput {
-  /** Støttede input-typer */
+  /** Supported input types */
   @Input() type?: "number" | "hidden" | "color" | "checkbox" | "date" | "datetime-local" | "email" | "file" | "month" | "password" | "radio" | "search" | "tel" | "text" | "time" | "url" | "week" ;
 }

@@ -1,16 +1,16 @@
 import { Directive, ElementRef, EventEmitter, HostListener, Input, Output } from '@angular/core';
 
 /**
- * Dialog lar deg lage modale og ikke-modale dialoger basert på HTML-elementet dialog.
+ * Dialog allows you to create both modal and non-modal dialogs based on the HTML dialog element.
  *
- * Eksempel på bruk:
+ * @example
  * ```html
  * <dialog hviDialog>
  * 
  * </dialog>
  * ```
  *
- * https://designsystemet.no/no/components/docs/dialog/overview
+ * https://designsystemet.no/en/components/docs/dialog/code/
  */
 
 @Directive({

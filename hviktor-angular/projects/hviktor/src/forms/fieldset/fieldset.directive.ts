@@ -1,14 +1,14 @@
 import { Directive } from '@angular/core';
 
 /**
- * Fieldset brukes til å gruppere og navngi felt som naturlig hører sammen, for eksempel datofelt eller adressefelt. 
- * Komponenten hjelper med å organisere informasjon, gjøre skjemaer mer oversiktlige og forbedre tilgjengeligheten for skjermlesere.
+ * Fieldset is used to group and label fields that naturally belong together, such as date fields or address fields. 
+ * The component helps organize information, make forms more manageable, and improve accessibility for screen readers.
  *
- * Eksempel på bruk:
+ * @example
  * ```html
  *  <fieldset hviFieldset>
- *    <legend hviLabel>Hvilket rammeverk liker du best?</legend>
- *    <p hviParagraph>Ditt valg vil hjelpe oss med å forbedre tjenesten.</p>
+ *    <legend hviLabel>Which framework do you like best?</legend>
+ *    <p hviParagraph>Your choice will help us improve the service.</p>
  *    <hvi-field>
  *      <input type="radio" id="angular" name="framework" value="angular" />
  *      <label hviLabel for="angular">Angular</label>
@@ -24,7 +24,7 @@ import { Directive } from '@angular/core';
  *  </fieldset>
  * ```
  * 
- * Dokumentasjon: https://designsystemet.no/no/components/docs/fieldset/overview
+ * Documentation: https://designsystemet.no/en/components/docs/fieldset/overview
  */
 @Directive({
   selector: 'fieldset[hviFieldset]',

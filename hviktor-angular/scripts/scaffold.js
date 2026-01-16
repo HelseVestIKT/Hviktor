@@ -58,12 +58,12 @@ const selector = type === 'component' ? `hvi-${baseName}` : `[hvi${pascalName}]`
 const docComment = `/**
  * Info
  *
- * Eksempel på bruk:
+ * @example
  * \`\`\`html
  * <${selector}></${selector}>
  * \`\`\`
  *
- * Dokumentasjon: https://designsystemet.no/no/components/docs/input/overview
+ * Documentation: https://designsystemet.no/en/components/docs/input/code
  */
 `;
 const mainFileTemplate =

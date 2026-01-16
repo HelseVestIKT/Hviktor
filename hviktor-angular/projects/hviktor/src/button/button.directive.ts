@@ -1,16 +1,16 @@
 import { booleanAttribute, Directive, Input } from "@angular/core";
 
 /**
- * Button lèt brukarane utføre handlingar.
+ * Button allows users to perform actions.
  * 
- * Eksempel på bruk:
+ * @example
  * ```html
  * <button hviButton color="brand1" variant="primary" size="md">
- *   Klikk meg
+ *   Click me
  * </button>
  * ```
  * 
- * Dokumentasjon: https://designsystemet.no/no/components/docs/button/overview
+ * Documentation: https://designsystemet.no/en/components/docs/button/code/
  */
 @Directive({
     selector: 'button[hviButton], a[hviButton]',
@@ -27,28 +27,28 @@ import { booleanAttribute, Directive, Input } from "@angular/core";
     },
 })
 export class HviButton {
-    /** Størrelsen på knappen */
+    /** The size of the button */
     @Input() size?: 'sm' | 'md' | 'lg';
     
-    /** Brukast for å endre utsjånad på knappen. */
+    /** Used to change the appearance of the button. */
     @Input() variant?: 'primary' | 'secondary' | 'tertiary';
     
-    /** Typen knapp */
+    /** The type of button */
     @Input() type?: 'button' | 'submit' | 'reset';
     
-    /** Fargen på knappen */
+    /** The color of the button */
     @Input() color?: 'accent' | 'brand1' | 'brand2' | 'brand3' | 'neutral' | 'danger';
     
-    /** Dersom du har kun ikon i knappen kan du sette icon="true" for å få den firkanta. 
-    * Har du anna innhald, som tekst, vil knappen automatisk få luft rundt ikonet. 
+    /** If you have only an icon in the button, you can set icon="true" to make it square. 
+    * If you have other content, such as text, the button will automatically have space around the icon. 
     */
     @Input({ transform: booleanAttribute }) icon = false;
     
-    /** Setter knappen i en lastetilstand. 
-    * Lasteindikator som spinner etc. må legges til selv, f.eks. med hvi-spinner 
+    /** Sets the button in a loading state. 
+    * Loading indicators such as spinners must be added manually, e.g., with hvi-spinner 
     */
     @Input({ transform: booleanAttribute }) loading = false; 
 
-    /** Gjør knappen full bredde */
+    /** Makes the button full width */
     @Input({ transform: booleanAttribute }) fullWidth = false;
 }

@@ -10,12 +10,12 @@ import { Component } from "@angular/core";
  * ```html
  *  <hvi-field-affixes>
  *    <hvi-field-affix>NOK</hvi-field-affix>
- *    <input hviInput type="text" placeholder="Beløp" />
- *    <hvi-field-affix>pr. mnd.</hvi-field-affix>
+ *    <input hviInput type="text" placeholder="Amount" />
+ *    <hvi-field-affix>per month</hvi-field-affix>
  * </hvi-field-affixes>
  * ```
  * 
- * Dokumentasjon: https://designsystemet.no/no/components/docs/field/overview#prefixsuffix
+ * Documentation: https://designsystemet.no/en/components/docs/field/code#prefixsuffix
  */
 @Component({
     selector: "hvi-field-affix",
