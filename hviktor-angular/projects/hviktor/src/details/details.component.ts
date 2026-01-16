@@ -8,9 +8,9 @@ import '@u-elements/u-details';
   template: ` <u-details
       #detailsRef
       class="ds-details"
-       [attr.data-variant]="variant ?? null"
+       [attr.data-variant]="variant"
        [attr.defaultOpen]="defaultOpen || undefined"
-      [attr.open]="(open ?? defaultOpen) || undefined"
+      [attr.open]="(open) || undefined"
       (toggle)="onToggle($event)"
     >
       <u-summary>
