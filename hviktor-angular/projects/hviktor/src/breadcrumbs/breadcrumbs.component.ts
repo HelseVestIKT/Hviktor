@@ -6,6 +6,30 @@ export interface BreadcrumbItem {
   ariaLabel?: string;
 }
 
+/**
+ * Info
+ *
+ * Eksempel på bruk:
+ * ```html
+ * <nav hviBreadcrumbs
+ *      ariaLabel="Du er her:"
+ *      [backLink]="{
+ *          label: 'Nivå 3',
+ *          href: '#',
+ *          ariaLabel: 'Tilbake til Nivå 3'
+ *      }"
+ *      [items]="[
+ *           { label: 'Nivå 1', href: '#' },
+ *           { label: 'Nivå 2', href: '#' },
+ *           { label: 'Nivå 3', href: '#' },
+ *           { label: 'Nivå 4', href: '#' }
+ *       ]"
+ * ></nav>
+ * ```
+ *
+ * Dokumentasjon: https://designsystemet.no/no/components/docs/breadcrumbs/overview
+ */
+
 @Component({
     selector: 'nav[hviBreadcrumbs]',
     standalone: true,

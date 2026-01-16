@@ -1,6 +1,24 @@
 import { Component, Input,  CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import '@u-elements/u-details';
 
+/**
+ * Info
+ *
+ * Eksempel på bruk:
+ * ```html
+ * <hvi-details>
+ *   <hvi-details-summary>
+ *     <p size="md">Detaljer</p>
+ *   </hvi-details-summary>
+ *   <hvi-details-content>
+ *     <p>Her er innholdet i detaljene.</p>
+ *   </hvi-details-content>
+ * </hvi-details>
+ * ```
+ *
+ * Dokumentasjon: https://designsystemet.no/no/components/docs/details/overview
+ */
+
 @Component({
   selector: 'hvi-details',
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
