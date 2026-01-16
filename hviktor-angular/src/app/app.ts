@@ -10,17 +10,14 @@ import '@u-elements/u-details';
   styleUrl: './app.css'
 })
 export class App {
-  protected readonly dialogOpen = signal(false);
+  readonly dialogOpen = signal(false);
 
-  protected openDialog(): void {
-    this.dialogOpen.set(true);
-  }
+  toggleDialog(nextState?: boolean): void {
+    if (typeof nextState === 'boolean') {
+      this.dialogOpen.set(nextState);
+      return;
+    }
 
-  protected closeDialog(): void {
-    this.dialogOpen.set(false);
-  }
-
-  protected handleDialogChange(isOpen: boolean): void {
-    this.dialogOpen.set(isOpen);
+    this.dialogOpen.update((current) => !current);
   }
 }
