@@ -1,6 +1,7 @@
 import { Directive, ElementRef, EventEmitter, HostListener, Input, Output } from '@angular/core';
 
 /**
+ * @summary
  * Dialog allows you to create both modal and non-modal dialogs based on the HTML dialog element.
  * You have to connect the <dialog> element to a trigger yourself, and handle opening and closing the dialog with JavaScript.
  * 
@@ -27,9 +28,8 @@ import { Directive, ElementRef, EventEmitter, HostListener, Input, Output } from
  *   }
  * }
  *
- * https://designsystemet.no/en/components/docs/dialog/code/
+ * Documentation: https://designsystemet.no/en/components/docs/dialog/code/
  */
-
 @Directive({
   selector: 'dialog[hviDialog]',
   standalone: true,

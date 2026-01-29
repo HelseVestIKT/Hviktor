@@ -1,6 +1,7 @@
 import { booleanAttribute, Directive, Input } from "@angular/core";
 
 /**
+ * @summary
  * Button allows users to perform actions.
  * 
  * @example

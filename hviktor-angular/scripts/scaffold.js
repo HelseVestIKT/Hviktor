@@ -56,7 +56,8 @@ const indexFilePath = path.join(targetDir, 'index.ts');
 const selector = type === 'component' ? `hvi-${baseName}` : `[hvi${pascalName}]`;
 
 const docComment = `/**
- * Info
+ * @summary
+ * ${pascalName} ${type} description.
  *
  * @example
  * \`\`\`html
