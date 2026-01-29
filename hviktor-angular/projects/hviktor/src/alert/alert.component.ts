@@ -24,6 +24,6 @@ import { Component, Input } from '@angular/core';
   },
 })
 export class HviAlert {
-  /** Sets the type of alert by changing the color and  */
+  /** Sets the type of alert by changing the color and icon */
   @Input() color?: 'info' | 'success' | 'warning' | 'danger';
 }
