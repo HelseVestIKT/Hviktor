@@ -73,7 +73,7 @@ if [ -n "$staged_lint" ]; then
   # 1) Fix
   while IFS= read -r file; do
     [ -z "$file" ] && continue
-    npx --prefix "$ANGULAR_DIR" eslint --fix "$file" || {
+    npx --prefix "$ANGULAR_DIR" eslint --config "$ANGULAR_DIR/eslint.config.js" --fix "$file" || {
       rm -f "$tmp"
       error "ESLint failed on: $file"
       exit 1
@@ -90,7 +90,7 @@ if [ -n "$staged_lint" ]; then
   info "ESLint: final check..."
   while IFS= read -r file; do
     [ -z "$file" ] && continue
-    npx --prefix "$ANGULAR_DIR" eslint "$file" || {
+    npx --prefix "$ANGULAR_DIR" eslint --config "$ANGULAR_DIR/eslint.config.js" "$file" || {
       rm -f "$tmp"
       error "ESLint errors remain (see output above)."
       exit 1
