@@ -8,7 +8,8 @@
     "build:lib": "ng build hviktor",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "scaffold": "node ./scripts/scaffold.js"
+    "scaffold": "node ./scripts/scaffold.js",
+    "lint": "ng lint"
   },
   "prettier": {
     "printWidth": 100,
@@ -43,6 +44,8 @@
     "@angular/compiler-cli": "^21.0.8",
     "@tailwindcss/postcss": "^4.1.12",
     "@types/jasmine": "~5.1.0",
+    "angular-eslint": "21.1.0",
+    "eslint": "^9.39.1",
     "jasmine-core": "~5.9.0",
     "jsdom": "^27.1.0",
     "karma": "~6.4.0",
@@ -52,8 +55,10 @@
     "karma-jasmine-html-reporter": "~2.1.0",
     "ng-packagr": "^21.0.1",
     "postcss": "^8.5.3",
+    "prettier": "^3.8.1",
     "tailwindcss": "^4.1.12",
     "typescript": "~5.9.2",
+    "typescript-eslint": "8.47.0",
     "vitest": "^4.0.8"
   }
 }
