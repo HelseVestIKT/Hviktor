@@ -1,24 +1,24 @@
-import { Directive, Input } from "@angular/core";
+import { Directive, Input } from '@angular/core';
 
 /**
- * Label fungerer som ei tydeleg og tilgjengeleg etikett som fortel brukaren kva eit tilhøyrande skjemaelement handlar om.
- * 
- * Eksempel på bruk:
+ * Label functions as a clear and accessible text label that tells the user what an associated form element is about.
+ *
+ * @example
  * ```html
- * <label hviLabel weight="semibold">Namn</label>
+ * <label hviLabel weight="semibold">Name</label>
  * ```
- * 
- * Dokumentasjon: https://designsystemet.no/no/components/docs/label/overview
+ *
+ * Documentation: https://designsystemet.no/en/components/docs/label/overview
  */
 @Directive({
-    selector: 'label[hviLabel], legend[hviLabel]',
-    standalone: true,
-    host: {
-        class: 'ds-label',
-        '[attr.weight]': 'weight ?? null',
-    },
+  selector: 'label[hviLabel], legend[hviLabel]',
+  standalone: true,
+  host: {
+    class: 'ds-label',
+    '[attr.data-weight]': 'weight ?? null',
+  },
 })
 export class HviLabel {
-    /** Fonttykkelsen på labelen */
-    @Input() weight?: 'regular' | 'medium' | 'semibold';
+  /** The font weight of the label */
+  @Input() weight?: 'regular' | 'medium' | 'semibold';
 }

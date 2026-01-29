@@ -56,14 +56,15 @@ const indexFilePath = path.join(targetDir, 'index.ts');
 const selector = type === 'component' ? `hvi-${baseName}` : `[hvi${pascalName}]`;
 
 const docComment = `/**
- * Info
+ * @summary
+ * ${pascalName} ${type} description.
  *
- * Eksempel på bruk:
+ * @example
  * \`\`\`html
  * <${selector}></${selector}>
  * \`\`\`
  *
- * Dokumentasjon: https://designsystemet.no/no/components/docs/input/overview
+ * Documentation: https://designsystemet.no/en/components/docs/input/code
  */
 `;
 const mainFileTemplate =
@@ -91,8 +92,12 @@ export class ${className} {}
 `;
 
 fs.writeFileSync(mainFilePath, mainFileTemplate, { encoding: 'utf8' });
-fs.writeFileSync(indexFilePath, `export * from './${fileStem}';
-`, { encoding: 'utf8' });
+fs.writeFileSync(
+  indexFilePath,
+  `export * from './${fileStem}';
+`,
+  { encoding: 'utf8' },
+);
 
 const publicApiPath = path.join(baseDir, 'public-api.ts');
 const exportPath = `./${nameSegments.join('/')}`;

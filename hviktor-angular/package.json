@@ -8,19 +8,16 @@
     "build:lib": "ng build hviktor",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "scaffold": "node ./scripts/scaffold.js"
-  },
-  "prettier": {
-    "printWidth": 100,
-    "singleQuote": true,
-    "overrides": [
-      {
-        "files": "*.html",
-        "options": {
-          "parser": "angular"
-        }
-      }
-    ]
+    "scaffold": "node ./scripts/scaffold.js",
+    "lint": "ng lint hviktor-angular && ng lint hviktor",
+    "lint:eslint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "lint:projects": "eslint \"projects/**/*.{ts,html}\"",
+    "lint:projects:fix": "eslint \"projects/**/*.{ts,html}\" --fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "format:projects": "prettier --write \"projects/**/*.{ts,js,json,html,css,scss,md}\"",
+    "prepare": "husky"
   },
   "private": true,
   "dependencies": {
@@ -43,6 +40,9 @@
     "@angular/compiler-cli": "^21.0.8",
     "@tailwindcss/postcss": "^4.1.12",
     "@types/jasmine": "~5.1.0",
+    "angular-eslint": "21.1.0",
+    "eslint": "^9.39.1",
+    "husky": "^9.1.7",
     "jasmine-core": "~5.9.0",
     "jsdom": "^27.1.0",
     "karma": "~6.4.0",
@@ -52,8 +52,12 @@
     "karma-jasmine-html-reporter": "~2.1.0",
     "ng-packagr": "^21.0.1",
     "postcss": "^8.5.3",
+    "prettier": "^3.8.1",
+    "prettier-plugin-organize-imports": "^4.3.0",
+    "prettier-plugin-tailwindcss": "^0.7.2",
     "tailwindcss": "^4.1.12",
     "typescript": "~5.9.2",
+    "typescript-eslint": "8.47.0",
     "vitest": "^4.0.8"
   }
 }

@@ -1,0 +1,6 @@
+dist
+coverage
+node_modules
+.angular
+*.min.*
+package-lock.json

@@ -1,34 +1,37 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import {
-  HviAvatar,
   HviAlert,
-  HviButton,
-  HviHeading,
-  HviParagraph,
-  HviDivider,
-  HviCard,
-  HviLink,
-  HviDetails,
-  HviDetailsSummary,
-  HviDetailsContent,
-  HviCardBlock,
-  HviLabel,
-  HviBreadcrumbs,
-  HviBadgePosition,
+  HviAvatar,
   HviBadge,
-  HviFieldset,
+  HviBadgePosition,
+  HviBreadcrumbs,
+  HviButton,
+  HviCard,
+  HviCardBlock,
+  HviChipButton,
+  HviChipLabel,
+  HviDetails,
+  HviDetailsContent,
+  HviDetailsSummary,
+  HviDialog,
+  HviDialogBlock,
+  HviDivider,
   HviField,
-  HviFieldDescription,
-  HviFieldOptional,
   HviFieldAffix,
   HviFieldAffixes,
+  HviFieldDescription,
+  HviFieldOptional,
+  HviFieldset,
+  HviHeading,
+  HviIcon,
   HviInput,
-  HviChipLabel,
-  HviIcon
+  HviLabel,
+  HviLink,
+  HviParagraph,
 } from '@helsevestikt/hviktor';
-// your-main-app-file.js
 import '@u-elements/u-details';
+
 @Component({
   selector: 'app-root',
   imports: [
@@ -57,11 +60,23 @@ import '@u-elements/u-details';
     HviFieldAffixes,
     HviInput,
     HviChipLabel,
-    HviIcon
+    HviIcon,
+    HviChipButton,
+    HviDialog,
+    HviDialogBlock,
   ],
   templateUrl: './app.html',
-  styleUrl: './app.css'
+  styleUrl: './app.css',
 })
 export class App {
-  protected readonly title = signal('hviktor-angular');
+  readonly dialogOpen = signal(false);
+
+  toggleDialog(nextState?: boolean): void {
+    if (typeof nextState === 'boolean') {
+      this.dialogOpen.set(nextState);
+      return;
+    }
+
+    this.dialogOpen.update((current) => !current);
+  }
 }

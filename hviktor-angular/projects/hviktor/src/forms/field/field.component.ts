@@ -2,20 +2,20 @@ import { AfterViewInit, Component, DestroyRef, ElementRef, inject, Input } from 
 import { fieldObserver } from './helpers/field-observer';
 
 /**
- * Field er et hjelpemiddel for å automatisk koble et felt sammen med hviLabel, hviFieldDescription og hviFieldValidation.
- * 
- * Eksempel på bruk:
+ * Field is a helper component to automatically associate a field with hviLabel, hviFieldDescription and hviFieldValidation.
+ *
+ * @example
  * ```html
  * <hvi-field>
- *  <label hviLabel>Namn</label>
- *  <span hviFieldDescription>Fyll inn ditt fulle namn.</span>
+ *  <label hviLabel>Name</label>
+ *  <span hviFieldDescription>Fill in your full name.</span>
  *  <input type="text" />
- *  <span hviFieldValidation>Dette feltet er påkrevd.</span>
+ *  <span hviFieldValidation>This field is required.</span>
  * </hvi-field>
  * ```
- * 
- * Dokumentasjon: https://designsystemet.no/no/components/docs/field/overview
-*/
+ *
+ * Documentation: https://designsystemet.no/en/components/docs/field/overview
+ */
 @Component({
   selector: 'hvi-field',
   standalone: true,
@@ -26,9 +26,10 @@ import { fieldObserver } from './helpers/field-observer';
   },
 })
 export class HviField implements AfterViewInit {
+  /** Position of toggle inputs (radio, checkbox, switch) in field */
   @Input() position?: 'start' | 'end';
 
-    private readonly el = inject(ElementRef<HTMLElement>);
+  private readonly el = inject(ElementRef<HTMLElement>);
   private readonly destroyRef = inject(DestroyRef);
 
   ngAfterViewInit(): void {
