@@ -1,9 +1,9 @@
-import { Directive } from "@angular/core";
+import { Directive } from '@angular/core';
 
 @Directive({
   selector: '[hviDialogBlock]',
   standalone: true,
-    host: {
+  host: {
     class: 'ds-dialog__block',
   },
 })

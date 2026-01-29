@@ -1,1 +1,1 @@
-export { HviLabel } from "./label.directive";
+export { HviLabel } from './label.directive';

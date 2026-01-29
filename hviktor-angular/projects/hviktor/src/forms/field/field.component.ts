@@ -3,7 +3,7 @@ import { fieldObserver } from './helpers/field-observer';
 
 /**
  * Field is a helper component to automatically associate a field with hviLabel, hviFieldDescription and hviFieldValidation.
- * 
+ *
  * @example
  * ```html
  * <hvi-field>
@@ -13,9 +13,9 @@ import { fieldObserver } from './helpers/field-observer';
  *  <span hviFieldValidation>This field is required.</span>
  * </hvi-field>
  * ```
- * 
+ *
  * Documentation: https://designsystemet.no/en/components/docs/field/overview
-*/
+ */
 @Component({
   selector: 'hvi-field',
   standalone: true,
@@ -29,7 +29,7 @@ export class HviField implements AfterViewInit {
   /** Position of toggle inputs (radio, checkbox, switch) in field */
   @Input() position?: 'start' | 'end';
 
-    private readonly el = inject(ElementRef<HTMLElement>);
+  private readonly el = inject(ElementRef<HTMLElement>);
   private readonly destroyRef = inject(DestroyRef);
 
   ngAfterViewInit(): void {

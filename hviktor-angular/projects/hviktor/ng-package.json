@@ -5,12 +5,7 @@
     "entryFile": "src/public-api.ts"
   },
 
-  "assets": [
-    { "glob": "styles.css", "input": "src", "output": "."}
-  ],
+  "assets": [{ "glob": "styles.css", "input": "src", "output": "." }],
 
-    "allowedNonPeerDependencies": [
-    "@digdir/designsystemet-css",
-    "@digdir/designsystemet-theme"
-    ]
+  "allowedNonPeerDependencies": ["@digdir/designsystemet-css", "@digdir/designsystemet-theme"]
 }

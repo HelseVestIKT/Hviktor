@@ -1,334 +1,319 @@
-<article class="max-w-4xl mx-auto space-y-12 py-8">
-    <header>
-        <h1 hviHeading size="xl">Hviktor Angular Demo</h1>
-        <p hviParagraph>Viser komponenter fra Hviktor designbiblioteket i en Angular-applikasjon. Bygger på designsystemet.no.</p>
-    </header>
+<article class="mx-auto max-w-4xl space-y-12 py-8">
+  <header>
+    <h1 hviHeading size="xl">Hviktor Angular Demo</h1>
+    <p hviParagraph>
+      Viser komponenter fra Hviktor designbiblioteket i en Angular-applikasjon. Bygger på
+      designsystemet.no.
+    </p>
+  </header>
 
-    <section class="space-y-2">
-        <h2 hviHeading size="lg">Alert</h2>
-        <div class="flex gap-2 flex-wrap">
-            <hvi-alert>
-                Dette er en info alert
-            </hvi-alert>
-            <hvi-alert color="success">
-                Dette er en success alert
-            </hvi-alert>
-            <hvi-alert color="warning">
-                Dette er en warning alert
-            </hvi-alert>
-            <hvi-alert color="danger">
-                Dette er en danger alert
-            </hvi-alert>
-        </div>
-    </section>
+  <section class="space-y-2">
+    <h2 hviHeading size="lg">Alert</h2>
+    <div class="flex flex-wrap gap-2">
+      <hvi-alert> Dette er en info alert </hvi-alert>
+      <hvi-alert color="success"> Dette er en success alert </hvi-alert>
+      <hvi-alert color="warning"> Dette er en warning alert </hvi-alert>
+      <hvi-alert color="danger"> Dette er en danger alert </hvi-alert>
+    </div>
+  </section>
 
-    <section class="space-y-2">
-        <h2 hviHeading size="lg">Avatar</h2>
-        <div class="flex gap-4 items-center">
-            <hvi-avatar ariaLabel="Erlend Johnsen" />
-            <hvi-avatar variant="square" ariaLabel="Erlend Johnsen" />
-            <hvi-avatar initials="EJ" ariaLabel="Erlend Johnsen" />
-            <hvi-avatar initials="xs" ariaLabel="Erlend Johnsen" size="xs" />
-            <hvi-avatar initials="sm" ariaLabel="Erlend Johnsen" size="sm" />
-            <hvi-avatar initials="md" ariaLabel="Erlend Johnsen" size="md" />
-            <hvi-avatar initials="lg" ariaLabel="Erlend Johnsen" size="lg" />
-        </div>
-        
-        <button hviButton variant="secondary">
-            <hvi-avatar initials="EJ" ariaLabel="Erlend Johnsen" size="sm" />
-            Button with Avatar
-        </button>
-    </section>
+  <section class="space-y-2">
+    <h2 hviHeading size="lg">Avatar</h2>
+    <div class="flex items-center gap-4">
+      <hvi-avatar ariaLabel="Erlend Johnsen" />
+      <hvi-avatar variant="square" ariaLabel="Erlend Johnsen" />
+      <hvi-avatar initials="EJ" ariaLabel="Erlend Johnsen" />
+      <hvi-avatar initials="xs" ariaLabel="Erlend Johnsen" size="xs" />
+      <hvi-avatar initials="sm" ariaLabel="Erlend Johnsen" size="sm" />
+      <hvi-avatar initials="md" ariaLabel="Erlend Johnsen" size="md" />
+      <hvi-avatar initials="lg" ariaLabel="Erlend Johnsen" size="lg" />
+    </div>
 
-    <section class="space-y-2">
-        <h2 hviHeading size="lg">Breadcrumbs</h2>
-        <div class="flex gap-2 items-center">
-            <nav hviBreadcrumbs
-                ariaLabel="Du er her:"
-                [backLink]="{
+    <button hviButton variant="secondary">
+      <hvi-avatar initials="EJ" ariaLabel="Erlend Johnsen" size="sm" />
+      Button with Avatar
+    </button>
+  </section>
+
+  <section class="space-y-2">
+    <h2 hviHeading size="lg">Breadcrumbs</h2>
+    <div class="flex items-center gap-2">
+      <nav
+        hviBreadcrumbs
+        ariaLabel="Du er her:"
+        [backLink]="{
                     label: 'Nivå 3',
                     href: '#',
                     ariaLabel: 'Tilbake til Nivå 3'
                 }"
-                [items]="[
+        [items]="[
                     { label: 'Nivå 1', href: '#' },
                     { label: 'Nivå 2', href: '#' },
                     { label: 'Nivå 3', href: '#' },
                     { label: 'Nivå 4', href: '#' }
                 ]"
-            ></nav>
+      ></nav>
+    </div>
+  </section>
+
+  <section class="space-y-2">
+    <h2 hviHeading size="lg">Badge</h2>
+    <div class="flex flex-wrap items-center gap-4">
+      <hvi-badge color="neutral" count="9+" variant="base"></hvi-badge>
+      <hvi-badge color="neutral" count="9+" variant="tinted"></hvi-badge>
+      <hvi-badge color="danger" count="9+" variant="base"></hvi-badge>
+      <hvi-badge color="danger" count="9+" variant="tinted"></hvi-badge>
+      <hvi-badge color="info" count="9+" variant="base"></hvi-badge>
+      <hvi-badge color="info" count="9+" variant="tinted"></hvi-badge>
+      <hvi-badge color="warning" count="9+" variant="base"></hvi-badge>
+      <hvi-badge color="warning" count="9+" variant="tinted"></hvi-badge>
+      <hvi-badge color="brand1" count="9+" variant="base"></hvi-badge>
+      <hvi-badge color="brand1" count="9+" variant="tinted"></hvi-badge>
+      <hvi-badge color="brand2" count="9+" variant="base"></hvi-badge>
+      <hvi-badge color="brand2" count="9+" variant="tinted"></hvi-badge>
+      <hvi-badge color="brand3" count="9+" variant="base"></hvi-badge>
+      <hvi-badge color="brand3" count="9+" variant="tinted"></hvi-badge>
+      <hvi-badge color="accent" count="9+" variant="base"></hvi-badge>
+      <hvi-badge color="accent" count="9+" variant="tinted"></hvi-badge>
+      <div class="flex items-center gap-2">
+        <hvi-badge color="success" variant="base"></hvi-badge>
+        <p>Aktiv</p>
+      </div>
+
+      <hvi-badge-position placement="top-left">
+        <hvi-badge color="danger" count="3"> </hvi-badge>
+        <div>
+          <p>test</p>
         </div>
+      </hvi-badge-position>
+    </div>
+  </section>
+
+  <section class="space-y-4">
+    <h2 hviHeading size="lg">Chip</h2>
+
+    <section class="space-y-2">
+      <h3 hviHeading size="md">Radio</h3>
+      <div class="flex flex-wrap gap-2">
+        <label hviChip>
+          <input hviInput type="radio" value="nynorsk" checked="" name="my-radio" />
+          Nynorsk
+        </label>
+        <label hviChip>
+          <input hviInput type="radio" value="bokmål" name="my-radio" />
+          Bokmål
+        </label>
+      </div>
     </section>
 
     <section class="space-y-2">
-        <h2 hviHeading size="lg">Badge</h2>
-        <div class="flex gap-4 items-center flex-wrap">
-            <hvi-badge color="neutral" count="9+" variant="base"></hvi-badge>
-            <hvi-badge color="neutral" count="9+" variant="tinted"></hvi-badge>
-            <hvi-badge color="danger" count="9+" variant="base"></hvi-badge>
-            <hvi-badge color="danger" count="9+" variant="tinted"></hvi-badge>
-            <hvi-badge color="info" count="9+" variant="base"></hvi-badge>
-            <hvi-badge color="info" count="9+" variant="tinted"></hvi-badge>
-            <hvi-badge color="warning" count="9+" variant="base"></hvi-badge>
-            <hvi-badge color="warning" count="9+" variant="tinted"></hvi-badge>
-            <hvi-badge color="brand1" count="9+" variant="base"></hvi-badge>
-            <hvi-badge color="brand1" count="9+" variant="tinted"></hvi-badge>
-            <hvi-badge color="brand2" count="9+" variant="base"></hvi-badge>
-            <hvi-badge color="brand2" count="9+" variant="tinted"></hvi-badge>
-            <hvi-badge color="brand3" count="9+" variant="base"></hvi-badge>
-            <hvi-badge color="brand3" count="9+" variant="tinted"></hvi-badge>
-            <hvi-badge color="accent" count="9+" variant="base"></hvi-badge>
-            <hvi-badge color="accent" count="9+" variant="tinted"></hvi-badge>
-            <div class="flex gap-2 items-center">
-                <hvi-badge color="success" variant="base"></hvi-badge>
-                <p>Aktiv</p>
-            </div>
+      <h3 hviHeading size="md">Checkbox</h3>
+      <div class="flex flex-wrap gap-2">
+        <label hviChip>
+          <input hviInput type="checkbox" />
+          Nynorsk
+        </label>
+      </div>
+    </section>
 
-            <hvi-badge-position 
-                placement="top-left">
-                <hvi-badge
-                color="danger"
-                count="3"
-                >
-            </hvi-badge>
-            <div>
-                <p>test</p>
-            </div>
-            </hvi-badge-position>
+    <section class="space-y-2">
+      <h3 hviHeading size="md">Button</h3>
+      <div class="flex flex-wrap gap-2">
+        <button hviChip>Tøm alle filtre</button>
+      </div>
+    </section>
+
+    <section class="space-y-2">
+      <h3 hviHeading size="md">Button removable</h3>
+      <div class="flex flex-wrap gap-2">
+        <button hviChip removable="true" aria-label="Slett Norge">Norge</button>
+      </div>
+    </section>
+  </section>
+
+  <section class="space-y-4">
+    <h2 hviHeading size="lg">Button</h2>
+
+    <section class="space-y-2">
+      <h3 hviHeading size="md">Variant</h3>
+      <div class="flex flex-wrap gap-2">
+        <button hviButton>Plain hviButton</button>
+        <button hviButton variant="secondary">Secondary</button>
+        <button hviButton variant="tertiary">Tertiary</button>
+      </div>
+    </section>
+
+    <section class="space-y-2">
+      <h3 hviHeading size="md">Color</h3>
+      <div class="flex flex-wrap gap-2">
+        <button hviButton color="brand1">Brand1</button>
+        <button hviButton color="brand2">Brand2</button>
+        <button hviButton color="brand3">Brand3</button>
+        <button hviButton color="neutral">Neutral</button>
+        <button hviButton color="danger">Danger</button>
+      </div>
+    </section>
+
+    <section class="space-y-2">
+      <h3 hviHeading size="md">Size</h3>
+      <div class="flex flex-wrap gap-2">
+        <button hviButton size="sm">Small</button>
+        <button hviButton size="md">Medium (Default)</button>
+        <button hviButton size="lg">Large</button>
+      </div>
+    </section>
+
+    <section class="space-y-2">
+      <h3 hviHeading size="lg">Div</h3>
+      <div class="flex flex-wrap gap-2">
+        <button hviButton icon>⚙️</button>
+        <button hviButton loading>Loading...</button>
+        <button hviButton fullWidth>Full Width</button>
+      </div>
+    </section>
+  </section>
+
+  <section class="space-y-2">
+    <h2 hviHeading size="lg">Card</h2>
+    <div class="flex flex-wrap gap-2">
+      <hvi-card maxWidth="320px">
+        <h2 hviHeading>Lykkeland Barnehage</h2>
+        <p hviParagraph>
+          Lykkeland Barneskole er ein trygg og inkluderande nærskule der leik, læring og
+          nysgjerrigheit går hand i hand.
+        </p>
+        <p hviParagraph size="sm">Solslett kommune</p>
+      </hvi-card>
+
+      <hvi-card color="accent" variant="tinted" maxWidth="320px">
+        <div hviCardBlock>
+          <video controls width="100%">
+            <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4" />
+          </video>
         </div>
-    </section>
-
-    <section class="space-y-4">
-        <h2 hviHeading size="lg">Chip</h2>
-
-        <section class="space-y-2">
-            <h3 hviHeading size="md">Radio</h3>
-            <div class="flex gap-2 flex-wrap">
-                <label hviChip>
-                    <input hviInput type="radio" value="nynorsk" checked="" name="my-radio" />
-                  Nynorsk
-                </label>
-                <label hviChip>
-                    <input hviInput type="radio" value="bokmål" name="my-radio" />
-                  Bokmål
-                </label>
-            </div>
-        </section>
-
-        <section class="space-y-2">
-            <h3 hviHeading size="md">Checkbox</h3>
-            <div class="flex gap-2 flex-wrap">
-                <label hviChip>
-                    <input hviInput type="checkbox"/>
-                    Nynorsk
-                </label>
-            </div>
-        </section>
-
-        <section class="space-y-2">
-            <h3 hviHeading size="md">Button</h3>
-            <div class="flex gap-2 flex-wrap">
-                <button hviChip>Tøm alle filtre</button>
-            </div>
-        </section>
-
-        <section class="space-y-2">
-            <h3 hviHeading size="md">Button removable</h3>
-            <div class="flex gap-2 flex-wrap">
-                <button hviChip removable="true" aria-label="Slett Norge">Norge</button>
-            </div>
-        </section>
-
-    </section>
-
-    <section class="space-y-4">
-        <h2 hviHeading size="lg">Button</h2>
-       
-        <section class="space-y-2">
-            <h3 hviHeading size="md">Variant</h3>
-            <div class="flex gap-2 flex-wrap">
-                <button hviButton>Plain hviButton</button>
-                <button hviButton variant="secondary">Secondary</button>
-                <button hviButton variant="tertiary">Tertiary</button>
-            </div>
-        </section>
-
-        <section class="space-y-2">
-            <h3 hviHeading size="md">Color</h3>        
-            <div class="flex gap-2 flex-wrap">
-                <button hviButton color="brand1">Brand1</button>
-                <button hviButton color="brand2">Brand2</button>
-                <button hviButton color="brand3">Brand3</button>
-                <button hviButton color="neutral">Neutral</button>
-                <button hviButton color="danger">Danger</button>
-            </div>
-        </section>
-
-        <section class="space-y-2">        
-            <h3 hviHeading size="md">Size</h3>
-            <div class="flex gap-2 flex-wrap">
-                <button hviButton size="sm">Small</button>
-                <button hviButton size="md">Medium (Default)</button>
-                <button hviButton size="lg">Large</button>
-            </div>
-        </section>
-
-        <section class="space-y-2">
-            <h3 hviHeading size="lg">Div</h3>       
-            <div class="flex gap-2 flex-wrap">
-                <button hviButton icon>⚙️</button>
-                <button hviButton loading>Loading...</button>
-                <button hviButton fullWidth>Full Width</button>
-            </div>
-        </section>
-    </section>  
-
-    <section class="space-y-2">
-        <h2 hviHeading size="lg">Card</h2>
-        <div class="flex flex-wrap gap-2">
-            <hvi-card maxWidth="320px">
-                <h2 hviHeading>Lykkeland Barnehage</h2>
-                <p hviParagraph>Lykkeland Barneskole er ein trygg og inkluderande nærskule der leik, læring og nysgjerrigheit går hand i hand.</p>
-                <p hviParagraph size="sm">Solslett kommune</p>
-            </hvi-card>
-
-            <hvi-card color="accent" variant="tinted" maxWidth="320px">
-                <div hviCardBlock>
-                    <video controls width="100%">
-                        <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
-                    </video>
-                </div>
-                <div hviCardBlock>
-                    <h3 hviHeading>Se en film</h3>
-                    <p hviParagraph>En veldig, veldig, veldig gøy film!</p>
-                    <button hviButton variant="secondary">Handling</button>
-                </div>
-            </hvi-card>
-
+        <div hviCardBlock>
+          <h3 hviHeading>Se en film</h3>
+          <p hviParagraph>En veldig, veldig, veldig gøy film!</p>
+          <button hviButton variant="secondary">Handling</button>
         </div>
-    </section>
+      </hvi-card>
+    </div>
+  </section>
 
-        <section class="space-y-2">
-        <h2 hviHeading size="lg">Details</h2>
-            <hvi-details variant="tinted">
-                <hvi-details-summary>
-                    <p size="md">Detaljer</p>
-                </hvi-details-summary>
-                <hvi-details-content>
-                    <p>Her er innholdet i detaljene.</p>
-                </hvi-details-content>
-            </hvi-details>
-            <hvi-details>
-                <hvi-details-summary>
-                    <p size="md">Detaljer</p>
-                </hvi-details-summary>
-                <hvi-details-content>
-                    <p>Her er innholdet i detaljene.</p>
-                </hvi-details-content>
-            </hvi-details>
+  <section class="space-y-2">
+    <h2 hviHeading size="lg">Details</h2>
+    <hvi-details variant="tinted">
+      <hvi-details-summary>
+        <p size="md">Detaljer</p>
+      </hvi-details-summary>
+      <hvi-details-content>
+        <p>Her er innholdet i detaljene.</p>
+      </hvi-details-content>
+    </hvi-details>
+    <hvi-details>
+      <hvi-details-summary>
+        <p size="md">Detaljer</p>
+      </hvi-details-summary>
+      <hvi-details-content>
+        <p>Her er innholdet i detaljene.</p>
+      </hvi-details-content>
+    </hvi-details>
 
-            <h3 hviHeading size="md">Details i card</h3>
-            <hvi-card color="brand2">
-                <hvi-details variant="tinted">
-                    <hvi-details-summary>
-                        <p size="md">Detaljer</p>
-                    </hvi-details-summary>
-                    <hvi-details-content>
-                        <p>Her er innholdet i detaljene.</p>
-                    </hvi-details-content>
-                </hvi-details>
-                <hvi-details [open]="true">
-                    <hvi-details-summary>
-                        <p size="md">Detaljer</p>
-                    </hvi-details-summary>
-                    <hvi-details-content>
-                        <p>Her er innholdet i detaljene.</p>
-                    </hvi-details-content>
-                </hvi-details>
-            </hvi-card>
-    </section>
+    <h3 hviHeading size="md">Details i card</h3>
+    <hvi-card color="brand2">
+      <hvi-details variant="tinted">
+        <hvi-details-summary>
+          <p size="md">Detaljer</p>
+        </hvi-details-summary>
+        <hvi-details-content>
+          <p>Her er innholdet i detaljene.</p>
+        </hvi-details-content>
+      </hvi-details>
+      <hvi-details [open]="true">
+        <hvi-details-summary>
+          <p size="md">Detaljer</p>
+        </hvi-details-summary>
+        <hvi-details-content>
+          <p>Her er innholdet i detaljene.</p>
+        </hvi-details-content>
+      </hvi-details>
+    </hvi-card>
+  </section>
 
-    <section class="space-y-2">
-        <h2 hviHeading size="lg">Divider</h2>
-            <div class="flex gap-2 items-center">
-                <hr hviDivider />
-            </div>
-    </section>
+  <section class="space-y-2">
+    <h2 hviHeading size="lg">Divider</h2>
+    <div class="flex items-center gap-2">
+      <hr hviDivider />
+    </div>
+  </section>
 
+  <section class="space-y-2">
+    <h2 hviHeading size="lg">Forms</h2>
+    <fieldset hviFieldset>
+      <legend hviLabel>Hva bruker du penger på?</legend>
+      <p hviParagraph variant="default">Dette vil hjelpe oss å gi deg et bedre tilbud.</p>
+      <hvi-field>
+        <label hviLabel weight="medium">Mat</label>
+        <p hviFieldDescription>Hvor mye bruker du på mat hver måned?</p>
+        <hvi-field-affixes>
+          <hvi-field-affix>NOK</hvi-field-affix>
+          <input hviInput type="number" placeholder="Beløp" />
+          <hvi-field-affix>pr. mnd.</hvi-field-affix>
+        </hvi-field-affixes>
+        <span hviFieldOptional>Valgfritt</span>
+      </hvi-field>
+    </fieldset>
 
+    <fieldset hviFieldset>
+      <legend hviLabel>Kjønn</legend>
+      <p hviParagraph>Hva er du, egentlig?</p>
 
-    <section class="space-y-2">
-        <h2 hviHeading size="lg">Forms</h2>
-        <fieldset hviFieldset>
-            <legend hviLabel>Hva bruker du penger på?</legend>
-            <p hviParagraph variant="default">
-                Dette vil hjelpe oss å gi deg et bedre tilbud.
-            </p>
-            <hvi-field>
-                <label hviLabel weight="medium">Mat</label>
-                <p hviFieldDescription>Hvor mye bruker du på mat hver måned?</p>
-                <hvi-field-affixes>
-                    <hvi-field-affix>NOK</hvi-field-affix>
-                    <input hviInput type="number" placeholder="Beløp" />
-                    <hvi-field-affix>pr. mnd.</hvi-field-affix>
-                </hvi-field-affixes>
-                <span hviFieldOptional>Valgfritt</span>
-            </hvi-field>
-        </fieldset>
+      <hvi-field>
+        <input hviInput type="checkbox" value="male" name="gender" />
+        <label hviLabel weight="medium">Mann</label>
+      </hvi-field>
+      <hvi-field>
+        <input hviInput type="checkbox" value="female" name="gender" />
+        <label hviLabel weight="medium">Kvinne</label>
+      </hvi-field>
+      <hvi-field>
+        <input hviInput type="checkbox" value="other" name="gender" />
+        <label hviLabel weight="medium">Annet</label>
+      </hvi-field>
+    </fieldset>
+  </section>
 
-        <fieldset hviFieldset>
-            <legend hviLabel>Kjønn</legend>
-            <p hviParagraph>Hva er du, egentlig?</p>
+  <section class="space-y-2">
+    <h2 hviHeading size="lg">Dialog</h2>
+    <button hviButton type="button" aria-haspopup="dialog" (click)="toggleDialog(true)">
+      Open dialog
+    </button>
 
-            <hvi-field>
-                <input hviInput type="checkbox" value="male" name="gender" />
-                <label hviLabel weight="medium">Mann</label>
-            </hvi-field>
-            <hvi-field>
-                <input hviInput type="checkbox" value="female" name="gender" />
-                <label hviLabel weight="medium">Kvinne</label>
-            </hvi-field>
-            <hvi-field>
-                <input hviInput type="checkbox" value="other" name="gender" />
-                <label hviLabel weight="medium">Annet</label>
-            </hvi-field>
-        </fieldset>
-    </section>
-
-    <section class="space-y-2">
-        <h2 hviHeading size="lg">Dialog</h2>
-        <button hviButton type="button" aria-haspopup="dialog" (click)="toggleDialog(true)">
-            Open dialog
+    <dialog
+      hviDialog
+      id="demoDialog"
+      aria-labelledby="demoDialogTitle"
+      [open]="dialogOpen()"
+      (openChange)="toggleDialog($event)"
+    >
+      <div hviDialogBlock>
+        <h3 hviHeading size="md" id="demoDialogTitle">En enkel dialog</h3>
+      </div>
+      <div hviDialogBlock>
+        <p hviParagraph size="md">
+          Her kan innholdet ditt ligge. Dialogen er modal og styrt med hviDialog-direktivet.
+        </p>
+      </div>
+      <div hviDialogBlock class="flex justify-end gap-2">
+        <button hviButton variant="secondary" type="button" (click)="toggleDialog(false)">
+          Lukk
         </button>
+        <button hviButton type="button" (click)="toggleDialog(false)">Fortsett</button>
+      </div>
+    </dialog>
+  </section>
 
-        <dialog
-            hviDialog
-            id="demoDialog"
-            aria-labelledby="demoDialogTitle"
-            [open]="dialogOpen()"
-            (openChange)="toggleDialog($event)"
-        >
-            <div hviDialogBlock>
-                <h3 hviHeading size="md" id="demoDialogTitle">En enkel dialog</h3>
-            </div>
-            <div hviDialogBlock>
-                <p hviParagraph size="md">
-                    Her kan innholdet ditt ligge. Dialogen er modal og styrt med hviDialog-direktivet.
-                </p>
-            </div>
-            <div hviDialogBlock class="flex gap-2 justify-end">
-                <button hviButton variant="secondary" type="button" (click)="toggleDialog(false)">
-                    Lukk
-                </button>
-                <button hviButton type="button" (click)="toggleDialog(false)">
-                    Fortsett
-                </button>
-            </div>
-        </dialog>
-    </section>
-
-    <footer>
-        <router-outlet />
-    </footer>
-
+  <footer>
+    <router-outlet />
+  </footer>
 </article>

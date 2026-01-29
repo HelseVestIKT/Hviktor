@@ -14,9 +14,9 @@ import { Directive } from '@angular/core';
 @Directive({
   selector: 'hr[hviDivider]',
   standalone: true,
-    host: {
-        class: 'ds-divider',
-        'aria-hidden': 'true',
-    },
+  host: {
+    class: 'ds-divider',
+    'aria-hidden': 'true',
+  },
 })
 export class HviDivider {}

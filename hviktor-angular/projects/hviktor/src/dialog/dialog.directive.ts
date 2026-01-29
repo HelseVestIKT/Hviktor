@@ -1,10 +1,18 @@
-import { Directive, ElementRef, EventEmitter, HostListener, Input, Output } from '@angular/core';
+import {
+  Directive,
+  ElementRef,
+  EventEmitter,
+  HostListener,
+  inject,
+  Input,
+  Output,
+} from '@angular/core';
 
 /**
  * @summary
  * Dialog allows you to create both modal and non-modal dialogs based on the HTML dialog element.
  * You have to connect the <dialog> element to a trigger yourself, and handle opening and closing the dialog with JavaScript.
- * 
+ *
  * @example
  * HTML:
  * ```html
@@ -14,7 +22,7 @@ import { Directive, ElementRef, EventEmitter, HostListener, Input, Output } from
  *  <button hviButton variant="primary" (click)="closeDialog()">Close dialog</button>
  * </dialog>
  * ```
- * 
+ *
  * TypeScript:
  * ```ts
  * export class DialogExampleComponent {
@@ -53,11 +61,7 @@ export class HviDialog {
 
   @Output() readonly openChange = new EventEmitter<boolean>();
 
-  private readonly element: HTMLDialogElement;
-
-  constructor(elementRef: ElementRef<HTMLDialogElement>) {
-    this.element = elementRef.nativeElement;
-  }
+  private readonly element = inject(ElementRef<HTMLDialogElement>).nativeElement;
 
   openModal(): void {
     this.setOpen(true);

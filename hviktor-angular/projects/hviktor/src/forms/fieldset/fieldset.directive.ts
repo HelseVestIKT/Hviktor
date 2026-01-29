@@ -1,7 +1,7 @@
 import { Directive } from '@angular/core';
 
 /**
- * Fieldset is used to group and label fields that naturally belong together, such as date fields or address fields. 
+ * Fieldset is used to group and label fields that naturally belong together, such as date fields or address fields.
  * The component helps organize information, make forms more manageable, and improve accessibility for screen readers.
  *
  * @example
@@ -23,7 +23,7 @@ import { Directive } from '@angular/core';
  *    </hvi-field>
  *  </fieldset>
  * ```
- * 
+ *
  * Documentation: https://designsystemet.no/en/components/docs/fieldset/overview
  */
 @Directive({

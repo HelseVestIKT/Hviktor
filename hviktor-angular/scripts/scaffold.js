@@ -92,8 +92,12 @@ export class ${className} {}
 `;
 
 fs.writeFileSync(mainFilePath, mainFileTemplate, { encoding: 'utf8' });
-fs.writeFileSync(indexFilePath, `export * from './${fileStem}';
-`, { encoding: 'utf8' });
+fs.writeFileSync(
+  indexFilePath,
+  `export * from './${fileStem}';
+`,
+  { encoding: 'utf8' },
+);
 
 const publicApiPath = path.join(baseDir, 'public-api.ts');
 const exportPath = `./${nameSegments.join('/')}`;
