@@ -18,3 +18,4 @@ export * from './forms/input';
 export * from './heading';
 export * from './label';
 export * from './paragraph';
+export * from './tag';
