@@ -12,6 +12,7 @@ export * from './chip';
 export * from './details';
 export * from './dialog';
 export * from './divider';
+export * from './error-summary';
 export * from './forms/field';
 export * from './forms/fieldset';
 export * from './forms/input';
