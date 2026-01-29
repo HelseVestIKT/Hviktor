@@ -1,7 +1,7 @@
 set -u
 
-DEMO_APP_DIR="hviktor-angular"
-PRETTIER="$DEMO_APP_DIR/node_modules/.bin/prettier"
+ANGULAR_DIR="hviktor-angular"
+PRETTIER="$ANGULAR_DIR/node_modules/.bin/prettier"
 
 info() { echo "ℹ️  $*" >&2; }
 success() { echo "✅ $*" >&2; }
@@ -13,13 +13,13 @@ info "Running pre-commit checks (Prettier) 🐶"
 
 if [ ! -x "$PRETTIER" ]; then
   error "Prettier not found at $PRETTIER"
-  info "Run: (cd $DEMO_APP_DIR && npm ci)"
+  info "Run: (cd $ANGULAR_DIR && npm ci)"
   exit 1
 fi
 
 staged_files=$(
   git diff --cached --name-only --diff-filter=ACMR \
-    | grep "^$DEMO_APP_DIR/" \
+    | grep "^$ANGULAR_DIR/" \
     | grep -E "\.(ts|js|json|html|css|scss|md)$" \
     || true
 )

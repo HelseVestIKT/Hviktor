@@ -74,6 +74,12 @@
             ],
             "styles": ["src/styles.css"]
           }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": ["src/**/*.ts", "src/**/*.html"]
+          }
         }
       }
     },
@@ -99,6 +105,12 @@
           "builder": "@angular/build:unit-test",
           "options": {
             "tsConfig": "projects/hviktor/tsconfig.spec.json"
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": ["projects/hviktor/src/**/*.ts", "projects/hviktor/src/**/*.html"]
           }
         }
       }
