@@ -3,40 +3,83 @@
 
 set -u
 
+# -----------------------------
 # Configuration
+# -----------------------------
 DEBUG=${DEBUG:-0}
 USE_NPX=${USE_NPX:-0}
 DEMO_APP_DIR="hviktor-angular"
 PROJECT_DIR="$DEMO_APP_DIR/projects/hviktor"
 
-# Always run from repo root
+# Always run from repo root (important for paths)
 cd "$(git rev-parse --show-toplevel)" || exit 1
 
-# Logging functions
+# -----------------------------
+# Logging helpers
+# -----------------------------
 info() { echo "ℹ️  $*" >&2; }
 success() { echo "✅ $*" >&2; }
 error() { echo "❌ $*" >&2; }
 debug() { [ "$DEBUG" = "1" ] && echo "🔍 $*" >&2 || true; }
 
-# Choose prettier execution method (use array for safety)
-if [ "$USE_NPX" = "1" ]; then
-  PRETTIER=(npx prettier)
-  debug "Using npx prettier"
-else
-  PRETTIER=(./node_modules/.bin/prettier)
-  debug "Using direct path to prettier"
-fi
+# -----------------------------
+# Prettier command wrappers
+# -----------------------------
+prettier_check() {
+  # args: file1 file2 ...
+  if [ "$USE_NPX" = "1" ]; then
+    npx --prefix "$DEMO_APP_DIR" prettier --check "$@"
+  else
+    "$DEMO_APP_DIR/node_modules/.bin/prettier" --check "$@"
+  fi
+}
 
+prettier_print() {
+  # args: file
+  if [ "$USE_NPX" = "1" ]; then
+    npx --prefix "$DEMO_APP_DIR" prettier "$1"
+  else
+    "$DEMO_APP_DIR/node_modules/.bin/prettier" "$1"
+  fi
+}
+
+ensure_prettier() {
+  if [ "$USE_NPX" = "1" ]; then
+    # Best-effort check that npx exists
+    command -v npx >/dev/null 2>&1 || {
+      error "npx is not available. Install Node.js/npm or set USE_NPX=0 and install deps in $DEMO_APP_DIR."
+      exit 1
+    }
+  else
+    PRETTIER_PATH="$DEMO_APP_DIR/node_modules/.bin/prettier"
+    [ -x "$PRETTIER_PATH" ] || {
+      error "Prettier not found at $PRETTIER_PATH"
+      info "Run: (cd $DEMO_APP_DIR && npm ci)  # or npm install"
+      exit 1
+    }
+  fi
+}
+
+# -----------------------------
+# Main
+# -----------------------------
 info "Running pre-commit checks with Husky🐶 (voff, voff)"
 start=$(date +%s)
 
+ensure_prettier
+
 failed_count=0
-failed_files=""  # space-separated list for the help text (best-effort)
-# (Hvis dere vil være 100% safe på spaces: bruk en tempfil eller en array i bash.)
+failed_files="" # space-separated list for help text (best-effort)
 
 # Get staged files (ACMR) and filter extensions
-staged_files=$(git diff --cached --name-only --diff-filter=ACMR | grep -E "\.(ts|js|json|html|css|scss|md)$" || true)
+staged_files=$(
+  git diff --cached --name-only --diff-filter=ACMR \
+    | grep -E "\.(ts|js|json|html|css|scss|md)$" || true
+)
 
+# Split into:
+# - project_files: under PROJECT_DIR
+# - demo_app_files: under DEMO_APP_DIR but NOT under PROJECT_DIR (avoid double-check)
 project_files=$(printf "%s\n" "$staged_files" | grep "^$PROJECT_DIR/" || true)
 demo_app_files=$(printf "%s\n" "$staged_files" | grep "^$DEMO_APP_DIR/" | grep -v "^$PROJECT_DIR/" || true)
 
@@ -52,16 +95,20 @@ check_files() {
   file_count=$(printf "%s\n" "$files" | wc -l | tr -d ' ')
   info "Checking $file_count $label file(s)..."
 
-  # Fast path: one prettier --check over all files
-  if ! printf "%s\n" "$files" | tr '\n' '\0' | xargs -0 "${PRETTIER[@]}" --check > /dev/null 2>&1; then
-    # Slow path: find and print diffs per file
+  # Fast path: run prettier --check over all files via NUL-safe xargs
+  if ! printf "%s\n" "$files" | tr '\n' '\0' | xargs -0 sh -c '
+      # "$@" becomes the file list passed by xargs
+      prettier_check "$@"
+    ' sh 2>/dev/null; then
+    # Slow path: per-file, show diff
     printf "%s\n" "$files" | while IFS= read -r file; do
       [ -z "$file" ] && continue
-      if ! "${PRETTIER[@]}" --check "$file" > /dev/null 2>&1; then
+
+      if ! prettier_check "$file" >/dev/null 2>&1; then
         echo ""
         echo "❌ Formatting issues in: $file"
         echo "────────────────────────────────────────"
-        "${PRETTIER[@]}" "$file" | diff --color=always -u "$file" - | head -50
+        prettier_print "$file" | diff --color=always -u "$file" - | head -50
 
         if [ -z "$failed_files" ]; then
           failed_files="$file"
@@ -74,8 +121,51 @@ check_files() {
   fi
 }
 
-check_files "$PROJECT_DIR" "$project_files"
-check_files "$DEMO_APP_DIR" "$demo_app_files"
+# Important: export wrapper functions for the xargs sh -c subshell
+export -f prettier_check >/dev/null 2>&1 || true
+export -f prettier_print >/dev/null 2>&1 || true
+
+# If your shell doesn't support export -f (dash), the fast path above won't work.
+# We'll detect that and fall back to per-file only.
+if ! (export -f prettier_check >/dev/null 2>&1); then
+  debug "Shell does not support 'export -f' (likely dash). Using per-file checks only."
+
+  check_files_per_file_only() {
+    label="$1"
+    files="$2"
+
+    if [ -z "$files" ]; then
+      debug "No $label files staged"
+      return 0
+    fi
+
+    file_count=$(printf "%s\n" "$files" | wc -l | tr -d ' ')
+    info "Checking $file_count $label file(s)..."
+
+    printf "%s\n" "$files" | while IFS= read -r file; do
+      [ -z "$file" ] && continue
+      if ! prettier_check "$file" >/dev/null 2>&1; then
+        echo ""
+        echo "❌ Formatting issues in: $file"
+        echo "────────────────────────────────────────"
+        prettier_print "$file" | diff --color=always -u "$file" - | head -50
+
+        if [ -z "$failed_files" ]; then
+          failed_files="$file"
+        else
+          failed_files="$failed_files $file"
+        fi
+        failed_count=$((failed_count + 1))
+      fi
+    done
+  }
+
+  check_files_per_file_only "$PROJECT_DIR" "$project_files"
+  check_files_per_file_only "$DEMO_APP_DIR" "$demo_app_files"
+else
+  check_files "$PROJECT_DIR" "$project_files"
+  check_files "$DEMO_APP_DIR" "$demo_app_files"
+fi
 
 end=$(date +%s)
 duration=$((end - start))
@@ -101,7 +191,7 @@ if [ "$failed_count" -gt 0 ]; then
   echo ""
   error "Pre-commit checks failed"
   exit 1
-else
-  success "Pre-commit checks passed"
-  exit 0
 fi
+
+success "Pre-commit checks passed"
+exit 0
