@@ -4,32 +4,7 @@ import { HviForm } from '../form/form.directive';
 import type { HviValidationMessages } from '../validation/validation-message';
 
 /**
- * @summary
- * ErrorSummary lists validation errors so users can quickly navigate to fields that need attention.
- *
- * @remarks
- * Use one of these approaches:
- * - Manual: pass `[errors]` as `{ message, href }[]`.
- * - Auto (recommended): pass `[form]` + `[messages]` to derive errors from invalid controls.
- *
- * Each item link must point to a field id (e.g. `href="#firstName"`).
- *
- * @example
- * Manual:
- * ```html
- * <hvi-error-summary [errors]="[{ message: 'Fornavn er påkrevd', href: '#firstName' }]" />
- * ```
- *
- * @example
- * Auto + focus on submit:
- * ```html
- * <form hviForm [formGroup]="form" [focusOnInvalid]="summary">
- *   <hvi-error-summary #summary [form]="form" [messages]="messages" />
- *   <!-- fields -->
- * </form>
- * ```
- *
- * Documentation: https://designsystemet.no/en/components/docs/error-summary/code
+ * Item model used by manual error summaries. Provide `message` and `href` for each invalid field.
  */
 export type HviErrorSummaryItem = {
   /** Text shown in the list */
@@ -53,6 +28,50 @@ const DEFAULT_ERROR_PRIORITY = [
 let errorSummaryIdCounter = 0;
 const nextErrorSummaryHeadingId = () => `hvi-error-summary-heading-${++errorSummaryIdCounter}`;
 
+/**
+ * @summary
+ * ErrorSummary gives a quick overview of blocking validation errors so users can locate and fix them fast.
+ *
+ * @remarks
+ * Supports both manual errors (via `[errors]`) and automatic aggregation from Angular reactive forms when
+ * `[form]`, `[messages]` and optionally `[idMap]` are provided. Combine with `hviForm` to control when the
+ * summary becomes visible and to focus it automatically after submit.
+ *
+ * @example
+ * Manual mode:
+ * ```html
+ * <hvi-error-summary
+ *   heading="For å gå videre må du rette opp følgende feil:"
+ *   [errors]="[
+ *     { message: 'Fornavn må være minst 2 tegn', href: '#firstName' },
+ *     { message: 'Telefonnummer kan kun inneholde siffer', href: '#phone' }
+ *   ]"
+ * />
+ * ```
+ *
+ * @example
+ * Auto mode with Angular Reactive Forms:
+ * ```html
+ * <hvi-error-summary
+ *   #summary
+ *   headingId="form-errors"
+ *   [form]="form"
+ *   [messages]="messages"
+ * />
+ *
+ * <form hviForm [formGroup]="form" [focusOnInvalid]="summary">
+ *   <hvi-field>
+ *     <label hviLabel for="firstName" weight="medium">Fornavn</label>
+ *     <input hviInput id="firstName" formControlName="firstName" hviControlInvalid />
+ *     <p hviFieldValidation hviValidationMessage="firstName" [messages]="messages.firstName"></p>
+ *   </hvi-field>
+ *
+ *   <button hviButton type="submit" variant="primary">Send inn</button>
+ * </form>
+ * ```
+ *
+ * Documentation: https://designsystemet.no/en/components/docs/error-summary/code
+ */
 @Component({
   selector: 'hvi-error-summary',
   standalone: true,
