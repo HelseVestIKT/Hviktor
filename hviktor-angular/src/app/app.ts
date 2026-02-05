@@ -1,6 +1,33 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { HviAlert, HviAvatar, HviBadge, HviBadgePosition, HviBreadcrumbs, HviButton, HviCard, HviCardBlock, HviChipButton, HviChipLabel, HviDetails, HviDetailsContent, HviDetailsSummary, HviDialog, HviDialogBlock, HviDivider, HviField, HviFieldAffix, HviFieldAffixes, HviFieldDescription, HviFieldOptional, HviFieldset, HviHeading, HviInput, HviLabel, HviParagraph, HviErrorSummary } from '@helsevestikt/hviktor';
+import {
+  HviAlert,
+  HviAvatar,
+  HviBadge,
+  HviBadgePosition,
+  HviBreadcrumbs,
+  HviButton,
+  HviCard,
+  HviCardBlock,
+  HviChipButton,
+  HviChipLabel,
+  HviDetails,
+  HviDetailsContent,
+  HviDetailsSummary,
+  HviDialog,
+  HviDialogBlock,
+  HviDivider,
+  HviField,
+  HviFieldAffix,
+  HviFieldAffixes,
+  HviFieldDescription,
+  HviFieldOptional,
+  HviFieldset,
+  HviHeading,
+  HviInput,
+  HviLabel,
+  HviParagraph,
+} from '@helsevestikt/hviktor';
 import '@u-elements/u-details';
 
 @Component({
@@ -33,8 +60,7 @@ import '@u-elements/u-details';
     HviChipButton,
     HviDialog,
     HviDialogBlock,
-    HviErrorSummary
-],
+  ],
   templateUrl: './app.html',
   styleUrl: './app.css',
 })
