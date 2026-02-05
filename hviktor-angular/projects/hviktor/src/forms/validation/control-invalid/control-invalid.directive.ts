@@ -4,14 +4,12 @@ import { HviForm } from '../../form';
 
 /**
  * @summary
- * ControlInvalid directive description.
+ * Directive to set `aria-invalid` on form controls based on their validation state.
  *
- * @example
+ * Usage:
  * ```html
- * <[hviControlInvalid]></[hviControlInvalid]>
+ * <input hviControlInvalid formControlName="email" />
  * ```
- *
- * Documentation: https://designsystemet.no/en/components/docs/control-invalid/code
  */
 
 @Directive({

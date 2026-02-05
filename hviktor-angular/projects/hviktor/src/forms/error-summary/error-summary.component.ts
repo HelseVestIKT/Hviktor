@@ -70,6 +70,9 @@ const DEFAULT_ERROR_PRIORITY = [
   'max',
 ] as const;
 
+let errorSummaryIdCounter = 0;
+const nextErrorSummaryHeadingId = () => `hvi-error-summary-heading-${++errorSummaryIdCounter}`;
+
 @Component({
   selector: 'hvi-error-summary',
   standalone: true,
@@ -148,7 +151,7 @@ export class HviErrorSummary {
   @Input() errorPriority: readonly string[] = DEFAULT_ERROR_PRIORITY;
 
   /** Used for aria-labelledby on the container */
-  @Input() headingId = 'hvi-error-summary-heading';
+  @Input() headingId = nextErrorSummaryHeadingId();
 
   /** When to show errors from the form controls */
   @Input() showWhen: 'submitted' | 'touched' | 'always' = 'submitted';
@@ -194,8 +197,7 @@ export class HviErrorSummary {
     for (const key of Object.keys(errors)) {
       if (messages[key]) return messages[key]!;
     }
-    // If there's no mapping for the current error, skip it (avoid noisy fallback in summary)
-    return '';
+    return Object.keys(errors).length ? 'Ugyldig verdi' : '';
   }
 
   private readonly hviForm = inject(HviForm, { optional: true });

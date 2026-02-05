@@ -71,8 +71,15 @@ export function fieldObserver(fieldElement: HTMLElement | null) {
       }
     }
 
+    // Prune aria-describedby so it does not reference removed elements
+    const prunedDescribedbyIds = describedbyIds.filter((id) => {
+      if (!id) return false;
+      if (id === inputId) return true;
+      return !!fieldElement.querySelector(`#${CSS.escape(id)}`);
+    });
+
     setAttr(input, 'id', inputId);
-    setAttr(input, 'aria-describedby', describedbyIds.join(' ').trim());
+    setAttr(input, 'aria-describedby', prunedDescribedbyIds.join(' ').trim());
   };
 
   const observer = createOptimizedMutationObserver(process);
