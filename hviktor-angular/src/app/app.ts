@@ -27,6 +27,7 @@ import {
   HviInput,
   HviLabel,
   HviParagraph,
+  HviTag,
 } from '@helsevestikt/hviktor';
 import '@u-elements/u-details';
 
@@ -60,6 +61,7 @@ import '@u-elements/u-details';
     HviChipButton,
     HviDialog,
     HviDialogBlock,
+    HviTag,
   ],
   templateUrl: './app.html',
   styleUrl: './app.css',

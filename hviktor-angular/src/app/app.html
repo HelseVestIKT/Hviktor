@@ -38,21 +38,16 @@
   <section class="space-y-2">
     <h2 hviHeading size="lg">Breadcrumbs</h2>
     <div class="flex items-center gap-2">
-      <nav
-        hviBreadcrumbs
-        ariaLabel="Du er her:"
-        [backLink]="{
+      <nav hviBreadcrumbs ariaLabel="Du er her:" [backLink]="{
                     label: 'Nivå 3',
                     href: '#',
                     ariaLabel: 'Tilbake til Nivå 3'
-                }"
-        [items]="[
+                }" [items]="[
                     { label: 'Nivå 1', href: '#' },
                     { label: 'Nivå 2', href: '#' },
                     { label: 'Nivå 3', href: '#' },
                     { label: 'Nivå 4', href: '#' }
-                ]"
-      ></nav>
+                ]"></nav>
     </div>
   </section>
 
@@ -87,6 +82,44 @@
         </div>
       </hvi-badge-position>
     </div>
+  </section>
+
+
+  <section class="space-y-4">
+    <h2 hviHeading size="lg">Tag</h2>
+
+    <section class="space-y-2">
+      <h3 hviHeading size="sm">Default og outline</h3>
+      <div class="flex flex-wrap gap-2">
+        <hvi-tag variant="default">Default</hvi-tag>
+        <hvi-tag variant="outline">Outline</hvi-tag>
+      </div>
+    </section>
+
+    <section class="space-y-2">
+      <h3 hviHeading size="sm">Size</h3>
+      <div class="flex flex-wrap gap-2">
+        <hvi-tag size="sm">Small</hvi-tag>
+        <hvi-tag size="md">Medium (default)</hvi-tag>
+        <hvi-tag size="lg">Large</hvi-tag>
+      </div>
+    </section>
+
+    <section class="space-y-2">
+      <h3 hviHeading size="sm">Color</h3>
+      <div class="flex flex-wrap gap-2">
+        <hvi-tag>Default</hvi-tag>
+        <hvi-tag color="neutral">Neutral</hvi-tag>
+        <hvi-tag color="danger">Danger</hvi-tag>
+        <hvi-tag color="warning">warning</hvi-tag>
+        <hvi-tag color="info">info</hvi-tag>
+        <hvi-tag color="success">success</hvi-tag>
+        <hvi-tag color="accent">accent</hvi-tag>
+        <hvi-tag color="brand1">brand1</hvi-tag>
+        <hvi-tag color="brand2">brand2</hvi-tag>
+        <hvi-tag color="brand3">brand3</hvi-tag>
+      </div>
+    </section>
   </section>
 
   <section class="space-y-4">
@@ -289,13 +322,8 @@
       Open dialog
     </button>
 
-    <dialog
-      hviDialog
-      id="demoDialog"
-      aria-labelledby="demoDialogTitle"
-      [open]="dialogOpen()"
-      (openChange)="toggleDialog($event)"
-    >
+    <dialog hviDialog id="demoDialog" aria-labelledby="demoDialogTitle" [open]="dialogOpen()"
+      (openChange)="toggleDialog($event)">
       <div hviDialogBlock>
         <h3 hviHeading size="md" id="demoDialogTitle">En enkel dialog</h3>
       </div>
