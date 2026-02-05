@@ -1,5 +1,5 @@
 import { Component, signal } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { RouterOutlet } from '@angular/router';
 import {
   HviAlert,
@@ -18,10 +18,12 @@ import {
   HviDialog,
   HviDialogBlock,
   HviDivider,
+  HviFieldKit,
   HviForms,
   HviHeading,
   HviLabel,
   HviParagraph,
+  HviValidationKit,
   HviValidationMessages,
 } from '@helsevestikt/hviktor';
 import '@u-elements/u-details';
@@ -30,7 +32,6 @@ import '@u-elements/u-details';
   selector: 'app-root',
   imports: [
     RouterOutlet,
-    ReactiveFormsModule,
     HviButton,
     HviAlert,
     HviAvatar,
@@ -51,6 +52,8 @@ import '@u-elements/u-details';
     HviDialog,
     HviDialogBlock,
     HviForms,
+    HviFieldKit,
+    HviValidationKit,
   ],
   templateUrl: './app.html',
   styleUrl: './app.css',
