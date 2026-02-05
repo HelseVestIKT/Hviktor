@@ -20,5 +20,6 @@ import { Directive, Input } from '@angular/core';
   },
 })
 export class HviLink {
-  @Input() color?: 'default' | 'neutral'  = 'default';
+  /** Used to change the appearance of the link. */
+  @Input() color?: 'default' | 'neutral' = 'default';
 }
