@@ -30,18 +30,23 @@ const nextErrorSummaryHeadingId = () => `hvi-error-summary-heading-${++errorSumm
 
 /**
  * @summary
- * ErrorSummary gives a quick overview of blocking validation errors so users can locate and fix them fast.
+ * ErrorSummary lists blocking validation errors so users can quickly find and fix them.
  *
  * @remarks
- * Supports both manual errors (via `[errors]`) and automatic aggregation from Angular reactive forms when
- * `[form]`, `[messages]` and optionally `[idMap]` are provided. Combine with `hviForm` to control when the
- * summary becomes visible and to focus it automatically after submit.
+ * Modes:
+ * - Manual: provide `[errors]` as `{ message, href }[]`.
+ * - Auto (recommended): provide `[form]` + `[messages]` (and optionally `[idMap]`) to derive errors from invalid
+ *   controls in a reactive form.
+ *
+ * Auto mode should be rendered inside `<form hviForm ...>` so it can follow submit visibility (`showWhen`) and
+ * be focused automatically via `[focusOnInvalid]`.
+ *
+ * Each item link must point to a field id (e.g. `href="#firstName"`). Prefer `id === formControlName`.
  *
  * @example
  * Manual mode:
  * ```html
  * <hvi-error-summary
- *   heading="For å gå videre må du rette opp følgende feil:"
  *   [errors]="[
  *     { message: 'Fornavn må være minst 2 tegn', href: '#firstName' },
  *     { message: 'Telefonnummer kan kun inneholde siffer', href: '#phone' }
@@ -50,24 +55,40 @@ const nextErrorSummaryHeadingId = () => `hvi-error-summary-heading-${++errorSumm
  * ```
  *
  * @example
- * Auto mode with Angular Reactive Forms:
- * ```html
- * <hvi-error-summary
- *   #summary
- *   headingId="form-errors"
- *   [form]="form"
- *   [messages]="messages"
- * />
+ * Auto mode (HTML + TS):
  *
+ * ```html
+ * HTML:
  * <form hviForm [formGroup]="form" [focusOnInvalid]="summary">
+ *   <hvi-error-summary #summary [form]="form" [messages]="messages" showWhen="submitted" />
+ *
  *   <hvi-field>
  *     <label hviLabel for="firstName" weight="medium">Fornavn</label>
  *     <input hviInput id="firstName" formControlName="firstName" hviControlInvalid />
  *     <p hviFieldValidation hviValidationMessage="firstName" [messages]="messages.firstName"></p>
  *   </hvi-field>
  *
+ *   <hvi-field>
+ *     <label hviLabel for="phone" weight="medium">Telefon</label>
+ *     <input hviInput id="phone" type="tel" formControlName="phone" hviControlInvalid />
+ *     <p hviFieldValidation hviValidationMessage="phone" [messages]="messages.phone"></p>
+ *   </hvi-field>
+ *
  *   <button hviButton type="submit" variant="primary">Send inn</button>
  * </form>
+ * ```
+ *
+ * ```ts
+ * TS:
+ * form = new FormGroup({
+ *   firstName: new FormControl('', [Validators.required, Validators.minLength(2)]),
+ *   phone: new FormControl('', [Validators.required, Validators.pattern(/^\d+$/)]),
+ * });
+ *
+ * messages = {
+ *   firstName: { required: 'Fornavn er påkrevd', minlength: 'Fornavn må være minst 2 tegn' },
+ *   phone: { required: 'Telefon er påkrevd', pattern: 'Telefonnummer kan kun inneholde siffer' },
+ * } as const;
  * ```
  *
  * Documentation: https://designsystemet.no/en/components/docs/error-summary/code
