@@ -250,7 +250,7 @@
   <section class="space-y-2">
     <h2 hviHeading size="lg">Forms</h2>
 
-    <form hviForm [formGroup]="form">
+    <form hviForm [formGroup]="form" [focusOnInvalid]="summary">
       <hvi-field>
         <label hviLabel for="firstName" weight="medium">Fornavn</label>
         <input hviInput id="firstName" formControlName="firstName" hviControlInvalid />
@@ -267,7 +267,15 @@
         <p hviFieldValidation hviValidationMessage="phone" [messages]="messages['phone']"></p>
       </hvi-field>
 
-      <button hviButton type="submit" variant="primary">Send inn</button>
+      <button hviButton class="my-2" type="submit" variant="primary">Send inn</button>
+
+      <hvi-error-summary
+        #summary
+        headingId="form-errors"
+        [form]="form"
+        [messages]="messages"
+        showWhen="submitted"
+      />
     </form>
 
     <!-- 1) Vanlig tekstinput med label (Field kobler id/for automatisk hvis du ikke setter selv) -->

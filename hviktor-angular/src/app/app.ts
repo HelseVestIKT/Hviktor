@@ -18,13 +18,13 @@ import {
   HviDialog,
   HviDialogBlock,
   HviDivider,
+  HviErrorSummary,
   HviFieldKit,
   HviForms,
   HviHeading,
   HviLabel,
   HviParagraph,
   HviValidationKit,
-  HviValidationMessages,
 } from '@helsevestikt/hviktor';
 import '@u-elements/u-details';
 
@@ -51,6 +51,7 @@ import '@u-elements/u-details';
     HviChipButton,
     HviDialog,
     HviDialogBlock,
+    HviErrorSummary,
     HviForms,
     HviFieldKit,
     HviValidationKit,
@@ -75,14 +76,8 @@ export class App {
     phone: new FormControl('', [Validators.required, Validators.pattern(/^\d+$/)]),
   });
 
-  messages: Record<string, HviValidationMessages> = {
-    firstName: {
-      required: 'Fornavn er påkrevd',
-      minlength: 'Fornavn må være minst 2 tegn',
-    },
-    phone: {
-      required: 'Telefon er påkrevd',
-      pattern: 'Telefonnummer kan kun inneholde siffer',
-    },
-  };
+  messages = {
+    firstName: { required: 'Fornavn er påkrevd', minlength: 'Fornavn må være minst 2 tegn' },
+    phone: { required: 'Telefon er påkrevd', pattern: 'Telefonnummer kan kun inneholde siffer' },
+  } as const;
 }
