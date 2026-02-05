@@ -1,6 +1,6 @@
 import { Directive, HostBinding, inject } from '@angular/core';
 import { NgControl } from '@angular/forms';
-import { HviForm } from '../form';
+import { HviForm } from '../../form';
 
 /**
  * @summary
@@ -19,7 +19,7 @@ import { HviForm } from '../form';
   standalone: true,
 })
 export class HviControlInvalid {
-  private readonly ngControl = inject(NgControl, { optional: true });
+  private readonly ngControl = inject(NgControl, { self: true, optional: true });
   private readonly hviForm = inject(HviForm, { optional: true });
 
   @HostBinding('attr.aria-invalid')

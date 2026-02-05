@@ -1,4 +1,5 @@
 import { Component, signal } from '@angular/core';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RouterOutlet } from '@angular/router';
 import {
   HviAlert,
@@ -17,17 +18,11 @@ import {
   HviDialog,
   HviDialogBlock,
   HviDivider,
-  HviErrorSummary,
-  HviField,
-  HviFieldAffix,
-  HviFieldAffixes,
-  HviFieldDescription,
-  HviFieldOptional,
-  HviFieldset,
+  HviForms,
   HviHeading,
-  HviInput,
   HviLabel,
   HviParagraph,
+  HviValidationMessages,
 } from '@helsevestikt/hviktor';
 import '@u-elements/u-details';
 
@@ -35,6 +30,7 @@ import '@u-elements/u-details';
   selector: 'app-root',
   imports: [
     RouterOutlet,
+    ReactiveFormsModule,
     HviButton,
     HviAlert,
     HviAvatar,
@@ -50,18 +46,11 @@ import '@u-elements/u-details';
     HviLabel,
     HviBreadcrumbs,
     HviBadgePosition,
-    HviFieldset,
-    HviField,
-    HviFieldDescription,
-    HviFieldOptional,
-    HviFieldAffix,
-    HviFieldAffixes,
-    HviInput,
     HviChipLabel,
     HviChipButton,
     HviDialog,
     HviDialogBlock,
-    HviErrorSummary,
+    HviForms,
   ],
   templateUrl: './app.html',
   styleUrl: './app.css',
@@ -77,4 +66,20 @@ export class App {
 
     this.dialogOpen.update((current) => !current);
   }
+
+  form = new FormGroup({
+    firstName: new FormControl('', [Validators.required, Validators.minLength(2)]),
+    phone: new FormControl('', [Validators.required, Validators.pattern(/^\d+$/)]),
+  });
+
+  messages: Record<string, HviValidationMessages> = {
+    firstName: {
+      required: 'Fornavn er påkrevd',
+      minlength: 'Fornavn må være minst 2 tegn',
+    },
+    phone: {
+      required: 'Telefon er påkrevd',
+      pattern: 'Telefonnummer kan kun inneholde siffer',
+    },
+  };
 }

@@ -14,7 +14,7 @@
   - Stick with `@Input` decorators. For booleans, apply `booleanAttribute` transforms like [projects/hviktor/src/button/button.directive.ts](../projects/hviktor/src/button/button.directive.ts).
 - **Forms & accessibility**
   - Forms helpers coordinate IDs and aria attributes via [projects/hviktor/src/forms/field/helpers/field-observer.ts](../projects/hviktor/src/forms/field/helpers/field-observer.ts); call it in `ngAfterViewInit` and tear down through `DestroyRef` as [projects/hviktor/src/forms/field/field.component.ts](../projects/hviktor/src/forms/field/field.component.ts) does.
-  - Maintain attribute contracts: form directives set `class: 'ds-*'` plus `data-*` markers so the Digdir CSS works. Preserve existing aria patterns when extending components like [projects/hviktor/src/error-summary/error-summary.component.ts](../projects/hviktor/src/error-summary/error-summary.component.ts).
+  - Maintain attribute contracts: form directives set `class: 'ds-*'` plus `data-*` markers so the Digdir CSS works. Preserve existing aria patterns when extending components like [projects/hviktor/src/error-summary/error-summary.component.ts](../projects/hviktor/src/forms/error-summary/error-summary.component.ts).
 - **Styling**
   - Library styles import Digdir packages in [projects/hviktor/src/styles.css](../projects/hviktor/src/styles.css); keep custom overrides inside scoped `@layer` blocks so downstream apps can opt in.
   - The demo app composes Tailwind v4 with the library stylesheet via [src/styles.css](../src/styles.css); utility classes in [src/app/app.html](../src/app/app.html) demonstrate how components should be used alongside Tailwind.

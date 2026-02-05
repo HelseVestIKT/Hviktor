@@ -250,6 +250,26 @@
   <section class="space-y-2">
     <h2 hviHeading size="lg">Forms</h2>
 
+    <form hviForm [formGroup]="form">
+      <hvi-field>
+        <label hviLabel for="firstName" weight="medium">Fornavn</label>
+        <input hviInput id="firstName" formControlName="firstName" hviControlInvalid />
+        <p
+          hviFieldValidation
+          hviValidationMessage="firstName"
+          [messages]="messages['firstName']"
+        ></p>
+      </hvi-field>
+
+      <hvi-field>
+        <label hviLabel for="phone" weight="medium">Telefon</label>
+        <input hviInput id="phone" type="tel" formControlName="phone" hviControlInvalid />
+        <p hviFieldValidation hviValidationMessage="phone" [messages]="messages['phone']"></p>
+      </hvi-field>
+
+      <button hviButton type="submit" variant="primary">Send inn</button>
+    </form>
+
     <!-- 1) Vanlig tekstinput med label (Field kobler id/for automatisk hvis du ikke setter selv) -->
     <fieldset hviFieldset>
       <legend hviLabel>Personopplysninger</legend>
@@ -332,13 +352,6 @@
 
   <section class="space-y-2">
     <h2 hviHeading size="lg">Error Summary</h2>
-    <hvi-error-summary
-      heading="For å gå videre må du rette opp følgende feil:"
-      [errors]="[
-    { message: 'Fornavn må være minst 2 tegn', href: '#fornavn' },
-    { message: 'Telefonnummer kan kun inneholde siffer', href: '#telefon' }
-  ]"
-    />
   </section>
 
   <section class="space-y-2">
