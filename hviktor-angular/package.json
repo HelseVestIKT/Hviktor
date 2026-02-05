@@ -9,14 +9,10 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "scaffold": "node ./scripts/scaffold.js",
-    "lint": "ng lint hviktor-angular && ng lint hviktor",
-    "lint:eslint": "eslint .",
-    "lint:fix": "eslint . --fix",
-    "lint:projects": "eslint \"projects/**/*.{ts,html}\"",
-    "lint:projects:fix": "eslint \"projects/**/*.{ts,html}\" --fix",
+    "lint:staged": "eslint --fix --cache --cache-location .cache/eslint/",
+    "lint-staged": "lint-staged",
     "format": "prettier --write .",
-    "format:check": "prettier --check .",
-    "format:projects": "prettier --write \"projects/**/*.{ts,js,json,html,css,scss,md}\"",
+    "format:staged": "prettier --write --log-level warn",
     "prepare": "cd .. && husky hviktor-angular/.husky"
   },
   "private": true,
@@ -39,17 +35,11 @@
     "@angular/cli": "^21.0.5",
     "@angular/compiler-cli": "^21.0.8",
     "@tailwindcss/postcss": "^4.1.12",
-    "@types/jasmine": "~5.1.0",
     "angular-eslint": "21.1.0",
     "eslint": "^9.39.1",
     "husky": "^9.1.7",
-    "jasmine-core": "~5.9.0",
     "jsdom": "^27.1.0",
-    "karma": "~6.4.0",
-    "karma-chrome-launcher": "~3.2.0",
-    "karma-coverage": "~2.2.0",
-    "karma-jasmine": "~5.1.0",
-    "karma-jasmine-html-reporter": "~2.1.0",
+    "lint-staged": "^16.2.7",
     "ng-packagr": "^21.0.1",
     "postcss": "^8.5.3",
     "prettier": "^3.8.1",
@@ -59,5 +49,9 @@
     "typescript": "~5.9.2",
     "typescript-eslint": "8.47.0",
     "vitest": "^4.0.8"
+  },
+  "lint-staged": {
+    "*.{ts,html,css,md,json}": "npm run -s format:staged --",
+    "*.ts": "npm run -s lint:staged --"
   }
 }

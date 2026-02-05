@@ -43,7 +43,7 @@ Etter at komponenten/direktivet er utviklet, må den legges til som export i `pr
 
 ## Kodekvalitetsverktøy
 
-For å få fyll nytte av Prettier kan du følge denne oppskriften:
+For å få full nytte av Prettier kan du følge denne oppskriften:
 
 1. Innstaller extension Prettier - Code formatter i VS Code.
 2. Gå til Workspace Settings (Ctrl + ,) og søk etter "Format"
@@ -52,8 +52,15 @@ For å få fyll nytte av Prettier kan du følge denne oppskriften:
 
 Nå vil Prettier automatisk formatere koden din hver gang du lagrer en fil.
 
+For å få få Husky til å virke, må du gjennom noen steg første gang:
+
+1. `cd hviktor-angular` og kjør `npm install` for å installere alle avhengigheter, inkludert Husky.
+2. `cd ..` og kjør `npm --prefix hviktor-angular ci` for å installere avhengigheter i root-prosjektet.
+   1. hvis du nå får en EPERM unlink feil, må du ringe en venn
+3. Verifiser at alt er riktig ved å kjøre `git config --get core.hooksPath`. Skal returnere noe ala `hviktor-angular/.husky/_`.
+
 - **Husky** kjører pre-commit-hooks og blokkerer commits som ikke passerer lint og format. Installer avhengigheter én gang med `npm install`, så trigges hookene automatisk ved `git commit`. Den sjekker kun filene i projects/hviktor.
 - **Prettier** formaterer alle prosjektfiler likt. Kjør manuelt med `npm run format` om du trenger å rydde opp før commit.
 - **ESLint** fanger opp vanlige feil og stilbrudd. Lokalt kan du sjekke med `npm run lint`. Husk at Husky kjører samme sjekk når du committer.
 
-Hver kan du gjør en commit formatteres koden automatisk, og hvis det er lint-feil vil commiten bli avvist med en feilmelding som forklarer hva som må fikses.
+Hver gang du gjør en commit formatteres koden automatisk, og hvis det er lint-feil vil commiten bli avvist med en feilmelding som forklarer hva som må fikses.

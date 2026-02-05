@@ -63,16 +63,10 @@
           "builder": "@angular/build:extract-i18n"
         },
         "test": {
-          "builder": "@angular/build:karma",
+          "builder": "@angular/build:unit-test",
           "options": {
             "tsConfig": "tsconfig.spec.json",
-            "assets": [
-              {
-                "glob": "**/*",
-                "input": "public"
-              }
-            ],
-            "styles": ["src/styles.css"]
+            "runner": "vitest"
           }
         },
         "lint": {
@@ -104,7 +98,8 @@
         "test": {
           "builder": "@angular/build:unit-test",
           "options": {
-            "tsConfig": "projects/hviktor/tsconfig.spec.json"
+            "tsConfig": "projects/hviktor/tsconfig.spec.json",
+            "runner": "vitest"
           }
         },
         "lint": {
