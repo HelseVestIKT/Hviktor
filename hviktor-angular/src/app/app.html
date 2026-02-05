@@ -247,119 +247,154 @@
     </div>
   </section>
 
-  <section class="space-y-2">
+  <section class="space-y-6">
     <h2 hviHeading size="lg">Forms</h2>
 
-    <form hviForm [formGroup]="form" [focusOnInvalid]="summary">
-      <hvi-field>
-        <label hviLabel for="firstName" weight="medium">Fornavn</label>
-        <input hviInput id="firstName" formControlName="firstName" hviControlInvalid />
-        <p
-          hviFieldValidation
-          hviValidationMessage="firstName"
-          [messages]="messages['firstName']"
-        ></p>
-      </hvi-field>
+    <form hviForm [formGroup]="form" [focusOnInvalid]="summary" (hviSubmitted)="onSubmit()">
+      <fieldset hviFieldset>
+        <legend hviLabel>Person</legend>
 
-      <hvi-field>
-        <label hviLabel for="phone" weight="medium">Telefon</label>
-        <input hviInput id="phone" type="tel" formControlName="phone" hviControlInvalid />
-        <p hviFieldValidation hviValidationMessage="phone" [messages]="messages['phone']"></p>
-      </hvi-field>
+        <hvi-field>
+          <label hviLabel for="firstName" weight="medium">Fornavn</label>
+          <input hviInput id="firstName" formControlName="firstName" hviControlInvalid />
+          <p
+            hviFieldValidation
+            hviValidationMessage="firstName"
+            [messages]="messages['firstName']"
+          ></p>
+        </hvi-field>
 
-      <button hviButton class="my-2" type="submit" variant="primary">Send inn</button>
+        <hvi-field>
+          <label hviLabel for="lastName" weight="medium">Etternavn</label>
+          <input hviInput id="lastName" formControlName="lastName" hviControlInvalid />
+          <p
+            hviFieldValidation
+            hviValidationMessage="lastName"
+            [messages]="messages['lastName']"
+          ></p>
+        </hvi-field>
+      </fieldset>
+
+      <fieldset hviFieldset>
+        <legend hviLabel>Kontakt</legend>
+
+        <hvi-field>
+          <label hviLabel for="email" weight="medium">E-post</label>
+          <input hviInput id="email" type="email" formControlName="email" hviControlInvalid />
+          <p hviFieldValidation hviValidationMessage="email" [messages]="messages['email']"></p>
+        </hvi-field>
+
+        <hvi-field>
+          <label hviLabel for="phone" weight="medium">Telefon</label>
+          <input hviInput id="phone" type="tel" formControlName="phone" hviControlInvalid />
+          <p hviFieldValidation hviValidationMessage="phone" [messages]="messages['phone']"></p>
+        </hvi-field>
+      </fieldset>
+
+      <fieldset hviFieldset>
+        <legend hviLabel>Økonomi</legend>
+
+        <hvi-field>
+          <label hviLabel for="monthlyCost" weight="medium">Estimert månedskostnad</label>
+          <input
+            hviInput
+            id="monthlyCost"
+            type="number"
+            min="0"
+            step="100"
+            formControlName="monthlyCost"
+            hviControlInvalid
+          />
+          <p
+            hviFieldValidation
+            hviValidationMessage="monthlyCost"
+            [messages]="messages['monthlyCost']"
+          ></p>
+        </hvi-field>
+      </fieldset>
+
+      <fieldset hviFieldset>
+        <legend hviLabel id="genderLegend">Preferanser</legend>
+
+        <div class="space-y-2" role="radiogroup" aria-labelledby="genderLegend">
+          <hvi-field position="start">
+            <input
+              hviInput
+              id="gender-female"
+              type="radio"
+              value="female"
+              formControlName="gender"
+              hviControlInvalid
+            />
+            <label hviLabel for="gender-female">Kvinne</label>
+          </hvi-field>
+
+          <hvi-field position="start">
+            <input
+              hviInput
+              id="gender-male"
+              type="radio"
+              value="male"
+              formControlName="gender"
+              hviControlInvalid
+            />
+            <label hviLabel for="gender-male">Mann</label>
+          </hvi-field>
+
+          <hvi-field position="start">
+            <input
+              hviInput
+              id="gender-other"
+              type="radio"
+              value="other"
+              formControlName="gender"
+              hviControlInvalid
+            />
+            <label hviLabel for="gender-other">Annet / ønsker ikke å oppgi</label>
+          </hvi-field>
+        </div>
+
+        <p hviFieldValidation hviValidationMessage="gender" [messages]="messages['gender']"></p>
+
+        <hvi-field position="start">
+          <input hviInput id="flightMode" type="checkbox" formControlName="flightMode" />
+          <label hviLabel for="flightMode">Aktiver flymodus-varsler</label>
+        </hvi-field>
+      </fieldset>
+
+      <fieldset hviFieldset>
+        <legend hviLabel>Samtykke</legend>
+
+        <hvi-field position="start">
+          <input
+            hviInput
+            id="consent"
+            type="checkbox"
+            formControlName="consent"
+            hviControlInvalid
+          />
+          <label hviLabel for="consent" weight="medium">
+            Jeg bekrefter at opplysningene er riktige
+          </label>
+          <p hviFieldValidation hviValidationMessage="consent" [messages]="messages['consent']"></p>
+        </hvi-field>
+      </fieldset>
+
+      <div class="my-4 flex flex-wrap gap-2">
+        <button hviButton type="submit" variant="primary">Send inn</button>
+        <button hviButton type="button" variant="secondary" (click)="form.reset()">
+          Nullstill
+        </button>
+      </div>
 
       <hvi-error-summary
         #summary
-        headingId="form-errors"
+        class="mb-4"
         [form]="form"
         [messages]="messages"
         showWhen="submitted"
       />
     </form>
-
-    <!-- 1) Vanlig tekstinput med label (Field kobler id/for automatisk hvis du ikke setter selv) -->
-    <fieldset hviFieldset>
-      <legend hviLabel>Personopplysninger</legend>
-      <p hviParagraph variant="default">Eksempler på input-egenskaper fra designsystemet.</p>
-
-      <hvi-field>
-        <label hviLabel weight="medium">Fødselsnummer</label>
-        <input hviInput type="text" placeholder="11 siffer" [size]="11" />
-      </hvi-field>
-
-      <!-- 2) Disabled -->
-      <hvi-field>
-        <label hviLabel weight="medium">Disabled felt</label>
-        <p hviFieldDescription>Disabled bør brukes med omhu av hensyn til tilgjengelighet.</p>
-        <input hviInput type="text" disabled value="Kan ikke endres" />
-      </hvi-field>
-
-      <!-- 3) ReadOnly (for tekstinput er dette ofte bedre enn disabled) -->
-      <hvi-field>
-        <label hviLabel weight="medium">ReadOnly felt</label>
-        <p hviFieldDescription>ReadOnly gjør at feltet kan fokuseres og leses, men ikke endres.</p>
-        <input hviInput type="text" readonly value="Kun lesing" />
-      </hvi-field>
-    </fieldset>
-
-    <!-- 4) Prefix/Suffix (FieldAffixes) -->
-    <fieldset hviFieldset>
-      <legend hviLabel>Beløp</legend>
-      <p hviParagraph variant="default">
-        Prefix/suffix er dekorativt – info må også finnes i label/tekst.
-      </p>
-
-      <hvi-field>
-        <label hviLabel weight="medium">Hvor mye koster det per måned?</label>
-        <hvi-field-affixes>
-          <hvi-field-affix>NOK</hvi-field-affix>
-          <input hviInput type="number" placeholder="Beløp" />
-          <hvi-field-affix>pr. mnd.</hvi-field-affix>
-        </hvi-field-affixes>
-        <span hviFieldOptional>Valgfritt</span>
-      </hvi-field>
-    </fieldset>
-
-    <!-- 5) Radio-gruppe i fieldset -->
-    <fieldset hviFieldset>
-      <legend hviLabel>Kjønn</legend>
-      <p hviParagraph variant="default">Radio/checkbox bør grupperes i et fieldset.</p>
-
-      <hvi-field>
-        <input hviInput type="radio" name="gender" value="male" />
-        <label hviLabel weight="regular">Mann</label>
-      </hvi-field>
-
-      <hvi-field>
-        <input hviInput type="radio" name="gender" value="female" />
-        <label hviLabel weight="regular">Kvinne</label>
-      </hvi-field>
-
-      <hvi-field>
-        <input hviInput type="radio" name="gender" value="other" />
-        <label hviLabel weight="regular">Annet</label>
-      </hvi-field>
-    </fieldset>
-
-    <!-- 6) Switch (checkbox + role="switch") med position="end" -->
-    <fieldset hviFieldset>
-      <legend hviLabel>Innstillinger</legend>
-
-      <hvi-field position="end">
-        <label hviLabel weight="medium">Flymodus</label>
-        <input hviInput type="checkbox" role="switch" />
-      </hvi-field>
-
-      <hvi-field position="end">
-        <label hviLabel weight="medium">Flymodus (readOnly)</label>
-        <input hviInput type="checkbox" role="switch" readonly />
-      </hvi-field>
-    </fieldset>
-  </section>
-
-  <section class="space-y-2">
-    <h2 hviHeading size="lg">Error Summary</h2>
   </section>
 
   <section class="space-y-2">
