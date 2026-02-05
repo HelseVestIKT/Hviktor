@@ -1,47 +1,29 @@
-You are an expert in TypeScript, Angular, and scalable web application development. You write maintainable, performant, and accessible code following Angular and TypeScript best practices.
+# Hviktor Angular AI Guide
 
-## TypeScript Best Practices
-
-- Use strict type checking
-- Prefer type inference when the type is obvious
-- Avoid the `any` type; use `unknown` when type is uncertain
-
-## Angular Best Practices
-
-- Always use standalone components over NgModules
-- Must NOT set `standalone: true` inside Angular decorators. It's the default.
-- Use signals for state management
-- Implement lazy loading for feature routes
-- Do NOT use the `@HostBinding` and `@HostListener` decorators. Put host bindings inside the `host` object of the `@Component` or `@Directive` decorator instead
-- Use `NgOptimizedImage` for all static images.
-  - `NgOptimizedImage` does not work for inline base64 images.
-
-## Components
-
-- Keep components small and focused on a single responsibility
-- Use `input()` and `output()` functions instead of decorators
-- Use `computed()` for derived state
-- Set `changeDetection: ChangeDetectionStrategy.OnPush` in `@Component` decorator
-- Prefer inline templates for small components
-- Prefer Reactive forms instead of Template-driven ones
-- Do NOT use `ngClass`, use `class` bindings instead
-- Do NOT use `ngStyle`, use `style` bindings instead
-
-## State Management
-
-- Use signals for local component state
-- Use `computed()` for derived state
-- Keep state transformations pure and predictable
-- Do NOT use `mutate` on signals, use `update` or `set` instead
-
-## Templates
-
-- Keep templates simple and avoid complex logic
-- Use native control flow (`@if`, `@for`, `@switch`) instead of `*ngIf`, `*ngFor`, `*ngSwitch`
-- Use the async pipe to handle observables
-
-## Services
-
-- Design services around a single responsibility
-- Use the `providedIn: 'root'` option for singleton services
-- Use the `inject()` function instead of constructor injection
+- **Workspace layout**
+  - Hviktor Angular is an Angular 21 workspace; the component library lives in [projects/hviktor](../projects/hviktor) and ships to dist/hviktor via `ng build hviktor`.
+  - The demo app under [src](../src) pulls the library through the file dependency declared in [package.json](../package.json); rebuild the library to see changes locally.
+  - Shareable exports flow through [projects/hviktor/src/public-api.ts](../projects/hviktor/src/public-api.ts); every component or directive folder holds a main file plus [index.ts](../projects/hviktor/src/alert/index.ts) re-export.
+- **Scaffolding & naming**
+  - Use `npm run scaffold -- <component|directive> <path/name>` (see [scripts/scaffold.js](../scripts/scaffold.js)) to generate the folder, TypeScript file, and export boilerplate.
+  - Library classes use the `Hvi` prefix, selectors are `hvi-foo` for components and `[hviFoo]` for directives. Keep folders kebab-cased to match selector names.
+  - Each file starts with a doc comment that links to the relevant designsystemet.no page; follow examples such as [projects/hviktor/src/button/button.directive.ts](../projects/hviktor/src/button/button.directive.ts).
+- **Component patterns**
+  - Components and directives are standalone; keep `standalone: true` explicit and use the `host` metadata block for classes, attributes, and listeners instead of `HostBinding` / `HostListener` (see [projects/hviktor/src/avatar/avatar.component.ts](../projects/hviktor/src/avatar/avatar.component.ts)).
+  - Favour wrapper components with `<ng-content>` so authors control markup; use Angular control-flow syntax (`@if`, `@for`) when templates need logic as shown in [projects/hviktor/src/breadcrumbs/breadcrumbs.component.ts](../projects/hviktor/src/breadcrumbs/breadcrumbs.component.ts).
+  - Stick with `@Input` decorators. For booleans, apply `booleanAttribute` transforms like [projects/hviktor/src/button/button.directive.ts](../projects/hviktor/src/button/button.directive.ts).
+- **Forms & accessibility**
+  - Forms helpers coordinate IDs and aria attributes via [projects/hviktor/src/forms/field/helpers/field-observer.ts](../projects/hviktor/src/forms/field/helpers/field-observer.ts); call it in `ngAfterViewInit` and tear down through `DestroyRef` as [projects/hviktor/src/forms/field/field.component.ts](../projects/hviktor/src/forms/field/field.component.ts) does.
+  - Maintain attribute contracts: form directives set `class: 'ds-*'` plus `data-*` markers so the Digdir CSS works. Preserve existing aria patterns when extending components like [projects/hviktor/src/error-summary/error-summary.component.ts](../projects/hviktor/src/error-summary/error-summary.component.ts).
+- **Styling**
+  - Library styles import Digdir packages in [projects/hviktor/src/styles.css](../projects/hviktor/src/styles.css); keep custom overrides inside scoped `@layer` blocks so downstream apps can opt in.
+  - The demo app composes Tailwind v4 with the library stylesheet via [src/styles.css](../src/styles.css); utility classes in [src/app/app.html](../src/app/app.html) demonstrate how components should be used alongside Tailwind.
+- **Build & test workflow**
+  - Run `npm run build:lib` (or `ng build hviktor --configuration development --watch`) before `npm start` to refresh dist/hviktor; otherwise the app keeps serving stale artifacts.
+  - `npm start` wraps `ng serve` for the demo, `npm run build` produces an optimized app build, and `npm run scaffold` creates new library stubs.
+  - Unit tests use Vitest through the Angular CLI builders; invoke `npm test` / `ng test`. Provide zoneless change detection via `provideZonelessChangeDetection()` in setups like [src/app/app.spec.ts](../src/app/app.spec.ts).
+  - Lint both the app and library with `npm run lint`; Husky hooks expect these commands to pass before commits (see guidance in [README.md](../README.md)).
+- **Integration tips**
+  - When adding new primitives, update the demo to showcase them by importing into [src/app/app.ts](../src/app/app.ts) and rendering examples in [src/app/app.html](../src/app/app.html).
+  - Keep the package entry metadata in [projects/hviktor/package.json](../projects/hviktor/package.json) aligned if you add assets (e.g., export extra CSS). Publish flow is `npm run build:lib`, `cd dist/hviktor`, `npm publish`.
+  - The dialog directive interacts with native `<dialog>` events; preserve the `(openChange)` contract in [projects/hviktor/src/dialog/dialog.directive.ts](../projects/hviktor/src/dialog/dialog.directive.ts) if you extend it.
