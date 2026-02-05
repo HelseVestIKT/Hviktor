@@ -17,6 +17,8 @@ export * from './forms/field';
 export * from './forms/fieldset';
 export * from './forms/input';
 export * from './heading';
+export * from './icon';
 export * from './label';
+export * from './link';
 export * from './paragraph';
 export * from './tag';
