@@ -31,6 +31,8 @@ Hvor `<type>` er enten `component` eller `directive`, og `<name>` er navnet på 
 npm run scaffold -- component alert
 ```
 
+Ved to-ordet komponent, f.eks. `error-summary`, brukes bindestrek som skilletegn.
+
 Se eksempler i eksisterende komponenter/direktiver i `projects/hviktor/src/`.
 
 Etter at komponenten/direktivet er utviklet, må den legges til som export i `projects/hviktor/src/public-api.ts` for å gjøre den tilgjengelig i biblioteket.

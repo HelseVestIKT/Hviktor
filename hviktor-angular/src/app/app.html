@@ -284,40 +284,154 @@
     </div>
   </section>
 
-  <section class="space-y-2">
+  <section class="space-y-6">
     <h2 hviHeading size="lg">Forms</h2>
-    <fieldset hviFieldset>
-      <legend hviLabel>Hva bruker du penger på?</legend>
-      <p hviParagraph variant="default">Dette vil hjelpe oss å gi deg et bedre tilbud.</p>
-      <hvi-field>
-        <label hviLabel weight="medium">Mat</label>
-        <p hviFieldDescription>Hvor mye bruker du på mat hver måned?</p>
-        <hvi-field-affixes>
-          <hvi-field-affix>NOK</hvi-field-affix>
-          <input hviInput type="number" placeholder="Beløp" />
-          <hvi-field-affix>pr. mnd.</hvi-field-affix>
-        </hvi-field-affixes>
-        <span hviFieldOptional>Valgfritt</span>
-      </hvi-field>
-    </fieldset>
 
-    <fieldset hviFieldset>
-      <legend hviLabel>Kjønn</legend>
-      <p hviParagraph>Hva er du, egentlig?</p>
+    <form hviForm [formGroup]="form" [focusOnInvalid]="summary" (hviSubmitted)="onSubmit()">
+      <fieldset hviFieldset>
+        <legend hviLabel>Person</legend>
 
-      <hvi-field>
-        <input hviInput type="checkbox" value="male" name="gender" />
-        <label hviLabel weight="medium">Mann</label>
-      </hvi-field>
-      <hvi-field>
-        <input hviInput type="checkbox" value="female" name="gender" />
-        <label hviLabel weight="medium">Kvinne</label>
-      </hvi-field>
-      <hvi-field>
-        <input hviInput type="checkbox" value="other" name="gender" />
-        <label hviLabel weight="medium">Annet</label>
-      </hvi-field>
-    </fieldset>
+        <hvi-field>
+          <label hviLabel for="firstName" weight="medium">Fornavn</label>
+          <input hviInput id="firstName" formControlName="firstName" hviControlInvalid />
+          <p
+            hviFieldValidation
+            hviValidationMessage="firstName"
+            [messages]="messages['firstName']"
+          ></p>
+        </hvi-field>
+
+        <hvi-field>
+          <label hviLabel for="lastName" weight="medium">Etternavn</label>
+          <input hviInput id="lastName" formControlName="lastName" hviControlInvalid />
+          <p
+            hviFieldValidation
+            hviValidationMessage="lastName"
+            [messages]="messages['lastName']"
+          ></p>
+        </hvi-field>
+      </fieldset>
+
+      <fieldset hviFieldset>
+        <legend hviLabel>Kontakt</legend>
+
+        <hvi-field>
+          <label hviLabel for="email" weight="medium">E-post</label>
+          <input hviInput id="email" type="email" formControlName="email" hviControlInvalid />
+          <p hviFieldValidation hviValidationMessage="email" [messages]="messages['email']"></p>
+        </hvi-field>
+
+        <hvi-field>
+          <label hviLabel for="phone" weight="medium">Telefon</label>
+          <input hviInput id="phone" type="tel" formControlName="phone" hviControlInvalid />
+          <p hviFieldValidation hviValidationMessage="phone" [messages]="messages['phone']"></p>
+        </hvi-field>
+      </fieldset>
+
+      <fieldset hviFieldset>
+        <legend hviLabel>Økonomi</legend>
+
+        <hvi-field>
+          <label hviLabel for="monthlyCost" weight="medium">Estimert månedskostnad</label>
+          <input
+            hviInput
+            id="monthlyCost"
+            type="number"
+            min="0"
+            step="100"
+            formControlName="monthlyCost"
+            hviControlInvalid
+          />
+          <p
+            hviFieldValidation
+            hviValidationMessage="monthlyCost"
+            [messages]="messages['monthlyCost']"
+          ></p>
+        </hvi-field>
+      </fieldset>
+
+      <fieldset hviFieldset>
+        <legend hviLabel id="genderLegend">Preferanser</legend>
+
+        <div class="space-y-2" role="radiogroup" aria-labelledby="genderLegend">
+          <hvi-field position="start">
+            <input
+              hviInput
+              id="gender-female"
+              type="radio"
+              value="female"
+              formControlName="gender"
+              hviControlInvalid
+            />
+            <label hviLabel for="gender-female">Kvinne</label>
+          </hvi-field>
+
+          <hvi-field position="start">
+            <input
+              hviInput
+              id="gender-male"
+              type="radio"
+              value="male"
+              formControlName="gender"
+              hviControlInvalid
+            />
+            <label hviLabel for="gender-male">Mann</label>
+          </hvi-field>
+
+          <hvi-field position="start">
+            <input
+              hviInput
+              id="gender-other"
+              type="radio"
+              value="other"
+              formControlName="gender"
+              hviControlInvalid
+            />
+            <label hviLabel for="gender-other">Annet / ønsker ikke å oppgi</label>
+          </hvi-field>
+        </div>
+
+        <p hviFieldValidation hviValidationMessage="gender" [messages]="messages['gender']"></p>
+
+        <hvi-field position="start">
+          <input hviInput id="flightMode" type="checkbox" formControlName="flightMode" />
+          <label hviLabel for="flightMode">Aktiver flymodus-varsler</label>
+        </hvi-field>
+      </fieldset>
+
+      <fieldset hviFieldset>
+        <legend hviLabel>Samtykke</legend>
+
+        <hvi-field position="start">
+          <input
+            hviInput
+            id="consent"
+            type="checkbox"
+            formControlName="consent"
+            hviControlInvalid
+          />
+          <label hviLabel for="consent" weight="medium">
+            Jeg bekrefter at opplysningene er riktige
+          </label>
+          <p hviFieldValidation hviValidationMessage="consent" [messages]="messages['consent']"></p>
+        </hvi-field>
+      </fieldset>
+
+      <div class="my-4 flex flex-wrap gap-2">
+        <button hviButton type="submit" variant="primary">Send inn</button>
+        <button hviButton type="button" variant="secondary" (click)="form.reset()">
+          Nullstill
+        </button>
+      </div>
+
+      <hvi-error-summary
+        #summary
+        class="mb-4"
+        [form]="form"
+        [messages]="messages"
+        showWhen="submitted"
+      />
+    </form>
   </section>
 
   <section class="space-y-2">
@@ -422,21 +536,6 @@
         <button hviButton type="button" (click)="toggleDialog(false)">Fortsett</button>
       </div>
     </dialog>
-  </section>
-
-  <section class="space-y-2">
-    <h2 hviHeading size="lg">Error Summary</h2>
-    <hvi-error-summary autoFocus>
-      <h2 hviErrorSummaryHeading>For å gå videre må du rette opp følgende feil:</h2>
-      <ul hviErrorSummaryList>
-        <li hviErrorSummaryItem>
-          <a hviErrorSummaryLink href="#fornavn">Fornavn må være minst 2 tegn</a>
-        </li>
-        <li hviErrorSummaryItem>
-          <a hviErrorSummaryLink href="#telefon">Telefonnummer kan kun inneholde siffer</a>
-        </li>
-      </ul>
-    </hvi-error-summary>
   </section>
 
   <footer>

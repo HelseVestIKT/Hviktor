@@ -64,7 +64,7 @@ const docComment = `/**
  * <${selector}></${selector}>
  * \`\`\`
  *
- * Documentation: https://designsystemet.no/en/components/docs/input/code
+ * Documentation: https://designsystemet.no/en/components/docs/${baseName}/code
  */
 `;
 const mainFileTemplate =

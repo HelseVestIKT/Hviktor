@@ -9,6 +9,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "scaffold": "node ./scripts/scaffold.js",
+    "lint": "eslint . --ext .ts,.html",
     "lint:staged": "eslint --fix --cache --cache-location .cache/eslint/",
     "lint-staged": "lint-staged",
     "format": "prettier --write .",
