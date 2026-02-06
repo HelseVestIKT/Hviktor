@@ -29,6 +29,7 @@ import {
   HviInput,
   HviLabel,
   HviLink,
+  HviList,
   HviParagraph,
   HviTag,
 } from '@helsevestikt/hviktor';
@@ -68,6 +69,7 @@ import '@u-elements/u-details';
     HviDialogBlock,
     HviErrorSummary,
     HviTag,
+    HviList,
   ],
   templateUrl: './app.html',
   styleUrl: './app.css',
