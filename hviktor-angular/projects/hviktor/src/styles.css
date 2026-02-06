@@ -31,3 +31,12 @@ body {
     'Noto Color Emoji';
   font-feature-settings: 'cv05' 1;
 }
+
+/* adding styling to lists that tailwind has removed */
+ol.ds-list {
+  list-style-type: decimal;
+}
+
+ul.ds-list {
+  list-style-type: disc;
+}
