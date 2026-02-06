@@ -15,6 +15,7 @@ type HviAriaRole = 'switch' | 'button' | 'checkbox' | 'radio' | 'textbox' | 'sea
   },
 })
 export class HviInput {
+  /** Supported input types */
   @Input() type?:
     | 'number'
     | 'hidden'
@@ -34,6 +35,7 @@ export class HviInput {
     | 'url'
     | 'week';
 
+  /** Set size attribute on input element */
   @Input() size?: number;
 
   /** Set role, e.g. `switch` when `checkbox` or `radio` */
