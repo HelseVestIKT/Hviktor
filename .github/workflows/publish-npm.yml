@@ -1,0 +1,56 @@
+# Publiserer biblioteket til npm når en ny tag pushes (f.eks. v0.1.0)
+# Bruker OIDC trusted publishing – ingen npm-token nødvendig
+
+name: Publish to npm
+
+on:
+    push:
+        tags:
+            - "v*"
+
+defaults:
+    run:
+        working-directory: hviktor-angular
+
+# Nødvendig for OIDC trusted publishing
+permissions:
+    contents: read
+    id-token: write
+
+jobs:
+    publish:
+        name: Build & Publish
+        runs-on: ubuntu-latest
+        environment: npm-publish # Definert i repo Settings → Environments
+
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v4
+
+            - name: Setup Node.js
+              uses: actions/setup-node@v4
+              with:
+                  node-version: "20"
+                  cache: "npm"
+                  cache-dependency-path: "hviktor-angular/package-lock.json"
+                  registry-url: "https://registry.npmjs.org"
+
+            - name: Install dependencies
+              run: npm ci
+
+            - name: Extract version from tag
+              id: version
+              run: echo "VERSION=${GITHUB_REF_NAME#v}" >> $GITHUB_OUTPUT
+
+            - name: Update package version
+              run: |
+                  cd projects/hviktor
+                  npm version ${{ steps.version.outputs.VERSION }} --no-git-tag-version
+
+            - name: Build library
+              run: npm run build:lib
+
+            - name: Publish to npm
+              run: |
+                  cd dist/hviktor
+                  npm publish --access public --provenance
