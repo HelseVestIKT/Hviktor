@@ -24,6 +24,17 @@ jobs:
         steps:
             - name: Checkout
               uses: actions/checkout@v4
+              with:
+                  fetch-depth: 0 # Trengs for å sjekke branch-historikk
+
+            - name: Verify tag is on main
+              run: |
+                  if ! git branch -r --contains ${{ github.sha }} | grep -q 'origin/main'; then
+                    echo "❌ Error: Tag must be created from main branch"
+                    echo "This tag points to a commit not on main."
+                    exit 1
+                  fi
+                  echo "✅ Tag is on main branch"
 
             - name: Setup Node.js
               uses: actions/setup-node@v4
