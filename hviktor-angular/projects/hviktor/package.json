@@ -7,8 +7,8 @@
     "@angular/core": ">=17.0.0 <22.0.0"
   },
   "dependencies": {
-    "@digdir/designsystemet-css": "^1.9.0",
-    "@digdir/designsystemet-theme": "^1.9.0",
+    "@digdir/designsystemet-css": "^1.11.1",
+    "@digdir/designsystemet-theme": "^1.11.0",
     "@u-elements/u-details": "^0.1.5",
     "tslib": "^2.3.0"
   },
