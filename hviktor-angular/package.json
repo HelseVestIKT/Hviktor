@@ -7,7 +7,7 @@
     "build": "ng build",
     "build:lib": "ng build hviktor",
     "version:patch": "cd projects/hviktor && npm version patch --no-git-tag-version",
-    "publish:lib": "npm run version:patch && npm run build:lib && npm publish dist/hviktor --access public",
+    "publish:lib": "npm run version:patch && npm run build:lib && cd dist/hviktor && npm publish --access public",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "scaffold": "node ./scripts/scaffold.js",

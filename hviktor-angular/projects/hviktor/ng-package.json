@@ -11,5 +11,9 @@
     { "glob": "LICENSE", "input": ".", "output": "." }
   ],
 
-  "allowedNonPeerDependencies": ["@digdir/designsystemet-css", "@digdir/designsystemet-theme"]
+  "allowedNonPeerDependencies": [
+    "@digdir/designsystemet-css",
+    "@digdir/designsystemet-theme",
+    "@u-elements/u-details"
+  ]
 }

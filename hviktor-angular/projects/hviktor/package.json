@@ -1,6 +1,6 @@
 {
   "name": "@helsevestikt/hviktor-angular",
-  "version": "0.0.1",
+  "version": "0.0.5",
   "license": "MIT",
   "peerDependencies": {
     "@angular/common": ">=17.0.0 <22.0.0",
@@ -9,6 +9,7 @@
   "dependencies": {
     "@digdir/designsystemet-css": "^1.9.0",
     "@digdir/designsystemet-theme": "^1.9.0",
+    "@u-elements/u-details": "^0.1.5",
     "tslib": "^2.3.0"
   },
   "exports": {
@@ -16,6 +17,7 @@
   },
   "files": [
     "fesm2022/",
+    "types/",
     "index.d.ts",
     "styles.css",
     "README.md",
