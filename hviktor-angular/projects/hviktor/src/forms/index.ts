@@ -5,5 +5,6 @@ export * from './input';
 
 export * from './form';
 export * from './validation';
+export * from './validators';
 
 export * from './kits';
