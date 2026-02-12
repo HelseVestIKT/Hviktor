@@ -8,7 +8,6 @@
   },
   "dependencies": {
     "@digdir/designsystemet-css": "^1.11.1",
-    "@digdir/designsystemet-theme": "^1.11.0",
     "@floating-ui/dom": "^1.7.5",
     "@u-elements/u-details": "^0.1.5",
     "tslib": "^2.3.0"
