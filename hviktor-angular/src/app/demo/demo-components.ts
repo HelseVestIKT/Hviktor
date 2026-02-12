@@ -29,5 +29,5 @@ export const DEMO_COMPONENTS: DemoComponent[] = [
   { id: 'popover', name: 'Popover', description: 'Popup-innhold' },
   { id: 'tag', name: 'Tag', description: 'Merkelapper for kategorisering' },
   { id: 'select', name: 'Select', description: 'lar brukeren velge ett alternativ fra en liste.' },
-  { id: 'skeleton', name: 'Skeleton', description: 'Skeleton komponent' },
+  { id: 'skeleton', name: 'Skeleton', description: 'Viser at innhold er i ferd med å lastes' },
 ].sort((a, b) => a.name.localeCompare(b.name, 'nb'));
