@@ -117,6 +117,11 @@ export const routes: Routes = [
         loadComponent: () =>
           import('./demo/pages/components/tag/tag-demo').then((m) => m.TagDemoComponent),
       },
+      {
+        path: 'komponenter/select',
+        loadComponent: () =>
+          import('./demo/pages/components/select/select-demo').then((m) => m.SelectDemoComponent),
+      },
     ],
   },
 ];
