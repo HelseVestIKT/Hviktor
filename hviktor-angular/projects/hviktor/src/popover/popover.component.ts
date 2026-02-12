@@ -19,9 +19,12 @@ import { Component, Input } from '@angular/core';
   template: '<ng-content />',
   host: {
     class: 'ds-popover',
-    '[attr.popover]': 'popoverType',
+    '[attr.popover]': 'type',
   },
 })
 export class HviPopover {
-  @Input() popoverType: 'auto' | 'manual' | 'hint' = 'manual';
+  @Input() type: 'auto' | 'manual' | 'hint' = 'manual';
+  @Input() variant: 'default' | 'tinted' = 'default';
+  @Input() placement: 'top' | 'right' | 'bottom' | 'left' = 'top';
+  @Input() autoPlacement: boolean = true;
 }
