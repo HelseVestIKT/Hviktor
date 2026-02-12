@@ -49,6 +49,30 @@ Etter at komponenten/direktivet er utviklet, må den legges til som export i `pr
 2. Kjør `npm run build:lib` fra `hviktor-angular` for å generere pakken i `dist/hviktor`.
 3. Start eller bygg demoappen (`npm start` / `npm run build`) fra `hviktor-angular` for å verifisere endringene via den lokale pakke-referansen.
 
+## Demo-applikasjonen
+
+Demo-appen ligger i `hviktor-angular/src` og viser alle komponentene i biblioteket. For å legge til en ny demo-side for en komponent, bruk scaffold-scriptet:
+
+```bash
+npm run scaffold:demo -- <navn> "<beskrivelse>"
+```
+
+For eksempel:
+
+```bash
+npm run scaffold:demo -- table "Tabeller for datavisning"
+npm run scaffold:demo -- spinner "Loading-indikatorer"
+```
+
+Scriptet oppretter automatisk:
+
+- En ny mappe i `src/app/demo/pages/components/<navn>/`
+- Demo-komponenten med `DemoPageComponent` og `DemoSectionComponent`
+- Registrering i `demo-components.ts` (vises i sidebar)
+- Route i `app.routes.ts`
+
+Etter kjøring åpner du den genererte filen og legger til Hviktor-komponentene du vil demonstrere.
+
 ## Kodekvalitetsverktøy
 
 For å få full nytte av Prettier kan du følge denne oppskriften:
