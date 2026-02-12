@@ -1,5 +1,3 @@
-@charset "UTF-8";
-
 @import '@digdir/designsystemet-css';
 @import '@digdir/designsystemet-theme';
 
@@ -30,4 +28,13 @@ body {
     'Segoe UI Symbol',
     'Noto Color Emoji';
   font-feature-settings: 'cv05' 1;
+}
+
+/* adding styling to lists that tailwind has removed */
+ol.ds-list {
+  list-style-type: decimal;
+}
+
+ul.ds-list {
+  list-style-type: disc;
 }

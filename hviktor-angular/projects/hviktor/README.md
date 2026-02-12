@@ -1,64 +1,60 @@
-# Hviktor
+# @helsevestikt/hviktor-angular
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.0.0.
+> ⚠️ **Denne pakken er under aktiv utvikling.** API-et kan endres uten forvarsel. Bruk på egen risiko i produksjon.
 
-## Code scaffolding
+Angular-komponenter basert på [Digdir Designsystemet](https://designsystemet.no/) for Helse Vest IKT.
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## Installasjon
 
 ```bash
-ng generate --help
+npm install @helsevestikt/hviktor-angular
 ```
 
-## Building
+## Oppsett
 
-To build the library, run:
+Importer stylesheet i `src/styles.css`:
 
-```bash
-ng build hviktor
+```css
+@import '@helsevestikt/hviktor-angular/styles.css';
 ```
 
-This command will compile your project, and the build artifacts will be placed in the `dist/` directory.
+## Bruk
 
-### Publishing the Library
+Importer komponentene du trenger direkte i standalone-komponenter:
 
-Once the project is built, you can publish your library by following these steps:
+```typescript
+import { HviButton } from '@helsevestikt/hviktor-angular';
 
-1. Navigate to the `dist` directory:
-
-   ```bash
-   cd dist/hviktor
-   ```
-
-2. Run the `npm publish` command to publish your library to the npm registry:
-   ```bash
-   npm publish
-   ```
-
-## Running unit tests
-
-To execute unit tests with the Vitest runner, use the following command:
-
-```bash
-ng test
+@Component({
+  imports: [HviButton],
+  template: `<button hviButton>Klikk meg</button>`,
+})
+export class MyComponent {}
 ```
 
-## Running end-to-end tests
+## Tilgjengelige komponenter
 
-For end-to-end (e2e) testing, run:
+| Komponent   | Beskrivelse                                          |
+| ----------- | ---------------------------------------------------- |
+| Alert       | Varselmeldinger                                      |
+| Avatar      | Brukeravatar                                         |
+| Badge       | Merkelapper og tellere                               |
+| Breadcrumbs | Navigasjonsstifinne                                  |
+| Button      | Knapper                                              |
+| Card        | Kort-layout                                          |
+| Chip        | Filterbrikker                                        |
+| Details     | Sammenleggbart innhold                               |
+| Dialog      | Modaldialog                                          |
+| Divider     | Skillelinje                                          |
+| Forms       | Skjemaelementer (field, fieldset, input, validering) |
+| Heading     | Overskrifter                                         |
+| Icon        | Ikoner                                               |
+| Label       | Etiketter                                            |
+| Link        | Lenker                                               |
+| Paragraph   | Avsnitt                                              |
+| Tag         | Kategorimerker                                       |
 
-```bash
-ng e2e
-```
+## Krav
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+- Angular 17–21
+- Node.js 20+

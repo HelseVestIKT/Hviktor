@@ -17,28 +17,10 @@ on:
         type: string
       output-path:
         required: true
-        type: string    
-  
-jobs:
-  sonarcloud:
-    runs-on: HVI-SKY-TJENESTER-RUNNER  
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+        type: string
 
-      - name: SonarCloud Scan
-        uses: SonarSource/sonarcloud-github-action@v3.0.0
-        with:
-          args: >
-            -Dsonar.qualitygate.wait=true
-            -Dsonar.organization=helse-vest-ikt
-            -Dsonar.projectKey=HelseVestIKT_Hviktor
-            -Dsonar.branch.name=main
-        env: 
-            SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        
+jobs:
   build:
-    needs: sonarcloud
     runs-on: HVI-SKY-TJENESTER-RUNNER
     steps:
       - name: Checkout
@@ -48,11 +30,11 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ inputs.node-version }}
-          cache: 'npm'
-          cache-dependency-path: '${{ inputs.working-directory }}/package-lock.json'
+          cache: "npm"
+          cache-dependency-path: "${{ inputs.working-directory }}/package-lock.json"
 
       - name: npm install, build, and test
-        working-directory: '${{ inputs.working-directory }}'
+        working-directory: "${{ inputs.working-directory }}"
         run: |
           npm install
           npm run build --if-present
@@ -62,6 +44,5 @@ jobs:
         uses: actions/upload-artifact@v4 #v4 virker på ubuntu-latest og self-hosted Linux, IKKE windows
         with:
           name: ${{inputs.app-name}}
-          path: '${{ inputs.working-directory }}/${{ inputs.output-path }}'
-          compression-level: 0            # 9 er maks, 1 er min og 0 er ingen. Er satt til 0 for den er kjappest
-  
+          path: "${{ inputs.working-directory }}/${{ inputs.output-path }}"
+          compression-level: 0 # 9 er maks, 1 er min og 0 er ingen. Er satt til 0 for den er kjappest

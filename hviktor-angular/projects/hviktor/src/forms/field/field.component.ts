@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, DestroyRef, ElementRef, inject, Input } from '@angular/core';
-import { fieldObserver } from './helpers/field-observer';
+import { fieldObserver } from '../../helpers/field-observer';
 
 /**
  * Field is a helper component to automatically associate a field with hviLabel, hviFieldDescription and hviFieldValidation.

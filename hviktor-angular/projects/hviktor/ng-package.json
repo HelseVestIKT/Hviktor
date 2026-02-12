@@ -5,7 +5,16 @@
     "entryFile": "src/public-api.ts"
   },
 
-  "assets": [{ "glob": "styles.css", "input": "src", "output": "." }],
+  "assets": [
+    { "glob": "styles.css", "input": "src", "output": "." },
+    { "glob": "README.md", "input": ".", "output": "." },
+    { "glob": "LICENSE", "input": ".", "output": "." }
+  ],
 
-  "allowedNonPeerDependencies": ["@digdir/designsystemet-css", "@digdir/designsystemet-theme"]
+  "allowedNonPeerDependencies": [
+    "@digdir/designsystemet-css",
+    "@digdir/designsystemet-theme",
+    "@u-elements/u-details",
+    "@floating-ui/dom"
+  ]
 }

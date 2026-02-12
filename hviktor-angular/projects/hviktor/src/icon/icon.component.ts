@@ -4,6 +4,7 @@ import {
   ChangeDetectorRef,
   Component,
   ElementRef,
+  inject,
   Input,
   OnChanges,
   ViewEncapsulation,
@@ -62,11 +63,9 @@ export class HviIcon implements OnChanges {
   @Input() size: IconSize = 'md';
   @Input({ transform: booleanAttribute }) ariaHidden = false;
 
-  constructor(
-    private http: HttpClient,
-    private elementRef: ElementRef,
-    private cdr: ChangeDetectorRef,
-  ) {}
+  private readonly http = inject(HttpClient);
+  private readonly elementRef = inject(ElementRef);
+  private readonly cdr = inject(ChangeDetectorRef);
 
   ngOnChanges(): void {
     this.loadIcon();

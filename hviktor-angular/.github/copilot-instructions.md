@@ -10,7 +10,8 @@
   - Each file starts with a doc comment that links to the relevant designsystemet.no page; follow examples such as [projects/hviktor/src/button/button.directive.ts](../projects/hviktor/src/button/button.directive.ts).
 - **Component patterns**
   - Components and directives are standalone; keep `standalone: true` explicit and use the `host` metadata block for classes, attributes, and listeners instead of `HostBinding` / `HostListener` (see [projects/hviktor/src/avatar/avatar.component.ts](../projects/hviktor/src/avatar/avatar.component.ts)).
-  - Favour wrapper components with `<ng-content>` so authors control markup; use Angular control-flow syntax (`@if`, `@for`) when templates need logic as shown in [projects/hviktor/src/breadcrumbs/breadcrumbs.component.ts](../projects/hviktor/src/breadcrumbs/breadcrumbs.component.ts).
+  - Use the `inject()` function for dependency injection instead of constructor parameters.
+  - Favour wrapper components with `<ng-content>` so authors control markup; use Angular control-flow syntax (`@if`, `@for`) when templates need logic as shown in [projects/hviktor/src/breadcrumbs/breadcrumbs.component.ts](../projects/hviktor/src/breadcrumbs/breadcrumbs.component.ts)).
   - Stick with `@Input` decorators. For booleans, apply `booleanAttribute` transforms like [projects/hviktor/src/button/button.directive.ts](../projects/hviktor/src/button/button.directive.ts).
 - **Forms & accessibility**
   - Forms helpers coordinate IDs and aria attributes via [projects/hviktor/src/forms/field/helpers/field-observer.ts](../projects/hviktor/src/forms/field/helpers/field-observer.ts); call it in `ngAfterViewInit` and tear down through `DestroyRef` as [projects/hviktor/src/forms/field/field.component.ts](../projects/hviktor/src/forms/field/field.component.ts) does.

@@ -1,26 +1,25 @@
 #hovedfil for applikasjonen. Gjør bruk av workflows/actions for å bygge, konfigurere og deploye applikasjonen til Azure
 on:
-  push:
-    branches: [ "main", "develop"] # Kjører ved push til main eller develop branch
-  workflow_dispatch: # Tillater manuell kjøring av workflow 
-    
+  # push:
+  #   branches: [ "main", "develop"] # Midlertidig deaktivert for å hindre automatiske kjøringer
+  workflow_dispatch: # Tillater manuell kjøring av workflow
+
 # Dette er egentlig konstanter som gjelder for alle workflowene, men jeg vet ikke hvordan jeg kan sette det globalt
 env:
-  NODE_VERSION: '20.x'  # set this to the node version to use
-  ANGULAR_APP: 'hviktor-angular' # set this to the name of the angular app
+  NODE_VERSION: "20.x" # set this to the node version to use
+  ANGULAR_APP: "hviktor-angular" # set this to the name of the angular app
 
   # Tillater bruk av secrets i workflowene
 permissions:
   contents: read
   id-token: write
 
-
 jobs:
   # fancy måte å sende env variables til neste reusable workflow: https://www.sethduke.io/github-reusable-workflows-environment-variables-workaround/
   variables:
     runs-on: HVI-SKY-TJENESTER-RUNNER
     steps: [run: echo]
-    outputs: 
+    outputs:
       node-version: ${{ env.NODE_VERSION }}
       angular-app: ${{ env.ANGULAR_APP }}
 
@@ -29,42 +28,41 @@ jobs:
     uses: ./.github/workflows/build-angular-app.yml
     secrets: inherit
     with:
-      working-directory: './Hviktor-web'
+      working-directory: "./Hviktor-web"
       node-version: ${{needs.variables.outputs.node-version}}
       app-name: ${{needs.variables.outputs.angular-app}} # må stemme overens med navn til f.eks. deploy
       # må stemme overens med output-path i angular.json
-      output-path: 'dist'
+      output-path: "dist"
 
   deploy-dev:
-    needs: [build-angular-app, variables]    
+    needs: [build-angular-app, variables]
     uses: ./.github/workflows/deploy.yml
     secrets: inherit
     with:
-      environment: 'DEV'
-      webapp-name: 'Hviktor-gh-DEV'
-      artifact-name: ${{needs.variables.outputs.angular-app }}    
+      environment: "DEV"
+      webapp-name: "Hviktor-gh-DEV"
+      artifact-name: ${{needs.variables.outputs.angular-app }}
 
   deploy-qa:
-    needs: [deploy-dev, variables]    
+    needs: [deploy-dev, variables]
     uses: ./.github/workflows/deploy.yml
     secrets: inherit
     with:
-      environment: 'QA'
-      webapp-name: 'Hviktor-gh-QA'
-      artifact-name: ${{needs.variables.outputs.angular-app }}    
+      environment: "QA"
+      webapp-name: "Hviktor-gh-QA"
+      artifact-name: ${{needs.variables.outputs.angular-app }}
 
   deplopy-prod:
-    needs: [deploy-qa, variables]    
+    needs: [deploy-qa, variables]
     uses: ./.github/workflows/deploy.yml
     secrets: inherit
     with:
-      environment: 'PROD'
-      webapp-name: 'Hviktor-gh-PROD'
-      artifact-name: ${{needs.variables.outputs.angular-app }}    
-        
+      environment: "PROD"
+      webapp-name: "Hviktor-gh-PROD"
+      artifact-name: ${{needs.variables.outputs.angular-app }}
 
-  # deploy-to-dev:    
-  #   needs: [configure-azure-dev, variables]    
+  # deploy-to-dev:
+  #   needs: [configure-azure-dev, variables]
   #   uses: ./.github/workflows/deploy-app-to-azure.yml
   #   secrets: inherit
   #   with:
@@ -78,10 +76,9 @@ jobs:
   #   secrets: inherit
   #   with:
   #     environment: 'QA'
-    
 
-  # deploy-to-qa:    
-  #   needs: [configure-azure-qa, variables]    
+  # deploy-to-qa:
+  #   needs: [configure-azure-qa, variables]
   #   uses: ./.github/workflows/deploy-app-to-azure.yml
   #   secrets: inherit
   #   with:
@@ -95,19 +92,17 @@ jobs:
   #     secrets: inherit
   #     with:
   #       environment: 'PROD'
-      
+
   # deploy-to-prod:
-  #   needs: [configure-azure-prod, variables]    
+  #   needs: [configure-azure-prod, variables]
   #   uses: ./.github/workflows/deploy-app-to-azure.yml
   #   secrets: inherit
   #   with:
   #     artifact-name: ${{needs.variables.outputs.angular-app }}
   #     webapp-name: 'Hviktor-gh-PROD'
   #     environment: 'PROD'
-    
-    
 
-  # configure-azure-env:  
+  # configure-azure-env:
   #   needs: variables
   #   uses: ./.github/workflows/configure-azure-env.yml
   #   with:
@@ -131,14 +126,14 @@ jobs:
   #     - name: Configure env
   #       uses: ./.github/workflows/configure-azure-env.yml
   #       with:
-  #         environment: 'QA'    
+  #         environment: 'QA'
   #     - name: Deploy to Azure
   #       uses: ./.github/workflows/deploy-app-to-azure.yml
   #       with:
   #         artifact-name: ${{needs.variables.outputs.angular-app }}
   #         webapp-name: ${{needs.variables.outputs.webapp-name}}
   #         environment: 'QA'
-  
+
   # deploy-prod:
   #   needs: deploy-qa
   #   uses: ./.github/workflows/deploy-app-to-azure.yml

@@ -1,4 +1,2 @@
-@charset "UTF-8";
-
 @import 'tailwindcss';
-@import '@helsevestikt/hviktor/styles.css';
+@import '@helsevestikt/hviktor-angular/styles.css';

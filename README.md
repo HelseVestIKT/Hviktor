@@ -1,5 +1,11 @@
 # Hviktor Angular
 
+[![npm version](https://img.shields.io/npm/v/@helsevestikt/hviktor-angular)](https://www.npmjs.com/package/@helsevestikt/hviktor-angular)
+[![PR Checks](https://github.com/HelseVestIKT/Hviktor/actions/workflows/pr-checks.yml/badge.svg)](https://github.com/HelseVestIKT/Hviktor/actions/workflows/pr-checks.yml)
+[![Publish to npm](https://github.com/HelseVestIKT/Hviktor/actions/workflows/publish-npm.yml/badge.svg)](https://github.com/HelseVestIKT/Hviktor/actions/workflows/publish-npm.yml)
+[![Angular](https://img.shields.io/badge/Angular-17--21-dd0031)](https://angular.dev/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 ## Formål
 
 Hviktor Angular inneholder Angular komponenter og direktiver som bygger på designsystemet.no. Målet er å beholde stil og tilgjengelighet fra originalen, samtidig som vi tilbyr kjente Angular-API-er. Enkel bruk er prioritert sammen med dokumentasjon og intellisense-støtte i IDE-er.
@@ -66,3 +72,76 @@ For å få få Husky til å virke, må du gjennom noen steg første gang:
 - **ESLint** fanger opp vanlige feil og stilbrudd. Lokalt kan du sjekke med `npm run lint`. Husk at Husky kjører samme sjekk når du committer.
 
 Hver gang du gjør en commit formatteres koden automatisk, og hvis det er lint-feil vil commiten bli avvist med en feilmelding som forklarer hva som må fikses.
+
+## Git-arbeidsflyt og CI/CD
+
+### Branch-strategi
+
+- **main** – beskyttet branch, inneholder kun godkjent og testet kode
+- **feature/\*** – utviklingsbrancher for nye features eller bugfixes
+
+### Utviklingsflyt
+
+1. **Lag feature-branch fra main:**
+
+   ```bash
+   git checkout main
+   git pull
+   git checkout -b feature/min-nye-komponent
+   ```
+
+2. **Utvikle og commit:**
+
+   ```bash
+   # Gjør endringer i projects/hviktor
+   git add .
+   git commit -m "feat: add new component"
+   git push -u origin feature/min-nye-komponent
+   ```
+
+3. **Opprett Pull Request:**
+   - Gå til GitHub og opprett PR mot main
+   - Automatisk: lint, test og build kjører
+   - Få godkjenning fra minst én reviewer
+   - Merge til main (squash merge anbefales)
+
+### Publisere ny versjon til npm
+
+Kun kode som er merget til main kan publiseres. Workflowen verifiserer dette automatisk.
+
+1. **Sørg for at main er oppdatert:**
+
+   ```bash
+   git checkout main
+   git pull
+   ```
+
+2. **Opprett versjon-tag:**
+   Tips: for å sjekke siste versjon på npm, kjør `npm run version:check`.
+
+   ```bash
+   git tag v0.1.0    # Bruk semantic versioning
+   git push origin v0.1.0
+   ```
+
+3. **Godkjenn publisering:**
+   - En reviewer i `npm-publish` environment må godkjenne
+   - Workflowen bygger og publiserer automatisk til npm
+
+### Semantic Versioning
+
+| Endring               | Bump  | Eksempel            |
+| --------------------- | ----- | ------------------- |
+| Breaking change i API | MAJOR | `v1.0.0` → `v2.0.0` |
+| Ny komponent/feature  | MINOR | `v1.0.0` → `v1.1.0` |
+| Bugfix                | PATCH | `v1.0.0` → `v1.0.1` |
+
+### Branch Protection
+
+Main-branchen er beskyttet med følgende regler:
+
+- ✅ Krever pull request før merge
+- ✅ Krever minst 1 godkjenning
+- ✅ Krever at status checks passerer (lint, test, build)
+- ✅ Blokkerer force push (unntak for repository admins)
+- ✅ Blokkerer sletting
