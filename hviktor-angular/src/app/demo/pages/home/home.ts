@@ -16,9 +16,7 @@ import { DEMO_COMPONENTS } from '../../demo-components';
     <section class="grid grid-cols-[repeat(auto-fill,minmax(250px,1fr))] gap-4">
       @for (component of components; track component.id) {
         <a [routerLink]="['/komponenter', component.id]" class="text-inherit no-underline">
-          <hvi-card
-            class="h-full transition-all duration-150 hover:-translate-y-0.5 hover:shadow-md"
-          >
+          <hvi-card class="hover-outline-2 h-full hover:outline">
             <div hviCardBlock>
               <h2 hviHeading size="sm">{{ component.name }}</h2>
               <p hviParagraph size="sm">{{ component.description }}</p>
