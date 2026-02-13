@@ -33,7 +33,7 @@ import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
       <app-demo-section title="Grunnleggende" description="Et søkefelt med tøm-knapp og søkeknapp.">
         <hvi-search>
           <input hviInput type="search" placeholder="" aria-label="Søk" />
-          <button hviSearchClear type="reset" aria-label="Tøm"></button>
+          <button hviSearchClear aria-label="Tøm"></button>
           <button hviButton variant="primary" type="submit">Søk</button>
         </hvi-search>
       </app-demo-section>
@@ -47,7 +47,7 @@ import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
           <!-- Kun med ikon -->
           <hvi-search>
             <input hviInput type="search" placeholder="" aria-label="Søk" />
-            <button hviSearchClear type="reset" aria-label="Tøm"></button>
+            <button hviSearchClear aria-label="Tøm"></button>
           </hvi-search>
 
           <hr hviDivider aria-hidden="true" />
@@ -55,7 +55,7 @@ import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
           <!-- Med primær knapp -->
           <hvi-search>
             <input hviInput type="search" placeholder="" aria-label="Søk" />
-            <button hviSearchClear type="reset" aria-label="Tøm"></button>
+            <button hviSearchClear aria-label="Tøm"></button>
             <button hviButton variant="primary" type="submit">Søk</button>
           </hvi-search>
 
@@ -64,7 +64,7 @@ import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
           <!-- Med sekundær knapp -->
           <hvi-search>
             <input hviInput type="search" placeholder="" aria-label="Søk" />
-            <button hviSearchClear type="reset" aria-label="Tøm"></button>
+            <button hviSearchClear aria-label="Tøm"></button>
             <button hviButton variant="secondary" type="submit">Søk</button>
           </hvi-search>
         </div>
@@ -79,7 +79,7 @@ import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
           <label hviLabel weight="medium">Søk etter katter</label>
           <hvi-search>
             <input hviInput type="search" placeholder="" name="cat-search" />
-            <button hviSearchClear type="reset" aria-label="Tøm"></button>
+            <button hviSearchClear aria-label="Tøm"></button>
             <button hviButton variant="primary" type="submit">Søk</button>
           </hvi-search>
         </hvi-field>
