@@ -34,26 +34,30 @@ export class MyComponent {}
 
 ## Tilgjengelige komponenter
 
-| Komponent   | Beskrivelse                                          |
-| ----------- | ---------------------------------------------------- |
-| Alert       | Varselmeldinger                                      |
-| Avatar      | Brukeravatar                                         |
-| Badge       | Merkelapper og tellere                               |
-| Breadcrumbs | Navigasjonsstifinne                                  |
-| Button      | Knapper                                              |
-| Card        | Kort-layout                                          |
-| Checkbox    | Avkrysningsbokser                                    |
-| Chip        | Filterbrikker                                        |
-| Details     | Sammenleggbart innhold                               |
-| Dialog      | Modaldialog                                          |
-| Divider     | Skillelinje                                          |
-| Forms       | Skjemaelementer (field, fieldset, input, validering) |
-| Heading     | Overskrifter                                         |
-| Icon        | Ikoner                                               |
-| Label       | Etiketter                                            |
-| Link        | Lenker                                               |
-| Paragraph   | Avsnitt                                              |
-| Tag         | Kategorimerker                                       |
+| Komponent   | Beskrivelse                                |
+| ----------- | ------------------------------------------ |
+| Alert       | Varselmeldinger for å informere brukeren   |
+| Avatar      | Profilbilde eller initialer                |
+| Badge       | Små indikatorer og tellere                 |
+| Breadcrumbs | Navigasjonssti                             |
+| Button      | Knapper for handlinger                     |
+| Card        | Kort for gruppering av innhold             |
+| Checkbox    | Avkrysningsbokser for ett eller flere valg |
+| Chip        | Kompakte elementer for valg og filtrering  |
+| Details     | Utvidbart innhold                          |
+| Dialog      | Modale dialogbokser                        |
+| Divider     | Skillelinjer mellom innhold                |
+| Forms       | Skjemakomponenter og validering            |
+| Heading     | Overskrifter                               |
+| Icon        | Ikoner                                     |
+| Label       | Etiketter                                  |
+| Link        | Lenker                                     |
+| List        | Lister                                     |
+| Paragraph   | Avsnitt                                    |
+| Popover     | Popup-innhold                              |
+| Select      | Nedtrekksliste for valg fra en liste       |
+| Skeleton    | Placeholder mens innhold lastes            |
+| Tag         | Merkelapper for kategorisering             |
 
 ## Krav
 
