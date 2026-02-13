@@ -136,6 +136,13 @@ export const routes: Routes = [
             (m) => m.CheckboxDemoComponent,
           ),
       },
+      {
+        path: 'komponenter/error-summary',
+        loadComponent: () =>
+          import('./demo/pages/components/error-summary/error-summary-demo').then(
+            (m) => m.ErrorSummaryDemoComponent,
+          ),
+      },
     ],
   },
 ];

@@ -35,4 +35,10 @@ export const DEMO_COMPONENTS: DemoComponent[] = [
     name: 'Checkbox',
     description: 'Checkbox gir brukerne mulighet til å velge ett eller flere alternativer.',
   },
+  {
+    id: 'error-summary',
+    name: 'ErrorSummary',
+    description:
+      'ErrorSummary er en oppsummering av feil. Den gir brukeren oversikt over feil eller mangler som må rettes på en side eller trinn, for å komme videre.',
+  },
 ].sort((a, b) => a.name.localeCompare(b.name, 'nb'));
