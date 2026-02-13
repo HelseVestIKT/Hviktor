@@ -27,6 +27,7 @@ const baseDir = path.resolve(__dirname, '../src/app');
 const demoDir = path.join(baseDir, 'demo/pages/components', kebabName);
 const demoComponentsPath = path.join(baseDir, 'demo/demo-components.ts');
 const routesPath = path.join(baseDir, 'app.routes.ts');
+const readmePath = path.resolve(__dirname, '../projects/hviktor/README.md');
 
 // Sjekk om mappen allerede finnes
 if (fs.existsSync(demoDir)) {
@@ -110,6 +111,41 @@ if (routeArrayEnd !== -1) {
     fs.writeFileSync(routesPath, routesContent, { encoding: 'utf8' });
     console.log(`✓ La til route i: app.routes.ts`);
   }
+}
+
+// Oppdater README.md
+let readmeContent = fs.readFileSync(readmePath, 'utf8');
+
+// Finn tabellen og legg til ny komponent alfabetisk
+const tableRowRegex = /\| (\w+)\s+\| .+\|/g;
+const tableRows = [];
+let match;
+
+while ((match = tableRowRegex.exec(readmeContent)) !== null) {
+  // Skip header row
+  if (match[1] !== 'Komponent') {
+    tableRows.push({ name: match[1], fullMatch: match[0], index: match.index });
+  }
+}
+
+// Finn riktig posisjon for å sette inn (alfabetisk)
+const newReadmeRow = `| ${pascalName.padEnd(11)} | ${description.padEnd(52)} |`;
+let insertAfter = null;
+
+for (const row of tableRows) {
+  if (row.name.toLowerCase() < pascalName.toLowerCase()) {
+    insertAfter = row;
+  } else {
+    break;
+  }
+}
+
+if (insertAfter) {
+  const insertPos = insertAfter.index + insertAfter.fullMatch.length;
+  readmeContent =
+    readmeContent.slice(0, insertPos) + '\n' + newReadmeRow + readmeContent.slice(insertPos);
+  fs.writeFileSync(readmePath, readmeContent, { encoding: 'utf8' });
+  console.log(`✓ La til i: README.md`);
 }
 
 console.log(`\n✅ Demo-komponent "${pascalName}" er opprettet!`);

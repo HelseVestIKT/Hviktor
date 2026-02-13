@@ -42,6 +42,7 @@ export class MyComponent {}
 | Breadcrumbs | Navigasjonsstifinne                                  |
 | Button      | Knapper                                              |
 | Card        | Kort-layout                                          |
+| Checkbox    | Avkrysningsbokser                                    |
 | Chip        | Filterbrikker                                        |
 | Details     | Sammenleggbart innhold                               |
 | Dialog      | Modaldialog                                          |
