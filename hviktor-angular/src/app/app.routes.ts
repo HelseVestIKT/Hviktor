@@ -160,6 +160,11 @@ export const routes: Routes = [
         loadComponent: () =>
           import('./demo/pages/components/input/input-demo').then((m) => m.InputDemoComponent),
       },
+      {
+        path: 'komponenter/radio',
+        loadComponent: () =>
+          import('./demo/pages/components/radio/radio-demo').then((m) => m.RadioDemoComponent),
+      },
     ],
   },
 ];

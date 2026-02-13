@@ -59,6 +59,7 @@ export class MyComponent {}
 | List         | Lister                                               |
 | Paragraph    | Avsnitt                                              |
 | Popover      | Popup-innhold                                        |
+| Radio        | Radio komponent                                      |
 | Select       | Nedtrekksliste for valg fra en liste                 |
 | Skeleton     | Placeholder mens innhold lastes                      |
 | Tag          | Merkelapper for kategorisering                       |
