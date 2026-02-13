@@ -66,6 +66,7 @@ export class MyComponent {}
 | Switch       | Switch komponent                                     |
 | Tag          | Merkelapper for kategorisering                       |
 | Textarea     | Textarea komponent                                   |
+| ToggleGroup  | ToggleGroup komponent                                |
 
 ## Krav
 

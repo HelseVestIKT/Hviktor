@@ -182,6 +182,13 @@ export const routes: Routes = [
             (m) => m.TextareaDemoComponent,
           ),
       },
+      {
+        path: 'komponenter/toggle-group',
+        loadComponent: () =>
+          import('./demo/pages/components/toggle-group/toggle-group-demo').then(
+            (m) => m.ToggleGroupDemoComponent,
+          ),
+      },
     ],
   },
 ];
