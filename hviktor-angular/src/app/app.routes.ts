@@ -155,6 +155,11 @@ export const routes: Routes = [
             (m) => m.FieldsetDemoComponent,
           ),
       },
+      {
+        path: 'komponenter/input',
+        loadComponent: () =>
+          import('./demo/pages/components/input/input-demo').then((m) => m.InputDemoComponent),
+      },
     ],
   },
 ];

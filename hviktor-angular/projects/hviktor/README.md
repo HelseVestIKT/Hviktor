@@ -53,6 +53,7 @@ export class MyComponent {}
 | Forms        | Skjemakomponenter og validering                      |
 | Heading      | Overskrifter                                         |
 | Icon         | Ikoner                                               |
+| Input        | Input komponent                                      |
 | Label        | Etiketter                                            |
 | Link         | Lenker                                               |
 | List         | Lister                                               |
