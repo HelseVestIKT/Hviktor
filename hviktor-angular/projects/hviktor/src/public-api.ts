@@ -20,6 +20,7 @@ export * from './link';
 export * from './list';
 export * from './paragraph';
 export * from './popover';
+export * from './search';
 export * from './select';
 export * from './skeleton';
 export * from './tag';
