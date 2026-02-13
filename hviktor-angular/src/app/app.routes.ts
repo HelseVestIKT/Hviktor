@@ -148,6 +148,13 @@ export const routes: Routes = [
         loadComponent: () =>
           import('./demo/pages/components/field/field-demo').then((m) => m.FieldDemoComponent),
       },
+      {
+        path: 'komponenter/fieldset',
+        loadComponent: () =>
+          import('./demo/pages/components/fieldset/fieldset-demo').then(
+            (m) => m.FieldsetDemoComponent,
+          ),
+      },
     ],
   },
 ];

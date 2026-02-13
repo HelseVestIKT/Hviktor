@@ -49,6 +49,7 @@ export class MyComponent {}
 | Divider      | Skillelinjer mellom innhold                          |
 | ErrorSummary | ErrorSummary er en oppsummering av feil i et skjema. |
 | Field        | Field komponent                                      |
+| Fieldset     | Fieldset komponent                                   |
 | Forms        | Skjemakomponenter og validering                      |
 | Heading      | Overskrifter                                         |
 | Icon         | Ikoner                                               |
