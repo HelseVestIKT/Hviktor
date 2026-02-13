@@ -49,4 +49,5 @@ export const DEMO_COMPONENTS: DemoComponent[] = [
   { id: 'textarea', name: 'Textarea', description: 'Textarea komponent' },
   { id: 'toggle-group', name: 'ToggleGroup', description: 'ToggleGroup komponent' },
   { id: 'tooltip', name: 'Tooltip', description: 'Tooltip komponent' },
+  { id: 'skip-link', name: 'SkipLink', description: 'SkipLink komponent' },
 ].sort((a, b) => a.name.localeCompare(b.name, 'nb'));

@@ -196,6 +196,13 @@ export const routes: Routes = [
             (m) => m.TooltipDemoComponent,
           ),
       },
+      {
+        path: 'komponenter/skip-link',
+        loadComponent: () =>
+          import('./demo/pages/components/skip-link/skip-link-demo').then(
+            (m) => m.SkipLinkDemoComponent,
+          ),
+      },
     ],
   },
 ];

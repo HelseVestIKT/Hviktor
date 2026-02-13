@@ -23,6 +23,7 @@ export * from './popover';
 export * from './search';
 export * from './select';
 export * from './skeleton';
+export * from './skip-link';
 export * from './tag';
 export * from './toggle-group';
 export * from './tooltip';
