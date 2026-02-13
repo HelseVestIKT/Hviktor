@@ -46,4 +46,5 @@ export const DEMO_COMPONENTS: DemoComponent[] = [
   { id: 'input', name: 'Input', description: 'Input komponent' },
   { id: 'radio', name: 'Radio', description: 'Radio komponent' },
   { id: 'search', name: 'Search', description: 'Search komponent' },
+  { id: 'switch', name: 'Switch', description: 'Switch komponent' },
 ].sort((a, b) => a.name.localeCompare(b.name, 'nb'));

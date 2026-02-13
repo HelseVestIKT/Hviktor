@@ -170,6 +170,11 @@ export const routes: Routes = [
         loadComponent: () =>
           import('./demo/pages/components/search/search-demo').then((m) => m.SearchDemoComponent),
       },
+      {
+        path: 'komponenter/switch',
+        loadComponent: () =>
+          import('./demo/pages/components/switch/switch-demo').then((m) => m.SwitchDemoComponent),
+      },
     ],
   },
 ];
