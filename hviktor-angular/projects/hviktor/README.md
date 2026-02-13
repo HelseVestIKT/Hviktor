@@ -67,6 +67,7 @@ export class MyComponent {}
 | Tag          | Merkelapper for kategorisering                       |
 | Textarea     | Textarea komponent                                   |
 | ToggleGroup  | ToggleGroup komponent                                |
+| Tooltip      | Tooltip komponent                                    |
 
 ## Krav
 

@@ -189,6 +189,13 @@ export const routes: Routes = [
             (m) => m.ToggleGroupDemoComponent,
           ),
       },
+      {
+        path: 'komponenter/tooltip',
+        loadComponent: () =>
+          import('./demo/pages/components/tooltip/tooltip-demo').then(
+            (m) => m.TooltipDemoComponent,
+          ),
+      },
     ],
   },
 ];
