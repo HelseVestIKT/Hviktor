@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
 import {
+  HviButton,
   HviDivider,
   HviField,
+  HviInput,
   HviLabel,
   HviSearch,
-  HviSearchButton,
   HviSearchClear,
-  HviSearchInput,
 } from '@helsevestikt/hviktor';
 import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
 
@@ -17,9 +17,9 @@ import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
     DemoPageComponent,
     DemoSectionComponent,
     HviSearch,
-    HviSearchInput,
     HviSearchClear,
-    HviSearchButton,
+    HviButton,
+    HviInput,
     HviField,
     HviLabel,
     HviDivider,
@@ -30,11 +30,11 @@ import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
       description="Search lar brukere raskt finne relevant innhold på et nettsted eller i en applikasjon. Komponenten består av et søkefelt, med eller uten en søkeknapp."
     >
       <app-demo-section title="Eksempel">
-        <div hviSearch>
-          <input hviSearchInput aria-label="Søk" placeholder="" />
+        <hvi-search>
+          <input hviInput type="search" aria-label="Søk" placeholder="" />
           <button hviSearchClear aria-label="Tøm"></button>
-          <button hviSearchButton>Søk</button>
-        </div>
+          <button hviButton type="submit">Søk</button>
+        </hvi-search>
       </app-demo-section>
 
       <app-demo-section
@@ -43,28 +43,28 @@ import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
       >
         <div class="flex flex-col gap-4">
           <!-- Kun med ikon (uten søkeknapp) -->
-          <div hviSearch>
-            <input hviSearchInput aria-label="Søk" placeholder="" />
+          <hvi-search>
+            <input hviInput type="search" aria-label="Søk" placeholder="" />
             <button hviSearchClear aria-label="Tøm"></button>
-          </div>
+          </hvi-search>
 
           <hr hviDivider />
 
           <!-- Med primary knapp -->
-          <div hviSearch>
-            <input hviSearchInput aria-label="Søk" placeholder="" />
+          <hvi-search>
+            <input hviInput type="search" aria-label="Søk" placeholder="" />
             <button hviSearchClear aria-label="Tøm"></button>
-            <button hviSearchButton variant="primary">Søk</button>
-          </div>
+            <button hviButton type="submit" variant="primary">Søk</button>
+          </hvi-search>
 
           <hr hviDivider />
 
           <!-- Med secondary knapp -->
-          <div hviSearch>
-            <input hviSearchInput aria-label="Søk" placeholder="" />
+          <hvi-search>
+            <input hviInput type="search" aria-label="Søk" placeholder="" />
             <button hviSearchClear aria-label="Tøm"></button>
-            <button hviSearchButton variant="secondary">Søk</button>
-          </div>
+            <button hviButton type="submit" variant="secondary">Søk</button>
+          </hvi-search>
         </div>
       </app-demo-section>
 
@@ -74,21 +74,21 @@ import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
       >
         <hvi-field>
           <label hviLabel for="cat-search" weight="medium">Søk etter katter</label>
-          <div hviSearch>
-            <input hviSearchInput id="cat-search" name="cat-search" placeholder="" />
+          <hvi-search>
+            <input hviInput type="search" id="cat-search" name="cat-search" placeholder="" />
             <button hviSearchClear aria-label="Tøm"></button>
-            <button hviSearchButton>Søk</button>
-          </div>
+            <button hviButton type="submit">Søk</button>
+          </hvi-search>
         </hvi-field>
       </app-demo-section>
 
       <app-demo-section title="I skjema" description="Search inne i et form-element.">
         <form (submit)="onSubmit($event)">
-          <div hviSearch>
-            <input hviSearchInput aria-label="Søk" placeholder="" name="search" #searchInput />
+          <hvi-search>
+            <input hviInput type="search" aria-label="Søk" placeholder="" name="search" />
             <button hviSearchClear aria-label="Tøm"></button>
-            <button hviSearchButton>Søk</button>
-          </div>
+            <button hviButton type="submit">Søk</button>
+          </hvi-search>
         </form>
         @if (submittedValue) {
           <p class="mt-2">Søkte etter: {{ submittedValue }}</p>

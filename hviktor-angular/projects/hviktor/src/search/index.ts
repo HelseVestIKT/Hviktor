@@ -1,1 +1,2 @@
-export { HviSearch, HviSearchButton, HviSearchClear, HviSearchInput } from './search.component';
+export { HviSearchClear } from './search-clear.directive';
+export { HviSearch } from './search.component';
