@@ -34,8 +34,8 @@ hljs.registerLanguage('typescript', typescript);
               <p hviParagraph>Vis kode</p>
             </hvi-details-summary>
             <hvi-details-content>
-              <pre class="bg-surface overflow-x-scroll rounded-md">
-                <code #codeBlock class="language-typescript">{{ code() }}</code>
+              <pre>
+                <code #codeBlock class="language-typescript rounded">{{ code() }}</code>
               </pre>
             </hvi-details-content>
           </hvi-details>
