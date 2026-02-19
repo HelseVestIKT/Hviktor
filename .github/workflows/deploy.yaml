@@ -1,0 +1,46 @@
+name: "Deploy til miljø"
+on:
+  workflow_call:
+    inputs:
+      environment:
+        description: "Environment man vil deploye til"
+        required: true
+        type: string
+      ekstern-tilgang:
+        description: "Ekstern tilgang"
+        required: false
+        type: boolean
+        default: false
+jobs:  
+  build-frontend:      
+    name: "Bygger frontend"
+    uses: HelseVestIKT/HVI-Felles-WorkFlows/.github/workflows/build-angular-app.yaml@31-miljø-i-angular 
+    secrets: inherit
+    with:        
+      environment: ${{ inputs.environment }}
+      working-directory: './hviktor-angular'
+      artifact-name: 'web'
+
+  provision-app-service-angular:
+    name: "Provision angular app service"
+    needs: [build-frontend]
+    uses: HelseVestIKT/HVI-Felles-WorkFlows/.github/workflows/provision-app-service.yaml@v2.0.3
+    secrets: inherit
+    with:
+      environment: ${{inputs.environment}}
+      artifact-name: 'web'
+      ekstern-tilgang: ${{inputs.ekstern-tilgang}}      
+    permissions:
+      contents: read
+      id-token: write  
+
+  deploy-angular-app:
+    needs: [build-frontend, provision-app-service-angular]
+    uses: HelseVestIKT/HVI-Felles-WorkFlows/.github/workflows/deploy-angular-app.yaml@v2.0.11    
+    with:
+      environment: ${{inputs.environment}}
+      artifact-name: 'web'
+    secrets: inherit
+    permissions:
+      contents: read
+      id-token: write
