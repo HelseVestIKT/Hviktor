@@ -1,33 +1,21 @@
 import { Component } from '@angular/core';
-import {
-  HviCard,
-  HviCardBlock,
-  HviHeading,
-  HviParagraph,
-  HviSkeleton,
-} from '@helsevestikt/hviktor';
+import { HviCard, HviCardBlock, HviSkeleton } from '@helsevestikt/hviktor';
 import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
 
 @Component({
   selector: 'app-skeleton-demo',
   standalone: true,
-  imports: [
-    DemoPageComponent,
-    DemoSectionComponent,
-    HviSkeleton,
-    HviCard,
-    HviCardBlock,
-    HviHeading,
-    HviParagraph,
-  ],
+  imports: [DemoPageComponent, DemoSectionComponent, HviSkeleton, HviCard, HviCardBlock],
   template: `
     <app-demo-page
       title="Skeleton"
       description="Skeleton viser en plassholder for innhold som lastes inn."
     >
       <!-- Variants -->
-      <app-demo-section title="Varianter">
-        <p hviParagraph class="mb-4">Skeleton har tre varianter: rectangle, circle og text.</p>
+      <app-demo-section
+        title="Varianter"
+        description="Skeleton har tre varianter: rectangle, circle og text."
+      >
         <div class="flex flex-wrap items-center gap-4">
           <div class="flex flex-col items-center gap-2">
             <hvi-skeleton variant="rectangle" width="120px" height="80px" />
@@ -45,8 +33,10 @@ import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
       </app-demo-section>
 
       <!-- Text Lines -->
-      <app-demo-section title="Tekstlinjer">
-        <p hviParagraph class="mb-4">Simuler et avsnitt med flere tekstlinjer.</p>
+      <app-demo-section
+        title="Tekstlinjer"
+        description="Simuler et avsnitt med flere tekstlinjer.."
+      >
         <div class="flex max-w-md flex-col gap-2">
           <hvi-skeleton variant="text" width="100%" height="1em" />
           <hvi-skeleton variant="text" width="95%" height="1em" />
@@ -56,8 +46,10 @@ import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
       </app-demo-section>
 
       <!-- Card Skeleton -->
-      <app-demo-section title="Kort-skeleton">
-        <p hviParagraph class="mb-4">Plassholder for et kort med bilde og tekst.</p>
+      <app-demo-section
+        title="Kort-skeleton"
+        description="Plassholder for et kort med bilde og tekst."
+      >
         <div class="grid grid-cols-1 gap-4 md:grid-cols-3">
           <hvi-card>
             <hvi-skeleton variant="rectangle" width="100%" height="160px" />
@@ -89,8 +81,10 @@ import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
       </app-demo-section>
 
       <!-- Profile Skeleton -->
-      <app-demo-section title="Profil-skeleton">
-        <p hviParagraph class="mb-4">Plassholder for brukerprofil med avatar og informasjon.</p>
+      <app-demo-section
+        title="Profil-skeleton"
+        description="Plassholder for brukerprofil med avatar og informasjon."
+      >
         <div class="flex flex-col gap-4">
           <!-- Profile Card 1 -->
           <div class="flex items-center gap-4 rounded-lg p-4">
@@ -113,8 +107,10 @@ import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
       </app-demo-section>
 
       <!-- List Skeleton -->
-      <app-demo-section title="Liste-skeleton">
-        <p hviParagraph class="mb-4">Plassholder for en liste med elementer.</p>
+      <app-demo-section
+        title="Liste-skeleton"
+        description="Plassholder for en liste med elementer."
+      >
         <div class="flex max-w-lg flex-col gap-3">
           @for (item of [1, 2, 3, 4, 5]; track item) {
             <div class="flex items-center gap-3 rounded p-3">
@@ -130,8 +126,10 @@ import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
       </app-demo-section>
 
       <!-- Article Skeleton -->
-      <app-demo-section title="Artikkel-skeleton">
-        <p hviParagraph class="mb-4">Plassholder for en artikkel med bilde og tekst.</p>
+      <app-demo-section
+        title="Artikkel-skeleton"
+        description="Plassholder for en artikkel med bilde og tekst."
+      >
         <div class="max-w-2xl">
           <hvi-skeleton variant="rectangle" width="100%" height="240px" class="mb-4 rounded-lg" />
           <hvi-skeleton variant="text" width="80%" height="2em" class="mb-4" />
@@ -153,8 +151,10 @@ import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
       </app-demo-section>
 
       <!-- Sizes -->
-      <app-demo-section title="Størrelser">
-        <p hviParagraph class="mb-4">Skeleton kan tilpasses med width og height.</p>
+      <app-demo-section
+        title="Størrelser"
+        description="Skeleton kan tilpasses med width og height."
+      >
         <div class="flex flex-wrap items-end gap-4">
           <hvi-skeleton variant="rectangle" width="50px" height="50px" />
           <hvi-skeleton variant="rectangle" width="100px" height="75px" />

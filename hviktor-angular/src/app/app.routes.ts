@@ -129,6 +129,92 @@ export const routes: Routes = [
             (m) => m.SkeletonDemoComponent,
           ),
       },
+      {
+        path: 'komponenter/checkbox',
+        loadComponent: () =>
+          import('./demo/pages/components/checkbox/checkbox-demo').then(
+            (m) => m.CheckboxDemoComponent,
+          ),
+      },
+      {
+        path: 'komponenter/error-summary',
+        loadComponent: () =>
+          import('./demo/pages/components/error-summary/error-summary-demo').then(
+            (m) => m.ErrorSummaryDemoComponent,
+          ),
+      },
+      {
+        path: 'komponenter/field',
+        loadComponent: () =>
+          import('./demo/pages/components/field/field-demo').then((m) => m.FieldDemoComponent),
+      },
+      {
+        path: 'komponenter/fieldset',
+        loadComponent: () =>
+          import('./demo/pages/components/fieldset/fieldset-demo').then(
+            (m) => m.FieldsetDemoComponent,
+          ),
+      },
+      {
+        path: 'komponenter/input',
+        loadComponent: () =>
+          import('./demo/pages/components/input/input-demo').then((m) => m.InputDemoComponent),
+      },
+      {
+        path: 'komponenter/radio',
+        loadComponent: () =>
+          import('./demo/pages/components/radio/radio-demo').then((m) => m.RadioDemoComponent),
+      },
+      {
+        path: 'komponenter/search',
+        loadComponent: () =>
+          import('./demo/pages/components/search/search-demo').then((m) => m.SearchDemoComponent),
+      },
+      {
+        path: 'komponenter/switch',
+        loadComponent: () =>
+          import('./demo/pages/components/switch/switch-demo').then((m) => m.SwitchDemoComponent),
+      },
+      {
+        path: 'komponenter/textarea',
+        loadComponent: () =>
+          import('./demo/pages/components/textarea/textarea-demo').then(
+            (m) => m.TextareaDemoComponent,
+          ),
+      },
+      {
+        path: 'komponenter/toggle-group',
+        loadComponent: () =>
+          import('./demo/pages/components/toggle-group/toggle-group-demo').then(
+            (m) => m.ToggleGroupDemoComponent,
+          ),
+      },
+      {
+        path: 'komponenter/tooltip',
+        loadComponent: () =>
+          import('./demo/pages/components/tooltip/tooltip-demo').then(
+            (m) => m.TooltipDemoComponent,
+          ),
+      },
+      {
+        path: 'komponenter/skip-link',
+        loadComponent: () =>
+          import('./demo/pages/components/skip-link/skip-link-demo').then(
+            (m) => m.SkipLinkDemoComponent,
+          ),
+      },
+      {
+        path: 'komponenter/spinner',
+        loadComponent: () =>
+          import('./demo/pages/components/spinner/spinner-demo').then(
+            (m) => m.SpinnerDemoComponent,
+          ),
+      },
+      {
+        path: 'komponenter/tabs',
+        loadComponent: () =>
+          import('./demo/pages/components/tabs/tabs-demo').then((m) => m.TabsDemoComponent),
+      },
     ],
   },
 ];
