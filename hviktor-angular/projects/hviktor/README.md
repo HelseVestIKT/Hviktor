@@ -57,6 +57,7 @@ export class MyComponent {}
 | Label        | Etiketter                                            |
 | Link         | Lenker                                               |
 | List         | Lister                                               |
+| Pagination   | Pagination komponent                                 |
 | Paragraph    | Avsnitt                                              |
 | Popover      | Popup-innhold                                        |
 | Radio        | Radio komponent                                      |
@@ -66,6 +67,7 @@ export class MyComponent {}
 | SkipLink     | SkipLink komponent                                   |
 | Spinner      | Spinner komponent                                    |
 | Switch       | Switch komponent                                     |
+| Table        | Table komponent                                      |
 | Tag          | Merkelapper for kategorisering                       |
 | Textarea     | Textarea komponent                                   |
 | ToggleGroup  | ToggleGroup komponent                                |
