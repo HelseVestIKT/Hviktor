@@ -12,13 +12,12 @@ on:
         type: boolean
         default: false
 jobs:  
-  build-frontend:      
-    name: "Bygger frontend"
-    uses: HelseVestIKT/HVI-Felles-WorkFlows/.github/workflows/build-angular-app.yaml@31-miljø-i-angular 
+  build-frontend:
+    uses: HelseVestIKT/HVI-FELLES-WORKFLOWS/.github/workflows/build-angular-app.yaml@v2.0.3    
     secrets: inherit
-    with:        
+    with:
       environment: ${{ inputs.environment }}
-      working-directory: './hviktor-angular'
+      project-directory: './hviktor-angular'
       artifact-name: 'web'
 
   provision-app-service-angular:
