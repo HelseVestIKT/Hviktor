@@ -49,7 +49,7 @@ jobs:
     secrets: inherit
     with:
       environment: ${{ inputs.environment }}
-      artifact-name: 'web-${{ inputs.environment }}'
+      artifact-name: 'web'
       ekstern-tilgang: ${{ inputs.ekstern-tilgang }}      
     permissions:
       contents: read
@@ -60,7 +60,7 @@ jobs:
     uses: HelseVestIKT/HVI-Felles-WorkFlows/.github/workflows/deploy-angular-app.yaml@v2.0.11    
     with:
       environment: ${{ inputs.environment }}
-      artifact-name: 'web-${{ inputs.environment }}'
+      artifact-name: 'web'
     secrets: inherit
     permissions:
       contents: read
