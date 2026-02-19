@@ -38,7 +38,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
-          name: 'web'
+          name: 'web-${{ inputs.environment }}'
           path: 'hviktor-angular/dist/hviktor/'
           compression-level: 0
 
@@ -49,7 +49,7 @@ jobs:
     secrets: inherit
     with:
       environment: ${{ inputs.environment }}
-      artifact-name: 'web'
+      artifact-name: 'web-${{ inputs.environment }}'
       ekstern-tilgang: ${{ inputs.ekstern-tilgang }}      
     permissions:
       contents: read
@@ -60,7 +60,7 @@ jobs:
     uses: HelseVestIKT/HVI-Felles-WorkFlows/.github/workflows/deploy-angular-app.yaml@v2.0.11    
     with:
       environment: ${{ inputs.environment }}
-      artifact-name: 'web'
+      artifact-name: 'web-${{ inputs.environment }}'
     secrets: inherit
     permissions:
       contents: read
