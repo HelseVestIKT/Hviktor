@@ -33,7 +33,7 @@ jobs:
         run: npm ci --ignore-scripts
 
       - name: Build
-        run: ng build hviktor --configuration production
+        run: npm run build:lib:prod
       
       - name: Copy web.config to build folder
         run: cp web.config dist/hviktor
