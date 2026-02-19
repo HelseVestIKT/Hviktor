@@ -2,9 +2,15 @@
 
 name: PR Quality Gate
 
+permissions:
+  contents: read
+  pull-requests: read
+
+
 on:
     pull_request:
         branches: [main]
+        types: [opened, synchronize, reopened]
 
 defaults:
     run:

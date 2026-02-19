@@ -1,0 +1,20 @@
+# hovedfil for applikasjonen. Gjør bruk av workflows/actions for å bygge, konfigurere og deploye applikasjonen til Azure
+on:
+  push:
+    branches: [ "main"]
+  workflow_dispatch:  
+
+jobs:     
+  deploy-develop:
+    if: github.ref == 'refs/heads/main'    
+    name: "Print miljø for DEV"      
+    uses: ./.github/workflows/deploy.yaml 
+    with:
+      environment: DEV
+      ekstern-tilgang: false      
+    secrets: inherit
+    permissions:
+      contents: read
+      id-token: write 
+      issues: write 
+     
