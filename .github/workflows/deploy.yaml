@@ -13,12 +13,30 @@ on:
         default: false
 jobs:  
   build-frontend:
-    uses: HelseVestIKT/HVI-FELLES-WORKFLOWS/.github/workflows/build-angular-app.yaml@v2.0.3    
-    secrets: inherit
-    with:
-      environment: ${{ inputs.environment }}
-      project-directory: './hviktor-angular'
-      artifact-name: 'web'
+    name: 'Build Angular app'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '20.x'
+          cache: 'npm'
+
+      - name: Install
+        run: npm ci --ignore-scripts
+
+      - name: Build
+        run: npm run build:lib -- --output-path=dist/web
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: 'web'
+          path: 'dist/hviktor/'
+          compression-level: 0
 
   provision-app-service-angular:
     name: "Provision angular app service"
@@ -26,9 +44,9 @@ jobs:
     uses: HelseVestIKT/HVI-Felles-WorkFlows/.github/workflows/provision-app-service.yaml@v2.0.3
     secrets: inherit
     with:
-      environment: ${{inputs.environment}}
+      environment: ${{ inputs.environment }}
       artifact-name: 'web'
-      ekstern-tilgang: ${{inputs.ekstern-tilgang}}      
+      ekstern-tilgang: ${{ inputs.ekstern-tilgang }}      
     permissions:
       contents: read
       id-token: write  
@@ -37,7 +55,7 @@ jobs:
     needs: [build-frontend, provision-app-service-angular]
     uses: HelseVestIKT/HVI-Felles-WorkFlows/.github/workflows/deploy-angular-app.yaml@v2.0.11    
     with:
-      environment: ${{inputs.environment}}
+      environment: ${{ inputs.environment }}
       artifact-name: 'web'
     secrets: inherit
     permissions:
