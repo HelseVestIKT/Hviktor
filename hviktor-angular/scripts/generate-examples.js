@@ -424,10 +424,127 @@ function processDemoFile(filePath) {
   fs.writeFileSync(manifestPath, generateManifestFile(parsed.demoName, examples), 'utf8');
   console.log(`  Generated: manifest.ts`);
 
+  // Update the demo file to include the code examples
+  updateDemoFile(filePath, parsed.demoName, examples);
+
   return {
     demoName: parsed.demoName,
     examples,
   };
+}
+
+/**
+ * Update the demo file to include imports and code bindings
+ */
+function updateDemoFile(filePath, demoName, examples) {
+  let content = fs.readFileSync(filePath, 'utf8');
+
+  // Generate import statements for all examples
+  const newImports = examples.map((ex) => {
+    const sourceExport = ex.className.replace('Component', 'Source');
+    return `import { ${sourceExport} } from './code-examples/${ex.fileName.replace('.ts', '.source')}';`;
+  });
+
+  // Check if imports already exist
+  const existingImports = newImports.filter((imp) => content.includes(imp));
+  const importsToAdd = newImports.filter((imp) => !content.includes(imp));
+
+  if (importsToAdd.length > 0) {
+    // Find the last import statement and add new imports after it
+    const lastImportMatch = content.match(/^import\s+[\s\S]*?from\s+['"][^'"]+['"];?\s*$/gm);
+    if (lastImportMatch) {
+      const lastImport = lastImportMatch[lastImportMatch.length - 1];
+      const lastImportIndex = content.lastIndexOf(lastImport);
+      const insertPosition = lastImportIndex + lastImport.length;
+      content =
+        content.slice(0, insertPosition) +
+        '\n' +
+        importsToAdd.join('\n') +
+        content.slice(insertPosition);
+    }
+  }
+
+  // Update each app-demo-section to include [code] binding
+  for (const example of examples) {
+    const sourceExport = example.className.replace('Component', 'Source');
+    const propertyName = toCamelCase(example.slug) + 'Code';
+
+    // Find the section by title and add [code] binding if not present
+    const sectionRegex = new RegExp(
+      `(<app-demo-section[^>]*title=["']${escapeRegex(example.title)}["'])([^>]*>)`,
+      'g',
+    );
+
+    content = content.replace(sectionRegex, (match, beforeTitle, afterTitle) => {
+      // Check if [code] is already bound
+      if (match.includes('[code]')) {
+        return match;
+      }
+      return `${beforeTitle} [code]="${propertyName}"${afterTitle}`;
+    });
+  }
+
+  // Add properties to the class
+  const classMatch = content.match(/export\s+class\s+(\w+)\s*\{/);
+  if (classMatch) {
+    const className = classMatch[1];
+    const classStartIndex = content.indexOf(classMatch[0]) + classMatch[0].length;
+
+    // Generate property declarations
+    const newProperties = examples
+      .map((ex) => {
+        const sourceExport = ex.className.replace('Component', 'Source');
+        const propertyName = toCamelCase(ex.slug) + 'Code';
+        return `readonly ${propertyName} = ${sourceExport};`;
+      })
+      .filter((prop) => !content.includes(prop));
+
+    if (newProperties.length > 0) {
+      // Find if there's existing content in the class
+      const afterClass = content.slice(classStartIndex);
+      const hasContent = afterClass.trim().startsWith('}') === false;
+
+      const propertyBlock = newProperties.map((p) => `  ${p}`).join('\n');
+
+      if (hasContent) {
+        // Insert after the opening brace with a newline
+        content =
+          content.slice(0, classStartIndex) +
+          '\n' +
+          propertyBlock +
+          '\n' +
+          content.slice(classStartIndex);
+      } else {
+        // Empty class, just add properties
+        content =
+          content.slice(0, classStartIndex) +
+          '\n' +
+          propertyBlock +
+          '\n' +
+          content.slice(classStartIndex);
+      }
+    }
+  }
+
+  fs.writeFileSync(filePath, content, 'utf8');
+  console.log(`  Updated: ${path.basename(filePath)}`);
+}
+
+/**
+ * Convert slug to camelCase
+ */
+function toCamelCase(str) {
+  return str
+    .split('-')
+    .map((part, index) => (index === 0 ? part : part.charAt(0).toUpperCase() + part.slice(1)))
+    .join('');
+}
+
+/**
+ * Escape special regex characters
+ */
+function escapeRegex(str) {
+  return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 }
 
 /**
