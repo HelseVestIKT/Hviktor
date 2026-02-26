@@ -1,6 +1,6 @@
 import { bootstrapApplication } from '@angular/platform-browser';
-import { registerIcons } from './lib/register-icons';
+import { registerIconsAsCustomElements } from './lib/register-elements';
 
 bootstrapApplication(class {}).then(() => {
-  registerIcons();
+  registerIconsAsCustomElements();
 });
