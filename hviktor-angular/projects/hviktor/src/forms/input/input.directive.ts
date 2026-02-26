@@ -3,7 +3,7 @@ import { booleanAttribute, Directive, HostListener, Input } from '@angular/core'
 type HviAriaRole = 'switch' | 'button' | 'checkbox' | 'radio' | 'textbox' | 'searchbox' | string;
 
 @Directive({
-  selector: 'input[hviInput]',
+  selector: 'input[hviInput], textarea[hviInput]',
   standalone: true,
   host: {
     class: 'ds-input',
@@ -70,7 +70,7 @@ export class HviInput {
   }
 
   @HostListener('click', ['$event'])
-  onClick(event: MouseEvent): void {
+  onClick(event: Event): void {
     if (this._readOnly && this.isToggle) {
       event.preventDefault();
       event.stopImmediatePropagation();
@@ -86,10 +86,15 @@ export class HviInput {
   }
 
   @HostListener('keydown', ['$event'])
-  onKeydown(event: KeyboardEvent): void {
+  onKeydown(event: Event): void {
     if (!this._readOnly || !this.isToggle) return;
 
-    if (event.key === ' ' || event.key === 'Spacebar' || event.key === 'Enter') {
+    const keyboardEvent = event as KeyboardEvent;
+    if (
+      keyboardEvent.key === ' ' ||
+      keyboardEvent.key === 'Spacebar' ||
+      keyboardEvent.key === 'Enter'
+    ) {
       event.preventDefault();
       event.stopImmediatePropagation();
     }

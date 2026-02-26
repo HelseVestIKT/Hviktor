@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { HviBreadcrumbs } from '@helsevestikt/hviktor';
 import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
 
+import { BreadcrumbsStandardExampleSource } from './code-examples/breadcrumbs.standard.example.source';
 @Component({
   selector: 'app-breadcrumbs-demo',
   standalone: true,
@@ -11,7 +12,7 @@ import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
       title="Breadcrumbs"
       description="Navigasjonssti som viser brukerens posisjon i hierarkiet."
     >
-      <app-demo-section title="Standard">
+      <app-demo-section title="Standard" [code]="standardCode">
         <div class="flex items-center gap-2">
           <nav
             hviBreadcrumbs
@@ -33,4 +34,6 @@ import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
     </app-demo-page>
   `,
 })
-export class BreadcrumbsDemoComponent {}
+export class BreadcrumbsDemoComponent {
+  readonly standardCode = BreadcrumbsStandardExampleSource;
+}

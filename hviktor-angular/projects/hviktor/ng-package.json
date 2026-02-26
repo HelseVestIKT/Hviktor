@@ -13,8 +13,8 @@
 
   "allowedNonPeerDependencies": [
     "@digdir/designsystemet-css",
-    "@digdir/designsystemet-theme",
     "@u-elements/u-details",
+    "@u-elements/u-tabs",
     "@floating-ui/dom"
   ]
 }

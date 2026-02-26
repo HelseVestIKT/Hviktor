@@ -4,7 +4,8 @@ import {
   HviButton,
   HviFieldKit,
   HviForms,
-  HviLabel,
+  HviParagraph,
+  HviSelect,
   HviValidationKit,
   HviValidationMessages,
 } from '@helsevestikt/hviktor';
@@ -18,58 +19,169 @@ import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
     HviFieldKit,
     HviValidationKit,
     HviButton,
-    HviLabel,
+    HviParagraph,
+    HviSelect,
     DemoPageComponent,
     DemoSectionComponent,
   ],
   template: `
-    <app-demo-page title="Forms" description="Skjemakomponenter med validering og feilmeldinger.">
-      <app-demo-section title="Komplett skjema">
-        <form hviForm [formGroup]="form" [focusOnInvalid]="summary" (hviSubmitted)="onSubmit()">
+    <app-demo-page
+      title="Forms"
+      description="Et eksempel på et realistisk skjema med validering, feilmeldinger og tegnteller."
+    >
+      <app-demo-section
+        title="Kontaktskjema"
+        description="Et fullstendig kontaktskjema med reaktiv validering og error summary."
+      >
+        <form
+          hviForm
+          [formGroup]="contactForm"
+          [focusOnInvalid]="summary"
+          (hviSubmitted)="onSubmit()"
+          class="max-w-2xl"
+        >
+          <!-- Personalia -->
           <fieldset hviFieldset>
-            <legend hviLabel>Person</legend>
+            <legend hviLabel weight="medium">Personalia</legend>
 
-            <hvi-field>
-              <label hviLabel for="firstName" weight="medium">Fornavn</label>
-              <input hviInput id="firstName" formControlName="firstName" hviControlInvalid />
-              <p
-                hviFieldValidation
-                hviValidationMessage="firstName"
-                [messages]="messages['firstName']"
-              ></p>
-            </hvi-field>
+            <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+              <hvi-field>
+                <label hviLabel for="firstName" weight="medium">Fornavn</label>
+                <input hviInput id="firstName" formControlName="firstName" hviControlInvalid />
+                <p
+                  hviFieldValidation
+                  hviValidationMessage="firstName"
+                  [messages]="messages['firstName']"
+                ></p>
+              </hvi-field>
 
-            <hvi-field>
-              <label hviLabel for="lastName" weight="medium">Etternavn</label>
-              <input hviInput id="lastName" formControlName="lastName" hviControlInvalid />
-              <p
-                hviFieldValidation
-                hviValidationMessage="lastName"
-                [messages]="messages['lastName']"
-              ></p>
-            </hvi-field>
+              <hvi-field>
+                <label hviLabel for="lastName" weight="medium">Etternavn</label>
+                <input hviInput id="lastName" formControlName="lastName" hviControlInvalid />
+                <p
+                  hviFieldValidation
+                  hviValidationMessage="lastName"
+                  [messages]="messages['lastName']"
+                ></p>
+              </hvi-field>
+            </div>
           </fieldset>
 
+          <!-- Kontaktinformasjon -->
           <fieldset hviFieldset>
-            <legend hviLabel>Kontakt</legend>
+            <legend hviLabel weight="medium">Kontaktinformasjon</legend>
 
             <hvi-field>
               <label hviLabel for="email" weight="medium">E-post</label>
+              <span hviFieldDescription>Vi bruker e-posten til å svare deg</span>
               <input hviInput id="email" type="email" formControlName="email" hviControlInvalid />
               <p hviFieldValidation hviValidationMessage="email" [messages]="messages['email']"></p>
             </hvi-field>
 
             <hvi-field>
-              <label hviLabel for="phone" weight="medium">Telefon</label>
-              <input hviInput id="phone" type="tel" formControlName="phone" hviControlInvalid />
+              <label hviLabel for="phone" weight="medium">
+                Telefon
+                <span hviFieldOptional>(valgfritt)</span>
+              </label>
+              <input
+                hviInput
+                id="phone"
+                type="tel"
+                formControlName="phone"
+                hviControlInvalid
+                placeholder="+47 000 00 000"
+              />
               <p hviFieldValidation hviValidationMessage="phone" [messages]="messages['phone']"></p>
             </hvi-field>
           </fieldset>
 
+          <!-- Henvendelse -->
           <fieldset hviFieldset>
-            <legend hviLabel>Samtykke</legend>
+            <legend hviLabel weight="medium">Din henvendelse</legend>
 
-            <hvi-field position="start">
+            <hvi-field>
+              <label hviLabel for="subject" weight="medium">Emne</label>
+              <select hviSelect id="subject" formControlName="subject" hviControlInvalid>
+                <option value="" disabled>Velg emne</option>
+                <option value="general">Generell henvendelse</option>
+                <option value="support">Teknisk support</option>
+                <option value="feedback">Tilbakemelding</option>
+                <option value="complaint">Klage</option>
+                <option value="other">Annet</option>
+              </select>
+              <p
+                hviFieldValidation
+                hviValidationMessage="subject"
+                [messages]="messages['subject']"
+              ></p>
+            </hvi-field>
+
+            <hvi-field>
+              <label hviLabel for="message" weight="medium">Melding</label>
+              <span hviFieldDescription>Beskriv henvendelsen din så detaljert som mulig</span>
+              <textarea
+                hviInput
+                id="message"
+                formControlName="message"
+                hviControlInvalid
+                rows="5"
+                maxlength="500"
+              ></textarea>
+              <hvi-field-counter [limit]="500" />
+              <p
+                hviFieldValidation
+                hviValidationMessage="message"
+                [messages]="messages['message']"
+              ></p>
+            </hvi-field>
+          </fieldset>
+
+          <!-- Preferanser -->
+          <fieldset hviFieldset>
+            <legend hviLabel weight="medium">Preferanser</legend>
+            <p hviParagraph>Hvordan vil du helst at vi skal kontakte deg?</p>
+
+            <hvi-field>
+              <input
+                hviInput
+                id="pref-email"
+                type="radio"
+                name="contactPreference"
+                value="email"
+                formControlName="contactPreference"
+              />
+              <label hviLabel for="pref-email">E-post</label>
+            </hvi-field>
+
+            <hvi-field>
+              <input
+                hviInput
+                id="pref-phone"
+                type="radio"
+                name="contactPreference"
+                value="phone"
+                formControlName="contactPreference"
+              />
+              <label hviLabel for="pref-phone">Telefon</label>
+            </hvi-field>
+
+            <hvi-field>
+              <input
+                hviInput
+                id="newsletter"
+                type="checkbox"
+                role="switch"
+                formControlName="newsletter"
+              />
+              <label hviLabel for="newsletter" weight="medium"> Meld meg på nyhetsbrev </label>
+            </hvi-field>
+          </fieldset>
+
+          <!-- Samtykke -->
+          <fieldset hviFieldset>
+            <legend hviLabel weight="medium">Samtykke</legend>
+
+            <hvi-field>
               <input
                 hviInput
                 id="consent"
@@ -77,8 +189,9 @@ import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
                 formControlName="consent"
                 hviControlInvalid
               />
-              <label hviLabel for="consent" weight="medium">
-                Jeg bekrefter at opplysningene er riktige
+              <label hviLabel for="consent">
+                Jeg har lest og godtar
+                <a href="#" class="ds-link">personvernerklæringen</a>
               </label>
               <p
                 hviFieldValidation
@@ -88,25 +201,45 @@ import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
             </hvi-field>
           </fieldset>
 
+          <!-- Knapper -->
           <div class="my-4 flex flex-wrap gap-2">
             <button hviButton type="submit" variant="primary">Send inn</button>
-            <button hviButton type="button" variant="secondary" (click)="form.reset()">
+            <button
+              hviButton
+              type="button"
+              variant="secondary"
+              (click)="contactForm.reset({ contactPreference: 'email' })"
+            >
               Nullstill
             </button>
           </div>
 
-          <hvi-error-summary #summary [form]="form" [messages]="messages" showWhen="submitted" />
+          <!-- Error summary -->
+          <hvi-error-summary
+            #summary
+            [form]="contactForm"
+            [messages]="messages"
+            showWhen="submitted"
+          />
         </form>
       </app-demo-section>
     </app-demo-page>
   `,
 })
 export class FormsDemoComponent {
-  form = new FormGroup({
+  contactForm = new FormGroup({
     firstName: new FormControl('', [Validators.required, Validators.minLength(2)]),
     lastName: new FormControl('', [Validators.required, Validators.minLength(2)]),
     email: new FormControl('', [Validators.required, Validators.email]),
-    phone: new FormControl('', [Validators.required, Validators.pattern(/^\d+$/)]),
+    phone: new FormControl('', [Validators.pattern(/^(\+47)?\s?\d{3}\s?\d{2}\s?\d{3}$/)]),
+    subject: new FormControl('', [Validators.required]),
+    message: new FormControl('', [
+      Validators.required,
+      Validators.minLength(10),
+      Validators.maxLength(500),
+    ]),
+    contactPreference: new FormControl('email'),
+    newsletter: new FormControl(false),
     consent: new FormControl(false, [Validators.requiredTrue]),
   });
 
@@ -121,22 +254,28 @@ export class FormsDemoComponent {
     },
     email: {
       required: 'E-post er påkrevd',
-      email: 'E-post må være gyldig',
+      email: 'Oppgi en gyldig e-postadresse',
     },
     phone: {
-      required: 'Telefon er påkrevd',
-      pattern: 'Telefonnummer kan kun inneholde siffer',
+      pattern: 'Oppgi et gyldig norsk telefonnummer',
+    },
+    subject: {
+      required: 'Velg et emne',
+    },
+    message: {
+      required: 'Skriv en melding',
+      minlength: 'Meldingen må være minst 10 tegn',
+      maxlength: 'Meldingen kan ikke være mer enn 500 tegn',
     },
     consent: {
-      requiredTrue: 'Du må samtykke før du kan sende inn',
+      requiredTrue: 'Du må godta personvernerklæringen',
     },
   };
 
   onSubmit(): void {
-    if (this.form.valid) {
-      alert('Skjema sendt inn!');
-    } else {
-      this.form.markAllAsTouched();
+    if (this.contactForm.valid) {
+      alert('Takk for din henvendelse! Vi svarer deg så snart som mulig.');
+      this.contactForm.reset({ contactPreference: 'email' });
     }
   }
 }

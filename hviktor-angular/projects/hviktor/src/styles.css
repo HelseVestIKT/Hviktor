@@ -1,5 +1,5 @@
 @import '@digdir/designsystemet-css';
-@import '@digdir/designsystemet-theme';
+@import '@digdir/designsystemet-css/theme';
 
 @layer ds.theme.typography.primary {
   :root,

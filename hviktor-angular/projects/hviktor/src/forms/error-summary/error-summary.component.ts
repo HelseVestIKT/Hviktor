@@ -128,7 +128,13 @@ const nextErrorSummaryHeadingId = () => `hvi-error-summary-heading-${++errorSumm
       <ul class="ds-list">
         @for (err of computedErrors; track err.href) {
           <li>
-            <a class="ds-link" data-color="neutral" [href]="err.href">{{ err.message }}</a>
+            <a
+              class="ds-link"
+              data-color="neutral"
+              [href]="err.href"
+              (click)="onLinkClick($event, err.href)"
+              >{{ err.message }}</a
+            >
           </li>
         }
       </ul>
@@ -180,6 +186,22 @@ export class HviErrorSummary {
 
   focus(): void {
     this.container?.nativeElement.focus();
+  }
+
+  /**
+   * Handles click on error links to prevent Angular Router navigation
+   * and instead focus/scroll to the target element.
+   */
+  onLinkClick(event: MouseEvent, href: string): void {
+    event.preventDefault();
+
+    const id = href.startsWith('#') ? href.slice(1) : href;
+    const target = document.getElementById(id);
+
+    if (target) {
+      target.focus();
+      target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
   }
 
   get computedErrors(): HviErrorSummaryItem[] {

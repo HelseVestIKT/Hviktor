@@ -1,20 +1,32 @@
-<header class="sticky top-0 z-10 border-b border-neutral-300 bg-white p-4">
+<header
+  class="sticky top-0 z-10 flex items-center justify-between border-b border-neutral-300 bg-(--ds-color-neutral-background-default) p-4"
+>
   <a routerLink="/" class="font-medium"> Hviktor Angular </a>
+  <button
+    hviButton
+    variant="tertiary"
+    color="accent"
+    (click)="themeService.toggleColorScheme()"
+    [title]="'Bytt til ' + themeService.getNextSchemeLabel() + ' modus'"
+  >
+    <span>{{ themeService.getNextSchemeIcon() }}</span>
+    <span>{{ themeService.getNextSchemeLabel() }}</span>
+  </button>
 </header>
 
 <div class="flex min-h-screen">
   <aside
-    class="fixed top-16 h-[calc(100vh-57px)] w-50 overflow-y-auto border-r border-neutral-300 bg-white"
+    class="fixed top-20 h-[calc(100vh-100px)] w-50 overflow-y-auto border-r border-neutral-300"
   >
     <nav>
-      <ul class="m-0 list-none p-4">
+      <ul class="m-0 list-none p-4 pb-8">
         <p class="font-medium">Komponenter</p>
         @for (component of components; track component.id) {
         <li>
           <a
             [routerLink]="['/komponenter', component.id]"
-            routerLinkActive="active"
-            class="block rounded px-1 py-0.5 hover:bg-neutral-50 hover:underline"
+            routerLinkActive="font-semibold transition-all bg-neutral-200 border-l-6"
+            class="block rounded px-2 py-1 transition-colors hover:bg-neutral-100"
           >
             {{ component.name }}
           </a>

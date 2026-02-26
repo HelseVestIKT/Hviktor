@@ -7,6 +7,7 @@ import {
   HviField,
   HviFieldAffix,
   HviFieldAffixes,
+  HviFieldCounter,
   HviFieldDescription,
   HviFieldOptional,
   HviFieldValidation,
@@ -24,6 +25,7 @@ export const HviFieldKit = [
   HviFieldOptional,
   HviFieldAffix,
   HviFieldAffixes,
+  HviFieldCounter,
 ] as const;
 
 // 2) Reactive forms + invalid/validation glue + submit behavior

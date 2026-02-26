@@ -7,6 +7,7 @@ import {
   HviParagraph,
 } from '@helsevestikt/hviktor';
 import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
+import { DialogStandardExampleSource } from './code-examples/dialog.standard.example.source';
 
 @Component({
   selector: 'app-dialog-demo',
@@ -25,7 +26,7 @@ import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
       title="Dialog"
       description="Modale dialogbokser for viktige handlinger eller informasjon."
     >
-      <app-demo-section title="Standard">
+      <app-demo-section title="Standard" [code]="standardExampleCode">
         <div class="flex gap-2">
           <button hviButton type="button" aria-haspopup="dialog" (click)="toggleDialog(true)">
             Åpne dialog
@@ -60,6 +61,7 @@ import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
 })
 export class DialogDemoComponent {
   readonly dialogOpen = signal(false);
+  readonly standardExampleCode = DialogStandardExampleSource;
 
   toggleDialog(nextState?: boolean): void {
     if (typeof nextState === 'boolean') {
