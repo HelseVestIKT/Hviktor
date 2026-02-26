@@ -6,8 +6,12 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "publish:lib": "npm run build && cd dist/icons && npm publish"
   },
+  "files": [
+    "dist/icons"
+  ],
   "prettier": {
     "printWidth": 100,
     "singleQuote": true,
