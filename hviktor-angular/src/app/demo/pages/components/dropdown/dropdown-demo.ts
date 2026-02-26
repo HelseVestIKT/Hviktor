@@ -7,7 +7,10 @@ import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
   standalone: true,
   imports: [DemoPageComponent, DemoSectionComponent, HviDropdown, HviButton, HviParagraph],
   template: `
-    <app-demo-page title="Standard" description="Dropdown">
+    <app-demo-page
+      title="Dropdown"
+      description="Dropdown er en generisk nedtrekksliste. Den legger grunnmuren for å bygge menyer og lister."
+    >
       <app-demo-section title="Standard">
         <p hviParagraph>Standard dropdown har plassering bottom-end</p>
         <div class="flex flex-wrap gap-2">
