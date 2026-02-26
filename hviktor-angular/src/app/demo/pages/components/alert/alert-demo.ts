@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { HviAlert } from '@helsevestikt/hviktor';
 import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
+import { AlertVarianterExampleSource } from './code-examples/alert.varianter.example.source';
 
 @Component({
   selector: 'app-alert-demo',
@@ -11,7 +12,7 @@ import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
       title="Alert"
       description="Varselmeldinger for å informere brukeren om viktig informasjon."
     >
-      <app-demo-section title="Varianter">
+      <app-demo-section title="Varianter" [code]="varianterCode">
         <div class="flex flex-wrap gap-2">
           <hvi-alert>Dette er en info alert</hvi-alert>
           <hvi-alert color="success">Dette er en success alert</hvi-alert>
@@ -22,4 +23,6 @@ import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
     </app-demo-page>
   `,
 })
-export class AlertDemoComponent {}
+export class AlertDemoComponent {
+  readonly varianterCode = AlertVarianterExampleSource;
+}

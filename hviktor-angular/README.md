@@ -44,12 +44,61 @@ This will:
 
 After running the script, open the generated file and add the Hviktor components you want to demonstrate.
 
+## Generating code examples
+
+Each demo page can display code examples that show users how to implement the components. Use the generate script to automatically create these examples:
+
+```bash
+npm run generate:examples -- <component-name>
+```
+
+Example:
+
+```bash
+npm run generate:examples -- avatar
+```
+
+This will:
+
+1. Parse the demo file and extract each `<app-demo-section>`
+2. Generate standalone example components in `<component>/code-examples/`
+3. Automatically update the demo file with imports and `[code]` bindings
+
+The generated files include:
+
+- `<component>.<section-slug>.example.ts` - Standalone Angular component
+- `<component>.<section-slug>.example.source.ts` - Source code as exportable string
+- `index.ts` - Barrel exports
+- `manifest.ts` - Metadata about all examples
+
+### Workflow
+
+1. Create or edit your demo file with `<app-demo-section>` blocks
+2. Run `npm run generate:examples -- <component-name>`
+3. The demo will now show "Vis kode" toggles for each section
+
+### Regenerating examples
+
+If you make changes to a demo file, simply run the script again. It will:
+
+- Overwrite example files with updated content
+- Skip adding duplicate imports/bindings in the demo file
+
+### Generate all examples
+
+To process all demo files at once:
+
+```bash
+npm run generate:examples
+```
+
 ## Useful scripts
 
-| Script                  | Description                       |
-| ----------------------- | --------------------------------- |
-| `npm start`             | Starts the dev server             |
-| `npm run build`         | Builds the demo into `dist/`      |
-| `npm run lint`          | Runs ESLint                       |
-| `npm run test`          | Runs unit tests (headless Chrome) |
-| `npm run scaffold:demo` | Creates a new demo component page |
+| Script                      | Description                               |
+| --------------------------- | ----------------------------------------- |
+| `npm start`                 | Starts the dev server                     |
+| `npm run build`             | Builds the demo into `dist/`              |
+| `npm run lint`              | Runs ESLint                               |
+| `npm run test`              | Runs unit tests (headless Chrome)         |
+| `npm run scaffold:demo`     | Creates a new demo component page         |
+| `npm run generate:examples` | Generates code examples for demo sections |

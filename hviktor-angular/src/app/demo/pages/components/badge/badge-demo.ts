@@ -2,6 +2,10 @@ import { Component } from '@angular/core';
 import { HviBadge, HviBadgePosition } from '@helsevestikt/hviktor';
 import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
 
+import { BadgeBaseVariantExampleSource } from './code-examples/badge.base-variant.example.source';
+import { BadgeMedPosisjoneringExampleSource } from './code-examples/badge.med-posisjonering.example.source';
+import { BadgeStatusIndikatorExampleSource } from './code-examples/badge.status-indikator.example.source';
+import { BadgeTintedVariantExampleSource } from './code-examples/badge.tinted-variant.example.source';
 @Component({
   selector: 'app-badge-demo',
   standalone: true,
@@ -11,7 +15,7 @@ import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
       title="Badge"
       description="Små indikatorer og tellere for å vise status eller antall."
     >
-      <app-demo-section title="Base variant">
+      <app-demo-section title="Base variant" [code]="baseVariantCode">
         <div class="flex flex-wrap items-center gap-4">
           <hvi-badge color="neutral" count="9+" variant="base"></hvi-badge>
           <hvi-badge color="danger" count="9+" variant="base"></hvi-badge>
@@ -24,7 +28,7 @@ import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
         </div>
       </app-demo-section>
 
-      <app-demo-section title="Tinted variant">
+      <app-demo-section title="Tinted variant" [code]="tintedVariantCode">
         <div class="flex flex-wrap items-center gap-4">
           <hvi-badge color="neutral" count="9+" variant="tinted"></hvi-badge>
           <hvi-badge color="danger" count="9+" variant="tinted"></hvi-badge>
@@ -37,14 +41,14 @@ import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
         </div>
       </app-demo-section>
 
-      <app-demo-section title="Status indikator">
+      <app-demo-section title="Status indikator" [code]="statusIndikatorCode">
         <div class="flex flex-wrap items-center gap-4">
           <hvi-badge color="success" variant="base"></hvi-badge>
           <p>Aktiv</p>
         </div>
       </app-demo-section>
 
-      <app-demo-section title="Med posisjonering">
+      <app-demo-section title="Med posisjonering" [code]="medPosisjoneringCode">
         <div class="flex flex-wrap items-center gap-4">
           <hvi-badge-position placement="top-left">
             <hvi-badge color="danger" count="3"></hvi-badge>
@@ -55,4 +59,9 @@ import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
     </app-demo-page>
   `,
 })
-export class BadgeDemoComponent {}
+export class BadgeDemoComponent {
+  readonly baseVariantCode = BadgeBaseVariantExampleSource;
+  readonly tintedVariantCode = BadgeTintedVariantExampleSource;
+  readonly statusIndikatorCode = BadgeStatusIndikatorExampleSource;
+  readonly medPosisjoneringCode = BadgeMedPosisjoneringExampleSource;
+}
