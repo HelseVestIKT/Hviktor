@@ -1,32 +1,27 @@
-import { ChangeDetectionStrategy, Component, input, computed } from '@angular/core';
+import { input, computed, Directive } from '@angular/core';
 
-@Component({
-  template: `
+export const ICON_TEMPLATE = `
    <svg
       [attr.width]="sizePx()"
       [attr.height]="sizePx()"
       viewBox="0 0 24 24"
       fill="none"
-      [attr.stroke]="color()"
-      stroke-width="2"
-      stroke-linecap="round"
-      stroke-linejoin="round"
       aria-hidden="true"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <path [attr.d]="path" />
-    </svg>`,
-  styles: `
-    :host {
-      display: inline-block;
-      line-height: 0;
-    }
-  `,
-  changeDetection: ChangeDetectionStrategy.OnPush,
-})
+      <path fill-rule="evenodd" clip-rule="evenodd" fill="currentColor" [attr.d]="path" />
+  </svg>`;
+
+export const ICON_STYLES = `
+  :host {
+    display: inline-block;
+    line-height: 0;
+  }
+`;
+
+@Directive()
 export abstract class HviIconBase {
   size = input<'sm' | 'md' | 'lg'>('md');
-  color = input<string>('currentColor');
 
   protected readonly sizePx = computed(() => {
     const sizeMap = { sm: 16, md: 24, lg: 32 };

@@ -1,6 +1,6 @@
 {
   "name": "@helsevestikt/hviktor-icons",
-  "version": "0.0.9",
+  "version": "0.0.20",
   "peerDependencies": {
     "@angular/common": "^21.1.0",
     "@angular/core": "^21.1.0"

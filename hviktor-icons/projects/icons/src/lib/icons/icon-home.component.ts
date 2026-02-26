@@ -1,9 +1,10 @@
-import { ChangeDetectionStrategy, Component, input, computed } from '@angular/core';
-import { HviIconBase } from '../base-icon.component';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { HviIconBase, ICON_TEMPLATE, ICON_STYLES } from '../base-icon.component';
 
 @Component({
   selector: 'hvi-icon-home',
-  templateUrl: '../base-icon.component.ts',
+  template: ICON_TEMPLATE,
+  styles: ICON_STYLES,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HviIconHome extends HviIconBase {
