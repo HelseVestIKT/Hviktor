@@ -10,10 +10,17 @@
 
 Hviktor Angular inneholder Angular komponenter og direktiver som bygger på designsystemet.no. Målet er å beholde stil og tilgjengelighet fra originalen, samtidig som vi tilbyr kjente Angular-API-er. Enkel bruk er prioritert sammen med dokumentasjon og intellisense-støtte i IDE-er.
 
+## Krav
+
+- Node.js 20.x
+- npm 10+
+- Angular 17–21
+
 ## Struktur
 
 - `hviktor-angular/projects/hviktor` – biblioteket der komponenter og direktiver utvikles. Blir bygget til `dist/hviktor` og skal publiseres til npm.
-- `hviktor-angular/src` – demoapplikasjonen som viser biblioteket og bruker bygg fra `dist/hviktor`. Her kan en lett se komponenter i bruk og teste endringer lokalt.
+- `hviktor-angular/src` – demoapplikasjonen som viser biblioteket og bruker bygg fra `dist/hviktor`. Her kan ein lett sjå komponenter i bruk og teste endringar lokalt.
+- `hviktor-angular/scripts` – hjelpescript for scaffolding og kodegenerering.
 
 ## Utvikling av komponenter og direktiver
 
@@ -72,6 +79,69 @@ Scriptet oppretter automatisk:
 - Route i `app.routes.ts`
 
 Etter kjøring åpner du den genererte filen og legger til Hviktor-komponentene du vil demonstrere.
+
+### Generere kodeeksempel
+
+Kvar demoside kan vise kodeeksempel som syner korleis komponentane skal brukast. Bruk generer-scriptet for å automatisk lage desse eksempla:
+
+```bash
+npm run generate:examples -- <komponent-namn>
+```
+
+For eksempel:
+
+```bash
+npm run generate:examples -- avatar
+```
+
+Scriptet gjer følgjande:
+
+1. Parserar demofila og hentar ut kvar `<app-demo-section>`-blokk
+2. Genererer standalone eksempel-komponentar i `<komponent>/code-examples/`
+3. Oppdaterer demofila automatisk med importar og `[code]`-bindingar
+
+Genererte filer:
+
+- `<komponent>.<seksjon-slug>.example.ts` – Standalone Angular-komponent
+- `<komponent>.<seksjon-slug>.example.source.ts` – Kjeldekode som eksporterbar streng
+- `index.ts` – Barrel-eksportar
+- `manifest.ts` – Metadata om alle eksempel
+
+#### Arbeidsflyt
+
+1. Lag eller rediger demofila med `<app-demo-section>`-blokker
+2. Kjør `npm run generate:examples -- <komponent-namn>`
+3. Demoen vil no vise "Vis kode"-knappar for kvar seksjon
+
+#### Regenerere eksempel
+
+Viss du endrar ei demofil, køyr scriptet på nytt. Det vil:
+
+- Overskrive eksempelfiler med oppdatert innhald
+- Hoppe over dupliserte importar/bindingar i demofila
+
+For å prosessere alle demofiler samstundes:
+
+```bash
+npm run generate:examples
+```
+
+## Nyttige script
+
+Alle script køyrast frå `hviktor-angular`-mappa.
+
+| Script                      | Skildring                                         |
+| --------------------------- | ------------------------------------------------- |
+| `npm start`                 | Startar dev-server for demoappen (localhost:4200) |
+| `npm run build`             | Byggjer demoappen til `dist/`                     |
+| `npm run build:lib`         | Byggjer biblioteket til `dist/hviktor`            |
+| `npm test`                  | Køyrer einingstestar (Vitest)                     |
+| `npm run lint`              | Køyrer ESLint                                     |
+| `npm run format`            | Formaterer kode med Prettier                      |
+| `npm run scaffold`          | Genererer ny bibliotek-komponent/direktiv         |
+| `npm run scaffold:demo`     | Opprettar ny demoside                             |
+| `npm run generate:examples` | Genererer kodeeksempel frå demoseksjonar          |
+| `npm run version:check`     | Sjekkar siste versjon på npm                      |
 
 ## Kodekvalitetsverktøy
 
