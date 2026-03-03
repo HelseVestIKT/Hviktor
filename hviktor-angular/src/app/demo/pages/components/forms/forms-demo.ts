@@ -11,6 +11,7 @@ import {
 } from '@helsevestikt/hviktor';
 import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
 
+import { FormsKontaktskjemaExampleSource } from './code-examples/forms.kontaktskjema.example.source';
 @Component({
   selector: 'app-forms-demo',
   standalone: true,
@@ -31,6 +32,7 @@ import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
     >
       <app-demo-section
         title="Kontaktskjema"
+        [code]="kontaktskjemaCode"
         description="Et fullstendig kontaktskjema med reaktiv validering og error summary."
       >
         <form
@@ -227,6 +229,8 @@ import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
   `,
 })
 export class FormsDemoComponent {
+  readonly kontaktskjemaCode = FormsKontaktskjemaExampleSource;
+
   contactForm = new FormGroup({
     firstName: new FormControl('', [Validators.required, Validators.minLength(2)]),
     lastName: new FormControl('', [Validators.required, Validators.minLength(2)]),
