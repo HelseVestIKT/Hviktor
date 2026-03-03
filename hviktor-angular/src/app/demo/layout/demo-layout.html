@@ -10,23 +10,23 @@
     [title]="'Bytt til ' + themeService.getNextSchemeLabel() + ' modus'"
   >
     <span>{{ themeService.getNextSchemeIcon() }}</span>
-    <span>{{ themeService.getNextSchemeLabel() }}</span>
+    <span class="hidden sm:inline">{{ themeService.getNextSchemeLabel() }}</span>
   </button>
 </header>
 
-<div class="flex min-h-screen">
+<div class="min-h-screen lg:flex">
   <aside
-    class="fixed top-20 h-[calc(100vh-100px)] w-50 overflow-y-auto border-r border-neutral-300"
+    class="border-b border-neutral-300 bg-(--ds-color-neutral-background-default) lg:fixed lg:top-20 lg:h-[calc(100vh-100px)] lg:w-60 lg:overflow-y-auto lg:border-r lg:border-b-0"
   >
     <nav>
-      <ul class="m-0 list-none p-4 pb-8">
-        <p class="font-medium">Komponenter</p>
+      <ul class="m-0 flex list-none gap-1 overflow-x-auto p-3 pb-4 lg:block lg:p-4 lg:pb-8">
+        <p class="hidden font-medium lg:block">Komponenter</p>
         @for (component of components; track component.id) {
-        <li>
+        <li class="shrink-0 lg:mb-1">
           <a
             [routerLink]="['/komponenter', component.id]"
-            routerLinkActive="font-semibold transition-all bg-neutral-200 border-l-6"
-            class="block rounded px-2 py-1 transition-colors hover:bg-neutral-100"
+            routerLinkActive="font-semibold border-l-4 lg:border-l-6 bg-(--ds-color-neutral-surface-tinted)"
+            class="block rounded px-3 py-2 whitespace-nowrap transition-colors hover:bg-(--ds-color-neutral-surface-hover) active:bg-(--ds-color-neutral-surface-active)"
           >
             {{ component.name }}
           </a>
@@ -35,7 +35,7 @@
       </ul>
     </nav>
   </aside>
-  <main class="ml-50 flex-1 p-10">
+  <main class="flex-1 p-4 sm:p-6 lg:ml-60 lg:p-10">
     <router-outlet />
   </main>
 </div>
