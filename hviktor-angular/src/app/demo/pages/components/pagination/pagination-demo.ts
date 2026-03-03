@@ -2,6 +2,11 @@ import { Component, signal } from '@angular/core';
 import { HviPagination } from '@helsevestikt/hviktor';
 import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
 
+import { PaginationFaElementerExampleSource } from './code-examples/pagination.fa-elementer.example.source';
+import { PaginationKompaktMobilExampleSource } from './code-examples/pagination.kompakt-mobil.example.source';
+import { PaginationMangeSiderExampleSource } from './code-examples/pagination.mange-sider.example.source';
+import { PaginationStandardExampleSource } from './code-examples/pagination.standard.example.source';
+import { PaginationUtenForsteSisteSideExampleSource } from './code-examples/pagination.uten-forste-siste-side.example.source';
 @Component({
   selector: 'app-pagination-demo',
   standalone: true,
@@ -14,6 +19,7 @@ import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
       <!-- Standard -->
       <app-demo-section
         title="Standard"
+        [code]="standardCode"
         description="Enkel pagination med automatisk beregning av sidetall."
       >
         <hvi-pagination [totalItems]="100" [pageSize]="10" [(currentPage)]="currentPage1" />
@@ -23,6 +29,7 @@ import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
       <!-- Mange sider -->
       <app-demo-section
         title="Mange sider"
+        [code]="mangeSiderCode"
         description="Med mange sider vises ellipsis (...) for å indikere utelatte sider."
       >
         <hvi-pagination [totalItems]="500" [pageSize]="10" [(currentPage)]="currentPage2" />
@@ -32,6 +39,7 @@ import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
       <!-- Mobil (kompakt) -->
       <app-demo-section
         title="Kompakt / Mobil"
+        [code]="kompaktMobilCode"
         description="Vis færre sider og skjul forrige/neste-tekst for kompakt visning."
       >
         <hvi-pagination
@@ -46,6 +54,7 @@ import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
       <!-- Uten kanter -->
       <app-demo-section
         title="Uten første/siste side"
+        [code]="utenForsteSisteSideCode"
         description="Skjul første og siste side ved å sette showEdges til false."
       >
         <hvi-pagination
@@ -60,6 +69,7 @@ import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
       <!-- Få elementer -->
       <app-demo-section
         title="Få elementer"
+        [code]="faElementerCode"
         description="Med få elementer vises kun de relevante sidene."
       >
         <hvi-pagination [totalItems]="25" [pageSize]="10" [(currentPage)]="currentPage5" />
@@ -68,6 +78,12 @@ import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
   `,
 })
 export class PaginationDemoComponent {
+  readonly standardCode = PaginationStandardExampleSource;
+  readonly mangeSiderCode = PaginationMangeSiderExampleSource;
+  readonly kompaktMobilCode = PaginationKompaktMobilExampleSource;
+  readonly utenForsteSisteSideCode = PaginationUtenForsteSisteSideExampleSource;
+  readonly faElementerCode = PaginationFaElementerExampleSource;
+
   currentPage1 = signal(1);
   currentPage2 = signal(5);
   currentPage3 = signal(3);

@@ -2,6 +2,12 @@ import { Component } from '@angular/core';
 import { HviField, HviInput, HviLabel } from '@helsevestikt/hviktor';
 import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
 
+import { InputDisabledExampleSource } from './code-examples/input.disabled.example.source';
+import { InputGrunnleggendeExampleSource } from './code-examples/input.grunnleggende.example.source';
+import { InputMedFeilExampleSource } from './code-examples/input.med-feil.example.source';
+import { InputMedLabelExampleSource } from './code-examples/input.med-label.example.source';
+import { InputReadonlyExampleSource } from './code-examples/input.readonly.example.source';
+import { InputUlikeTyperExampleSource } from './code-examples/input.ulike-typer.example.source';
 @Component({
   selector: 'app-input-demo',
   standalone: true,
@@ -14,6 +20,7 @@ import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
       <!-- Grunnleggende -->
       <app-demo-section
         title="Grunnleggende"
+        [code]="grunnleggendeCode"
         description="Et enkelt input-felt uten label. Bruk aria-label for tilgjengelighet."
       >
         <input hviInput type="text" aria-label="input" />
@@ -22,6 +29,7 @@ import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
       <!-- Med label -->
       <app-demo-section
         title="Med label"
+        [code]="medLabelCode"
         description="Input brukt sammen med hvi-field og label for å koble dem sammen."
       >
         <hvi-field>
@@ -33,6 +41,7 @@ import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
       <!-- Med feil -->
       <app-demo-section
         title="Med feil"
+        [code]="medFeilCode"
         description="Bruk aria-invalid for å indikere at feltet har en feil."
       >
         <hvi-field>
@@ -44,6 +53,7 @@ import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
       <!-- Disabled -->
       <app-demo-section
         title="Disabled"
+        [code]="disabledCode"
         description="Unngå bruk av disabled der det er mulig. Vurder heller å bruke readOnly."
       >
         <hvi-field>
@@ -55,6 +65,7 @@ import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
       <!-- ReadOnly -->
       <app-demo-section
         title="ReadOnly"
+        [code]="readonlyCode"
         description="Skrivebeskyttet felt som fortsatt er i tabrekkefølgen og sendes med skjemaet."
       >
         <hvi-field>
@@ -66,6 +77,7 @@ import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
       <!-- Ulike typer -->
       <app-demo-section
         title="Ulike typer"
+        [code]="ulikeTyperCode"
         description="Input støtter mange HTML5 input-typer som text, email, password, number, date, osv."
       >
         <div class="grid gap-4">
@@ -98,4 +110,11 @@ import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
     </app-demo-page>
   `,
 })
-export class InputDemoComponent {}
+export class InputDemoComponent {
+  readonly grunnleggendeCode = InputGrunnleggendeExampleSource;
+  readonly medLabelCode = InputMedLabelExampleSource;
+  readonly medFeilCode = InputMedFeilExampleSource;
+  readonly disabledCode = InputDisabledExampleSource;
+  readonly readonlyCode = InputReadonlyExampleSource;
+  readonly ulikeTyperCode = InputUlikeTyperExampleSource;
+}

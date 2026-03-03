@@ -2,13 +2,14 @@ import { Component } from '@angular/core';
 import { HviLabel } from '@helsevestikt/hviktor';
 import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
 
+import { LabelVarianterExampleSource } from './code-examples/label.varianter.example.source';
 @Component({
   selector: 'app-label-demo',
   standalone: true,
   imports: [HviLabel, DemoPageComponent, DemoSectionComponent],
   template: `
     <app-demo-page title="Label" description="Etiketter for skjemaelementer og annen tekst.">
-      <app-demo-section title="Varianter">
+      <app-demo-section title="Varianter" [code]="varianterCode">
         <div class="flex flex-col gap-2">
           <label hviLabel>Standard label</label>
           <label hviLabel weight="medium">Medium weight label</label>
@@ -18,4 +19,6 @@ import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
     </app-demo-page>
   `,
 })
-export class LabelDemoComponent {}
+export class LabelDemoComponent {
+  readonly varianterCode = LabelVarianterExampleSource;
+}

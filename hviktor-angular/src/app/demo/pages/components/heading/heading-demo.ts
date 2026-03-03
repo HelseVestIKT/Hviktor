@@ -2,13 +2,14 @@ import { Component } from '@angular/core';
 import { HviHeading } from '@helsevestikt/hviktor';
 import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
 
+import { HeadingStorrelserExampleSource } from './code-examples/heading.storrelser.example.source';
 @Component({
   selector: 'app-heading-demo',
   standalone: true,
   imports: [HviHeading, DemoPageComponent, DemoSectionComponent],
   template: `
     <app-demo-page title="Heading" description="Overskrifter i forskjellige størrelser.">
-      <app-demo-section title="Størrelser">
+      <app-demo-section title="Størrelser" [code]="storrelserCode">
         <div class="flex flex-col gap-4">
           <h1 hviHeading size="2xl">2XL Overskrift</h1>
           <h1 hviHeading size="xl">XL Overskrift</h1>
@@ -21,4 +22,6 @@ import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
     </app-demo-page>
   `,
 })
-export class HeadingDemoComponent {}
+export class HeadingDemoComponent {
+  readonly storrelserCode = HeadingStorrelserExampleSource;
+}
