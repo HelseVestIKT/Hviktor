@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { HviSpinner } from '@helsevestikt/hviktor';
 import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
 
+import { SpinnerStandardExampleSource } from './code-examples/spinner.standard.example.source';
+import { SpinnerStorrelserExampleSource } from './code-examples/spinner.storrelser.example.source';
 @Component({
   selector: 'app-spinner-demo',
   standalone: true,
@@ -11,7 +13,7 @@ import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
       title="Spinner"
       description="Spinner brukes for å indikere at innhold eller en handling er i ferd med å laste, og at brukeren må vente før de kan fortsette."
     >
-      <app-demo-section title="Standard">
+      <app-demo-section title="Standard" [code]="standardCode">
         <div class="flex flex-wrap items-center gap-4">
           <hvi-spinner label="Laster innhold" />
         </div>
@@ -19,6 +21,7 @@ import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
 
       <app-demo-section
         title="Størrelser"
+        [code]="storrelserCode"
         description="Spinner kommer i flere størrelser fra 2xs til xl."
       >
         <div class="flex flex-wrap items-end gap-6">
@@ -51,4 +54,7 @@ import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
     </app-demo-page>
   `,
 })
-export class SpinnerDemoComponent {}
+export class SpinnerDemoComponent {
+  readonly standardCode = SpinnerStandardExampleSource;
+  readonly storrelserCode = SpinnerStorrelserExampleSource;
+}

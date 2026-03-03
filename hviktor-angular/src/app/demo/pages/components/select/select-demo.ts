@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { HviFieldKit, HviForms, HviLabel, HviSelect } from '@helsevestikt/hviktor';
 import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
 
+import { SelectEksempelExampleSource } from './code-examples/select.eksempel.example.source';
 @Component({
   selector: 'app-select-demo',
   standalone: true,
@@ -11,7 +12,7 @@ import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
       title="Select"
       description="Select lar brukeren velge ett alternativ fra en liste."
     >
-      <app-demo-section title="Eksempel">
+      <app-demo-section title="Eksempel" [code]="eksempelCode">
         <div class="flex flex-col gap-2">
           <form hviForm>
             <fieldset hviFieldset class="flex flex-col gap-2">
@@ -79,4 +80,6 @@ import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
     </app-demo-page>
   `,
 })
-export class SelectDemoComponent {}
+export class SelectDemoComponent {
+  readonly eksempelCode = SelectEksempelExampleSource;
+}

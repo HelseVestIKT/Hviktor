@@ -2,6 +2,11 @@ import { Component } from '@angular/core';
 import { HviField, HviFieldCounter, HviInput, HviLabel } from '@helsevestikt/hviktor';
 import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
 
+import { TextareaDisabledExampleSource } from './code-examples/textarea.disabled.example.source';
+import { TextareaGrunnleggendeExampleSource } from './code-examples/textarea.grunnleggende.example.source';
+import { TextareaMedHjelpetekstExampleSource } from './code-examples/textarea.med-hjelpetekst.example.source';
+import { TextareaMedTegntellerExampleSource } from './code-examples/textarea.med-tegnteller.example.source';
+import { TextareaReadonlyExampleSource } from './code-examples/textarea.readonly.example.source';
 @Component({
   selector: 'app-textarea-demo',
   standalone: true,
@@ -12,7 +17,11 @@ import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
       description="Textarea gir brukere muligheten til å skrive lengre fritekst over flere linjer."
     >
       <!-- Grunnleggende -->
-      <app-demo-section title="Grunnleggende" description="En enkel textarea med label.">
+      <app-demo-section
+        title="Grunnleggende"
+        [code]="grunnleggendeCode"
+        description="En enkel textarea med label."
+      >
         <hvi-field>
           <label hviLabel for="basic-textarea" weight="medium">Beskrivelse</label>
           <textarea hviInput id="basic-textarea" rows="4"></textarea>
@@ -22,6 +31,7 @@ import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
       <!-- Med hjelpetekst -->
       <app-demo-section
         title="Med hjelpetekst"
+        [code]="medHjelpetekstCode"
         description="Textarea med beskrivelse som gir brukeren kontekst."
       >
         <hvi-field>
@@ -34,6 +44,7 @@ import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
       <!-- Med tegnteller -->
       <app-demo-section
         title="Med tegnteller"
+        [code]="medTegntellerCode"
         description="Textarea med tegnteller som viser hvor mange tegn som gjenstår."
       >
         <hvi-field>
@@ -45,7 +56,11 @@ import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
       </app-demo-section>
 
       <!-- Disabled -->
-      <app-demo-section title="Disabled" description="Deaktivert textarea som ikke kan redigeres.">
+      <app-demo-section
+        title="Disabled"
+        [code]="disabledCode"
+        description="Deaktivert textarea som ikke kan redigeres."
+      >
         <hvi-field>
           <label hviLabel for="disabled-textarea" weight="medium">Kommentar</label>
           <textarea hviInput id="disabled-textarea" rows="3" disabled>
@@ -57,6 +72,7 @@ Dette feltet er deaktivert</textarea
       <!-- Readonly -->
       <app-demo-section
         title="Readonly"
+        [code]="readonlyCode"
         description="Skrivebeskyttet textarea som fortsatt er i tabrekkefølgen."
       >
         <hvi-field>
@@ -69,4 +85,10 @@ Dette er skrivebeskyttet innhold som brukeren kan lese men ikke endre.</textarea
     </app-demo-page>
   `,
 })
-export class TextareaDemoComponent {}
+export class TextareaDemoComponent {
+  readonly grunnleggendeCode = TextareaGrunnleggendeExampleSource;
+  readonly medHjelpetekstCode = TextareaMedHjelpetekstExampleSource;
+  readonly medTegntellerCode = TextareaMedTegntellerExampleSource;
+  readonly disabledCode = TextareaDisabledExampleSource;
+  readonly readonlyCode = TextareaReadonlyExampleSource;
+}

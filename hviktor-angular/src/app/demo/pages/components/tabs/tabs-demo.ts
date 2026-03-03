@@ -2,6 +2,9 @@ import { Component, signal } from '@angular/core';
 import { HviTab, HviTabPanel, HviTabs } from '@helsevestikt/hviktor';
 import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
 
+import { TabsGrunnleggendeBrukExampleSource } from './code-examples/tabs.grunnleggende-bruk.example.source';
+import { TabsKontrollertExampleSource } from './code-examples/tabs.kontrollert.example.source';
+import { TabsMedMerInnholdExampleSource } from './code-examples/tabs.med-mer-innhold.example.source';
 @Component({
   selector: 'app-tabs-demo',
   standalone: true,
@@ -11,7 +14,7 @@ import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
       title="Tabs"
       description="Tabs lar brukerne navigere mellom relaterte deler av innholdet, der én del vises om gangen."
     >
-      <app-demo-section title="Grunnleggende bruk">
+      <app-demo-section title="Grunnleggende bruk" [code]="grunnleggendeBrukCode">
         <hvi-tabs defaultValue="tab1">
           <hvi-tab value="tab1">Tab 1</hvi-tab>
           <hvi-tab value="tab2">Tab 2</hvi-tab>
@@ -22,7 +25,7 @@ import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
         </hvi-tabs>
       </app-demo-section>
 
-      <app-demo-section title="Kontrollert">
+      <app-demo-section title="Kontrollert" [code]="kontrollertCode">
         <p class="ds-paragraph">Valgt tab: {{ selectedTab() }}</p>
         <hvi-tabs [value]="selectedTab()" (valueChange)="selectedTab.set($event)">
           <hvi-tab value="value1">Tab 1</hvi-tab>
@@ -34,7 +37,7 @@ import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
         </hvi-tabs>
       </app-demo-section>
 
-      <app-demo-section title="Med mer innhold">
+      <app-demo-section title="Med mer innhold" [code]="medMerInnholdCode">
         <hvi-tabs defaultValue="overview">
           <hvi-tab value="overview">Oversikt</hvi-tab>
           <hvi-tab value="details">Detaljer</hvi-tab>
@@ -69,5 +72,9 @@ import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
   `,
 })
 export class TabsDemoComponent {
+  readonly grunnleggendeBrukCode = TabsGrunnleggendeBrukExampleSource;
+  readonly kontrollertCode = TabsKontrollertExampleSource;
+  readonly medMerInnholdCode = TabsMedMerInnholdExampleSource;
+
   selectedTab = signal('value1');
 }

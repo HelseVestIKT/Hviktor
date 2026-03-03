@@ -10,6 +10,9 @@ import {
 } from '@helsevestikt/hviktor';
 import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
 
+import { SearchGrunnleggendeExampleSource } from './code-examples/search.grunnleggende.example.source';
+import { SearchMedLabelExampleSource } from './code-examples/search.med-label.example.source';
+import { SearchVarianterExampleSource } from './code-examples/search.varianter.example.source';
 @Component({
   selector: 'app-search-demo',
   standalone: true,
@@ -30,7 +33,11 @@ import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
       description="Search lar brukere raskt finne relevant innhold på et nettsted eller i en applikasjon. Komponenten består av et søkefelt, med eller uten en søkeknapp."
     >
       <!-- Grunnleggende -->
-      <app-demo-section title="Grunnleggende" description="Et søkefelt med tøm-knapp og søkeknapp.">
+      <app-demo-section
+        title="Grunnleggende"
+        [code]="grunnleggendeCode"
+        description="Et søkefelt med tøm-knapp og søkeknapp."
+      >
         <hvi-search>
           <input hviInput type="search" placeholder="" aria-label="Søk" />
           <button hviSearchClear aria-label="Tøm"></button>
@@ -41,6 +48,7 @@ import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
       <!-- Varianter -->
       <app-demo-section
         title="Varianter"
+        [code]="varianterCode"
         description="Du kan endre variant på Button for å tilpasse visningen. Alternativt kan du fjerne knappen for å bruke et søkefelt med ikon."
       >
         <div class="grid gap-4">
@@ -73,6 +81,7 @@ import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
       <!-- Med Label -->
       <app-demo-section
         title="Med Label"
+        [code]="medLabelCode"
         description="Bruk en label over søkefeltet når det ikke er åpenbart hva brukeren skal søke etter."
       >
         <hvi-field>
@@ -87,4 +96,8 @@ import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
     </app-demo-page>
   `,
 })
-export class SearchDemoComponent {}
+export class SearchDemoComponent {
+  readonly grunnleggendeCode = SearchGrunnleggendeExampleSource;
+  readonly varianterCode = SearchVarianterExampleSource;
+  readonly medLabelCode = SearchMedLabelExampleSource;
+}

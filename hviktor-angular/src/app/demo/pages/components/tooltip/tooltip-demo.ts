@@ -2,6 +2,10 @@ import { Component } from '@angular/core';
 import { HviButton, HviTooltip } from '@helsevestikt/hviktor';
 import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
 
+import { TooltipIkonKnappMedTooltipExampleSource } from './code-examples/tooltip.ikon-knapp-med-tooltip.example.source';
+import { TooltipPlasseringExampleSource } from './code-examples/tooltip.plassering.example.source';
+import { TooltipTastatursnarveiExampleSource } from './code-examples/tooltip.tastatursnarvei.example.source';
+import { TooltipTekstMedTooltipExampleSource } from './code-examples/tooltip.tekst-med-tooltip.example.source';
 @Component({
   selector: 'app-tooltip-demo',
   standalone: true,
@@ -14,6 +18,7 @@ import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
       <!-- Grunnleggende eksempel med ikon-knapp -->
       <app-demo-section
         title="Ikon-knapp med tooltip"
+        [code]="ikonKnappMedTooltipCode"
         description="Bruk tooltip for å forklare hva et ikon-knapp gjør."
       >
         <div class="flex flex-wrap items-center gap-4">
@@ -31,6 +36,7 @@ import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
       <!-- Tekst med tooltip -->
       <app-demo-section
         title="Tekst med tooltip"
+        [code]="tekstMedTooltipCode"
         description="Tooltip kan brukes på tekst for å gi utfyllende informasjon."
       >
         <div class="flex flex-wrap items-center gap-4">
@@ -49,6 +55,7 @@ import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
       <!-- Plassering -->
       <app-demo-section
         title="Plassering"
+        [code]="plasseringCode"
         description="Vurder om tooltip skal plasseres over, under eller ved siden av elementet."
       >
         <div class="flex flex-wrap items-center justify-center gap-4 py-8">
@@ -70,6 +77,7 @@ import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
       <!-- Tastatursnarvei -->
       <app-demo-section
         title="Tastatursnarvei"
+        [code]="tastatursnarveiCode"
         description="Tooltip kan brukes til å vise tastatursnarveier."
       >
         <div class="flex flex-wrap items-center gap-4">
@@ -82,4 +90,9 @@ import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
     </app-demo-page>
   `,
 })
-export class TooltipDemoComponent {}
+export class TooltipDemoComponent {
+  readonly ikonKnappMedTooltipCode = TooltipIkonKnappMedTooltipExampleSource;
+  readonly tekstMedTooltipCode = TooltipTekstMedTooltipExampleSource;
+  readonly plasseringCode = TooltipPlasseringExampleSource;
+  readonly tastatursnarveiCode = TooltipTastatursnarveiExampleSource;
+}

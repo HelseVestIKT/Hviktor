@@ -2,6 +2,10 @@ import { Component, signal } from '@angular/core';
 import { HviParagraph, HviToggleGroup, HviToggleGroupItem } from '@helsevestikt/hviktor';
 import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
 
+import { ToggleGroupGrunnleggendeExampleSource } from './code-examples/toggle-group.grunnleggende.example.source';
+import { ToggleGroupKunIkonerExampleSource } from './code-examples/toggle-group.kun-ikoner.example.source';
+import { ToggleGroupSecondaryVariantExampleSource } from './code-examples/toggle-group.secondary-variant.example.source';
+import { ToggleGroupVisningsvalgExampleSource } from './code-examples/toggle-group.visningsvalg.example.source';
 @Component({
   selector: 'app-toggle-group-demo',
   standalone: true,
@@ -20,6 +24,7 @@ import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
       <!-- Grunnleggende -->
       <app-demo-section
         title="Grunnleggende"
+        [code]="grunnleggendeCode"
         description="En enkel toggle group med tekst-knapper."
       >
         <hvi-toggle-group [(value)]="selectedBasic" variant="primary">
@@ -32,7 +37,11 @@ import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
       </app-demo-section>
 
       <!-- Secondary variant -->
-      <app-demo-section title="Secondary variant" description="ToggleGroup med secondary variant.">
+      <app-demo-section
+        title="Secondary variant"
+        [code]="secondaryVariantCode"
+        description="ToggleGroup med secondary variant."
+      >
         <hvi-toggle-group [(value)]="selectedSecondary" variant="secondary">
           <button hviToggleGroupItem value="innboks">Innboks</button>
           <button hviToggleGroupItem value="utkast">Utkast</button>
@@ -44,6 +53,7 @@ import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
       <!-- Kun ikoner (med tekst som placeholder) -->
       <app-demo-section
         title="Kun ikoner"
+        [code]="kunIkonerCode"
         description="ToggleGroup med kun ikoner. Bruk icon-attributtet for å style knappene som kun-ikon."
       >
         <hvi-toggle-group [(value)]="selectedIconOnly" variant="primary">
@@ -56,6 +66,7 @@ import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
       <!-- Visningsvalg -->
       <app-demo-section
         title="Visningsvalg"
+        [code]="visningsvalgCode"
         description="Eksempel på bruk for å veksle mellom visninger."
       >
         <hvi-toggle-group [(value)]="selectedView" variant="primary">
@@ -69,6 +80,11 @@ import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
   `,
 })
 export class ToggleGroupDemoComponent {
+  readonly grunnleggendeCode = ToggleGroupGrunnleggendeExampleSource;
+  readonly secondaryVariantCode = ToggleGroupSecondaryVariantExampleSource;
+  readonly kunIkonerCode = ToggleGroupKunIkonerExampleSource;
+  readonly visningsvalgCode = ToggleGroupVisningsvalgExampleSource;
+
   selectedBasic = signal('innboks');
   selectedSecondary = signal('innboks');
   selectedIconOnly = signal('left');

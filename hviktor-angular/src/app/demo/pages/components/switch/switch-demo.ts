@@ -2,6 +2,9 @@ import { Component } from '@angular/core';
 import { HviDivider, HviField, HviFieldset, HviInput, HviLabel } from '@helsevestikt/hviktor';
 import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
 
+import { SwitchGrunnleggendeExampleSource } from './code-examples/switch.grunnleggende.example.source';
+import { SwitchGrupperingExampleSource } from './code-examples/switch.gruppering.example.source';
+import { SwitchHoyrejustertExampleSource } from './code-examples/switch.hoyrejustert.example.source';
 @Component({
   selector: 'app-switch-demo',
   standalone: true,
@@ -20,7 +23,11 @@ import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
       description="Switch gir brukerne et valg mellom to alternativer. Bryteren kan enten slås av eller på og skal alltid være innstilt med et standardvalg."
     >
       <!-- Grunnleggende -->
-      <app-demo-section title="Grunnleggende" description="En enkel switch med label.">
+      <app-demo-section
+        title="Grunnleggende"
+        [code]="grunnleggendeCode"
+        description="En enkel switch med label."
+      >
         <hvi-field>
           <input hviInput type="checkbox" role="switch" id="basic-switch" />
           <label hviLabel for="basic-switch">Switch</label>
@@ -30,6 +37,7 @@ import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
       <!-- Gruppering -->
       <app-demo-section
         title="Gruppering"
+        [code]="grupperingCode"
         description="Bruk Fieldset for å gruppere flere Switch-komponenter sammen."
       >
         <fieldset hviFieldset>
@@ -66,6 +74,7 @@ import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
       <!-- Høyrejustert -->
       <app-demo-section
         title="Høyrejustert"
+        [code]="hoyrejustertCode"
         description="Noen ganger kan det være nyttig å høyrejustere Switch, for eksempel når den er plassert i en tabell eller et fast oppsett."
       >
         <div style="flex-direction: column; width: 100%; max-width: 380px;">
@@ -85,4 +94,8 @@ import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
     </app-demo-page>
   `,
 })
-export class SwitchDemoComponent {}
+export class SwitchDemoComponent {
+  readonly grunnleggendeCode = SwitchGrunnleggendeExampleSource;
+  readonly grupperingCode = SwitchGrupperingExampleSource;
+  readonly hoyrejustertCode = SwitchHoyrejustertExampleSource;
+}

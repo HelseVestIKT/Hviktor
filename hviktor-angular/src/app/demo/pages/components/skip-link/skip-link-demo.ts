@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { HviParagraph, HviSkipLink } from '@helsevestikt/hviktor';
 import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
 
+import { SkipLinkEksempelExampleSource } from './code-examples/skip-link.eksempel.example.source';
 @Component({
   selector: 'app-skip-link-demo',
   standalone: true,
@@ -13,6 +14,7 @@ import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
     >
       <app-demo-section
         title="Eksempel"
+        [code]="eksempelCode"
         description="Klikk i boksen under og trykk Tab for å se SkipLink."
       >
         <div
@@ -39,4 +41,6 @@ import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
     </app-demo-page>
   `,
 })
-export class SkipLinkDemoComponent {}
+export class SkipLinkDemoComponent {
+  readonly eksempelCode = SkipLinkEksempelExampleSource;
+}

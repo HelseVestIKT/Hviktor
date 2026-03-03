@@ -2,6 +2,13 @@ import { Component } from '@angular/core';
 import { HviCard, HviCardBlock, HviSkeleton } from '@helsevestikt/hviktor';
 import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
 
+import { SkeletonArtikkelSkeletonExampleSource } from './code-examples/skeleton.artikkel-skeleton.example.source';
+import { SkeletonKortSkeletonExampleSource } from './code-examples/skeleton.kort-skeleton.example.source';
+import { SkeletonListeSkeletonExampleSource } from './code-examples/skeleton.liste-skeleton.example.source';
+import { SkeletonProfilSkeletonExampleSource } from './code-examples/skeleton.profil-skeleton.example.source';
+import { SkeletonStorrelserExampleSource } from './code-examples/skeleton.storrelser.example.source';
+import { SkeletonTekstlinjerExampleSource } from './code-examples/skeleton.tekstlinjer.example.source';
+import { SkeletonVarianterExampleSource } from './code-examples/skeleton.varianter.example.source';
 @Component({
   selector: 'app-skeleton-demo',
   standalone: true,
@@ -14,6 +21,7 @@ import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
       <!-- Variants -->
       <app-demo-section
         title="Varianter"
+        [code]="varianterCode"
         description="Skeleton har tre varianter: rectangle, circle og text."
       >
         <div class="flex flex-wrap items-center gap-4">
@@ -35,6 +43,7 @@ import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
       <!-- Text Lines -->
       <app-demo-section
         title="Tekstlinjer"
+        [code]="tekstlinjerCode"
         description="Simuler et avsnitt med flere tekstlinjer.."
       >
         <div class="flex max-w-md flex-col gap-2">
@@ -48,6 +57,7 @@ import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
       <!-- Card Skeleton -->
       <app-demo-section
         title="Kort-skeleton"
+        [code]="kortSkeletonCode"
         description="Plassholder for et kort med bilde og tekst."
       >
         <div class="grid grid-cols-1 gap-4 md:grid-cols-3">
@@ -83,6 +93,7 @@ import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
       <!-- Profile Skeleton -->
       <app-demo-section
         title="Profil-skeleton"
+        [code]="profilSkeletonCode"
         description="Plassholder for brukerprofil med avatar og informasjon."
       >
         <div class="flex flex-col gap-4">
@@ -109,6 +120,7 @@ import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
       <!-- List Skeleton -->
       <app-demo-section
         title="Liste-skeleton"
+        [code]="listeSkeletonCode"
         description="Plassholder for en liste med elementer."
       >
         <div class="flex max-w-lg flex-col gap-3">
@@ -128,6 +140,7 @@ import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
       <!-- Article Skeleton -->
       <app-demo-section
         title="Artikkel-skeleton"
+        [code]="artikkelSkeletonCode"
         description="Plassholder for en artikkel med bilde og tekst."
       >
         <div class="max-w-2xl">
@@ -153,6 +166,7 @@ import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
       <!-- Sizes -->
       <app-demo-section
         title="Størrelser"
+        [code]="storrelserCode"
         description="Skeleton kan tilpasses med width og height."
       >
         <div class="flex flex-wrap items-end gap-4">
@@ -165,4 +179,12 @@ import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
     </app-demo-page>
   `,
 })
-export class SkeletonDemoComponent {}
+export class SkeletonDemoComponent {
+  readonly varianterCode = SkeletonVarianterExampleSource;
+  readonly tekstlinjerCode = SkeletonTekstlinjerExampleSource;
+  readonly kortSkeletonCode = SkeletonKortSkeletonExampleSource;
+  readonly profilSkeletonCode = SkeletonProfilSkeletonExampleSource;
+  readonly listeSkeletonCode = SkeletonListeSkeletonExampleSource;
+  readonly artikkelSkeletonCode = SkeletonArtikkelSkeletonExampleSource;
+  readonly storrelserCode = SkeletonStorrelserExampleSource;
+}
