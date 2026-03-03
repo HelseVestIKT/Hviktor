@@ -92,7 +92,7 @@ import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
               <h2 hviHeading>
                 <a
                   hviLink
-                  href="https://designsystemet.no"
+                  href="https://designsystemet.no/no/components/docs/card/overview#lenkekort"
                   target="_blank"
                   rel="noopener noreferrer"
                   >Myrkheim Museum</a
@@ -103,48 +103,6 @@ import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
                 tida då dei fyrste reisefølgja kryssa landet.
               </p>
               <p hviParagraph size="sm">Myrkheim Kulturvernråd</p>
-            </div>
-          </hvi-card>
-        </div>
-      </app-demo-section>
-
-      <app-demo-section title="Kort som knapp (rå HTML)">
-        <div class="flex flex-wrap gap-4">
-          <button
-            type="button"
-            class="ds-card"
-            data-variant="default"
-            data-color="neutral"
-            style="max-width:420px"
-          >
-            <div class="ds-card__block">
-              <h2 class="ds-heading">Innstillinger og personvern</h2>
-            </div>
-            <div class="ds-card__block">
-              <p class="ds-paragraph" data-variant="default">
-                Dette åpner en dialog der du kan oppdatere personvernvalg, justere innstillinger og
-                tilpasse hvordan tjenesten behandler informasjonen din.
-              </p>
-            </div>
-          </button>
-        </div>
-      </app-demo-section>
-
-      <app-demo-section title="Horisontal visning">
-        <div class="flex flex-wrap gap-4">
-          <hvi-card
-            color="neutral"
-            maxWidth="700px"
-            style="display:grid;grid-template-columns:1fr 1fr"
-          >
-            <div hviCardBlock>
-              <h2 hviHeading>Vandrefeber</h2>
-            </div>
-            <div hviCardBlock>
-              <p hviParagraph>
-                Symptomer kan være uro i kroppen, skjerpet årvåkenhet og en tendens til å stadig se
-                seg over skulderen.
-              </p>
             </div>
           </hvi-card>
         </div>
