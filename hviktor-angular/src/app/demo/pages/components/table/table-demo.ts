@@ -8,6 +8,15 @@ import {
 } from '@helsevestikt/hviktor';
 import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
 
+import { TableBasisExampleSource } from './code-examples/table.basis.example.source';
+import { TableHoverExampleSource } from './code-examples/table.hover.example.source';
+import { TableKombinertExampleSource } from './code-examples/table.kombinert.example.source';
+import { TableMedBorderExampleSource } from './code-examples/table.med-border.example.source';
+import { TablePagineringExampleSource } from './code-examples/table.paginering.example.source';
+import { TableSokOgSorteringExampleSource } from './code-examples/table.sok-og-sortering.example.source';
+import { TableTallITabellExampleSource } from './code-examples/table.tall-i-tabell.example.source';
+import { TableZebrastriperExampleSource } from './code-examples/table.zebrastriper.example.source';
+
 interface Person {
   navn: string;
   epost: string;
@@ -32,7 +41,11 @@ interface Person {
       description="Table brukes for å vise strukturert informasjon på en ryddig og oversiktlig måte. Tabeller kan gjøre det enklere for brukerne å skanne og sammenligne informasjon."
     >
       <!-- Basis eksempel -->
-      <app-demo-section title="Basis" description="Enkel tabell med header, body og footer.">
+      <app-demo-section
+        title="Basis"
+        [code]="basisCode"
+        description="Enkel tabell med header, body og footer."
+      >
         <table hviTable>
           <caption>
             Pasientoversikt
@@ -77,6 +90,7 @@ interface Person {
       <!-- Zebrastriper -->
       <app-demo-section
         title="Zebrastriper"
+        [code]="zebrastriperCode"
         description="Bruk zebra for annenhver rad med alternativ bakgrunnsfarge."
       >
         <table hviTable zebra>
@@ -113,6 +127,7 @@ interface Person {
       <!-- Med border -->
       <app-demo-section
         title="Med border"
+        [code]="medBorderCode"
         description="Bruk border for å legge til en synlig kant rundt tabellen."
       >
         <table hviTable border>
@@ -136,7 +151,11 @@ interface Person {
       </app-demo-section>
 
       <!-- Hover -->
-      <app-demo-section title="Hover" description="Bruk hover for å gi rader en hover-effekt.">
+      <app-demo-section
+        title="Hover"
+        [code]="hoverCode"
+        description="Bruk hover for å gi rader en hover-effekt."
+      >
         <table hviTable hover>
           <thead>
             <tr>
@@ -168,6 +187,7 @@ interface Person {
       <!-- Søk og sortering -->
       <app-demo-section
         title="Søk og sortering"
+        [code]="sokOgSorteringCode"
         description="Kombiner søk og sortering for full funksjonalitet. Bruk filterGlobal() for å søke på tvers av kolonner."
       >
         <div class="mb-4 flex items-center gap-4">
@@ -221,6 +241,7 @@ interface Person {
       <!-- Paginering -->
       <app-demo-section
         title="Paginering"
+        [code]="pagineringCode"
         description="Bruk paginator og rows for å dele opp data i sider. Tabellen håndterer pagineringen automatisk."
       >
         <table
@@ -270,6 +291,7 @@ interface Person {
       <!-- Tall i tabell -->
       <app-demo-section
         title="Tall i tabell"
+        [code]="tallITabellCode"
         description="Når det er tall som skal sammenlignes, plasser tallene til høyre i tabellfeltet."
       >
         <table hviTable class="table-fixed tabular-nums">
@@ -306,6 +328,7 @@ interface Person {
       <!-- Kombinert -->
       <app-demo-section
         title="Kombinert"
+        [code]="kombinertCode"
         description="Du kan kombinere flere varianter for å tilpasse tabellen til dine behov."
       >
         <table hviTable zebra border hover>
@@ -342,6 +365,15 @@ interface Person {
   `,
 })
 export class TableDemoComponent {
+  readonly basisCode = TableBasisExampleSource;
+  readonly zebrastriperCode = TableZebrastriperExampleSource;
+  readonly medBorderCode = TableMedBorderExampleSource;
+  readonly hoverCode = TableHoverExampleSource;
+  readonly sokOgSorteringCode = TableSokOgSorteringExampleSource;
+  readonly pagineringCode = TablePagineringExampleSource;
+  readonly tallITabellCode = TableTallITabellExampleSource;
+  readonly kombinertCode = TableKombinertExampleSource;
+
   // Data for sorteringseksempel
   persons: Person[] = [
     { navn: 'Lise Nordmann', epost: 'lise@nordmann.no', telefon: '22345678' },
