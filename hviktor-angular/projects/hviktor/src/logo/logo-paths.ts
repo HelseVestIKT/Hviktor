@@ -1,6 +1,7 @@
 import { LogoDefinition } from './logo-types';
 import { LOGO_HBE } from './logos/logo-hbe';
 import { LOGO_HBE_HUS } from './logos/logo-hbe-hus';
+import { LOGO_HFD } from './logos/logo-hfd';
 import { LOGO_HST } from './logos/logo-hst';
 import { LOGO_HST_SUS } from './logos/logo-hst-sus';
 import { LOGO_HVE } from './logos/logo-hve';
@@ -20,6 +21,7 @@ export const LOGOS = {
   hve: LOGO_HVE,
   hbe: LOGO_HBE,
   'hbe-hus': LOGO_HBE_HUS,
+  hfd: LOGO_HFD,
   hst: LOGO_HST,
   'hst-sus': LOGO_HST_SUS,
 } satisfies Record<string, LogoDefinition>;
