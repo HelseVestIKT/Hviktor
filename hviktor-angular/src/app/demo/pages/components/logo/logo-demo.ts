@@ -50,6 +50,10 @@ import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
             <h3 hviHeading>hbe-hus</h3>
             <hvi-logo company="hbe-hus" [size]="selectedSize()" />
           </div>
+          <div>
+            <h3 hviHeading>hst</h3>
+            <hvi-logo company="hst" [size]="selectedSize()" />
+          </div>
         </div>
         <p class="mt-4 text-sm">Bytt fargetema i headeren for å se logoen i dark mode.</p>
       </app-demo-section>
