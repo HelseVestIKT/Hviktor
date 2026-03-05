@@ -1,0 +1,13 @@
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { HviIconBase, ICON_STYLES, ICON_TEMPLATE } from '../base-icon.component';
+
+@Component({
+  selector: 'hvi-icon-MobileFill',
+  template: ICON_TEMPLATE,
+  styles: ICON_STYLES,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class HviIconMobileFill extends HviIconBase {
+  protected override readonly path =
+    'M8 2.25C6.48122 2.25 5.25 3.48122 5.25 5V19C5.25 20.5188 6.48122 21.75 8 21.75H16C17.5188 21.75 18.75 20.5188 18.75 19V5C18.75 3.48122 17.5188 2.25 16 2.25H8ZM11.5 4.75C11.0858 4.75 10.75 5.08579 10.75 5.5C10.75 5.91421 11.0858 6.25 11.5 6.25H12.5C12.9142 6.25 13.25 5.91421 13.25 5.5C13.25 5.08579 12.9142 4.75 12.5 4.75H11.5Z';
+}

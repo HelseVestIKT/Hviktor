@@ -18,6 +18,8 @@
     "scaffold": "node ./scripts/scaffold.js",
     "scaffold:demo": "node ./scripts/scaffold-demo.js",
     "generate:examples": "node ./scripts/generate-examples.js",
+    "generate:register": "node ./scripts/generate-register-elements.js",
+    "import:nav-icons": "node ./scripts/import-nav-icons-from-svg.js",
     "lint": "eslint . --ext .ts,.html",
     "lint:staged": "eslint --fix --cache --cache-location .cache/eslint/",
     "lint-staged": "lint-staged",

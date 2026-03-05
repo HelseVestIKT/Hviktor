@@ -1,0 +1,13 @@
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { HviIconBase, ICON_STYLES, ICON_TEMPLATE } from '../base-icon.component';
+
+@Component({
+  selector: 'hvi-icon-SidebarBothFill',
+  template: ICON_TEMPLATE,
+  styles: ICON_STYLES,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class HviIconSidebarBothFill extends HviIconBase {
+  protected override readonly path =
+    'M14.25 3.75C14.25 3.47386 14.0261 3.25 13.75 3.25H10.25C9.97386 3.25 9.75 3.47386 9.75 3.75L9.75 20.25C9.75 20.5261 9.97386 20.75 10.25 20.75H13.75C14.0261 20.75 14.25 20.5261 14.25 20.25L14.25 3.75ZM15.75 20.25C15.75 20.5261 15.9739 20.75 16.25 20.75H20C20.4142 20.75 20.75 20.4142 20.75 20V4C20.75 3.58579 20.4142 3.25 20 3.25H16.25C15.9739 3.25 15.75 3.47386 15.75 3.75L15.75 20.25ZM4 3.25H7.75C8.02614 3.25 8.25 3.47386 8.25 3.75L8.25 20.25C8.25 20.5261 8.02614 20.75 7.75 20.75H4C3.58579 20.75 3.25 20.4142 3.25 20V4C3.25 3.58579 3.58579 3.25 4 3.25Z';
+}

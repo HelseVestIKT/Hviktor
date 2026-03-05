@@ -1,0 +1,13 @@
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { HviIconBase, ICON_STYLES, ICON_TEMPLATE } from '../base-icon.component';
+
+@Component({
+  selector: 'hvi-icon-TabsFill',
+  template: ICON_TEMPLATE,
+  styles: ICON_STYLES,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class HviIconTabsFill extends HviIconBase {
+  protected override readonly path =
+    'M8 2.25C7.0335 2.25 6.25 3.0335 6.25 4V16C6.25 16.9665 7.0335 17.75 8 17.75H20C20.9665 17.75 21.75 16.9665 21.75 16V4C21.75 3.0335 20.9665 2.25 20 2.25H8ZM4.75 16C4.75 17.7949 6.20508 19.25 8 19.25H17.25C17.5261 19.25 17.75 19.4739 17.75 19.75V20C17.75 20.9665 16.9665 21.75 16 21.75H4C3.0335 21.75 2.25 20.9665 2.25 20V8C2.25 7.0335 3.0335 6.25 4 6.25H4.25C4.52614 6.25 4.75 6.47386 4.75 6.75V16Z';
+}
