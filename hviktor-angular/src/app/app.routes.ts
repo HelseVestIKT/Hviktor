@@ -234,6 +234,11 @@ export const routes: Routes = [
             (m) => m.DropdownDemoComponent,
           ),
       },
+      {
+        path: 'komponenter/logo',
+        loadComponent: () =>
+          import('./demo/pages/components/logo/logo-demo').then((m) => m.LogoDemoComponent),
+      },
     ],
   },
 ];

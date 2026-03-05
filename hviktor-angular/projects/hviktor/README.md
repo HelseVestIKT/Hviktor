@@ -57,6 +57,7 @@ export class MyComponent {}
 | Label        | Etiketter                                            |
 | Link         | Lenker                                               |
 | List         | Lister                                               |
+| Logo         | Logo komponent                                       |
 | Pagination   | Pagination komponent                                 |
 | Paragraph    | Avsnitt                                              |
 | Popover      | Popup-innhold                                        |
