@@ -1,7 +1,7 @@
 import { LogoDefinition, LogoPath } from './logo-types';
 
 // ---------------------------------------------------------------------------
-// Shared paths for "dots-first" layout (all logos except Helse Vest, SAV, HBE and SUS)
+// Shared paths for "dots-first" layout (used by all logos except HVE, SAV, HBE-HUS, HST-SUS and the dots-only logo)
 // Layout: [dots] [HELSE] [company name]
 // ---------------------------------------------------------------------------
 
