@@ -1,25 +1,27 @@
 <header
-  class="sticky top-0 z-10 flex items-center justify-between border-b border-neutral-300 bg-(--ds-color-neutral-background-default) p-4"
+  class="sticky top-0 z-10 border-b border-neutral-300 bg-(--ds-color-neutral-background-default)"
 >
-  <a routerLink="/" hviLink class="flex items-center gap-2">
-    <hvi-logo company="dots" size="sm" />
-    Hviktor Angular
-  </a>
-  <button
-    hviButton
-    variant="tertiary"
-    color="accent"
-    (click)="themeService.toggleColorScheme()"
-    [title]="'Bytt til ' + themeService.getNextSchemeLabel() + ' modus'"
-  >
-    <span>{{ themeService.getNextSchemeIcon() }}</span>
-    <span class="hidden sm:inline">{{ themeService.getNextSchemeLabel() }}</span>
-  </button>
+  <div class="mx-auto flex max-w-screen-2xl items-center justify-between p-4">
+    <a routerLink="/" hviLink class="flex items-center gap-2">
+      <hvi-logo company="dots" size="sm" />
+      Hviktor Angular
+    </a>
+    <button
+      hviButton
+      variant="tertiary"
+      color="accent"
+      (click)="themeService.toggleColorScheme()"
+      [title]="'Bytt til ' + themeService.getNextSchemeLabel() + ' modus'"
+    >
+      <span>{{ themeService.getNextSchemeIcon() }}</span>
+      <span class="hidden sm:inline">{{ themeService.getNextSchemeLabel() }}</span>
+    </button>
+  </div>
 </header>
 
-<div class="min-h-screen lg:flex">
+<div class="mx-auto min-h-screen max-w-screen-2xl lg:flex">
   <aside
-    class="border-b border-neutral-300 bg-(--ds-color-neutral-background-default) lg:fixed lg:top-20 lg:h-[calc(100vh-100px)] lg:w-60 lg:overflow-y-auto lg:border-r lg:border-b-0"
+    class="border-b border-neutral-300 bg-(--ds-color-neutral-background-default) lg:sticky lg:top-20 lg:h-[calc(100vh-80px)] lg:w-60 lg:shrink-0 lg:overflow-y-auto lg:border-r lg:border-b-0"
   >
     <nav>
       <ul class="m-0 flex list-none gap-1 overflow-x-auto p-3 pb-4 lg:block lg:p-4 lg:pb-8">
@@ -38,7 +40,7 @@
       </ul>
     </nav>
   </aside>
-  <main class="flex-1 p-4 sm:p-6 lg:ml-60 lg:p-10">
+  <main class="min-w-0 flex-1 p-4 sm:p-6 lg:p-10">
     <router-outlet />
   </main>
 </div>
