@@ -8,6 +8,7 @@ import { HviFieldValidation } from '../forms/field/field-validation.directive';
 import { HviField } from '../forms/field/field.component';
 import { HviInput } from '../forms/input/input.directive';
 import { HviLabel } from '../label/label.directive';
+import { HviTag } from '../tag/tag.component';
 
 let nextId = 0;
 
@@ -46,6 +47,7 @@ let nextId = 0;
     HviFieldCounter,
     HviFieldDescription,
     HviFieldValidation,
+    HviTag,
   ],
   providers: [
     {
@@ -56,7 +58,17 @@ let nextId = 0;
   ],
   template: `
     <hvi-field>
-      <label hviLabel [attr.for]="inputId" weight="medium">{{ label }}</label>
+      <label hviLabel [attr.for]="inputId" weight="medium">
+        {{ label }}
+        @if (requiredLabel) {
+          <hvi-tag
+            variant="default"
+            color="warning"
+            style="margin-inline-start: var(--ds-size-2)"
+            >{{ requiredLabel }}</hvi-tag
+          >
+        }
+      </label>
       @if (description) {
         <span hviFieldDescription>{{ description }}</span>
       }
@@ -75,6 +87,8 @@ let nextId = 0;
             [readOnly]="_readOnly"
             [attr.maxlength]="maxLength ?? null"
             [attr.aria-invalid]="error ? 'true' : null"
+            [attr.required]="_required ? '' : null"
+            [attr.autocomplete]="autocomplete ?? null"
             [value]="_value"
             (input)="_handleInput($event)"
             (blur)="_onTouched()"
@@ -91,6 +105,8 @@ let nextId = 0;
             [readOnly]="_readOnly"
             [attr.maxlength]="maxLength ?? null"
             [attr.aria-invalid]="error ? 'true' : null"
+            [attr.required]="_required ? '' : null"
+            [attr.autocomplete]="autocomplete ?? null"
             [value]="_value"
             (input)="_handleInput($event)"
             (blur)="_onTouched()"
@@ -127,6 +143,15 @@ export class HviTextfield implements ControlValueAccessor {
 
   /** Character counter limit. Displays a counter below the field. */
   @Input() counterLimit?: number;
+
+  /**
+   * Label text shown in a warning Tag next to the label when the field is required.
+   * E.g. "Må fylles ut". Also sets the `required` attribute on the input.
+   */
+  @Input() requiredLabel?: string;
+
+  /** Autocomplete attribute for the input, e.g. 'given-name', 'email'. */
+  @Input() autocomplete?: string;
 
   /** Render a textarea instead of input for multiline support */
   @Input({ transform: booleanAttribute }) multiline = false;
@@ -176,6 +201,12 @@ export class HviTextfield implements ControlValueAccessor {
   _value = '';
   _disabled = false;
   _readOnly = false;
+  _required = false;
+
+  @Input({ transform: booleanAttribute })
+  set required(value: boolean) {
+    this._required = value;
+  }
 
   @Input({ transform: booleanAttribute })
   set disabled(value: boolean) {
