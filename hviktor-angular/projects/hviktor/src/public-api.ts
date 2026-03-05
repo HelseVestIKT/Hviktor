@@ -31,5 +31,6 @@ export * from './spinner';
 export * from './table';
 export * from './tabs';
 export * from './tag';
+export * from './textfield';
 export * from './toggle-group';
 export * from './tooltip';

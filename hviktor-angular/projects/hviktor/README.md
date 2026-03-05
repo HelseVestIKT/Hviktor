@@ -71,6 +71,7 @@ export class MyComponent {}
 | Table        | Table komponent                                      |
 | Tag          | Merkelapper for kategorisering                       |
 | Textarea     | Textarea komponent                                   |
+| Textfield    | Textfield komponent                                  |
 | ToggleGroup  | ToggleGroup komponent                                |
 | Tooltip      | Tooltip komponent                                    |
 

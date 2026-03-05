@@ -239,6 +239,13 @@ export const routes: Routes = [
         loadComponent: () =>
           import('./demo/pages/components/logo/logo-demo').then((m) => m.LogoDemoComponent),
       },
+      {
+        path: 'komponenter/textfield',
+        loadComponent: () =>
+          import('./demo/pages/components/textfield/textfield-demo').then(
+            (m) => m.TextfieldDemoComponent,
+          ),
+      },
     ],
   },
 ];
