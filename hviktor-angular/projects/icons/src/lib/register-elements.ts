@@ -1,10 +1,970 @@
 import { createCustomElement } from '@angular/elements';
 import { createApplication } from '@angular/platform-browser';
-import { HviIconHome } from './icons/icon-home.component';
-import { HviIconUser } from './icons/icon-user.component';
+import { HviIconAirplane } from './icons/icon-Airplane.component';
+import { HviIconAirplaneFill } from './icons/icon-AirplaneFill.component';
+import { HviIconAlignBottom } from './icons/icon-AlignBottom.component';
+import { HviIconAlignBottomFill } from './icons/icon-AlignBottomFill.component';
+import { HviIconAlignCenter } from './icons/icon-AlignCenter.component';
+import { HviIconAlignCenterFill } from './icons/icon-AlignCenterFill.component';
+import { HviIconAlignLeft } from './icons/icon-AlignLeft.component';
+import { HviIconAlignLeftFill } from './icons/icon-AlignLeftFill.component';
+import { HviIconAlignMiddle } from './icons/icon-AlignMiddle.component';
+import { HviIconAlignMiddleFill } from './icons/icon-AlignMiddleFill.component';
+import { HviIconAlignRight } from './icons/icon-AlignRight.component';
+import { HviIconAlignRightFill } from './icons/icon-AlignRightFill.component';
+import { HviIconAlignTop } from './icons/icon-AlignTop.component';
+import { HviIconAlignTopFill } from './icons/icon-AlignTopFill.component';
+import { HviIconAllergens } from './icons/icon-Allergens.component';
+import { HviIconAllergensFill } from './icons/icon-AllergensFill.component';
+import { HviIconAngle } from './icons/icon-Angle.component';
+import { HviIconAngleRulerCircle } from './icons/icon-AngleRulerCircle.component';
+import { HviIconAngleRulerCircleFill } from './icons/icon-AngleRulerCircleFill.component';
+import { HviIconAngleRulerTriangle } from './icons/icon-AngleRulerTriangle.component';
+import { HviIconAngleRulerTriangleFill } from './icons/icon-AngleRulerTriangleFill.component';
+import { HviIconArchive } from './icons/icon-Archive.component';
+import { HviIconArchiveFill } from './icons/icon-ArchiveFill.component';
+import { HviIconAreaChart } from './icons/icon-AreaChart.component';
+import { HviIconAreaChartFill } from './icons/icon-AreaChartFill.component';
+import { HviIconArrowCirclepath } from './icons/icon-ArrowCirclepath.component';
+import { HviIconArrowCirclepathReverse } from './icons/icon-ArrowCirclepathReverse.component';
+import { HviIconArrowDown } from './icons/icon-ArrowDown.component';
+import { HviIconArrowDownRight } from './icons/icon-ArrowDownRight.component';
+import { HviIconArrowForward } from './icons/icon-ArrowForward.component';
+import { HviIconArrowForwardFill } from './icons/icon-ArrowForwardFill.component';
+import { HviIconArrowLeft } from './icons/icon-ArrowLeft.component';
+import { HviIconArrowRedo } from './icons/icon-ArrowRedo.component';
+import { HviIconArrowRight } from './icons/icon-ArrowRight.component';
+import { HviIconArrowRightLeft } from './icons/icon-ArrowRightLeft.component';
+import { HviIconArrowUndo } from './icons/icon-ArrowUndo.component';
+import { HviIconArrowUp } from './icons/icon-ArrowUp.component';
+import { HviIconArrowsAllDirections } from './icons/icon-ArrowsAllDirections.component';
+import { HviIconArrowsCirclepath } from './icons/icon-ArrowsCirclepath.component';
+import { HviIconArrowsSquarepath } from './icons/icon-ArrowsSquarepath.component';
+import { HviIconArrowsUpDown } from './icons/icon-ArrowsUpDown.component';
+import { HviIconBabyWrapped } from './icons/icon-BabyWrapped.component';
+import { HviIconBabyWrappedFill } from './icons/icon-BabyWrappedFill.component';
+import { HviIconBackpack } from './icons/icon-Backpack.component';
+import { HviIconBackpackFill } from './icons/icon-BackpackFill.component';
+import { HviIconBackward } from './icons/icon-Backward.component';
+import { HviIconBackwardFill } from './icons/icon-BackwardFill.component';
+import { HviIconBacteria } from './icons/icon-Bacteria.component';
+import { HviIconBacteriaFill } from './icons/icon-BacteriaFill.component';
+import { HviIconBagde } from './icons/icon-Bagde.component';
+import { HviIconBagdeFill } from './icons/icon-BagdeFill.component';
+import { HviIconBaggage } from './icons/icon-Baggage.component';
+import { HviIconBaggageFill } from './icons/icon-BaggageFill.component';
+import { HviIconBandage } from './icons/icon-Bandage.component';
+import { HviIconBandageFill } from './icons/icon-BandageFill.component';
+import { HviIconBankNote } from './icons/icon-BankNote.component';
+import { HviIconBankNoteFill } from './icons/icon-BankNoteFill.component';
+import { HviIconBarChart } from './icons/icon-BarChart.component';
+import { HviIconBarChartFill } from './icons/icon-BarChartFill.component';
+import { HviIconBed } from './icons/icon-Bed.component';
+import { HviIconBedFill } from './icons/icon-BedFill.component';
+import { HviIconBell } from './icons/icon-Bell.component';
+import { HviIconBellDot } from './icons/icon-BellDot.component';
+import { HviIconBellDotFill } from './icons/icon-BellDotFill.component';
+import { HviIconBellFill } from './icons/icon-BellFill.component';
+import { HviIconBellSlash } from './icons/icon-BellSlash.component';
+import { HviIconBellSlashFill } from './icons/icon-BellSlashFill.component';
+import { HviIconBicycle } from './icons/icon-Bicycle.component';
+import { HviIconBoat } from './icons/icon-Boat.component';
+import { HviIconBoatFill } from './icons/icon-BoatFill.component';
+import { HviIconBone } from './icons/icon-Bone.component';
+import { HviIconBoneBroken } from './icons/icon-BoneBroken.component';
+import { HviIconBoneFill } from './icons/icon-BoneFill.component';
+import { HviIconBook } from './icons/icon-Book.component';
+import { HviIconBookFill } from './icons/icon-BookFill.component';
+import { HviIconBookmark } from './icons/icon-Bookmark.component';
+import { HviIconBookmarkDash } from './icons/icon-BookmarkDash.component';
+import { HviIconBookmarkFill } from './icons/icon-BookmarkFill.component';
+import { HviIconBooks } from './icons/icon-Books.component';
+import { HviIconBooksFill } from './icons/icon-BooksFill.component';
+import { HviIconBowl } from './icons/icon-Bowl.component';
+import { HviIconBowlFill } from './icons/icon-BowlFill.component';
+import { HviIconBraille } from './icons/icon-Braille.component';
+import { HviIconBrailleFill } from './icons/icon-BrailleFill.component';
+import { HviIconBranching } from './icons/icon-Branching.component';
+import { HviIconBriefcase } from './icons/icon-Briefcase.component';
+import { HviIconBriefcaseClock } from './icons/icon-BriefcaseClock.component';
+import { HviIconBriefcaseClockFill } from './icons/icon-BriefcaseClockFill.component';
+import { HviIconBriefcaseFill } from './icons/icon-BriefcaseFill.component';
+import { HviIconBroadcast } from './icons/icon-Broadcast.component';
+import { HviIconBroadcastMinusCircle } from './icons/icon-BroadcastMinusCircle.component';
+import { HviIconBroadcastMinusCircleFill } from './icons/icon-BroadcastMinusCircleFill.component';
+import { HviIconBroadcastPlusCircle } from './icons/icon-BroadcastPlusCircle.component';
+import { HviIconBroadcastPlusCircleFill } from './icons/icon-BroadcastPlusCircleFill.component';
+import { HviIconBubbleChart } from './icons/icon-BubbleChart.component';
+import { HviIconBubbleChartFill } from './icons/icon-BubbleChartFill.component';
+import { HviIconBucket } from './icons/icon-Bucket.component';
+import { HviIconBucketFill } from './icons/icon-BucketFill.component';
+import { HviIconBucketMop } from './icons/icon-BucketMop.component';
+import { HviIconBucketMopFill } from './icons/icon-BucketMopFill.component';
+import { HviIconBug } from './icons/icon-Bug.component';
+import { HviIconBugFill } from './icons/icon-BugFill.component';
+import { HviIconBuildings2 } from './icons/icon-Buildings2.component';
+import { HviIconBuildings2Fill } from './icons/icon-Buildings2Fill.component';
+import { HviIconBuildings3 } from './icons/icon-Buildings3.component';
+import { HviIconBuildings3Fill } from './icons/icon-Buildings3Fill.component';
+import { HviIconBulletList } from './icons/icon-BulletList.component';
+import { HviIconBus } from './icons/icon-Bus.component';
+import { HviIconBusFill } from './icons/icon-BusFill.component';
+import { HviIconCalculator } from './icons/icon-Calculator.component';
+import { HviIconCalculatorFill } from './icons/icon-CalculatorFill.component';
+import { HviIconCalendar } from './icons/icon-Calendar.component';
+import { HviIconCalendarFill } from './icons/icon-CalendarFill.component';
+import { HviIconCamera } from './icons/icon-Camera.component';
+import { HviIconCameraFill } from './icons/icon-CameraFill.component';
+import { HviIconCameraTriangle } from './icons/icon-CameraTriangle.component';
+import { HviIconCameraTriangleFill } from './icons/icon-CameraTriangleFill.component';
+import { HviIconCandle } from './icons/icon-Candle.component';
+import { HviIconCandleFill } from './icons/icon-CandleFill.component';
+import { HviIconCaptions } from './icons/icon-Captions.component';
+import { HviIconCaptionsFill } from './icons/icon-CaptionsFill.component';
+import { HviIconCar } from './icons/icon-Car.component';
+import { HviIconCarFill } from './icons/icon-CarFill.component';
+import { HviIconCard } from './icons/icon-Card.component';
+import { HviIconCardFill } from './icons/icon-CardFill.component';
+import { HviIconCaretDown } from './icons/icon-CaretDown.component';
+import { HviIconCaretDownCircle } from './icons/icon-CaretDownCircle.component';
+import { HviIconCaretDownCircleFill } from './icons/icon-CaretDownCircleFill.component';
+import { HviIconCaretDownFill } from './icons/icon-CaretDownFill.component';
+import { HviIconCaretLeft } from './icons/icon-CaretLeft.component';
+import { HviIconCaretLeftCircle } from './icons/icon-CaretLeftCircle.component';
+import { HviIconCaretLeftCircleFill } from './icons/icon-CaretLeftCircleFill.component';
+import { HviIconCaretLeftFill } from './icons/icon-CaretLeftFill.component';
+import { HviIconCaretLeftRight } from './icons/icon-CaretLeftRight.component';
+import { HviIconCaretLeftRightFill } from './icons/icon-CaretLeftRightFill.component';
+import { HviIconCaretRight } from './icons/icon-CaretRight.component';
+import { HviIconCaretRightCircle } from './icons/icon-CaretRightCircle.component';
+import { HviIconCaretRightCircleFill } from './icons/icon-CaretRightCircleFill.component';
+import { HviIconCaretRightFill } from './icons/icon-CaretRightFill.component';
+import { HviIconCaretUp } from './icons/icon-CaretUp.component';
+import { HviIconCaretUpCircle } from './icons/icon-CaretUpCircle.component';
+import { HviIconCaretUpCircleFill } from './icons/icon-CaretUpCircleFill.component';
+import { HviIconCaretUpDown } from './icons/icon-CaretUpDown.component';
+import { HviIconCaretUpDownFill } from './icons/icon-CaretUpDownFill.component';
+import { HviIconCaretUpDownFilledDown } from './icons/icon-CaretUpDownFilledDown.component';
+import { HviIconCaretUpDownFilledUp } from './icons/icon-CaretUpDownFilledUp.component';
+import { HviIconCaretUpFill } from './icons/icon-CaretUpFill.component';
+import { HviIconChairTable } from './icons/icon-ChairTable.component';
+import { HviIconChangingRoom } from './icons/icon-ChangingRoom.component';
+import { HviIconChangingRoomFill } from './icons/icon-ChangingRoomFill.component';
+import { HviIconChat } from './icons/icon-Chat.component';
+import { HviIconChat2 } from './icons/icon-Chat2.component';
+import { HviIconChat2Fill } from './icons/icon-Chat2Fill.component';
+import { HviIconChatAdd } from './icons/icon-ChatAdd.component';
+import { HviIconChatAddFill } from './icons/icon-ChatAddFill.component';
+import { HviIconChatCheckmark } from './icons/icon-ChatCheckmark.component';
+import { HviIconChatCheckmarkFill } from './icons/icon-ChatCheckmarkFill.component';
+import { HviIconChatElipsis } from './icons/icon-ChatElipsis.component';
+import { HviIconChatElipsisFill } from './icons/icon-ChatElipsisFill.component';
+import { HviIconChatExclamationmark } from './icons/icon-ChatExclamationmark.component';
+import { HviIconChatExclamationmarkFill } from './icons/icon-ChatExclamationmarkFill.component';
+import { HviIconChatFill } from './icons/icon-ChatFill.component';
+import { HviIconCheckmark } from './icons/icon-Checkmark.component';
+import { HviIconCheckmarkCircle } from './icons/icon-CheckmarkCircle.component';
+import { HviIconCheckmarkCircleFill } from './icons/icon-CheckmarkCircleFill.component';
+import { HviIconCheckmarkHeavy } from './icons/icon-CheckmarkHeavy.component';
+import { HviIconChefHat } from './icons/icon-ChefHat.component';
+import { HviIconChefHatFill } from './icons/icon-ChefHatFill.component';
+import { HviIconChevronDown } from './icons/icon-ChevronDown.component';
+import { HviIconChevronDownCircle } from './icons/icon-ChevronDownCircle.component';
+import { HviIconChevronDownCircleFill } from './icons/icon-ChevronDownCircleFill.component';
+import { HviIconChevronDownDouble } from './icons/icon-ChevronDownDouble.component';
+import { HviIconChevronDownDoubleCircle } from './icons/icon-ChevronDownDoubleCircle.component';
+import { HviIconChevronDownDoubleCircleFill } from './icons/icon-ChevronDownDoubleCircleFill.component';
+import { HviIconChevronDownUp } from './icons/icon-ChevronDownUp.component';
+import { HviIconChevronLeft } from './icons/icon-ChevronLeft.component';
+import { HviIconChevronLeftCircle } from './icons/icon-ChevronLeftCircle.component';
+import { HviIconChevronLeftCircleFill } from './icons/icon-ChevronLeftCircleFill.component';
+import { HviIconChevronLeftDouble } from './icons/icon-ChevronLeftDouble.component';
+import { HviIconChevronLeftDoubleCircle } from './icons/icon-ChevronLeftDoubleCircle.component';
+import { HviIconChevronLeftDoubleCircleFill } from './icons/icon-ChevronLeftDoubleCircleFill.component';
+import { HviIconChevronLeftFirst } from './icons/icon-ChevronLeftFirst.component';
+import { HviIconChevronLeftFirstCircle } from './icons/icon-ChevronLeftFirstCircle.component';
+import { HviIconChevronLeftFirstCircleFill } from './icons/icon-ChevronLeftFirstCircleFill.component';
+import { HviIconChevronRight } from './icons/icon-ChevronRight.component';
+import { HviIconChevronRightCircle } from './icons/icon-ChevronRightCircle.component';
+import { HviIconChevronRightCircleFill } from './icons/icon-ChevronRightCircleFill.component';
+import { HviIconChevronRightDouble } from './icons/icon-ChevronRightDouble.component';
+import { HviIconChevronRightDoubleCircle } from './icons/icon-ChevronRightDoubleCircle.component';
+import { HviIconChevronRightDoubleCircleFill } from './icons/icon-ChevronRightDoubleCircleFill.component';
+import { HviIconChevronRightLast } from './icons/icon-ChevronRightLast.component';
+import { HviIconChevronRightLastCircle } from './icons/icon-ChevronRightLastCircle.component';
+import { HviIconChevronRightLastCircleFill } from './icons/icon-ChevronRightLastCircleFill.component';
+import { HviIconChevronUp } from './icons/icon-ChevronUp.component';
+import { HviIconChevronUpCircle } from './icons/icon-ChevronUpCircle.component';
+import { HviIconChevronUpCircleFill } from './icons/icon-ChevronUpCircleFill.component';
+import { HviIconChevronUpDouble } from './icons/icon-ChevronUpDouble.component';
+import { HviIconChevronUpDoubleCircle } from './icons/icon-ChevronUpDoubleCircle.component';
+import { HviIconChevronUpDoubleCircleFill } from './icons/icon-ChevronUpDoubleCircleFill.component';
+import { HviIconChevronUpDown } from './icons/icon-ChevronUpDown.component';
+import { HviIconChildEyes } from './icons/icon-ChildEyes.component';
+import { HviIconChildEyesFill } from './icons/icon-ChildEyesFill.component';
+import { HviIconChildHairEyes } from './icons/icon-ChildHairEyes.component';
+import { HviIconChildHairEyesFill } from './icons/icon-ChildHairEyesFill.component';
+import { HviIconCigarette } from './icons/icon-Cigarette.component';
+import { HviIconCigaretteFill } from './icons/icon-CigaretteFill.component';
+import { HviIconCircle } from './icons/icon-Circle.component';
+import { HviIconCircleBroken } from './icons/icon-CircleBroken.component';
+import { HviIconCircleFill } from './icons/icon-CircleFill.component';
+import { HviIconCircleSlash } from './icons/icon-CircleSlash.component';
+import { HviIconCircleSlashFill } from './icons/icon-CircleSlashFill.component';
+import { HviIconClipboard } from './icons/icon-Clipboard.component';
+import { HviIconClipboardCheckmark } from './icons/icon-ClipboardCheckmark.component';
+import { HviIconClipboardCheckmarkFill } from './icons/icon-ClipboardCheckmarkFill.component';
+import { HviIconClipboardFill } from './icons/icon-ClipboardFill.component';
+import { HviIconClipboardLink } from './icons/icon-ClipboardLink.component';
+import { HviIconClipboardLinkFill } from './icons/icon-ClipboardLinkFill.component';
+import { HviIconClipboardXMark } from './icons/icon-ClipboardXMark.component';
+import { HviIconClipboardXMarkFill } from './icons/icon-ClipboardXMarkFill.component';
+import { HviIconClock } from './icons/icon-Clock.component';
+import { HviIconClockDashed } from './icons/icon-ClockDashed.component';
+import { HviIconClockFill } from './icons/icon-ClockFill.component';
+import { HviIconClothingHanger } from './icons/icon-ClothingHanger.component';
+import { HviIconClothingHangerFill } from './icons/icon-ClothingHangerFill.component';
+import { HviIconCloud } from './icons/icon-Cloud.component';
+import { HviIconCloudDown } from './icons/icon-CloudDown.component';
+import { HviIconCloudDownFill } from './icons/icon-CloudDownFill.component';
+import { HviIconCloudFill } from './icons/icon-CloudFill.component';
+import { HviIconCloudSlash } from './icons/icon-CloudSlash.component';
+import { HviIconCloudSlashFill } from './icons/icon-CloudSlashFill.component';
+import { HviIconCloudUp } from './icons/icon-CloudUp.component';
+import { HviIconCloudUpFill } from './icons/icon-CloudUpFill.component';
+import { HviIconCode } from './icons/icon-Code.component';
+import { HviIconCoffee } from './icons/icon-Coffee.component';
+import { HviIconCoffeeFill } from './icons/icon-CoffeeFill.component';
+import { HviIconCog } from './icons/icon-Cog.component';
+import { HviIconCogFill } from './icons/icon-CogFill.component';
+import { HviIconCogRotation } from './icons/icon-CogRotation.component';
+import { HviIconCogRotationFill } from './icons/icon-CogRotationFill.component';
+import { HviIconCombifridge1 } from './icons/icon-Combifridge1.component';
+import { HviIconCombifridge1Fill } from './icons/icon-Combifridge1Fill.component';
+import { HviIconCombifridge2 } from './icons/icon-Combifridge2.component';
+import { HviIconCombifridge2Fill } from './icons/icon-Combifridge2Fill.component';
+import { HviIconCompass } from './icons/icon-Compass.component';
+import { HviIconCompassFill } from './icons/icon-CompassFill.component';
+import { HviIconComponent } from './icons/icon-Component.component';
+import { HviIconComponentFill } from './icons/icon-ComponentFill.component';
+import { HviIconCpu } from './icons/icon-Cpu.component';
+import { HviIconCpuFill } from './icons/icon-CpuFill.component';
+import { HviIconCurrencyExchange } from './icons/icon-CurrencyExchange.component';
+import { HviIconCutlery } from './icons/icon-Cutlery.component';
+import { HviIconCutleryFill } from './icons/icon-CutleryFill.component';
+import { HviIconDatabase } from './icons/icon-Database.component';
+import { HviIconDatabaseFill } from './icons/icon-DatabaseFill.component';
+import { HviIconDensity1 } from './icons/icon-Density1.component';
+import { HviIconDensity1Fill } from './icons/icon-Density1Fill.component';
+import { HviIconDensity2 } from './icons/icon-Density2.component';
+import { HviIconDensity2Fill } from './icons/icon-Density2Fill.component';
+import { HviIconDensity3 } from './icons/icon-Density3.component';
+import { HviIconDiamond } from './icons/icon-Diamond.component';
+import { HviIconDiamondFill } from './icons/icon-DiamondFill.component';
+import { HviIconDishwasher } from './icons/icon-Dishwasher.component';
+import { HviIconDishwasherFill } from './icons/icon-DishwasherFill.component';
+import { HviIconDivide } from './icons/icon-Divide.component';
+import { HviIconDocPencil } from './icons/icon-DocPencil.component';
+import { HviIconDocPencilFill } from './icons/icon-DocPencilFill.component';
+import { HviIconDog } from './icons/icon-Dog.component';
+import { HviIconDogFill } from './icons/icon-DogFill.component';
+import { HviIconDogHarness } from './icons/icon-DogHarness.component';
+import { HviIconDogHarnessFill } from './icons/icon-DogHarnessFill.component';
+import { HviIconDonutChart } from './icons/icon-DonutChart.component';
+import { HviIconDonutChartFill } from './icons/icon-DonutChartFill.component';
+import { HviIconDonuts } from './icons/icon-Donuts.component';
+import { HviIconDonutsFill } from './icons/icon-DonutsFill.component';
+import { HviIconDoor } from './icons/icon-Door.component';
+import { HviIconDoorFill } from './icons/icon-DoorFill.component';
+import { HviIconDoorOpen } from './icons/icon-DoorOpen.component';
+import { HviIconDoorOpenFill } from './icons/icon-DoorOpenFill.component';
+import { HviIconDownload } from './icons/icon-Download.component';
+import { HviIconDragHorizontal } from './icons/icon-DragHorizontal.component';
+import { HviIconDragVertical } from './icons/icon-DragVertical.component';
+import { HviIconEar } from './icons/icon-Ear.component';
+import { HviIconEarFill } from './icons/icon-EarFill.component';
+import { HviIconEarSlash } from './icons/icon-EarSlash.component';
+import { HviIconEarSlashFill } from './icons/icon-EarSlashFill.component';
+import { HviIconEarSoundwaves } from './icons/icon-EarSoundwaves.component';
+import { HviIconEarSoundwavesFill } from './icons/icon-EarSoundwavesFill.component';
+import { HviIconEarth } from './icons/icon-Earth.component';
+import { HviIconEarthFill } from './icons/icon-EarthFill.component';
+import { HviIconElevator } from './icons/icon-Elevator.component';
+import { HviIconElevatorFill } from './icons/icon-ElevatorFill.component';
+import { HviIconEnter } from './icons/icon-Enter.component';
+import { HviIconEnvelopeClosed } from './icons/icon-EnvelopeClosed.component';
+import { HviIconEnvelopeClosedFill } from './icons/icon-EnvelopeClosedFill.component';
+import { HviIconEnvelopeOpen } from './icons/icon-EnvelopeOpen.component';
+import { HviIconEnvelopeOpenFill } from './icons/icon-EnvelopeOpenFill.component';
+import { HviIconEquals } from './icons/icon-Equals.component';
+import { HviIconEraser } from './icons/icon-Eraser.component';
+import { HviIconEraserFill } from './icons/icon-EraserFill.component';
+import { HviIconEscalator } from './icons/icon-Escalator.component';
+import { HviIconEthernet } from './icons/icon-Ethernet.component';
+import { HviIconExclamationmark } from './icons/icon-Exclamationmark.component';
+import { HviIconExclamationmarkTriangle } from './icons/icon-ExclamationmarkTriangle.component';
+import { HviIconExclamationmarkTriangleFill } from './icons/icon-ExclamationmarkTriangleFill.component';
+import { HviIconExpand } from './icons/icon-Expand.component';
+import { HviIconExpandVertical } from './icons/icon-ExpandVertical.component';
+import { HviIconExternalLink } from './icons/icon-ExternalLink.component';
+import { HviIconExternalLinkFill } from './icons/icon-ExternalLinkFill.component';
+import { HviIconEye } from './icons/icon-Eye.component';
+import { HviIconEyeClosed } from './icons/icon-EyeClosed.component';
+import { HviIconEyeFill } from './icons/icon-EyeFill.component';
+import { HviIconEyeObfuscated } from './icons/icon-EyeObfuscated.component';
+import { HviIconEyeObfuscatedFill } from './icons/icon-EyeObfuscatedFill.component';
+import { HviIconEyeSlash } from './icons/icon-EyeSlash.component';
+import { HviIconEyeSlashFill } from './icons/icon-EyeSlashFill.component';
+import { HviIconEyeWithPupil } from './icons/icon-EyeWithPupil.component';
+import { HviIconEyeWithPupilFill } from './icons/icon-EyeWithPupilFill.component';
+import { HviIconFace } from './icons/icon-Face.component';
+import { HviIconFaceCry } from './icons/icon-FaceCry.component';
+import { HviIconFaceCryFill } from './icons/icon-FaceCryFill.component';
+import { HviIconFaceFill } from './icons/icon-FaceFill.component';
+import { HviIconFaceFrown } from './icons/icon-FaceFrown.component';
+import { HviIconFaceFrownFill } from './icons/icon-FaceFrownFill.component';
+import { HviIconFaceLaugh } from './icons/icon-FaceLaugh.component';
+import { HviIconFaceLaughFill } from './icons/icon-FaceLaughFill.component';
+import { HviIconFaceSmile } from './icons/icon-FaceSmile.component';
+import { HviIconFaceSmileFill } from './icons/icon-FaceSmileFill.component';
+import { HviIconFeedingBottle } from './icons/icon-FeedingBottle.component';
+import { HviIconFeedingBottleFill } from './icons/icon-FeedingBottleFill.component';
+import { HviIconFigure } from './icons/icon-Figure.component';
+import { HviIconFigureChild } from './icons/icon-FigureChild.component';
+import { HviIconFigureChildFill } from './icons/icon-FigureChildFill.component';
+import { HviIconFigureCombination } from './icons/icon-FigureCombination.component';
+import { HviIconFigureCombinationFill } from './icons/icon-FigureCombinationFill.component';
+import { HviIconFigureFill } from './icons/icon-FigureFill.component';
+import { HviIconFigureInward } from './icons/icon-FigureInward.component';
+import { HviIconFigureInwardFill } from './icons/icon-FigureInwardFill.component';
+import { HviIconFigureOutward } from './icons/icon-FigureOutward.component';
+import { HviIconFigureOutwardFill } from './icons/icon-FigureOutwardFill.component';
+import { HviIconFile } from './icons/icon-File.component';
+import { HviIconFileCheckmark } from './icons/icon-FileCheckmark.component';
+import { HviIconFileCheckmarkFill } from './icons/icon-FileCheckmarkFill.component';
+import { HviIconFileCode } from './icons/icon-FileCode.component';
+import { HviIconFileCodeFill } from './icons/icon-FileCodeFill.component';
+import { HviIconFileCsv } from './icons/icon-FileCsv.component';
+import { HviIconFileCsvFill } from './icons/icon-FileCsvFill.component';
+import { HviIconFileExcel } from './icons/icon-FileExcel.component';
+import { HviIconFileExcelFill } from './icons/icon-FileExcelFill.component';
+import { HviIconFileExport } from './icons/icon-FileExport.component';
+import { HviIconFileExportFill } from './icons/icon-FileExportFill.component';
+import { HviIconFileFill } from './icons/icon-FileFill.component';
+import { HviIconFileImage } from './icons/icon-FileImage.component';
+import { HviIconFileImageFill } from './icons/icon-FileImageFill.component';
+import { HviIconFileImport } from './icons/icon-FileImport.component';
+import { HviIconFileImportFill } from './icons/icon-FileImportFill.component';
+import { HviIconFileJpeg } from './icons/icon-FileJpeg.component';
+import { HviIconFileJpegFill } from './icons/icon-FileJpegFill.component';
+import { HviIconFileJson } from './icons/icon-FileJson.component';
+import { HviIconFileJsonFill } from './icons/icon-FileJsonFill.component';
+import { HviIconFileLoading } from './icons/icon-FileLoading.component';
+import { HviIconFileLoadingFill } from './icons/icon-FileLoadingFill.component';
+import { HviIconFileParagraph } from './icons/icon-FileParagraph.component';
+import { HviIconFileParagraphFill } from './icons/icon-FileParagraphFill.component';
+import { HviIconFilePdf } from './icons/icon-FilePdf.component';
+import { HviIconFilePdfFill } from './icons/icon-FilePdfFill.component';
+import { HviIconFilePlus } from './icons/icon-FilePlus.component';
+import { HviIconFilePlusFill } from './icons/icon-FilePlusFill.component';
+import { HviIconFilePng } from './icons/icon-FilePng.component';
+import { HviIconFilePngFill } from './icons/icon-FilePngFill.component';
+import { HviIconFileReset } from './icons/icon-FileReset.component';
+import { HviIconFileResetFill } from './icons/icon-FileResetFill.component';
+import { HviIconFileSearch } from './icons/icon-FileSearch.component';
+import { HviIconFileSearchFill } from './icons/icon-FileSearchFill.component';
+import { HviIconFileShredder } from './icons/icon-FileShredder.component';
+import { HviIconFileShredderFill } from './icons/icon-FileShredderFill.component';
+import { HviIconFileText } from './icons/icon-FileText.component';
+import { HviIconFileTextFill } from './icons/icon-FileTextFill.component';
+import { HviIconFileWord } from './icons/icon-FileWord.component';
+import { HviIconFileWordFill } from './icons/icon-FileWordFill.component';
+import { HviIconFileXMark } from './icons/icon-FileXMark.component';
+import { HviIconFileXMarkFill } from './icons/icon-FileXMarkFill.component';
+import { HviIconFiles } from './icons/icon-Files.component';
+import { HviIconFilesFill } from './icons/icon-FilesFill.component';
+import { HviIconFilter } from './icons/icon-Filter.component';
+import { HviIconFingerButton } from './icons/icon-FingerButton.component';
+import { HviIconFingerButtonFill } from './icons/icon-FingerButtonFill.component';
+import { HviIconFingerMobile } from './icons/icon-FingerMobile.component';
+import { HviIconFingerMobileFill } from './icons/icon-FingerMobileFill.component';
+import { HviIconFirstAid } from './icons/icon-FirstAid.component';
+import { HviIconFirstAidFill } from './icons/icon-FirstAidFill.component';
+import { HviIconFirstAidKit } from './icons/icon-FirstAidKit.component';
+import { HviIconFirstAidKitFill } from './icons/icon-FirstAidKitFill.component';
+import { HviIconFlagCross } from './icons/icon-FlagCross.component';
+import { HviIconFlagCrossFill } from './icons/icon-FlagCrossFill.component';
+import { HviIconFloppydisk } from './icons/icon-Floppydisk.component';
+import { HviIconFloppydiskFill } from './icons/icon-FloppydiskFill.component';
+import { HviIconFlower } from './icons/icon-Flower.component';
+import { HviIconFlowerFill } from './icons/icon-FlowerFill.component';
+import { HviIconFlowerPension } from './icons/icon-FlowerPension.component';
+import { HviIconFlowerPensionFill } from './icons/icon-FlowerPensionFill.component';
+import { HviIconFlowerPetalFalling } from './icons/icon-FlowerPetalFalling.component';
+import { HviIconFlowerPetalFallingFill } from './icons/icon-FlowerPetalFallingFill.component';
+import { HviIconFlowerPetals } from './icons/icon-FlowerPetals.component';
+import { HviIconFlowerPetalsFill } from './icons/icon-FlowerPetalsFill.component';
+import { HviIconFolder } from './icons/icon-Folder.component';
+import { HviIconFolderFile } from './icons/icon-FolderFile.component';
+import { HviIconFolderFileFill } from './icons/icon-FolderFileFill.component';
+import { HviIconFolderFill } from './icons/icon-FolderFill.component';
+import { HviIconFolderMinus } from './icons/icon-FolderMinus.component';
+import { HviIconFolderMinusFill } from './icons/icon-FolderMinusFill.component';
+import { HviIconFolderPlus } from './icons/icon-FolderPlus.component';
+import { HviIconFolderPlusFill } from './icons/icon-FolderPlusFill.component';
+import { HviIconFootprint } from './icons/icon-Footprint.component';
+import { HviIconFootprintFill } from './icons/icon-FootprintFill.component';
+import { HviIconFork } from './icons/icon-Fork.component';
+import { HviIconForkFill } from './icons/icon-ForkFill.component';
+import { HviIconForward } from './icons/icon-Forward.component';
+import { HviIconForwardFill } from './icons/icon-ForwardFill.component';
+import { HviIconFreezer } from './icons/icon-Freezer.component';
+import { HviIconFreezerFill } from './icons/icon-FreezerFill.component';
+import { HviIconFunnel } from './icons/icon-Funnel.component';
+import { HviIconFunnelFill } from './icons/icon-FunnelFill.component';
+import { HviIconGavel } from './icons/icon-Gavel.component';
+import { HviIconGavelFill } from './icons/icon-GavelFill.component';
+import { HviIconGavelSoundBlock } from './icons/icon-GavelSoundBlock.component';
+import { HviIconGavelSoundBlockFill } from './icons/icon-GavelSoundBlockFill.component';
+import { HviIconGlass } from './icons/icon-Glass.component';
+import { HviIconGlassFill } from './icons/icon-GlassFill.component';
+import { HviIconGlasses } from './icons/icon-Glasses.component';
+import { HviIconGlassesFill } from './icons/icon-GlassesFill.component';
+import { HviIconGlobe } from './icons/icon-Globe.component';
+import { HviIconGlobeFill } from './icons/icon-GlobeFill.component';
+import { HviIconGlobeSlash } from './icons/icon-GlobeSlash.component';
+import { HviIconGlobeSlashFill } from './icons/icon-GlobeSlashFill.component';
+import { HviIconHandBandage } from './icons/icon-HandBandage.component';
+import { HviIconHandBandageFill } from './icons/icon-HandBandageFill.component';
+import { HviIconHandFinger } from './icons/icon-HandFinger.component';
+import { HviIconHandFingerFill } from './icons/icon-HandFingerFill.component';
+import { HviIconHandHeart } from './icons/icon-HandHeart.component';
+import { HviIconHandHeartFill } from './icons/icon-HandHeartFill.component';
+import { HviIconHandKnot } from './icons/icon-HandKnot.component';
+import { HviIconHandKnotFilled } from './icons/icon-HandKnotFilled.component';
+import { HviIconHandShakeHeart } from './icons/icon-HandShakeHeart.component';
+import { HviIconHandShakeHeartFill } from './icons/icon-HandShakeHeartFill.component';
+import { HviIconHandshake } from './icons/icon-Handshake.component';
+import { HviIconHandshakeFill } from './icons/icon-HandshakeFill.component';
+import { HviIconHanger } from './icons/icon-Hanger.component';
+import { HviIconHardHat } from './icons/icon-HardHat.component';
+import { HviIconHardHatFill } from './icons/icon-HardHatFill.component';
+import { HviIconHashtag } from './icons/icon-Hashtag.component';
+import { HviIconHatSchool } from './icons/icon-HatSchool.component';
+import { HviIconHatSchoolFill } from './icons/icon-HatSchoolFill.component';
+import { HviIconHddDown } from './icons/icon-HddDown.component';
+import { HviIconHddDownFill } from './icons/icon-HddDownFill.component';
+import { HviIconHddUp } from './icons/icon-HddUp.component';
+import { HviIconHddUpFill } from './icons/icon-HddUpFill.component';
+import { HviIconHead } from './icons/icon-Head.component';
+import { HviIconHeadCloud } from './icons/icon-HeadCloud.component';
+import { HviIconHeadCloudFill } from './icons/icon-HeadCloudFill.component';
+import { HviIconHeadFill } from './icons/icon-HeadFill.component';
+import { HviIconHeadHeart } from './icons/icon-HeadHeart.component';
+import { HviIconHeadHeartFill } from './icons/icon-HeadHeartFill.component';
+import { HviIconHearingLoop } from './icons/icon-HearingLoop.component';
+import { HviIconHearingLoopFill } from './icons/icon-HearingLoopFill.component';
+import { HviIconHearingLoopRadio } from './icons/icon-HearingLoopRadio.component';
+import { HviIconHearingLoopRadioFill } from './icons/icon-HearingLoopRadioFill.component';
+import { HviIconHeart } from './icons/icon-Heart.component';
+import { HviIconHeartBroken } from './icons/icon-HeartBroken.component';
+import { HviIconHeartBrokenFill } from './icons/icon-HeartBrokenFill.component';
+import { HviIconHeartFill } from './icons/icon-HeartFill.component';
+import { HviIconHexagonGrid } from './icons/icon-HexagonGrid.component';
+import { HviIconHexagonGridFill } from './icons/icon-HexagonGridFill.component';
+import { HviIconHikingTrailSign } from './icons/icon-HikingTrailSign.component';
+import { HviIconHikingTrailSignFill } from './icons/icon-HikingTrailSignFill.component';
+import { HviIconHospital } from './icons/icon-Hospital.component';
+import { HviIconHospitalFill } from './icons/icon-HospitalFill.component';
+import { HviIconHourglass } from './icons/icon-Hourglass.component';
+import { HviIconHourglassBottomFilled } from './icons/icon-HourglassBottomFilled.component';
+import { HviIconHourglassTopFilled } from './icons/icon-HourglassTopFilled.component';
+import { HviIconHouse } from './icons/icon-House.component';
+import { HviIconHouseFill } from './icons/icon-HouseFill.component';
+import { HviIconHouseHeart } from './icons/icon-HouseHeart.component';
+import { HviIconHouseHeartFill } from './icons/icon-HouseHeartFill.component';
+import { HviIconImage } from './icons/icon-Image.component';
+import { HviIconImageFill } from './icons/icon-ImageFill.component';
+import { HviIconInbox } from './icons/icon-Inbox.component';
+import { HviIconInboxDown } from './icons/icon-InboxDown.component';
+import { HviIconInboxDownFill } from './icons/icon-InboxDownFill.component';
+import { HviIconInboxFill } from './icons/icon-InboxFill.component';
+import { HviIconInboxUp } from './icons/icon-InboxUp.component';
+import { HviIconInboxUpFill } from './icons/icon-InboxUpFill.component';
+import { HviIconInformation } from './icons/icon-Information.component';
+import { HviIconInformationSquare } from './icons/icon-InformationSquare.component';
+import { HviIconInformationSquareFill } from './icons/icon-InformationSquareFill.component';
+import { HviIconIvFluidBag } from './icons/icon-IvFluidBag.component';
+import { HviIconIvFluidBagFill } from './icons/icon-IvFluidBagFill.component';
+import { HviIconKeyHorizontal } from './icons/icon-KeyHorizontal.component';
+import { HviIconKeyHorizontalFill } from './icons/icon-KeyHorizontalFill.component';
+import { HviIconKeyVertical } from './icons/icon-KeyVertical.component';
+import { HviIconKeyVerticalFill } from './icons/icon-KeyVerticalFill.component';
+import { HviIconKnife } from './icons/icon-Knife.component';
+import { HviIconKnifeFill } from './icons/icon-KnifeFill.component';
+import { HviIconKroner } from './icons/icon-Kroner.component';
+import { HviIconLanguage } from './icons/icon-Language.component';
+import { HviIconLaptop } from './icons/icon-Laptop.component';
+import { HviIconLaptopFill } from './icons/icon-LaptopFill.component';
+import { HviIconLaptopTriangle } from './icons/icon-LaptopTriangle.component';
+import { HviIconLaptopTriangleFill } from './icons/icon-LaptopTriangleFill.component';
+import { HviIconLayerMinus } from './icons/icon-LayerMinus.component';
+import { HviIconLayerMinusFill } from './icons/icon-LayerMinusFill.component';
+import { HviIconLayers } from './icons/icon-Layers.component';
+import { HviIconLayersFill } from './icons/icon-LayersFill.component';
+import { HviIconLayersPlus } from './icons/icon-LayersPlus.component';
+import { HviIconLayersPlusFill } from './icons/icon-LayersPlusFill.component';
+import { HviIconLeave } from './icons/icon-Leave.component';
+import { HviIconLifebuoy } from './icons/icon-Lifebuoy.component';
+import { HviIconLifebuoyFill } from './icons/icon-LifebuoyFill.component';
+import { HviIconLightBulb } from './icons/icon-LightBulb.component';
+import { HviIconLightBulbFill } from './icons/icon-LightBulbFill.component';
+import { HviIconLightning } from './icons/icon-Lightning.component';
+import { HviIconLightningFill } from './icons/icon-LightningFill.component';
+import { HviIconLineGraph } from './icons/icon-LineGraph.component';
+import { HviIconLineGraphDot } from './icons/icon-LineGraphDot.component';
+import { HviIconLineGraphStacked } from './icons/icon-LineGraphStacked.component';
+import { HviIconLineHeight } from './icons/icon-LineHeight.component';
+import { HviIconLink } from './icons/icon-Link.component';
+import { HviIconLinkBroken } from './icons/icon-LinkBroken.component';
+import { HviIconLocationPin } from './icons/icon-LocationPin.component';
+import { HviIconLocationPinFill } from './icons/icon-LocationPinFill.component';
+import { HviIconMagnifyingGlass } from './icons/icon-MagnifyingGlass.component';
+import { HviIconMagnifyingGlassCheckmark } from './icons/icon-MagnifyingGlassCheckmark.component';
+import { HviIconMagnifyingGlassCheckmarkFill } from './icons/icon-MagnifyingGlassCheckmarkFill.component';
+import { HviIconMagnifyingGlassFill } from './icons/icon-MagnifyingGlassFill.component';
+import { HviIconMeasuringTape } from './icons/icon-MeasuringTape.component';
+import { HviIconMeasuringTapeFill } from './icons/icon-MeasuringTapeFill.component';
+import { HviIconMedicalThermometer } from './icons/icon-MedicalThermometer.component';
+import { HviIconMedicalThermometerFill } from './icons/icon-MedicalThermometerFill.component';
+import { HviIconMedicineBottle } from './icons/icon-MedicineBottle.component';
+import { HviIconMedicineBottleFill } from './icons/icon-MedicineBottleFill.component';
+import { HviIconMeetingLarge } from './icons/icon-MeetingLarge.component';
+import { HviIconMeetingLargeFill } from './icons/icon-MeetingLargeFill.component';
+import { HviIconMeetingSmall } from './icons/icon-MeetingSmall.component';
+import { HviIconMeetingSmallFill } from './icons/icon-MeetingSmallFill.component';
+import { HviIconMegaphone } from './icons/icon-Megaphone.component';
+import { HviIconMegaphoneFill } from './icons/icon-MegaphoneFill.component';
+import { HviIconMegaphoneSpeaking } from './icons/icon-MegaphoneSpeaking.component';
+import { HviIconMegaphoneSpeakingFill } from './icons/icon-MegaphoneSpeakingFill.component';
+import { HviIconMenuElipsisHorizontal } from './icons/icon-MenuElipsisHorizontal.component';
+import { HviIconMenuElipsisHorizontalCircle } from './icons/icon-MenuElipsisHorizontalCircle.component';
+import { HviIconMenuElipsisHorizontalCircleFill } from './icons/icon-MenuElipsisHorizontalCircleFill.component';
+import { HviIconMenuElipsisHorizontalSquare } from './icons/icon-MenuElipsisHorizontalSquare.component';
+import { HviIconMenuElipsisHorizontalSquareFill } from './icons/icon-MenuElipsisHorizontalSquareFill.component';
+import { HviIconMenuElipsisVertical } from './icons/icon-MenuElipsisVertical.component';
+import { HviIconMenuElipsisVerticalCircle } from './icons/icon-MenuElipsisVerticalCircle.component';
+import { HviIconMenuElipsisVerticalCircleFill } from './icons/icon-MenuElipsisVerticalCircleFill.component';
+import { HviIconMenuElipsisVerticalSquare } from './icons/icon-MenuElipsisVerticalSquare.component';
+import { HviIconMenuElipsisVerticalSquareFill } from './icons/icon-MenuElipsisVerticalSquareFill.component';
+import { HviIconMenuGrid } from './icons/icon-MenuGrid.component';
+import { HviIconMenuHamburger } from './icons/icon-MenuHamburger.component';
+import { HviIconMicrobe } from './icons/icon-Microbe.component';
+import { HviIconMicrobeFill } from './icons/icon-MicrobeFill.component';
+import { HviIconMicrophone } from './icons/icon-Microphone.component';
+import { HviIconMicrophoneFill } from './icons/icon-MicrophoneFill.component';
+import { HviIconMicrophoneSlash } from './icons/icon-MicrophoneSlash.component';
+import { HviIconMicrophoneSlashFill } from './icons/icon-MicrophoneSlashFill.component';
+import { HviIconMigration } from './icons/icon-Migration.component';
+import { HviIconMinus } from './icons/icon-Minus.component';
+import { HviIconMinusCircle } from './icons/icon-MinusCircle.component';
+import { HviIconMinusCircleFill } from './icons/icon-MinusCircleFill.component';
+import { HviIconMobile } from './icons/icon-Mobile.component';
+import { HviIconMobileFill } from './icons/icon-MobileFill.component';
+import { HviIconMobileSmall } from './icons/icon-MobileSmall.component';
+import { HviIconMobileSmallFill } from './icons/icon-MobileSmallFill.component';
+import { HviIconMobileTriangle } from './icons/icon-MobileTriangle.component';
+import { HviIconMobileTriangleFill } from './icons/icon-MobileTriangleFill.component';
+import { HviIconMonitor } from './icons/icon-Monitor.component';
+import { HviIconMonitorFill } from './icons/icon-MonitorFill.component';
+import { HviIconMonitorTriangle } from './icons/icon-MonitorTriangle.component';
+import { HviIconMonitorTriangleFill } from './icons/icon-MonitorTriangleFill.component';
+import { HviIconMoon } from './icons/icon-Moon.component';
+import { HviIconMoonFill } from './icons/icon-MoonFill.component';
+import { HviIconMotorcycle } from './icons/icon-Motorcycle.component';
+import { HviIconMotorcycleFill } from './icons/icon-MotorcycleFill.component';
+import { HviIconMountain } from './icons/icon-Mountain.component';
+import { HviIconMountainFill } from './icons/icon-MountainFill.component';
+import { HviIconMug } from './icons/icon-Mug.component';
+import { HviIconMugFill } from './icons/icon-MugFill.component';
+import { HviIconMultiply } from './icons/icon-Multiply.component';
+import { HviIconNewspaper } from './icons/icon-Newspaper.component';
+import { HviIconNewspaperFill } from './icons/icon-NewspaperFill.component';
+import { HviIconNoSmoking } from './icons/icon-NoSmoking.component';
+import { HviIconNoSmokingFill } from './icons/icon-NoSmokingFill.component';
+import { HviIconNok } from './icons/icon-Nok.component';
+import { HviIconNotePencil } from './icons/icon-NotePencil.component';
+import { HviIconNotePencilDash } from './icons/icon-NotePencilDash.component';
+import { HviIconNotePencilFill } from './icons/icon-NotePencilFill.component';
+import { HviIconNumberList } from './icons/icon-NumberList.component';
+import { HviIconOpenBook } from './icons/icon-OpenBook.component';
+import { HviIconOpenBookFill } from './icons/icon-OpenBookFill.component';
+import { HviIconOpenMagazine } from './icons/icon-OpenMagazine.component';
+import { HviIconOpenMagazineFill } from './icons/icon-OpenMagazineFill.component';
+import { HviIconOpenSource } from './icons/icon-OpenSource.component';
+import { HviIconOpenSourceFill } from './icons/icon-OpenSourceFill.component';
+import { HviIconOver18 } from './icons/icon-Over18.component';
+import { HviIconOver18Fill } from './icons/icon-Over18Fill.component';
+import { HviIconPackage } from './icons/icon-Package.component';
+import { HviIconPackageFill } from './icons/icon-PackageFill.component';
+import { HviIconPadlockLocked } from './icons/icon-PadlockLocked.component';
+import { HviIconPadlockLockedFill } from './icons/icon-PadlockLockedFill.component';
+import { HviIconPadlockUnlocked } from './icons/icon-PadlockUnlocked.component';
+import { HviIconPadlockUnlockedFill } from './icons/icon-PadlockUnlockedFill.component';
+import { HviIconPageBreak } from './icons/icon-PageBreak.component';
+import { HviIconPageBreakFill } from './icons/icon-PageBreakFill.component';
+import { HviIconPalette } from './icons/icon-Palette.component';
+import { HviIconPaletteFill } from './icons/icon-PaletteFill.component';
+import { HviIconPaperclip } from './icons/icon-Paperclip.component';
+import { HviIconPaperplane } from './icons/icon-Paperplane.component';
+import { HviIconPaperplaneFill } from './icons/icon-PaperplaneFill.component';
+import { HviIconParagraph } from './icons/icon-Paragraph.component';
+import { HviIconParasolBeach } from './icons/icon-ParasolBeach.component';
+import { HviIconParasolBeachFill } from './icons/icon-ParasolBeachFill.component';
+import { HviIconParking } from './icons/icon-Parking.component';
+import { HviIconParkingFill } from './icons/icon-ParkingFill.component';
+import { HviIconPassport } from './icons/icon-Passport.component';
+import { HviIconPassportFill } from './icons/icon-PassportFill.component';
+import { HviIconPasswordHidden } from './icons/icon-PasswordHidden.component';
+import { HviIconPause } from './icons/icon-Pause.component';
+import { HviIconPauseFill } from './icons/icon-PauseFill.component';
+import { HviIconPencil } from './icons/icon-Pencil.component';
+import { HviIconPencilBoard } from './icons/icon-PencilBoard.component';
+import { HviIconPencilBoardFill } from './icons/icon-PencilBoardFill.component';
+import { HviIconPencilFill } from './icons/icon-PencilFill.component';
+import { HviIconPencilLine } from './icons/icon-PencilLine.component';
+import { HviIconPencilLineFill } from './icons/icon-PencilLineFill.component';
+import { HviIconPencilWriting } from './icons/icon-PencilWriting.component';
+import { HviIconPencilWritingFill } from './icons/icon-PencilWritingFill.component';
+import { HviIconPentagon } from './icons/icon-Pentagon.component';
+import { HviIconPentagonFill } from './icons/icon-PentagonFill.component';
+import { HviIconPercent } from './icons/icon-Percent.component';
+import { HviIconPerson } from './icons/icon-Person.component';
+import { HviIconPersonChat } from './icons/icon-PersonChat.component';
+import { HviIconPersonChatFill } from './icons/icon-PersonChatFill.component';
+import { HviIconPersonCheckmark } from './icons/icon-PersonCheckmark.component';
+import { HviIconPersonCheckmarkFill } from './icons/icon-PersonCheckmarkFill.component';
+import { HviIconPersonCircle } from './icons/icon-PersonCircle.component';
+import { HviIconPersonCircleFill } from './icons/icon-PersonCircleFill.component';
+import { HviIconPersonCross } from './icons/icon-PersonCross.component';
+import { HviIconPersonCrossFill } from './icons/icon-PersonCrossFill.component';
+import { HviIconPersonEnvelope } from './icons/icon-PersonEnvelope.component';
+import { HviIconPersonEnvelopeFill } from './icons/icon-PersonEnvelopeFill.component';
+import { HviIconPersonFill } from './icons/icon-PersonFill.component';
+import { HviIconPersonGavel } from './icons/icon-PersonGavel.component';
+import { HviIconPersonGavelFill } from './icons/icon-PersonGavelFill.component';
+import { HviIconPersonGroup } from './icons/icon-PersonGroup.component';
+import { HviIconPersonGroupFill } from './icons/icon-PersonGroupFill.component';
+import { HviIconPersonHeadset } from './icons/icon-PersonHeadset.component';
+import { HviIconPersonHeadsetFill } from './icons/icon-PersonHeadsetFill.component';
+import { HviIconPersonMinus } from './icons/icon-PersonMinus.component';
+import { HviIconPersonMinusFill } from './icons/icon-PersonMinusFill.component';
+import { HviIconPersonPencil } from './icons/icon-PersonPencil.component';
+import { HviIconPersonPencilFill } from './icons/icon-PersonPencilFill.component';
+import { HviIconPersonPlus } from './icons/icon-PersonPlus.component';
+import { HviIconPersonPlusFill } from './icons/icon-PersonPlusFill.component';
+import { HviIconPersonPregnant } from './icons/icon-PersonPregnant.component';
+import { HviIconPersonPregnantFill } from './icons/icon-PersonPregnantFill.component';
+import { HviIconPersonRectangle } from './icons/icon-PersonRectangle.component';
+import { HviIconPersonRectangleFill } from './icons/icon-PersonRectangleFill.component';
+import { HviIconPersonSuit } from './icons/icon-PersonSuit.component';
+import { HviIconPersonSuitFill } from './icons/icon-PersonSuitFill.component';
+import { HviIconPersonTallShort } from './icons/icon-PersonTallShort.component';
+import { HviIconPersonTallShortFill } from './icons/icon-PersonTallShortFill.component';
+import { HviIconPhone } from './icons/icon-Phone.component';
+import { HviIconPhoneFill } from './icons/icon-PhoneFill.component';
+import { HviIconPhoneSlash } from './icons/icon-PhoneSlash.component';
+import { HviIconPhoneSlashFill } from './icons/icon-PhoneSlashFill.component';
+import { HviIconPieChart } from './icons/icon-PieChart.component';
+import { HviIconPieChartFill } from './icons/icon-PieChartFill.component';
+import { HviIconPiggybank } from './icons/icon-Piggybank.component';
+import { HviIconPiggybankFill } from './icons/icon-PiggybankFill.component';
+import { HviIconPillCircle } from './icons/icon-PillCircle.component';
+import { HviIconPillCircleFill } from './icons/icon-PillCircleFill.component';
+import { HviIconPillCircleRectangle } from './icons/icon-PillCircleRectangle.component';
+import { HviIconPillCircleRectangleFill } from './icons/icon-PillCircleRectangleFill.component';
+import { HviIconPillRectangle } from './icons/icon-PillRectangle.component';
+import { HviIconPillRectangleFill } from './icons/icon-PillRectangleFill.component';
+import { HviIconPin } from './icons/icon-Pin.component';
+import { HviIconPinFill } from './icons/icon-PinFill.component';
+import { HviIconPlant } from './icons/icon-Plant.component';
+import { HviIconPlantFill } from './icons/icon-PlantFill.component';
+import { HviIconPlate } from './icons/icon-Plate.component';
+import { HviIconPlateFill } from './icons/icon-PlateFill.component';
+import { HviIconPlay } from './icons/icon-Play.component';
+import { HviIconPlayFill } from './icons/icon-PlayFill.component';
+import { HviIconPlus } from './icons/icon-Plus.component';
+import { HviIconPlusCircle } from './icons/icon-PlusCircle.component';
+import { HviIconPlusCircleFill } from './icons/icon-PlusCircleFill.component';
+import { HviIconPlusMinusSlash } from './icons/icon-PlusMinusSlash.component';
+import { HviIconPortal } from './icons/icon-Portal.component';
+import { HviIconPortalFill } from './icons/icon-PortalFill.component';
+import { HviIconPresentation } from './icons/icon-Presentation.component';
+import { HviIconPresentationFill } from './icons/icon-PresentationFill.component';
+import { HviIconPrinterLarge } from './icons/icon-PrinterLarge.component';
+import { HviIconPrinterLargeFill } from './icons/icon-PrinterLargeFill.component';
+import { HviIconPrinterLargeTriangle } from './icons/icon-PrinterLargeTriangle.component';
+import { HviIconPrinterLargeTriangleFill } from './icons/icon-PrinterLargeTriangleFill.component';
+import { HviIconPrinterSmall } from './icons/icon-PrinterSmall.component';
+import { HviIconPrinterSmallFill } from './icons/icon-PrinterSmallFill.component';
+import { HviIconPrinterSmallTriangle } from './icons/icon-PrinterSmallTriangle.component';
+import { HviIconPrinterSmallTriangleFill } from './icons/icon-PrinterSmallTriangleFill.component';
+import { HviIconPushPin } from './icons/icon-PushPin.component';
+import { HviIconPushPinFill } from './icons/icon-PushPinFill.component';
+import { HviIconPuzzlePiece } from './icons/icon-PuzzlePiece.component';
+import { HviIconPuzzlePieceFill } from './icons/icon-PuzzlePieceFill.component';
+import { HviIconQrCode } from './icons/icon-QrCode.component';
+import { HviIconQrCodeFill } from './icons/icon-QrCodeFill.component';
+import { HviIconQrCodeScanning } from './icons/icon-QrCodeScanning.component';
+import { HviIconQrCodeScanningFill } from './icons/icon-QrCodeScanningFill.component';
+import { HviIconQuestionmark } from './icons/icon-Questionmark.component';
+import { HviIconQuestionmarkCircle } from './icons/icon-QuestionmarkCircle.component';
+import { HviIconQuestionmarkCircleFill } from './icons/icon-QuestionmarkCircleFill.component';
+import { HviIconQuestionmarkDiamond } from './icons/icon-QuestionmarkDiamond.component';
+import { HviIconQuestionmarkDiamondFill } from './icons/icon-QuestionmarkDiamondFill.component';
+import { HviIconQuietZone } from './icons/icon-QuietZone.component';
+import { HviIconQuietZoneFill } from './icons/icon-QuietZoneFill.component';
+import { HviIconRaindrop } from './icons/icon-Raindrop.component';
+import { HviIconRaindropFill } from './icons/icon-RaindropFill.component';
+import { HviIconReceipt } from './icons/icon-Receipt.component';
+import { HviIconReceiptFill } from './icons/icon-ReceiptFill.component';
+import { HviIconReception } from './icons/icon-Reception.component';
+import { HviIconReceptionFill } from './icons/icon-ReceptionFill.component';
+import { HviIconRecord } from './icons/icon-Record.component';
+import { HviIconRecordFill } from './icons/icon-RecordFill.component';
+import { HviIconRectangleSections } from './icons/icon-RectangleSections.component';
+import { HviIconRectangleSectionsFill } from './icons/icon-RectangleSectionsFill.component';
+import { HviIconRecycle } from './icons/icon-Recycle.component';
+import { HviIconRecycleFill } from './icons/icon-RecycleFill.component';
+import { HviIconRefrigerator } from './icons/icon-Refrigerator.component';
+import { HviIconRefrigeratorFill } from './icons/icon-RefrigeratorFill.component';
+import { HviIconRoadblock } from './icons/icon-Roadblock.component';
+import { HviIconRoadblockFill } from './icons/icon-RoadblockFill.component';
+import { HviIconRobot } from './icons/icon-Robot.component';
+import { HviIconRobotFill } from './icons/icon-RobotFill.component';
+import { HviIconRobotFrown } from './icons/icon-RobotFrown.component';
+import { HviIconRobotFrownFill } from './icons/icon-RobotFrownFill.component';
+import { HviIconRobotSmile } from './icons/icon-RobotSmile.component';
+import { HviIconRobotSmileFill } from './icons/icon-RobotSmileFill.component';
+import { HviIconRocket } from './icons/icon-Rocket.component';
+import { HviIconRocketFill } from './icons/icon-RocketFill.component';
+import { HviIconRockingHorse } from './icons/icon-RockingHorse.component';
+import { HviIconRockingHorseFill } from './icons/icon-RockingHorseFill.component';
+import { HviIconRotateLeft } from './icons/icon-RotateLeft.component';
+import { HviIconRotateLeftFill } from './icons/icon-RotateLeftFill.component';
+import { HviIconRotateRight } from './icons/icon-RotateRight.component';
+import { HviIconRotateRightFill } from './icons/icon-RotateRightFill.component';
+import { HviIconRouter } from './icons/icon-Router.component';
+import { HviIconRuler } from './icons/icon-Ruler.component';
+import { HviIconRulerFill } from './icons/icon-RulerFill.component';
+import { HviIconRulers } from './icons/icon-Rulers.component';
+import { HviIconRulersFill } from './icons/icon-RulersFill.component';
+import { HviIconSack } from './icons/icon-Sack.component';
+import { HviIconSackFill } from './icons/icon-SackFill.component';
+import { HviIconSackKroner } from './icons/icon-SackKroner.component';
+import { HviIconSackKronerFill } from './icons/icon-SackKronerFill.component';
+import { HviIconSackPension } from './icons/icon-SackPension.component';
+import { HviIconSackPensionFill } from './icons/icon-SackPensionFill.component';
+import { HviIconSandbox } from './icons/icon-Sandbox.component';
+import { HviIconSandboxFill } from './icons/icon-SandboxFill.component';
+import { HviIconScissors } from './icons/icon-Scissors.component';
+import { HviIconScissorsFill } from './icons/icon-ScissorsFill.component';
+import { HviIconSeal } from './icons/icon-Seal.component';
+import { HviIconSealCheckmark } from './icons/icon-SealCheckmark.component';
+import { HviIconSealCheckmarkFill } from './icons/icon-SealCheckmarkFill.component';
+import { HviIconSealFill } from './icons/icon-SealFill.component';
+import { HviIconSealXMark } from './icons/icon-SealXMark.component';
+import { HviIconSealXMarkFill } from './icons/icon-SealXMarkFill.component';
+import { HviIconSectorChart } from './icons/icon-SectorChart.component';
+import { HviIconSectorChartFill } from './icons/icon-SectorChartFill.component';
+import { HviIconShield } from './icons/icon-Shield.component';
+import { HviIconShieldCheckmark } from './icons/icon-ShieldCheckmark.component';
+import { HviIconShieldCheckmarkFill } from './icons/icon-ShieldCheckmarkFill.component';
+import { HviIconShieldFill } from './icons/icon-ShieldFill.component';
+import { HviIconShieldLock } from './icons/icon-ShieldLock.component';
+import { HviIconShieldLockFill } from './icons/icon-ShieldLockFill.component';
+import { HviIconShoppingBasket } from './icons/icon-ShoppingBasket.component';
+import { HviIconShoppingBasketFill } from './icons/icon-ShoppingBasketFill.component';
+import { HviIconShower } from './icons/icon-Shower.component';
+import { HviIconShowerFill } from './icons/icon-ShowerFill.component';
+import { HviIconShrink } from './icons/icon-Shrink.component';
+import { HviIconSidebarBoth } from './icons/icon-SidebarBoth.component';
+import { HviIconSidebarBothFill } from './icons/icon-SidebarBothFill.component';
+import { HviIconSidebarLeft } from './icons/icon-SidebarLeft.component';
+import { HviIconSidebarLeftFill } from './icons/icon-SidebarLeftFill.component';
+import { HviIconSidebarRight } from './icons/icon-SidebarRight.component';
+import { HviIconSidebarRightFill } from './icons/icon-SidebarRightFill.component';
+import { HviIconSignLanguageSingleHand } from './icons/icon-SignLanguageSingleHand.component';
+import { HviIconSignLanguageSingleHandFill } from './icons/icon-SignLanguageSingleHandFill.component';
+import { HviIconSignLanguageTwoHands } from './icons/icon-SignLanguageTwoHands.component';
+import { HviIconSignLanguageTwoHandsFill } from './icons/icon-SignLanguageTwoHandsFill.component';
+import { HviIconSilhouette } from './icons/icon-Silhouette.component';
+import { HviIconSilhouetteFill } from './icons/icon-SilhouetteFill.component';
+import { HviIconSkipBackward } from './icons/icon-SkipBackward.component';
+import { HviIconSkipBackwardFill } from './icons/icon-SkipBackwardFill.component';
+import { HviIconSkipForward } from './icons/icon-SkipForward.component';
+import { HviIconSkipForwardFill } from './icons/icon-SkipForwardFill.component';
+import { HviIconSlide } from './icons/icon-Slide.component';
+import { HviIconSlideFill } from './icons/icon-SlideFill.component';
+import { HviIconSnow } from './icons/icon-Snow.component';
+import { HviIconSortDown } from './icons/icon-SortDown.component';
+import { HviIconSortUp } from './icons/icon-SortUp.component';
+import { HviIconSpaceHorizontal } from './icons/icon-SpaceHorizontal.component';
+import { HviIconSpaceVertical } from './icons/icon-SpaceVertical.component';
+import { HviIconSparkLarge } from './icons/icon-SparkLarge.component';
+import { HviIconSparkSmall } from './icons/icon-SparkSmall.component';
+import { HviIconSparkles } from './icons/icon-Sparkles.component';
+import { HviIconSparklesFill } from './icons/icon-SparklesFill.component';
+import { HviIconSpeaker } from './icons/icon-Speaker.component';
+import { HviIconSpeakerFill } from './icons/icon-SpeakerFill.component';
+import { HviIconSpeakerSlash } from './icons/icon-SpeakerSlash.component';
+import { HviIconSpeakerSlashFill } from './icons/icon-SpeakerSlashFill.component';
+import { HviIconSpeakerSoundWave1 } from './icons/icon-SpeakerSoundWave1.component';
+import { HviIconSpeakerSoundWave1Fill } from './icons/icon-SpeakerSoundWave1Fill.component';
+import { HviIconSpeakerSoundWave2 } from './icons/icon-SpeakerSoundWave2.component';
+import { HviIconSpeakerSoundWave2Fill } from './icons/icon-SpeakerSoundWave2Fill.component';
+import { HviIconSpeakerSoundWave3 } from './icons/icon-SpeakerSoundWave3.component';
+import { HviIconSpeakerSoundWave3Fill } from './icons/icon-SpeakerSoundWave3Fill.component';
+import { HviIconSplitHorizontal } from './icons/icon-SplitHorizontal.component';
+import { HviIconSplitHorizontalFill } from './icons/icon-SplitHorizontalFill.component';
+import { HviIconSplitVertical } from './icons/icon-SplitVertical.component';
+import { HviIconSplitVerticalFill } from './icons/icon-SplitVerticalFill.component';
+import { HviIconSpoon } from './icons/icon-Spoon.component';
+import { HviIconSpoonFill } from './icons/icon-SpoonFill.component';
+import { HviIconSquare } from './icons/icon-Square.component';
+import { HviIconSquareFill } from './icons/icon-SquareFill.component';
+import { HviIconSquareGrid } from './icons/icon-SquareGrid.component';
+import { HviIconSquareGridFill } from './icons/icon-SquareGridFill.component';
+import { HviIconSquareroot } from './icons/icon-Squareroot.component';
+import { HviIconStaircase } from './icons/icon-Staircase.component';
+import { HviIconStar } from './icons/icon-Star.component';
+import { HviIconStarFill } from './icons/icon-StarFill.component';
+import { HviIconStarOfLife } from './icons/icon-StarOfLife.component';
+import { HviIconStarOfLifeFill } from './icons/icon-StarOfLifeFill.component';
+import { HviIconStarsEu } from './icons/icon-StarsEu.component';
+import { HviIconStethoscope } from './icons/icon-Stethoscope.component';
+import { HviIconStop } from './icons/icon-Stop.component';
+import { HviIconStopFill } from './icons/icon-StopFill.component';
+import { HviIconStroller } from './icons/icon-Stroller.component';
+import { HviIconStrollerFill } from './icons/icon-StrollerFill.component';
+import { HviIconSun } from './icons/icon-Sun.component';
+import { HviIconSunFill } from './icons/icon-SunFill.component';
+import { HviIconTable } from './icons/icon-Table.component';
+import { HviIconTableFill } from './icons/icon-TableFill.component';
+import { HviIconTablet } from './icons/icon-Tablet.component';
+import { HviIconTabletFill } from './icons/icon-TabletFill.component';
+import { HviIconTabs } from './icons/icon-Tabs.component';
+import { HviIconTabsAdd } from './icons/icon-TabsAdd.component';
+import { HviIconTabsAddFill } from './icons/icon-TabsAddFill.component';
+import { HviIconTabsFill } from './icons/icon-TabsFill.component';
+import { HviIconTabsRemove } from './icons/icon-TabsRemove.component';
+import { HviIconTabsRemoveFill } from './icons/icon-TabsRemoveFill.component';
+import { HviIconTag } from './icons/icon-Tag.component';
+import { HviIconTagFill } from './icons/icon-TagFill.component';
+import { HviIconTapWater } from './icons/icon-TapWater.component';
+import { HviIconTapWaterFill } from './icons/icon-TapWaterFill.component';
+import { HviIconTasklist } from './icons/icon-Tasklist.component';
+import { HviIconTasklistFill } from './icons/icon-TasklistFill.component';
+import { HviIconTasklistSave } from './icons/icon-TasklistSave.component';
+import { HviIconTasklistSaveFill } from './icons/icon-TasklistSaveFill.component';
+import { HviIconTasklistSend } from './icons/icon-TasklistSend.component';
+import { HviIconTasklistSendFill } from './icons/icon-TasklistSendFill.component';
+import { HviIconTasklistStart } from './icons/icon-TasklistStart.component';
+import { HviIconTasklistStartFill } from './icons/icon-TasklistStartFill.component';
+import { HviIconTeddyBear } from './icons/icon-TeddyBear.component';
+import { HviIconTeddyBearFill } from './icons/icon-TeddyBearFill.component';
+import { HviIconTenancy } from './icons/icon-Tenancy.component';
+import { HviIconTenancyFill } from './icons/icon-TenancyFill.component';
+import { HviIconTerminal } from './icons/icon-Terminal.component';
+import { HviIconTerminalFill } from './icons/icon-TerminalFill.component';
+import { HviIconTestFlask } from './icons/icon-TestFlask.component';
+import { HviIconTestFlaskFill } from './icons/icon-TestFlaskFill.component';
+import { HviIconTheme } from './icons/icon-Theme.component';
+import { HviIconThermometer } from './icons/icon-Thermometer.component';
+import { HviIconThermometerFill } from './icons/icon-ThermometerFill.component';
+import { HviIconThumbDown } from './icons/icon-ThumbDown.component';
+import { HviIconThumbDownFill } from './icons/icon-ThumbDownFill.component';
+import { HviIconThumbUp } from './icons/icon-ThumbUp.component';
+import { HviIconThumbUpFill } from './icons/icon-ThumbUpFill.component';
+import { HviIconTimer } from './icons/icon-Timer.component';
+import { HviIconTimerFill } from './icons/icon-TimerFill.component';
+import { HviIconTimerPause } from './icons/icon-TimerPause.component';
+import { HviIconTimerPauseFill } from './icons/icon-TimerPauseFill.component';
+import { HviIconTimerStart } from './icons/icon-TimerStart.component';
+import { HviIconTimerStartFill } from './icons/icon-TimerStartFill.component';
+import { HviIconToilet } from './icons/icon-Toilet.component';
+import { HviIconToiletFill } from './icons/icon-ToiletFill.component';
+import { HviIconToken } from './icons/icon-Token.component';
+import { HviIconTokenFill } from './icons/icon-TokenFill.component';
+import { HviIconTooth } from './icons/icon-Tooth.component';
+import { HviIconToothFill } from './icons/icon-ToothFill.component';
+import { HviIconTrain } from './icons/icon-Train.component';
+import { HviIconTrainFill } from './icons/icon-TrainFill.component';
+import { HviIconTram } from './icons/icon-Tram.component';
+import { HviIconTramFill } from './icons/icon-TramFill.component';
+import { HviIconTrash } from './icons/icon-Trash.component';
+import { HviIconTrashFill } from './icons/icon-TrashFill.component';
+import { HviIconTrayFood } from './icons/icon-TrayFood.component';
+import { HviIconTrayFoodFill } from './icons/icon-TrayFoodFill.component';
+import { HviIconTrendDown } from './icons/icon-TrendDown.component';
+import { HviIconTrendFlat } from './icons/icon-TrendFlat.component';
+import { HviIconTrendUp } from './icons/icon-TrendUp.component';
+import { HviIconTriangle } from './icons/icon-Triangle.component';
+import { HviIconTriangleFill } from './icons/icon-TriangleFill.component';
+import { HviIconTruck } from './icons/icon-Truck.component';
+import { HviIconTruckFill } from './icons/icon-TruckFill.component';
+import { HviIconTruckPercent } from './icons/icon-TruckPercent.component';
+import { HviIconTruckPercentFill } from './icons/icon-TruckPercentFill.component';
+import { HviIconUmbrella } from './icons/icon-Umbrella.component';
+import { HviIconUmbrellaFill } from './icons/icon-UmbrellaFill.component';
+import { HviIconUpload } from './icons/icon-Upload.component';
+import { HviIconVideo } from './icons/icon-Video.component';
+import { HviIconVideoFill } from './icons/icon-VideoFill.component';
+import { HviIconVideoSlash } from './icons/icon-VideoSlash.component';
+import { HviIconVideoSlashFill } from './icons/icon-VideoSlashFill.component';
+import { HviIconVideoplayer } from './icons/icon-Videoplayer.component';
+import { HviIconVideoplayerFill } from './icons/icon-VideoplayerFill.component';
+import { HviIconVirus } from './icons/icon-Virus.component';
+import { HviIconVirusFill } from './icons/icon-VirusFill.component';
+import { HviIconVitals } from './icons/icon-Vitals.component';
+import { HviIconWaitingRoom } from './icons/icon-WaitingRoom.component';
+import { HviIconWaitingRoomFill } from './icons/icon-WaitingRoomFill.component';
+import { HviIconWallet } from './icons/icon-Wallet.component';
+import { HviIconWalletFill } from './icons/icon-WalletFill.component';
+import { HviIconWateringCan } from './icons/icon-WateringCan.component';
+import { HviIconWateringCanFill } from './icons/icon-WateringCanFill.component';
+import { HviIconWaveform } from './icons/icon-Waveform.component';
+import { HviIconWaves } from './icons/icon-Waves.component';
+import { HviIconWeight } from './icons/icon-Weight.component';
+import { HviIconWheelchair } from './icons/icon-Wheelchair.component';
+import { HviIconWheelchairFill } from './icons/icon-WheelchairFill.component';
+import { HviIconWrench } from './icons/icon-Wrench.component';
+import { HviIconWrenchFill } from './icons/icon-WrenchFill.component';
+import { HviIconXMark } from './icons/icon-XMark.component';
+import { HviIconXMarkOctagon } from './icons/icon-XMarkOctagon.component';
+import { HviIconXMarkOctagonFill } from './icons/icon-XMarkOctagonFill.component';
+import { HviIconZoomMinus } from './icons/icon-ZoomMinus.component';
+import { HviIconZoomMinusFill } from './icons/icon-ZoomMinusFill.component';
+import { HviIconZoomPlus } from './icons/icon-ZoomPlus.component';
+import { HviIconZoomPlusFill } from './icons/icon-ZoomPlusFill.component';
 
 let registered = false;
 
+/**
+ * Register all Hviktor icons as custom Web Components.
+ *
+ * This allows icons to be used in any framework (Angular, Blazor, React, Vue, etc.)
+ * as standard HTML custom elements.
+ *
+ * @example
+ * // In Angular main.ts or app initialization
+ * import { registerIconsAsCustomElements } from '@helsevestikt/hviktor-icons';
+ *
+ * registerIconsAsCustomElements();
+ *
+ * // Then use anywhere in templates
+ * <hvi-icon-user size="md"></hvi-icon-user>
+ */
 export async function registerIconsAsCustomElements() {
   if (registered) return;
 
@@ -12,8 +972,971 @@ export async function registerIconsAsCustomElements() {
   const injector = app.injector;
 
   const elements = [
-    { tag: 'hvi-icon-user', component: HviIconUser },
-    { tag: 'hvi-icon-home', component: HviIconHome },
+    { tag: 'hvi-icon-Airplane', component: HviIconAirplane },
+    { tag: 'hvi-icon-AirplaneFill', component: HviIconAirplaneFill },
+    { tag: 'hvi-icon-AlignBottom', component: HviIconAlignBottom },
+    { tag: 'hvi-icon-AlignBottomFill', component: HviIconAlignBottomFill },
+    { tag: 'hvi-icon-AlignCenter', component: HviIconAlignCenter },
+    { tag: 'hvi-icon-AlignCenterFill', component: HviIconAlignCenterFill },
+    { tag: 'hvi-icon-AlignLeft', component: HviIconAlignLeft },
+    { tag: 'hvi-icon-AlignLeftFill', component: HviIconAlignLeftFill },
+    { tag: 'hvi-icon-AlignMiddle', component: HviIconAlignMiddle },
+    { tag: 'hvi-icon-AlignMiddleFill', component: HviIconAlignMiddleFill },
+    { tag: 'hvi-icon-AlignRight', component: HviIconAlignRight },
+    { tag: 'hvi-icon-AlignRightFill', component: HviIconAlignRightFill },
+    { tag: 'hvi-icon-AlignTop', component: HviIconAlignTop },
+    { tag: 'hvi-icon-AlignTopFill', component: HviIconAlignTopFill },
+    { tag: 'hvi-icon-Allergens', component: HviIconAllergens },
+    { tag: 'hvi-icon-AllergensFill', component: HviIconAllergensFill },
+    { tag: 'hvi-icon-Angle', component: HviIconAngle },
+    { tag: 'hvi-icon-AngleRulerCircle', component: HviIconAngleRulerCircle },
+    { tag: 'hvi-icon-AngleRulerCircleFill', component: HviIconAngleRulerCircleFill },
+    { tag: 'hvi-icon-AngleRulerTriangle', component: HviIconAngleRulerTriangle },
+    { tag: 'hvi-icon-AngleRulerTriangleFill', component: HviIconAngleRulerTriangleFill },
+    { tag: 'hvi-icon-Archive', component: HviIconArchive },
+    { tag: 'hvi-icon-ArchiveFill', component: HviIconArchiveFill },
+    { tag: 'hvi-icon-AreaChart', component: HviIconAreaChart },
+    { tag: 'hvi-icon-AreaChartFill', component: HviIconAreaChartFill },
+    { tag: 'hvi-icon-ArrowCirclepath', component: HviIconArrowCirclepath },
+    { tag: 'hvi-icon-ArrowCirclepathReverse', component: HviIconArrowCirclepathReverse },
+    { tag: 'hvi-icon-ArrowDown', component: HviIconArrowDown },
+    { tag: 'hvi-icon-ArrowDownRight', component: HviIconArrowDownRight },
+    { tag: 'hvi-icon-ArrowForward', component: HviIconArrowForward },
+    { tag: 'hvi-icon-ArrowForwardFill', component: HviIconArrowForwardFill },
+    { tag: 'hvi-icon-ArrowLeft', component: HviIconArrowLeft },
+    { tag: 'hvi-icon-ArrowRedo', component: HviIconArrowRedo },
+    { tag: 'hvi-icon-ArrowRight', component: HviIconArrowRight },
+    { tag: 'hvi-icon-ArrowRightLeft', component: HviIconArrowRightLeft },
+    { tag: 'hvi-icon-ArrowUndo', component: HviIconArrowUndo },
+    { tag: 'hvi-icon-ArrowUp', component: HviIconArrowUp },
+    { tag: 'hvi-icon-ArrowsAllDirections', component: HviIconArrowsAllDirections },
+    { tag: 'hvi-icon-ArrowsCirclepath', component: HviIconArrowsCirclepath },
+    { tag: 'hvi-icon-ArrowsSquarepath', component: HviIconArrowsSquarepath },
+    { tag: 'hvi-icon-ArrowsUpDown', component: HviIconArrowsUpDown },
+    { tag: 'hvi-icon-BabyWrapped', component: HviIconBabyWrapped },
+    { tag: 'hvi-icon-BabyWrappedFill', component: HviIconBabyWrappedFill },
+    { tag: 'hvi-icon-Backpack', component: HviIconBackpack },
+    { tag: 'hvi-icon-BackpackFill', component: HviIconBackpackFill },
+    { tag: 'hvi-icon-Backward', component: HviIconBackward },
+    { tag: 'hvi-icon-BackwardFill', component: HviIconBackwardFill },
+    { tag: 'hvi-icon-Bacteria', component: HviIconBacteria },
+    { tag: 'hvi-icon-BacteriaFill', component: HviIconBacteriaFill },
+    { tag: 'hvi-icon-Bagde', component: HviIconBagde },
+    { tag: 'hvi-icon-BagdeFill', component: HviIconBagdeFill },
+    { tag: 'hvi-icon-Baggage', component: HviIconBaggage },
+    { tag: 'hvi-icon-BaggageFill', component: HviIconBaggageFill },
+    { tag: 'hvi-icon-Bandage', component: HviIconBandage },
+    { tag: 'hvi-icon-BandageFill', component: HviIconBandageFill },
+    { tag: 'hvi-icon-BankNote', component: HviIconBankNote },
+    { tag: 'hvi-icon-BankNoteFill', component: HviIconBankNoteFill },
+    { tag: 'hvi-icon-BarChart', component: HviIconBarChart },
+    { tag: 'hvi-icon-BarChartFill', component: HviIconBarChartFill },
+    { tag: 'hvi-icon-Bed', component: HviIconBed },
+    { tag: 'hvi-icon-BedFill', component: HviIconBedFill },
+    { tag: 'hvi-icon-Bell', component: HviIconBell },
+    { tag: 'hvi-icon-BellDot', component: HviIconBellDot },
+    { tag: 'hvi-icon-BellDotFill', component: HviIconBellDotFill },
+    { tag: 'hvi-icon-BellFill', component: HviIconBellFill },
+    { tag: 'hvi-icon-BellSlash', component: HviIconBellSlash },
+    { tag: 'hvi-icon-BellSlashFill', component: HviIconBellSlashFill },
+    { tag: 'hvi-icon-Bicycle', component: HviIconBicycle },
+    { tag: 'hvi-icon-Boat', component: HviIconBoat },
+    { tag: 'hvi-icon-BoatFill', component: HviIconBoatFill },
+    { tag: 'hvi-icon-Bone', component: HviIconBone },
+    { tag: 'hvi-icon-BoneBroken', component: HviIconBoneBroken },
+    { tag: 'hvi-icon-BoneFill', component: HviIconBoneFill },
+    { tag: 'hvi-icon-Book', component: HviIconBook },
+    { tag: 'hvi-icon-BookFill', component: HviIconBookFill },
+    { tag: 'hvi-icon-Bookmark', component: HviIconBookmark },
+    { tag: 'hvi-icon-BookmarkDash', component: HviIconBookmarkDash },
+    { tag: 'hvi-icon-BookmarkFill', component: HviIconBookmarkFill },
+    { tag: 'hvi-icon-Books', component: HviIconBooks },
+    { tag: 'hvi-icon-BooksFill', component: HviIconBooksFill },
+    { tag: 'hvi-icon-Bowl', component: HviIconBowl },
+    { tag: 'hvi-icon-BowlFill', component: HviIconBowlFill },
+    { tag: 'hvi-icon-Braille', component: HviIconBraille },
+    { tag: 'hvi-icon-BrailleFill', component: HviIconBrailleFill },
+    { tag: 'hvi-icon-Branching', component: HviIconBranching },
+    { tag: 'hvi-icon-Briefcase', component: HviIconBriefcase },
+    { tag: 'hvi-icon-BriefcaseClock', component: HviIconBriefcaseClock },
+    { tag: 'hvi-icon-BriefcaseClockFill', component: HviIconBriefcaseClockFill },
+    { tag: 'hvi-icon-BriefcaseFill', component: HviIconBriefcaseFill },
+    { tag: 'hvi-icon-Broadcast', component: HviIconBroadcast },
+    { tag: 'hvi-icon-BroadcastMinusCircle', component: HviIconBroadcastMinusCircle },
+    { tag: 'hvi-icon-BroadcastMinusCircleFill', component: HviIconBroadcastMinusCircleFill },
+    { tag: 'hvi-icon-BroadcastPlusCircle', component: HviIconBroadcastPlusCircle },
+    { tag: 'hvi-icon-BroadcastPlusCircleFill', component: HviIconBroadcastPlusCircleFill },
+    { tag: 'hvi-icon-BubbleChart', component: HviIconBubbleChart },
+    { tag: 'hvi-icon-BubbleChartFill', component: HviIconBubbleChartFill },
+    { tag: 'hvi-icon-Bucket', component: HviIconBucket },
+    { tag: 'hvi-icon-BucketFill', component: HviIconBucketFill },
+    { tag: 'hvi-icon-BucketMop', component: HviIconBucketMop },
+    { tag: 'hvi-icon-BucketMopFill', component: HviIconBucketMopFill },
+    { tag: 'hvi-icon-Bug', component: HviIconBug },
+    { tag: 'hvi-icon-BugFill', component: HviIconBugFill },
+    { tag: 'hvi-icon-Buildings2', component: HviIconBuildings2 },
+    { tag: 'hvi-icon-Buildings2Fill', component: HviIconBuildings2Fill },
+    { tag: 'hvi-icon-Buildings3', component: HviIconBuildings3 },
+    { tag: 'hvi-icon-Buildings3Fill', component: HviIconBuildings3Fill },
+    { tag: 'hvi-icon-BulletList', component: HviIconBulletList },
+    { tag: 'hvi-icon-Bus', component: HviIconBus },
+    { tag: 'hvi-icon-BusFill', component: HviIconBusFill },
+    { tag: 'hvi-icon-Calculator', component: HviIconCalculator },
+    { tag: 'hvi-icon-CalculatorFill', component: HviIconCalculatorFill },
+    { tag: 'hvi-icon-Calendar', component: HviIconCalendar },
+    { tag: 'hvi-icon-CalendarFill', component: HviIconCalendarFill },
+    { tag: 'hvi-icon-Camera', component: HviIconCamera },
+    { tag: 'hvi-icon-CameraFill', component: HviIconCameraFill },
+    { tag: 'hvi-icon-CameraTriangle', component: HviIconCameraTriangle },
+    { tag: 'hvi-icon-CameraTriangleFill', component: HviIconCameraTriangleFill },
+    { tag: 'hvi-icon-Candle', component: HviIconCandle },
+    { tag: 'hvi-icon-CandleFill', component: HviIconCandleFill },
+    { tag: 'hvi-icon-Captions', component: HviIconCaptions },
+    { tag: 'hvi-icon-CaptionsFill', component: HviIconCaptionsFill },
+    { tag: 'hvi-icon-Car', component: HviIconCar },
+    { tag: 'hvi-icon-CarFill', component: HviIconCarFill },
+    { tag: 'hvi-icon-Card', component: HviIconCard },
+    { tag: 'hvi-icon-CardFill', component: HviIconCardFill },
+    { tag: 'hvi-icon-CaretDown', component: HviIconCaretDown },
+    { tag: 'hvi-icon-CaretDownCircle', component: HviIconCaretDownCircle },
+    { tag: 'hvi-icon-CaretDownCircleFill', component: HviIconCaretDownCircleFill },
+    { tag: 'hvi-icon-CaretDownFill', component: HviIconCaretDownFill },
+    { tag: 'hvi-icon-CaretLeft', component: HviIconCaretLeft },
+    { tag: 'hvi-icon-CaretLeftCircle', component: HviIconCaretLeftCircle },
+    { tag: 'hvi-icon-CaretLeftCircleFill', component: HviIconCaretLeftCircleFill },
+    { tag: 'hvi-icon-CaretLeftFill', component: HviIconCaretLeftFill },
+    { tag: 'hvi-icon-CaretLeftRight', component: HviIconCaretLeftRight },
+    { tag: 'hvi-icon-CaretLeftRightFill', component: HviIconCaretLeftRightFill },
+    { tag: 'hvi-icon-CaretRight', component: HviIconCaretRight },
+    { tag: 'hvi-icon-CaretRightCircle', component: HviIconCaretRightCircle },
+    { tag: 'hvi-icon-CaretRightCircleFill', component: HviIconCaretRightCircleFill },
+    { tag: 'hvi-icon-CaretRightFill', component: HviIconCaretRightFill },
+    { tag: 'hvi-icon-CaretUp', component: HviIconCaretUp },
+    { tag: 'hvi-icon-CaretUpCircle', component: HviIconCaretUpCircle },
+    { tag: 'hvi-icon-CaretUpCircleFill', component: HviIconCaretUpCircleFill },
+    { tag: 'hvi-icon-CaretUpDown', component: HviIconCaretUpDown },
+    { tag: 'hvi-icon-CaretUpDownFill', component: HviIconCaretUpDownFill },
+    { tag: 'hvi-icon-CaretUpDownFilledDown', component: HviIconCaretUpDownFilledDown },
+    { tag: 'hvi-icon-CaretUpDownFilledUp', component: HviIconCaretUpDownFilledUp },
+    { tag: 'hvi-icon-CaretUpFill', component: HviIconCaretUpFill },
+    { tag: 'hvi-icon-ChairTable', component: HviIconChairTable },
+    { tag: 'hvi-icon-ChangingRoom', component: HviIconChangingRoom },
+    { tag: 'hvi-icon-ChangingRoomFill', component: HviIconChangingRoomFill },
+    { tag: 'hvi-icon-Chat', component: HviIconChat },
+    { tag: 'hvi-icon-Chat2', component: HviIconChat2 },
+    { tag: 'hvi-icon-Chat2Fill', component: HviIconChat2Fill },
+    { tag: 'hvi-icon-ChatAdd', component: HviIconChatAdd },
+    { tag: 'hvi-icon-ChatAddFill', component: HviIconChatAddFill },
+    { tag: 'hvi-icon-ChatCheckmark', component: HviIconChatCheckmark },
+    { tag: 'hvi-icon-ChatCheckmarkFill', component: HviIconChatCheckmarkFill },
+    { tag: 'hvi-icon-ChatElipsis', component: HviIconChatElipsis },
+    { tag: 'hvi-icon-ChatElipsisFill', component: HviIconChatElipsisFill },
+    { tag: 'hvi-icon-ChatExclamationmark', component: HviIconChatExclamationmark },
+    { tag: 'hvi-icon-ChatExclamationmarkFill', component: HviIconChatExclamationmarkFill },
+    { tag: 'hvi-icon-ChatFill', component: HviIconChatFill },
+    { tag: 'hvi-icon-Checkmark', component: HviIconCheckmark },
+    { tag: 'hvi-icon-CheckmarkCircle', component: HviIconCheckmarkCircle },
+    { tag: 'hvi-icon-CheckmarkCircleFill', component: HviIconCheckmarkCircleFill },
+    { tag: 'hvi-icon-CheckmarkHeavy', component: HviIconCheckmarkHeavy },
+    { tag: 'hvi-icon-ChefHat', component: HviIconChefHat },
+    { tag: 'hvi-icon-ChefHatFill', component: HviIconChefHatFill },
+    { tag: 'hvi-icon-ChevronDown', component: HviIconChevronDown },
+    { tag: 'hvi-icon-ChevronDownCircle', component: HviIconChevronDownCircle },
+    { tag: 'hvi-icon-ChevronDownCircleFill', component: HviIconChevronDownCircleFill },
+    { tag: 'hvi-icon-ChevronDownDouble', component: HviIconChevronDownDouble },
+    { tag: 'hvi-icon-ChevronDownDoubleCircle', component: HviIconChevronDownDoubleCircle },
+    { tag: 'hvi-icon-ChevronDownDoubleCircleFill', component: HviIconChevronDownDoubleCircleFill },
+    { tag: 'hvi-icon-ChevronDownUp', component: HviIconChevronDownUp },
+    { tag: 'hvi-icon-ChevronLeft', component: HviIconChevronLeft },
+    { tag: 'hvi-icon-ChevronLeftCircle', component: HviIconChevronLeftCircle },
+    { tag: 'hvi-icon-ChevronLeftCircleFill', component: HviIconChevronLeftCircleFill },
+    { tag: 'hvi-icon-ChevronLeftDouble', component: HviIconChevronLeftDouble },
+    { tag: 'hvi-icon-ChevronLeftDoubleCircle', component: HviIconChevronLeftDoubleCircle },
+    { tag: 'hvi-icon-ChevronLeftDoubleCircleFill', component: HviIconChevronLeftDoubleCircleFill },
+    { tag: 'hvi-icon-ChevronLeftFirst', component: HviIconChevronLeftFirst },
+    { tag: 'hvi-icon-ChevronLeftFirstCircle', component: HviIconChevronLeftFirstCircle },
+    { tag: 'hvi-icon-ChevronLeftFirstCircleFill', component: HviIconChevronLeftFirstCircleFill },
+    { tag: 'hvi-icon-ChevronRight', component: HviIconChevronRight },
+    { tag: 'hvi-icon-ChevronRightCircle', component: HviIconChevronRightCircle },
+    { tag: 'hvi-icon-ChevronRightCircleFill', component: HviIconChevronRightCircleFill },
+    { tag: 'hvi-icon-ChevronRightDouble', component: HviIconChevronRightDouble },
+    { tag: 'hvi-icon-ChevronRightDoubleCircle', component: HviIconChevronRightDoubleCircle },
+    {
+      tag: 'hvi-icon-ChevronRightDoubleCircleFill',
+      component: HviIconChevronRightDoubleCircleFill,
+    },
+    { tag: 'hvi-icon-ChevronRightLast', component: HviIconChevronRightLast },
+    { tag: 'hvi-icon-ChevronRightLastCircle', component: HviIconChevronRightLastCircle },
+    { tag: 'hvi-icon-ChevronRightLastCircleFill', component: HviIconChevronRightLastCircleFill },
+    { tag: 'hvi-icon-ChevronUp', component: HviIconChevronUp },
+    { tag: 'hvi-icon-ChevronUpCircle', component: HviIconChevronUpCircle },
+    { tag: 'hvi-icon-ChevronUpCircleFill', component: HviIconChevronUpCircleFill },
+    { tag: 'hvi-icon-ChevronUpDouble', component: HviIconChevronUpDouble },
+    { tag: 'hvi-icon-ChevronUpDoubleCircle', component: HviIconChevronUpDoubleCircle },
+    { tag: 'hvi-icon-ChevronUpDoubleCircleFill', component: HviIconChevronUpDoubleCircleFill },
+    { tag: 'hvi-icon-ChevronUpDown', component: HviIconChevronUpDown },
+    { tag: 'hvi-icon-ChildEyes', component: HviIconChildEyes },
+    { tag: 'hvi-icon-ChildEyesFill', component: HviIconChildEyesFill },
+    { tag: 'hvi-icon-ChildHairEyes', component: HviIconChildHairEyes },
+    { tag: 'hvi-icon-ChildHairEyesFill', component: HviIconChildHairEyesFill },
+    { tag: 'hvi-icon-Cigarette', component: HviIconCigarette },
+    { tag: 'hvi-icon-CigaretteFill', component: HviIconCigaretteFill },
+    { tag: 'hvi-icon-Circle', component: HviIconCircle },
+    { tag: 'hvi-icon-CircleBroken', component: HviIconCircleBroken },
+    { tag: 'hvi-icon-CircleFill', component: HviIconCircleFill },
+    { tag: 'hvi-icon-CircleSlash', component: HviIconCircleSlash },
+    { tag: 'hvi-icon-CircleSlashFill', component: HviIconCircleSlashFill },
+    { tag: 'hvi-icon-Clipboard', component: HviIconClipboard },
+    { tag: 'hvi-icon-ClipboardCheckmark', component: HviIconClipboardCheckmark },
+    { tag: 'hvi-icon-ClipboardCheckmarkFill', component: HviIconClipboardCheckmarkFill },
+    { tag: 'hvi-icon-ClipboardFill', component: HviIconClipboardFill },
+    { tag: 'hvi-icon-ClipboardLink', component: HviIconClipboardLink },
+    { tag: 'hvi-icon-ClipboardLinkFill', component: HviIconClipboardLinkFill },
+    { tag: 'hvi-icon-ClipboardXMark', component: HviIconClipboardXMark },
+    { tag: 'hvi-icon-ClipboardXMarkFill', component: HviIconClipboardXMarkFill },
+    { tag: 'hvi-icon-Clock', component: HviIconClock },
+    { tag: 'hvi-icon-ClockDashed', component: HviIconClockDashed },
+    { tag: 'hvi-icon-ClockFill', component: HviIconClockFill },
+    { tag: 'hvi-icon-ClothingHanger', component: HviIconClothingHanger },
+    { tag: 'hvi-icon-ClothingHangerFill', component: HviIconClothingHangerFill },
+    { tag: 'hvi-icon-Cloud', component: HviIconCloud },
+    { tag: 'hvi-icon-CloudDown', component: HviIconCloudDown },
+    { tag: 'hvi-icon-CloudDownFill', component: HviIconCloudDownFill },
+    { tag: 'hvi-icon-CloudFill', component: HviIconCloudFill },
+    { tag: 'hvi-icon-CloudSlash', component: HviIconCloudSlash },
+    { tag: 'hvi-icon-CloudSlashFill', component: HviIconCloudSlashFill },
+    { tag: 'hvi-icon-CloudUp', component: HviIconCloudUp },
+    { tag: 'hvi-icon-CloudUpFill', component: HviIconCloudUpFill },
+    { tag: 'hvi-icon-Code', component: HviIconCode },
+    { tag: 'hvi-icon-Coffee', component: HviIconCoffee },
+    { tag: 'hvi-icon-CoffeeFill', component: HviIconCoffeeFill },
+    { tag: 'hvi-icon-Cog', component: HviIconCog },
+    { tag: 'hvi-icon-CogFill', component: HviIconCogFill },
+    { tag: 'hvi-icon-CogRotation', component: HviIconCogRotation },
+    { tag: 'hvi-icon-CogRotationFill', component: HviIconCogRotationFill },
+    { tag: 'hvi-icon-Combifridge1', component: HviIconCombifridge1 },
+    { tag: 'hvi-icon-Combifridge1Fill', component: HviIconCombifridge1Fill },
+    { tag: 'hvi-icon-Combifridge2', component: HviIconCombifridge2 },
+    { tag: 'hvi-icon-Combifridge2Fill', component: HviIconCombifridge2Fill },
+    { tag: 'hvi-icon-Compass', component: HviIconCompass },
+    { tag: 'hvi-icon-CompassFill', component: HviIconCompassFill },
+    { tag: 'hvi-icon-Component', component: HviIconComponent },
+    { tag: 'hvi-icon-ComponentFill', component: HviIconComponentFill },
+    { tag: 'hvi-icon-Cpu', component: HviIconCpu },
+    { tag: 'hvi-icon-CpuFill', component: HviIconCpuFill },
+    { tag: 'hvi-icon-CurrencyExchange', component: HviIconCurrencyExchange },
+    { tag: 'hvi-icon-Cutlery', component: HviIconCutlery },
+    { tag: 'hvi-icon-CutleryFill', component: HviIconCutleryFill },
+    { tag: 'hvi-icon-Database', component: HviIconDatabase },
+    { tag: 'hvi-icon-DatabaseFill', component: HviIconDatabaseFill },
+    { tag: 'hvi-icon-Density1', component: HviIconDensity1 },
+    { tag: 'hvi-icon-Density1Fill', component: HviIconDensity1Fill },
+    { tag: 'hvi-icon-Density2', component: HviIconDensity2 },
+    { tag: 'hvi-icon-Density2Fill', component: HviIconDensity2Fill },
+    { tag: 'hvi-icon-Density3', component: HviIconDensity3 },
+    { tag: 'hvi-icon-Diamond', component: HviIconDiamond },
+    { tag: 'hvi-icon-DiamondFill', component: HviIconDiamondFill },
+    { tag: 'hvi-icon-Dishwasher', component: HviIconDishwasher },
+    { tag: 'hvi-icon-DishwasherFill', component: HviIconDishwasherFill },
+    { tag: 'hvi-icon-Divide', component: HviIconDivide },
+    { tag: 'hvi-icon-DocPencil', component: HviIconDocPencil },
+    { tag: 'hvi-icon-DocPencilFill', component: HviIconDocPencilFill },
+    { tag: 'hvi-icon-Dog', component: HviIconDog },
+    { tag: 'hvi-icon-DogFill', component: HviIconDogFill },
+    { tag: 'hvi-icon-DogHarness', component: HviIconDogHarness },
+    { tag: 'hvi-icon-DogHarnessFill', component: HviIconDogHarnessFill },
+    { tag: 'hvi-icon-DonutChart', component: HviIconDonutChart },
+    { tag: 'hvi-icon-DonutChartFill', component: HviIconDonutChartFill },
+    { tag: 'hvi-icon-Donuts', component: HviIconDonuts },
+    { tag: 'hvi-icon-DonutsFill', component: HviIconDonutsFill },
+    { tag: 'hvi-icon-Door', component: HviIconDoor },
+    { tag: 'hvi-icon-DoorFill', component: HviIconDoorFill },
+    { tag: 'hvi-icon-DoorOpen', component: HviIconDoorOpen },
+    { tag: 'hvi-icon-DoorOpenFill', component: HviIconDoorOpenFill },
+    { tag: 'hvi-icon-Download', component: HviIconDownload },
+    { tag: 'hvi-icon-DragHorizontal', component: HviIconDragHorizontal },
+    { tag: 'hvi-icon-DragVertical', component: HviIconDragVertical },
+    { tag: 'hvi-icon-Ear', component: HviIconEar },
+    { tag: 'hvi-icon-EarFill', component: HviIconEarFill },
+    { tag: 'hvi-icon-EarSlash', component: HviIconEarSlash },
+    { tag: 'hvi-icon-EarSlashFill', component: HviIconEarSlashFill },
+    { tag: 'hvi-icon-EarSoundwaves', component: HviIconEarSoundwaves },
+    { tag: 'hvi-icon-EarSoundwavesFill', component: HviIconEarSoundwavesFill },
+    { tag: 'hvi-icon-Earth', component: HviIconEarth },
+    { tag: 'hvi-icon-EarthFill', component: HviIconEarthFill },
+    { tag: 'hvi-icon-Elevator', component: HviIconElevator },
+    { tag: 'hvi-icon-ElevatorFill', component: HviIconElevatorFill },
+    { tag: 'hvi-icon-Enter', component: HviIconEnter },
+    { tag: 'hvi-icon-EnvelopeClosed', component: HviIconEnvelopeClosed },
+    { tag: 'hvi-icon-EnvelopeClosedFill', component: HviIconEnvelopeClosedFill },
+    { tag: 'hvi-icon-EnvelopeOpen', component: HviIconEnvelopeOpen },
+    { tag: 'hvi-icon-EnvelopeOpenFill', component: HviIconEnvelopeOpenFill },
+    { tag: 'hvi-icon-Equals', component: HviIconEquals },
+    { tag: 'hvi-icon-Eraser', component: HviIconEraser },
+    { tag: 'hvi-icon-EraserFill', component: HviIconEraserFill },
+    { tag: 'hvi-icon-Escalator', component: HviIconEscalator },
+    { tag: 'hvi-icon-Ethernet', component: HviIconEthernet },
+    { tag: 'hvi-icon-Exclamationmark', component: HviIconExclamationmark },
+    { tag: 'hvi-icon-ExclamationmarkTriangle', component: HviIconExclamationmarkTriangle },
+    { tag: 'hvi-icon-ExclamationmarkTriangleFill', component: HviIconExclamationmarkTriangleFill },
+    { tag: 'hvi-icon-Expand', component: HviIconExpand },
+    { tag: 'hvi-icon-ExpandVertical', component: HviIconExpandVertical },
+    { tag: 'hvi-icon-ExternalLink', component: HviIconExternalLink },
+    { tag: 'hvi-icon-ExternalLinkFill', component: HviIconExternalLinkFill },
+    { tag: 'hvi-icon-Eye', component: HviIconEye },
+    { tag: 'hvi-icon-EyeClosed', component: HviIconEyeClosed },
+    { tag: 'hvi-icon-EyeFill', component: HviIconEyeFill },
+    { tag: 'hvi-icon-EyeObfuscated', component: HviIconEyeObfuscated },
+    { tag: 'hvi-icon-EyeObfuscatedFill', component: HviIconEyeObfuscatedFill },
+    { tag: 'hvi-icon-EyeSlash', component: HviIconEyeSlash },
+    { tag: 'hvi-icon-EyeSlashFill', component: HviIconEyeSlashFill },
+    { tag: 'hvi-icon-EyeWithPupil', component: HviIconEyeWithPupil },
+    { tag: 'hvi-icon-EyeWithPupilFill', component: HviIconEyeWithPupilFill },
+    { tag: 'hvi-icon-Face', component: HviIconFace },
+    { tag: 'hvi-icon-FaceCry', component: HviIconFaceCry },
+    { tag: 'hvi-icon-FaceCryFill', component: HviIconFaceCryFill },
+    { tag: 'hvi-icon-FaceFill', component: HviIconFaceFill },
+    { tag: 'hvi-icon-FaceFrown', component: HviIconFaceFrown },
+    { tag: 'hvi-icon-FaceFrownFill', component: HviIconFaceFrownFill },
+    { tag: 'hvi-icon-FaceLaugh', component: HviIconFaceLaugh },
+    { tag: 'hvi-icon-FaceLaughFill', component: HviIconFaceLaughFill },
+    { tag: 'hvi-icon-FaceSmile', component: HviIconFaceSmile },
+    { tag: 'hvi-icon-FaceSmileFill', component: HviIconFaceSmileFill },
+    { tag: 'hvi-icon-FeedingBottle', component: HviIconFeedingBottle },
+    { tag: 'hvi-icon-FeedingBottleFill', component: HviIconFeedingBottleFill },
+    { tag: 'hvi-icon-Figure', component: HviIconFigure },
+    { tag: 'hvi-icon-FigureChild', component: HviIconFigureChild },
+    { tag: 'hvi-icon-FigureChildFill', component: HviIconFigureChildFill },
+    { tag: 'hvi-icon-FigureCombination', component: HviIconFigureCombination },
+    { tag: 'hvi-icon-FigureCombinationFill', component: HviIconFigureCombinationFill },
+    { tag: 'hvi-icon-FigureFill', component: HviIconFigureFill },
+    { tag: 'hvi-icon-FigureInward', component: HviIconFigureInward },
+    { tag: 'hvi-icon-FigureInwardFill', component: HviIconFigureInwardFill },
+    { tag: 'hvi-icon-FigureOutward', component: HviIconFigureOutward },
+    { tag: 'hvi-icon-FigureOutwardFill', component: HviIconFigureOutwardFill },
+    { tag: 'hvi-icon-File', component: HviIconFile },
+    { tag: 'hvi-icon-FileCheckmark', component: HviIconFileCheckmark },
+    { tag: 'hvi-icon-FileCheckmarkFill', component: HviIconFileCheckmarkFill },
+    { tag: 'hvi-icon-FileCode', component: HviIconFileCode },
+    { tag: 'hvi-icon-FileCodeFill', component: HviIconFileCodeFill },
+    { tag: 'hvi-icon-FileCsv', component: HviIconFileCsv },
+    { tag: 'hvi-icon-FileCsvFill', component: HviIconFileCsvFill },
+    { tag: 'hvi-icon-FileExcel', component: HviIconFileExcel },
+    { tag: 'hvi-icon-FileExcelFill', component: HviIconFileExcelFill },
+    { tag: 'hvi-icon-FileExport', component: HviIconFileExport },
+    { tag: 'hvi-icon-FileExportFill', component: HviIconFileExportFill },
+    { tag: 'hvi-icon-FileFill', component: HviIconFileFill },
+    { tag: 'hvi-icon-FileImage', component: HviIconFileImage },
+    { tag: 'hvi-icon-FileImageFill', component: HviIconFileImageFill },
+    { tag: 'hvi-icon-FileImport', component: HviIconFileImport },
+    { tag: 'hvi-icon-FileImportFill', component: HviIconFileImportFill },
+    { tag: 'hvi-icon-FileJpeg', component: HviIconFileJpeg },
+    { tag: 'hvi-icon-FileJpegFill', component: HviIconFileJpegFill },
+    { tag: 'hvi-icon-FileJson', component: HviIconFileJson },
+    { tag: 'hvi-icon-FileJsonFill', component: HviIconFileJsonFill },
+    { tag: 'hvi-icon-FileLoading', component: HviIconFileLoading },
+    { tag: 'hvi-icon-FileLoadingFill', component: HviIconFileLoadingFill },
+    { tag: 'hvi-icon-FileParagraph', component: HviIconFileParagraph },
+    { tag: 'hvi-icon-FileParagraphFill', component: HviIconFileParagraphFill },
+    { tag: 'hvi-icon-FilePdf', component: HviIconFilePdf },
+    { tag: 'hvi-icon-FilePdfFill', component: HviIconFilePdfFill },
+    { tag: 'hvi-icon-FilePlus', component: HviIconFilePlus },
+    { tag: 'hvi-icon-FilePlusFill', component: HviIconFilePlusFill },
+    { tag: 'hvi-icon-FilePng', component: HviIconFilePng },
+    { tag: 'hvi-icon-FilePngFill', component: HviIconFilePngFill },
+    { tag: 'hvi-icon-FileReset', component: HviIconFileReset },
+    { tag: 'hvi-icon-FileResetFill', component: HviIconFileResetFill },
+    { tag: 'hvi-icon-FileSearch', component: HviIconFileSearch },
+    { tag: 'hvi-icon-FileSearchFill', component: HviIconFileSearchFill },
+    { tag: 'hvi-icon-FileShredder', component: HviIconFileShredder },
+    { tag: 'hvi-icon-FileShredderFill', component: HviIconFileShredderFill },
+    { tag: 'hvi-icon-FileText', component: HviIconFileText },
+    { tag: 'hvi-icon-FileTextFill', component: HviIconFileTextFill },
+    { tag: 'hvi-icon-FileWord', component: HviIconFileWord },
+    { tag: 'hvi-icon-FileWordFill', component: HviIconFileWordFill },
+    { tag: 'hvi-icon-FileXMark', component: HviIconFileXMark },
+    { tag: 'hvi-icon-FileXMarkFill', component: HviIconFileXMarkFill },
+    { tag: 'hvi-icon-Files', component: HviIconFiles },
+    { tag: 'hvi-icon-FilesFill', component: HviIconFilesFill },
+    { tag: 'hvi-icon-Filter', component: HviIconFilter },
+    { tag: 'hvi-icon-FingerButton', component: HviIconFingerButton },
+    { tag: 'hvi-icon-FingerButtonFill', component: HviIconFingerButtonFill },
+    { tag: 'hvi-icon-FingerMobile', component: HviIconFingerMobile },
+    { tag: 'hvi-icon-FingerMobileFill', component: HviIconFingerMobileFill },
+    { tag: 'hvi-icon-FirstAid', component: HviIconFirstAid },
+    { tag: 'hvi-icon-FirstAidFill', component: HviIconFirstAidFill },
+    { tag: 'hvi-icon-FirstAidKit', component: HviIconFirstAidKit },
+    { tag: 'hvi-icon-FirstAidKitFill', component: HviIconFirstAidKitFill },
+    { tag: 'hvi-icon-FlagCross', component: HviIconFlagCross },
+    { tag: 'hvi-icon-FlagCrossFill', component: HviIconFlagCrossFill },
+    { tag: 'hvi-icon-Floppydisk', component: HviIconFloppydisk },
+    { tag: 'hvi-icon-FloppydiskFill', component: HviIconFloppydiskFill },
+    { tag: 'hvi-icon-Flower', component: HviIconFlower },
+    { tag: 'hvi-icon-FlowerFill', component: HviIconFlowerFill },
+    { tag: 'hvi-icon-FlowerPension', component: HviIconFlowerPension },
+    { tag: 'hvi-icon-FlowerPensionFill', component: HviIconFlowerPensionFill },
+    { tag: 'hvi-icon-FlowerPetalFalling', component: HviIconFlowerPetalFalling },
+    { tag: 'hvi-icon-FlowerPetalFallingFill', component: HviIconFlowerPetalFallingFill },
+    { tag: 'hvi-icon-FlowerPetals', component: HviIconFlowerPetals },
+    { tag: 'hvi-icon-FlowerPetalsFill', component: HviIconFlowerPetalsFill },
+    { tag: 'hvi-icon-Folder', component: HviIconFolder },
+    { tag: 'hvi-icon-FolderFile', component: HviIconFolderFile },
+    { tag: 'hvi-icon-FolderFileFill', component: HviIconFolderFileFill },
+    { tag: 'hvi-icon-FolderFill', component: HviIconFolderFill },
+    { tag: 'hvi-icon-FolderMinus', component: HviIconFolderMinus },
+    { tag: 'hvi-icon-FolderMinusFill', component: HviIconFolderMinusFill },
+    { tag: 'hvi-icon-FolderPlus', component: HviIconFolderPlus },
+    { tag: 'hvi-icon-FolderPlusFill', component: HviIconFolderPlusFill },
+    { tag: 'hvi-icon-Footprint', component: HviIconFootprint },
+    { tag: 'hvi-icon-FootprintFill', component: HviIconFootprintFill },
+    { tag: 'hvi-icon-Fork', component: HviIconFork },
+    { tag: 'hvi-icon-ForkFill', component: HviIconForkFill },
+    { tag: 'hvi-icon-Forward', component: HviIconForward },
+    { tag: 'hvi-icon-ForwardFill', component: HviIconForwardFill },
+    { tag: 'hvi-icon-Freezer', component: HviIconFreezer },
+    { tag: 'hvi-icon-FreezerFill', component: HviIconFreezerFill },
+    { tag: 'hvi-icon-Funnel', component: HviIconFunnel },
+    { tag: 'hvi-icon-FunnelFill', component: HviIconFunnelFill },
+    { tag: 'hvi-icon-Gavel', component: HviIconGavel },
+    { tag: 'hvi-icon-GavelFill', component: HviIconGavelFill },
+    { tag: 'hvi-icon-GavelSoundBlock', component: HviIconGavelSoundBlock },
+    { tag: 'hvi-icon-GavelSoundBlockFill', component: HviIconGavelSoundBlockFill },
+    { tag: 'hvi-icon-Glass', component: HviIconGlass },
+    { tag: 'hvi-icon-GlassFill', component: HviIconGlassFill },
+    { tag: 'hvi-icon-Glasses', component: HviIconGlasses },
+    { tag: 'hvi-icon-GlassesFill', component: HviIconGlassesFill },
+    { tag: 'hvi-icon-Globe', component: HviIconGlobe },
+    { tag: 'hvi-icon-GlobeFill', component: HviIconGlobeFill },
+    { tag: 'hvi-icon-GlobeSlash', component: HviIconGlobeSlash },
+    { tag: 'hvi-icon-GlobeSlashFill', component: HviIconGlobeSlashFill },
+    { tag: 'hvi-icon-HandBandage', component: HviIconHandBandage },
+    { tag: 'hvi-icon-HandBandageFill', component: HviIconHandBandageFill },
+    { tag: 'hvi-icon-HandFinger', component: HviIconHandFinger },
+    { tag: 'hvi-icon-HandFingerFill', component: HviIconHandFingerFill },
+    { tag: 'hvi-icon-HandHeart', component: HviIconHandHeart },
+    { tag: 'hvi-icon-HandHeartFill', component: HviIconHandHeartFill },
+    { tag: 'hvi-icon-HandKnot', component: HviIconHandKnot },
+    { tag: 'hvi-icon-HandKnotFilled', component: HviIconHandKnotFilled },
+    { tag: 'hvi-icon-HandShakeHeart', component: HviIconHandShakeHeart },
+    { tag: 'hvi-icon-HandShakeHeartFill', component: HviIconHandShakeHeartFill },
+    { tag: 'hvi-icon-Handshake', component: HviIconHandshake },
+    { tag: 'hvi-icon-HandshakeFill', component: HviIconHandshakeFill },
+    { tag: 'hvi-icon-Hanger', component: HviIconHanger },
+    { tag: 'hvi-icon-HardHat', component: HviIconHardHat },
+    { tag: 'hvi-icon-HardHatFill', component: HviIconHardHatFill },
+    { tag: 'hvi-icon-Hashtag', component: HviIconHashtag },
+    { tag: 'hvi-icon-HatSchool', component: HviIconHatSchool },
+    { tag: 'hvi-icon-HatSchoolFill', component: HviIconHatSchoolFill },
+    { tag: 'hvi-icon-HddDown', component: HviIconHddDown },
+    { tag: 'hvi-icon-HddDownFill', component: HviIconHddDownFill },
+    { tag: 'hvi-icon-HddUp', component: HviIconHddUp },
+    { tag: 'hvi-icon-HddUpFill', component: HviIconHddUpFill },
+    { tag: 'hvi-icon-Head', component: HviIconHead },
+    { tag: 'hvi-icon-HeadCloud', component: HviIconHeadCloud },
+    { tag: 'hvi-icon-HeadCloudFill', component: HviIconHeadCloudFill },
+    { tag: 'hvi-icon-HeadFill', component: HviIconHeadFill },
+    { tag: 'hvi-icon-HeadHeart', component: HviIconHeadHeart },
+    { tag: 'hvi-icon-HeadHeartFill', component: HviIconHeadHeartFill },
+    { tag: 'hvi-icon-HearingLoop', component: HviIconHearingLoop },
+    { tag: 'hvi-icon-HearingLoopFill', component: HviIconHearingLoopFill },
+    { tag: 'hvi-icon-HearingLoopRadio', component: HviIconHearingLoopRadio },
+    { tag: 'hvi-icon-HearingLoopRadioFill', component: HviIconHearingLoopRadioFill },
+    { tag: 'hvi-icon-Heart', component: HviIconHeart },
+    { tag: 'hvi-icon-HeartBroken', component: HviIconHeartBroken },
+    { tag: 'hvi-icon-HeartBrokenFill', component: HviIconHeartBrokenFill },
+    { tag: 'hvi-icon-HeartFill', component: HviIconHeartFill },
+    { tag: 'hvi-icon-HexagonGrid', component: HviIconHexagonGrid },
+    { tag: 'hvi-icon-HexagonGridFill', component: HviIconHexagonGridFill },
+    { tag: 'hvi-icon-HikingTrailSign', component: HviIconHikingTrailSign },
+    { tag: 'hvi-icon-HikingTrailSignFill', component: HviIconHikingTrailSignFill },
+    { tag: 'hvi-icon-Hospital', component: HviIconHospital },
+    { tag: 'hvi-icon-HospitalFill', component: HviIconHospitalFill },
+    { tag: 'hvi-icon-Hourglass', component: HviIconHourglass },
+    { tag: 'hvi-icon-HourglassBottomFilled', component: HviIconHourglassBottomFilled },
+    { tag: 'hvi-icon-HourglassTopFilled', component: HviIconHourglassTopFilled },
+    { tag: 'hvi-icon-House', component: HviIconHouse },
+    { tag: 'hvi-icon-HouseFill', component: HviIconHouseFill },
+    { tag: 'hvi-icon-HouseHeart', component: HviIconHouseHeart },
+    { tag: 'hvi-icon-HouseHeartFill', component: HviIconHouseHeartFill },
+    { tag: 'hvi-icon-Image', component: HviIconImage },
+    { tag: 'hvi-icon-ImageFill', component: HviIconImageFill },
+    { tag: 'hvi-icon-Inbox', component: HviIconInbox },
+    { tag: 'hvi-icon-InboxDown', component: HviIconInboxDown },
+    { tag: 'hvi-icon-InboxDownFill', component: HviIconInboxDownFill },
+    { tag: 'hvi-icon-InboxFill', component: HviIconInboxFill },
+    { tag: 'hvi-icon-InboxUp', component: HviIconInboxUp },
+    { tag: 'hvi-icon-InboxUpFill', component: HviIconInboxUpFill },
+    { tag: 'hvi-icon-Information', component: HviIconInformation },
+    { tag: 'hvi-icon-InformationSquare', component: HviIconInformationSquare },
+    { tag: 'hvi-icon-InformationSquareFill', component: HviIconInformationSquareFill },
+    { tag: 'hvi-icon-IvFluidBag', component: HviIconIvFluidBag },
+    { tag: 'hvi-icon-IvFluidBagFill', component: HviIconIvFluidBagFill },
+    { tag: 'hvi-icon-KeyHorizontal', component: HviIconKeyHorizontal },
+    { tag: 'hvi-icon-KeyHorizontalFill', component: HviIconKeyHorizontalFill },
+    { tag: 'hvi-icon-KeyVertical', component: HviIconKeyVertical },
+    { tag: 'hvi-icon-KeyVerticalFill', component: HviIconKeyVerticalFill },
+    { tag: 'hvi-icon-Knife', component: HviIconKnife },
+    { tag: 'hvi-icon-KnifeFill', component: HviIconKnifeFill },
+    { tag: 'hvi-icon-Kroner', component: HviIconKroner },
+    { tag: 'hvi-icon-Language', component: HviIconLanguage },
+    { tag: 'hvi-icon-Laptop', component: HviIconLaptop },
+    { tag: 'hvi-icon-LaptopFill', component: HviIconLaptopFill },
+    { tag: 'hvi-icon-LaptopTriangle', component: HviIconLaptopTriangle },
+    { tag: 'hvi-icon-LaptopTriangleFill', component: HviIconLaptopTriangleFill },
+    { tag: 'hvi-icon-LayerMinus', component: HviIconLayerMinus },
+    { tag: 'hvi-icon-LayerMinusFill', component: HviIconLayerMinusFill },
+    { tag: 'hvi-icon-Layers', component: HviIconLayers },
+    { tag: 'hvi-icon-LayersFill', component: HviIconLayersFill },
+    { tag: 'hvi-icon-LayersPlus', component: HviIconLayersPlus },
+    { tag: 'hvi-icon-LayersPlusFill', component: HviIconLayersPlusFill },
+    { tag: 'hvi-icon-Leave', component: HviIconLeave },
+    { tag: 'hvi-icon-Lifebuoy', component: HviIconLifebuoy },
+    { tag: 'hvi-icon-LifebuoyFill', component: HviIconLifebuoyFill },
+    { tag: 'hvi-icon-LightBulb', component: HviIconLightBulb },
+    { tag: 'hvi-icon-LightBulbFill', component: HviIconLightBulbFill },
+    { tag: 'hvi-icon-Lightning', component: HviIconLightning },
+    { tag: 'hvi-icon-LightningFill', component: HviIconLightningFill },
+    { tag: 'hvi-icon-LineGraph', component: HviIconLineGraph },
+    { tag: 'hvi-icon-LineGraphDot', component: HviIconLineGraphDot },
+    { tag: 'hvi-icon-LineGraphStacked', component: HviIconLineGraphStacked },
+    { tag: 'hvi-icon-LineHeight', component: HviIconLineHeight },
+    { tag: 'hvi-icon-Link', component: HviIconLink },
+    { tag: 'hvi-icon-LinkBroken', component: HviIconLinkBroken },
+    { tag: 'hvi-icon-LocationPin', component: HviIconLocationPin },
+    { tag: 'hvi-icon-LocationPinFill', component: HviIconLocationPinFill },
+    { tag: 'hvi-icon-MagnifyingGlass', component: HviIconMagnifyingGlass },
+    { tag: 'hvi-icon-MagnifyingGlassCheckmark', component: HviIconMagnifyingGlassCheckmark },
+    {
+      tag: 'hvi-icon-MagnifyingGlassCheckmarkFill',
+      component: HviIconMagnifyingGlassCheckmarkFill,
+    },
+    { tag: 'hvi-icon-MagnifyingGlassFill', component: HviIconMagnifyingGlassFill },
+    { tag: 'hvi-icon-MeasuringTape', component: HviIconMeasuringTape },
+    { tag: 'hvi-icon-MeasuringTapeFill', component: HviIconMeasuringTapeFill },
+    { tag: 'hvi-icon-MedicalThermometer', component: HviIconMedicalThermometer },
+    { tag: 'hvi-icon-MedicalThermometerFill', component: HviIconMedicalThermometerFill },
+    { tag: 'hvi-icon-MedicineBottle', component: HviIconMedicineBottle },
+    { tag: 'hvi-icon-MedicineBottleFill', component: HviIconMedicineBottleFill },
+    { tag: 'hvi-icon-MeetingLarge', component: HviIconMeetingLarge },
+    { tag: 'hvi-icon-MeetingLargeFill', component: HviIconMeetingLargeFill },
+    { tag: 'hvi-icon-MeetingSmall', component: HviIconMeetingSmall },
+    { tag: 'hvi-icon-MeetingSmallFill', component: HviIconMeetingSmallFill },
+    { tag: 'hvi-icon-Megaphone', component: HviIconMegaphone },
+    { tag: 'hvi-icon-MegaphoneFill', component: HviIconMegaphoneFill },
+    { tag: 'hvi-icon-MegaphoneSpeaking', component: HviIconMegaphoneSpeaking },
+    { tag: 'hvi-icon-MegaphoneSpeakingFill', component: HviIconMegaphoneSpeakingFill },
+    { tag: 'hvi-icon-MenuElipsisHorizontal', component: HviIconMenuElipsisHorizontal },
+    { tag: 'hvi-icon-MenuElipsisHorizontalCircle', component: HviIconMenuElipsisHorizontalCircle },
+    {
+      tag: 'hvi-icon-MenuElipsisHorizontalCircleFill',
+      component: HviIconMenuElipsisHorizontalCircleFill,
+    },
+    { tag: 'hvi-icon-MenuElipsisHorizontalSquare', component: HviIconMenuElipsisHorizontalSquare },
+    {
+      tag: 'hvi-icon-MenuElipsisHorizontalSquareFill',
+      component: HviIconMenuElipsisHorizontalSquareFill,
+    },
+    { tag: 'hvi-icon-MenuElipsisVertical', component: HviIconMenuElipsisVertical },
+    { tag: 'hvi-icon-MenuElipsisVerticalCircle', component: HviIconMenuElipsisVerticalCircle },
+    {
+      tag: 'hvi-icon-MenuElipsisVerticalCircleFill',
+      component: HviIconMenuElipsisVerticalCircleFill,
+    },
+    { tag: 'hvi-icon-MenuElipsisVerticalSquare', component: HviIconMenuElipsisVerticalSquare },
+    {
+      tag: 'hvi-icon-MenuElipsisVerticalSquareFill',
+      component: HviIconMenuElipsisVerticalSquareFill,
+    },
+    { tag: 'hvi-icon-MenuGrid', component: HviIconMenuGrid },
+    { tag: 'hvi-icon-MenuHamburger', component: HviIconMenuHamburger },
+    { tag: 'hvi-icon-Microbe', component: HviIconMicrobe },
+    { tag: 'hvi-icon-MicrobeFill', component: HviIconMicrobeFill },
+    { tag: 'hvi-icon-Microphone', component: HviIconMicrophone },
+    { tag: 'hvi-icon-MicrophoneFill', component: HviIconMicrophoneFill },
+    { tag: 'hvi-icon-MicrophoneSlash', component: HviIconMicrophoneSlash },
+    { tag: 'hvi-icon-MicrophoneSlashFill', component: HviIconMicrophoneSlashFill },
+    { tag: 'hvi-icon-Migration', component: HviIconMigration },
+    { tag: 'hvi-icon-Minus', component: HviIconMinus },
+    { tag: 'hvi-icon-MinusCircle', component: HviIconMinusCircle },
+    { tag: 'hvi-icon-MinusCircleFill', component: HviIconMinusCircleFill },
+    { tag: 'hvi-icon-Mobile', component: HviIconMobile },
+    { tag: 'hvi-icon-MobileFill', component: HviIconMobileFill },
+    { tag: 'hvi-icon-MobileSmall', component: HviIconMobileSmall },
+    { tag: 'hvi-icon-MobileSmallFill', component: HviIconMobileSmallFill },
+    { tag: 'hvi-icon-MobileTriangle', component: HviIconMobileTriangle },
+    { tag: 'hvi-icon-MobileTriangleFill', component: HviIconMobileTriangleFill },
+    { tag: 'hvi-icon-Monitor', component: HviIconMonitor },
+    { tag: 'hvi-icon-MonitorFill', component: HviIconMonitorFill },
+    { tag: 'hvi-icon-MonitorTriangle', component: HviIconMonitorTriangle },
+    { tag: 'hvi-icon-MonitorTriangleFill', component: HviIconMonitorTriangleFill },
+    { tag: 'hvi-icon-Moon', component: HviIconMoon },
+    { tag: 'hvi-icon-MoonFill', component: HviIconMoonFill },
+    { tag: 'hvi-icon-Motorcycle', component: HviIconMotorcycle },
+    { tag: 'hvi-icon-MotorcycleFill', component: HviIconMotorcycleFill },
+    { tag: 'hvi-icon-Mountain', component: HviIconMountain },
+    { tag: 'hvi-icon-MountainFill', component: HviIconMountainFill },
+    { tag: 'hvi-icon-Mug', component: HviIconMug },
+    { tag: 'hvi-icon-MugFill', component: HviIconMugFill },
+    { tag: 'hvi-icon-Multiply', component: HviIconMultiply },
+    { tag: 'hvi-icon-Newspaper', component: HviIconNewspaper },
+    { tag: 'hvi-icon-NewspaperFill', component: HviIconNewspaperFill },
+    { tag: 'hvi-icon-NoSmoking', component: HviIconNoSmoking },
+    { tag: 'hvi-icon-NoSmokingFill', component: HviIconNoSmokingFill },
+    { tag: 'hvi-icon-Nok', component: HviIconNok },
+    { tag: 'hvi-icon-NotePencil', component: HviIconNotePencil },
+    { tag: 'hvi-icon-NotePencilDash', component: HviIconNotePencilDash },
+    { tag: 'hvi-icon-NotePencilFill', component: HviIconNotePencilFill },
+    { tag: 'hvi-icon-NumberList', component: HviIconNumberList },
+    { tag: 'hvi-icon-OpenBook', component: HviIconOpenBook },
+    { tag: 'hvi-icon-OpenBookFill', component: HviIconOpenBookFill },
+    { tag: 'hvi-icon-OpenMagazine', component: HviIconOpenMagazine },
+    { tag: 'hvi-icon-OpenMagazineFill', component: HviIconOpenMagazineFill },
+    { tag: 'hvi-icon-OpenSource', component: HviIconOpenSource },
+    { tag: 'hvi-icon-OpenSourceFill', component: HviIconOpenSourceFill },
+    { tag: 'hvi-icon-Over18', component: HviIconOver18 },
+    { tag: 'hvi-icon-Over18Fill', component: HviIconOver18Fill },
+    { tag: 'hvi-icon-Package', component: HviIconPackage },
+    { tag: 'hvi-icon-PackageFill', component: HviIconPackageFill },
+    { tag: 'hvi-icon-PadlockLocked', component: HviIconPadlockLocked },
+    { tag: 'hvi-icon-PadlockLockedFill', component: HviIconPadlockLockedFill },
+    { tag: 'hvi-icon-PadlockUnlocked', component: HviIconPadlockUnlocked },
+    { tag: 'hvi-icon-PadlockUnlockedFill', component: HviIconPadlockUnlockedFill },
+    { tag: 'hvi-icon-PageBreak', component: HviIconPageBreak },
+    { tag: 'hvi-icon-PageBreakFill', component: HviIconPageBreakFill },
+    { tag: 'hvi-icon-Palette', component: HviIconPalette },
+    { tag: 'hvi-icon-PaletteFill', component: HviIconPaletteFill },
+    { tag: 'hvi-icon-Paperclip', component: HviIconPaperclip },
+    { tag: 'hvi-icon-Paperplane', component: HviIconPaperplane },
+    { tag: 'hvi-icon-PaperplaneFill', component: HviIconPaperplaneFill },
+    { tag: 'hvi-icon-Paragraph', component: HviIconParagraph },
+    { tag: 'hvi-icon-ParasolBeach', component: HviIconParasolBeach },
+    { tag: 'hvi-icon-ParasolBeachFill', component: HviIconParasolBeachFill },
+    { tag: 'hvi-icon-Parking', component: HviIconParking },
+    { tag: 'hvi-icon-ParkingFill', component: HviIconParkingFill },
+    { tag: 'hvi-icon-Passport', component: HviIconPassport },
+    { tag: 'hvi-icon-PassportFill', component: HviIconPassportFill },
+    { tag: 'hvi-icon-PasswordHidden', component: HviIconPasswordHidden },
+    { tag: 'hvi-icon-Pause', component: HviIconPause },
+    { tag: 'hvi-icon-PauseFill', component: HviIconPauseFill },
+    { tag: 'hvi-icon-Pencil', component: HviIconPencil },
+    { tag: 'hvi-icon-PencilBoard', component: HviIconPencilBoard },
+    { tag: 'hvi-icon-PencilBoardFill', component: HviIconPencilBoardFill },
+    { tag: 'hvi-icon-PencilFill', component: HviIconPencilFill },
+    { tag: 'hvi-icon-PencilLine', component: HviIconPencilLine },
+    { tag: 'hvi-icon-PencilLineFill', component: HviIconPencilLineFill },
+    { tag: 'hvi-icon-PencilWriting', component: HviIconPencilWriting },
+    { tag: 'hvi-icon-PencilWritingFill', component: HviIconPencilWritingFill },
+    { tag: 'hvi-icon-Pentagon', component: HviIconPentagon },
+    { tag: 'hvi-icon-PentagonFill', component: HviIconPentagonFill },
+    { tag: 'hvi-icon-Percent', component: HviIconPercent },
+    { tag: 'hvi-icon-Person', component: HviIconPerson },
+    { tag: 'hvi-icon-PersonChat', component: HviIconPersonChat },
+    { tag: 'hvi-icon-PersonChatFill', component: HviIconPersonChatFill },
+    { tag: 'hvi-icon-PersonCheckmark', component: HviIconPersonCheckmark },
+    { tag: 'hvi-icon-PersonCheckmarkFill', component: HviIconPersonCheckmarkFill },
+    { tag: 'hvi-icon-PersonCircle', component: HviIconPersonCircle },
+    { tag: 'hvi-icon-PersonCircleFill', component: HviIconPersonCircleFill },
+    { tag: 'hvi-icon-PersonCross', component: HviIconPersonCross },
+    { tag: 'hvi-icon-PersonCrossFill', component: HviIconPersonCrossFill },
+    { tag: 'hvi-icon-PersonEnvelope', component: HviIconPersonEnvelope },
+    { tag: 'hvi-icon-PersonEnvelopeFill', component: HviIconPersonEnvelopeFill },
+    { tag: 'hvi-icon-PersonFill', component: HviIconPersonFill },
+    { tag: 'hvi-icon-PersonGavel', component: HviIconPersonGavel },
+    { tag: 'hvi-icon-PersonGavelFill', component: HviIconPersonGavelFill },
+    { tag: 'hvi-icon-PersonGroup', component: HviIconPersonGroup },
+    { tag: 'hvi-icon-PersonGroupFill', component: HviIconPersonGroupFill },
+    { tag: 'hvi-icon-PersonHeadset', component: HviIconPersonHeadset },
+    { tag: 'hvi-icon-PersonHeadsetFill', component: HviIconPersonHeadsetFill },
+    { tag: 'hvi-icon-PersonMinus', component: HviIconPersonMinus },
+    { tag: 'hvi-icon-PersonMinusFill', component: HviIconPersonMinusFill },
+    { tag: 'hvi-icon-PersonPencil', component: HviIconPersonPencil },
+    { tag: 'hvi-icon-PersonPencilFill', component: HviIconPersonPencilFill },
+    { tag: 'hvi-icon-PersonPlus', component: HviIconPersonPlus },
+    { tag: 'hvi-icon-PersonPlusFill', component: HviIconPersonPlusFill },
+    { tag: 'hvi-icon-PersonPregnant', component: HviIconPersonPregnant },
+    { tag: 'hvi-icon-PersonPregnantFill', component: HviIconPersonPregnantFill },
+    { tag: 'hvi-icon-PersonRectangle', component: HviIconPersonRectangle },
+    { tag: 'hvi-icon-PersonRectangleFill', component: HviIconPersonRectangleFill },
+    { tag: 'hvi-icon-PersonSuit', component: HviIconPersonSuit },
+    { tag: 'hvi-icon-PersonSuitFill', component: HviIconPersonSuitFill },
+    { tag: 'hvi-icon-PersonTallShort', component: HviIconPersonTallShort },
+    { tag: 'hvi-icon-PersonTallShortFill', component: HviIconPersonTallShortFill },
+    { tag: 'hvi-icon-Phone', component: HviIconPhone },
+    { tag: 'hvi-icon-PhoneFill', component: HviIconPhoneFill },
+    { tag: 'hvi-icon-PhoneSlash', component: HviIconPhoneSlash },
+    { tag: 'hvi-icon-PhoneSlashFill', component: HviIconPhoneSlashFill },
+    { tag: 'hvi-icon-PieChart', component: HviIconPieChart },
+    { tag: 'hvi-icon-PieChartFill', component: HviIconPieChartFill },
+    { tag: 'hvi-icon-Piggybank', component: HviIconPiggybank },
+    { tag: 'hvi-icon-PiggybankFill', component: HviIconPiggybankFill },
+    { tag: 'hvi-icon-PillCircle', component: HviIconPillCircle },
+    { tag: 'hvi-icon-PillCircleFill', component: HviIconPillCircleFill },
+    { tag: 'hvi-icon-PillCircleRectangle', component: HviIconPillCircleRectangle },
+    { tag: 'hvi-icon-PillCircleRectangleFill', component: HviIconPillCircleRectangleFill },
+    { tag: 'hvi-icon-PillRectangle', component: HviIconPillRectangle },
+    { tag: 'hvi-icon-PillRectangleFill', component: HviIconPillRectangleFill },
+    { tag: 'hvi-icon-Pin', component: HviIconPin },
+    { tag: 'hvi-icon-PinFill', component: HviIconPinFill },
+    { tag: 'hvi-icon-Plant', component: HviIconPlant },
+    { tag: 'hvi-icon-PlantFill', component: HviIconPlantFill },
+    { tag: 'hvi-icon-Plate', component: HviIconPlate },
+    { tag: 'hvi-icon-PlateFill', component: HviIconPlateFill },
+    { tag: 'hvi-icon-Play', component: HviIconPlay },
+    { tag: 'hvi-icon-PlayFill', component: HviIconPlayFill },
+    { tag: 'hvi-icon-Plus', component: HviIconPlus },
+    { tag: 'hvi-icon-PlusCircle', component: HviIconPlusCircle },
+    { tag: 'hvi-icon-PlusCircleFill', component: HviIconPlusCircleFill },
+    { tag: 'hvi-icon-PlusMinusSlash', component: HviIconPlusMinusSlash },
+    { tag: 'hvi-icon-Portal', component: HviIconPortal },
+    { tag: 'hvi-icon-PortalFill', component: HviIconPortalFill },
+    { tag: 'hvi-icon-Presentation', component: HviIconPresentation },
+    { tag: 'hvi-icon-PresentationFill', component: HviIconPresentationFill },
+    { tag: 'hvi-icon-PrinterLarge', component: HviIconPrinterLarge },
+    { tag: 'hvi-icon-PrinterLargeFill', component: HviIconPrinterLargeFill },
+    { tag: 'hvi-icon-PrinterLargeTriangle', component: HviIconPrinterLargeTriangle },
+    { tag: 'hvi-icon-PrinterLargeTriangleFill', component: HviIconPrinterLargeTriangleFill },
+    { tag: 'hvi-icon-PrinterSmall', component: HviIconPrinterSmall },
+    { tag: 'hvi-icon-PrinterSmallFill', component: HviIconPrinterSmallFill },
+    { tag: 'hvi-icon-PrinterSmallTriangle', component: HviIconPrinterSmallTriangle },
+    { tag: 'hvi-icon-PrinterSmallTriangleFill', component: HviIconPrinterSmallTriangleFill },
+    { tag: 'hvi-icon-PushPin', component: HviIconPushPin },
+    { tag: 'hvi-icon-PushPinFill', component: HviIconPushPinFill },
+    { tag: 'hvi-icon-PuzzlePiece', component: HviIconPuzzlePiece },
+    { tag: 'hvi-icon-PuzzlePieceFill', component: HviIconPuzzlePieceFill },
+    { tag: 'hvi-icon-QrCode', component: HviIconQrCode },
+    { tag: 'hvi-icon-QrCodeFill', component: HviIconQrCodeFill },
+    { tag: 'hvi-icon-QrCodeScanning', component: HviIconQrCodeScanning },
+    { tag: 'hvi-icon-QrCodeScanningFill', component: HviIconQrCodeScanningFill },
+    { tag: 'hvi-icon-Questionmark', component: HviIconQuestionmark },
+    { tag: 'hvi-icon-QuestionmarkCircle', component: HviIconQuestionmarkCircle },
+    { tag: 'hvi-icon-QuestionmarkCircleFill', component: HviIconQuestionmarkCircleFill },
+    { tag: 'hvi-icon-QuestionmarkDiamond', component: HviIconQuestionmarkDiamond },
+    { tag: 'hvi-icon-QuestionmarkDiamondFill', component: HviIconQuestionmarkDiamondFill },
+    { tag: 'hvi-icon-QuietZone', component: HviIconQuietZone },
+    { tag: 'hvi-icon-QuietZoneFill', component: HviIconQuietZoneFill },
+    { tag: 'hvi-icon-Raindrop', component: HviIconRaindrop },
+    { tag: 'hvi-icon-RaindropFill', component: HviIconRaindropFill },
+    { tag: 'hvi-icon-Receipt', component: HviIconReceipt },
+    { tag: 'hvi-icon-ReceiptFill', component: HviIconReceiptFill },
+    { tag: 'hvi-icon-Reception', component: HviIconReception },
+    { tag: 'hvi-icon-ReceptionFill', component: HviIconReceptionFill },
+    { tag: 'hvi-icon-Record', component: HviIconRecord },
+    { tag: 'hvi-icon-RecordFill', component: HviIconRecordFill },
+    { tag: 'hvi-icon-RectangleSections', component: HviIconRectangleSections },
+    { tag: 'hvi-icon-RectangleSectionsFill', component: HviIconRectangleSectionsFill },
+    { tag: 'hvi-icon-Recycle', component: HviIconRecycle },
+    { tag: 'hvi-icon-RecycleFill', component: HviIconRecycleFill },
+    { tag: 'hvi-icon-Refrigerator', component: HviIconRefrigerator },
+    { tag: 'hvi-icon-RefrigeratorFill', component: HviIconRefrigeratorFill },
+    { tag: 'hvi-icon-Roadblock', component: HviIconRoadblock },
+    { tag: 'hvi-icon-RoadblockFill', component: HviIconRoadblockFill },
+    { tag: 'hvi-icon-Robot', component: HviIconRobot },
+    { tag: 'hvi-icon-RobotFill', component: HviIconRobotFill },
+    { tag: 'hvi-icon-RobotFrown', component: HviIconRobotFrown },
+    { tag: 'hvi-icon-RobotFrownFill', component: HviIconRobotFrownFill },
+    { tag: 'hvi-icon-RobotSmile', component: HviIconRobotSmile },
+    { tag: 'hvi-icon-RobotSmileFill', component: HviIconRobotSmileFill },
+    { tag: 'hvi-icon-Rocket', component: HviIconRocket },
+    { tag: 'hvi-icon-RocketFill', component: HviIconRocketFill },
+    { tag: 'hvi-icon-RockingHorse', component: HviIconRockingHorse },
+    { tag: 'hvi-icon-RockingHorseFill', component: HviIconRockingHorseFill },
+    { tag: 'hvi-icon-RotateLeft', component: HviIconRotateLeft },
+    { tag: 'hvi-icon-RotateLeftFill', component: HviIconRotateLeftFill },
+    { tag: 'hvi-icon-RotateRight', component: HviIconRotateRight },
+    { tag: 'hvi-icon-RotateRightFill', component: HviIconRotateRightFill },
+    { tag: 'hvi-icon-Router', component: HviIconRouter },
+    { tag: 'hvi-icon-Ruler', component: HviIconRuler },
+    { tag: 'hvi-icon-RulerFill', component: HviIconRulerFill },
+    { tag: 'hvi-icon-Rulers', component: HviIconRulers },
+    { tag: 'hvi-icon-RulersFill', component: HviIconRulersFill },
+    { tag: 'hvi-icon-Sack', component: HviIconSack },
+    { tag: 'hvi-icon-SackFill', component: HviIconSackFill },
+    { tag: 'hvi-icon-SackKroner', component: HviIconSackKroner },
+    { tag: 'hvi-icon-SackKronerFill', component: HviIconSackKronerFill },
+    { tag: 'hvi-icon-SackPension', component: HviIconSackPension },
+    { tag: 'hvi-icon-SackPensionFill', component: HviIconSackPensionFill },
+    { tag: 'hvi-icon-Sandbox', component: HviIconSandbox },
+    { tag: 'hvi-icon-SandboxFill', component: HviIconSandboxFill },
+    { tag: 'hvi-icon-Scissors', component: HviIconScissors },
+    { tag: 'hvi-icon-ScissorsFill', component: HviIconScissorsFill },
+    { tag: 'hvi-icon-Seal', component: HviIconSeal },
+    { tag: 'hvi-icon-SealCheckmark', component: HviIconSealCheckmark },
+    { tag: 'hvi-icon-SealCheckmarkFill', component: HviIconSealCheckmarkFill },
+    { tag: 'hvi-icon-SealFill', component: HviIconSealFill },
+    { tag: 'hvi-icon-SealXMark', component: HviIconSealXMark },
+    { tag: 'hvi-icon-SealXMarkFill', component: HviIconSealXMarkFill },
+    { tag: 'hvi-icon-SectorChart', component: HviIconSectorChart },
+    { tag: 'hvi-icon-SectorChartFill', component: HviIconSectorChartFill },
+    { tag: 'hvi-icon-Shield', component: HviIconShield },
+    { tag: 'hvi-icon-ShieldCheckmark', component: HviIconShieldCheckmark },
+    { tag: 'hvi-icon-ShieldCheckmarkFill', component: HviIconShieldCheckmarkFill },
+    { tag: 'hvi-icon-ShieldFill', component: HviIconShieldFill },
+    { tag: 'hvi-icon-ShieldLock', component: HviIconShieldLock },
+    { tag: 'hvi-icon-ShieldLockFill', component: HviIconShieldLockFill },
+    { tag: 'hvi-icon-ShoppingBasket', component: HviIconShoppingBasket },
+    { tag: 'hvi-icon-ShoppingBasketFill', component: HviIconShoppingBasketFill },
+    { tag: 'hvi-icon-Shower', component: HviIconShower },
+    { tag: 'hvi-icon-ShowerFill', component: HviIconShowerFill },
+    { tag: 'hvi-icon-Shrink', component: HviIconShrink },
+    { tag: 'hvi-icon-SidebarBoth', component: HviIconSidebarBoth },
+    { tag: 'hvi-icon-SidebarBothFill', component: HviIconSidebarBothFill },
+    { tag: 'hvi-icon-SidebarLeft', component: HviIconSidebarLeft },
+    { tag: 'hvi-icon-SidebarLeftFill', component: HviIconSidebarLeftFill },
+    { tag: 'hvi-icon-SidebarRight', component: HviIconSidebarRight },
+    { tag: 'hvi-icon-SidebarRightFill', component: HviIconSidebarRightFill },
+    { tag: 'hvi-icon-SignLanguageSingleHand', component: HviIconSignLanguageSingleHand },
+    { tag: 'hvi-icon-SignLanguageSingleHandFill', component: HviIconSignLanguageSingleHandFill },
+    { tag: 'hvi-icon-SignLanguageTwoHands', component: HviIconSignLanguageTwoHands },
+    { tag: 'hvi-icon-SignLanguageTwoHandsFill', component: HviIconSignLanguageTwoHandsFill },
+    { tag: 'hvi-icon-Silhouette', component: HviIconSilhouette },
+    { tag: 'hvi-icon-SilhouetteFill', component: HviIconSilhouetteFill },
+    { tag: 'hvi-icon-SkipBackward', component: HviIconSkipBackward },
+    { tag: 'hvi-icon-SkipBackwardFill', component: HviIconSkipBackwardFill },
+    { tag: 'hvi-icon-SkipForward', component: HviIconSkipForward },
+    { tag: 'hvi-icon-SkipForwardFill', component: HviIconSkipForwardFill },
+    { tag: 'hvi-icon-Slide', component: HviIconSlide },
+    { tag: 'hvi-icon-SlideFill', component: HviIconSlideFill },
+    { tag: 'hvi-icon-Snow', component: HviIconSnow },
+    { tag: 'hvi-icon-SortDown', component: HviIconSortDown },
+    { tag: 'hvi-icon-SortUp', component: HviIconSortUp },
+    { tag: 'hvi-icon-SpaceHorizontal', component: HviIconSpaceHorizontal },
+    { tag: 'hvi-icon-SpaceVertical', component: HviIconSpaceVertical },
+    { tag: 'hvi-icon-SparkLarge', component: HviIconSparkLarge },
+    { tag: 'hvi-icon-SparkSmall', component: HviIconSparkSmall },
+    { tag: 'hvi-icon-Sparkles', component: HviIconSparkles },
+    { tag: 'hvi-icon-SparklesFill', component: HviIconSparklesFill },
+    { tag: 'hvi-icon-Speaker', component: HviIconSpeaker },
+    { tag: 'hvi-icon-SpeakerFill', component: HviIconSpeakerFill },
+    { tag: 'hvi-icon-SpeakerSlash', component: HviIconSpeakerSlash },
+    { tag: 'hvi-icon-SpeakerSlashFill', component: HviIconSpeakerSlashFill },
+    { tag: 'hvi-icon-SpeakerSoundWave1', component: HviIconSpeakerSoundWave1 },
+    { tag: 'hvi-icon-SpeakerSoundWave1Fill', component: HviIconSpeakerSoundWave1Fill },
+    { tag: 'hvi-icon-SpeakerSoundWave2', component: HviIconSpeakerSoundWave2 },
+    { tag: 'hvi-icon-SpeakerSoundWave2Fill', component: HviIconSpeakerSoundWave2Fill },
+    { tag: 'hvi-icon-SpeakerSoundWave3', component: HviIconSpeakerSoundWave3 },
+    { tag: 'hvi-icon-SpeakerSoundWave3Fill', component: HviIconSpeakerSoundWave3Fill },
+    { tag: 'hvi-icon-SplitHorizontal', component: HviIconSplitHorizontal },
+    { tag: 'hvi-icon-SplitHorizontalFill', component: HviIconSplitHorizontalFill },
+    { tag: 'hvi-icon-SplitVertical', component: HviIconSplitVertical },
+    { tag: 'hvi-icon-SplitVerticalFill', component: HviIconSplitVerticalFill },
+    { tag: 'hvi-icon-Spoon', component: HviIconSpoon },
+    { tag: 'hvi-icon-SpoonFill', component: HviIconSpoonFill },
+    { tag: 'hvi-icon-Square', component: HviIconSquare },
+    { tag: 'hvi-icon-SquareFill', component: HviIconSquareFill },
+    { tag: 'hvi-icon-SquareGrid', component: HviIconSquareGrid },
+    { tag: 'hvi-icon-SquareGridFill', component: HviIconSquareGridFill },
+    { tag: 'hvi-icon-Squareroot', component: HviIconSquareroot },
+    { tag: 'hvi-icon-Staircase', component: HviIconStaircase },
+    { tag: 'hvi-icon-Star', component: HviIconStar },
+    { tag: 'hvi-icon-StarFill', component: HviIconStarFill },
+    { tag: 'hvi-icon-StarOfLife', component: HviIconStarOfLife },
+    { tag: 'hvi-icon-StarOfLifeFill', component: HviIconStarOfLifeFill },
+    { tag: 'hvi-icon-StarsEu', component: HviIconStarsEu },
+    { tag: 'hvi-icon-Stethoscope', component: HviIconStethoscope },
+    { tag: 'hvi-icon-Stop', component: HviIconStop },
+    { tag: 'hvi-icon-StopFill', component: HviIconStopFill },
+    { tag: 'hvi-icon-Stroller', component: HviIconStroller },
+    { tag: 'hvi-icon-StrollerFill', component: HviIconStrollerFill },
+    { tag: 'hvi-icon-Sun', component: HviIconSun },
+    { tag: 'hvi-icon-SunFill', component: HviIconSunFill },
+    { tag: 'hvi-icon-Table', component: HviIconTable },
+    { tag: 'hvi-icon-TableFill', component: HviIconTableFill },
+    { tag: 'hvi-icon-Tablet', component: HviIconTablet },
+    { tag: 'hvi-icon-TabletFill', component: HviIconTabletFill },
+    { tag: 'hvi-icon-Tabs', component: HviIconTabs },
+    { tag: 'hvi-icon-TabsAdd', component: HviIconTabsAdd },
+    { tag: 'hvi-icon-TabsAddFill', component: HviIconTabsAddFill },
+    { tag: 'hvi-icon-TabsFill', component: HviIconTabsFill },
+    { tag: 'hvi-icon-TabsRemove', component: HviIconTabsRemove },
+    { tag: 'hvi-icon-TabsRemoveFill', component: HviIconTabsRemoveFill },
+    { tag: 'hvi-icon-Tag', component: HviIconTag },
+    { tag: 'hvi-icon-TagFill', component: HviIconTagFill },
+    { tag: 'hvi-icon-TapWater', component: HviIconTapWater },
+    { tag: 'hvi-icon-TapWaterFill', component: HviIconTapWaterFill },
+    { tag: 'hvi-icon-Tasklist', component: HviIconTasklist },
+    { tag: 'hvi-icon-TasklistFill', component: HviIconTasklistFill },
+    { tag: 'hvi-icon-TasklistSave', component: HviIconTasklistSave },
+    { tag: 'hvi-icon-TasklistSaveFill', component: HviIconTasklistSaveFill },
+    { tag: 'hvi-icon-TasklistSend', component: HviIconTasklistSend },
+    { tag: 'hvi-icon-TasklistSendFill', component: HviIconTasklistSendFill },
+    { tag: 'hvi-icon-TasklistStart', component: HviIconTasklistStart },
+    { tag: 'hvi-icon-TasklistStartFill', component: HviIconTasklistStartFill },
+    { tag: 'hvi-icon-TeddyBear', component: HviIconTeddyBear },
+    { tag: 'hvi-icon-TeddyBearFill', component: HviIconTeddyBearFill },
+    { tag: 'hvi-icon-Tenancy', component: HviIconTenancy },
+    { tag: 'hvi-icon-TenancyFill', component: HviIconTenancyFill },
+    { tag: 'hvi-icon-Terminal', component: HviIconTerminal },
+    { tag: 'hvi-icon-TerminalFill', component: HviIconTerminalFill },
+    { tag: 'hvi-icon-TestFlask', component: HviIconTestFlask },
+    { tag: 'hvi-icon-TestFlaskFill', component: HviIconTestFlaskFill },
+    { tag: 'hvi-icon-Theme', component: HviIconTheme },
+    { tag: 'hvi-icon-Thermometer', component: HviIconThermometer },
+    { tag: 'hvi-icon-ThermometerFill', component: HviIconThermometerFill },
+    { tag: 'hvi-icon-ThumbDown', component: HviIconThumbDown },
+    { tag: 'hvi-icon-ThumbDownFill', component: HviIconThumbDownFill },
+    { tag: 'hvi-icon-ThumbUp', component: HviIconThumbUp },
+    { tag: 'hvi-icon-ThumbUpFill', component: HviIconThumbUpFill },
+    { tag: 'hvi-icon-Timer', component: HviIconTimer },
+    { tag: 'hvi-icon-TimerFill', component: HviIconTimerFill },
+    { tag: 'hvi-icon-TimerPause', component: HviIconTimerPause },
+    { tag: 'hvi-icon-TimerPauseFill', component: HviIconTimerPauseFill },
+    { tag: 'hvi-icon-TimerStart', component: HviIconTimerStart },
+    { tag: 'hvi-icon-TimerStartFill', component: HviIconTimerStartFill },
+    { tag: 'hvi-icon-Toilet', component: HviIconToilet },
+    { tag: 'hvi-icon-ToiletFill', component: HviIconToiletFill },
+    { tag: 'hvi-icon-Token', component: HviIconToken },
+    { tag: 'hvi-icon-TokenFill', component: HviIconTokenFill },
+    { tag: 'hvi-icon-Tooth', component: HviIconTooth },
+    { tag: 'hvi-icon-ToothFill', component: HviIconToothFill },
+    { tag: 'hvi-icon-Train', component: HviIconTrain },
+    { tag: 'hvi-icon-TrainFill', component: HviIconTrainFill },
+    { tag: 'hvi-icon-Tram', component: HviIconTram },
+    { tag: 'hvi-icon-TramFill', component: HviIconTramFill },
+    { tag: 'hvi-icon-Trash', component: HviIconTrash },
+    { tag: 'hvi-icon-TrashFill', component: HviIconTrashFill },
+    { tag: 'hvi-icon-TrayFood', component: HviIconTrayFood },
+    { tag: 'hvi-icon-TrayFoodFill', component: HviIconTrayFoodFill },
+    { tag: 'hvi-icon-TrendDown', component: HviIconTrendDown },
+    { tag: 'hvi-icon-TrendFlat', component: HviIconTrendFlat },
+    { tag: 'hvi-icon-TrendUp', component: HviIconTrendUp },
+    { tag: 'hvi-icon-Triangle', component: HviIconTriangle },
+    { tag: 'hvi-icon-TriangleFill', component: HviIconTriangleFill },
+    { tag: 'hvi-icon-Truck', component: HviIconTruck },
+    { tag: 'hvi-icon-TruckFill', component: HviIconTruckFill },
+    { tag: 'hvi-icon-TruckPercent', component: HviIconTruckPercent },
+    { tag: 'hvi-icon-TruckPercentFill', component: HviIconTruckPercentFill },
+    { tag: 'hvi-icon-Umbrella', component: HviIconUmbrella },
+    { tag: 'hvi-icon-UmbrellaFill', component: HviIconUmbrellaFill },
+    { tag: 'hvi-icon-Upload', component: HviIconUpload },
+    { tag: 'hvi-icon-Video', component: HviIconVideo },
+    { tag: 'hvi-icon-VideoFill', component: HviIconVideoFill },
+    { tag: 'hvi-icon-VideoSlash', component: HviIconVideoSlash },
+    { tag: 'hvi-icon-VideoSlashFill', component: HviIconVideoSlashFill },
+    { tag: 'hvi-icon-Videoplayer', component: HviIconVideoplayer },
+    { tag: 'hvi-icon-VideoplayerFill', component: HviIconVideoplayerFill },
+    { tag: 'hvi-icon-Virus', component: HviIconVirus },
+    { tag: 'hvi-icon-VirusFill', component: HviIconVirusFill },
+    { tag: 'hvi-icon-Vitals', component: HviIconVitals },
+    { tag: 'hvi-icon-WaitingRoom', component: HviIconWaitingRoom },
+    { tag: 'hvi-icon-WaitingRoomFill', component: HviIconWaitingRoomFill },
+    { tag: 'hvi-icon-Wallet', component: HviIconWallet },
+    { tag: 'hvi-icon-WalletFill', component: HviIconWalletFill },
+    { tag: 'hvi-icon-WateringCan', component: HviIconWateringCan },
+    { tag: 'hvi-icon-WateringCanFill', component: HviIconWateringCanFill },
+    { tag: 'hvi-icon-Waveform', component: HviIconWaveform },
+    { tag: 'hvi-icon-Waves', component: HviIconWaves },
+    { tag: 'hvi-icon-Weight', component: HviIconWeight },
+    { tag: 'hvi-icon-Wheelchair', component: HviIconWheelchair },
+    { tag: 'hvi-icon-WheelchairFill', component: HviIconWheelchairFill },
+    { tag: 'hvi-icon-Wrench', component: HviIconWrench },
+    { tag: 'hvi-icon-WrenchFill', component: HviIconWrenchFill },
+    { tag: 'hvi-icon-XMark', component: HviIconXMark },
+    { tag: 'hvi-icon-XMarkOctagon', component: HviIconXMarkOctagon },
+    { tag: 'hvi-icon-XMarkOctagonFill', component: HviIconXMarkOctagonFill },
+    { tag: 'hvi-icon-ZoomMinus', component: HviIconZoomMinus },
+    { tag: 'hvi-icon-ZoomMinusFill', component: HviIconZoomMinusFill },
+    { tag: 'hvi-icon-ZoomPlus', component: HviIconZoomPlus },
+    { tag: 'hvi-icon-ZoomPlusFill', component: HviIconZoomPlusFill },
   ];
 
   for (const { tag, component } of elements) {

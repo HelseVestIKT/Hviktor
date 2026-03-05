@@ -1,0 +1,13 @@
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { HviIconBase, ICON_STYLES, ICON_TEMPLATE } from '../base-icon.component';
+
+@Component({
+  selector: 'hvi-icon-PillRectangleFill',
+  template: ICON_TEMPLATE,
+  styles: ICON_STYLES,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class HviIconPillRectangleFill extends HviIconBase {
+  protected override readonly path =
+    'M18.8943 5.10567C17.4298 3.64121 15.0555 3.64121 13.591 5.10567L10.0554 8.64123C9.95782 8.73887 9.95782 8.89716 10.0554 8.99479L15.0052 13.9445C15.1028 14.0422 15.2611 14.0422 15.3587 13.9445L18.8943 10.409C20.3588 8.94451 20.3588 6.57014 18.8943 5.10567ZM13.9445 15.3587C14.0422 15.2611 14.0422 15.1028 13.9445 15.0052L8.99479 10.0554C8.89716 9.95782 8.73886 9.95782 8.64123 10.0554L5.10567 13.591C3.64121 15.0555 3.64121 17.4298 5.10567 18.8943C6.57014 20.3588 8.94451 20.3588 10.409 18.8943L13.9445 15.3587Z';
+}

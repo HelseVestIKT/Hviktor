@@ -1,0 +1,13 @@
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { HviIconBase, ICON_STYLES, ICON_TEMPLATE } from '../base-icon.component';
+
+@Component({
+  selector: 'hvi-icon-FolderMinusFill',
+  template: ICON_TEMPLATE,
+  styles: ICON_STYLES,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class HviIconFolderMinusFill extends HviIconBase {
+  protected override readonly path =
+    'M4 4.25C3.0335 4.25 2.25 5.0335 2.25 6V18.5C2.25 19.1904 2.80964 19.75 3.5 19.75H20.5C21.1904 19.75 21.75 19.1904 21.75 18.5V8.5C21.75 7.80964 21.1904 7.25 20.5 7.25H11.75V6C11.75 5.0335 10.9665 4.25 10 4.25H4ZM9.5 12.75C9.08579 12.75 8.75 13.0858 8.75 13.5C8.75 13.9142 9.08579 14.25 9.5 14.25H14.5C14.9142 14.25 15.25 13.9142 15.25 13.5C15.25 13.0858 14.9142 12.75 14.5 12.75H9.5Z';
+}

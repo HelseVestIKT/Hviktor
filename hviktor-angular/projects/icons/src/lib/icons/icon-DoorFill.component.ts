@@ -1,0 +1,13 @@
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { HviIconBase, ICON_STYLES, ICON_TEMPLATE } from '../base-icon.component';
+
+@Component({
+  selector: 'hvi-icon-DoorFill',
+  template: ICON_TEMPLATE,
+  styles: ICON_STYLES,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+})
+export class HviIconDoorFill extends HviIconBase {
+  protected override readonly path =
+    'M5 2.25C4.80109 2.25 4.61032 2.32902 4.46967 2.46967C4.32901 2.61033 4.25 2.80109 4.25 3.00001L4.25019 21C4.25019 21.4142 4.58598 21.75 5.00019 21.75H19C19.4142 21.75 19.75 21.4142 19.75 21V3C19.75 2.58579 19.4142 2.25 19 2.25H5ZM15.75 10.5C14.9216 10.5 14.25 11.1716 14.25 12C14.25 12.8284 14.9216 13.5 15.75 13.5C16.5784 13.5 17.25 12.8284 17.25 12C17.25 11.1716 16.5784 10.5 15.75 10.5Z';
+}
