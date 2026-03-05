@@ -4,3 +4,4 @@
 
 export * from './lib/icons/icon-home.component';
 export * from './lib/icons/icon-user.component';
+export { registerIconsAsCustomElements } from './lib/register-elements';

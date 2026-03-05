@@ -4,5 +4,6 @@
   "lib": {
     "entryFile": "src/public-api.ts"
   },
-  "allowedNonPeerDependencies": ["@angular/elements"]
+  "assets": ["README.md", "bundles/**/*"],
+  "allowedNonPeerDependencies": []
 }

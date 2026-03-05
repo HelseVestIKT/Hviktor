@@ -1,53 +1,209 @@
-# Icons
+# Hviktor Icons
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.1.0.
+A collection of icons that can be used in both **Angular** and **Blazor** (or any other framework) projects. The icons are built as Angular components but can also be used as Web Components for cross-framework compatibility.
 
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## Installation
 
 ```bash
-ng generate component component-name
+npm install @helsevestikt/hviktor-icons
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## Usage
+
+### Option 1: Angular Components (Angular Projects Only)
+
+Import individual icon components directly in your Angular application:
+
+```typescript
+import { Component } from '@angular/core';
+import { HviIconUser, HviIconHome } from '@helsevestikt/hviktor-icons';
+
+@Component({
+  selector: 'app-example',
+  imports: [HviIconUser, HviIconHome],
+  template: `
+    <hvi-icon-user [size]="'md'" />
+    <hvi-icon-home [size]="'lg'" />
+  `,
+})
+export class ExampleComponent {}
+```
+
+**Available sizes:** `'sm'` (16px), `'md'` (24px), `'lg'` (32px)
+
+### Option 2: Web Components (Angular, Blazor, React, Vue, etc.)
+
+#### Angular with Web Components
+
+Register the icons as custom elements in your application:
+
+```typescript
+// In main.ts or app initialization
+import { registerIconsAsCustomElements } from '@helsevestikt/hviktor-icons';
+
+registerIconsAsCustomElements();
+
+// Then use in any component template
+@Component({
+  template: `
+    <hvi-icon-user size="md"></hvi-icon-user>
+    <hvi-icon-home size="lg"></hvi-icon-home>
+  `
+})
+```
+
+#### Blazor / ASP.NET Core
+
+**1. Install the package via npm (in your Blazor project root):**
 
 ```bash
-ng generate --help
+npm install @helsevestikt/hviktor-icons
 ```
+
+**2. Copy the bundle to your wwwroot:**
+
+After building the icons library with `npm run build:icons:bundle`, copy the bundle:
+
+```powershell
+# From the icons dist folder
+Copy-Item "node_modules/@helsevestikt/hviktor-icons/bundles/hviktor-icons.js" -Destination "wwwroot/js/"
+```
+
+Or add to your `.csproj` to automate this:
+
+```xml
+<ItemGroup>
+  <Content Include="node_modules/@helsevestikt/hviktor-icons/bundles/**" CopyToOutputDirectory="PreserveNewest" />
+</ItemGroup>
+```
+
+**3. Reference in your Blazor layout (`_Host.cshtml`, `_Layout.cshtml`, or `index.html`):**
+
+```html
+<script src="~/js/hviktor-icons.js"></script>
+<script>
+  // Register the custom elements
+  HvictorIcons.register();
+</script>
+```
+
+**4. Use in Razor components:**
+
+```razor
+@page "/example"
+
+<div>
+  <hvi-icon-user size="md"></hvi-icon-user>
+  <hvi-icon-home size="lg"></hvi-icon-home>
+</div>
+
+<style>
+  /* Style the icons using CSS */
+  hvi-icon-user {
+    color: #0078d4;
+  }
+
+  hvi-icon-home {
+    color: #00aa00;
+  }
+</style>
+```
+
+#### Vanilla JavaScript / HTML
+
+```html
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="path/to/hviktor-icons.js"></script>
+  </head>
+  <body>
+    <hvi-icon-user size="md"></hvi-icon-user>
+    <hvi-icon-home size="lg"></hvi-icon-home>
+
+    <script>
+      // Register the custom elements
+      HvictorIcons.register();
+    </script>
+  </body>
+</html>
+```
+
+## Available Icons
+
+- `hvi-icon-user`
+- `hvi-icon-home`
 
 ## Building
 
-To build the library, run:
+### Build the Angular Library
+
+To build the library for npm distribution:
 
 ```bash
 ng build icons
 ```
 
-This command will compile your project, and the build artifacts will be placed in the `dist/` directory.
+This creates the library in `dist/icons/` with all necessary files for npm.
 
-### Publishing the Library
+### Build the Web Components Bundle
 
-Once the project is built, you can publish your library by following these steps:
-
-1. Navigate to the `dist` directory:
-
-   ```bash
-   cd dist/icons
-   ```
-
-2. Run the `npm publish` command to publish your library to the npm registry:
-   ```bash
-   npm publish
-   ```
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+To create the standalone Web Components bundle for Blazor and other frameworks:
 
 ```bash
-ng test
+npm run build:icons:bundle
 ```
+
+This creates `dist/icons/bundles/hviktor-icons.js` which can be used directly in any framework.
+
+## Publishing
+
+To publish the library to npm:
+
+```bash
+npm run publish:icons
+```
+
+This will:
+
+1. Bump the patch version
+2. Build the Angular library
+3. Build the Web Components bundle
+4. Publish to npm
+
+## Development
+
+### Adding New Icons
+
+1. Create a new component in `projects/icons/src/lib/icons/`
+2. Export it from `public-api.ts`
+3. Register it in `register-elements.ts`
+
+### Running Tests
+
+```bash
+ng test icons
+```
+
+## Styling
+
+Icons inherit the current text color via `currentColor`. You can style them using CSS:
+
+```css
+.my-icon {
+  color: blue;
+  font-size: 24px; /* For custom sizes */
+}
+```
+
+## Browser Support
+
+- Modern browsers with Web Components support (Chrome, Firefox, Safari, Edge)
+- Polyfills may be needed for older browsers
+
+## License
+
+See the LICENSE file in the repository.
 
 ## Running end-to-end tests
 
