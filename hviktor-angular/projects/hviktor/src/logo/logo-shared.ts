@@ -70,9 +70,9 @@ const HELSE: LogoPath[] = [
 export function buildLogo(
   label: string,
   companyPaths: LogoPath[],
-  viewBox = '0 0 240 61',
+  viewBox = '0 0 240 65',
   width = 240,
-  height = 61,
+  height = 65,
 ): LogoDefinition {
   return {
     viewBox,
