@@ -38,6 +38,10 @@ import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
         <div class="flex flex-col gap-8">
           <p hviParagraph>Variant endres med <code>company</code>-attributtet.</p>
           <div class="grid gap-2">
+            <h3 hviHeading>dots</h3>
+            <hvi-logo company="dots" [size]="selectedSize()" />
+          </div>
+          <div class="grid gap-2">
             <h3 hviHeading>hve</h3>
             <hvi-logo company="hve" [size]="selectedSize()" />
           </div>

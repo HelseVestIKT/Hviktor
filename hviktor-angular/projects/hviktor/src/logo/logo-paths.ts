@@ -1,4 +1,5 @@
 import { LogoDefinition } from './logo-types';
+import { LOGO_DOTS } from './logos/logo-dots';
 import { LOGO_HBE } from './logos/logo-hbe';
 import { LOGO_HBE_HUS } from './logos/logo-hbe-hus';
 import { LOGO_HFD } from './logos/logo-hfd';
@@ -19,6 +20,7 @@ export type LogoCompany = keyof typeof LOGOS;
  * to keep file sizes manageable. This registry assembles them.
  */
 export const LOGOS = {
+  dots: LOGO_DOTS,
   hvikt: LOGO_HVIKT,
   hve: LOGO_HVE,
   hbe: LOGO_HBE,
