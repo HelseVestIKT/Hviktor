@@ -10,10 +10,7 @@ import { AvatarStackStandardAvatarStackExampleSource } from './code-examples/ava
   standalone: true,
   imports: [DemoPageComponent, DemoSectionComponent, HviAvatarStack, HviAvatar, HviAlert, HviLink],
   template: `
-    <app-demo-page
-      title="AvatarStack"
-      description="AvatarStack stabler en samling Avatar elementer"
-    >
+    <app-demo-page componentId="avatar-stack">
       <hvi-alert
         >AvatarStack er fortsatt under utvikling hos
         <a

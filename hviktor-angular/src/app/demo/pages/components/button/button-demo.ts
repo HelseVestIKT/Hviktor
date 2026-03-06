@@ -11,7 +11,7 @@ import { ButtonVarianterExampleSource } from './code-examples/button.varianter.e
   standalone: true,
   imports: [HviButton, DemoPageComponent, DemoSectionComponent],
   template: `
-    <app-demo-page title="Button" description="Knapper for handlinger og interaksjoner.">
+    <app-demo-page componentId="button">
       <app-demo-section title="Variant" [code]="variantCode">
         <div class="flex flex-wrap gap-2">
           <button hviButton>Primary (default)</button>

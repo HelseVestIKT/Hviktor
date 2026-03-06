@@ -9,10 +9,7 @@ import { SpinnerStorrelserExampleSource } from './code-examples/spinner.storrels
   standalone: true,
   imports: [DemoPageComponent, DemoSectionComponent, HviSpinner],
   template: `
-    <app-demo-page
-      title="Spinner"
-      description="Spinner brukes for å indikere at innhold eller en handling er i ferd med å laste, og at brukeren må vente før de kan fortsette."
-    >
+    <app-demo-page componentId="spinner">
       <app-demo-section title="Standard" [code]="standardCode">
         <div class="flex flex-wrap items-center gap-4">
           <hvi-spinner label="Laster innhold" />

@@ -9,7 +9,7 @@ import { ListPunktlisteExampleSource } from './code-examples/list.punktliste.exa
   standalone: true,
   imports: [HviList, DemoPageComponent, DemoSectionComponent],
   template: `
-    <app-demo-page title="List" description="Ordnede og uordnede lister.">
+    <app-demo-page componentId="list">
       <app-demo-section title="Nummerert liste" [code]="nummerertListeCode">
         <ol hviList>
           <li>Første element</li>

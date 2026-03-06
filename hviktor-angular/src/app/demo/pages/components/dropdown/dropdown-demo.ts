@@ -9,10 +9,7 @@ import { DropdownStandardExampleSource } from './code-examples/dropdown.standard
   standalone: true,
   imports: [DemoPageComponent, DemoSectionComponent, HviDropdown, HviButton, HviParagraph],
   template: `
-    <app-demo-page
-      title="Dropdown"
-      description="Dropdown er en generisk nedtrekksliste. Den legger grunnmuren for å bygge menyer og lister."
-    >
+    <app-demo-page componentId="dropdown">
       <app-demo-section title="Standard" [code]="standardCode">
         <p hviParagraph>Standard dropdown har plassering bottom-end</p>
         <div class="flex flex-wrap gap-2">

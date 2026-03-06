@@ -14,10 +14,7 @@ import { SkeletonVarianterExampleSource } from './code-examples/skeleton.variant
   standalone: true,
   imports: [DemoPageComponent, DemoSectionComponent, HviSkeleton, HviCard, HviCardBlock],
   template: `
-    <app-demo-page
-      title="Skeleton"
-      description="Skeleton viser en plassholder for innhold som lastes inn."
-    >
+    <app-demo-page componentId="skeleton">
       <!-- Variants -->
       <app-demo-section
         title="Varianter"

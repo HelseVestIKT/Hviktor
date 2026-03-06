@@ -67,7 +67,7 @@ export const routes: Routes = [
           ),
       },
       {
-        path: 'komponenter/forms',
+        path: 'komponenter/form',
         loadComponent: () =>
           import('./demo/pages/components/forms/forms-demo').then((m) => m.FormsDemoComponent),
       },

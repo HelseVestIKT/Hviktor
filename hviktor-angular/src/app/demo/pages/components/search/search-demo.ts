@@ -28,10 +28,7 @@ import { SearchVarianterExampleSource } from './code-examples/search.varianter.e
     HviDivider,
   ],
   template: `
-    <app-demo-page
-      title="Search"
-      description="Search lar brukere raskt finne relevant innhold på et nettsted eller i en applikasjon. Komponenten består av et søkefelt, med eller uten en søkeknapp."
-    >
+    <app-demo-page componentId="search">
       <!-- Grunnleggende -->
       <app-demo-section
         title="Grunnleggende"

@@ -33,10 +33,7 @@ import { ErrorSummaryManuellModusExampleSource } from './code-examples/error-sum
     HviButton,
   ],
   template: `
-    <app-demo-page
-      title="ErrorSummary"
-      description="ErrorSummary er en oppsummering av feil. Den gir brukeren oversikt over feil eller mangler som må rettes på en side eller trinn, for å komme videre."
-    >
+    <app-demo-page componentId="error-summary">
       <!-- Manuell modus -->
       <app-demo-section
         title="Manuell modus"

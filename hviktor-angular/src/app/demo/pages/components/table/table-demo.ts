@@ -36,10 +36,7 @@ interface Person {
     HviPagination,
   ],
   template: `
-    <app-demo-page
-      title="Table"
-      description="Table brukes for å vise strukturert informasjon på en ryddig og oversiktlig måte. Tabeller kan gjøre det enklere for brukerne å skanne og sammenligne informasjon."
-    >
+    <app-demo-page componentId="table">
       <!-- Basis eksempel -->
       <app-demo-section
         title="Basis"

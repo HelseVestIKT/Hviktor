@@ -27,10 +27,7 @@ import { FieldsetRadioGruppeExampleSource } from './code-examples/fieldset.radio
     HviHeading,
   ],
   template: `
-    <app-demo-page
-      title="Fieldset"
-      description="Fieldset brukes til å gruppere og navngi felt som naturlig hører sammen, for eksempel datofelt eller adressefelt. Komponenten hjelper med å organisere informasjon, gjøre skjemaer mer oversiktlige og forbedre tilgjengeligheten for skjermlesere."
-    >
+    <app-demo-page componentId="fieldset">
       <!-- Radio-gruppe -->
       <app-demo-section
         title="Radio-gruppe"

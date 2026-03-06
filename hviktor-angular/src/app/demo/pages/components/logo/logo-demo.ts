@@ -23,10 +23,7 @@ import { LogoVarianterExampleSource } from './code-examples/logo.varianter.examp
     HviParagraph,
   ],
   template: `
-    <app-demo-page
-      title="Logo"
-      description="Logo viser foretakslogoer for Helse Vest. Logoen responderer automatisk på applikasjonens light/dark mode."
-    >
+    <app-demo-page componentId="logo">
       Endre størrelse på logoen med <code>size</code>-attributtet.
 
       <hvi-toggle-group [(value)]="selectedSize" variant="primary">

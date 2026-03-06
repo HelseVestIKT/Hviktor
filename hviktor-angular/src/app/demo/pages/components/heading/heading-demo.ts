@@ -8,7 +8,7 @@ import { HeadingStorrelserExampleSource } from './code-examples/heading.storrels
   standalone: true,
   imports: [HviHeading, DemoPageComponent, DemoSectionComponent],
   template: `
-    <app-demo-page title="Heading" description="Overskrifter i forskjellige størrelser.">
+    <app-demo-page componentId="heading">
       <app-demo-section title="Størrelser" [code]="storrelserCode">
         <div class="flex flex-col gap-4">
           <h1 hviHeading size="2xl">2XL Overskrift</h1>

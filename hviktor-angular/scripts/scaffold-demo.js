@@ -47,10 +47,7 @@ import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
   standalone: true,
   imports: [DemoPageComponent, DemoSectionComponent],
   template: \`
-    <app-demo-page
-      title="${pascalName}"
-      description="${description}"
-    >
+    <app-demo-page componentId="${kebabName}">
       <app-demo-section title="Eksempel">
         <div class="flex flex-wrap gap-2">
           <!-- Legg til demo-innhold her -->

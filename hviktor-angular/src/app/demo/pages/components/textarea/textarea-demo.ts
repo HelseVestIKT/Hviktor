@@ -12,10 +12,7 @@ import { TextareaReadonlyExampleSource } from './code-examples/textarea.readonly
   standalone: true,
   imports: [DemoPageComponent, DemoSectionComponent, HviInput, HviField, HviLabel, HviFieldCounter],
   template: `
-    <app-demo-page
-      title="Textarea"
-      description="Textarea gir brukere muligheten til å skrive lengre fritekst over flere linjer."
-    >
+    <app-demo-page componentId="textarea">
       <!-- Grunnleggende -->
       <app-demo-section
         title="Grunnleggende"

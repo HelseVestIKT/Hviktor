@@ -18,10 +18,7 @@ import { SwitchHoyrejustertExampleSource } from './code-examples/switch.hoyrejus
     HviDivider,
   ],
   template: `
-    <app-demo-page
-      title="Switch"
-      description="Switch gir brukerne et valg mellom to alternativer. Bryteren kan enten slås av eller på og skal alltid være innstilt med et standardvalg."
-    >
+    <app-demo-page componentId="switch">
       <!-- Grunnleggende -->
       <app-demo-section
         title="Grunnleggende"

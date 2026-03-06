@@ -11,10 +11,7 @@ import { BadgeTintedVariantExampleSource } from './code-examples/badge.tinted-va
   standalone: true,
   imports: [HviBadge, HviBadgePosition, DemoPageComponent, DemoSectionComponent],
   template: `
-    <app-demo-page
-      title="Badge"
-      description="Små indikatorer og tellere for å vise status eller antall."
-    >
+    <app-demo-page componentId="badge">
       <app-demo-section title="Base variant" [code]="baseVariantCode">
         <div class="flex flex-wrap items-center gap-4">
           <hvi-badge color="neutral" count="9+" variant="base"></hvi-badge>

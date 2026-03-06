@@ -11,10 +11,7 @@ import { ChipRadioExampleSource } from './code-examples/chip.radio.example.sourc
   standalone: true,
   imports: [HviChipButton, HviChipLabel, HviFieldKit, DemoPageComponent, DemoSectionComponent],
   template: `
-    <app-demo-page
-      title="Chip"
-      description="Kompakte elementer for valg, filtrering og visning av informasjon."
-    >
+    <app-demo-page componentId="chip">
       <app-demo-section title="Radio" [code]="radioCode">
         <div class="flex flex-wrap gap-2">
           <label hviChip>

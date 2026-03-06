@@ -8,7 +8,7 @@ import { ParagraphStorrelserExampleSource } from './code-examples/paragraph.stor
   standalone: true,
   imports: [HviParagraph, DemoPageComponent, DemoSectionComponent],
   template: `
-    <app-demo-page title="Paragraph" description="Avsnitt for løpende tekst.">
+    <app-demo-page componentId="paragraph">
       <app-demo-section title="Størrelser" [code]="storrelserCode">
         <div class="flex flex-col gap-4">
           <p hviParagraph size="lg">

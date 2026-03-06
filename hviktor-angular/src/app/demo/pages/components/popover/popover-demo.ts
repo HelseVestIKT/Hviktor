@@ -10,7 +10,7 @@ import { PopoverStandardExampleSource } from './code-examples/popover.standard.e
   standalone: true,
   imports: [HviPopover, HviButton, HviParagraph, DemoPageComponent, DemoSectionComponent],
   template: `
-    <app-demo-page title="Popover" description="Popup-innhold som vises ved interaksjon.">
+    <app-demo-page componentId="popover">
       <app-demo-section title="Standard" [code]="standardCode">
         <div class="flex flex-wrap gap-4">
           <button hviButton popovertarget="popover1">Åpne popover</button>

@@ -10,7 +10,7 @@ import { AvatarVarianterExampleSource } from './code-examples/avatar.varianter.e
   standalone: true,
   imports: [HviAvatar, HviButton, DemoPageComponent, DemoSectionComponent],
   template: `
-    <app-demo-page title="Avatar" description="Viser profilbilde eller initialer for en bruker.">
+    <app-demo-page componentId="avatar">
       <app-demo-section title="Varianter" [code]="varianterCode">
         <div class="flex items-center gap-4">
           <hvi-avatar ariaLabel="Erlend Johnsen" />

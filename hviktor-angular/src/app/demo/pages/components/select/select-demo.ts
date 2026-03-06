@@ -8,10 +8,7 @@ import { SelectEksempelExampleSource } from './code-examples/select.eksempel.exa
   standalone: true,
   imports: [DemoPageComponent, DemoSectionComponent, HviSelect, HviForms, HviFieldKit, HviLabel],
   template: `
-    <app-demo-page
-      title="Select"
-      description="Select lar brukeren velge ett alternativ fra en liste."
-    >
+    <app-demo-page componentId="select">
       <app-demo-section title="Eksempel" [code]="eksempelCode">
         <div class="flex flex-col gap-2">
           <form hviForm>

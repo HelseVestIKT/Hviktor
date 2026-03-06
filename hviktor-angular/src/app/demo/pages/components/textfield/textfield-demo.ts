@@ -22,10 +22,7 @@ import { TextfieldTypeExampleSource } from './code-examples/textfield.type.examp
     HviSelect,
   ],
   template: `
-    <app-demo-page
-      title="Textfield"
-      description="Textfield gir brukere muligheten til å skrive fritekst eller tall. Dette er en sammensatt komponent som bruker Field, Input/Textarea og Label under panseret."
-    >
+    <app-demo-page componentId="textfield">
       <!-- Grunnleggende -->
       <app-demo-section
         title="Grunnleggende"

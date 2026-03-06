@@ -8,10 +8,7 @@ import { BreadcrumbsStandardExampleSource } from './code-examples/breadcrumbs.st
   standalone: true,
   imports: [HviBreadcrumbs, DemoPageComponent, DemoSectionComponent],
   template: `
-    <app-demo-page
-      title="Breadcrumbs"
-      description="Navigasjonssti som viser brukerens posisjon i hierarkiet."
-    >
+    <app-demo-page componentId="breadcrumbs">
       <app-demo-section title="Standard" [code]="standardCode">
         <div class="flex items-center gap-2">
           <nav
