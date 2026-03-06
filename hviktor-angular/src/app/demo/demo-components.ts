@@ -283,7 +283,12 @@ export const DEMO_COMPONENTS: DemoComponent[] = [
     description: 'AvatarStack stabler en samling Avatar elementer',
     ds: true,
   },
-  { id: 'logo', name: 'Logo', description: 'Logo komponent', hvi: true },
+  {
+    id: 'logo',
+    name: 'Logo',
+    description: 'Logo kan vise logoene til alle foretakene i Helse Vest.',
+    hvi: true,
+  },
   {
     id: 'textfield',
     name: 'Textfield',

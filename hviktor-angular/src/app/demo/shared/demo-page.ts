@@ -31,7 +31,7 @@ import { DEMO_COMPONENTS, designSystemUrl } from '../demo-components';
             </a>
           }
         </div>
-        <p hviParagraph>{{ description() }}</p>
+        <p hviParagraph class="max-w-lg">{{ description() }}</p>
       </header>
       <ng-content />
     </article>
