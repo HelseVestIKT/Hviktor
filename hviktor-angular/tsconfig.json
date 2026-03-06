@@ -41,10 +41,10 @@
       "path": "./projects/hviktor/tsconfig.spec.json"
     },
     {
-      "path": "./projects/hviktor/tsconfig.lib.json"
+      "path": "./projects/icons/tsconfig.lib.json"
     },
     {
-      "path": "./projects/hviktor/tsconfig.spec.json"
+      "path": "./projects/icons/tsconfig.spec.json"
     }
   ]
 }
