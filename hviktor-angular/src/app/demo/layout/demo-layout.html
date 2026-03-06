@@ -31,9 +31,13 @@
           <a
             [routerLink]="['/komponenter', component.id]"
             routerLinkActive="font-semibold border-l-4 lg:border-l-6 bg-(--ds-color-neutral-surface-tinted)"
-            class="block rounded px-3 py-2 whitespace-nowrap transition-colors hover:bg-(--ds-color-neutral-surface-hover) active:bg-(--ds-color-neutral-surface-active)"
+            class="flex items-center gap-1.5 rounded px-3 py-2 whitespace-nowrap transition-colors hover:bg-(--ds-color-neutral-surface-hover) active:bg-(--ds-color-neutral-surface-active)"
           >
-            {{ component.name }}
+            {{ component.name }} @if (component.ds) {
+            <img src="assets/ds.svg" alt="" class="size-3.5" />
+            } @if (component.hvi) {
+            <hvi-logo company="dots" size="sm" aria-hidden="true" class="scale-50" />
+            }
           </a>
         </li>
         }
