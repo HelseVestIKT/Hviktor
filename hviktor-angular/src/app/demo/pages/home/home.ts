@@ -41,7 +41,6 @@ import { DEMO_COMPONENTS } from '../../demo-components';
           <hvi-card class="hover-outline-2 h-full hover:outline">
             <div hviCardBlock>
               <h2 hviHeading size="sm">{{ component.name }}</h2>
-              <p hviParagraph size="sm">{{ component.description }}</p>
             </div>
           </hvi-card>
         </a>

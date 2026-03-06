@@ -54,15 +54,15 @@ import { LogoDefinition, LogoSize } from './logo-types';
       }
 
       :host([data-size='sm']) {
-        height: 40px;
+        height: 46px;
       }
 
       :host([data-size='md']) {
-        height: 65px;
+        height: 52px;
       }
 
       :host([data-size='lg']) {
-        height: 82px;
+        height: 60px;
       }
     `,
   ],
