@@ -11,10 +11,7 @@ import { TooltipTekstMedTooltipExampleSource } from './code-examples/tooltip.tek
   standalone: true,
   imports: [DemoPageComponent, DemoSectionComponent, HviButton, HviTooltip],
   template: `
-    <app-demo-page
-      title="Tooltip"
-      description="Tooltip viser kort informasjon når brukeren holder musepekeren over eller fokuserer på et element. Den brukes til sekundær informasjon, for eksempel til å forklare hva et symbol betyr."
-    >
+    <app-demo-page componentId="tooltip">
       <!-- Grunnleggende eksempel med ikon-knapp -->
       <app-demo-section
         title="Ikon-knapp med tooltip"

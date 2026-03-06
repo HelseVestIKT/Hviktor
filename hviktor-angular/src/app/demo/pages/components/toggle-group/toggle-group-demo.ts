@@ -17,10 +17,7 @@ import { ToggleGroupVisningsvalgExampleSource } from './code-examples/toggle-gro
     HviParagraph,
   ],
   template: `
-    <app-demo-page
-      title="ToggleGroup"
-      description="ToggleGroup samler relaterte alternativ. Komponenten består av ei gruppe knappar som heng saman, der berre éin knapp er mogleg å velje om gongen."
-    >
+    <app-demo-page componentId="toggle-group">
       <!-- Grunnleggende -->
       <app-demo-section
         title="Grunnleggende"

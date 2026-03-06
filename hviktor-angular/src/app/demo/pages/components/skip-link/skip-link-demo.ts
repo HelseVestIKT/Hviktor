@@ -8,10 +8,7 @@ import { SkipLinkEksempelExampleSource } from './code-examples/skip-link.eksempe
   standalone: true,
   imports: [DemoPageComponent, DemoSectionComponent, HviSkipLink, HviParagraph],
   template: `
-    <app-demo-page
-      title="SkipLink"
-      description="SkipLink hjelper folk som bruker tastaturnavigasjon til å navigere, slik at de enkelt kan gå til det viktigste innholdet på en side."
-    >
+    <app-demo-page componentId="skip-link">
       <app-demo-section
         title="Eksempel"
         [code]="eksempelCode"

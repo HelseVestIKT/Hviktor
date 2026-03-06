@@ -33,10 +33,7 @@ import { RadioMedFeilExampleSource } from './code-examples/radio.med-feil.exampl
     ReactiveFormsModule,
   ],
   template: `
-    <app-demo-page
-      title="Radio"
-      description="Radio er et alternativ brukeren kan velge. Bruk flere Radio for å vise en liste med alternativer. Brukerne kan bytte mellom alternativene, men kan kun velge ett."
-    >
+    <app-demo-page componentId="radio">
       <!-- Enkel radio -->
       <app-demo-section
         title="Enkel radio"

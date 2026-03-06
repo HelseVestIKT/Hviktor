@@ -8,7 +8,7 @@ import { DividerStandardExampleSource } from './code-examples/divider.standard.e
   standalone: true,
   imports: [HviDivider, HviParagraph, DemoPageComponent, DemoSectionComponent],
   template: `
-    <app-demo-page title="Divider" description="Skillelinjer for å separere innhold visuelt.">
+    <app-demo-page componentId="divider">
       <app-demo-section title="Standard" [code]="standardCode">
         <div class="flex flex-col gap-4">
           <p hviParagraph>Innhold over skillelinjen</p>

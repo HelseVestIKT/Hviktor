@@ -8,10 +8,7 @@ import { AlertVarianterExampleSource } from './code-examples/alert.varianter.exa
   standalone: true,
   imports: [HviAlert, DemoPageComponent, DemoSectionComponent],
   template: `
-    <app-demo-page
-      title="Alert"
-      description="Varselmeldinger for å informere brukeren om viktig informasjon."
-    >
+    <app-demo-page componentId="alert">
       <app-demo-section title="Varianter" [code]="varianterCode">
         <div class="flex flex-wrap gap-2">
           <hvi-alert>Dette er en info alert</hvi-alert>

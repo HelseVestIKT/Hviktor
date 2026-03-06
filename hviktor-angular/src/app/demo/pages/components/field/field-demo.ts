@@ -32,10 +32,7 @@ import { FieldPrefixSuffixExampleSource } from './code-examples/field.prefix-suf
     HviLabel,
   ],
   template: `
-    <app-demo-page
-      title="Field"
-      description="Field er et hjelpemiddel for å automatisk koble et felt sammen med Label, Field.Description, ValidationMessage og Field.Counter."
-    >
+    <app-demo-page componentId="field">
       <!-- Grunnleggende eksempel -->
       <app-demo-section
         title="Grunnleggende"

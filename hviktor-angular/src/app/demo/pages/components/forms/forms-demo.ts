@@ -26,10 +26,7 @@ import { FormsKontaktskjemaExampleSource } from './code-examples/forms.kontaktsk
     DemoSectionComponent,
   ],
   template: `
-    <app-demo-page
-      title="Forms"
-      description="Et eksempel på et realistisk skjema med validering, feilmeldinger og tegnteller."
-    >
+    <app-demo-page componentId="form">
       <app-demo-section
         title="Kontaktskjema"
         [code]="kontaktskjemaCode"

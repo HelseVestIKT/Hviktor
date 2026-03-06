@@ -13,10 +13,7 @@ import { InputUlikeTyperExampleSource } from './code-examples/input.ulike-typer.
   standalone: true,
   imports: [DemoPageComponent, DemoSectionComponent, HviInput, HviField, HviLabel],
   template: `
-    <app-demo-page
-      title="Input"
-      description="Input er et skjemaelement for å samle inn brukerdata. Det tilbyr grunnleggende funksjonalitet og er ideell når du trenger full kontroll over komponentens oppsett og validering."
-    >
+    <app-demo-page componentId="input">
       <!-- Grunnleggende -->
       <app-demo-section
         title="Grunnleggende"

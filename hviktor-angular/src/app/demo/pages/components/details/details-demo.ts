@@ -16,7 +16,7 @@ import { DetailsVarianterExampleSource } from './code-examples/details.varianter
     DemoSectionComponent,
   ],
   template: `
-    <app-demo-page title="Details" description="Utvidbart innhold som kan vises eller skjules.">
+    <app-demo-page componentId="details">
       <app-demo-section title="Varianter" [code]="varianterCode">
         <div class="flex flex-col gap-2">
           <hvi-details variant="tinted">

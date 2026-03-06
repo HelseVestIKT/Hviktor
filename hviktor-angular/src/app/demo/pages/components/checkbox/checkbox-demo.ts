@@ -48,10 +48,7 @@ function minCheckedValidator(min: number) {
     ReactiveFormsModule,
   ],
   template: `
-    <app-demo-page
-      title="Checkbox"
-      description="Checkbox gir brukerne mulighet til å velge ett eller flere alternativer. Den kan også brukes i tilfeller der brukeren skal bekrefte noe."
-    >
+    <app-demo-page componentId="checkbox">
       <!-- Enkel checkbox -->
       <app-demo-section
         title="Enkel checkbox"

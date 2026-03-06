@@ -4,7 +4,7 @@ import { DEMO_COMPONENTS, designSystemUrl } from '../demo-components';
 
 /**
  * Wrapper-komponent for demo-sider.
- * Viser tittel og beskrivelse, og projiserer innholdet.
+ * Tar inn `componentId` og slår opp navn og beskrivelse fra DEMO_COMPONENTS.
  */
 @Component({
   selector: 'app-demo-page',
@@ -14,7 +14,7 @@ import { DEMO_COMPONENTS, designSystemUrl } from '../demo-components';
     <article>
       <header class="mb-8">
         <div class="flex items-center gap-3">
-          <h1 hviHeading size="xl">{{ title() }}</h1>
+          <h1 hviHeading size="xl">{{ name() }}</h1>
           @if (isHvi()) {
             <hvi-logo company="dots" size="sm" aria-hidden="true" class="size-6 shrink-0" />
           }
@@ -24,7 +24,7 @@ import { DEMO_COMPONENTS, designSystemUrl } from '../demo-components';
               [href]="dsHref()"
               target="_blank"
               rel="noopener noreferrer"
-              title="Se {{ title() }} i Designsystemet"
+              title="Se {{ name() }} i Designsystemet"
               class="inline-flex shrink-0"
             >
               <img src="assets/ds.svg" alt="Åpne i Designsystemet" class="size-6" />
@@ -38,18 +38,23 @@ import { DEMO_COMPONENTS, designSystemUrl } from '../demo-components';
   `,
 })
 export class DemoPageComponent {
-  title = input.required<string>();
-  description = input.required<string>();
+  componentId = input.required<string>();
+
+  /** Slår opp komponent-konfigurasjon fra DEMO_COMPONENTS basert på componentId. */
+  private component = computed(() => DEMO_COMPONENTS.find((c) => c.id === this.componentId()));
+
+  /** Komponentens visningsnavn. */
+  name = computed(() => this.component()?.name ?? this.componentId());
+
+  /** Komponentens beskrivelse. */
+  description = computed(() => this.component()?.description ?? '');
 
   /** Computed: om komponenten er en Hviktor-egen komponent. */
-  isHvi = computed(() => {
-    const match = DEMO_COMPONENTS.find((c) => c.name === this.title());
-    return match?.hvi ?? false;
-  });
+  isHvi = computed(() => this.component()?.hvi ?? false);
 
-  /** Computed DS-lenke basert på komponentens tittel. */
+  /** Computed DS-lenke basert på komponentens id. */
   dsHref = computed(() => {
-    const match = DEMO_COMPONENTS.find((c) => c.name === this.title());
-    return match?.ds ? designSystemUrl(match.id) : null;
+    const comp = this.component();
+    return comp?.ds ? designSystemUrl(comp.id) : null;
   });
 }

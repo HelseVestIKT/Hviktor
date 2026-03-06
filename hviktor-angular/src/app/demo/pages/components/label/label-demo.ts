@@ -8,7 +8,7 @@ import { LabelVarianterExampleSource } from './code-examples/label.varianter.exa
   standalone: true,
   imports: [HviLabel, DemoPageComponent, DemoSectionComponent],
   template: `
-    <app-demo-page title="Label" description="Etiketter for skjemaelementer og annen tekst.">
+    <app-demo-page componentId="label">
       <app-demo-section title="Varianter" [code]="varianterCode">
         <div class="flex flex-col gap-2">
           <label hviLabel>Standard label</label>
