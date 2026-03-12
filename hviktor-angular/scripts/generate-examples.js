@@ -129,6 +129,15 @@ function parseDemoFile(filePath) {
         .filter(Boolean)
     : [];
 
+  // Extract @angular/forms imports
+  const formsImportMatch = content.match(/import\s+\{([^}]+)\}\s+from\s+['"]@angular\/forms['"]/);
+  const angularFormsImports = formsImportMatch
+    ? formsImportMatch[1]
+        .split(',')
+        .map((s) => s.trim())
+        .filter(Boolean)
+    : [];
+
   return {
     demoName,
     imports,
@@ -136,6 +145,7 @@ function parseDemoFile(filePath) {
     sections,
     allHviImports,
     angularImports,
+    angularFormsImports,
   };
 }
 
@@ -195,12 +205,51 @@ function extractSections(template) {
 /**
  * Analyze template content to find required HVI components
  */
-function findRequiredImports(content, allHviImports) {
+function findRequiredImports(content, allHviImports, classBody) {
   const required = new Set();
+
+  // Kit imports that are const arrays, not components.
+  // Map kit name → template patterns that indicate the kit is needed.
+  const KIT_PATTERNS = {
+    HviForms: [
+      'hviForm',
+      'formControlName',
+      'hviControlInvalid',
+      'hviValidationMessage',
+      'hviFieldset',
+      'hvi-field',
+      'hviInput',
+      'hvi-error-summary',
+      'hviFieldDescription',
+      'hviFieldValidation',
+      'hvi-field-affix',
+      'hvi-field-counter',
+    ],
+    HviFieldKit: [
+      'hvi-field',
+      'hviFieldValidation',
+      'hviFieldDescription',
+      'hviFieldOptional',
+      'hvi-field-affix',
+      'hvi-field-affixes',
+      'hvi-field-counter',
+      'hvi-required-tag',
+    ],
+    HviValidationKit: ['hviForm', 'hviControlInvalid', 'hviValidationMessage', 'formControlName'],
+  };
 
   for (const imp of allHviImports) {
     // Skip demo wrappers
     if (DEMO_WRAPPERS.includes(imp)) continue;
+
+    // Check if this is a known kit import
+    if (KIT_PATTERNS[imp]) {
+      const patterns = KIT_PATTERNS[imp];
+      if (patterns.some((p) => content.includes(p))) {
+        required.add(imp);
+      }
+      continue;
+    }
 
     // Check if the import is used in the content
     // Components: hvi-component-name or HviComponentName
@@ -215,7 +264,11 @@ function findRequiredImports(content, allHviImports) {
       'i',
     );
 
-    if (selectorPattern.test(content) || content.includes(imp)) {
+    if (
+      selectorPattern.test(content) ||
+      content.includes(imp) ||
+      (classBody && classBody.includes(imp))
+    ) {
       required.add(imp);
     }
   }
@@ -266,20 +319,62 @@ function findRequiredAngularImports(content, classBody, allAngularImports) {
 }
 
 /**
+ * Find required @angular/forms imports based on content and class body
+ */
+function findRequiredFormsImports(content, classBody, allFormsImports) {
+  const required = new Set();
+
+  // Patterns that indicate reactive forms usage
+  if (
+    content.includes('formGroup') ||
+    content.includes('formControlName') ||
+    content.includes('formArrayName')
+  ) {
+    required.add('ReactiveFormsModule');
+  }
+
+  // Patterns that indicate template-driven forms (ngModel)
+  if (content.includes('ngModel')) {
+    required.add('FormsModule');
+  }
+
+  // Check class body for form-related types
+  for (const imp of allFormsImports) {
+    if (classBody.includes(imp)) {
+      required.add(imp);
+    }
+  }
+
+  return Array.from(required);
+}
+
+/**
  * Generate example component code
  */
-function generateExampleComponent(demoName, section, classBody, allHviImports, angularImports) {
+function generateExampleComponent(
+  demoName,
+  section,
+  classBody,
+  allHviImports,
+  angularImports,
+  angularFormsImports,
+) {
   const pascalDemoName = toPascal(demoName);
   const pascalSectionName = toPascal(section.slug);
   const className = `${pascalDemoName}${pascalSectionName}ExampleComponent`;
   const selector = `app-${demoName}-${section.slug}-example`;
 
   // Find required imports for this section
-  const requiredHviImports = findRequiredImports(section.content, allHviImports);
+  const requiredHviImports = findRequiredImports(section.content, allHviImports, classBody);
   const requiredAngularImports = findRequiredAngularImports(
     section.content,
     classBody,
     angularImports,
+  );
+  const requiredFormsImports = findRequiredFormsImports(
+    section.content,
+    classBody,
+    angularFormsImports || [],
   );
 
   // Build import statements
@@ -289,12 +384,36 @@ function generateExampleComponent(demoName, section, classBody, allHviImports, a
     importLines.push(`import { ${requiredAngularImports.join(', ')} } from '@angular/core';`);
   }
 
+  // Separate forms modules (FormsModule, ReactiveFormsModule) from types (FormGroup, FormControl, etc.)
+  const formsModules = requiredFormsImports.filter(
+    (i) => i === 'FormsModule' || i === 'ReactiveFormsModule',
+  );
+  const formsTypes = requiredFormsImports.filter(
+    (i) => i !== 'FormsModule' && i !== 'ReactiveFormsModule',
+  );
+  const allFormsNeeded = [...formsModules, ...formsTypes];
+  if (allFormsNeeded.length > 0) {
+    importLines.push(`import { ${allFormsNeeded.join(', ')} } from '@angular/forms';`);
+  }
+
   if (requiredHviImports.length > 0) {
     importLines.push(`import { ${requiredHviImports.join(', ')} } from '@helsevestikt/hviktor';`);
   }
 
-  // Build imports array for @Component
-  const componentImports = requiredHviImports.length > 0 ? requiredHviImports.join(', ') : '';
+  // Build imports array for @Component (HVI components/directives/kits + forms modules)
+  // Exclude type-only imports (types, interfaces) from @Component.imports
+  const HVI_TYPE_ONLY = [
+    'HviValidationMessages',
+    'HviValidatorBundle',
+    'HviValidatorConfig',
+    'HviErrorSummaryItem',
+    'HviErrorSummaryMessages',
+  ];
+  const componentImportItems = [
+    ...requiredHviImports.filter((i) => !HVI_TYPE_ONLY.includes(i)),
+    ...formsModules,
+  ];
+  const componentImports = componentImportItems.length > 0 ? componentImportItems.join(', ') : '';
 
   // Template is already normalized in extractSections
   const cleanTemplate = section.content;
@@ -399,6 +518,7 @@ function processDemoFile(filePath) {
       parsed.classBody,
       parsed.allHviImports,
       parsed.angularImports,
+      parsed.angularFormsImports,
     );
 
     examples.push(example);

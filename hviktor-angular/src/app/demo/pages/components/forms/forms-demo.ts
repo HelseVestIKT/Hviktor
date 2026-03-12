@@ -5,6 +5,7 @@ import {
   HviFieldKit,
   HviForms,
   HviParagraph,
+  HviRequiredTag,
   HviSelect,
   HviValidationKit,
   HviValidationMessages,
@@ -22,6 +23,7 @@ import { FormsKontaktskjemaExampleSource } from './code-examples/forms.kontaktsk
     HviButton,
     HviParagraph,
     HviSelect,
+    HviRequiredTag,
     DemoPageComponent,
     DemoSectionComponent,
   ],
@@ -34,11 +36,16 @@ import { FormsKontaktskjemaExampleSource } from './code-examples/forms.kontaktsk
       >
         <form
           hviForm
+          #myForm="hviForm"
           [formGroup]="contactForm"
           [focusOnInvalid]="summary"
           (hviSubmitted)="onSubmit()"
           class="max-w-2xl"
         >
+          <!-- Automatisk required-tag basert på FormGroup-analyse -->
+          @if (myForm.requiredMode() === 'all-required') {
+            <hvi-required-tag mode="all-required" />
+          }
           <!-- Personalia -->
           <fieldset hviFieldset>
             <legend hviLabel weight="medium">Personalia</legend>
@@ -78,10 +85,7 @@ import { FormsKontaktskjemaExampleSource } from './code-examples/forms.kontaktsk
             </hvi-field>
 
             <hvi-field>
-              <label hviLabel for="phone" weight="medium">
-                Telefon
-                <span hviFieldOptional>(valgfritt)</span>
-              </label>
+              <label hviLabel for="phone" weight="medium"> Telefon </label>
               <input
                 hviInput
                 id="phone"
@@ -240,7 +244,7 @@ export class FormsDemoComponent {
       Validators.maxLength(500),
     ]),
     contactPreference: new FormControl('email'),
-    newsletter: new FormControl(false),
+    newsletter: new FormControl(false, [Validators.required]),
     consent: new FormControl(false, [Validators.requiredTrue]),
   });
 

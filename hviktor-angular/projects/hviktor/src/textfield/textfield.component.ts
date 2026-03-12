@@ -1,4 +1,4 @@
-import { booleanAttribute, Component, forwardRef, Input } from '@angular/core';
+import { booleanAttribute, Component, forwardRef, inject, Input } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { HviFieldAffix } from '../forms/field/field-affix.component';
 import { HviFieldAffixes } from '../forms/field/field-affixes.component';
@@ -6,9 +6,10 @@ import { HviFieldCounter } from '../forms/field/field-counter.component';
 import { HviFieldDescription } from '../forms/field/field-description.directive';
 import { HviFieldValidation } from '../forms/field/field-validation.directive';
 import { HviField } from '../forms/field/field.component';
+import { HviForm } from '../forms/form/form.directive';
 import { HviInput } from '../forms/input/input.directive';
 import { HviLabel } from '../label/label.directive';
-import { HviTag } from '../tag/tag.component';
+import { HviRequiredTag, RequiredTagMode } from '../required-tag/required-tag.component';
 
 let nextId = 0;
 
@@ -47,7 +48,7 @@ let nextId = 0;
     HviFieldCounter,
     HviFieldDescription,
     HviFieldValidation,
-    HviTag,
+    HviRequiredTag,
   ],
   providers: [
     {
@@ -60,13 +61,8 @@ let nextId = 0;
     <hvi-field>
       <label hviLabel [attr.for]="inputId" weight="medium">
         {{ label }}
-        @if (requiredLabel) {
-          <hvi-tag
-            variant="default"
-            color="warning"
-            style="margin-inline-start: var(--ds-size-2)"
-            >{{ requiredLabel }}</hvi-tag
-          >
+        @if (effectiveRequiredMode; as mode) {
+          <hvi-required-tag [mode]="mode" />
         }
       </label>
       @if (description) {
@@ -145,13 +141,50 @@ export class HviTextfield implements ControlValueAccessor {
   @Input() counterLimit?: number;
 
   /**
-   * Label text shown in a warning Tag next to the label when the field is required.
-   * E.g. "Må fylles ut". Also sets the `required` attribute on the input.
+   * Manuell overstyring av required-tag-mode.
+   * Når satt, vises taggen uavhengig av HviForm-kontekst.
+   * - `'required'`: "Må fylles ut" (warning)
+   * - `'optional'`: "Valgfritt" (info)
+   *
+   * Når IKKE satt og feltet er inne i en `<form hviForm>`, bestemmes mode automatisk:
+   * - Form er `'all-required'` → ingen tag per felt (vis `all-required` øverst i form)
+   * - Form er `'mixed'` → `'required'` hvis feltet er required, `'optional'` hvis ikke
+   * - Form er `'none'` → ingen tag
    */
-  @Input() requiredLabel?: string;
+  @Input() requiredMode?: RequiredTagMode;
 
   /** Autocomplete attribute for the input, e.g. 'given-name', 'email'. */
   @Input() autocomplete?: string;
+
+  /** Injisert HviForm for automatisk required-tag-beregning */
+  private readonly hviForm = inject(HviForm, { optional: true });
+
+  /**
+   * Beregnet required-tag-mode basert på manuell overstyring eller HviForm-kontekst.
+   * Returnerer `null` hvis ingen tag skal vises.
+   */
+  get effectiveRequiredMode(): RequiredTagMode | null {
+    // Manuell overstyring vinner alltid
+    if (this.requiredMode) return this.requiredMode;
+
+    // Uten HviForm-kontekst eller med tags skrudd av: ingen automatikk
+    const form = this.hviForm;
+    if (!form || !form.showRequiredTags) return null;
+
+    const formMode = form.requiredMode();
+
+    switch (formMode) {
+      case 'all-required':
+        // Alle er required – vis ingen tag per felt (all-required vises øverst i form)
+        return null;
+      case 'mixed':
+        // Blanding – vis required eller optional basert på feltets required-state
+        return this._required ? 'required' : 'optional';
+      case 'none':
+      default:
+        return null;
+    }
+  }
 
   /** Render a textarea instead of input for multiline support */
   @Input({ transform: booleanAttribute }) multiline = false;

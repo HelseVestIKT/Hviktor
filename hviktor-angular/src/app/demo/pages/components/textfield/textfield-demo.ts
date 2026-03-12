@@ -70,9 +70,12 @@ import { TextfieldTypeExampleSource } from './code-examples/textfield.type.examp
       <app-demo-section
         title="Påkrevde og valgfrie felt"
         [code]="pakrevdeOgValgfrieFeltCode"
-        description="Det er lovpålagt å markere påkrevde felt. Bruk requiredLabel for å vise en Tag med teksten 'Må fylles ut' ved siden av label."
+        description="Det er lovpålagt å markere påkrevde felt. Bruk requiredMode for å vise en RequiredTag ved siden av label. Når textfield brukes i et hviForm med FormGroup, settes requiredMode automatisk."
       >
-        <hvi-textfield label="Hvor bor du?" requiredLabel="Må fylles ut" required></hvi-textfield>
+        <div class="space-y-4">
+          <hvi-textfield label="Hvor bor du?" requiredMode="required" required></hvi-textfield>
+          <hvi-textfield label="Kommentar" requiredMode="optional"></hvi-textfield>
+        </div>
       </app-demo-section>
 
       <!-- Type -->

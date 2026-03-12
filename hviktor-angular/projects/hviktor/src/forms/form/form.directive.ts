@@ -1,26 +1,81 @@
-import { Directive, EventEmitter, HostListener, inject, Input, Output } from '@angular/core';
-import { FormGroupDirective } from '@angular/forms';
+import {
+  booleanAttribute,
+  computed,
+  Directive,
+  EventEmitter,
+  HostListener,
+  inject,
+  Input,
+  Output,
+  signal, OnInit,
+} from '@angular/core';
+import { FormGroup, FormGroupDirective } from '@angular/forms';
+
+/** Resultatet av required-analysen av en FormGroup. */
+export type FormRequiredMode = 'all-required' | 'mixed' | 'none';
 
 /**
- * @summary
- * Adds submit handling for Angular reactive forms:
- * - Tracks submitted state
- * - Marks all controls as touched on submit
- * - Optionally focuses an ErrorSummary when invalid
+ * Analyserer en FormGroup og returnerer required-modus.
+ *
+ * Controls uten noen validators (typisk radio, checkbox, switch) ignoreres
+ * i analysen – de regnes verken som "required" eller "optional".
+ *
+ * - `'all-required'` – alle controls med validators har required/requiredTrue
+ * - `'mixed'` – noen controls med validators er required, noen ikke
+ * - `'none'` – ingen controls med validators har required
+ */
+export function analyzeFormRequired(formGroup: FormGroup): FormRequiredMode {
+  const controls = Object.values(formGroup.controls);
+  let requiredCount = 0;
+  let validatedCount = 0;
+
+  for (const control of controls) {
+    // Sjekk om control har noen validators i det hele tatt
+    const validator = control.validator;
+    if (!validator) continue;
+
+    validatedCount++;
+
+    // Sjekk om required/requiredTrue er blant validators
+    const testResult = validator({ value: '' } as any);
+    const testResultTrue = validator({ value: false } as any);
+    if (testResult?.['required'] || testResultTrue?.['required']) {
+      requiredCount++;
+    }
+  }
+
+  if (validatedCount === 0) return 'none';
+  if (requiredCount === validatedCount) return 'all-required';
+  if (requiredCount > 0) return 'mixed';
+  return 'none';
+}
+
+/**
+ * Legges på `<form>` for å gi submit-håndtering og automatisk required-tag-analyse
+ * for Angular reactive forms.
+ *
+ * - Tracker submitted-state
+ * - Marker alle controls som touched ved submit
+ * - Analyserer FormGroup og eksponerer `requiredMode()` som child-komponenter
+ *   (f.eks. `HviTextfield`) kan injisere for automatisk required/optional-tagging
+ * - Sett `[showRequiredTags]="false"` for å skru av automatisk tagging
  *
  * @example
  * ```html
- * <[hviForm]></[hviForm]>
+ * <form hviForm [formGroup]="myForm">
+ *   @if (myHviForm.requiredMode() === 'all-required') {
+ *     <hvi-required-tag mode="all-required" />
+ *   }
+ *   <hvi-textfield label="Navn" formControlName="name" />
+ * </form>
  * ```
- *
- * Documentation: https://designsystemet.no/en/components/docs/form/code
  */
-
 @Directive({
   selector: 'form[hviForm]',
   standalone: true,
+  exportAs: 'hviForm',
 })
-export class HviForm {
+export class HviForm implements OnInit {
   /** Emits when the form has been submitted */
   @Output() hviSubmitted = new EventEmitter<void>();
 
@@ -30,8 +85,35 @@ export class HviForm {
   /** Optional focus target (e.g. HviErrorSummaryComponent) */
   @Input() focusOnInvalid?: { focus?: () => void } | null;
 
+  /**
+   * Skru av/på automatisk required-tag-visning for child-komponenter.
+   * Default `true`. Sett til `false` for manuell kontroll.
+   */
+  @Input({ transform: booleanAttribute }) showRequiredTags = true;
+
   // Optional injection: present when the form uses [formGroup] and ReactiveFormsModule is in scope
   private readonly formGroupDir = inject(FormGroupDirective, { optional: true });
+
+  /** Internal signal som oppdateres ved submit og init */
+  private readonly _requiredMode = signal<FormRequiredMode>('none');
+
+  /**
+   * Analysert required-modus for FormGroup-en.
+   * - `'all-required'` – alle validerte controls er required
+   * - `'mixed'` – blanding av required og optional
+   * - `'none'` – ingen required-validering
+   */
+  readonly requiredMode = computed(() => this._requiredMode());
+
+  /** Oppdater required-analyse. Kalles automatisk ved submit, men kan kalles manuelt. */
+  refreshRequiredMode(): void {
+    const form = this.formGroupDir?.form;
+    if (!form) {
+      this._requiredMode.set('none');
+      return;
+    }
+    this._requiredMode.set(analyzeFormRequired(form));
+  }
 
   @HostListener('submit', ['$event'])
   onSubmit(event: Event): void {
@@ -47,5 +129,9 @@ export class HviForm {
       event.preventDefault();
       queueMicrotask(() => this.focusOnInvalid?.focus?.());
     }
+  }
+
+  ngOnInit(): void {
+    this.refreshRequiredMode();
   }
 }

@@ -2,18 +2,12 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import {
   HviButton,
-  HviErrorSummary,
-  HviField,
-  HviFieldCounter,
-  HviFieldDescription,
-  HviFieldset,
-  HviFieldValidation,
-  HviForm,
-  HviInput,
-  HviLabel,
+  HviFieldKit,
+  HviForms,
   HviParagraph,
+  HviRequiredTag,
   HviSelect,
-  HviValidationMessage,
+  HviValidationKit,
   HviValidationMessages,
 } from '@helsevestikt/hviktor';
 
@@ -22,28 +16,27 @@ import {
   standalone: true,
   imports: [
     HviButton,
+    HviFieldKit,
+    HviForms,
     HviParagraph,
+    HviRequiredTag,
     HviSelect,
+    HviValidationKit,
     ReactiveFormsModule,
-    HviForm,
-    HviField,
-    HviFieldset,
-    HviInput,
-    HviLabel,
-    HviFieldDescription,
-    HviFieldValidation,
-    HviValidationMessage,
-    HviFieldCounter,
-    HviErrorSummary,
   ],
   template: `
     <form
       hviForm
+      #myForm="hviForm"
       [formGroup]="contactForm"
       [focusOnInvalid]="summary"
       (hviSubmitted)="onSubmit()"
       class="max-w-2xl"
     >
+      <!-- Automatisk required-tag basert på FormGroup-analyse -->
+      @if (myForm.requiredMode() === 'all-required') {
+        <hvi-required-tag mode="all-required" />
+      }
       <!-- Personalia -->
       <fieldset hviFieldset>
         <legend hviLabel weight="medium">Personalia</legend>
@@ -83,10 +76,7 @@ import {
         </hvi-field>
 
         <hvi-field>
-          <label hviLabel for="phone" weight="medium">
-            Telefon
-            <span hviFieldOptional>(valgfritt)</span>
-          </label>
+          <label hviLabel for="phone" weight="medium"> Telefon </label>
           <input
             hviInput
             id="phone"

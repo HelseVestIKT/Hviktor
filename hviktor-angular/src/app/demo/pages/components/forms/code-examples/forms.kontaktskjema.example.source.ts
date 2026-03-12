@@ -1,19 +1,25 @@
 // Auto-generated - do not edit manually
 export const FormsKontaktskjemaExampleSource = `import { Component, signal } from '@angular/core';
-import { HviButton, HviParagraph, HviSelect } from '@helsevestikt/hviktor';
+import { ReactiveFormsModule, FormControl, FormGroup, Validators } from '@angular/forms';
+import { HviButton, HviFieldKit, HviForms, HviParagraph, HviRequiredTag, HviSelect, HviValidationKit, HviValidationMessages } from '@helsevestikt/hviktor';
 
 @Component({
   selector: 'app-forms-kontaktskjema-example',
   standalone: true,
-  imports: [HviButton, HviParagraph, HviSelect],
+  imports: [HviButton, HviFieldKit, HviForms, HviParagraph, HviRequiredTag, HviSelect, HviValidationKit, ReactiveFormsModule],
   template: \`
     <form
       hviForm
+      #myForm="hviForm"
       [formGroup]="contactForm"
       [focusOnInvalid]="summary"
       (hviSubmitted)="onSubmit()"
       class="max-w-2xl"
     >
+      <!-- Automatisk required-tag basert på FormGroup-analyse -->
+      @if (myForm.requiredMode() === 'all-required') {
+        <hvi-required-tag mode="all-required" />
+      }
       <!-- Personalia -->
       <fieldset hviFieldset>
         <legend hviLabel weight="medium">Personalia</legend>
@@ -53,10 +59,7 @@ import { HviButton, HviParagraph, HviSelect } from '@helsevestikt/hviktor';
         </hvi-field>
     
         <hvi-field>
-          <label hviLabel for="phone" weight="medium">
-            Telefon
-            <span hviFieldOptional>(valgfritt)</span>
-          </label>
+          <label hviLabel for="phone" weight="medium"> Telefon </label>
           <input
             hviInput
             id="phone"

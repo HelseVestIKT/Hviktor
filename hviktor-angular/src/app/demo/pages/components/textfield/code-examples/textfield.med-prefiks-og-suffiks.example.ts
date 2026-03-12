@@ -13,4 +13,23 @@ import { HviTextfield } from '@helsevestikt/hviktor';
     ></hvi-textfield>
   `,
 })
-export class TextfieldMedPrefiksOgSuffiksExampleComponent {}
+export class TextfieldMedPrefiksOgSuffiksExampleComponent {
+  types = [
+    'text',
+    'color',
+    'date',
+    'datetime-local',
+    'email',
+    'file',
+    'month',
+    'hidden',
+    'number',
+    'password',
+    'search',
+    'tel',
+    'time',
+    'url',
+    'week',
+  ];
+  selectedType: any = 'text';
+}
