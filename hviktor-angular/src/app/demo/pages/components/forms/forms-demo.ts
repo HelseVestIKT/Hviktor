@@ -45,19 +45,11 @@ import { FormsKontaktskjemaExampleSource } from './code-examples/forms.kontaktsk
             <hvi-required-tag mode="all-required" />
           }
           <hvi-textfield label="Fornavn" formControlName="firstName" required />
-          <p
-            hviFieldValidation
-            hviValidationMessage="firstName"
-            [messages]="messages['firstName']"
-          ></p>
+
           <hvi-textfield label="Etternavn" formControlName="lastName" required />
-          <p
-            hviFieldValidation
-            hviValidationMessage="lastName"
-            [messages]="messages['lastName']"
-          ></p>
+
           <hvi-textfield label="E-post" formControlName="email" type="email" required />
-          <p hviFieldValidation hviValidationMessage="email" [messages]="messages['email']"></p>
+
           <div class="mt-4">
             <button hviButton type="submit" variant="primary">Send inn</button>
           </div>
@@ -82,14 +74,6 @@ import { FormsKontaktskjemaExampleSource } from './code-examples/forms.kontaktsk
           <div class="mt-4">
             <button hviButton type="submit" variant="primary">Send inn</button>
           </div>
-
-          <!-- Error summary -->
-          <hvi-error-summary
-            #summary
-            [form]="mixedRequiredForm"
-            [messages]="messages"
-            showWhen="submitted"
-          />
         </form>
       </app-demo-section>
 
@@ -361,20 +345,6 @@ export class FormsDemoComponent {
       requiredTrue: 'Du må godta personvernerklæringen',
     },
   };
-
-  onAllRequiredSubmit(): void {
-    if (this.allRequiredForm.valid) {
-      alert('Alle påkrevde felt er fylt ut! Skjemaet er gyldig.');
-      this.allRequiredForm.reset();
-    }
-  }
-
-  onMixedSubmit(): void {
-    if (this.mixedRequiredForm.valid) {
-      alert('Skjemaet er gyldig! Påkrevde felt er fylt ut, valgfrie kan være tomme.');
-      this.mixedRequiredForm.reset();
-    }
-  }
 
   onContactFormSubmit(): void {
     if (this.contactForm.valid) {

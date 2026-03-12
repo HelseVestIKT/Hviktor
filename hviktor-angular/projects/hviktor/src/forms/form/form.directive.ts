@@ -10,7 +10,7 @@ import {
   Output,
   signal,
 } from '@angular/core';
-import { FormGroup, FormGroupDirective } from '@angular/forms';
+import { FormGroup, FormGroupDirective, Validators } from '@angular/forms';
 
 /** Resultatet av required-analysen av en FormGroup. */
 export type FormRequiredMode = 'all-required' | 'mixed' | 'none';
@@ -31,13 +31,10 @@ export function analyzeFormRequired(formGroup: FormGroup): FormRequiredMode {
   let requiredCount = 0;
 
   for (const control of controls) {
-    const validator = control.validator;
-    if (!validator) continue;
-
-    // Sjekk om required/requiredTrue er blant validators
-    const testResult = validator({ value: '' } as any);
-    const testResultTrue = validator({ value: false } as any);
-    if (testResult?.['required'] || testResultTrue?.['required']) {
+    if (
+      control.hasValidator(Validators.required) ||
+      control.hasValidator(Validators.requiredTrue)
+    ) {
       requiredCount++;
     }
   }
