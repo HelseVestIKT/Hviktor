@@ -23,7 +23,9 @@ hljs.registerLanguage('typescript', typescript);
   template: `
     <section class="my-8 rounded-lg border border-neutral-300 p-6">
       <h2 hviHeading size="md">{{ title() }}</h2>
-      <p hviParagraph class="max-w-3xl">{{ description() }}</p>
+      @if (description()) {
+        <p hviParagraph class="max-w-3xl">{{ description() }}</p>
+      }
       <div class="mt-4">
         <ng-content />
       </div>
