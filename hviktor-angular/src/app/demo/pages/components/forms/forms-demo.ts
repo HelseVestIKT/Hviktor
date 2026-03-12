@@ -209,7 +209,7 @@ import { FormsKontaktskjemaExampleSource } from './code-examples/forms.kontaktsk
 
           <!-- Preferanser -->
           <fieldset hviFieldset>
-            <legend hviLabel>Preferanser <hvi-required-tag /></legend>
+            <legend hviLabel>Preferanser</legend>
             <p hviParagraph>Hvordan vil du helst at vi skal kontakte deg?</p>
 
             <hvi-field>
