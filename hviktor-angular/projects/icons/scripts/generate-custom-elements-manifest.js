@@ -35,7 +35,7 @@ const manifest = {
   modules: [
     {
       kind: 'javascript-module',
-      path: 'dist/index.js',
+      path: 'index.js',
       declarations
     }
   ]
