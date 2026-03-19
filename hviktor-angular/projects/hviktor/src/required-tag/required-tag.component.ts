@@ -1,11 +1,18 @@
 import { Component, Input } from '@angular/core';
 import { HviTag } from '../tag';
 
+/** Tilgjengelige modes for RequiredTag. */
+export type RequiredTagMode = 'all-required' | 'required' | 'optional';
+
 /**
  * RequiredTag brukes sammen med labels i skjema for å indikere om et felt er
  * påkrevd, valgfritt, eller om alle felt må fylles ut.
  *
  * Komponenten wrapper `HviTag` med forhåndsdefinerte tekster og farger basert på mode.
+ * Bruker `display: contents` slik at den fungerer inline i `<label>` og frittstående.
+ *
+ * Kan brukes manuelt, eller automatisk via `HviForm` som analyserer FormGroup
+ * og lar child-komponenter som `HviTextfield` vise riktig tag.
  *
  * @example
  * ```html
@@ -33,6 +40,9 @@ import { HviTag } from '../tag';
       }
     </hvi-tag>
   `,
+  host: {
+    style: 'display: contents',
+  },
 })
 export class HviRequiredTag {
   /**
@@ -41,5 +51,5 @@ export class HviRequiredTag {
    * - `optional`: "Valgfritt" (info)
    * - `all-required`: "Alle felt må fylles ut" (warning)
    */
-  @Input() mode: 'all-required' | 'required' | 'optional' = 'required';
+  @Input() mode: RequiredTagMode = 'required';
 }

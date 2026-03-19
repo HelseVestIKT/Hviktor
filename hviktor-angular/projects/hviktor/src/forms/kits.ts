@@ -13,6 +13,7 @@ import {
   HviFieldValidation,
 } from './field';
 
+import { HviRequiredTag } from '../required-tag';
 import { HviErrorSummary } from './error-summary';
 import { HviFieldset } from './fieldset';
 import { HviInput } from './input';
@@ -26,6 +27,7 @@ export const HviFieldKit = [
   HviFieldAffix,
   HviFieldAffixes,
   HviFieldCounter,
+  HviRequiredTag,
 ] as const;
 
 // 2) Reactive forms + invalid/validation glue + submit behavior
