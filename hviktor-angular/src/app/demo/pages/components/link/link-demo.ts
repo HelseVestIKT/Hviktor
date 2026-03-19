@@ -8,7 +8,7 @@ import { LinkVarianterExampleSource } from './code-examples/link.varianter.examp
   standalone: true,
   imports: [HviLink, DemoPageComponent, DemoSectionComponent],
   template: `
-    <app-demo-page title="Link" description="Lenker for navigasjon og eksterne ressurser.">
+    <app-demo-page componentId="link">
       <app-demo-section title="Varianter" [code]="varianterCode">
         <div class="flex flex-wrap items-center gap-4">
           <a hviLink href="#" color="neutral">Neutral link</a>

@@ -1,26 +1,34 @@
 // Auto-generated - do not edit manually
-export const FormsKontaktskjemaExampleSource = `import { Component, signal } from '@angular/core';
-import { HviButton, HviParagraph, HviSelect } from '@helsevestikt/hviktor';
+export const FormsKontaktskjemaExampleSource = `import { Component } from '@angular/core';
+import { ReactiveFormsModule, FormControl, FormGroup, Validators } from '@angular/forms';
+import { HviButton, HviFieldKit, HviForms, HviParagraph, HviRequiredTag, HviSelect, HviValidationKit, HviValidationMessages } from '@helsevestikt/hviktor';
 
 @Component({
   selector: 'app-forms-kontaktskjema-example',
   standalone: true,
-  imports: [HviButton, HviParagraph, HviSelect],
+  imports: [HviButton, HviFieldKit, HviForms, HviParagraph, HviRequiredTag, HviSelect, HviValidationKit, ReactiveFormsModule],
   template: \`
     <form
       hviForm
+      #myForm="hviForm"
       [formGroup]="contactForm"
       [focusOnInvalid]="summary"
       (hviSubmitted)="onSubmit()"
       class="max-w-2xl"
     >
+      <!-- Automatisk required-tag basert på FormGroup-analyse -->
+      @if (myForm.requiredMode() === 'all-required') {
+        <hvi-required-tag mode="all-required" />
+      }
       <!-- Personalia -->
       <fieldset hviFieldset>
         <legend hviLabel weight="medium">Personalia</legend>
     
         <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
           <hvi-field>
-            <label hviLabel for="firstName" weight="medium">Fornavn</label>
+            <label hviLabel for="firstName" weight="medium">
+              Fornavn <hvi-required-tag mode="required" />
+            </label>
             <input hviInput id="firstName" formControlName="firstName" hviControlInvalid />
             <p
               hviFieldValidation
@@ -30,7 +38,9 @@ import { HviButton, HviParagraph, HviSelect } from '@helsevestikt/hviktor';
           </hvi-field>
     
           <hvi-field>
-            <label hviLabel for="lastName" weight="medium">Etternavn</label>
+            <label hviLabel for="lastName" weight="medium">
+              Etternavn <hvi-required-tag mode="required" />
+            </label>
             <input hviInput id="lastName" formControlName="lastName" hviControlInvalid />
             <p
               hviFieldValidation
@@ -46,7 +56,9 @@ import { HviButton, HviParagraph, HviSelect } from '@helsevestikt/hviktor';
         <legend hviLabel weight="medium">Kontaktinformasjon</legend>
     
         <hvi-field>
-          <label hviLabel for="email" weight="medium">E-post</label>
+          <label hviLabel for="email" weight="medium">
+            E-post <hvi-required-tag mode="required" />
+          </label>
           <span hviFieldDescription>Vi bruker e-posten til å svare deg</span>
           <input hviInput id="email" type="email" formControlName="email" hviControlInvalid />
           <p hviFieldValidation hviValidationMessage="email" [messages]="messages['email']"></p>
@@ -54,8 +66,7 @@ import { HviButton, HviParagraph, HviSelect } from '@helsevestikt/hviktor';
     
         <hvi-field>
           <label hviLabel for="phone" weight="medium">
-            Telefon
-            <span hviFieldOptional>(valgfritt)</span>
+            Telefon <hvi-required-tag mode="optional" />
           </label>
           <input
             hviInput
@@ -74,7 +85,9 @@ import { HviButton, HviParagraph, HviSelect } from '@helsevestikt/hviktor';
         <legend hviLabel weight="medium">Din henvendelse</legend>
     
         <hvi-field>
-          <label hviLabel for="subject" weight="medium">Emne</label>
+          <label hviLabel for="subject" weight="medium">
+            Emne <hvi-required-tag mode="required" />
+          </label>
           <select hviSelect id="subject" formControlName="subject" hviControlInvalid>
             <option value="" disabled>Velg emne</option>
             <option value="general">Generell henvendelse</option>
@@ -91,7 +104,9 @@ import { HviButton, HviParagraph, HviSelect } from '@helsevestikt/hviktor';
         </hvi-field>
     
         <hvi-field>
-          <label hviLabel for="message" weight="medium">Melding</label>
+          <label hviLabel for="message" weight="medium">
+            Melding <hvi-required-tag mode="required" />
+          </label>
           <span hviFieldDescription>Beskriv henvendelsen din så detaljert som mulig</span>
           <textarea
             hviInput
@@ -198,7 +213,7 @@ import { HviButton, HviParagraph, HviSelect } from '@helsevestikt/hviktor';
     </form>
   \`,
 })
-export class FormsKontaktskjemaExampleComponent {
+export class FormsKontaktskjemaExampleComponent {  
   contactForm = new FormGroup({
     firstName: new FormControl('', [Validators.required, Validators.minLength(2)]),
     lastName: new FormControl('', [Validators.required, Validators.minLength(2)]),

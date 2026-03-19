@@ -67,7 +67,7 @@ export const routes: Routes = [
           ),
       },
       {
-        path: 'komponenter/forms',
+        path: 'komponenter/form',
         loadComponent: () =>
           import('./demo/pages/components/forms/forms-demo').then((m) => m.FormsDemoComponent),
       },
@@ -227,6 +227,32 @@ export const routes: Routes = [
         loadComponent: () =>
           import('./demo/pages/components/dropdown/dropdown-demo').then(
             (m) => m.DropdownDemoComponent,
+          ),
+      },
+      {
+        path: 'komponenter/avatar-stack',
+        loadComponent: () =>
+          import('./demo/pages/components/avatar-stack/avatar-stack-demo').then(
+            (m) => m.AvatarStackDemoComponent,
+          ),
+      },
+      {
+        path: 'komponenter/logo',
+        loadComponent: () =>
+          import('./demo/pages/components/logo/logo-demo').then((m) => m.LogoDemoComponent),
+      },
+      {
+        path: 'komponenter/textfield',
+        loadComponent: () =>
+          import('./demo/pages/components/textfield/textfield-demo').then(
+            (m) => m.TextfieldDemoComponent,
+          ),
+      },
+      {
+        path: 'komponenter/required-tag',
+        loadComponent: () =>
+          import('./demo/pages/components/required-tag/required-tag-demo').then(
+            (m) => m.RequiredTagDemoComponent,
           ),
       },
     ],

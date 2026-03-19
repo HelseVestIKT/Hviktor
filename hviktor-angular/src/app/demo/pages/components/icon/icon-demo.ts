@@ -15,7 +15,7 @@ import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
   imports: [HviCard, HviButton, HviLink, HviParagraph, DemoPageComponent, DemoSectionComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   template: `
-    <app-demo-page title="Icon" description="Ikoner for visuell kommunikasjon.">
+    <app-demo-page componentId="icon">
       <app-demo-section title="Tilgjengelige ikoner">
         <div class="flex flex-wrap gap-4">
           <hvi-card>

@@ -27,7 +27,7 @@ import { CardStandardExampleSource } from './code-examples/card.standard.example
     DemoSectionComponent,
   ],
   template: `
-    <app-demo-page title="Card" description="Kort for gruppering av relatert innhold.">
+    <app-demo-page componentId="card">
       <app-demo-section title="Standard" [code]="standardCode">
         <div class="flex flex-wrap gap-4">
           <hvi-card maxWidth="320px">

@@ -10,10 +10,7 @@ import { TabsMedMerInnholdExampleSource } from './code-examples/tabs.med-mer-inn
   standalone: true,
   imports: [HviTabs, HviTab, HviTabPanel, DemoPageComponent, DemoSectionComponent],
   template: `
-    <app-demo-page
-      title="Tabs"
-      description="Tabs lar brukerne navigere mellom relaterte deler av innholdet, der én del vises om gangen."
-    >
+    <app-demo-page componentId="tabs">
       <app-demo-section title="Grunnleggende bruk" [code]="grunnleggendeBrukCode">
         <hvi-tabs defaultValue="tab1">
           <hvi-tab value="tab1">Tab 1</hvi-tab>

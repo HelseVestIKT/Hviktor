@@ -4,6 +4,7 @@
 
 export * from './alert';
 export * from './avatar';
+export * from './avatar-stack';
 export * from './badge';
 export * from './breadcrumbs';
 export * from './button';
@@ -18,9 +19,11 @@ export * from './heading';
 export * from './label';
 export * from './link';
 export * from './list';
+export * from './logo';
 export * from './pagination';
 export * from './paragraph';
 export * from './popover';
+export * from './required-tag';
 export * from './search';
 export * from './select';
 export * from './skeleton';
@@ -29,5 +32,6 @@ export * from './spinner';
 export * from './table';
 export * from './tabs';
 export * from './tag';
+export * from './textfield';
 export * from './toggle-group';
 export * from './tooltip';

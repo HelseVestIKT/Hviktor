@@ -12,10 +12,7 @@ import { PaginationUtenForsteSisteSideExampleSource } from './code-examples/pagi
   standalone: true,
   imports: [DemoPageComponent, DemoSectionComponent, HviPagination],
   template: `
-    <app-demo-page
-      title="Pagination"
-      description="Pagination er en liste med knapper som brukes for å navigere mellom ulike sider med innhold, for eksempel søkeresultater eller tabeller."
-    >
+    <app-demo-page componentId="pagination">
       <!-- Standard -->
       <app-demo-section
         title="Standard"

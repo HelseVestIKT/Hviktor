@@ -22,10 +22,7 @@ import { DialogStandardExampleSource } from './code-examples/dialog.standard.exa
     DemoSectionComponent,
   ],
   template: `
-    <app-demo-page
-      title="Dialog"
-      description="Modale dialogbokser for viktige handlinger eller informasjon."
-    >
+    <app-demo-page componentId="dialog">
       <app-demo-section title="Standard" [code]="standardExampleCode">
         <div class="flex gap-2">
           <button hviButton type="button" aria-haspopup="dialog" (click)="toggleDialog(true)">

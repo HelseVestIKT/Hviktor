@@ -30,6 +30,11 @@ body {
   font-feature-settings: 'cv05' 1;
 }
 
+/* Automatic vertical spacing between direct children in hviForm, matching ds-fieldset */
+form[hviForm] > * + * {
+  margin-block-start: var(--ds-size-4);
+}
+
 /* adding styling to lists that tailwind has removed */
 ol.ds-list {
   list-style-type: decimal;

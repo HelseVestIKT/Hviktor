@@ -10,7 +10,7 @@ import { TagVarianterExampleSource } from './code-examples/tag.varianter.example
   standalone: true,
   imports: [HviTag, DemoPageComponent, DemoSectionComponent],
   template: `
-    <app-demo-page title="Tag" description="Merkelapper for kategorisering og status.">
+    <app-demo-page componentId="tag">
       <app-demo-section title="Varianter" [code]="varianterCode">
         <div class="flex flex-wrap gap-2">
           <hvi-tag variant="default">Default</hvi-tag>
