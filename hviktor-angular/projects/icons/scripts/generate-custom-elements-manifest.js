@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 const dataFile = path.join(__dirname, '..', 'src', 'lib', 'icons-data.json');
-const outFile = path.join(__dirname, '..', 'dist', 'custom-elements.json');
+const outFile = path.join(__dirname, '..', '..', '..', 'dist', 'icons', 'custom-elements.json');
 
 if (!fs.existsSync(dataFile)) {
   console.error(`❌ Missing icon data file: ${dataFile}`);
