@@ -1,9 +1,6 @@
 {
+  "extends": "./tsconfig.json",
   "compilerOptions": {
-    "target": "ES2022",
-    "module": "preserve",
-    "strict": true,
-    "skipLibCheck": true,
     "types": ["node"]
   },
   "include": ["playwright.config.ts", "e2e/**/*.ts"]
