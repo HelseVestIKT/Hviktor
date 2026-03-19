@@ -234,7 +234,7 @@ import { FormsKontaktskjemaExampleSource } from './code-examples/forms.kontaktsk
 
           <!-- Samtykke -->
           <fieldset hviFieldset>
-            <legend hviLabel>Samtykke<hvi-required-tag /></legend>
+            <legend hviLabel>Samtykke <hvi-required-tag /></legend>
 
             <hvi-field>
               <input
