@@ -91,7 +91,7 @@ describe('HviAlert', () => {
 
 - **Sette inputs**: Bruk `fixture.componentRef.setInput('name', value)` i stedet for `fixture.componentInstance.name = value` for å unngå `ExpressionChangedAfterItHasBeenCheckedError` med zoneless change detection.
 - **Content projection**: Krever en testvertskomponent (`@Component`) med template som bruker komponenten.
-- **Snapshot-tester**: Brukes for enkle komponenter med stabil HTML-output. Oppdater snapshots med `npx ng test hviktor -- --update` ved tilsiktede endringer.
+- **Snapshot-tester**: Brukes for enkle komponenter med stabil HTML-output. Oppdater snapshots med `npm test -- --project hviktor --watch=false --update` ved tilsiktede endringer.
 - **Direktiver** (f.eks. `HviButton`): Testvertskomponenten må bruke direktivet på et host-element: `<button hviButton variant="primary">`.
 
 ## E2E-tester (Playwright)
