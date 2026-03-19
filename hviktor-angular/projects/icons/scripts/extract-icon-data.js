@@ -6,6 +6,12 @@ const dataFile = path.join(__dirname, '..', 'src', 'lib', 'icons-data.json');
 
 console.log('Extracting icon data from Angular components...');
 
+if (!fs.existsSync(iconsDir)) {
+  console.warn(`Icon source directory not found at: ${iconsDir}`);
+  console.warn('Skipping icon data extraction because src/lib/icons does not exist.');
+  process.exit(0);
+}
+
 // Read all icon component files
 const files = fs.readdirSync(iconsDir).filter(f => f.startsWith('icon-') && f.endsWith('.component.ts'));
 
