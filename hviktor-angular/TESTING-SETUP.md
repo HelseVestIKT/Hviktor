@@ -1,187 +1,110 @@
 # Testing
 
-Hviktor Angular bruker to testrammeverk: **Vitest** for enhetstester og **Playwright** for E2E-tester.
+**Vitest** for enhetstester, **Playwright** for E2E-tester.
 
 ## Kommandoer
 
-| Kommando                                      | Beskrivelse                                                |
-| --------------------------------------------- | ---------------------------------------------------------- |
-| `npm test`                                    | Kjør enhetstester for standard Angular-prosjektet (Vitest) |
-| `npm test -- --project hviktor --watch=false` | Kjør enhetstester for hviktor-biblioteket (Vitest)         |
-| `npm run test:e2e`                            | Kjør E2E-tester (Playwright)                               |
-| `npm run test:e2e:ui`                         | Kjør E2E-tester i interaktivt UI-modus                     |
-| `npm run test:all`                            | Kjør enhetstester (standardprosjekt + hviktor) og E2E      |
+| Kommando                                      | Beskrivelse                          |
+| --------------------------------------------- | ------------------------------------ |
+| `npm test -- --project hviktor --watch=false` | Enhetstester for hviktor-biblioteket |
+| `npm run test:e2e`                            | E2E-tester (Playwright)              |
+| `npm run test:e2e:ui`                         | E2E-tester i interaktivt UI-modus    |
+| `npm run test:all`                            | Enhetstester + E2E sekvensielt       |
 
 ## Enhetstester (Vitest)
 
-Enhetstester bruker [Vitest](https://vitest.dev/) med Angular sitt `TestBed` og kjøres i jsdom.
-
-### Filstruktur
-
-Testfiler er co-lokaliserte med komponentene de tester:
+Testfiler ligger ved siden av komponentene:
 
 ```
 projects/hviktor/src/
   alert/
     alert.component.ts
-    alert.component.spec.ts    ← enhetstest
-  button/
-    button.directive.ts
-    button.directive.spec.ts   ← enhetstest
-  ...
+    alert.component.spec.ts
+  testing/
+    test-utils.ts            ← setupTestBed helper
 ```
 
-### Testmønster
+### Mønster
 
-Alle tester bruker `provideZonelessChangeDetection()` for å matche bibliotekets zoneless-oppsett.
+Bruk `setupTestBed()` fra `../testing/test-utils` — den konfigurerer `TestBed` med `provideZonelessChangeDetection()`.
 
-**Enkel komponent (content projection):**
+Bruk `fixture.componentRef.setInput('name', value)` for å sette inputs (unngår `ExpressionChangedAfterItHasBeenCheckedError`).
 
 ```typescript
-import { Component, provideZonelessChangeDetection } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { beforeEach, describe, expect, it } from 'vitest';
+import { setupTestBed } from '../testing/test-utils';
 import { HviAlert } from './alert.component';
-
-// Testvertskomponent for å teste content projection og inputs i template
-@Component({
-  standalone: true,
-  imports: [HviAlert],
-  template: '<hvi-alert color="warning">Advarsel!</hvi-alert>',
-})
-class TestHostComponent {}
 
 describe('HviAlert', () => {
   let fixture: ComponentFixture<HviAlert>;
+  let element: HTMLElement;
 
   beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [HviAlert, TestHostComponent],
-      providers: [provideZonelessChangeDetection()],
-    }).compileComponents();
+    await setupTestBed({ imports: [HviAlert] });
     fixture = TestBed.createComponent(HviAlert);
+    element = fixture.nativeElement;
     fixture.detectChanges();
-  });
-
-  it('should create', () => {
-    expect(fixture.componentInstance).toBeTruthy();
   });
 
   it('should have ds-alert host class', () => {
-    expect(fixture.nativeElement.classList.contains('ds-alert')).toBe(true);
+    expect(element.classList.contains('ds-alert')).toBe(true);
   });
 
-  // Bruk setInput() for å unngå ExpressionChangedAfterItHasBeenCheckedError
-  it('should set data-color attribute', () => {
+  it('should set data-color', () => {
     fixture.componentRef.setInput('color', 'danger');
     fixture.detectChanges();
-    expect(fixture.nativeElement.getAttribute('data-color')).toBe('danger');
-  });
-
-  it('should match snapshot', () => {
-    const hostFixture = TestBed.createComponent(TestHostComponent);
-    hostFixture.detectChanges();
-    const el = hostFixture.nativeElement.querySelector('hvi-alert');
-    expect(el.outerHTML).toMatchSnapshot();
+    expect(element.getAttribute('data-color')).toBe('danger');
   });
 });
 ```
 
-### Viktige detaljer
+For **content projection**, bruk en testvertskomponent:
 
-- **Sette inputs**: Bruk `fixture.componentRef.setInput('name', value)` i stedet for `fixture.componentInstance.name = value` for å unngå `ExpressionChangedAfterItHasBeenCheckedError` med zoneless change detection.
-- **Content projection**: Krever en testvertskomponent (`@Component`) med template som bruker komponenten.
-- **Snapshot-tester**: Brukes for enkle komponenter med stabil HTML-output. Oppdater snapshots med `npm test -- --project hviktor --watch=false --update` ved tilsiktede endringer.
-- **Direktiver** (f.eks. `HviButton`): Testvertskomponenten må bruke direktivet på et host-element: `<button hviButton variant="primary">`.
+```typescript
+@Component({
+  standalone: true,
+  imports: [HviAlert],
+  template: '<hvi-alert>Innhold</hvi-alert>',
+})
+class TestHost {}
+```
+
+For **direktiver** (f.eks. `HviButton`): `<button hviButton variant="primary">Klikk</button>`.
 
 ## E2E-tester (Playwright)
-
-E2E-tester bruker [Playwright](https://playwright.dev/) mot demo-applikasjonen og inkluderer tilgjengelighetstesting med [axe-core](https://github.com/dequelabs/axe-core).
-
-### Filstruktur
 
 ```
 e2e/
   fixtures/
     component-page.ts    ← Page Object for /komponenter/{id}
-    axe-helper.ts        ← Gjenbrukbar axe-core tilgjengelighetssjekk
+    axe-helper.ts        ← axe-core tilgjengelighetssjekk
   components/
     alert.spec.ts        ← E2E-test per komponent
-    button.spec.ts
-    ...
 ```
 
-### Page Object: `ComponentPage`
-
-Gjenbrukbar klasse for å navigere til komponentdemo-sider:
-
 ```typescript
+import { test, expect } from '@playwright/test';
 import { ComponentPage } from '../fixtures/component-page';
-
-test.beforeEach(async ({ page }) => {
-  const componentPage = new ComponentPage(page);
-  await componentPage.goto('alert'); // Navigerer til /komponenter/alert
-});
-
-// componentPage.heading      → h1 i artikkel-headeren
-// componentPage.getSection() → finn demo-seksjon etter tittel
-```
-
-### Tilgjengelighetssjekk
-
-Hver komponent bør ha en axe-core test:
-
-```typescript
 import { checkAccessibility } from '../fixtures/axe-helper';
 
-test('accessibility check', async ({ page }) => {
-  // Andre parameter: regler som ekskluderes (kjente demo-app issues)
-  await checkAccessibility(page, ['list', 'scrollable-region-focusable']);
+test.describe('Alert', () => {
+  let componentPage: ComponentPage;
+
+  test.beforeEach(async ({ page }) => {
+    componentPage = new ComponentPage(page);
+    await componentPage.goto('alert');
+  });
+
+  test('page loads', async () => {
+    await expect(componentPage.heading).toHaveText('Alert');
+  });
+
+  test('accessibility', async ({ page }) => {
+    await checkAccessibility(page);
+  });
 });
 ```
 
-### Playwright-konfigurasjon
+## Demo-status
 
-- **Browser**: Chromium (kan utvides til Firefox/WebKit)
-- **Dev server**: Startes automatisk via `webServer`-blokken i `playwright.config.ts`
-- **CI-modus**: 2 retries, 1 worker, github-reporter, ny server per kjøring
-- **Lokalt**: Gjenbruker eksisterende dev server om den allerede kjører
-
-## Teststatus i demo-appen
-
-Komponenter som har beståtte tester vises med status-indikatorer i demo-applikasjonen:
-
-- **Sidebar**: Grønn ✓ ved siden av komponentnavnet
-- **Demo-side**: «Unit ✓» og «E2E ✓» tags i headeren
-
-Oppdater `unitTested` og `e2eTested` i `src/app/demo/demo-components.ts` når tester er skrevet:
-
-```typescript
-{
-  id: 'alert',
-  name: 'Alert',
-  description: '...',
-  ds: true,
-  unitTested: true,   // ← sett til true når enhetstester er beståtte
-  e2eTested: true,     // ← sett til true når E2E-tester er beståtte
-},
-```
-
-## Legge til tester for en ny komponent
-
-1. **Enhetstest**: Opprett `projects/hviktor/src/{komponent}/{komponent}.component.spec.ts`
-2. **E2E-test**: Opprett `e2e/components/{komponent}.spec.ts`
-3. **Kjør testene**:
-   ```bash
-   npm test -- --project hviktor --watch=false
-   npm run test:e2e
-   ```
-4. **Oppdater demo-status**: Sett `unitTested: true` / `e2eTested: true` i `demo-components.ts`
-
-## CI/CD
-
-Tester kjøres automatisk i GitHub Actions:
-
-- **PR-sjekker** (`pr-checks.yml`): Lint + enhetstester + build
-- **Publish** (`publish-npm.yml`): Bør inkludere enhetstester før publisering (TODO)
-- **E2E i CI**: Legg til Playwright-steg med `npx playwright install --with-deps chromium`
+Oppdater `unitTested` og `e2eTested` i `demo-components.ts` når tester er beståtte — viser ✓ i sidemenyen.
