@@ -34,7 +34,10 @@
             class="flex items-center gap-1.5 rounded px-3 py-2 whitespace-nowrap transition-colors hover:bg-(--ds-color-neutral-surface-hover) active:bg-(--ds-color-neutral-surface-active)"
           >
             {{ component.name }} @if (component.unitTested && component.e2eTested) {
-            <span class="ml-auto text-xs text-green-700" title="Enhetstester og E2E-tester bestått"
+            <span
+              class="ml-auto text-xs text-green-700"
+              title="Enhetstester og E2E-tester bestått"
+              aria-label="Enhetstester og E2E-tester bestått"
               >✓</span
             >
             }
