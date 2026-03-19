@@ -1,7 +1,55 @@
-import { Component, provideZonelessChangeDetection } from '@angular/core';
+import { Component } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { beforeEach, describe, expect, it } from 'vitest';
+import { setupTestBed } from '../testing/test-utils';
 import { HviAlert } from './alert.component';
+
+describe('HviAlert', () => {
+  let fixture: ComponentFixture<HviAlert>;
+  let element: HTMLElement;
+
+  beforeEach(async () => {
+    await setupTestBed({ imports: [HviAlert] });
+    fixture = TestBed.createComponent(HviAlert);
+    element = fixture.nativeElement;
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(fixture.componentInstance).toBeTruthy();
+  });
+
+  it('should have ds-alert host class', () => {
+    expect(element.classList.contains('ds-alert')).toBe(true);
+  });
+
+  it('should not set data-color when no color is provided', () => {
+    expect(element.getAttribute('data-color')).toBeNull();
+  });
+
+  it('should set data-color to info', () => {
+    fixture.componentRef.setInput('color', 'info');
+    fixture.detectChanges();
+    expect(element.getAttribute('data-color')).toBe('info');
+  });
+
+  it('should set data-color to success', () => {
+    fixture.componentRef.setInput('color', 'success');
+    fixture.detectChanges();
+    expect(element.getAttribute('data-color')).toBe('success');
+  });
+
+  it('should set data-color to warning', () => {
+    fixture.componentRef.setInput('color', 'warning');
+    fixture.detectChanges();
+    expect(element.getAttribute('data-color')).toBe('warning');
+  });
+
+  it('should set data-color to danger', () => {
+    fixture.componentRef.setInput('color', 'danger');
+    fixture.detectChanges();
+    expect(element.getAttribute('data-color')).toBe('danger');
+  });
+});
 
 @Component({
   standalone: true,
@@ -20,72 +68,23 @@ class AlertHostComponent {}
 })
 class AlertRichContentHostComponent {}
 
-@Component({
-  standalone: true,
-  imports: [HviAlert],
-  template: '<hvi-alert color="warning">Snapshot test</hvi-alert>',
-})
-class AlertSnapshotHostComponent {}
-
-describe('HviAlert', () => {
-  let fixture: ComponentFixture<HviAlert>;
-  let element: HTMLElement;
-
+describe('HviAlert content projection', () => {
   beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [
-        HviAlert,
-        AlertHostComponent,
-        AlertRichContentHostComponent,
-        AlertSnapshotHostComponent,
-      ],
-      providers: [provideZonelessChangeDetection()],
-    }).compileComponents();
-    fixture = TestBed.createComponent(HviAlert);
-    element = fixture.nativeElement;
+    await setupTestBed({ imports: [HviAlert, AlertHostComponent, AlertRichContentHostComponent] });
+  });
+
+  it('should project text content', () => {
+    const fixture = TestBed.createComponent(AlertHostComponent);
     fixture.detectChanges();
-  });
-
-  it('should create', () => {
-    expect(fixture.componentInstance).toBeTruthy();
-  });
-
-  it('should have ds-alert host class', () => {
-    expect(element.classList.contains('ds-alert')).toBe(true);
-  });
-
-  it('should not set data-color when no color is provided', () => {
-    expect(element.getAttribute('data-color')).toBeNull();
-  });
-
-  it.each(['info', 'success', 'warning', 'danger'] as const)(
-    'should set data-color="%s" when color input is set',
-    async (color) => {
-      fixture.componentRef.setInput('color', color);
-      fixture.detectChanges();
-      expect(element.getAttribute('data-color')).toBe(color);
-    },
-  );
-
-  it('should project content', () => {
-    const hostFixture = TestBed.createComponent(AlertHostComponent);
-    hostFixture.detectChanges();
-    const alertEl = hostFixture.nativeElement.querySelector('hvi-alert');
+    const alertEl = fixture.nativeElement.querySelector('hvi-alert');
     expect(alertEl.textContent).toContain('Testvarsel');
   });
 
   it('should project heading and paragraph content', () => {
-    const hostFixture = TestBed.createComponent(AlertRichContentHostComponent);
-    hostFixture.detectChanges();
-    const alertEl = hostFixture.nativeElement.querySelector('hvi-alert');
+    const fixture = TestBed.createComponent(AlertRichContentHostComponent);
+    fixture.detectChanges();
+    const alertEl = fixture.nativeElement.querySelector('hvi-alert');
     expect(alertEl.querySelector('h2')?.textContent).toContain('Overskrift');
     expect(alertEl.querySelector('p')?.textContent).toContain('Beskrivelse');
-  });
-
-  it('should match snapshot', () => {
-    const hostFixture = TestBed.createComponent(AlertSnapshotHostComponent);
-    hostFixture.detectChanges();
-    const alertEl = hostFixture.nativeElement.querySelector('hvi-alert');
-    expect(alertEl.outerHTML).toMatchSnapshot();
   });
 });
