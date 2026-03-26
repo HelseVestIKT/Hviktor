@@ -1,4 +1,5 @@
 import { Directive, ElementRef, inject, Input, OnDestroy, OnInit, Renderer2 } from '@angular/core';
+import '@digdir/designsystemet-web';
 import {
   autoUpdate,
   computePosition,
