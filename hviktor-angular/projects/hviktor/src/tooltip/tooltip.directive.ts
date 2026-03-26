@@ -22,8 +22,6 @@ import '@digdir/designsystemet-web';
     '[attr.data-tooltip]': 'hviTooltip',
     '[attr.data-placement]': 'tooltipPlacement',
     '[attr.data-auto-placement]': 'tooltipAutoPlacement ? "true" : null',
-    '[attr.aria-describedby]': 'tooltipType === "describedby" ? hviTooltip : null',
-    '[attr.aria-labelledby]': 'tooltipType === "labelledby" ? hviTooltip : null',
   },
 })
 export class HviTooltip {
@@ -35,11 +33,4 @@ export class HviTooltip {
 
   /** Enable auto placement when there's not enough space */
   @Input() tooltipAutoPlacement = true;
-
-  /**
-   * Override ARIA attribute type.
-   * - 'describedby': tooltip describes the element (default for elements with text)
-   * - 'labelledby': tooltip labels the element (default for icon-only buttons)
-   */
-  @Input() tooltipType?: 'describedby' | 'labelledby';
 }
