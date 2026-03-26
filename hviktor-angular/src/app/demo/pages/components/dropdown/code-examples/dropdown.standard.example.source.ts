@@ -24,6 +24,5 @@ import { HviButton, HviDropdown, HviParagraph } from '@helsevestikt/hviktor';
   \`,
 })
 export class DropdownStandardExampleComponent {
-  readonly medDropdownplacementKanManDefinereUlikePlasseringerCode =
 }
 `;
