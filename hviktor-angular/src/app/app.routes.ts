@@ -253,6 +253,13 @@ export const routes: Routes = [
             (m) => m.TextfieldDemoComponent,
           ),
       },
+      {
+        path: 'komponenter/suggestion',
+        loadComponent: () =>
+          import('./demo/pages/components/suggestion/suggestion-demo').then(
+            (m) => m.SuggestionDemoComponent,
+          ),
+      },
     ],
   },
 ];

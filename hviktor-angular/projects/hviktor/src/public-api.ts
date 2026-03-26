@@ -35,3 +35,4 @@ export * from './tag';
 export * from './textfield';
 export * from './toggle-group';
 export * from './tooltip';
+export * from './suggestion';

@@ -68,6 +68,7 @@ export class MyComponent {}
 | Skeleton     | Placeholder mens innhold lastes                      |
 | SkipLink     | SkipLink komponent                                   |
 | Spinner      | Spinner komponent                                    |
+| Suggestion  | Søkbar select med mulighet for å velge flere alternativer |
 | Switch       | Switch komponent                                     |
 | Table        | Table komponent                                      |
 | Tag          | Merkelapper for kategorisering                       |
