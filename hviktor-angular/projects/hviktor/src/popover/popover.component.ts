@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, HostListener, Input, Output } from '@angular/core';
 import '@digdir/designsystemet-web';
 
 /**
@@ -23,6 +23,8 @@ import '@digdir/designsystemet-web';
     '[attr.popover]': 'type',
     '[attr.data-variant]': 'variant',
     '[attr.data-color]': 'color',
+    '[attr.data-placement]': 'placement',
+    '[attr.data-autoplacement]': 'autoPlacement ? "" : null',
   },
 })
 export class HviPopover {
@@ -46,4 +48,13 @@ export class HviPopover {
 
   /** Event når popover lukkes */
   @Output() closed = new EventEmitter<void>();
+
+  @HostListener('toggle', ['$event'])
+  onToggle(event: ToggleEvent) {
+    if (event.newState === 'open') {
+      this.opened.emit();
+    } else {
+      this.closed.emit();
+    }
+  }
 }
