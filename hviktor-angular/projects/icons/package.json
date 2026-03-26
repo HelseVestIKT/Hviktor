@@ -1,6 +1,6 @@
 {
   "name": "@helsevestikt/hviktor-icons",
-  "version": "0.0.47",
+  "version": "0.0.48",
   "description": "Pure Web Components icon library with 900+ icons, works in any framework",
   "main": "dist/index.js",
   "module": "dist/index.js",
@@ -25,12 +25,7 @@
     "WEBCOMPONENTS_GUIDE.md"
   ],
   "scripts": {
-    "extract-data": "node scripts/extract-icon-data.js",
-    "convert": "node scripts/convert-to-webcomponents.js",
-    "kebab-case": "node scripts/convert-selectors-to-kebab-case.js",
-    "cleanup": "node scripts/cleanup-duplicates.js",
-    "lowercase": "node scripts/lowercase-filenames.js",
-    "clean": "rimraf dist",
+    "clean": "node -e \"require('fs').rmSync('dist',{recursive:true,force:true})\"",
     "build": "npm run clean && tsc && npm run copy:types",
     "copy:types": "node -e \"const fs=require('fs');fs.mkdirSync('dist/lib',{recursive:true});fs.copyFileSync('src/lib/icons.d.ts','dist/lib/icons.d.ts');\"",
     "postbuild": "node scripts/generate-custom-elements-manifest.js",
