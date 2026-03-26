@@ -21,7 +21,7 @@ import '@digdir/designsystemet-web';
   host: {
     '[attr.data-tooltip]': 'hviTooltip',
     '[attr.data-placement]': 'tooltipPlacement',
-    '[attr.data-auto-placement]': 'tooltipAutoPlacement ? "true" : null',
+    '[attr.data-autoplacement]': 'tooltipAutoPlacement ? "true" : null',
   },
 })
 export class HviTooltip {
