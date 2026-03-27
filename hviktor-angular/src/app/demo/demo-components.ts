@@ -38,6 +38,7 @@ export const DEMO_COMPONENTS: DemoComponent[] = [
     name: 'Avatar',
     description: 'Avatar viser et bilde, initialer eller ikon for en person, enhet eller profil.',
     ds: true,
+    codeTested: true,
   },
   {
     id: 'badge',
@@ -286,6 +287,7 @@ export const DEMO_COMPONENTS: DemoComponent[] = [
     name: 'AvatarStack',
     description: 'AvatarStack stabler en samling Avatar elementer',
     ds: true,
+    codeTested: true,
   },
   {
     id: 'logo',
