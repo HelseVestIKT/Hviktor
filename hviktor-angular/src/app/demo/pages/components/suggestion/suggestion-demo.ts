@@ -10,6 +10,8 @@ import {
 } from '@helsevestikt/hviktor';
 import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
 
+import { SuggestionFlervalgExampleSource } from './code-examples/suggestion.flervalg.example.source';
+import { SuggestionStandardSuggestionExampleSource } from './code-examples/suggestion.standard-suggestion.example.source';
 @Component({
   selector: 'app-suggestion-demo',
   standalone: true,
@@ -38,9 +40,8 @@ import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
         >
         og kan derfor ikke anses som ferdig</hvi-alert
       >
-      <app-demo-section title="Standard Suggestion">
+      <app-demo-section title="Standard Suggestion" [code]="standardSuggestionCode">
         <div class="flex flex-wrap gap-2">
-          <!-- Legg til demo-innhold her -->
           <div class="flex-col">
             <label hviLabel>Velg en kommune</label>
             <hvi-suggestion>
@@ -60,9 +61,8 @@ import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
         </div>
       </app-demo-section>
 
-      <app-demo-section title="Flervalg">
+      <app-demo-section title="Flervalg" [code]="flervalgCode">
         <div class="flex flex-wrap gap-2">
-          <!-- Legg til demo-innhold her -->
           <div class="flex-col">
             <label hviLabel>Velg kommuner</label>
             <hvi-suggestion [multiple]="true">
@@ -84,4 +84,7 @@ import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
     </app-demo-page>
   `,
 })
-export class SuggestionDemoComponent {}
+export class SuggestionDemoComponent {
+  readonly standardSuggestionCode = SuggestionStandardSuggestionExampleSource;
+  readonly flervalgCode = SuggestionFlervalgExampleSource;
+}
