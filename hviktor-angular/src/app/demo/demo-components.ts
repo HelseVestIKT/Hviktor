@@ -46,6 +46,7 @@ export const DEMO_COMPONENTS: DemoComponent[] = [
     description:
       'Badge er ein ikkje-interaktiv komponent som viser status med eller utan tal. Bruk Tag dersom du skal ha tekst i staden for tal.',
     ds: true,
+    codeTested: true,
   },
   {
     id: 'breadcrumbs',
