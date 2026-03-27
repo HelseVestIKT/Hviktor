@@ -1,8 +1,9 @@
-import { AfterViewInit, Component, DestroyRef, ElementRef, inject, Input } from '@angular/core';
-import { fieldObserver } from '../../helpers/field-observer';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, Input } from '@angular/core';
+import '@digdir/designsystemet-web';
 
 /**
- * Field is a helper component to automatically associate a field with hviLabel, hviFieldDescription and hviFieldValidation.
+ * @summary
+ * Field kobler automatisk sammen label, beskrivelse, validering og input via ds-field web component.
  *
  * @example
  * ```html
@@ -14,26 +15,17 @@ import { fieldObserver } from '../../helpers/field-observer';
  * </hvi-field>
  * ```
  *
- * Documentation: https://designsystemet.no/en/components/docs/field/overview
+ * @see {@link https://designsystemet.no/en/components/docs/field/overview}
  */
 @Component({
   selector: 'hvi-field',
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   standalone: true,
-  template: '<ng-content />',
-  host: {
-    class: 'ds-field',
-    '[attr.data-position]': 'position ?? null',
-  },
+  styles: [':host { display: contents; }'],
+  template:
+    '<ds-field class="ds-field" [attr.data-position]="position ?? null"><ng-content /></ds-field>',
 })
-export class HviField implements AfterViewInit {
+export class HviField {
   /** Position of toggle inputs (radio, checkbox, switch) in field */
   @Input() position?: 'start' | 'end';
-
-  private readonly el = inject(ElementRef<HTMLElement>);
-  private readonly destroyRef = inject(DestroyRef);
-
-  ngAfterViewInit(): void {
-    const stop = fieldObserver(this.el.nativeElement);
-    this.destroyRef.onDestroy(() => stop?.());
-  }
 }

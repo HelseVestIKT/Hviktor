@@ -41,7 +41,7 @@ import { FieldPrefixSuffixExampleSource } from './code-examples/field.prefix-suf
       >
         <hvi-field>
           <label hviLabel for="etternavn" weight="medium">Etternavn</label>
-          <span hviFieldDescription>Etternavn kan ikke inneholde mellomrom</span>
+          <p hviFieldDescription>Etternavn kan ikke inneholde mellomrom</p>
           <input hviInput id="etternavn" type="text" value="Nordmann Svenske" aria-invalid="true" />
           <span hviFieldValidation>Du kan ikke ha mellomrom i etternavnet ditt</span>
         </hvi-field>
@@ -67,7 +67,7 @@ import { FieldPrefixSuffixExampleSource } from './code-examples/field.prefix-suf
       <app-demo-section
         title="Antall tegn"
         [code]="antallTegnCode"
-        description="Bruk hvi-field-counter til å informere om antall tegn brukerne kan skrive i feltet. Komponenten finner automatisk input/textarea i samme field."
+        description="Bruk hvi-field-counter til å informere om antall tegn brukerne kan skrive i feltet. ds-field kobler automatisk telleren til input/textarea i samme field."
       >
         <hvi-field>
           <label hviLabel for="beskrivelse" weight="medium">Legg til en beskrivelse</label>
