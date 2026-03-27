@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { HviBadge, HviBadgePosition } from '@helsevestikt/hviktor';
+import { HviBadge, HviBadgePosition, HviTag } from '@helsevestikt/hviktor';
 import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
 
 import { BadgeBaseVariantExampleSource } from './code-examples/badge.base-variant.example.source';
@@ -9,7 +9,7 @@ import { BadgeTintedVariantExampleSource } from './code-examples/badge.tinted-va
 @Component({
   selector: 'app-badge-demo',
   standalone: true,
-  imports: [HviBadge, HviBadgePosition, DemoPageComponent, DemoSectionComponent],
+  imports: [HviBadge, HviBadgePosition, DemoPageComponent, DemoSectionComponent, HviTag],
   template: `
     <app-demo-page componentId="badge">
       <app-demo-section title="Base variant" [code]="baseVariantCode">
@@ -49,7 +49,7 @@ import { BadgeTintedVariantExampleSource } from './code-examples/badge.tinted-va
         <div class="flex flex-wrap items-center gap-4">
           <hvi-badge-position placement="top-left">
             <hvi-badge color="danger" count="3"></hvi-badge>
-            <div class="rounded bg-(--ds-color-background-tinted) p-4">Element</div>
+            <hvi-tag color="info">Tag med badge</hvi-tag>
           </hvi-badge-position>
         </div>
       </app-demo-section>
