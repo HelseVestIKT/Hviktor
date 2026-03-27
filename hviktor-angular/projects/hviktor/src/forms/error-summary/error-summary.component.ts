@@ -1,5 +1,6 @@
-import { Component, ElementRef, Input, ViewChild, inject } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, ElementRef, inject, Input } from '@angular/core';
 import { FormGroup } from '@angular/forms';
+import '@digdir/designsystemet-web';
 import { HviForm } from '../form/form.directive';
 import type { HviValidationMessages } from '../validation/validation-message';
 
@@ -24,9 +25,6 @@ const DEFAULT_ERROR_PRIORITY = [
   'min',
   'max',
 ] as const;
-
-let errorSummaryIdCounter = 0;
-const nextErrorSummaryHeadingId = () => `hvi-error-summary-heading-${++errorSummaryIdCounter}`;
 
 /**
  * @summary
@@ -95,33 +93,29 @@ const nextErrorSummaryHeadingId = () => `hvi-error-summary-heading-${++errorSumm
  */
 @Component({
   selector: 'hvi-error-summary',
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   standalone: true,
+  styles: [':host { display: contents; }'],
   template: `
-    <div
-      #container
-      class="ds-error-summary"
-      tabindex="-1"
-      [attr.aria-labelledby]="headingId"
-      [hidden]="!shouldShow"
-    >
+    <ds-error-summary class="ds-error-summary" [hidden]="!shouldShow">
       @switch (headingLevel) {
         @case (1) {
-          <h1 class="ds-heading" [id]="headingId">{{ heading }}</h1>
-        }
-        @case (2) {
-          <h2 class="ds-heading" [id]="headingId">{{ heading }}</h2>
+          <h1 class="ds-heading">{{ heading }}</h1>
         }
         @case (3) {
-          <h3 class="ds-heading" [id]="headingId">{{ heading }}</h3>
+          <h3 class="ds-heading">{{ heading }}</h3>
         }
         @case (4) {
-          <h4 class="ds-heading" [id]="headingId">{{ heading }}</h4>
+          <h4 class="ds-heading">{{ heading }}</h4>
         }
         @case (5) {
-          <h5 class="ds-heading" [id]="headingId">{{ heading }}</h5>
+          <h5 class="ds-heading">{{ heading }}</h5>
+        }
+        @case (6) {
+          <h6 class="ds-heading">{{ heading }}</h6>
         }
         @default {
-          <h6 class="ds-heading" [id]="headingId">{{ heading }}</h6>
+          <h2 class="ds-heading">{{ heading }}</h2>
         }
       }
 
@@ -138,10 +132,12 @@ const nextErrorSummaryHeadingId = () => `hvi-error-summary-heading-${++errorSumm
           </li>
         }
       </ul>
-    </div>
+    </ds-error-summary>
   `,
 })
 export class HviErrorSummary {
+  private readonly el = inject(ElementRef<HTMLElement>);
+
   /** Heading text shown above the list */
   @Input() heading = 'For å gå videre må du rette opp følgende feil:';
 
@@ -176,16 +172,11 @@ export class HviErrorSummary {
   /** Auto mode: error key priority (first match wins) */
   @Input() errorPriority: readonly string[] = DEFAULT_ERROR_PRIORITY;
 
-  /** Used for aria-labelledby on the container */
-  @Input() headingId = nextErrorSummaryHeadingId();
-
   /** When to show errors from the form controls */
   @Input() showWhen: 'submitted' | 'touched' | 'always' = 'submitted';
 
-  @ViewChild('container', { static: true }) private container?: ElementRef<HTMLElement>;
-
   focus(): void {
-    this.container?.nativeElement.focus();
+    this.el.nativeElement.querySelector('ds-error-summary')?.focus();
   }
 
   /**
