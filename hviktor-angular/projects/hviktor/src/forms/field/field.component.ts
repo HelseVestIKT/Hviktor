@@ -22,7 +22,8 @@ import '@digdir/designsystemet-web';
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   standalone: true,
   styles: [':host { display: contents; }'],
-  template: '<ds-field [attr.data-position]="position ?? null"><ng-content /></ds-field>',
+  template:
+    '<ds-field class="ds-field" [attr.data-position]="position ?? null"><ng-content /></ds-field>',
 })
 export class HviField {
   /** Position of toggle inputs (radio, checkbox, switch) in field */
