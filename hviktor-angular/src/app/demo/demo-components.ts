@@ -287,6 +287,7 @@ export const DEMO_COMPONENTS: DemoComponent[] = [
     name: 'AvatarStack',
     description: 'AvatarStack stabler en samling Avatar elementer',
     ds: true,
+    codeTested: true,
   },
   {
     id: 'logo',
