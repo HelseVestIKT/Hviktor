@@ -5,7 +5,32 @@ import { Schema } from './schema';
 const HVIKTOR_PACKAGE = '@helsevestikt/hviktor-angular';
 const HVIKTOR_IMPORT = `@import '${HVIKTOR_PACKAGE}/styles.css';`;
 const TAILWIND_IMPORT = `@import 'tailwindcss';`;
-const STYLES_PATH = 'src/styles.css';
+
+function getStylesPath(tree: Tree, project: string): string {
+  const angularJsonContent = tree.read('/angular.json');
+  if (!angularJsonContent) {
+    return 'src/styles.css';
+  }
+
+  const angularJson = JSON.parse(angularJsonContent.toString('utf-8'));
+  const projectConfig = angularJson.projects?.[project];
+  if (!projectConfig) {
+    return 'src/styles.css';
+  }
+
+  const buildTarget = projectConfig.architect?.build ?? projectConfig.targets?.build;
+  const styles: (string | { input: string })[] = buildTarget?.options?.styles ?? [];
+
+  for (const style of styles) {
+    const stylePath = typeof style === 'string' ? style : style.input;
+    if (stylePath.endsWith('.css') || stylePath.endsWith('.scss')) {
+      return stylePath;
+    }
+  }
+
+  const sourceRoot = projectConfig.sourceRoot ?? 'src';
+  return `${sourceRoot}/styles.css`;
+}
 
 function addPackageJsonDependency(
   tree: Tree,
@@ -34,8 +59,8 @@ function addPackageJsonDependency(
   tree.overwrite(packageJsonPath, JSON.stringify(json, null, 2) + '\n');
 }
 
-function updateStylesCss(tree: Tree, imports: string[]): void {
-  const existing = tree.read(STYLES_PATH);
+function updateStylesCss(tree: Tree, stylesPath: string, imports: string[]): void {
+  const existing = tree.read(stylesPath);
   const content = existing ? existing.toString('utf-8') : '';
 
   const newImports = imports.filter((imp) => !content.includes(imp));
@@ -45,9 +70,9 @@ function updateStylesCss(tree: Tree, imports: string[]): void {
 
   const updatedContent = newImports.join('\n') + '\n' + content;
   if (existing) {
-    tree.overwrite(STYLES_PATH, updatedContent);
+    tree.overwrite(stylesPath, updatedContent);
   } else {
-    tree.create(STYLES_PATH, updatedContent);
+    tree.create(stylesPath, updatedContent);
   }
 }
 
@@ -84,7 +109,8 @@ export function ngAdd(options: Schema): Rule {
 
     // Hviktor import always comes after tailwind
     styleImports.push(HVIKTOR_IMPORT);
-    updateStylesCss(tree, styleImports);
+    const stylesPath = getStylesPath(tree, options.project);
+    updateStylesCss(tree, stylesPath, styleImports);
 
     // Schedule npm install
     context.addTask(new NodePackageInstallTask());
