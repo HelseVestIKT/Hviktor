@@ -5,6 +5,7 @@ import { Schema } from './schema';
 const HVIKTOR_PACKAGE = '@helsevestikt/hviktor-angular';
 const HVIKTOR_IMPORT = `@import '${HVIKTOR_PACKAGE}/styles.css';`;
 const TAILWIND_IMPORT = `@import 'tailwindcss';`;
+const ICONS_IMPORT = `import '@helsevestikt/hviktor-icons';`;
 
 function getStylesPath(tree: Tree, project?: string): string {
   const angularJsonContent = tree.read('/angular.json');
@@ -35,6 +36,38 @@ function getStylesPath(tree: Tree, project?: string): string {
 
   const sourceRoot = projectConfig.sourceRoot ?? 'src';
   return `${sourceRoot}/styles.css`;
+}
+
+function getMainFilePath(tree: Tree, project?: string): string {
+  const angularJsonContent = tree.read('/angular.json');
+  if (!angularJsonContent) {
+    return 'src/main.ts';
+  }
+
+  const angularJson = JSON.parse(angularJsonContent.toString('utf-8'));
+  const projectName =
+    project ?? angularJson.defaultProject ?? Object.keys(angularJson.projects ?? {})[0];
+  const projectConfig = angularJson.projects?.[projectName];
+  if (!projectConfig) {
+    return 'src/main.ts';
+  }
+
+  const buildTarget = projectConfig.architect?.build ?? projectConfig.targets?.build;
+  return buildTarget?.options?.browser ?? buildTarget?.options?.main ?? 'src/main.ts';
+}
+
+function addImportToMainTs(tree: Tree, mainPath: string, importStatement: string): void {
+  const content = tree.read(mainPath);
+  if (!content) {
+    return;
+  }
+
+  const text = content.toString('utf-8');
+  if (text.includes(importStatement)) {
+    return;
+  }
+
+  tree.overwrite(mainPath, importStatement + '\n' + text);
 }
 
 function addPackageJsonDependency(
@@ -110,9 +143,11 @@ export function ngAdd(options: Schema): Rule {
       styleImports.push(TAILWIND_IMPORT);
     }
 
-    // Conditionally: install hviktor-icons
+    // Conditionally: install hviktor-icons and add import to main.ts
     if (options.icons !== false) {
       addPackageJsonDependency(tree, '@helsevestikt/hviktor-icons', 'latest', false);
+      const mainPath = getMainFilePath(tree, options.project);
+      addImportToMainTs(tree, mainPath, ICONS_IMPORT);
     }
 
     // Hviktor import always comes after tailwind
