@@ -4,7 +4,7 @@
   "license": "MIT",
   "scripts": {
     "build": "tsc -p tsconfig.schematics.json",
-    "postbuild": "copyfiles schematics/*/schema.json schematics/*/files/** schematics/collection.json ../../dist/hviktor"
+    "postbuild": "npx copyfiles schematics/*/schema.json schematics/*/files/** schematics/collection.json ../../dist/hviktor"
   },
   "peerDependencies": {
     "@angular/common": ">=17.0.0 <22.0.0",
@@ -12,7 +12,7 @@
   },
   "schematics": "./schematics/collection.json",
   "ng-add": {
-    "save": "true"
+    "save": "dependencies"
   },
   "devDependencies": {
     "copyfiles": "file:../../node_modules/copyfiles",
@@ -30,6 +30,7 @@
   },
   "files": [
     "fesm2022/",
+    "schematics/",
     "types/",
     "index.d.ts",
     "styles.css",
