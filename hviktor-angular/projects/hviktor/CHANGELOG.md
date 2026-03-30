@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.0.28
+
+### Patch Changes
+
+- 8cc5bb5: Add component overview to package README and demo badge to root README
+
 ## 0.0.27
 
 ### Patch Changes
