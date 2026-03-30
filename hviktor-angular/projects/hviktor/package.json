@@ -2,10 +2,21 @@
   "name": "@helsevestikt/hviktor-angular",
   "version": "0.0.6",
   "license": "MIT",
-  "schematics": "./schematics/collection.json",
+  "scripts": {
+    "build": "tsc -p tsconfig.schematics.json",
+    "postbuild": "copyfiles schematics/*/schema.json schematics/*/files/** schematics/collection.json ../../dist/hviktor"
+  },
   "peerDependencies": {
     "@angular/common": ">=17.0.0 <22.0.0",
     "@angular/core": ">=17.0.0 <22.0.0"
+  },
+  "schematics": "./schematics/collection.json",
+  "ng-add": {
+    "save": "true"
+  },
+  "devDependencies": {
+    "copyfiles": "file:../../node_modules/copyfiles",
+    "typescript": "file:../../node_modules/typescript"
   },
   "dependencies": {
     "@digdir/designsystemet-css": "^1.13.1",
@@ -28,8 +39,5 @@
   ],
   "sideEffects": [
     "**/*.css"
-  ],
-  "ng-add": {
-    "save": "true"
-  }
+  ]
 }
