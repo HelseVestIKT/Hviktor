@@ -4,7 +4,7 @@
   "license": "MIT",
   "scripts": {
     "build": "tsc -p tsconfig.schematics.json",
-    "postbuild": "npx copyfiles schematics/*/schema.json schematics/*/files/** schematics/collection.json ../../dist/hviktor"
+    "postbuild": "npx copyfiles schematics/*/schema.json schematics/*/files/** schematics/collection.json schematics/package.json ../../dist/hviktor && node -e \"require('fs').writeFileSync('../../dist/hviktor/.npmignore','')\""
   },
   "peerDependencies": {
     "@angular/common": ">=17.0.0 <22.0.0",
