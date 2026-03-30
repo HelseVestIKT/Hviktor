@@ -79,10 +79,29 @@ function updateChangelog(version) {
 }
 
 function openEditorSync() {
-  const editor = process.env.EDITOR || 'code';
+  const editor = process.env.VISUAL || process.env.EDITOR || '';
   try {
-    if (editor.includes('code')) {
-      execSync(`code --wait "${CHANGELOG_PATH}"`, { stdio: 'inherit' });
+    if (!editor || editor.includes('code')) {
+      // Bruk VS Code – prøv 'code' fra PATH først, deretter vanlige Windows-stier
+      const codePaths = [
+        'code',
+        path.join(process.env.LOCALAPPDATA || '', 'Programs', 'Microsoft VS Code', 'code'),
+        path.join(process.env['ProgramFiles'] || '', 'Microsoft VS Code', 'code'),
+      ];
+      let launched = false;
+      for (const codePath of codePaths) {
+        try {
+          execSync(`"${codePath}" --wait "${CHANGELOG_PATH}"`, { stdio: 'inherit' });
+          launched = true;
+          break;
+        } catch {
+          continue;
+        }
+      }
+      if (!launched) {
+        console.log('⚠️  Kunne ikke åpne VS Code. Rediger CHANGELOG manuelt og trykk Enter.');
+        require('readline').createInterface({ input: process.stdin }).once('line', () => {});
+      }
     } else {
       execSync(`${editor} "${CHANGELOG_PATH}"`, { stdio: 'inherit' });
     }
