@@ -26,6 +26,10 @@ function addPackageJsonDependency(
     json[key] = {};
   }
 
+  if (json[key][name]) {
+    return;
+  }
+
   json[key][name] = version;
   tree.overwrite(packageJsonPath, JSON.stringify(json, null, 2) + '\n');
 }
@@ -64,9 +68,6 @@ function createPostcssConfig(tree: Tree): void {
 export function ngAdd(options: Schema): Rule {
   return (tree: Tree, context: SchematicContext) => {
     const rules: Rule[] = [];
-
-    // Always: add hviktor dependency and styles import
-    addPackageJsonDependency(tree, HVIKTOR_PACKAGE, 'latest', false);
 
     const styleImports: string[] = [];
 
