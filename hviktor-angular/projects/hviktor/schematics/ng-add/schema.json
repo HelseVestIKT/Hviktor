@@ -1,0 +1,22 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "HviktorNgAdd",
+  "title": "Hviktor ng-add schematic",
+  "type": "object",
+  "properties": {
+    "project": {
+      "type": "string",
+      "description": "Prosjektet som hviktor skal legges til i.",
+      "$default": {
+        "$source": "projectName"
+      }
+    },
+    "tailwind": {
+      "type": "boolean",
+      "description": "Installer og konfigurer Tailwind CSS.",
+      "default": false,
+      "x-prompt": "Vil du installere Tailwind CSS?"
+    }
+  },
+  "required": []
+}
