@@ -45,8 +45,8 @@ jobs:
               with:
                   title: "chore: version packages"
                   commit: "chore: version packages"
-                  version: npm run changeset:version
-                  publish: npm run changeset:tag
-                  cwd: hviktor-angular
+                  version: cd hviktor-angular && npm run changeset:version
+                  publish: cd hviktor-angular && npm run changeset:tag
+                  cwd: ./hviktor-angular
               env:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
