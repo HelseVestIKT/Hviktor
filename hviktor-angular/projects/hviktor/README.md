@@ -6,11 +6,22 @@ Angular-komponenter basert på [Digdir Designsystemet](https://designsystemet.no
 
 ## Installasjon
 
+### Automatisk oppsett (anbefalt)
+
+```bash
+ng add @helsevestikt/hviktor-angular
+```
+
+Dette installerer pakken og setter opp prosjektet automatisk:
+
+- Legger til `@import '@helsevestikt/hviktor-angular/styles.css'` i stylesheet
+- Spør om du vil installere og konfigurere **Tailwind CSS**. Valgritt, men anbefales for best mulig utvikleropplevelse.
+
+### Manuelt oppsett
+
 ```bash
 npm install @helsevestikt/hviktor-angular
 ```
-
-## Oppsett
 
 Importer stylesheet i `src/styles.css`:
 
