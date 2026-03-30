@@ -161,6 +161,7 @@ Alle script køyrast frå `hviktor-angular`-mappa.
 | `npm run scaffold`          | Genererer ny bibliotek-komponent/direktiv         |
 | `npm run scaffold:demo`     | Opprettar ny demoside                             |
 | `npm run generate:examples` | Genererer kodeeksempel frå demoseksjonar          |
+| `npm run release`           | Bumpar versjon, taggar og pushar til npm           |
 | `npm run version:check`     | Sjekkar siste versjon på npm                      |
 
 ## Kodekvalitetsverktøy
@@ -182,12 +183,6 @@ For å få få Husky til å virke, må du gjennom noen steg første gang:
 3. Verifiser at alt er riktig ved å kjøre `git config --get core.hooksPath`. Skal returnere noe ala `hviktor-angular/.husky/_`.
 
 - **Husky** kjører pre-commit-hooks og blokkerer commits som ikke passerer lint og format. Installer avhengigheter én gang med `npm install`, så trigges hookene automatisk ved `git commit`. Den sjekker kun filene i projects/hviktor.
-
----
-
-<div align="center">
-  <sub>Bygget med ❤️ av <a href="https://github.com/HelseVestIKT">Helse Vest IKT</a></sub>
-</div>
 - **Prettier** formaterer alle prosjektfiler likt. Kjør manuelt med `npm run format` om du trenger å rydde opp før commit.
 - **ESLint** fanger opp vanlige feil og stilbrudd. Lokalt kan du sjekke med `npm run lint`. Husk at Husky kjører samme sjekk når du committer.
 
@@ -227,7 +222,7 @@ Hver gang du gjør en commit formatteres koden automatisk, og hvis det er lint-f
 
 ### Publisere ny versjon til npm
 
-Kun kode som er merget til main kan publiseres. Workflowen verifiserer dette automatisk.
+Kun kode som er merget til main kan publiseres. Bruk release-scriptet som håndterer versjonering, tagging og push i ett steg:
 
 1. **Sørg for at main er oppdatert:**
 
@@ -236,17 +231,23 @@ Kun kode som er merget til main kan publiseres. Workflowen verifiserer dette aut
    git pull
    ```
 
-2. **Opprett versjon-tag:**
+2. **Kjør release-scriptet:**
    Tips: for å sjekke siste versjon på npm, kjør `npm run version:check`.
 
    ```bash
-   git tag v0.1.0    # Bruk semantic versioning
-   git push origin v0.1.0
+   npm run release patch   # Bugfikser
+   npm run release minor   # Nye komponenter/features
+   npm run release major   # Breaking changes
+   npm run release 1.0.0   # Eksplisitt versjon
    ```
+
+   Scriptet oppdaterer `package.json`, committer, tagger og pusher automatisk.
 
 3. **Godkjenn publisering:**
    - En reviewer i `npm-publish` environment må godkjenne
    - Workflowen bygger og publiserer automatisk til npm
+
+Se [RELEASE.md](hviktor-angular/RELEASE.md) for mer detaljer.
 
 ### Semantic Versioning
 
