@@ -1,11 +1,30 @@
-# Hviktor Angular
+<div align="center">
+<h1>
+  <a href="https://github.com/HelseVestIKT/Hviktor">
+    <img src="hviktor-angular/public/dots.svg" width="24" alt="Hviktor logo"/>
+  </a>
+  <strong>HVIKTOR</strong>
+</h1>
+
+<p><strong>Angular-komponenter basert på Digdir Designsystemet for Helse Vest IKT</strong></p>
 
 [![npm version](https://img.shields.io/npm/v/@helsevestikt/hviktor-angular)](https://www.npmjs.com/package/@helsevestikt/hviktor-angular)
 [![PR Checks](https://github.com/HelseVestIKT/Hviktor/actions/workflows/pr-checks.yml/badge.svg)](https://github.com/HelseVestIKT/Hviktor/actions/workflows/pr-checks.yml)
 [![Publish to npm](https://github.com/HelseVestIKT/Hviktor/actions/workflows/publish-npm.yml/badge.svg)](https://github.com/HelseVestIKT/Hviktor/actions/workflows/publish-npm.yml)
 [![Angular](https://img.shields.io/badge/Angular-17--21-dd0031)](https://angular.dev/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Demo](https://img.shields.io/badge/Demo-GitHub%20Pages-blue)](https://helsevestikt.github.io/hviktor/)
+
+<p>
+  <a href="#formål">Formål</a> •
+  <a href="#krav">Krav</a> •
+  <a href="#struktur">Struktur</a> •
+  <a href="#utvikling-av-komponenter-og-direktiver">Utvikling</a> •
+  <a href="#demo-applikasjonen">Demo</a> •
+  <a href="#nyttige-script">Script</a>
+</p>
+</div>
+
+---
 
 ## Formål
 
@@ -163,6 +182,12 @@ For å få få Husky til å virke, må du gjennom noen steg første gang:
 3. Verifiser at alt er riktig ved å kjøre `git config --get core.hooksPath`. Skal returnere noe ala `hviktor-angular/.husky/_`.
 
 - **Husky** kjører pre-commit-hooks og blokkerer commits som ikke passerer lint og format. Installer avhengigheter én gang med `npm install`, så trigges hookene automatisk ved `git commit`. Den sjekker kun filene i projects/hviktor.
+
+---
+
+<div align="center">
+  <sub>Bygget med ❤️ av <a href="https://github.com/HelseVestIKT">Helse Vest IKT</a></sub>
+</div>
 - **Prettier** formaterer alle prosjektfiler likt. Kjør manuelt med `npm run format` om du trenger å rydde opp før commit.
 - **ESLint** fanger opp vanlige feil og stilbrudd. Lokalt kan du sjekke med `npm run lint`. Husk at Husky kjører samme sjekk når du committer.
 
