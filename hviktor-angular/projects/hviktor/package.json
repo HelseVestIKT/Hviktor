@@ -14,10 +14,6 @@
   "ng-add": {
     "save": "dependencies"
   },
-  "devDependencies": {
-    "copyfiles": "file:../../node_modules/copyfiles",
-    "typescript": "file:../../node_modules/typescript"
-  },
   "dependencies": {
     "@digdir/designsystemet-css": "^1.13.1",
     "@digdir/designsystemet-web": "^1.13.1",
