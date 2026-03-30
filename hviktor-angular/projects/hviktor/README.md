@@ -58,7 +58,7 @@ Se [helsevestikt.github.io/hviktor](https://helsevestikt.github.io/hviktor/) for
 
 ## Endringslogg
 
-Se [CHANGELOG.md](https://github.com/HelseVestIKT/Hviktor/blob/main/hviktor-angular/CHANGELOG.md) for alle versjonsendringer.
+Se [CHANGELOG.md](https://github.com/HelseVestIKT/Hviktor/blob/main/hviktor-angular/projects/hviktor/CHANGELOG.md) for alle versjonsendringer.
 
 ## Bidra
 
