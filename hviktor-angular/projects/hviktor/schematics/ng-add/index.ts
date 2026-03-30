@@ -1,4 +1,4 @@
-import { Rule, SchematicContext, Tree, chain } from '@angular-devkit/schematics';
+import { Rule, SchematicContext, Tree } from '@angular-devkit/schematics';
 import { NodePackageInstallTask } from '@angular-devkit/schematics/tasks';
 import { Schema } from './schema';
 
@@ -92,8 +92,6 @@ function createPostcssConfig(tree: Tree): void {
 
 export function ngAdd(options: Schema): Rule {
   return (tree: Tree, context: SchematicContext) => {
-    const rules: Rule[] = [];
-
     const styleImports: string[] = [];
 
     // Conditionally: set up Tailwind CSS
@@ -115,6 +113,6 @@ export function ngAdd(options: Schema): Rule {
     // Schedule npm install
     context.addTask(new NodePackageInstallTask());
 
-    return chain(rules)(tree, context);
+    return tree;
   };
 }
