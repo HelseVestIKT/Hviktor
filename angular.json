@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "hviktor-angular": {
+    "hviktor-app": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -54,10 +54,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "hviktor-angular:build:production"
+              "buildTarget": "hviktor-app:build:production"
             },
             "development": {
-              "buildTarget": "hviktor-angular:build:development"
+              "buildTarget": "hviktor-app:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -80,7 +80,7 @@
         }
       }
     },
-    "hviktor": {
+    "hviktor-lib": {
       "projectType": "library",
       "root": "projects/hviktor",
       "sourceRoot": "projects/hviktor/src",
