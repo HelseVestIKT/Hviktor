@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["projects/hviktor/src/lib.spec.ts"],
-  "sourcesContent": ["import { describe, expect, it } from 'vitest';\n\ndescribe('hviktor library', () => {\n  it('should be importable', async () => {\n    const lib = await import('./public-api');\n    expect(lib).toBeDefined();\n  });\n});\n"],
-  "mappings": ";AAAA,SAAS,UAAU,QAAQ,UAAU;AAErC,SAAS,mBAAmB,MAAK;AAC/B,KAAG,wBAAwB,YAAW;AACpC,UAAM,MAAM,MAAM,OAAO,qBAAc;AACvC,WAAO,GAAG,EAAE,YAAW;EACzB,CAAC;AACH,CAAC;",
-  "names": []
-}

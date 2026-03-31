@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["projects/hviktor/src/testing/test-utils.ts"],
-  "sourcesContent": ["import { provideZonelessChangeDetection, Type } from '@angular/core';\nimport { TestBed } from '@angular/core/testing';\n\n/**\n * Configures TestBed for zoneless component testing.\n * Call in `beforeEach` before creating component fixtures.\n */\nexport async function setupTestBed(config: {\n  imports: Type<unknown>[];\n  declarations?: Type<unknown>[];\n}) {\n  await TestBed.configureTestingModule({\n    imports: config.imports,\n    declarations: config.declarations,\n    providers: [provideZonelessChangeDetection()],\n  }).compileComponents();\n}\n"],
-  "mappings": ";AAAA,SAAS,sCAA4C;AACrD,SAAS,eAAe;AAMxB,eAAsB,aAAa,QAGlC;AACC,QAAM,QAAQ,uBAAuB;IACnC,SAAS,OAAO;IAChB,cAAc,OAAO;IACrB,WAAW,CAAC,+BAA8B,CAAE;GAC7C,EAAE,kBAAiB;AACtB;",
-  "names": []
-}

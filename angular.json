@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "hviktor-app": {
+    "hviktor-demoapp": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -54,10 +54,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "hviktor-app:build:production"
+              "buildTarget": "hviktor-demoapp:build:production"
             },
             "development": {
-              "buildTarget": "hviktor-app:build:development"
+              "buildTarget": "hviktor-demoapp:build:development"
             }
           },
           "defaultConfiguration": "development"

@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["projects/hviktor/src/test-setup.ts"],
-  "sourcesContent": ["/**\n * Polyfill for CSS.supports() which is not available in jsdom.\n * Required because @digdir/designsystemet-web calls CSS.supports() on import.\n */\nif (typeof globalThis.CSS === 'undefined') {\n  Object.defineProperty(globalThis, 'CSS', { value: { supports: () => false } });\n}\n"],
-  "mappings": ";AAIA,IAAI,OAAO,WAAW,QAAQ,aAAa;AACzC,SAAO,eAAe,YAAY,OAAO,EAAE,OAAO,EAAE,UAAU,MAAM,MAAK,EAAE,CAAE;AAC/E;",
-  "names": []
-}

@@ -12,7 +12,6 @@ Takk for at du vil bidra til Hviktor! Denne guiden beskriver hvordan du kommer i
 
 ```bash
 git clone https://github.com/HelseVestIKT/Hviktor.git
-cd Hviktor/hviktor-angular
 npm install
 ```
 
@@ -136,7 +135,7 @@ Bruk GitHub Issues med riktig template:
 ## Prosjektstruktur
 
 ```
-hviktor-angular/
+hviktor/
 ├── projects/hviktor/        # Biblioteket (publiseres til npm)
 │   ├── src/                 # Komponentkildekode
 │   └── schematics/          # ng-add schematic

@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["projects/hviktor/src/alert/alert.component.ts"],
-  "sourcesContent": ["import { Component, Input } from '@angular/core';\n\n/**\n * Alert provides users with information that is especially important for them to see and understand.\n * The component is designed to capture users' attention.\n * The text in the alert should be short and clear.\n *\n * @example\n * ```html\n * <hvi-alert color=\"warning\">\n *  Dette er et advarselsvarsel!\n * </hvi-alert>\n * ```\n *\n * Documentation: https://designsystemet.no/en/components/docs/alert/code/\n */\n@Component({\n  selector: 'hvi-alert',\n  standalone: true,\n  template: `<ng-content />`,\n  host: {\n    class: 'ds-alert',\n    '[attr.data-color]': 'color',\n  },\n})\nexport class HviAlert {\n  /** Sets the type of alert by changing the color and  */\n  @Input() color?: 'info' | 'success' | 'warning' | 'danger';\n}\n"],
-  "mappings": ";AAAA,SAAS,WAAW,aAAa;;;AAyB3B,IAAO,WAAP,MAAO,UAAQ;;EAEV;;qCAFE,WAAQ;EAAA;4EAAR,WAAQ,WAAA,CAAA,CAAA,WAAA,CAAA,GAAA,WAAA,CAAA,GAAA,UAAA,GAAA,UAAA,GAAA,cAAA,SAAA,sBAAA,IAAA,KAAA;AAAA,QAAA,KAAA,GAAA;;;;;;AANR,MAAA,0BAAA,CAAA;;;;;+EAMA,UAAQ,CAAA;UATpB;WAAU;MACT,UAAU;MACV,YAAY;MACZ,UAAU;MACV,MAAM;QACJ,OAAO;QACP,qBAAqB;;KAExB;;UAGE;;;;gFAFU,UAAQ,EAAA,WAAA,YAAA,UAAA,iDAAA,YAAA,GAAA,CAAA;AAAA,GAAA;",
-  "names": []
-}

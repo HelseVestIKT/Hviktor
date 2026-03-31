@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["angular:vitest-mock-patch:angular:vitest-mock-patch"],
-  "sourcesContent": ["\n    import { vi } from 'vitest';\n\n    const error = new Error(\n      'The \"vi.mock\" and related methods are not supported for relative imports with the Angular unit-test system. ' +\n      'Please use Angular TestBed for mocking dependencies.'\n    );\n\n    // Store original implementations\n    const { mock, doMock, importMock, unmock, doUnmock } = vi;\n\n    function patch(original) {\n      return (path, ...args) => {\n        // Check if the path is a string and starts with a character that indicates a relative path.\n        if (typeof path === 'string' && /^[./]/.test(path)) {\n          throw error;\n        }\n\n        // Call the original function for non-relative paths.\n        return original(path, ...args);\n      };\n    }\n\n    vi.mock = patch(mock);\n    vi.doMock = patch(doMock);\n    vi.importMock = patch(importMock);\n    vi.unmock = patch(unmock);\n    vi.doUnmock = patch(doUnmock);\n  "],
-  "mappings": ";AACI,SAAS,UAAU;AAEnB,IAAM,QAAQ,IAAI;AAAA,EAChB;AAEF;AAGA,IAAM,EAAE,MAAM,QAAQ,YAAY,QAAQ,SAAS,IAAI;AAEvD,SAAS,MAAM,UAAU;AACvB,SAAO,CAAC,SAAS,SAAS;AAExB,QAAI,OAAO,SAAS,YAAY,QAAQ,KAAK,IAAI,GAAG;AAClD,YAAM;AAAA,IACR;AAGA,WAAO,SAAS,MAAM,GAAG,IAAI;AAAA,EAC/B;AACF;AAEA,GAAG,OAAO,MAAM,IAAI;AACpB,GAAG,SAAS,MAAM,MAAM;AACxB,GAAG,aAAa,MAAM,UAAU;AAChC,GAAG,SAAS,MAAM,MAAM;AACxB,GAAG,WAAW,MAAM,QAAQ;",
-  "names": []
-}

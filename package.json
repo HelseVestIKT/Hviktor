@@ -1,12 +1,12 @@
 {
-  "name": "hviktor-app",
+  "name": "hviktor-demoapp",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "prestart": "ng build hviktor",
+    "prestart": "ng build hviktor-demoapp",
     "start": "ng serve",
     "build": "ng build",
-    "build:lib": "ng build hviktor",
+    "build:lib": "ng build hviktor-lib",
     "build:icons": "ng build icons",
     "build:icons:bundle": "npm run build:icons && node ./scripts/build-icons-bundle.js",
     "version:check": "npm view @helsevestikt/hviktor-angular version",
