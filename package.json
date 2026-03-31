@@ -1,5 +1,5 @@
 {
-  "name": "hviktor-angular",
+  "name": "hviktor-app",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -30,7 +30,7 @@
     "lint-staged": "lint-staged",
     "format": "prettier --write .",
     "format:staged": "prettier --write --log-level warn",
-    "prepare": "husky .husky"
+    "prepare": "husky"
   },
   "private": true,
   "dependencies": {

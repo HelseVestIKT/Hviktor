@@ -16,7 +16,7 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/HelseVestIKT/hviktor",
-    "directory": "hviktor-angular/projects/hviktor"
+    "directory": "projects/hviktor"
   },
   "scripts": {
     "build": "tsc -p tsconfig.schematics.json",
