@@ -1,4 +1,3 @@
 #!/bin/sh
 echo "ℹ️  Running pre-commit checks (lint-staged) 🐶"
-cd "$(git rev-parse --show-toplevel)/hviktor-angular" || exit 1
 npm run -s lint-staged
