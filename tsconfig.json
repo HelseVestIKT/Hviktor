@@ -5,8 +5,8 @@
   "compilerOptions": {
     "strict": true,
     "paths": {
-      "@helsevestikt/hviktor": ["./dist/hviktor", "./projects/hviktor/src/public-api"],
-      "@helsevestikt/hviktor/*": ["./dist/hviktor/*", "./projects/hviktor/src/*"]
+      "@helsevestikt/hviktor": ["./dist/hviktor-lib", "./projects/hviktor/src/public-api"],
+      "@helsevestikt/hviktor/*": ["./dist/hviktor-lib/*", "./projects/hviktor/src/*"]
     },
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,

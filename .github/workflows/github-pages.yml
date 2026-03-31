@@ -41,7 +41,7 @@ jobs:
         run: npx ng build --configuration production --base-href ./
 
       - name: Copy index.html to 404.html (SPA routing)
-        run: cp dist/hviktor-demoapp/browser/index.html dist/hviktor-demoapp/browser/404.html
+        run: cp dist/hviktor-lib-demoapp/browser/index.html dist/hviktor-lib-demoapp/browser/404.html
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
@@ -49,7 +49,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: "hviktor/dist/hviktor-demoapp/browser"
+          path: "hviktor/dist/hviktor-lib-demoapp/browser"
 
   deploy:
     environment:

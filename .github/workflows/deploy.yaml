@@ -36,13 +36,13 @@ jobs:
         run: ng build --configuration production
 
       - name: Copy web.config to build folder
-        run: cp web.config dist/hviktor
+        run: cp web.config dist/hviktor-lib
 
       - name: Upload artifact
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
           name: "web-${{ inputs.environment }}"
-          path: "hviktor/dist/hviktor"
+          path: "hviktor/dist/hviktor-lib"
           compression-level: 0
 
   provision-app-service-angular:

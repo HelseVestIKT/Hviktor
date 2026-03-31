@@ -1,6 +1,6 @@
 {
   "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
-  "dest": "../../dist/hviktor",
+  "dest": "../../dist/hviktor-lib-lib",
   "lib": {
     "entryFile": "src/public-api.ts"
   },

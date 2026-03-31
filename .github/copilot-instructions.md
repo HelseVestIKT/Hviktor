@@ -3,8 +3,8 @@
 ## Architecture
 
 - Angular 21 workspace wrapping Norway's [Designsystemet](https://designsystemet.no/) as Angular components/directives. All visual styling comes from `@digdir/designsystemet-css` via `ds-*` CSS classes applied through `host` metadata — there are **no per-component CSS files**.
-- **Library** lives in `projects/hviktor/src/`, built to `dist/hviktor` via `npm run build:lib`.
-- **Demo app** in `src/` consumes the library as a `file:` dependency from `dist/hviktor`. Rebuild the library first or changes won't appear.
+- **Library** lives in `projects/hviktor/src/`, built to `dist/hviktor-lib` via `npm run build:lib`.
+- **Demo app** in `src/` consumes the library as a `file:` dependency from `dist/hviktor-lib`. Rebuild the library first or changes won't appear.
 - Exports flow through `projects/hviktor/src/public-api.ts`; each component folder has an `index.ts` with **named** re-exports (not `export *`).
 
 ## Naming & scaffolding

@@ -38,8 +38,8 @@ Hviktor Angular inneholder Angular komponenter og direktiver som bygger på desi
 
 ## Struktur
 
-- `projects/hviktor` – biblioteket der komponenter og direktiver utvikles. Blir bygget til `dist/hviktor` og skal publiseres til npm.
-- `src` – demoapplikasjonen som viser biblioteket og bruker bygg fra `dist/hviktor`. Her kan ein lett sjå komponenter i bruk og teste endringar lokalt.
+- `projects/hviktor` – biblioteket der komponenter og direktiver utvikles. Blir bygget til `dist/hviktor-lib` og skal publiseres til npm.
+- `src` – demoapplikasjonen som viser biblioteket og bruker bygg fra `dist/hviktor-lib`. Her kan ein lett sjå komponenter i bruk og teste endringar lokalt.
 - `scripts` – hjelpescript for scaffolding og kodegenerering.
 
 ## Utvikling av komponenter og direktiver
@@ -71,7 +71,7 @@ Etter at komponenten/direktivet er utviklet, må den legges til som export i `pr
 ## Byggrutine
 
 1. Utvikle eller oppdater komponenter/direktiv i `projects/hviktor`.
-2. Kjør `npm run build:lib` for å generere pakken i `dist/hviktor`.
+2. Kjør `npm run build:lib` for å generere pakken i `dist/hviktor-lib`.
 3. Start eller bygg demoappen (`npm start` / `npm run build`) for å verifisere endringene via den lokale pakke-referansen.
 
 ## Demo-applikasjonen
@@ -152,7 +152,7 @@ Alle script køyrast frå root.
 | --------------------------- | ------------------------------------------------- |
 | `npm start`                 | Startar dev-server for demoappen (localhost:4200) |
 | `npm run build`             | Byggjer demoappen til `dist/`                     |
-| `npm run build:lib`         | Byggjer biblioteket til `dist/hviktor`            |
+| `npm run build:lib`         | Byggjer biblioteket til `dist/hviktor-lib`        |
 | `npm test`                  | Køyrer einingstestar (Vitest)                     |
 | `npm run lint`              | Køyrer ESLint                                     |
 | `npm run format`            | Formaterer kode med Prettier                      |
