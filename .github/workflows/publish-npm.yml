@@ -7,10 +7,6 @@ on:
     tags:
       - "v*"
 
-defaults:
-  run:
-    working-directory: hviktor
-
 permissions:
   contents: read
   id-token: write

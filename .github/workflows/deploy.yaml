@@ -15,9 +15,6 @@ jobs:
   build-frontend:
     name: "Build Angular app"
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: hviktor
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -36,13 +33,13 @@ jobs:
         run: ng build --configuration production
 
       - name: Copy web.config to build folder
-        run: cp web.config dist/hviktor-lib
+        run: cp web.config dist/hviktor-demoapp/browser
 
       - name: Upload artifact
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
           name: "web-${{ inputs.environment }}"
-          path: "hviktor/dist/hviktor-lib"
+          path: "dist/hviktor-demoapp/browser"
           compression-level: 0
 
   provision-app-service-angular:
