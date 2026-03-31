@@ -1,7 +1,7 @@
 <div align="center">
 <h1>
-  <a href="https://github.com/HelseVestIKT/Hviktor">
-    <img src="hviktor-angular/public/dots.svg" width="24" alt="Hviktor logo"/>
+  <a href="https://github.com/HelseVestIKT/hviktor">
+    <img src="hviktor/public/dots.svg" width="24" alt="Helse Vest prikker"/>
   </a>
   <strong>HVIKTOR</strong>
 </h1>
@@ -9,8 +9,8 @@
 <p><strong>Angular-komponenter basert på Digdir Designsystemet for Helse Vest IKT</strong></p>
 
 [![npm version](https://img.shields.io/npm/v/@helsevestikt/hviktor-angular)](https://www.npmjs.com/package/@helsevestikt/hviktor-angular)
-[![PR Checks](https://github.com/HelseVestIKT/Hviktor/actions/workflows/pr-checks.yml/badge.svg)](https://github.com/HelseVestIKT/Hviktor/actions/workflows/pr-checks.yml)
-[![Publish to npm](https://github.com/HelseVestIKT/Hviktor/actions/workflows/publish-npm.yml/badge.svg)](https://github.com/HelseVestIKT/Hviktor/actions/workflows/publish-npm.yml)
+[![PR Checks](https://github.com/HelseVestIKT/hviktor/actions/workflows/pr-checks.yml/badge.svg)](https://github.com/HelseVestIKT/hviktor/actions/workflows/pr-checks.yml)
+[![Publish to npm](https://github.com/HelseVestIKT/hviktor/actions/workflows/publish-npm.yml/badge.svg)](https://github.com/HelseVestIKT/hviktor/actions/workflows/publish-npm.yml)
 [![Angular](https://img.shields.io/badge/Angular-17--21-dd0031)](https://angular.dev/)
 [![Demo](https://img.shields.io/badge/Demo-GitHub%20Pages-blue)](https://helsevestikt.github.io/hviktor/)
 
@@ -38,9 +38,9 @@ Hviktor Angular inneholder Angular komponenter og direktiver som bygger på desi
 
 ## Struktur
 
-- `hviktor-angular/projects/hviktor` – biblioteket der komponenter og direktiver utvikles. Blir bygget til `dist/hviktor` og skal publiseres til npm.
-- `hviktor-angular/src` – demoapplikasjonen som viser biblioteket og bruker bygg fra `dist/hviktor`. Her kan ein lett sjå komponenter i bruk og teste endringar lokalt.
-- `hviktor-angular/scripts` – hjelpescript for scaffolding og kodegenerering.
+- `projects/hviktor` – biblioteket der komponenter og direktiver utvikles. Blir bygget til `dist/hviktor` og skal publiseres til npm.
+- `src` – demoapplikasjonen som viser biblioteket og bruker bygg fra `dist/hviktor`. Her kan ein lett sjå komponenter i bruk og teste endringar lokalt.
+- `scripts` – hjelpescript for scaffolding og kodegenerering.
 
 ## Utvikling av komponenter og direktiver
 
@@ -51,8 +51,6 @@ I denne mappen opprettes i hovedsak to filer:
 
 - `komponent-navn.component.ts` – TypeScript-filen som definerer komponenten/direktivet. Ev. `direktiv-navn.directive.ts` for direktiver.
 - `index.ts` – Eksporterer komponenten/direktivet for bruk i biblioteket.
-
-Alt dette kan også gjøres ved å kjøre følgende script fra `hviktor-angular`-mappen:
 
 ```bash
 npm run scaffold -- <type> <name>
@@ -73,12 +71,12 @@ Etter at komponenten/direktivet er utviklet, må den legges til som export i `pr
 ## Byggrutine
 
 1. Utvikle eller oppdater komponenter/direktiv i `projects/hviktor`.
-2. Kjør `npm run build:lib` fra `hviktor-angular` for å generere pakken i `dist/hviktor`.
-3. Start eller bygg demoappen (`npm start` / `npm run build`) fra `hviktor-angular` for å verifisere endringene via den lokale pakke-referansen.
+2. Kjør `npm run build:lib` for å generere pakken i `dist/hviktor`.
+3. Start eller bygg demoappen (`npm start` / `npm run build`) for å verifisere endringene via den lokale pakke-referansen.
 
 ## Demo-applikasjonen
 
-Demo-appen ligger i `hviktor-angular/src` og viser alle komponentene i biblioteket. For å legge til en ny demo-side for en komponent, bruk scaffold-scriptet:
+Demo-appen ligger i `src` og viser alle komponentene i biblioteket. For å legge til en ny demo-side for en komponent, bruk scaffold-scriptet:
 
 ```bash
 npm run scaffold:demo -- <navn> "<beskrivelse>"
@@ -148,7 +146,7 @@ npm run generate:examples
 
 ## Nyttige script
 
-Alle script køyrast frå `hviktor-angular`-mappa.
+Alle script køyrast frå root.
 
 | Script                      | Skildring                                         |
 | --------------------------- | ------------------------------------------------- |
@@ -161,7 +159,7 @@ Alle script køyrast frå `hviktor-angular`-mappa.
 | `npm run scaffold`          | Genererer ny bibliotek-komponent/direktiv         |
 | `npm run scaffold:demo`     | Opprettar ny demoside                             |
 | `npm run generate:examples` | Genererer kodeeksempel frå demoseksjonar          |
-| `npm run release`           | Bumpar versjon, taggar og pushar til npm           |
+| `npm run release`           | Bumpar versjon, taggar og pushar til npm          |
 | `npm run version:check`     | Sjekkar siste versjon på npm                      |
 
 ## Kodekvalitetsverktøy
@@ -177,10 +175,10 @@ Nå vil Prettier automatisk formatere koden din hver gang du lagrer en fil.
 
 For å få få Husky til å virke, må du gjennom noen steg første gang:
 
-1. `cd hviktor-angular` og kjør `npm install` for å installere alle avhengigheter, inkludert Husky.
-2. `cd ..` og kjør `npm --prefix hviktor-angular ci` for å installere avhengigheter i root-prosjektet.
+1. kjør `npm install` for å installere alle avhengigheter, inkludert Husky.
+2. `cd ..` og kjør `npm --prefix hviktor ci` for å installere avhengigheter i root-prosjektet.
    1. hvis du nå får en EPERM unlink feil, må du ringe en venn
-3. Verifiser at alt er riktig ved å kjøre `git config --get core.hooksPath`. Skal returnere noe ala `hviktor-angular/.husky/_`.
+3. Verifiser at alt er riktig ved å kjøre `git config --get core.hooksPath`. Skal returnere noe ala `hviktor/.husky/_`.
 
 - **Husky** kjører pre-commit-hooks og blokkerer commits som ikke passerer lint og format. Installer avhengigheter én gang med `npm install`, så trigges hookene automatisk ved `git commit`. Den sjekker kun filene i projects/hviktor.
 - **Prettier** formaterer alle prosjektfiler likt. Kjør manuelt med `npm run format` om du trenger å rydde opp før commit.
@@ -247,7 +245,7 @@ Kun kode som er merget til main kan publiseres. Bruk release-scriptet som håndt
    - En reviewer i `npm-publish` environment må godkjenne
    - Workflowen bygger og publiserer automatisk til npm
 
-Se [RELEASE.md](hviktor-angular/RELEASE.md) for mer detaljer.
+Se [RELEASE.md](docs/RELEASE.md) for mer detaljer.
 
 ### Semantic Versioning
 

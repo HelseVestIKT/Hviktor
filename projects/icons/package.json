@@ -45,7 +45,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/helsevestikt/hviktor-angular.git",
+    "url": "https://github.com/helsevestikt/hviktor.git",
     "directory": "projects/icons"
   },
   "dependencies": {

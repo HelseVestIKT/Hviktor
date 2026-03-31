@@ -7,7 +7,7 @@ on:
 # Dette er egentlig konstanter som gjelder for alle workflowene, men jeg vet ikke hvordan jeg kan sette det globalt
 env:
   NODE_VERSION: "20.x" # set this to the node version to use
-  ANGULAR_APP: "hviktor-angular" # set this to the name of the angular app
+  ANGULAR_APP: "hviktor-demoapp" # set this to the name of the angular app
 
   # Tillater bruk av secrets i workflowene
 permissions:

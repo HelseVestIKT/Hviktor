@@ -11,7 +11,7 @@ Takk for at du vil bidra til Hviktor! Denne guiden beskriver hvordan du kommer i
 ## Oppsett
 
 ```bash
-git clone https://github.com/HelseVestIKT/Hviktor.git
+git clone https://github.com/HelseVestIKT/hviktor.git
 npm install
 ```
 
@@ -128,9 +128,9 @@ Se [RELEASE.md](RELEASE.md) for prosedyre for publisering til npm.
 
 Bruk GitHub Issues med riktig template:
 
-- 🐛 [Bug](https://github.com/HelseVestIKT/Hviktor/issues/new?template=bug.yml)
-- ✨ [Ny funksjon](https://github.com/HelseVestIKT/Hviktor/issues/new?template=feature.yml)
-- ➕ [Ny komponent](https://github.com/HelseVestIKT/Hviktor/issues/new?template=new-component.yml)
+- 🐛 [Bug](https://github.com/HelseVestIKT/hviktor/issues/new?template=bug.yml)
+- ✨ [Ny funksjon](https://github.com/HelseVestIKT/hviktor/issues/new?template=feature.yml)
+- ➕ [Ny komponent](https://github.com/HelseVestIKT/hviktor/issues/new?template=new-component.yml)
 
 ## Prosjektstruktur
 

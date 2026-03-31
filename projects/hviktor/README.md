@@ -1,7 +1,7 @@
 # @helsevestikt/hviktor-angular
 
 [![npm version](https://img.shields.io/npm/v/@helsevestikt/hviktor-angular)](https://www.npmjs.com/package/@helsevestikt/hviktor-angular)
-[![license](https://img.shields.io/npm/l/@helsevestikt/hviktor-angular)](https://github.com/HelseVestIKT/Hviktor/blob/main/hviktor-angular/projects/hviktor/LICENSE)
+[![license](https://img.shields.io/npm/l/@helsevestikt/hviktor-angular)](https://github.com/HelseVestIKT/hviktor/blob/main/hviktor/projects/hviktor/LICENSE)
 
 > ⚠️ **Denne pakken er under aktiv utvikling.** API-et kan endres uten forvarsel. Bruk på egen risiko i produksjon.
 
@@ -58,11 +58,11 @@ Se [helsevestikt.github.io/hviktor](https://helsevestikt.github.io/hviktor/) for
 
 ## Endringslogg
 
-Se [CHANGELOG.md](https://github.com/HelseVestIKT/Hviktor/blob/main/hviktor-angular/projects/hviktor/CHANGELOG.md) for alle versjonsendringer.
+Se [CHANGELOG.md](https://github.com/HelseVestIKT/hviktor/blob/main/hviktor/projects/hviktor/CHANGELOG.md) for alle versjonsendringer.
 
 ## Bidra
 
-Se [CONTRIBUTING.md](https://github.com/HelseVestIKT/Hviktor/blob/main/hviktor-angular/CONTRIBUTING.md) for utviklingsprosess og retningslinjer.
+Se [CONTRIBUTING.md](https://github.com/HelseVestIKT/hviktor/blob/main/hviktor/CONTRIBUTING.md) for utviklingsprosess og retningslinjer.
 
 ## Lisens
 
