@@ -12,7 +12,8 @@
     "version:check": "npm view @helsevestikt/hviktor-angular version",
     "version:patch": "cd projects/hviktor && npm version patch --no-git-tag-version",
     "version:icons:patch": "cd projects/icons && npm version patch --no-git-tag-version",
-    "publish:lib": "npm run version:patch && npm run build:lib && cd dist/hviktor && npm publish --access public",
+    "release": "node ./scripts/release.js",
+    "publish:lib": "npm run version:patch && npm run build:lib && cd projects/hviktor && npm run build && cd ../.. && cd dist/hviktor && npm publish --access public",
     "publish:icons": "npm run version:icons:patch && npm run build:icons:bundle && cd dist/icons && npm publish --access public",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
@@ -47,6 +48,7 @@
     "tslib": "^2.8.1"
   },
   "devDependencies": {
+    "@angular-devkit/schematics": "^21.2.5",
     "@angular/build": "^21.2.5",
     "@angular/cli": "^21.2.5",
     "@angular/compiler-cli": "^21.2.6",
@@ -55,6 +57,7 @@
     "@tailwindcss/postcss": "^4.1.12",
     "@types/node": "^25.5.0",
     "angular-eslint": "21.1.0",
+    "copyfiles": "^2.4.1",
     "esbuild": "^0.25.0",
     "eslint": "^9.39.1",
     "husky": "^9.1.7",

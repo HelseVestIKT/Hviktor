@@ -1,10 +1,34 @@
 {
   "name": "@helsevestikt/hviktor-angular",
-  "version": "0.0.6",
+  "version": "0.0.29",
+  "description": "Angular-komponenter basert på Digdir Designsystemet for Helse Vest IKT",
+  "keywords": [
+    "angular",
+    "components",
+    "designsystemet",
+    "digdir",
+    "helse-vest",
+    "a11y",
+    "wcag",
+    "ui"
+  ],
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/HelseVestIKT/hviktor",
+    "directory": "hviktor-angular/projects/hviktor"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.schematics.json",
+    "postbuild": "npx copyfiles schematics/*/schema.json schematics/*/files/** schematics/collection.json schematics/package.json ../../dist/hviktor && node -e \"require('fs').writeFileSync('../../dist/hviktor/.npmignore','')\""
+  },
   "peerDependencies": {
     "@angular/common": ">=17.0.0 <22.0.0",
     "@angular/core": ">=17.0.0 <22.0.0"
+  },
+  "schematics": "./schematics/collection.json",
+  "ng-add": {
+    "save": "dependencies"
   },
   "dependencies": {
     "@digdir/designsystemet-css": "^1.13.1",
@@ -19,6 +43,7 @@
   },
   "files": [
     "fesm2022/",
+    "schematics/",
     "types/",
     "index.d.ts",
     "styles.css",

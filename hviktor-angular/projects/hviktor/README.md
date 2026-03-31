@@ -1,16 +1,31 @@
 # @helsevestikt/hviktor-angular
 
+[![npm version](https://img.shields.io/npm/v/@helsevestikt/hviktor-angular)](https://www.npmjs.com/package/@helsevestikt/hviktor-angular)
+[![license](https://img.shields.io/npm/l/@helsevestikt/hviktor-angular)](https://github.com/HelseVestIKT/Hviktor/blob/main/hviktor-angular/projects/hviktor/LICENSE)
+
 > ⚠️ **Denne pakken er under aktiv utvikling.** API-et kan endres uten forvarsel. Bruk på egen risiko i produksjon.
 
 Angular-komponenter basert på [Digdir Designsystemet](https://designsystemet.no/) for Helse Vest IKT.
 
 ## Installasjon
 
+### Automatisk oppsett (anbefalt)
+
+```bash
+ng add @helsevestikt/hviktor-angular
+```
+
+Dette installerer pakken og setter opp prosjektet automatisk:
+
+- Legger til `@import '@helsevestikt/hviktor-angular/styles.css'` i stylesheet
+- Spør om du vil installere og konfigurere **Tailwind CSS**. (default: Yes). Anbefales for best mulig utvikleropplevelse. Alle demoene på [helsevestikt.github.io/hviktor](https://helsevestikt.github.io/hviktor/) bruker Tailwind, så det kan være lurt å ha det installert for å følge eksemplene.
+- Spør om du vil installere **@helsevestikt/hviktor-icons** (default: Yes). Installerer ikonpakken og legger til global import i `main.ts`.
+
+### Manuelt oppsett
+
 ```bash
 npm install @helsevestikt/hviktor-angular
 ```
-
-## Oppsett
 
 Importer stylesheet i `src/styles.css`:
 
@@ -78,7 +93,23 @@ export class MyComponent {}
 | ToggleGroup  | ToggleGroup komponent                                     |
 | Tooltip      | Tooltip komponent                                         |
 
+## Dokumentasjon
+
+Se [helsevestikt.github.io/hviktor](https://helsevestikt.github.io/hviktor/) for tilgjengelige komponenter, eksempler og API-dokumentasjon.
+
 ## Krav
 
 - Angular 17–21
 - Node.js 20+
+
+## Endringslogg
+
+Se [CHANGELOG.md](https://github.com/HelseVestIKT/Hviktor/blob/main/hviktor-angular/projects/hviktor/CHANGELOG.md) for alle versjonsendringer.
+
+## Bidra
+
+Se [CONTRIBUTING.md](https://github.com/HelseVestIKT/Hviktor/blob/main/hviktor-angular/CONTRIBUTING.md) for utviklingsprosess og retningslinjer.
+
+## Lisens
+
+[MIT](./LICENSE)

@@ -3,65 +3,70 @@
 name: Publish to npm
 
 on:
-    push:
-        tags:
-            - "v*"
+  push:
+    tags:
+      - "v*"
 
 defaults:
-    run:
-        working-directory: hviktor-angular
+  run:
+    working-directory: hviktor-angular
 
 permissions:
-    contents: read
-    id-token: write
+  contents: read
+  id-token: write
 
 jobs:
-    publish:
-        name: Build & Publish NPM package
-        runs-on: ubuntu-latest
-        environment: npm-publish
+  publish:
+    name: Build & Publish NPM package
+    runs-on: ubuntu-latest
+    environment: npm-publish
 
-        steps:
-            - name: Checkout
-              uses: actions/checkout@v4
-              with:
-                  fetch-depth: 0 # Trengs for å sjekke branch-historikk
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Trengs for å sjekke branch-historikk
 
-            - name: Verify tag is on main
-              run: |
-                  if ! git branch -r --contains ${{ github.sha }} | grep -q 'origin/main'; then
-                    echo "❌ Error: Tag must be created from main branch"
-                    echo "This tag points to a commit not on main."
-                    exit 1
-                  fi
-                  echo "✅ Tag is on main branch"
+      - name: Verify tag is on main
+        run: |
+          if ! git branch -r --contains ${{ github.sha }} | grep -q 'origin/main'; then
+            echo "❌ Error: Tag must be created from main branch"
+            echo "This tag points to a commit not on main."
+            exit 1
+          fi
+          echo "✅ Tag is on main branch"
 
-            - name: Setup Node.js
-              uses: actions/setup-node@v4
-              with:
-                  node-version: "20"
-                  cache: "npm"
-                  cache-dependency-path: "hviktor-angular/package-lock.json"
-                  registry-url: "https://registry.npmjs.org"
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+          cache-dependency-path: "hviktor-angular/package-lock.json"
+          registry-url: "https://registry.npmjs.org"
 
-            - name: Install dependencies
-              run: npm ci
+      - name: Install dependencies
+        run: npm ci
 
-            - name: Extract version from tag
-              id: version
-              run: echo "VERSION=${GITHUB_REF_NAME#v}" >> $GITHUB_OUTPUT
+      - name: Extract version from tag
+        id: version
+        run: echo "VERSION=${GITHUB_REF_NAME#v}" >> $GITHUB_OUTPUT
 
-            - name: Update package version
-              run: |
-                  cd projects/hviktor
-                  npm version ${{ steps.version.outputs.VERSION }} --no-git-tag-version
+      - name: Update package version
+        run: |
+          cd projects/hviktor
+          npm version ${{ steps.version.outputs.VERSION }} --no-git-tag-version --allow-same-version
 
-            - name: Build library
-              run: npm run build:lib
+      - name: Build library
+        run: npm run build:lib
 
-            - name: Publish to npm
-              run: |
-                  cd dist/hviktor
-                  npm publish --access public
-              env:
-                  NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: Build schematics
+        run: |
+          cd projects/hviktor
+          npm run build
+
+      - name: Publish to npm
+        run: |
+          cd dist/hviktor
+          npm publish --access public --provenance
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

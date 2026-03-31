@@ -1,10 +1,30 @@
-# Hviktor Angular
+<div align="center">
+<h1>
+  <a href="https://github.com/HelseVestIKT/Hviktor">
+    <img src="hviktor-angular/public/dots.svg" width="24" alt="Hviktor logo"/>
+  </a>
+  <strong>HVIKTOR</strong>
+</h1>
+
+<p><strong>Angular-komponenter basert på Digdir Designsystemet for Helse Vest IKT</strong></p>
 
 [![npm version](https://img.shields.io/npm/v/@helsevestikt/hviktor-angular)](https://www.npmjs.com/package/@helsevestikt/hviktor-angular)
 [![PR Checks](https://github.com/HelseVestIKT/Hviktor/actions/workflows/pr-checks.yml/badge.svg)](https://github.com/HelseVestIKT/Hviktor/actions/workflows/pr-checks.yml)
 [![Publish to npm](https://github.com/HelseVestIKT/Hviktor/actions/workflows/publish-npm.yml/badge.svg)](https://github.com/HelseVestIKT/Hviktor/actions/workflows/publish-npm.yml)
 [![Angular](https://img.shields.io/badge/Angular-17--21-dd0031)](https://angular.dev/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Demo](https://img.shields.io/badge/Demo-GitHub%20Pages-blue)](https://helsevestikt.github.io/hviktor/)
+
+<p>
+  <a href="#formål">Formål</a> •
+  <a href="#krav">Krav</a> •
+  <a href="#struktur">Struktur</a> •
+  <a href="#utvikling-av-komponenter-og-direktiver">Utvikling</a> •
+  <a href="#demo-applikasjonen">Demo</a> •
+  <a href="#nyttige-script">Script</a>
+</p>
+</div>
+
+---
 
 ## Formål
 
@@ -141,6 +161,7 @@ Alle script køyrast frå `hviktor-angular`-mappa.
 | `npm run scaffold`          | Genererer ny bibliotek-komponent/direktiv         |
 | `npm run scaffold:demo`     | Opprettar ny demoside                             |
 | `npm run generate:examples` | Genererer kodeeksempel frå demoseksjonar          |
+| `npm run release`           | Bumpar versjon, taggar og pushar til npm           |
 | `npm run version:check`     | Sjekkar siste versjon på npm                      |
 
 ## Kodekvalitetsverktøy
@@ -201,7 +222,7 @@ Hver gang du gjør en commit formatteres koden automatisk, og hvis det er lint-f
 
 ### Publisere ny versjon til npm
 
-Kun kode som er merget til main kan publiseres. Workflowen verifiserer dette automatisk.
+Kun kode som er merget til main kan publiseres. Bruk release-scriptet som håndterer versjonering, tagging og push i ett steg:
 
 1. **Sørg for at main er oppdatert:**
 
@@ -210,17 +231,23 @@ Kun kode som er merget til main kan publiseres. Workflowen verifiserer dette aut
    git pull
    ```
 
-2. **Opprett versjon-tag:**
+2. **Kjør release-scriptet:**
    Tips: for å sjekke siste versjon på npm, kjør `npm run version:check`.
 
    ```bash
-   git tag v0.1.0    # Bruk semantic versioning
-   git push origin v0.1.0
+   npm run release patch   # Bugfikser
+   npm run release minor   # Nye komponenter/features
+   npm run release major   # Breaking changes
+   npm run release 1.0.0   # Eksplisitt versjon
    ```
+
+   Scriptet oppdaterer `package.json`, committer, tagger og pusher automatisk.
 
 3. **Godkjenn publisering:**
    - En reviewer i `npm-publish` environment må godkjenne
    - Workflowen bygger og publiserer automatisk til npm
+
+Se [RELEASE.md](hviktor-angular/RELEASE.md) for mer detaljer.
 
 ### Semantic Versioning
 
