@@ -1,5 +1,23 @@
 import { Component, Input } from '@angular/core';
 
+/**
+ * @summary
+ * Badge displays a small label or count indicator, typically used for statuses or notifications.
+ * Supports color variants and an optional count display (e.g. `"9+"`).
+ * Use together with `HviBadgePosition` to overlay a badge on another element.
+ *
+ * @example Basic badge
+ * ```html
+ * <hvi-badge color="danger" count="3"></hvi-badge>
+ * ```
+ *
+ * @example Tinted variant
+ * ```html
+ * <hvi-badge variant="tinted" color="success">Active</hvi-badge>
+ * ```
+ *
+ * @see {@link https://designsystemet.no/en/components/docs/badge/code/}
+ */
 @Component({
   selector: 'hvi-badge',
   standalone: true,
@@ -12,10 +30,10 @@ import { Component, Input } from '@angular/core';
   },
 })
 export class HviBadge {
-  /** The variants of the badge */
+  /** The visual style of the badge. */
   @Input() variant?: 'base' | 'tinted';
 
-  /** count text of the badge*/
+  /** A count or label displayed inside the badge (e.g. `"9+"`). */
   @Input() count?: string;
 
   /** The color theme of the badge */

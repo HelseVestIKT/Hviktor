@@ -1,1 +1,1 @@
-export * from './avatar-stack.directive';
+export { HviAvatarStack } from './avatar-stack.directive';

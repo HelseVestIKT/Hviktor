@@ -1,20 +1,32 @@
 import { Component, Input } from '@angular/core';
 
 /**
- * Avatar displays an image, initials, or icon for a person, entity, or profile.
+ * @summary
+ * Avatar displays an image, initials, or icon representing a person, entity, or profile.
+ * Has `role="img"` by default. Supports projecting an `<img>` element, text initials,
+ * or no content (falls back to a default icon via CSS).
+ * When used alongside visible text, set `aria-hidden="true"` on the avatar to avoid redundancy.
  *
- * @example
+ * @example With initials
  * ```html
- * <hvi-avatar
- *  ariaLabel="Ola Nordmann"
- *  variant="circle"
- *  initials="ON"
- *  size="md"
- *  color="brand1">
+ * <hvi-avatar ariaLabel="Ola Nordmann" variant="circle" initials="ON" size="md" color="brand1">
  * </hvi-avatar>
  * ```
  *
- * Documentation: https://designsystemet.no/en/components/docs/avatar/code/
+ * @example With image
+ * ```html
+ * <hvi-avatar ariaLabel="Ola Nordmann">
+ *   <img src="avatar.jpg" alt="" />
+ * </hvi-avatar>
+ * ```
+ *
+ * @example Decorative (next to visible name)
+ * ```html
+ * <hvi-avatar aria-hidden="true">ON</hvi-avatar>
+ * <span>Ola Nordmann</span>
+ * ```
+ *
+ * @see {@link https://designsystemet.no/en/components/docs/avatar/code/}
  */
 @Component({
   selector: 'hvi-avatar',

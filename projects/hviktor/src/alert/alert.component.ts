@@ -1,18 +1,27 @@
 import { Component, Input } from '@angular/core';
 
 /**
- * Alert provides users with information that is especially important for them to see and understand.
- * The component is designed to capture users' attention.
- * The text in the alert should be short and clear.
+ * @summary
+ * Alert displays important information that users need to see and understand.
+ * Designed to capture attention, it supports color variants for different severity levels.
+ * Supports projecting plain text or rich content (headings, paragraphs).
  *
  * @example
  * ```html
  * <hvi-alert color="warning">
- *  Dette er et advarselsvarsel!
+ *   This is a warning alert!
  * </hvi-alert>
  * ```
  *
- * Documentation: https://designsystemet.no/en/components/docs/alert/code/
+ * @example Rich content
+ * ```html
+ * <hvi-alert color="danger">
+ *   <h2>Error</h2>
+ *   <p>Something went wrong. Please try again.</p>
+ * </hvi-alert>
+ * ```
+ *
+ * @see {@link https://designsystemet.no/en/components/docs/alert/code/}
  */
 @Component({
   selector: 'hvi-alert',
@@ -25,6 +34,6 @@ import { Component, Input } from '@angular/core';
   },
 })
 export class HviAlert {
-  /** Sets the type of alert by changing the color and  */
+  /** Sets the color and visual style of the alert to indicate severity. */
   @Input() color?: 'info' | 'success' | 'warning' | 'danger';
 }

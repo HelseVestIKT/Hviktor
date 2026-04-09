@@ -3,47 +3,45 @@ import '@digdir/designsystemet-web';
 
 /**
  * @summary
- * Breadcrumbs hjelper brukarane med å forstå kvar dei er i ei struktur,
- * og gjer det mogleg å navigere tilbake til høgare nivå.
+ * Breadcrumbs help users understand their location within a hierarchy and
+ * navigate back to higher levels. Wraps the `<ds-breadcrumbs>` web component,
+ * which automatically sets `aria-current="page"` on the last link and renders
+ * responsively (back-link on narrow screens, full path on wide screens).
  *
- * Webkomponenten `<ds-breadcrumbs>` handterer automatisk `aria-current="page"`
- * på siste lenke og responsive visning (tilbake-knapp på smale skjermar,
- * full sti på breie skjermar).
+ * Supports three content patterns: back-link + ordered list (responsive),
+ * back-link only, or ordered list only (always visible).
  *
- * @example
- * Sti med tilbake-knapp (responsiv):
+ * @example Responsive with back-link and list
  * ```html
- * <hvi-breadcrumbs ariaLabel="Du er her:">
- *   <a class="ds-link" href="#" aria-label="Tilbake til Nivå 3">Nivå 3</a>
+ * <hvi-breadcrumbs ariaLabel="You are here:">
+ *   <a class="ds-link" href="#" aria-label="Back to Level 3">Level 3</a>
  *   <ol>
- *     <li><a class="ds-link" href="#">Nivå 1</a></li>
- *     <li><a class="ds-link" href="#">Nivå 2</a></li>
- *     <li><a class="ds-link" href="#">Nivå 3</a></li>
- *     <li><a class="ds-link" href="#">Nivå 4</a></li>
+ *     <li><a class="ds-link" href="#">Level 1</a></li>
+ *     <li><a class="ds-link" href="#">Level 2</a></li>
+ *     <li><a class="ds-link" href="#">Level 3</a></li>
+ *     <li><a class="ds-link" href="#">Level 4</a></li>
  *   </ol>
  * </hvi-breadcrumbs>
  * ```
  *
- * @example
- * Kun tilbake-knapp:
+ * @example Back-link only
  * ```html
- * <hvi-breadcrumbs ariaLabel="Brødsmulesti">
- *   <a class="ds-link" href="#" aria-label="Tilbake til Nivå 3">Nivå 3</a>
+ * <hvi-breadcrumbs ariaLabel="Breadcrumb">
+ *   <a class="ds-link" href="#" aria-label="Back to Level 3">Level 3</a>
  * </hvi-breadcrumbs>
  * ```
  *
- * @example
- * Kun sti (alltid synleg):
+ * @example List only (always visible)
  * ```html
- * <hvi-breadcrumbs ariaLabel="Du er her:">
+ * <hvi-breadcrumbs ariaLabel="You are here:">
  *   <ol>
- *     <li><a class="ds-link" href="#">Nivå 1</a></li>
- *     <li><a class="ds-link" href="#">Nivå 2</a></li>
+ *     <li><a class="ds-link" href="#">Level 1</a></li>
+ *     <li><a class="ds-link" href="#">Level 2</a></li>
  *   </ol>
  * </hvi-breadcrumbs>
  * ```
  *
- * @see {@link https://designsystemet.no/no/components/docs/breadcrumbs/overview}
+ * @see {@link https://designsystemet.no/en/components/docs/breadcrumbs/code/}
  */
 @Component({
   selector: 'hvi-breadcrumbs',
