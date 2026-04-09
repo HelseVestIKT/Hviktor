@@ -4,12 +4,6 @@ Alle vesentlige endringer i `@helsevestikt/hviktor-angular` dokumenteres her.
 
 Formatet følger [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) og prosjektet bruker [Semantic Versioning](https://semver.org/).
 
-## [0.1.2] – 2026-04-09
-
-### Changed
-
-- Demo
-
 ## [0.1.1] – 2026-03-31
 
 ### Changed
