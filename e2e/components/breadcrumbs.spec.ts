@@ -24,7 +24,8 @@ test.describe('Breadcrumbs', () => {
     await expect(breadcrumbs.first()).toBeVisible();
   });
 
-  test('renders back link', async ({ page }) => {
+  test('renders back link on narrow viewport', async ({ page }) => {
+    await page.setViewportSize({ width: 400, height: 800 });
     const backLink = page.locator('ds-breadcrumbs > a').first();
     await expect(backLink).toBeVisible();
     await expect(backLink).toHaveText('Nivå 3');
