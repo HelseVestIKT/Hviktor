@@ -1,28 +1,22 @@
 // Auto-generated - do not edit manually
 export const BreadcrumbsStandardExampleSource = `import { Component } from '@angular/core';
-import { HviBreadcrumbs } from '@helsevestikt/hviktor';
+import { HviBreadcrumbs, HviLink } from '@helsevestikt/hviktor';
 
 @Component({
   selector: 'app-breadcrumbs-standard-example',
   standalone: true,
-  imports: [HviBreadcrumbs],
+  imports: [HviBreadcrumbs, HviLink],
   template: \`
     <div class="flex items-center gap-2">
-      <nav
-        hviBreadcrumbs
-        ariaLabel="Du er her:"
-        [backLink]="{
-          label: 'Nivå 3',
-          href: '#',
-          ariaLabel: 'Tilbake til Nivå 3',
-        }"
-        [items]="[
-          { label: 'Nivå 1', href: '#' },
-          { label: 'Nivå 2', href: '#' },
-          { label: 'Nivå 3', href: '#' },
-          { label: 'Nivå 4', href: '#' },
-        ]"
-      ></nav>
+      <hvi-breadcrumbs ariaLabel="Du er her:">
+        <a hviLink href="#" aria-label="Tilbake til Nivå 3">Nivå 3</a>
+        <ol>
+          <li><a hviLink href="#">Nivå 1</a></li>
+          <li><a hviLink href="#">Nivå 2</a></li>
+          <li><a hviLink href="#">Nivå 3</a></li>
+          <li><a hviLink href="#">Nivå 4</a></li>
+        </ol>
+      </hvi-breadcrumbs>
     </div>
   \`,
 })

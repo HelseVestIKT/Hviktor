@@ -1,31 +1,25 @@
 import { Component } from '@angular/core';
-import { HviBreadcrumbs } from '@helsevestikt/hviktor';
+import { HviBreadcrumbs, HviLink } from '@helsevestikt/hviktor';
 import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
 
 import { BreadcrumbsStandardExampleSource } from './code-examples/breadcrumbs.standard.example.source';
 @Component({
   selector: 'app-breadcrumbs-demo',
   standalone: true,
-  imports: [HviBreadcrumbs, DemoPageComponent, DemoSectionComponent],
+  imports: [HviBreadcrumbs, HviLink, DemoPageComponent, DemoSectionComponent],
   template: `
     <app-demo-page componentId="breadcrumbs">
       <app-demo-section title="Standard" [code]="standardCode">
         <div class="flex items-center gap-2">
-          <nav
-            hviBreadcrumbs
-            ariaLabel="Du er her:"
-            [backLink]="{
-              label: 'Nivå 3',
-              href: '#',
-              ariaLabel: 'Tilbake til Nivå 3',
-            }"
-            [items]="[
-              { label: 'Nivå 1', href: '#' },
-              { label: 'Nivå 2', href: '#' },
-              { label: 'Nivå 3', href: '#' },
-              { label: 'Nivå 4', href: '#' },
-            ]"
-          ></nav>
+          <hvi-breadcrumbs ariaLabel="Du er her:">
+            <a hviLink href="#" aria-label="Tilbake til Nivå 3">Nivå 3</a>
+            <ol>
+              <li><a hviLink href="#">Nivå 1</a></li>
+              <li><a hviLink href="#">Nivå 2</a></li>
+              <li><a hviLink href="#">Nivå 3</a></li>
+              <li><a hviLink href="#">Nivå 4</a></li>
+            </ol>
+          </hvi-breadcrumbs>
         </div>
       </app-demo-section>
     </app-demo-page>

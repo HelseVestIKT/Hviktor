@@ -1,78 +1,62 @@
-import { Component, Input } from '@angular/core';
-
-export interface BreadcrumbItem {
-  label: string;
-  href: string;
-  ariaLabel?: string;
-}
+import { Component, CUSTOM_ELEMENTS_SCHEMA, Input } from '@angular/core';
+import '@digdir/designsystemet-web';
 
 /**
- * Info
+ * @summary
+ * Breadcrumbs hjelper brukarane med å forstå kvar dei er i ei struktur,
+ * og gjer det mogleg å navigere tilbake til høgare nivå.
  *
- * Eksempel på bruk:
+ * Webkomponenten `<ds-breadcrumbs>` handterer automatisk `aria-current="page"`
+ * på siste lenke og responsive visning (tilbake-knapp på smale skjermar,
+ * full sti på breie skjermar).
+ *
+ * @example
+ * Sti med tilbake-knapp (responsiv):
  * ```html
- * <nav hviBreadcrumbs
- *      ariaLabel="Du er her:"
- *      [backLink]="{
- *          label: 'Nivå 3',
- *          href: '#',
- *          ariaLabel: 'Tilbake til Nivå 3'
- *      }"
- *      [items]="[
- *           { label: 'Nivå 1', href: '#' },
- *           { label: 'Nivå 2', href: '#' },
- *           { label: 'Nivå 3', href: '#' },
- *           { label: 'Nivå 4', href: '#' }
- *       ]"
- * ></nav>
+ * <hvi-breadcrumbs ariaLabel="Du er her:">
+ *   <a class="ds-link" href="#" aria-label="Tilbake til Nivå 3">Nivå 3</a>
+ *   <ol>
+ *     <li><a class="ds-link" href="#">Nivå 1</a></li>
+ *     <li><a class="ds-link" href="#">Nivå 2</a></li>
+ *     <li><a class="ds-link" href="#">Nivå 3</a></li>
+ *     <li><a class="ds-link" href="#">Nivå 4</a></li>
+ *   </ol>
+ * </hvi-breadcrumbs>
  * ```
  *
- * Dokumentasjon: https://designsystemet.no/no/components/docs/breadcrumbs/overview
+ * @example
+ * Kun tilbake-knapp:
+ * ```html
+ * <hvi-breadcrumbs ariaLabel="Brødsmulesti">
+ *   <a class="ds-link" href="#" aria-label="Tilbake til Nivå 3">Nivå 3</a>
+ * </hvi-breadcrumbs>
+ * ```
+ *
+ * @example
+ * Kun sti (alltid synleg):
+ * ```html
+ * <hvi-breadcrumbs ariaLabel="Du er her:">
+ *   <ol>
+ *     <li><a class="ds-link" href="#">Nivå 1</a></li>
+ *     <li><a class="ds-link" href="#">Nivå 2</a></li>
+ *   </ol>
+ * </hvi-breadcrumbs>
+ * ```
+ *
+ * @see {@link https://designsystemet.no/no/components/docs/breadcrumbs/overview}
  */
-
 @Component({
-  selector: 'nav[hviBreadcrumbs]',
+  selector: 'hvi-breadcrumbs',
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   standalone: true,
+  styles: [':host { display: contents; }'],
   template: `
-    <!-- Back link (optional) -->
-    @if (backLink) {
-      <a class="ds-link" [href]="backLink.href" [attr.aria-label]="backLink.ariaLabel ?? null">
-        {{ backLink.label }}
-      </a>
-    }
-
-    <ol>
-      @for (item of items; let last = $last; track item) {
-        <li>
-          <a
-            class="ds-link"
-            [href]="item.href"
-            [attr.aria-label]="item.ariaLabel ?? null"
-            [attr.aria-current]="last ? 'page' : null"
-          >
-            {{ item.label }}
-          </a>
-        </li>
-      }
-    </ol>
+    <ds-breadcrumbs class="ds-breadcrumbs" [attr.aria-label]="ariaLabel ?? null">
+      <ng-content />
+    </ds-breadcrumbs>
   `,
-  host: {
-    class: 'ds-breadcrumbs',
-    role: 'navigation',
-    '[attr.aria-label]': 'ariaLabel ?? null',
-  },
 })
 export class HviBreadcrumbs {
   /** Accessible label for the breadcrumb navigation */
   @Input() ariaLabel = 'Du er her:';
-
-  /** Optional back link object */
-  @Input() backLink?: {
-    label: string;
-    href: string;
-    ariaLabel?: string;
-  };
-
-  /** Array of breadcrumb items */
-  @Input() items: BreadcrumbItem[] = [];
 }
