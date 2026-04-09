@@ -2,16 +2,60 @@ import { booleanAttribute, Directive, Input } from '@angular/core';
 
 /**
  * @summary
- * Button allows users to perform actions.
+ * Button lets users trigger actions. Applied as a directive on `<button>` or `<a>` elements.
+ * Supports three visual variants (primary, secondary, tertiary), six color themes, icon-only
+ * mode, full-width layout, and a loading state that sets `aria-busy`.
  *
- * @example
+ * When used on an `<a>` tag the button is rendered as a link with button styling.
+ *
+ * **Note:** Neither `loading` nor `aria-disabled` automatically prevents click events —
+ * guard your handlers manually.
+ *
+ * @example Basic button
  * ```html
- * <button hviButton color="brand1" variant="primary" size="md">
- *   Click me
+ * <button hviButton variant="primary" color="accent">
+ *   Save
  * </button>
  * ```
  *
- * Documentation: https://designsystemet.no/en/components/docs/button/code/
+ * @example Variants
+ * ```html
+ * <button hviButton variant="primary">Primary</button>
+ * <button hviButton variant="secondary">Secondary</button>
+ * <button hviButton variant="tertiary">Tertiary</button>
+ * ```
+ *
+ * @example Icon-only button
+ * ```html
+ * <button hviButton variant="primary" icon aria-label="Edit">
+ *   <svg>...</svg>
+ * </button>
+ * ```
+ *
+ * @example Button with icon and text
+ * ```html
+ * <button hviButton variant="primary">
+ *   <svg>...</svg>
+ *   Edit
+ * </button>
+ * ```
+ *
+ * @example Link styled as button
+ * ```html
+ * <a hviButton variant="primary" href="https://example.com" target="_blank" rel="noreferrer">
+ *   Go to example
+ * </a>
+ * ```
+ *
+ * @example Loading state
+ * ```html
+ * <button hviButton variant="primary" loading aria-disabled="true">
+ *   <hvi-spinner />
+ *   Loading…
+ * </button>
+ * ```
+ *
+ * @see {@link https://designsystemet.no/en/components/docs/button/code/}
  */
 @Directive({
   selector: 'button[hviButton], a[hviButton]',
