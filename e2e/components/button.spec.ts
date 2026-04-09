@@ -14,8 +14,8 @@ test.describe('Button', () => {
     await expect(componentPage.heading).toHaveText('Button');
   });
 
-  test('variant section renders primary, secondary and tertiary', async () => {
-    const section = componentPage.getSection('Variant');
+  test('variant section renders primary, secondary and tertiary', async ({ page }) => {
+    const section = page.locator('app-demo-section[title="Variant"]');
     await expect(section).toBeVisible();
 
     const buttons = section.locator('button.ds-button');
