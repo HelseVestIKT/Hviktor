@@ -53,6 +53,42 @@ class FullWidthButtonComponent {}
 })
 class LinkAsButtonComponent {}
 
+@Component({
+  standalone: true,
+  imports: [HviButton],
+  template: '<button hviButton [variant]="variant">Btn</button>',
+})
+class VariantHostComponent {
+  variant: 'primary' | 'secondary' | 'tertiary' = 'primary';
+}
+
+@Component({
+  standalone: true,
+  imports: [HviButton],
+  template: '<button hviButton [size]="size">Btn</button>',
+})
+class SizeHostComponent {
+  size: 'sm' | 'md' | 'lg' = 'sm';
+}
+
+@Component({
+  standalone: true,
+  imports: [HviButton],
+  template: '<button hviButton [type]="type">Btn</button>',
+})
+class TypeHostComponent {
+  type: 'button' | 'submit' | 'reset' = 'button';
+}
+
+@Component({
+  standalone: true,
+  imports: [HviButton],
+  template: '<button hviButton [color]="color">Btn</button>',
+})
+class ColorHostComponent {
+  color: 'accent' | 'brand1' | 'brand2' | 'brand3' | 'neutral' | 'danger' = 'accent';
+}
+
 describe('HviButton', () => {
   let fixture: ComponentFixture<BasicButtonComponent>;
   let element: HTMLButtonElement;
@@ -88,68 +124,53 @@ describe('HviButton', () => {
 
 describe('HviButton variant', () => {
   beforeEach(async () => {
-    await setupTestBed({ imports: [BasicButtonComponent] });
+    await setupTestBed({ imports: [VariantHostComponent] });
   });
 
   it('should set data-variant to primary', () => {
-    const f = TestBed.createComponent(BasicButtonComponent);
+    const f = TestBed.createComponent(VariantHostComponent);
+    f.componentInstance.variant = 'primary';
     f.detectChanges();
-    const el = f.nativeElement.querySelector('button');
-    const dir = f.debugElement.children[0].injector.get(HviButton);
-    dir.variant = 'primary';
-    f.detectChanges();
-    expect(el.getAttribute('data-variant')).toBe('primary');
+    expect(f.nativeElement.querySelector('button').getAttribute('data-variant')).toBe('primary');
   });
 
   it('should set data-variant to secondary', () => {
-    const f = TestBed.createComponent(BasicButtonComponent);
+    const f = TestBed.createComponent(VariantHostComponent);
+    f.componentInstance.variant = 'secondary';
     f.detectChanges();
-    const el = f.nativeElement.querySelector('button');
-    const dir = f.debugElement.children[0].injector.get(HviButton);
-    dir.variant = 'secondary';
-    f.detectChanges();
-    expect(el.getAttribute('data-variant')).toBe('secondary');
+    expect(f.nativeElement.querySelector('button').getAttribute('data-variant')).toBe('secondary');
   });
 
   it('should set data-variant to tertiary', () => {
-    const f = TestBed.createComponent(BasicButtonComponent);
+    const f = TestBed.createComponent(VariantHostComponent);
+    f.componentInstance.variant = 'tertiary';
     f.detectChanges();
-    const el = f.nativeElement.querySelector('button');
-    const dir = f.debugElement.children[0].injector.get(HviButton);
-    dir.variant = 'tertiary';
-    f.detectChanges();
-    expect(el.getAttribute('data-variant')).toBe('tertiary');
+    expect(f.nativeElement.querySelector('button').getAttribute('data-variant')).toBe('tertiary');
   });
 });
 
 describe('HviButton size', () => {
   beforeEach(async () => {
-    await setupTestBed({ imports: [BasicButtonComponent] });
+    await setupTestBed({ imports: [SizeHostComponent] });
   });
 
   it('should set data-size to sm', () => {
-    const f = TestBed.createComponent(BasicButtonComponent);
-    f.detectChanges();
-    const dir = f.debugElement.children[0].injector.get(HviButton);
-    dir.size = 'sm';
+    const f = TestBed.createComponent(SizeHostComponent);
+    f.componentInstance.size = 'sm';
     f.detectChanges();
     expect(f.nativeElement.querySelector('button').getAttribute('data-size')).toBe('sm');
   });
 
   it('should set data-size to md', () => {
-    const f = TestBed.createComponent(BasicButtonComponent);
-    f.detectChanges();
-    const dir = f.debugElement.children[0].injector.get(HviButton);
-    dir.size = 'md';
+    const f = TestBed.createComponent(SizeHostComponent);
+    f.componentInstance.size = 'md';
     f.detectChanges();
     expect(f.nativeElement.querySelector('button').getAttribute('data-size')).toBe('md');
   });
 
   it('should set data-size to lg', () => {
-    const f = TestBed.createComponent(BasicButtonComponent);
-    f.detectChanges();
-    const dir = f.debugElement.children[0].injector.get(HviButton);
-    dir.size = 'lg';
+    const f = TestBed.createComponent(SizeHostComponent);
+    f.componentInstance.size = 'lg';
     f.detectChanges();
     expect(f.nativeElement.querySelector('button').getAttribute('data-size')).toBe('lg');
   });
@@ -157,32 +178,26 @@ describe('HviButton size', () => {
 
 describe('HviButton type', () => {
   beforeEach(async () => {
-    await setupTestBed({ imports: [BasicButtonComponent] });
+    await setupTestBed({ imports: [TypeHostComponent] });
   });
 
   it('should set type to button', () => {
-    const f = TestBed.createComponent(BasicButtonComponent);
-    f.detectChanges();
-    const dir = f.debugElement.children[0].injector.get(HviButton);
-    dir.type = 'button';
+    const f = TestBed.createComponent(TypeHostComponent);
+    f.componentInstance.type = 'button';
     f.detectChanges();
     expect(f.nativeElement.querySelector('button').getAttribute('type')).toBe('button');
   });
 
   it('should set type to submit', () => {
-    const f = TestBed.createComponent(BasicButtonComponent);
-    f.detectChanges();
-    const dir = f.debugElement.children[0].injector.get(HviButton);
-    dir.type = 'submit';
+    const f = TestBed.createComponent(TypeHostComponent);
+    f.componentInstance.type = 'submit';
     f.detectChanges();
     expect(f.nativeElement.querySelector('button').getAttribute('type')).toBe('submit');
   });
 
   it('should set type to reset', () => {
-    const f = TestBed.createComponent(BasicButtonComponent);
-    f.detectChanges();
-    const dir = f.debugElement.children[0].injector.get(HviButton);
-    dir.type = 'reset';
+    const f = TestBed.createComponent(TypeHostComponent);
+    f.componentInstance.type = 'reset';
     f.detectChanges();
     expect(f.nativeElement.querySelector('button').getAttribute('type')).toBe('reset');
   });
@@ -190,59 +205,47 @@ describe('HviButton type', () => {
 
 describe('HviButton color', () => {
   beforeEach(async () => {
-    await setupTestBed({ imports: [BasicButtonComponent] });
+    await setupTestBed({ imports: [ColorHostComponent] });
   });
 
   it('should set data-color to accent', () => {
-    const f = TestBed.createComponent(BasicButtonComponent);
-    f.detectChanges();
-    const dir = f.debugElement.children[0].injector.get(HviButton);
-    dir.color = 'accent';
+    const f = TestBed.createComponent(ColorHostComponent);
+    f.componentInstance.color = 'accent';
     f.detectChanges();
     expect(f.nativeElement.querySelector('button').getAttribute('data-color')).toBe('accent');
   });
 
   it('should set data-color to brand1', () => {
-    const f = TestBed.createComponent(BasicButtonComponent);
-    f.detectChanges();
-    const dir = f.debugElement.children[0].injector.get(HviButton);
-    dir.color = 'brand1';
+    const f = TestBed.createComponent(ColorHostComponent);
+    f.componentInstance.color = 'brand1';
     f.detectChanges();
     expect(f.nativeElement.querySelector('button').getAttribute('data-color')).toBe('brand1');
   });
 
   it('should set data-color to brand2', () => {
-    const f = TestBed.createComponent(BasicButtonComponent);
-    f.detectChanges();
-    const dir = f.debugElement.children[0].injector.get(HviButton);
-    dir.color = 'brand2';
+    const f = TestBed.createComponent(ColorHostComponent);
+    f.componentInstance.color = 'brand2';
     f.detectChanges();
     expect(f.nativeElement.querySelector('button').getAttribute('data-color')).toBe('brand2');
   });
 
   it('should set data-color to brand3', () => {
-    const f = TestBed.createComponent(BasicButtonComponent);
-    f.detectChanges();
-    const dir = f.debugElement.children[0].injector.get(HviButton);
-    dir.color = 'brand3';
+    const f = TestBed.createComponent(ColorHostComponent);
+    f.componentInstance.color = 'brand3';
     f.detectChanges();
     expect(f.nativeElement.querySelector('button').getAttribute('data-color')).toBe('brand3');
   });
 
   it('should set data-color to neutral', () => {
-    const f = TestBed.createComponent(BasicButtonComponent);
-    f.detectChanges();
-    const dir = f.debugElement.children[0].injector.get(HviButton);
-    dir.color = 'neutral';
+    const f = TestBed.createComponent(ColorHostComponent);
+    f.componentInstance.color = 'neutral';
     f.detectChanges();
     expect(f.nativeElement.querySelector('button').getAttribute('data-color')).toBe('neutral');
   });
 
   it('should set data-color to danger', () => {
-    const f = TestBed.createComponent(BasicButtonComponent);
-    f.detectChanges();
-    const dir = f.debugElement.children[0].injector.get(HviButton);
-    dir.color = 'danger';
+    const f = TestBed.createComponent(ColorHostComponent);
+    f.componentInstance.color = 'danger';
     f.detectChanges();
     expect(f.nativeElement.querySelector('button').getAttribute('data-color')).toBe('danger');
   });
