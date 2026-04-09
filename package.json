@@ -19,7 +19,6 @@
     "test": "ng test",
     "test:e2e": "npx playwright test",
     "test:e2e:ui": "npx playwright test --ui",
-    "test:all": "npm run test -- --project hviktor --watch=false && npm run test:e2e",
     "scaffold": "node ./scripts/scaffold.js",
     "scaffold:demo": "node ./scripts/scaffold-demo.js",
     "generate:examples": "node ./scripts/generate-examples.js",
