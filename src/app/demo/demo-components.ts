@@ -54,6 +54,7 @@ export const DEMO_COMPONENTS: DemoComponent[] = [
     description:
       'Breadcrumbs hjelper brukarane med å forstå kvar dei er i ei struktur, og gjer det mogleg å navigere tilbake til høgare nivå.',
     ds: true,
+    codeTested: true,
   },
   {
     id: 'button',
