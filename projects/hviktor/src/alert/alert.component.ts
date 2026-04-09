@@ -20,6 +20,7 @@ import { Component, Input } from '@angular/core';
   template: `<ng-content />`,
   host: {
     class: 'ds-alert',
+    style: 'display: block; height: fit-content; align-self: flex-start;',
     '[attr.data-color]': 'color',
   },
 })
