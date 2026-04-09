@@ -51,7 +51,7 @@ import '@digdir/designsystemet-web';
   standalone: true,
   styles: [':host { display: contents; }'],
   template: `
-    <ds-breadcrumbs class="ds-breadcrumbs" [attr.aria-label]="ariaLabel ?? null">
+    <ds-breadcrumbs class="ds-breadcrumbs" [attr.aria-label]="ariaLabel">
       <ng-content />
     </ds-breadcrumbs>
   `,
