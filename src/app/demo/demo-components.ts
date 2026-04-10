@@ -69,6 +69,7 @@ export const DEMO_COMPONENTS: DemoComponent[] = [
     description:
       'Card fremhever informasjon eller oppgaver som hører sammen. Komponenten finnes i to varianter og kan inneholde tekst, bilde, tekstfelt, knapper og lenker.',
     ds: true,
+    codeTested: true,
   },
   {
     id: 'chip',
