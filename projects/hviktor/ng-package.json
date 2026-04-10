@@ -17,6 +17,7 @@
     "@digdir/designsystemet-web",
     "@u-elements/u-details",
     "@u-elements/u-tabs",
-    "@u-elements/u-combobox"
+    "@u-elements/u-combobox",
+    "@tanstack/angular-table"
   ]
 }
