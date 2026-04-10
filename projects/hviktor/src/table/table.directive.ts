@@ -8,6 +8,19 @@ import {
   Output,
   signal,
 } from '@angular/core';
+import {
+  type ColumnDef,
+  type ColumnFiltersState,
+  type Row,
+  type SortingFn,
+  type SortingState,
+  type Updater,
+  createAngularTable,
+  getCoreRowModel,
+  getFilteredRowModel,
+  getPaginationRowModel,
+  getSortedRowModel,
+} from '@tanstack/angular-table';
 
 /** Sorteringsretninger for tabell-kolonner */
 export type SortDirection = 'none' | 'ascending' | 'descending';
@@ -31,23 +44,31 @@ export interface TablePageEvent {
  * Table brukes for å vise strukturert informasjon på en ryddig og oversiktlig måte.
  * Tabeller kan gjøre det enklere for brukerne å skanne og sammenligne informasjon.
  *
+ * Bruker TanStack Table for sortering, filtrering og paginering under panseret,
+ * men eksponerer et enkelt API som skjuler denne kompleksiteten.
+ *
  * @example
  * ```html
- * <!-- Enkel bruk med innebygd sortering og søk -->
- * <table hviTable [value]="persons" [globalFilterFields]="['navn', 'epost']" #table="hviTable">
+ * <!-- Enkel tabell med styling -->
+ * <table hviTable zebra border>
+ *   <thead><tr><th>Navn</th></tr></thead>
+ *   <tbody><tr><td>Ola</td></tr></tbody>
+ * </table>
+ *
+ * <!-- Tabell med data, sortering, søk og paginering -->
+ * <table hviTable [value]="personer" [globalFilterFields]="['navn', 'epost']"
+ *   paginator [rows]="5" #table="hviTable">
  *   <caption>
- *     <input type="search" (input)="table.filterGlobal($event.target.value)" />
+ *     <input type="search" (input)="table.filterGlobal($any($event.target).value)" />
  *   </caption>
  *   <thead>
  *     <tr>
- *       <th hviSortableColumn="navn">
- *         <button>Navn</button>
- *       </th>
+ *       <th hviSortableColumn="navn"><button type="button">Navn</button></th>
  *       <th>Epost</th>
  *     </tr>
  *   </thead>
  *   <tbody>
- *     @for (person of table.filteredValue(); track person.id) {
+ *     @for (person of table.paginatedValue(); track person.id) {
  *       <tr>
  *         <td>{{ person.navn }}</td>
  *         <td>{{ person.epost }}</td>
@@ -84,42 +105,61 @@ export class HviTable<T = unknown> {
   /** Gjør tabellens header sticky (fester seg til toppen ved scrolling) */
   @Input({ transform: booleanAttribute }) stickyHeader = false;
 
+  /** Aktiver paginering */
+  @Input({ transform: booleanAttribute }) paginator = false;
+
   /** Data som skal vises i tabellen */
   @Input()
   set value(data: T[] | null | undefined) {
-    this._value.set(data ?? []);
+    this._data.set(data ?? []);
+  }
+
+  /**
+   * Felt som global søk skal søke i.
+   * Om ikke satt, søkes det i alle auto-detekterte felter.
+   */
+  @Input()
+  set globalFilterFields(fields: string[]) {
+    this._globalFilterFields.set(fields);
+  }
+
+  /**
+   * Eksplisitte kolonner. Om ikke satt, auto-detekteres fra data.
+   * Nødvendig for nested felt (f.eks. 'adresse.by').
+   */
+  @Input()
+  set columns(cols: string[]) {
+    this._explicitColumns.set(cols);
+  }
+
+  /**
+   * Felt eller funksjon som gir unik ID for hver rad.
+   * Brukes for row expansion. Standard: 'id'.
+   */
+  @Input() rowId: string | ((item: T) => unknown) = 'id';
+
+  /** Antall rader per side (når paginator er aktivert) */
+  @Input({ transform: numberAttribute })
+  set rows(v: number) {
+    this._pageSize.set(v);
   }
 
   /** Felt som data skal sorteres etter (valgfri initial verdi) */
   @Input()
   set sortField(field: string | null | undefined) {
     if (field) {
-      this._sortField.set(field);
+      const current = this._sorting();
+      this._sorting.set([{ id: field, desc: current[0]?.desc ?? false }]);
     }
   }
 
-  /** Sorteringsretning: 1 = ascending, -1 = descending, 0 = none */
+  /** Sorteringsretning: 1 = ascending, -1 = descending */
   @Input()
   set sortOrder(order: number) {
-    this._sortOrder.set(order);
-  }
-
-  /** Felt som global søk skal søke i */
-  @Input() globalFilterFields: string[] = [];
-
-  /** Aktiver paginering */
-  @Input({ transform: booleanAttribute }) paginator = false;
-
-  /** Antall rader per side (når paginator er aktivert) */
-  @Input({ transform: numberAttribute })
-  set rows(value: number) {
-    this._rows.set(value);
-  }
-
-  /** Indeks for første rad som vises (0-basert) */
-  @Input({ transform: numberAttribute })
-  set first(value: number) {
-    this._first.set(value);
+    const current = this._sorting();
+    if (current.length > 0) {
+      this._sorting.set([{ ...current[0], desc: order === -1 }]);
+    }
   }
 
   /** Event som emitteres når sortering endres */
@@ -131,277 +171,342 @@ export class HviTable<T = unknown> {
   /** Event som emitteres med nåværende side (1-basert, for two-way binding) */
   @Output() currentPageChange = new EventEmitter<number>();
 
-  // Internal signals
-  private _value = signal<T[]>([]);
-  private _sortField = signal<string | null>(null);
-  private _sortOrder = signal<number>(0); // 0 = none, 1 = asc, -1 = desc
-  private _globalFilter = signal<string | null>(null);
-  private _rows = signal(10);
-  private _first = signal(0);
+  // ========== Intern state ==========
 
-  /** Kun sortert data (uten søk) - for bakoverkompatibilitet */
-  readonly sortedValue = computed(() => {
-    return this.applySorting(this._value());
+  private _data = signal<T[]>([]);
+  private _globalFilterFields = signal<string[]>([]);
+  private _explicitColumns = signal<string[]>([]);
+  private _sorting = signal<SortingState>([]);
+  private _columnFilters = signal<ColumnFiltersState>([]);
+  private _globalFilter = signal('');
+  private _pageSize = signal(10);
+  private _pageIndex = signal(0);
+  private _expandedRows = signal(new Set<unknown>());
+
+  /** Norsk sorteringsfunksjon med localeCompare('nb') */
+  private norwegianSortFn: SortingFn<T> = (
+    rowA: Row<T>,
+    rowB: Row<T>,
+    columnId: string,
+  ): number => {
+    const a = rowA.getValue(columnId);
+    const b = rowB.getValue(columnId);
+    if (a == null && b == null) return 0;
+    if (a == null) return -1;
+    if (b == null) return 1;
+    if (typeof a === 'number' && typeof b === 'number') return a - b;
+    if (a instanceof Date && b instanceof Date) return a.getTime() - b.getTime();
+    return String(a).localeCompare(String(b), 'nb');
+  };
+
+  /** Auto-detekterte eller eksplisitte feltnavn */
+  private _fields = computed(() => {
+    const explicit = this._explicitColumns();
+    if (explicit.length > 0) return explicit;
+
+    const data = this._data();
+    const globalFields = this._globalFilterFields();
+    const detected = data.length > 0 ? Object.keys(data[0] as object) : [];
+    return [...new Set([...detected, ...globalFields])];
   });
 
-  /** Filtrert og sortert data - bruk denne i template */
-  readonly filteredValue = computed(() => {
-    const data = this._value();
-    const filtered = this.applyGlobalFilter(data);
-    return this.applySorting(filtered);
+  /** TanStack kolonne-definisjoner generert fra felter */
+  private _columnDefs = computed<ColumnDef<T, unknown>[]>(() => {
+    const fields = this._fields();
+    const globalFields = this._globalFilterFields();
+    const hasGlobalFields = globalFields.length > 0;
+
+    return fields.map((field) => ({
+      id: field,
+      accessorFn: (row: T) => this.getFieldValue(row, field),
+      enableGlobalFilter: !hasGlobalFields || globalFields.includes(field),
+      sortingFn: this.norwegianSortFn,
+    }));
   });
 
-  /** Paginert, filtrert og sortert data - bruk denne når paginator er aktivert */
-  readonly paginatedValue = computed(() => {
-    const data = this.filteredValue();
-    if (!this.paginator) return data;
+  /** TanStack Table — all state management delegert hit */
+  private _table = createAngularTable<T>(() => ({
+    data: this._data(),
+    columns: this._columnDefs(),
+    state: {
+      sorting: this._sorting(),
+      columnFilters: this._columnFilters(),
+      globalFilter: this._globalFilter(),
+      pagination: {
+        pageIndex: this._pageIndex(),
+        pageSize: this._pageSize(),
+      },
+    },
+    onSortingChange: (updater: Updater<SortingState>) => {
+      this._sorting.update((prev) => (typeof updater === 'function' ? updater(prev) : updater));
+    },
+    onColumnFiltersChange: (updater: Updater<ColumnFiltersState>) => {
+      this._columnFilters.update((prev) =>
+        typeof updater === 'function' ? updater(prev) : updater,
+      );
+    },
+    onGlobalFilterChange: (updater: Updater<string>) => {
+      this._globalFilter.update((prev) =>
+        typeof updater === 'function' ? updater(prev) : updater,
+      );
+    },
+    onPaginationChange: (updater: Updater<{ pageIndex: number; pageSize: number }>) => {
+      const prev = {
+        pageIndex: this._pageIndex(),
+        pageSize: this._pageSize(),
+      };
+      const next = typeof updater === 'function' ? updater(prev) : updater;
+      this._pageIndex.set(next.pageIndex);
+      this._pageSize.set(next.pageSize);
+    },
+    getCoreRowModel: getCoreRowModel(),
+    getSortedRowModel: getSortedRowModel(),
+    getFilteredRowModel: getFilteredRowModel(),
+    getPaginationRowModel: getPaginationRowModel(),
+    globalFilterFn: 'includesString',
+  }));
 
-    const first = this._first();
-    const rows = this._rows();
-    return data.slice(first, first + rows);
+  // ========== Offentlig API — computed verdier ==========
+
+  /** Filtrert og sortert data (uten paginering) */
+  readonly filteredValue = computed<T[]>(() =>
+    this._table.getSortedRowModel().rows.map((r) => r.original),
+  );
+
+  /** Paginert, filtrert og sortert data — bruk denne når paginator er aktivert */
+  readonly paginatedValue = computed<T[]>(() => {
+    if (!this.paginator) return this.filteredValue();
+    return this._table.getPaginationRowModel().rows.map((r) => r.original);
   });
 
-  /** Antall rader etter søk */
-  readonly totalFilteredRecords = computed(() => this.filteredValue().length);
+  /** Antall rader etter filtrering */
+  readonly totalFilteredRecords = computed(() => this._table.getFilteredRowModel().rows.length);
 
-  /** Antall rader totalt (før søk) */
-  readonly totalRecords = computed(() => this._value().length);
+  /** Antall rader totalt (før filtrering) */
+  readonly totalRecords = computed(() => this._data().length);
 
   /** Totalt antall sider */
   readonly pageCount = computed(() => {
     if (!this.paginator) return 1;
-    return Math.max(1, Math.ceil(this.totalFilteredRecords() / this._rows()));
+    return this._table.getPageCount();
   });
 
   /** Nåværende side (1-basert) */
-  readonly currentPage = computed(() => {
-    return Math.floor(this._first() / this._rows()) + 1;
-  });
+  readonly currentPage = computed(() => this._pageIndex() + 1);
 
   /** Er vi på første side? */
-  readonly isFirstPage = computed(() => this._first() === 0);
+  readonly isFirstPage = computed(() => this._pageIndex() === 0);
 
   /** Er vi på siste side? */
   readonly isLastPage = computed(() => {
-    return this._first() + this._rows() >= this.totalFilteredRecords();
+    const pages = this.pageCount();
+    return this._pageIndex() >= pages - 1;
   });
 
   /** Nåværende sorteringsfelt */
-  readonly currentSortField = computed(() => this._sortField());
+  readonly currentSortField = computed(() => this._sorting()[0]?.id ?? null);
 
-  /** Nåværende sorteringsretning som SortDirection */
+  /** Nåværende sorteringsretning */
   readonly currentSortDirection = computed<SortDirection>(() => {
-    const order = this._sortOrder();
-    if (order === 1) return 'ascending';
-    if (order === -1) return 'descending';
-    return 'none';
+    const sort = this._sorting()[0];
+    if (!sort) return 'none';
+    return sort.desc ? 'descending' : 'ascending';
   });
 
   /** Nåværende søkeverdi */
   readonly currentGlobalFilter = computed(() => this._globalFilter());
 
+  // ========== Global søk ==========
+
   /**
-   * Global søk - søker på tvers av alle felt i globalFilterFields.
+   * Global søk — søker på tvers av alle felt i globalFilterFields.
    * @param value Søkeverdi
    */
   filterGlobal(value: string | null): void {
-    this._globalFilter.set(value?.trim() || null);
+    this._globalFilter.set(value?.trim() ?? '');
+    this._pageIndex.set(0);
   }
 
-  /**
-   * Nullstiller søk.
-   */
+  /** Nullstiller global søk */
   clearFilter(): void {
-    this._globalFilter.set(null);
+    this._globalFilter.set('');
+    this._pageIndex.set(0);
+  }
+
+  // ========== Column filtering ==========
+
+  /** Sett filter for en spesifikk kolonne */
+  setColumnFilter(field: string, value: unknown): void {
+    this._columnFilters.update((prev) => {
+      const next = prev.filter((f) => f.id !== field);
+      if (value !== undefined && value !== null && value !== '') {
+        next.push({ id: field, value });
+      }
+      return next;
+    });
+    this._pageIndex.set(0);
+  }
+
+  /** Fjern filter for en spesifikk kolonne */
+  clearColumnFilter(field: string): void {
+    this._columnFilters.update((prev) => prev.filter((f) => f.id !== field));
+    this._pageIndex.set(0);
+  }
+
+  /** Fjern alle kolonnefiltre */
+  clearAllColumnFilters(): void {
+    this._columnFilters.set([]);
+    this._pageIndex.set(0);
+  }
+
+  /** Hent nåværende filterverdi for en kolonne */
+  getColumnFilterValue(field: string): unknown {
+    return this._columnFilters().find((f) => f.id === field)?.value;
+  }
+
+  // ========== Sortering ==========
+
+  /**
+   * Sorterer tabellen etter et felt.
+   * Sykler gjennom: none → ascending → descending → none.
+   * Kalles av HviSortableColumn.
+   */
+  sort(field: string): void {
+    const current = this._sorting();
+    const existing = current.find((s) => s.id === field);
+
+    let newSorting: SortingState;
+    if (!existing) {
+      newSorting = [{ id: field, desc: false }];
+    } else if (!existing.desc) {
+      newSorting = [{ id: field, desc: true }];
+    } else {
+      newSorting = [];
+    }
+
+    this._sorting.set(newSorting);
+
+    const direction: SortDirection = !newSorting.length
+      ? 'none'
+      : newSorting[0].desc
+        ? 'descending'
+        : 'ascending';
+    this.sortChange.emit({ field, direction });
   }
 
   /**
-   * Nullstiller hele tabellen (sortering og søk).
+   * Henter sorteringsretning for et spesifikt felt.
+   * Brukes av HviSortableColumn for å vise riktig aria-sort.
    */
-  clear(): void {
-    this._sortField.set(null);
-    this._sortOrder.set(0);
-    this._globalFilter.set(null);
-    this._first.set(0);
+  getSortDirection(field: string): SortDirection {
+    const sort = this._sorting().find((s) => s.id === field);
+    if (!sort) return 'none';
+    return sort.desc ? 'descending' : 'ascending';
+  }
+
+  // ========== Row expansion ==========
+
+  /** Åpne eller lukk utvidet innhold for en rad */
+  toggleExpanded(item: T): void {
+    const id = this.getRowId(item);
+    const next = new Set(this._expandedRows());
+    if (next.has(id)) {
+      next.delete(id);
+    } else {
+      next.add(id);
+    }
+    this._expandedRows.set(next);
+  }
+
+  /** Sjekk om en rad har utvidet innhold åpent */
+  isExpanded(item: T): boolean {
+    return this._expandedRows().has(this.getRowId(item));
+  }
+
+  /** Lukk alle utviddede rader */
+  collapseAll(): void {
+    this._expandedRows.set(new Set());
   }
 
   // ========== Paginering ==========
 
-  /**
-   * Gå til en spesifikk side (1-basert).
-   */
+  /** Gå til en spesifikk side (1-basert) */
   goToPage(page: number): void {
     const totalPages = this.pageCount();
     const validPage = Math.max(1, Math.min(page, totalPages));
-    const newFirst = (validPage - 1) * this._rows();
-
-    if (newFirst !== this._first()) {
-      this._first.set(newFirst);
+    if (validPage !== this.currentPage()) {
+      this._pageIndex.set(validPage - 1);
       this.emitPageEvent();
     }
   }
 
-  /**
-   * Gå til første side.
-   */
+  /** Gå til første side */
   goToFirstPage(): void {
     this.goToPage(1);
   }
 
-  /**
-   * Gå til siste side.
-   */
+  /** Gå til siste side */
   goToLastPage(): void {
     this.goToPage(this.pageCount());
   }
 
-  /**
-   * Gå til forrige side.
-   */
+  /** Gå til forrige side */
   goToPreviousPage(): void {
     if (!this.isFirstPage()) {
       this.goToPage(this.currentPage() - 1);
     }
   }
 
-  /**
-   * Gå til neste side.
-   */
+  /** Gå til neste side */
   goToNextPage(): void {
     if (!this.isLastPage()) {
       this.goToPage(this.currentPage() + 1);
     }
   }
 
-  /**
-   * Endre antall rader per side.
-   */
+  /** Endre antall rader per side */
   setRows(rows: number): void {
-    this._rows.set(rows);
-    this._first.set(0); // Reset til første side
+    this._pageSize.set(rows);
+    this._pageIndex.set(0);
     this.emitPageEvent();
   }
 
+  // ========== Reset ==========
+
+  /** Nullstiller hele tabellen (sortering, filtre, søk, paginering og expansion) */
+  clear(): void {
+    this._sorting.set([]);
+    this._columnFilters.set([]);
+    this._globalFilter.set('');
+    this._pageIndex.set(0);
+    this._expandedRows.set(new Set());
+  }
+
+  // ========== Private ==========
+
   private emitPageEvent(): void {
     this.pageChange.emit({
-      first: this._first(),
-      rows: this._rows(),
+      first: this._pageIndex() * this._pageSize(),
+      rows: this._pageSize(),
       page: this.currentPage(),
       pageCount: this.pageCount(),
     });
     this.currentPageChange.emit(this.currentPage());
   }
 
-  /**
-   * Sorterer tabellen etter et felt.
-   * Kalles av hviSortableColumn directive.
-   */
-  sort(field: string): void {
-    const currentField = this._sortField();
-    const currentOrder = this._sortOrder();
-
-    let newOrder: number;
-
-    if (currentField === field) {
-      // Samme felt - sykl gjennom: asc → desc → none
-      if (currentOrder === 1) {
-        newOrder = -1;
-      } else if (currentOrder === -1) {
-        newOrder = 0;
-      } else {
-        newOrder = 1;
-      }
-    } else {
-      // Nytt felt - start med ascending
-      newOrder = 1;
-    }
-
-    this._sortField.set(newOrder === 0 ? null : field);
-    this._sortOrder.set(newOrder);
-
-    const direction: SortDirection =
-      newOrder === 1 ? 'ascending' : newOrder === -1 ? 'descending' : 'none';
-
-    this.sortChange.emit({ field, direction });
-  }
-
-  /**
-   * Henter sorteringsretning for et spesifikt felt.
-   * Brukes av hviSortableColumn for å vise riktig aria-sort.
-   */
-  getSortDirection(field: string): SortDirection {
-    if (this._sortField() !== field) {
-      return 'none';
-    }
-    return this.currentSortDirection();
-  }
-
-  // ========== Private methods ==========
-
-  private applyGlobalFilter(data: T[]): T[] {
-    const globalFilter = this._globalFilter();
-    const globalFields = this.globalFilterFields;
-
-    if (!globalFilter || globalFields.length === 0 || data.length === 0) {
-      return data;
-    }
-
-    const searchTerm = globalFilter.toLowerCase();
-
-    return data.filter((item) => {
-      return globalFields.some((field) => {
-        const value = this.getFieldValue(item, field);
-        return String(value ?? '')
-          .toLowerCase()
-          .includes(searchTerm);
-      });
-    });
-  }
-
-  private applySorting(data: T[]): T[] {
-    const field = this._sortField();
-    const order = this._sortOrder();
-
-    if (!field || order === 0 || data.length === 0) {
-      return data;
-    }
-
-    return [...data].sort((a, b) => {
-      const valueA = this.getFieldValue(a, field);
-      const valueB = this.getFieldValue(b, field);
-
-      let comparison = 0;
-
-      if (valueA == null && valueB == null) {
-        comparison = 0;
-      } else if (valueA == null) {
-        comparison = -1;
-      } else if (valueB == null) {
-        comparison = 1;
-      } else if (typeof valueA === 'string' && typeof valueB === 'string') {
-        comparison = valueA.localeCompare(valueB, 'nb');
-      } else if (typeof valueA === 'number' && typeof valueB === 'number') {
-        comparison = valueA - valueB;
-      } else {
-        comparison = String(valueA).localeCompare(String(valueB), 'nb');
-      }
-
-      return order * comparison;
-    });
-  }
-
-  /**
-   * Henter verdi fra et objekt basert på felt-path (støtter nested: "user.name")
-   */
+  /** Henter verdi fra et objekt basert på felt-path (støtter nested: "user.name") */
   private getFieldValue(obj: T, field: string): unknown {
     const keys = field.split('.');
     let value: unknown = obj;
-
     for (const key of keys) {
       if (value == null) return null;
       value = (value as Record<string, unknown>)[key];
     }
-
     return value;
+  }
+
+  private getRowId(item: T): unknown {
+    if (typeof this.rowId === 'function') return this.rowId(item);
+    return this.getFieldValue(item, this.rowId);
   }
 }
