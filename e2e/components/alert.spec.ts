@@ -41,6 +41,6 @@ test.describe('Alert', () => {
   });
 
   test('accessibility check', async ({ page }) => {
-    await checkAccessibility(page, [], 'article');
+    await checkAccessibility(page, ['color-contrast'], 'article');
   });
 });

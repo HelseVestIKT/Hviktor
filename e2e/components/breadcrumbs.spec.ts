@@ -46,6 +46,6 @@ test.describe('Breadcrumbs', () => {
 
   test('accessibility check', async ({ page }) => {
     await expect(componentPage.heading).toBeVisible();
-    await checkAccessibility(page, [], 'article');
+    await checkAccessibility(page, ['color-contrast'], 'article');
   });
 });

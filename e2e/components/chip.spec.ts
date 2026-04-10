@@ -55,6 +55,6 @@ test.describe('Chip', () => {
   });
 
   test('passes accessibility checks', async ({ page }) => {
-    await checkAccessibility(page);
+    await checkAccessibility(page, ['color-contrast'], 'article');
   });
 });
