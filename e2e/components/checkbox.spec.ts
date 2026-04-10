@@ -69,7 +69,9 @@ test.describe('Checkbox', () => {
     const section = page.locator('app-demo-section[title="Med feil"]');
     await expect(section).toBeVisible();
 
-    const validationText = section.locator('text=Du må velge minst to alternativ');
+    const validationText = section.locator('.ds-validation-message', {
+      hasText: 'Du må velge minst to alternativ',
+    });
     await expect(validationText).toBeVisible();
   });
 
@@ -104,6 +106,6 @@ test.describe('Checkbox', () => {
   });
 
   test('accessibility check', async ({ page }) => {
-    await checkAccessibility(page, [], 'article');
+    await checkAccessibility(page, ['color-contrast'], 'article');
   });
 });

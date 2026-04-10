@@ -75,6 +75,7 @@ test.describe('Button', () => {
 
   test('all buttons have ds-button class', async ({ page }) => {
     const buttons = page.locator('article button.ds-button');
+    await expect(buttons.first()).toBeVisible();
     const count = await buttons.count();
     expect(count).toBeGreaterThanOrEqual(10);
 
