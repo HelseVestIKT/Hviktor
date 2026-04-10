@@ -1,20 +1,26 @@
 import { Directive } from '@angular/core';
 
 /**
- * Use multiple <div hviCardBlock> elements if you want to divide the card with separators or add images or video that extend to the edge.
- * Note that when you use <div hviCardBlock>, all content must be placed inside a <div hviCardBlock> and not directly in the Card.
+ * @summary
+ * CardBlock divides a Card into distinct sections separated by borders.
+ * When using CardBlock, all content must be placed inside CardBlock elements —
+ * nothing should be placed directly inside the Card. Useful for separating
+ * media (images, video) from text content.
  *
- * @example
+ * @example Multiple blocks
  * ```html
- * <hvi-card variant="tinted" color="brand1" maxWidth="400px">
- *  <div hviCardBlock>
- *   <h2>This is a card</h2>
- *   <p>The content of the card goes here.</p>
- *  </div>
+ * <hvi-card color="neutral">
+ *   <div hviCardBlock>
+ *     <img src="banner.jpg" alt="" width="100%" />
+ *   </div>
+ *   <div hviCardBlock>
+ *     <h2 class="ds-heading">Title</h2>
+ *     <p class="ds-paragraph">Description text.</p>
+ *   </div>
  * </hvi-card>
  * ```
  *
- * Documentation: https://designsystemet.no/en/components/docs/card/code#with-sections
+ * @see {@link https://designsystemet.no/en/components/docs/card/code/}
  */
 @Directive({
   selector: '[hviCardBlock]',

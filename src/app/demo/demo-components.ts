@@ -69,6 +69,7 @@ export const DEMO_COMPONENTS: DemoComponent[] = [
     description:
       'Card fremhever informasjon eller oppgaver som hører sammen. Komponenten finnes i to varianter og kan inneholde tekst, bilde, tekstfelt, knapper og lenker.',
     ds: true,
+    codeTested: true,
   },
   {
     id: 'chip',
@@ -76,6 +77,7 @@ export const DEMO_COMPONENTS: DemoComponent[] = [
     description:
       'Chip er små, interaktive komponenter som lar brukerne styre hvordan de vil se innhold. For eksempel kan de brukes til å filtrere kategorier i et søkeresultat og vise hvilke filter som er aktive.',
     ds: true,
+    codeTested: true,
   },
   {
     id: 'details',
@@ -172,6 +174,7 @@ export const DEMO_COMPONENTS: DemoComponent[] = [
     description:
       'Checkbox gir brukerne mulighet til å velge ett eller flere alternativer. Den kan også brukes i tilfeller der brukeren skal bekrefte noe.',
     ds: true,
+    codeTested: true,
   },
   {
     id: 'error-summary',

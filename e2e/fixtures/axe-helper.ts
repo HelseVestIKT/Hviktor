@@ -10,6 +10,9 @@ export async function checkAccessibility(
   disableRules: string[] = [],
   include?: string,
 ) {
+  if (include) {
+    await expect(page.locator(include).first()).toBeVisible();
+  }
   let builder = new AxeBuilder({ page }).disableRules(disableRules);
   if (include) {
     builder = builder.include(include);

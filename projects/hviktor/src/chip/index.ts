@@ -1,2 +1,2 @@
-export * from './chip-button.directive';
-export * from './chip-label.directive';
+export { HviChipButton } from './chip-button.directive';
+export { HviChipLabel } from './chip-label.directive';
