@@ -6,10 +6,8 @@ import {
   HviPagination,
   HviSearch,
   HviSearchClear,
+  HviSelect,
   HviSortableColumn,
-  HviSuggestion,
-  HviSuggestionDatalist,
-  HviSuggestionOption,
   HviTable,
 } from '@helsevestikt/hviktor';
 import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
@@ -40,9 +38,7 @@ import { TableZebrastriperOgBorderExampleSource } from './code-examples/table.ze
     HviSearchClear,
     HviInput,
     HviLabel,
-    HviSuggestion,
-    HviSuggestionDatalist,
-    HviSuggestionOption,
+    HviSelect,
     DemoPageComponent,
     DemoSectionComponent,
   ],
@@ -209,67 +205,8 @@ import { TableZebrastriperOgBorderExampleSource } from './code-examples/table.ze
       <app-demo-section
         title="Kolonnefiltrering"
         [code]="kolonnefiltreringCode"
-        description="Filtrer på enkeltkolonner med setColumnFilter() og Suggestion-komponenten. Avdelingskolonnen bruker flervalg."
+        description="Filtrer på enkeltkolonner med setColumnFilter(). Bruk select-bokser i tabellhodet for enkel filtrering."
       >
-        <div class="mb-4 flex flex-wrap gap-4">
-          <div>
-            <label hviLabel>Filtrer på navn</label>
-            <hvi-suggestion>
-              <input
-                hviInput
-                type="text"
-                placeholder="Velg navn..."
-                (change)="colFilterTable.setColumnFilter('navn', $any($event.target).value)"
-              />
-              <del aria-label="Tøm" hidden=""></del>
-              <hvi-suggestion-datalist>
-                @for (person of data; track person.id) {
-                  <hvi-suggestion-option [label]="person.navn" [value]="person.navn">
-                    {{ person.navn }}
-                  </hvi-suggestion-option>
-                }
-              </hvi-suggestion-datalist>
-            </hvi-suggestion>
-          </div>
-          <div>
-            <label hviLabel>Filtrer på avdeling</label>
-            <hvi-suggestion [multiple]="true">
-              <input
-                hviInput
-                type="text"
-                placeholder="Velg avdelinger..."
-                (change)="colFilterTable.setColumnFilter('avdeling', $any($event.target).value)"
-              />
-              <del aria-label="Tøm" hidden=""></del>
-              <hvi-suggestion-datalist>
-                @for (avdeling of avdelinger; track avdeling) {
-                  <hvi-suggestion-option [label]="avdeling" [value]="avdeling">
-                    {{ avdeling }}
-                  </hvi-suggestion-option>
-                }
-              </hvi-suggestion-datalist>
-            </hvi-suggestion>
-          </div>
-          <div>
-            <label hviLabel>Filtrer på stilling</label>
-            <hvi-suggestion>
-              <input
-                hviInput
-                type="text"
-                placeholder="Velg stilling..."
-                (change)="colFilterTable.setColumnFilter('stilling', $any($event.target).value)"
-              />
-              <del aria-label="Tøm" hidden=""></del>
-              <hvi-suggestion-datalist>
-                @for (stilling of stillinger; track stilling) {
-                  <hvi-suggestion-option [label]="stilling" [value]="stilling">
-                    {{ stilling }}
-                  </hvi-suggestion-option>
-                }
-              </hvi-suggestion-datalist>
-            </hvi-suggestion>
-          </div>
-        </div>
         <table
           hviTable
           [value]="data"
@@ -282,6 +219,44 @@ import { TableZebrastriperOgBorderExampleSource } from './code-examples/table.ze
               <th>Navn</th>
               <th>Avdeling</th>
               <th>Stilling</th>
+            </tr>
+            <tr>
+              <th>
+                <select
+                  hviSelect
+                  data-size="sm"
+                  (change)="colFilterTable.setColumnFilter('navn', $any($event.target).value)"
+                >
+                  <option value="">Alle</option>
+                  @for (person of data; track person.id) {
+                    <option [value]="person.navn">{{ person.navn }}</option>
+                  }
+                </select>
+              </th>
+              <th>
+                <select
+                  hviSelect
+                  data-size="sm"
+                  (change)="colFilterTable.setColumnFilter('avdeling', $any($event.target).value)"
+                >
+                  <option value="">Alle</option>
+                  @for (avdeling of avdelinger; track avdeling) {
+                    <option [value]="avdeling">{{ avdeling }}</option>
+                  }
+                </select>
+              </th>
+              <th>
+                <select
+                  hviSelect
+                  data-size="sm"
+                  (change)="colFilterTable.setColumnFilter('stilling', $any($event.target).value)"
+                >
+                  <option value="">Alle</option>
+                  @for (stilling of stillinger; track stilling) {
+                    <option [value]="stilling">{{ stilling }}</option>
+                  }
+                </select>
+              </th>
             </tr>
           </thead>
           <tbody>
@@ -421,65 +396,6 @@ import { TableZebrastriperOgBorderExampleSource } from './code-examples/table.ze
             <button hviSearchClear type="reset" aria-label="Tøm"></button>
           </hvi-search>
         </div>
-        <div class="mb-4 flex flex-wrap gap-4">
-          <div>
-            <label hviLabel>Navn</label>
-            <hvi-suggestion>
-              <input
-                hviInput
-                type="text"
-                placeholder="Filtrer..."
-                (change)="fullTable.setColumnFilter('navn', $any($event.target).value)"
-              />
-              <del aria-label="Tøm" hidden=""></del>
-              <hvi-suggestion-datalist>
-                @for (person of data; track person.id) {
-                  <hvi-suggestion-option [label]="person.navn" [value]="person.navn">
-                    {{ person.navn }}
-                  </hvi-suggestion-option>
-                }
-              </hvi-suggestion-datalist>
-            </hvi-suggestion>
-          </div>
-          <div>
-            <label hviLabel>Avdeling</label>
-            <hvi-suggestion [multiple]="true">
-              <input
-                hviInput
-                type="text"
-                placeholder="Filtrer..."
-                (change)="fullTable.setColumnFilter('avdeling', $any($event.target).value)"
-              />
-              <del aria-label="Tøm" hidden=""></del>
-              <hvi-suggestion-datalist>
-                @for (avdeling of avdelinger; track avdeling) {
-                  <hvi-suggestion-option [label]="avdeling" [value]="avdeling">
-                    {{ avdeling }}
-                  </hvi-suggestion-option>
-                }
-              </hvi-suggestion-datalist>
-            </hvi-suggestion>
-          </div>
-          <div>
-            <label hviLabel>Stilling</label>
-            <hvi-suggestion>
-              <input
-                hviInput
-                type="text"
-                placeholder="Filtrer..."
-                (change)="fullTable.setColumnFilter('stilling', $any($event.target).value)"
-              />
-              <del aria-label="Tøm" hidden=""></del>
-              <hvi-suggestion-datalist>
-                @for (stilling of stillinger; track stilling) {
-                  <hvi-suggestion-option [label]="stilling" [value]="stilling">
-                    {{ stilling }}
-                  </hvi-suggestion-option>
-                }
-              </hvi-suggestion-datalist>
-            </hvi-suggestion>
-          </div>
-        </div>
         <table
           hviTable
           [value]="data"
@@ -504,6 +420,45 @@ import { TableZebrastriperOgBorderExampleSource } from './code-examples/table.ze
               </th>
               <th hviSortableColumn="stilling">
                 <button type="button">Stilling</button>
+              </th>
+            </tr>
+            <tr>
+              <th></th>
+              <th>
+                <select
+                  hviSelect
+                  data-size="sm"
+                  (change)="fullTable.setColumnFilter('navn', $any($event.target).value)"
+                >
+                  <option value="">Alle</option>
+                  @for (person of data; track person.id) {
+                    <option [value]="person.navn">{{ person.navn }}</option>
+                  }
+                </select>
+              </th>
+              <th>
+                <select
+                  hviSelect
+                  data-size="sm"
+                  (change)="fullTable.setColumnFilter('avdeling', $any($event.target).value)"
+                >
+                  <option value="">Alle</option>
+                  @for (avdeling of avdelinger; track avdeling) {
+                    <option [value]="avdeling">{{ avdeling }}</option>
+                  }
+                </select>
+              </th>
+              <th>
+                <select
+                  hviSelect
+                  data-size="sm"
+                  (change)="fullTable.setColumnFilter('stilling', $any($event.target).value)"
+                >
+                  <option value="">Alle</option>
+                  @for (stilling of stillinger; track stilling) {
+                    <option [value]="stilling">{{ stilling }}</option>
+                  }
+                </select>
               </th>
             </tr>
           </thead>
