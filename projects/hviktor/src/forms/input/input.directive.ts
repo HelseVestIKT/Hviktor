@@ -2,6 +2,39 @@ import { booleanAttribute, Directive, HostListener, Input } from '@angular/core'
 
 type HviAriaRole = 'switch' | 'button' | 'checkbox' | 'radio' | 'textbox' | 'searchbox' | string;
 
+/**
+ * @summary
+ * Input directive applied to native `<input>` and `<textarea>` elements.
+ * Adds the `ds-input` CSS class and supports all standard input types including
+ * `checkbox`, `radio`, and `text`. Handles `disabled` and `readonly` states —
+ * for toggle inputs (checkbox/radio), readonly prevents click, change, and
+ * keyboard events while keeping the element in the tab order.
+ *
+ * Used together with `HviField` and `HviLabel` to build accessible form controls.
+ *
+ * @example Text input
+ * ```html
+ * <input hviInput type="text" />
+ * ```
+ *
+ * @example Checkbox
+ * ```html
+ * <hvi-field>
+ *   <input hviInput type="checkbox" id="check" />
+ *   <label hviLabel for="check">Accept terms</label>
+ * </hvi-field>
+ * ```
+ *
+ * @example Readonly checkbox
+ * ```html
+ * <hvi-field>
+ *   <input hviInput type="checkbox" id="ro" checked readonly />
+ *   <label hviLabel for="ro">Locked option</label>
+ * </hvi-field>
+ * ```
+ *
+ * @see {@link https://designsystemet.no/en/components/docs/checkbox/code/}
+ */
 @Directive({
   selector: 'input[hviInput], textarea[hviInput]',
   standalone: true,

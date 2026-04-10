@@ -1,1 +1,1 @@
-export * from './input.directive';
+export { HviInput } from './input.directive';

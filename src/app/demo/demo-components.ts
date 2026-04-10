@@ -173,6 +173,7 @@ export const DEMO_COMPONENTS: DemoComponent[] = [
     description:
       'Checkbox gir brukerne mulighet til å velge ett eller flere alternativer. Den kan også brukes i tilfeller der brukeren skal bekrefte noe.',
     ds: true,
+    codeTested: true,
   },
   {
     id: 'error-summary',
