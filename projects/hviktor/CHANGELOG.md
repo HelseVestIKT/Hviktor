@@ -4,6 +4,21 @@ Alle vesentlige endringer i `@helsevestikt/hviktor-angular` dokumenteres her.
 
 Formatet følger [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) og prosjektet bruker [Semantic Versioning](https://semver.org/).
 
+## [0.1.2] – 2026-04-10
+
+### Added
+
+- Unit and E2E tests for button, breadcrumbs, checkbox and chip.
+
+### Changed
+
+- Breadcrumbs rewritten to use digir web package
+- Improved JS docs for above components.
+
+### Fixed
+
+- Alert: Fixed layout issues by setting display: block, height: fit-content, and align-self: flex-start on the host element. Prevents the component from overlapping siblings, stops the icon from overflowing, and ensures the alert height is determined by its content rather than stretched by surrounding elements.
+
 ## [0.1.1] – 2026-03-31
 
 ### Changed
