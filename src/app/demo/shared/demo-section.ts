@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, input, viewChild } from '@angular/core';
+import { AfterViewInit, Component, computed, ElementRef, input, viewChild } from '@angular/core';
 import {
   HviDetails,
   HviDetailsContent,
@@ -21,7 +21,7 @@ hljs.registerLanguage('typescript', typescript);
   standalone: true,
   imports: [HviHeading, HviParagraph, HviDetails, HviDetailsSummary, HviDetailsContent],
   template: `
-    <section class="my-8 rounded-lg border border-neutral-300 p-6">
+    <section [id]="sectionId()" class="my-8 scroll-mt-24 rounded-lg border border-neutral-300 p-6">
       <h2 hviHeading size="md">{{ title() }}</h2>
       @if (description()) {
         <p hviParagraph class="max-w-3xl">{{ description() }}</p>
@@ -50,6 +50,16 @@ export class DemoSectionComponent implements AfterViewInit {
   title = input.required<string>();
   description = input<string>();
   code = input<string>();
+
+  sectionId = computed(() =>
+    this.title()
+      .toLowerCase()
+      .replace(/æ/g, 'ae')
+      .replace(/ø/g, 'o')
+      .replace(/å/g, 'a')
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/^-+|-+$/g, ''),
+  );
 
   codeBlock = viewChild<ElementRef<HTMLElement>>('codeBlock');
   private highlighted = false;
