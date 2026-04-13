@@ -128,8 +128,8 @@ export class HviTable<T = unknown> {
    * Nødvendig for nested felt (f.eks. 'adresse.by').
    */
   @Input()
-  set columns(cols: string[]) {
-    this._explicitColumns.set(cols);
+  set columns(cols: string[] | null | undefined) {
+    this._explicitColumns.set(cols ?? []);
   }
 
   /**
