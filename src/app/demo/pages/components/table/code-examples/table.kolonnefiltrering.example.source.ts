@@ -24,7 +24,6 @@ import { HviButton, HviSelect, HviTable } from '@helsevestikt/hviktor';
           <th>
             <select
               hviSelect
-              data-size="sm"
               (change)="colFilterTable.setColumnFilter('navn', $any($event.target).value)"
             >
               <option value="">Alle</option>
@@ -36,7 +35,6 @@ import { HviButton, HviSelect, HviTable } from '@helsevestikt/hviktor';
           <th>
             <select
               hviSelect
-              data-size="sm"
               (change)="colFilterTable.setColumnFilter('avdeling', $any($event.target).value)"
             >
               <option value="">Alle</option>
@@ -48,7 +46,6 @@ import { HviButton, HviSelect, HviTable } from '@helsevestikt/hviktor';
           <th>
             <select
               hviSelect
-              data-size="sm"
               (change)="colFilterTable.setColumnFilter('stilling', $any($event.target).value)"
             >
               <option value="">Alle</option>
