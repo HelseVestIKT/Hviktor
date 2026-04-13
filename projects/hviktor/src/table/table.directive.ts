@@ -144,21 +144,29 @@ export class HviTable<T = unknown> {
     this._pageSize.set(v);
   }
 
+  private _pendingSortDesc = signal<boolean | null>(null);
+
   /** Felt som data skal sorteres etter (valgfri initial verdi) */
   @Input()
   set sortField(field: string | null | undefined) {
     if (field) {
       const current = this._sorting();
-      this._sorting.set([{ id: field, desc: current[0]?.desc ?? false }]);
+      const pendingDesc = this._pendingSortDesc();
+      this._sorting.set([
+        { id: field, desc: pendingDesc ?? current[0]?.desc ?? false },
+      ]);
     }
   }
 
   /** Sorteringsretning: 1 = ascending, -1 = descending */
   @Input()
   set sortOrder(order: number) {
+    const desc = order === -1;
+    this._pendingSortDesc.set(desc);
+
     const current = this._sorting();
     if (current.length > 0) {
-      this._sorting.set([{ ...current[0], desc: order === -1 }]);
+      this._sorting.set([{ ...current[0], desc }]);
     }
   }
 
