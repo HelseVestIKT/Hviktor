@@ -1,7 +1,24 @@
-import { Component, computed, contentChildren, input } from '@angular/core';
-import { HviHeading, HviLink, HviLogo, HviParagraph, HviTag } from '@helsevestikt/hviktor';
+import {
+  Component,
+  computed,
+  contentChildren,
+  CUSTOM_ELEMENTS_SCHEMA,
+  input,
+  signal,
+} from '@angular/core';
+import {
+  HviButton,
+  HviHeading,
+  HviLink,
+  HviLogo,
+  HviParagraph,
+  HviTag,
+} from '@helsevestikt/hviktor';
 import { DEMO_COMPONENTS, designSystemUrl } from '../demo-components';
 import { DemoSectionComponent } from './demo-section';
+
+import '@helsevestikt/hviktor-icons/icon-clipboard-checkmark.webcomponent';
+import '@helsevestikt/hviktor-icons/icon-clipboard.webcomponent';
 
 /**
  * Wrapper-komponent for demo-sider.
@@ -10,19 +27,31 @@ import { DemoSectionComponent } from './demo-section';
 @Component({
   selector: 'app-demo-page',
   standalone: true,
-  imports: [HviHeading, HviParagraph, HviLink, HviLogo, HviTag],
+  imports: [HviButton, HviHeading, HviParagraph, HviLink, HviLogo, HviTag],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   template: `
     <div class="xl:flex xl:gap-8">
       <article class="min-w-0 flex-1">
         <header class="mb-8">
-          <div class="flex items-center gap-3">
-            <h1 hviHeading size="xl">{{ name() }}</h1>
-            @if (codeTested()) {
-              <hvi-tag size="sm" color="info">Kode testet ✓</hvi-tag>
-            }
-            @if (a11yTested()) {
-              <hvi-tag size="sm" color="brand2">A11y testet ✓</hvi-tag>
-            }
+          <div class="flex justify-between">
+            <div class="flex items-center gap-3">
+              <h1 hviHeading size="xl">{{ name() }}</h1>
+              @if (codeTested()) {
+                <hvi-tag color="info">Kode testet ✓</hvi-tag>
+              }
+              @if (a11yTested()) {
+                <hvi-tag color="brand2">A11y testet ✓</hvi-tag>
+              }
+            </div>
+            <button hviButton variant="secondary" size="sm" (click)="copyPageAsMarkdown()">
+              @if (copied()) {
+                <hvi-icon-clipboard-checkmark />
+                Kopiert!
+              } @else {
+                <hvi-icon-clipboard />
+                Kopier denne siden som Markdown
+              }
+            </button>
           </div>
           @if (isHvi()) {
             <div class="mb-2 flex items-center gap-2">
@@ -76,10 +105,48 @@ export class DemoPageComponent {
   componentId = input.required<string>();
 
   sections = contentChildren(DemoSectionComponent);
+  copied = signal(false);
 
   scrollTo(event: Event, id: string) {
     event.preventDefault();
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+  }
+
+  copyPageAsMarkdown() {
+    const lines: string[] = [];
+    lines.push(`# ${this.name()}`);
+    lines.push('');
+    if (this.description()) {
+      lines.push(this.description());
+      lines.push('');
+    }
+    const dsUrl = this.dsHref();
+    if (dsUrl) {
+      lines.push(`Designsystemet: ${dsUrl}`);
+      lines.push('');
+    }
+
+    for (const section of this.sections()) {
+      lines.push(`## ${section.title()}`);
+      lines.push('');
+      const desc = section.description();
+      if (desc) {
+        lines.push(desc);
+        lines.push('');
+      }
+      const code = section.code();
+      if (code) {
+        lines.push('```typescript');
+        lines.push(code);
+        lines.push('```');
+        lines.push('');
+      }
+    }
+
+    navigator.clipboard.writeText(lines.join('\n')).then(() => {
+      this.copied.set(true);
+      setTimeout(() => this.copied.set(false), 2000);
+    });
   }
 
   /** Slår opp komponent-konfigurasjon fra DEMO_COMPONENTS basert på componentId. */
