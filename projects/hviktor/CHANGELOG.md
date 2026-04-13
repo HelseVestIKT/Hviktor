@@ -4,6 +4,18 @@ Alle vesentlige endringer i `@helsevestikt/hviktor-angular` dokumenteres her.
 
 Formatet følger [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) og prosjektet bruker [Semantic Versioning](https://semver.org/).
 
+## [0.1.3] – 2026-04-13
+
+### Added
+
+- Unit and E2E tests for table
+- Column filtering and row expansion added to table component
+- Size attribute added to select component for small/medium/large options
+
+### Changed
+
+- Table now uses Tanstack Table under the hood for improved performance and features. API is mostly unchanged, but some internal logic and rendering has been refactored.
+
 ## [0.1.2] – 2026-04-10
 
 ### Added
