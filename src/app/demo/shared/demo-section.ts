@@ -30,7 +30,7 @@ hljs.registerLanguage('typescript', typescript);
         <ng-content />
       </div>
       @if (code()) {
-        <div class="mt-4 max-w-3xl">
+        <div class="mt-4">
           <hvi-details (onToggle)="onDetailsToggle($event)">
             <hvi-details-summary>
               <p hviParagraph>Vis kode</p>

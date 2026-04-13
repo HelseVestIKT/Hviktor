@@ -22,6 +22,7 @@ import { booleanAttribute, Directive, HostListener, Input } from '@angular/core'
   host: {
     class: 'ds-select ds-input',
     '[attr.data-width]': 'width',
+    '[attr.data-size]': 'size',
     '[attr.readonly]': '_readOnly ? "" : null',
     '[attr.disabled]': '_disabled ? "" : null',
   },
@@ -29,6 +30,8 @@ import { booleanAttribute, Directive, HostListener, Input } from '@angular/core'
 export class HviSelect {
   /** Defines the width of Select, where "auto" matches the content width. */
   @Input() width?: 'full' | 'auto';
+  /** Defines the size of Select.  */
+  @Input() size: 'sm' | 'md' | 'lg' = 'md';
 
   protected _readOnly = false;
   protected _disabled = false;

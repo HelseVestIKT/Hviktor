@@ -1,104 +1,99 @@
-import { Component } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, signal } from '@angular/core';
 import {
   HviButton,
   HviInput,
+  HviLabel,
   HviPagination,
+  HviSearch,
+  HviSearchClear,
+  HviSelect,
   HviSortableColumn,
   HviTable,
 } from '@helsevestikt/hviktor';
 import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
 
-import { TableBasisExampleSource } from './code-examples/table.basis.example.source';
-import { TableHoverExampleSource } from './code-examples/table.hover.example.source';
-import { TableKombinertExampleSource } from './code-examples/table.kombinert.example.source';
-import { TableMedBorderExampleSource } from './code-examples/table.med-border.example.source';
-import { TablePagineringExampleSource } from './code-examples/table.paginering.example.source';
-import { TableSokOgSorteringExampleSource } from './code-examples/table.sok-og-sortering.example.source';
-import { TableTallITabellExampleSource } from './code-examples/table.tall-i-tabell.example.source';
-import { TableZebrastriperExampleSource } from './code-examples/table.zebrastriper.example.source';
+import '@helsevestikt/hviktor-icons/icon-chevron-down.webcomponent';
+import '@helsevestikt/hviktor-icons/icon-chevron-right.webcomponent';
+import '@helsevestikt/hviktor-icons/icon-envelope-closed.webcomponent';
+import '@helsevestikt/hviktor-icons/icon-phone.webcomponent';
 
-interface Person {
-  navn: string;
-  epost: string;
-  telefon: string;
-}
+import { TableEnkelTabellExampleSource } from './code-examples/table.enkel-tabell.example.source';
+import { TableGlobaltSokExampleSource } from './code-examples/table.globalt-sok.example.source';
+import { TableKolonnefiltreringExampleSource } from './code-examples/table.kolonnefiltrering.example.source';
+import { TableKomplettEksempelExampleSource } from './code-examples/table.komplett-eksempel.example.source';
+import { TablePagineringExampleSource } from './code-examples/table.paginering.example.source';
+import { TableSorteringExampleSource } from './code-examples/table.sortering.example.source';
+import { TableUtvidbareRaderExampleSource } from './code-examples/table.utvidbare-rader.example.source';
+import { TableZebrastriperOgBorderExampleSource } from './code-examples/table.zebrastriper-og-border.example.source';
 
 @Component({
   selector: 'app-table-demo',
   standalone: true,
   imports: [
-    DemoPageComponent,
-    DemoSectionComponent,
     HviTable,
     HviSortableColumn,
-    HviInput,
-    HviButton,
     HviPagination,
+    HviButton,
+    HviSearch,
+    HviSearchClear,
+    HviInput,
+    HviLabel,
+    HviSelect,
+    DemoPageComponent,
+    DemoSectionComponent,
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   template: `
     <app-demo-page componentId="table">
-      <!-- Basis eksempel -->
+      <!-- Enkel tabell -->
       <app-demo-section
-        title="Basis"
-        [code]="basisCode"
-        description="Enkel tabell med header, body og footer."
+        title="Enkel tabell"
+        [code]="enkelTabellCode"
+        description="En grunnleggende tabell med Designsystemets styling. Bruk data-attributter for zebrastriper, border og hover-effekt."
       >
         <table hviTable>
           <caption>
-            Pasientoversikt
+            Prosjektstatus
           </caption>
           <thead>
             <tr>
-              <th>Navn</th>
-              <th>Fødselsdato</th>
-              <th>Avdeling</th>
+              <th>Prosjekt</th>
               <th>Status</th>
+              <th>Frist</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td>Ola Nordmann</td>
-              <td>15.03.1985</td>
-              <td>Medisinsk avdeling</td>
-              <td>Innlagt</td>
+              <td>Designsystem</td>
+              <td>Aktiv</td>
+              <td>2026-06-01</td>
             </tr>
             <tr>
-              <td>Kari Hansen</td>
-              <td>22.07.1972</td>
-              <td>Kirurgisk avdeling</td>
-              <td>Utskrevet</td>
+              <td>Migrering</td>
+              <td>Planlagt</td>
+              <td>2026-09-15</td>
             </tr>
             <tr>
-              <td>Per Johansen</td>
-              <td>08.11.1990</td>
-              <td>Akuttmottak</td>
-              <td>Under behandling</td>
+              <td>Dokumentasjon</td>
+              <td>Aktiv</td>
+              <td>2026-05-01</td>
             </tr>
           </tbody>
-          <tfoot>
-            <tr>
-              <th colspan="3">Totalt antall pasienter</th>
-              <th>3</th>
-            </tr>
-          </tfoot>
         </table>
       </app-demo-section>
 
-      <!-- Zebrastriper -->
+      <!-- Zebrastriper og border -->
       <app-demo-section
-        title="Zebrastriper"
-        [code]="zebrastriperCode"
-        description="Bruk zebra for annenhver rad med alternativ bakgrunnsfarge."
+        title="Zebrastriper og border"
+        [code]="zebrastriperOgBorderCode"
+        description="Bruk zebra og border for å gjøre tabellen enklere å lese. Hover gir visuell tilbakemelding når brukeren holder over en rad."
       >
-        <table hviTable zebra>
-          <caption>
-            Antall søknader per måned
-          </caption>
+        <table hviTable zebra border hover>
           <thead>
             <tr>
               <th>Måned</th>
-              <th>2023</th>
               <th>2024</th>
+              <th>2025</th>
             </tr>
           </thead>
           <tbody>
@@ -121,283 +116,535 @@ interface Person {
         </table>
       </app-demo-section>
 
-      <!-- Med border -->
+      <!-- Sortering -->
       <app-demo-section
-        title="Med border"
-        [code]="medBorderCode"
-        description="Bruk border for å legge til en synlig kant rundt tabellen."
+        title="Sortering"
+        [code]="sorteringCode"
+        description="Legg til sortering på kolonner med hviSortableColumn-direktivet. Klikk på en kolonneoverskrift for å sykle gjennom: ingen → stigende → synkende → ingen."
       >
-        <table hviTable border>
-          <thead>
-            <tr>
-              <th>Header 1</th>
-              <th>Header 2</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Cell 1</td>
-              <td>Cell 2</td>
-            </tr>
-            <tr>
-              <td>Cell 3</td>
-              <td>Cell 4</td>
-            </tr>
-          </tbody>
-        </table>
-      </app-demo-section>
-
-      <!-- Hover -->
-      <app-demo-section
-        title="Hover"
-        [code]="hoverCode"
-        description="Bruk hover for å gi rader en hover-effekt."
-      >
-        <table hviTable hover>
-          <thead>
-            <tr>
-              <th>Navn</th>
-              <th>Avdeling</th>
-              <th>Status</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Ola Nordmann</td>
-              <td>Medisinsk avdeling</td>
-              <td>Innlagt</td>
-            </tr>
-            <tr>
-              <td>Kari Hansen</td>
-              <td>Kirurgisk avdeling</td>
-              <td>Utskrevet</td>
-            </tr>
-            <tr>
-              <td>Per Johansen</td>
-              <td>Akuttmottak</td>
-              <td>Under behandling</td>
-            </tr>
-          </tbody>
-        </table>
-      </app-demo-section>
-
-      <!-- Søk og sortering -->
-      <app-demo-section
-        title="Søk og sortering"
-        [code]="sokOgSorteringCode"
-        description="Kombiner søk og sortering for full funksjonalitet. Bruk filterGlobal() for å søke på tvers av kolonner."
-      >
-        <div class="mb-4 flex items-center gap-4">
-          <input
-            hviInput
-            type="search"
-            placeholder="Søk i navn, epost eller telefon..."
-            #searchInput
-            (input)="searchTable.filterGlobal(searchInput.value)"
-            class="max-w-xs flex-1"
-          />
-          <button hviButton (click)="searchTable.clear(); searchInput.value = ''">Nullstill</button>
-        </div>
-        <table
-          hviTable
-          hover
-          [value]="persons"
-          [globalFilterFields]="['navn', 'epost', 'telefon']"
-          #searchTable="hviTable"
-        >
+        <table hviTable [value]="data" #sortTable="hviTable">
           <thead>
             <tr>
               <th hviSortableColumn="navn">
-                <button>Navn</button>
+                <button type="button">Navn</button>
               </th>
-              <th>Epost</th>
-              <th hviSortableColumn="telefon">
-                <button>Telefon</button>
+              <th hviSortableColumn="epost">
+                <button type="button">Epost</button>
+              </th>
+              <th hviSortableColumn="avdeling">
+                <button type="button">Avdeling</button>
               </th>
             </tr>
           </thead>
           <tbody>
-            @for (person of searchTable.filteredValue(); track person.epost) {
+            @for (person of sortTable.filteredValue(); track person.id) {
               <tr>
                 <td>{{ person.navn }}</td>
                 <td>{{ person.epost }}</td>
-                <td>{{ person.telefon }}</td>
-              </tr>
-            } @empty {
-              <tr>
-                <td colspan="3" class="text-center">Ingen treff</td>
+                <td>{{ person.avdeling }}</td>
               </tr>
             }
           </tbody>
         </table>
-        <p class="mt-2 text-sm text-neutral-500">
+      </app-demo-section>
+
+      <!-- Globalt søk -->
+      <app-demo-section
+        title="Globalt søk"
+        [code]="globaltSokCode"
+        description="Legg til et søkefelt som filtrerer på tvers av alle angitte kolonner. Definer hvilke felter som skal inkluderes med globalFilterFields."
+      >
+        <div class="mb-4">
+          <label hviLabel>Søk i tabell</label>
+          <hvi-search>
+            <input
+              hviInput
+              type="search"
+              placeholder="Søk etter navn, epost eller avdeling..."
+              (input)="searchTable.filterGlobal($any($event.target).value)"
+            />
+            <button hviSearchClear type="reset" aria-label="Tøm"></button>
+          </hvi-search>
+        </div>
+        <table
+          hviTable
+          [value]="data"
+          [globalFilterFields]="['navn', 'epost', 'avdeling']"
+          zebra
+          #searchTable="hviTable"
+        >
+          <thead>
+            <tr>
+              <th>Navn</th>
+              <th>Epost</th>
+              <th>Avdeling</th>
+              <th>Stilling</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (person of searchTable.filteredValue(); track person.id) {
+              <tr>
+                <td>{{ person.navn }}</td>
+                <td>{{ person.epost }}</td>
+                <td>{{ person.avdeling }}</td>
+                <td>{{ person.stilling }}</td>
+              </tr>
+            } @empty {
+              <tr>
+                <td colspan="4">Ingen treff</td>
+              </tr>
+            }
+          </tbody>
+        </table>
+        <p class="ds-paragraph mt-2">
           Viser {{ searchTable.totalFilteredRecords() }} av {{ searchTable.totalRecords() }} rader
         </p>
+      </app-demo-section>
+
+      <!-- Kolonnefiltrering -->
+      <app-demo-section
+        title="Kolonnefiltrering"
+        [code]="kolonnefiltreringCode"
+        description="Filtrer på enkeltkolonner med setColumnFilter(). Bruk select-bokser i tabellhodet for enkel filtrering."
+      >
+        <table
+          hviTable
+          [value]="data"
+          [columns]="['navn', 'epost', 'avdeling', 'stilling']"
+          zebra
+          #colFilterTable="hviTable"
+        >
+          <thead>
+            <tr>
+              <th>Navn</th>
+              <th>Avdeling</th>
+              <th>Stilling</th>
+            </tr>
+            <tr>
+              <th>
+                <select
+                  hviSelect
+                  aria-label="Filtrer på navn"
+                  (change)="colFilterTable.setColumnFilter('navn', $any($event.target).value)"
+                >
+                  <option value="">Alle</option>
+                  @for (person of data; track person.id) {
+                    <option [value]="person.navn">{{ person.navn }}</option>
+                  }
+                </select>
+              </th>
+              <th>
+                <select
+                  hviSelect
+                  aria-label="Filtrer på avdeling"
+                  (change)="colFilterTable.setColumnFilter('avdeling', $any($event.target).value)"
+                >
+                  <option value="">Alle</option>
+                  @for (avdeling of avdelinger; track avdeling) {
+                    <option [value]="avdeling">{{ avdeling }}</option>
+                  }
+                </select>
+              </th>
+              <th>
+                <select
+                  hviSelect
+                  aria-label="Filtrer på stilling"
+                  (change)="colFilterTable.setColumnFilter('stilling', $any($event.target).value)"
+                >
+                  <option value="">Alle</option>
+                  @for (stilling of stillinger; track stilling) {
+                    <option [value]="stilling">{{ stilling }}</option>
+                  }
+                </select>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (person of colFilterTable.filteredValue(); track person.id) {
+              <tr>
+                <td>{{ person.navn }}</td>
+                <td>{{ person.avdeling }}</td>
+                <td>{{ person.stilling }}</td>
+              </tr>
+            } @empty {
+              <tr>
+                <td colspan="3">Ingen treff</td>
+              </tr>
+            }
+          </tbody>
+        </table>
+        <button
+          hviButton
+          variant="tertiary"
+          class="mt-2"
+          (click)="colFilterTable.clearAllColumnFilters()"
+        >
+          Nullstill filtre
+        </button>
       </app-demo-section>
 
       <!-- Paginering -->
       <app-demo-section
         title="Paginering"
         [code]="pagineringCode"
-        description="Bruk paginator og rows for å dele opp data i sider. Tabellen håndterer pagineringen automatisk."
+        description="Aktiver paginering med paginator-attributtet og sett antall rader med rows. Bruk HviPagination for navigasjon."
       >
-        <table
-          hviTable
-          hover
-          zebra
-          [value]="manyPersons"
-          paginator
-          [rows]="10"
-          #paginatedTable="hviTable"
-        >
+        <table hviTable [value]="data" paginator [rows]="5" zebra hover #pageTable="hviTable">
           <thead>
             <tr>
-              <th>Navn</th>
+              <th hviSortableColumn="navn">
+                <button type="button">Navn</button>
+              </th>
               <th>Epost</th>
-              <th>Telefon</th>
+              <th>Avdeling</th>
             </tr>
           </thead>
           <tbody>
-            @for (person of paginatedTable.paginatedValue(); track person.epost) {
+            @for (person of pageTable.paginatedValue(); track person.id) {
               <tr>
                 <td>{{ person.navn }}</td>
                 <td>{{ person.epost }}</td>
-                <td>{{ person.telefon }}</td>
+                <td>{{ person.avdeling }}</td>
+              </tr>
+            }
+          </tbody>
+        </table>
+        <hvi-pagination
+          [totalItems]="pageTable.totalFilteredRecords()"
+          [pageSize]="5"
+          [currentPage]="pageTable.currentPage()"
+          (currentPageChange)="pageTable.goToPage($event)"
+        />
+      </app-demo-section>
+
+      <!-- Row expansion -->
+      <app-demo-section
+        title="Utvidbare rader"
+        [code]="utvidbareRaderCode"
+        description="Vis ekstra informasjon under en rad med toggleExpanded() og isExpanded(). Nyttig for detaljer som ikke trenger en egen kolonne."
+      >
+        <table hviTable [value]="data" hover #expandTable="hviTable">
+          <thead>
+            <tr>
+              <th style="width: 3rem"><span class="sr-only">Utvid</span></th>
+              <th>Navn</th>
+              <th>Avdeling</th>
+              <th>Stilling</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (person of expandTable.filteredValue(); track person.id) {
+              <tr>
+                <td>
+                  <button
+                    hviButton
+                    variant="tertiary"
+                    (click)="expandTable.toggleExpanded(person)"
+                    [attr.aria-expanded]="expandTable.isExpanded(person)"
+                    aria-label="Vis detaljer"
+                  >
+                    @if (expandTable.isExpanded(person)) {
+                      <hvi-icon-chevron-down />
+                    } @else {
+                      <hvi-icon-chevron-right />
+                    }
+                  </button>
+                </td>
+                <td>{{ person.navn }}</td>
+                <td>{{ person.avdeling }}</td>
+                <td>{{ person.stilling }}</td>
+              </tr>
+              @if (expandTable.isExpanded(person)) {
+                <tr>
+                  <td colspan="4">
+                    <div class="flex gap-8 py-2 pl-12">
+                      <dl class="flex items-center gap-2">
+                        <dt>
+                          <hvi-icon-envelope-closed />
+                        </dt>
+                        <dd>{{ person.epost }}</dd>
+                      </dl>
+                      <dl class="flex items-center gap-2">
+                        <dt><hvi-icon-phone /></dt>
+                        <dd>{{ person.telefon }}</dd>
+                      </dl>
+                    </div>
+                  </td>
+                </tr>
+              }
+            }
+          </tbody>
+        </table>
+      </app-demo-section>
+
+      <!-- Komplett eksempel -->
+      <app-demo-section
+        title="Komplett eksempel"
+        [code]="komplettEksempelCode"
+        description="Tabell med søk, sortering, kolonnefiltrering, paginering og utvidbare rader kombinert."
+      >
+        <div class="mb-4">
+          <label hviLabel>Søk</label>
+          <hvi-search>
+            <input
+              hviInput
+              type="search"
+              placeholder="Søk i alle kolonner..."
+              (input)="fullTable.filterGlobal($any($event.target).value)"
+            />
+            <button hviSearchClear type="reset" aria-label="Tøm"></button>
+          </hvi-search>
+        </div>
+        <table
+          hviTable
+          [value]="data"
+          [columns]="['navn', 'epost', 'avdeling', 'stilling']"
+          [globalFilterFields]="['navn', 'epost', 'avdeling', 'stilling']"
+          paginator
+          [rows]="rowsPerPage()"
+          zebra
+          hover
+          border
+          stickyHeader
+          #fullTable="hviTable"
+        >
+          <thead>
+            <tr>
+              <th style="width: 3rem"><span class="sr-only">Utvid</span></th>
+              <th hviSortableColumn="navn">
+                <button type="button">Navn</button>
+              </th>
+              <th hviSortableColumn="avdeling">
+                <button type="button">Avdeling</button>
+              </th>
+              <th hviSortableColumn="stilling">
+                <button type="button">Stilling</button>
+              </th>
+            </tr>
+            <tr>
+              <th><span class="sr-only">Filter</span></th>
+              <th>
+                <select
+                  hviSelect
+                  aria-label="Filtrer på navn"
+                  (change)="fullTable.setColumnFilter('navn', $any($event.target).value)"
+                >
+                  <option value="">Alle</option>
+                  @for (person of data; track person.id) {
+                    <option [value]="person.navn">{{ person.navn }}</option>
+                  }
+                </select>
+              </th>
+              <th>
+                <select
+                  hviSelect
+                  aria-label="Filtrer på avdeling"
+                  (change)="fullTable.setColumnFilter('avdeling', $any($event.target).value)"
+                >
+                  <option value="">Alle</option>
+                  @for (avdeling of avdelinger; track avdeling) {
+                    <option [value]="avdeling">{{ avdeling }}</option>
+                  }
+                </select>
+              </th>
+              <th>
+                <select
+                  hviSelect
+                  aria-label="Filtrer på stilling"
+                  (change)="fullTable.setColumnFilter('stilling', $any($event.target).value)"
+                >
+                  <option value="">Alle</option>
+                  @for (stilling of stillinger; track stilling) {
+                    <option [value]="stilling">{{ stilling }}</option>
+                  }
+                </select>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (person of fullTable.paginatedValue(); track person.id) {
+              <tr>
+                <td>
+                  <button
+                    hviButton
+                    variant="tertiary"
+                    (click)="fullTable.toggleExpanded(person)"
+                    [attr.aria-expanded]="fullTable.isExpanded(person)"
+                    aria-label="Vis detaljer"
+                  >
+                    @if (fullTable.isExpanded(person)) {
+                      <hvi-icon-chevron-down />
+                    } @else {
+                      <hvi-icon-chevron-right />
+                    }
+                  </button>
+                </td>
+                <td>{{ person.navn }}</td>
+                <td>{{ person.avdeling }}</td>
+                <td>{{ person.stilling }}</td>
+              </tr>
+              @if (fullTable.isExpanded(person)) {
+                <tr>
+                  <td colspan="4">
+                    <div class="flex gap-8 py-2 pl-12">
+                      <dl class="flex items-center gap-2">
+                        <dt>
+                          <hvi-icon-envelope-closed />
+                        </dt>
+                        <dd>{{ person.epost }}</dd>
+                      </dl>
+                      <dl class="flex items-center gap-2">
+                        <dt><hvi-icon-phone /></dt>
+                        <dd>{{ person.telefon }}</dd>
+                      </dl>
+                    </div>
+                  </td>
+                </tr>
+              }
+            } @empty {
+              <tr>
+                <td colspan="4">Ingen treff</td>
               </tr>
             }
           </tbody>
         </table>
         <div class="mt-4 flex items-center justify-between">
-          <span class="text-sm text-neutral-500">
-            Viser {{ (paginatedTable.currentPage() - 1) * 5 + 1 }}-{{
-              paginatedTable.currentPage() * 5 > paginatedTable.totalRecords()
-                ? paginatedTable.totalRecords()
-                : paginatedTable.currentPage() * 5
-            }}
-            av {{ paginatedTable.totalRecords() }}
-          </span>
+          <p class="ds-paragraph">
+            Viser {{ fullTable.totalFilteredRecords() }} av {{ fullTable.totalRecords() }} rader
+          </p>
           <hvi-pagination
-            [totalItems]="paginatedTable.totalFilteredRecords()"
-            [pageSize]="5"
-            [currentPage]="paginatedTable.currentPage()"
-            (currentPageChange)="paginatedTable.goToPage($event)"
+            [totalItems]="fullTable.totalFilteredRecords()"
+            [pageSize]="rowsPerPage()"
+            [currentPage]="fullTable.currentPage()"
+            (currentPageChange)="fullTable.goToPage($event)"
           />
         </div>
-      </app-demo-section>
-
-      <!-- Tall i tabell -->
-      <app-demo-section
-        title="Tall i tabell"
-        [code]="tallITabellCode"
-        description="Når det er tall som skal sammenlignes, plasser tallene til høyre i tabellfeltet."
-      >
-        <table hviTable class="table-fixed tabular-nums">
-          <caption>
-            Antall søknader per måned
-          </caption>
-          <thead>
-            <tr>
-              <th scope="col">Måned</th>
-              <th scope="col" class="text-right">2023</th>
-              <th scope="col" class="text-right">2024</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">Januar</th>
-              <td class="text-right">1 230</td>
-              <td class="text-right">1 450</td>
-            </tr>
-            <tr>
-              <th scope="row">Februar</th>
-              <td class="text-right">980</td>
-              <td class="text-right">1 120</td>
-            </tr>
-            <tr>
-              <th scope="row">Mars</th>
-              <td class="text-right">1 150</td>
-              <td class="text-right">1 300</td>
-            </tr>
-          </tbody>
-        </table>
-      </app-demo-section>
-
-      <!-- Kombinert -->
-      <app-demo-section
-        title="Kombinert"
-        [code]="kombinertCode"
-        description="Du kan kombinere flere varianter for å tilpasse tabellen til dine behov."
-      >
-        <table hviTable zebra border hover>
-          <caption>
-            Pasientoversikt med alle varianter
-          </caption>
-          <thead>
-            <tr>
-              <th>Navn</th>
-              <th>Avdeling</th>
-              <th>Status</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Ola Nordmann</td>
-              <td>Medisinsk avdeling</td>
-              <td>Innlagt</td>
-            </tr>
-            <tr>
-              <td>Kari Hansen</td>
-              <td>Kirurgisk avdeling</td>
-              <td>Utskrevet</td>
-            </tr>
-            <tr>
-              <td>Per Johansen</td>
-              <td>Akuttmottak</td>
-              <td>Under behandling</td>
-            </tr>
-          </tbody>
-        </table>
       </app-demo-section>
     </app-demo-page>
   `,
 })
 export class TableDemoComponent {
-  readonly basisCode = TableBasisExampleSource;
-  readonly zebrastriperCode = TableZebrastriperExampleSource;
-  readonly medBorderCode = TableMedBorderExampleSource;
-  readonly hoverCode = TableHoverExampleSource;
-  readonly sokOgSorteringCode = TableSokOgSorteringExampleSource;
+  readonly enkelTabellCode = TableEnkelTabellExampleSource;
+  readonly zebrastriperOgBorderCode = TableZebrastriperOgBorderExampleSource;
+  readonly sorteringCode = TableSorteringExampleSource;
+  readonly globaltSokCode = TableGlobaltSokExampleSource;
+  readonly kolonnefiltreringCode = TableKolonnefiltreringExampleSource;
   readonly pagineringCode = TablePagineringExampleSource;
-  readonly tallITabellCode = TableTallITabellExampleSource;
-  readonly kombinertCode = TableKombinertExampleSource;
+  readonly utvidbareRaderCode = TableUtvidbareRaderExampleSource;
+  readonly komplettEksempelCode = TableKomplettEksempelExampleSource;
 
-  // Data for sorteringseksempel
-  persons: Person[] = [
-    { navn: 'Lise Nordmann', epost: 'lise@nordmann.no', telefon: '22345678' },
-    { navn: 'Kari Nordmann', epost: 'kari@nordmann.no', telefon: '87654321' },
-    { navn: 'Ola Nordmann', epost: 'ola@nordmann.no', telefon: '32345678' },
-    { navn: 'Per Nordmann', epost: 'per@nordmann.no', telefon: '12345678' },
+  data = [
+    {
+      id: 1,
+      navn: 'Ola Nordmann',
+      epost: 'ola@helse-vest.no',
+      avdeling: 'IT',
+      telefon: '991 12 345',
+      stilling: 'Utvikler',
+    },
+    {
+      id: 2,
+      navn: 'Kari Hansen',
+      epost: 'kari@helse-vest.no',
+      avdeling: 'HR',
+      telefon: '992 23 456',
+      stilling: 'Rådgiver',
+    },
+    {
+      id: 3,
+      navn: 'Per Olsen',
+      epost: 'per@helse-vest.no',
+      avdeling: 'IT',
+      telefon: '993 34 567',
+      stilling: 'Teamleder',
+    },
+    {
+      id: 4,
+      navn: 'Lise Johansen',
+      epost: 'lise@helse-vest.no',
+      avdeling: 'Økonomi',
+      telefon: '994 45 678',
+      stilling: 'Controller',
+    },
+    {
+      id: 5,
+      navn: 'Erik Berg',
+      epost: 'erik@helse-vest.no',
+      avdeling: 'IT',
+      telefon: '995 56 789',
+      stilling: 'Arkitekt',
+    },
+    {
+      id: 6,
+      navn: 'Anna Lie',
+      epost: 'anna@helse-vest.no',
+      avdeling: 'HR',
+      telefon: '996 67 890',
+      stilling: 'Leder',
+    },
+    {
+      id: 7,
+      navn: 'Jonas Vik',
+      epost: 'jonas@helse-vest.no',
+      avdeling: 'Økonomi',
+      telefon: '997 78 901',
+      stilling: 'Analytiker',
+    },
+    {
+      id: 8,
+      navn: 'Maria Dahl',
+      epost: 'maria@helse-vest.no',
+      avdeling: 'IT',
+      telefon: '998 89 012',
+      stilling: 'Tester',
+    },
+    {
+      id: 9,
+      navn: 'Thomas Strand',
+      epost: 'thomas@helse-vest.no',
+      avdeling: 'Ledelse',
+      telefon: '999 90 123',
+      stilling: 'Direktør',
+    },
+    {
+      id: 10,
+      navn: 'Ingrid Moe',
+      epost: 'ingrid@helse-vest.no',
+      avdeling: 'IT',
+      telefon: '990 01 234',
+      stilling: 'Designer',
+    },
+    {
+      id: 11,
+      navn: 'Bjørn Haugen',
+      epost: 'bjorn@helse-vest.no',
+      avdeling: 'Økonomi',
+      telefon: '991 11 111',
+      stilling: 'Revisor',
+    },
+    {
+      id: 12,
+      navn: 'Silje Aas',
+      epost: 'silje@helse-vest.no',
+      avdeling: 'HR',
+      telefon: '992 22 222',
+      stilling: 'Rekrutterer',
+    },
   ];
-
-  // Større datasett for pagineringseksempel
-  manyPersons: Person[] = [
-    { navn: 'Lise Nordmann', epost: 'lise@nordmann.no', telefon: '22345678' },
-    { navn: 'Kari Nordmann', epost: 'kari@nordmann.no', telefon: '87654321' },
-    { navn: 'Ola Nordmann', epost: 'ola@nordmann.no', telefon: '32345678' },
-    { navn: 'Per Nordmann', epost: 'per@nordmann.no', telefon: '12345678' },
-    { navn: 'Anne Hansen', epost: 'anne@hansen.no', telefon: '11223344' },
-    { navn: 'Erik Larsen', epost: 'erik@larsen.no', telefon: '55667788' },
-    { navn: 'Ingrid Berg', epost: 'ingrid@berg.no', telefon: '99887766' },
-    { navn: 'Bjørn Olsen', epost: 'bjorn@olsen.no', telefon: '44332211' },
-    { navn: 'Marte Vik', epost: 'marte@vik.no', telefon: '66778899' },
-    { navn: 'Jonas Dahl', epost: 'jonas@dahl.no', telefon: '33445566' },
-    { navn: 'Hilde Mo', epost: 'hilde@mo.no', telefon: '77889900' },
-    { navn: 'Geir Strand', epost: 'geir@strand.no', telefon: '11002233' },
-    { navn: 'Silje Haugen', epost: 'silje@haugen.no', telefon: '44556677' },
-    { navn: 'Thomas Lie', epost: 'thomas@lie.no', telefon: '88990011' },
-    { navn: 'Nina Bakke', epost: 'nina@bakke.no', telefon: '22334455' },
-    { navn: 'Anders Holm', epost: 'anders@holm.no', telefon: '55443322' },
-    { navn: 'Maria Kvam', epost: 'maria@kvam.no', telefon: '99001122' },
-    { navn: 'Lars Bø', epost: 'lars@bo.no', telefon: '33221100' },
+  avdelinger = ['IT', 'HR', 'Økonomi', 'Ledelse'];
+  stillinger = [
+    'Utvikler',
+    'Rådgiver',
+    'Teamleder',
+    'Controller',
+    'Arkitekt',
+    'Leder',
+    'Analytiker',
+    'Tester',
+    'Direktør',
+    'Designer',
+    'Revisor',
+    'Rekrutterer',
   ];
+  rowsPerPage = signal(5);
 }

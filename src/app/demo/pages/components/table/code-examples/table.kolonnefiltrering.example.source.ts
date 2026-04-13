@@ -1,40 +1,89 @@
-import { Component, signal } from '@angular/core';
-import { HviPagination, HviSortableColumn, HviTable } from '@helsevestikt/hviktor';
+// Auto-generated - do not edit manually
+export const TableKolonnefiltreringExampleSource = `import { Component, signal } from '@angular/core';
+import { HviButton, HviSelect, HviTable } from '@helsevestikt/hviktor';
 
 @Component({
-  selector: 'app-table-paginering-example',
+  selector: 'app-table-kolonnefiltrering-example',
   standalone: true,
-  imports: [HviPagination, HviSortableColumn, HviTable],
-  template: `
-    <table hviTable [value]="data" paginator [rows]="5" zebra hover #pageTable="hviTable">
+  imports: [HviButton, HviSelect, HviTable],
+  template: \`
+    <table
+      hviTable
+      [value]="data"
+      [columns]="['navn', 'epost', 'avdeling', 'stilling']"
+      zebra
+      #colFilterTable="hviTable"
+    >
       <thead>
         <tr>
-          <th hviSortableColumn="navn">
-            <button type="button">Navn</button>
-          </th>
-          <th>Epost</th>
+          <th>Navn</th>
           <th>Avdeling</th>
+          <th>Stilling</th>
+        </tr>
+        <tr>
+          <th>
+            <select
+              hviSelect
+              aria-label="Filtrer på navn"
+              (change)="colFilterTable.setColumnFilter('navn', $any($event.target).value)"
+            >
+              <option value="">Alle</option>
+              @for (person of data; track person.id) {
+                <option [value]="person.navn">{{ person.navn }}</option>
+              }
+            </select>
+          </th>
+          <th>
+            <select
+              hviSelect
+              aria-label="Filtrer på avdeling"
+              (change)="colFilterTable.setColumnFilter('avdeling', $any($event.target).value)"
+            >
+              <option value="">Alle</option>
+              @for (avdeling of avdelinger; track avdeling) {
+                <option [value]="avdeling">{{ avdeling }}</option>
+              }
+            </select>
+          </th>
+          <th>
+            <select
+              hviSelect
+              aria-label="Filtrer på stilling"
+              (change)="colFilterTable.setColumnFilter('stilling', $any($event.target).value)"
+            >
+              <option value="">Alle</option>
+              @for (stilling of stillinger; track stilling) {
+                <option [value]="stilling">{{ stilling }}</option>
+              }
+            </select>
+          </th>
         </tr>
       </thead>
       <tbody>
-        @for (person of pageTable.paginatedValue(); track person.id) {
+        @for (person of colFilterTable.filteredValue(); track person.id) {
           <tr>
             <td>{{ person.navn }}</td>
-            <td>{{ person.epost }}</td>
             <td>{{ person.avdeling }}</td>
+            <td>{{ person.stilling }}</td>
+          </tr>
+        } @empty {
+          <tr>
+            <td colspan="3">Ingen treff</td>
           </tr>
         }
       </tbody>
     </table>
-    <hvi-pagination
-      [totalItems]="pageTable.totalFilteredRecords()"
-      [pageSize]="5"
-      [currentPage]="pageTable.currentPage()"
-      (currentPageChange)="pageTable.goToPage($event)"
-    />
-  `,
+    <button
+      hviButton
+      variant="tertiary"
+      class="mt-2"
+      (click)="colFilterTable.clearAllColumnFilters()"
+    >
+      Nullstill filtre
+    </button>
+  \`,
 })
-export class TablePagineringExampleComponent {
+export class TableKolonnefiltreringExampleComponent {
   data = [
     {
       id: 1,
@@ -150,3 +199,4 @@ export class TablePagineringExampleComponent {
   ];
   rowsPerPage = signal(5);
 }
+`;

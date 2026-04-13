@@ -1,40 +1,59 @@
 import { Component, signal } from '@angular/core';
-import { HviPagination, HviSortableColumn, HviTable } from '@helsevestikt/hviktor';
+import { HviInput, HviLabel, HviSearch, HviSearchClear, HviTable } from '@helsevestikt/hviktor';
 
 @Component({
-  selector: 'app-table-paginering-example',
+  selector: 'app-table-globalt-sok-example',
   standalone: true,
-  imports: [HviPagination, HviSortableColumn, HviTable],
+  imports: [HviInput, HviLabel, HviSearch, HviSearchClear, HviTable],
   template: `
-    <table hviTable [value]="data" paginator [rows]="5" zebra hover #pageTable="hviTable">
+    <div class="mb-4">
+      <label hviLabel>Søk i tabell</label>
+      <hvi-search>
+        <input
+          hviInput
+          type="search"
+          placeholder="Søk etter navn, epost eller avdeling..."
+          (input)="searchTable.filterGlobal($any($event.target).value)"
+        />
+        <button hviSearchClear type="reset" aria-label="Tøm"></button>
+      </hvi-search>
+    </div>
+    <table
+      hviTable
+      [value]="data"
+      [globalFilterFields]="['navn', 'epost', 'avdeling']"
+      zebra
+      #searchTable="hviTable"
+    >
       <thead>
         <tr>
-          <th hviSortableColumn="navn">
-            <button type="button">Navn</button>
-          </th>
+          <th>Navn</th>
           <th>Epost</th>
           <th>Avdeling</th>
+          <th>Stilling</th>
         </tr>
       </thead>
       <tbody>
-        @for (person of pageTable.paginatedValue(); track person.id) {
+        @for (person of searchTable.filteredValue(); track person.id) {
           <tr>
             <td>{{ person.navn }}</td>
             <td>{{ person.epost }}</td>
             <td>{{ person.avdeling }}</td>
+            <td>{{ person.stilling }}</td>
+          </tr>
+        } @empty {
+          <tr>
+            <td colspan="4">Ingen treff</td>
           </tr>
         }
       </tbody>
     </table>
-    <hvi-pagination
-      [totalItems]="pageTable.totalFilteredRecords()"
-      [pageSize]="5"
-      [currentPage]="pageTable.currentPage()"
-      (currentPageChange)="pageTable.goToPage($event)"
-    />
+    <p class="ds-paragraph mt-2">
+      Viser {{ searchTable.totalFilteredRecords() }} av {{ searchTable.totalRecords() }} rader
+    </p>
   `,
 })
-export class TablePagineringExampleComponent {
+export class TableGlobaltSokExampleComponent {
   data = [
     {
       id: 1,

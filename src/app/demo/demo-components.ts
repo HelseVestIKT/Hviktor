@@ -280,6 +280,7 @@ export const DEMO_COMPONENTS: DemoComponent[] = [
     description:
       'Table brukes for å vise strukturert informasjon på en ryddig og oversiktlig måte. Tabeller kan gjøre det enklere for brukerne å skanne og sammenligne informasjon.',
     ds: true,
+    codeTested: true,
   },
   {
     id: 'pagination',

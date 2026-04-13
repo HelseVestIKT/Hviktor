@@ -1,40 +1,72 @@
-import { Component, signal } from '@angular/core';
-import { HviPagination, HviSortableColumn, HviTable } from '@helsevestikt/hviktor';
+// Auto-generated - do not edit manually
+export const TableUtvidbareRaderExampleSource = `import { Component, signal, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { HviButton, HviTable } from '@helsevestikt/hviktor';
+import '@helsevestikt/hviktor-icons/icon-chevron-down.webcomponent';
+import '@helsevestikt/hviktor-icons/icon-chevron-right.webcomponent';
+import '@helsevestikt/hviktor-icons/icon-envelope-closed.webcomponent';
+import '@helsevestikt/hviktor-icons/icon-phone.webcomponent';
 
 @Component({
-  selector: 'app-table-paginering-example',
+  selector: 'app-table-utvidbare-rader-example',
   standalone: true,
-  imports: [HviPagination, HviSortableColumn, HviTable],
-  template: `
-    <table hviTable [value]="data" paginator [rows]="5" zebra hover #pageTable="hviTable">
+  imports: [HviButton, HviTable],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  template: \`
+    <table hviTable [value]="data" hover #expandTable="hviTable">
       <thead>
         <tr>
-          <th hviSortableColumn="navn">
-            <button type="button">Navn</button>
-          </th>
-          <th>Epost</th>
+          <th style="width: 3rem"><span class="sr-only">Utvid</span></th>
+          <th>Navn</th>
           <th>Avdeling</th>
+          <th>Stilling</th>
         </tr>
       </thead>
       <tbody>
-        @for (person of pageTable.paginatedValue(); track person.id) {
+        @for (person of expandTable.filteredValue(); track person.id) {
           <tr>
+            <td>
+              <button
+                hviButton
+                variant="tertiary"
+                (click)="expandTable.toggleExpanded(person)"
+                [attr.aria-expanded]="expandTable.isExpanded(person)"
+                aria-label="Vis detaljer"
+              >
+                @if (expandTable.isExpanded(person)) {
+                  <hvi-icon-chevron-down />
+                } @else {
+                  <hvi-icon-chevron-right />
+                }
+              </button>
+            </td>
             <td>{{ person.navn }}</td>
-            <td>{{ person.epost }}</td>
             <td>{{ person.avdeling }}</td>
+            <td>{{ person.stilling }}</td>
           </tr>
+          @if (expandTable.isExpanded(person)) {
+            <tr>
+              <td colspan="4">
+                <div class="flex gap-8 py-2 pl-12">
+                  <dl class="flex items-center gap-2">
+                    <dt>
+                      <hvi-icon-envelope-closed />
+                    </dt>
+                    <dd>{{ person.epost }}</dd>
+                  </dl>
+                  <dl class="flex items-center gap-2">
+                    <dt><hvi-icon-phone /></dt>
+                    <dd>{{ person.telefon }}</dd>
+                  </dl>
+                </div>
+              </td>
+            </tr>
+          }
         }
       </tbody>
     </table>
-    <hvi-pagination
-      [totalItems]="pageTable.totalFilteredRecords()"
-      [pageSize]="5"
-      [currentPage]="pageTable.currentPage()"
-      (currentPageChange)="pageTable.goToPage($event)"
-    />
-  `,
+  \`,
 })
-export class TablePagineringExampleComponent {
+export class TableUtvidbareRaderExampleComponent {
   data = [
     {
       id: 1,
@@ -150,3 +182,4 @@ export class TablePagineringExampleComponent {
   ];
   rowsPerPage = signal(5);
 }
+`;

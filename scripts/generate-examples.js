@@ -138,6 +138,14 @@ function parseDemoFile(filePath) {
         .filter(Boolean)
     : [];
 
+  // Extract side-effect imports (e.g. icon web components: import '...';)
+  const sideEffectImports = (content.match(/^import\s+['"][^'"]+['"];?\s*$/gm) || [])
+    .filter((imp) => !imp.includes(' from '))
+    .map((imp) => imp.trim());
+
+  // Check if component uses CUSTOM_ELEMENTS_SCHEMA
+  const hasCustomElementsSchema = content.includes('CUSTOM_ELEMENTS_SCHEMA');
+
   return {
     demoName,
     imports,
@@ -146,6 +154,8 @@ function parseDemoFile(filePath) {
     allHviImports,
     angularImports,
     angularFormsImports,
+    sideEffectImports,
+    hasCustomElementsSchema,
   };
 }
 
@@ -358,6 +368,8 @@ function generateExampleComponent(
   allHviImports,
   angularImports,
   angularFormsImports,
+  hasCustomElementsSchema,
+  sideEffectImports,
 ) {
   const pascalDemoName = toPascal(demoName);
   const pascalSectionName = toPascal(section.slug);
@@ -418,12 +430,36 @@ function generateExampleComponent(
   // Template is already normalized in extractSections
   const cleanTemplate = section.content;
 
+  // Check if this section uses custom elements (e.g. hvi-icon-*)
+  const usesCustomElements = /<hvi-icon-/.test(section.content);
+  const needsSchema = usesCustomElements && hasCustomElementsSchema;
+
+  // Add side-effect imports for icons used in this section
+  const sectionSideEffects = (sideEffectImports || []).filter((imp) => {
+    // Extract the icon name from the import path (e.g. 'icon-chevron-down')
+    const iconMatch = imp.match(/icon-[\w-]+/);
+    return iconMatch && section.content.includes(`<hvi-${iconMatch[0]}`);
+  });
+
+  // Add CUSTOM_ELEMENTS_SCHEMA to angular imports if needed
+  if (needsSchema && !requiredAngularImports.includes('CUSTOM_ELEMENTS_SCHEMA')) {
+    requiredAngularImports.push('CUSTOM_ELEMENTS_SCHEMA');
+    // Rebuild the angular import line
+    importLines[0] = `import { ${requiredAngularImports.join(', ')} } from '@angular/core';`;
+  }
+
+  // Build schemas line
+  const schemasLine = needsSchema ? `\n  schemas: [CUSTOM_ELEMENTS_SCHEMA],` : '';
+
+  // Build side-effect import lines
+  const sideEffectLines = sectionSideEffects.length > 0 ? '\n' + sectionSideEffects.join('\n') : '';
+
   // Generate the component
-  const code = `${importLines.join('\n')}
+  const code = `${importLines.join('\n')}${sideEffectLines}
 
 @Component({
   selector: '${selector}',
-  standalone: true,${componentImports ? `\n  imports: [${componentImports}],` : ''}
+  standalone: true,${componentImports ? `\n  imports: [${componentImports}],` : ''}${schemasLine}
   template: \`
     ${cleanTemplate.split('\n').join('\n    ')}
   \`,
@@ -519,6 +555,8 @@ function processDemoFile(filePath) {
       parsed.allHviImports,
       parsed.angularImports,
       parsed.angularFormsImports,
+      parsed.hasCustomElementsSchema,
+      parsed.sideEffectImports,
     );
 
     examples.push(example);

@@ -1,23 +1,28 @@
-import { Component, signal } from '@angular/core';
-import { HviPagination, HviSortableColumn, HviTable } from '@helsevestikt/hviktor';
+// Auto-generated - do not edit manually
+export const TableSorteringExampleSource = `import { Component, signal } from '@angular/core';
+import { HviSortableColumn, HviTable } from '@helsevestikt/hviktor';
 
 @Component({
-  selector: 'app-table-paginering-example',
+  selector: 'app-table-sortering-example',
   standalone: true,
-  imports: [HviPagination, HviSortableColumn, HviTable],
-  template: `
-    <table hviTable [value]="data" paginator [rows]="5" zebra hover #pageTable="hviTable">
+  imports: [HviSortableColumn, HviTable],
+  template: \`
+    <table hviTable [value]="data" #sortTable="hviTable">
       <thead>
         <tr>
           <th hviSortableColumn="navn">
             <button type="button">Navn</button>
           </th>
-          <th>Epost</th>
-          <th>Avdeling</th>
+          <th hviSortableColumn="epost">
+            <button type="button">Epost</button>
+          </th>
+          <th hviSortableColumn="avdeling">
+            <button type="button">Avdeling</button>
+          </th>
         </tr>
       </thead>
       <tbody>
-        @for (person of pageTable.paginatedValue(); track person.id) {
+        @for (person of sortTable.filteredValue(); track person.id) {
           <tr>
             <td>{{ person.navn }}</td>
             <td>{{ person.epost }}</td>
@@ -26,15 +31,9 @@ import { HviPagination, HviSortableColumn, HviTable } from '@helsevestikt/hvikto
         }
       </tbody>
     </table>
-    <hvi-pagination
-      [totalItems]="pageTable.totalFilteredRecords()"
-      [pageSize]="5"
-      [currentPage]="pageTable.currentPage()"
-      (currentPageChange)="pageTable.goToPage($event)"
-    />
-  `,
+  \`,
 })
-export class TablePagineringExampleComponent {
+export class TableSorteringExampleComponent {
   data = [
     {
       id: 1,
@@ -150,3 +149,4 @@ export class TablePagineringExampleComponent {
   ];
   rowsPerPage = signal(5);
 }
+`;

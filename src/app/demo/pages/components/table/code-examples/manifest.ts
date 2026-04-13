@@ -1,34 +1,34 @@
 // Auto-generated - do not edit manually
 export const TableExamplesManifest = [
   {
-    slug: 'basis',
-    title: 'Basis',
-    className: 'TableBasisExampleComponent',
-    sourceExport: 'TableBasisExampleSource',
+    slug: 'enkel-tabell',
+    title: 'Enkel tabell',
+    className: 'TableEnkelTabellExampleComponent',
+    sourceExport: 'TableEnkelTabellExampleSource',
   },
   {
-    slug: 'zebrastriper',
-    title: 'Zebrastriper',
-    className: 'TableZebrastriperExampleComponent',
-    sourceExport: 'TableZebrastriperExampleSource',
+    slug: 'zebrastriper-og-border',
+    title: 'Zebrastriper og border',
+    className: 'TableZebrastriperOgBorderExampleComponent',
+    sourceExport: 'TableZebrastriperOgBorderExampleSource',
   },
   {
-    slug: 'med-border',
-    title: 'Med border',
-    className: 'TableMedBorderExampleComponent',
-    sourceExport: 'TableMedBorderExampleSource',
+    slug: 'sortering',
+    title: 'Sortering',
+    className: 'TableSorteringExampleComponent',
+    sourceExport: 'TableSorteringExampleSource',
   },
   {
-    slug: 'hover',
-    title: 'Hover',
-    className: 'TableHoverExampleComponent',
-    sourceExport: 'TableHoverExampleSource',
+    slug: 'globalt-sok',
+    title: 'Globalt søk',
+    className: 'TableGlobaltSokExampleComponent',
+    sourceExport: 'TableGlobaltSokExampleSource',
   },
   {
-    slug: 'sok-og-sortering',
-    title: 'Søk og sortering',
-    className: 'TableSokOgSorteringExampleComponent',
-    sourceExport: 'TableSokOgSorteringExampleSource',
+    slug: 'kolonnefiltrering',
+    title: 'Kolonnefiltrering',
+    className: 'TableKolonnefiltreringExampleComponent',
+    sourceExport: 'TableKolonnefiltreringExampleSource',
   },
   {
     slug: 'paginering',
@@ -37,25 +37,25 @@ export const TableExamplesManifest = [
     sourceExport: 'TablePagineringExampleSource',
   },
   {
-    slug: 'tall-i-tabell',
-    title: 'Tall i tabell',
-    className: 'TableTallITabellExampleComponent',
-    sourceExport: 'TableTallITabellExampleSource',
+    slug: 'utvidbare-rader',
+    title: 'Utvidbare rader',
+    className: 'TableUtvidbareRaderExampleComponent',
+    sourceExport: 'TableUtvidbareRaderExampleSource',
   },
   {
-    slug: 'kombinert',
-    title: 'Kombinert',
-    className: 'TableKombinertExampleComponent',
-    sourceExport: 'TableKombinertExampleSource',
+    slug: 'komplett-eksempel',
+    title: 'Komplett eksempel',
+    className: 'TableKomplettEksempelExampleComponent',
+    sourceExport: 'TableKomplettEksempelExampleSource',
   },
 ] as const;
 
 export type TableExampleSlug =
-  | 'basis'
-  | 'zebrastriper'
-  | 'med-border'
-  | 'hover'
-  | 'sok-og-sortering'
+  | 'enkel-tabell'
+  | 'zebrastriper-og-border'
+  | 'sortering'
+  | 'globalt-sok'
+  | 'kolonnefiltrering'
   | 'paginering'
-  | 'tall-i-tabell'
-  | 'kombinert';
+  | 'utvidbare-rader'
+  | 'komplett-eksempel';
