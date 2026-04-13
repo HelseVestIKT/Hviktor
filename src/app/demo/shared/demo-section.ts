@@ -58,7 +58,7 @@ export class DemoSectionComponent implements AfterViewInit {
       .replace(/ø/g, 'o')
       .replace(/å/g, 'a')
       .replace(/[^a-z0-9]+/g, '-')
-      .replace(/^-|-$/g, ''),
+      .replace(/^-+|-+$/g, ''),
   );
 
   codeBlock = viewChild<ElementRef<HTMLElement>>('codeBlock');
