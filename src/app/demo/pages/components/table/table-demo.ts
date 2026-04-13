@@ -224,7 +224,6 @@ import { TableZebrastriperOgBorderExampleSource } from './code-examples/table.ze
               <th>
                 <select
                   hviSelect
-                  data-size="sm"
                   (change)="colFilterTable.setColumnFilter('navn', $any($event.target).value)"
                 >
                   <option value="">Alle</option>
@@ -236,7 +235,6 @@ import { TableZebrastriperOgBorderExampleSource } from './code-examples/table.ze
               <th>
                 <select
                   hviSelect
-                  data-size="sm"
                   (change)="colFilterTable.setColumnFilter('avdeling', $any($event.target).value)"
                 >
                   <option value="">Alle</option>
@@ -248,7 +246,6 @@ import { TableZebrastriperOgBorderExampleSource } from './code-examples/table.ze
               <th>
                 <select
                   hviSelect
-                  data-size="sm"
                   (change)="colFilterTable.setColumnFilter('stilling', $any($event.target).value)"
                 >
                   <option value="">Alle</option>
@@ -426,7 +423,6 @@ import { TableZebrastriperOgBorderExampleSource } from './code-examples/table.ze
               <th>
                 <select
                   hviSelect
-                  data-size="sm"
                   (change)="fullTable.setColumnFilter('navn', $any($event.target).value)"
                 >
                   <option value="">Alle</option>
@@ -438,7 +434,6 @@ import { TableZebrastriperOgBorderExampleSource } from './code-examples/table.ze
               <th>
                 <select
                   hviSelect
-                  data-size="sm"
                   (change)="fullTable.setColumnFilter('avdeling', $any($event.target).value)"
                 >
                   <option value="">Alle</option>
@@ -450,7 +445,6 @@ import { TableZebrastriperOgBorderExampleSource } from './code-examples/table.ze
               <th>
                 <select
                   hviSelect
-                  data-size="sm"
                   (change)="fullTable.setColumnFilter('stilling', $any($event.target).value)"
                 >
                   <option value="">Alle</option>
@@ -468,15 +462,14 @@ import { TableZebrastriperOgBorderExampleSource } from './code-examples/table.ze
                   <button
                     hviButton
                     variant="tertiary"
-                    size="sm"
                     (click)="fullTable.toggleExpanded(person)"
                     [attr.aria-expanded]="fullTable.isExpanded(person)"
                     aria-label="Vis detaljer"
                   >
                     @if (fullTable.isExpanded(person)) {
-                      <hvi-icon-chevron-down size="sm"></hvi-icon-chevron-down>
+                      <hvi-icon-chevron-down />
                     } @else {
-                      <hvi-icon-chevron-right size="sm"></hvi-icon-chevron-right>
+                      <hvi-icon-chevron-right />
                     }
                   </button>
                 </td>
@@ -490,12 +483,12 @@ import { TableZebrastriperOgBorderExampleSource } from './code-examples/table.ze
                     <div class="flex gap-8 py-2 pl-12">
                       <dl class="flex items-center gap-2">
                         <dt>
-                          <hvi-icon-envelope-closed size="sm"></hvi-icon-envelope-closed>
+                          <hvi-icon-envelope-closed />
                         </dt>
                         <dd>{{ person.epost }}</dd>
                       </dl>
                       <dl class="flex items-center gap-2">
-                        <dt><hvi-icon-phone size="sm"></hvi-icon-phone></dt>
+                        <dt><hvi-icon-phone /></dt>
                         <dd>{{ person.telefon }}</dd>
                       </dl>
                     </div>
