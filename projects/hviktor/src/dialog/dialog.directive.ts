@@ -1,53 +1,53 @@
-import {
-  Directive,
-  ElementRef,
-  EventEmitter,
-  HostListener,
-  inject,
-  Input,
-  Output,
-} from '@angular/core';
+import { Directive, ElementRef, EventEmitter, inject, Input, Output } from '@angular/core';
 
 /**
  * @summary
- * Dialog allows you to create both modal and non-modal dialogs based on the HTML dialog element.
- * You have to connect the <dialog> element to a trigger yourself, and handle opening and closing the dialog with JavaScript.
+ * Dialog wraps the native HTML `<dialog>` element with Angular bindings for opening, closing,
+ * and placement. Supports both modal and non-modal modes.
  *
- * @example
- * HTML:
+ * @example Modal dialog
  * ```html
- * <dialog hviDialog [id]="exampleDialog" [open]="dialogOpen()" (openChange)="toggleDialog($event)">
- *  <h3 hviHeading size="md">Example dialog</h3>
- *  <p hviParagraph>This is an example of a dialog component.</p>
- *  <button hviButton variant="primary" (click)="closeDialog()">Close dialog</button>
+ * <button type="button" aria-haspopup="dialog" (click)="dialogOpen.set(true)">
+ *   Open dialog
+ * </button>
+ * <dialog hviDialog id="myDialog" [open]="dialogOpen()" (openChange)="dialogOpen.set($event)">
+ *   <h2>Dialog title</h2>
+ *   <p>Dialog content</p>
+ *   <button type="button" (click)="dialogOpen.set(false)">Close</button>
  * </dialog>
  * ```
  *
- * TypeScript:
- * ```ts
- * export class DialogExampleComponent {
- *  readonly dialogOpen = signal(false);
- *  toggleDialog(nextState?: boolean): void {
- *    if (typeof nextState === 'boolean') {
- *      this.dialogOpen.set(nextState);
- *      return;
- *    }
- *    this.dialogOpen.update((current) => !current);
- *   }
- * }
+ * @example Drawer dialog (placement)
+ * ```html
+ * <dialog hviDialog placement="right" [open]="open()" (openChange)="open.set($event)">
+ *   Drawer content
+ * </dialog>
+ * ```
  *
- * Documentation: https://designsystemet.no/en/components/docs/dialog/code/
+ * @example Non-modal dialog
+ * ```html
+ * <dialog hviDialog [modal]="false" [open]="open()" (openChange)="open.set($event)">
+ *   Non-modal content
+ * </dialog>
+ * ```
+ *
+ * @see {@link https://designsystemet.no/no/components/docs/dialog/code}
  */
 @Directive({
   selector: 'dialog[hviDialog]',
   standalone: true,
   host: {
     class: 'ds-dialog',
-    id: '{{ id }}',
+    '[attr.id]': 'id',
+    '[attr.data-placement]': 'placement === "center" ? null : placement',
+    '(close)': 'handleClose()',
+    '(cancel)': 'handleCancel($event)',
   },
 })
 export class HviDialog {
+  /** Optional id for the dialog element, used to connect external triggers via `commandfor`. */
   @Input() id?: string;
+
   @Input()
   set open(value: boolean) {
     this.setOpen(Boolean(value));
@@ -57,8 +57,13 @@ export class HviDialog {
     return this.element.open;
   }
 
+  /** Whether the dialog opens as a modal (default: `true`). Modal dialogs block interaction with the rest of the page. */
   @Input() modal = true;
 
+  /** Placement of the dialog. `center` (default) shows a traditional dialog; the other values render the dialog as a drawer from that edge. */
+  @Input() placement?: 'center' | 'left' | 'right' | 'top' | 'bottom';
+
+  /** Emits `true` when the dialog opens and `false` when it closes. */
   @Output() readonly openChange = new EventEmitter<boolean>();
 
   private readonly element = inject(ElementRef<HTMLDialogElement>).nativeElement;
@@ -71,12 +76,10 @@ export class HviDialog {
     this.setOpen(false);
   }
 
-  @HostListener('close')
   handleClose(): void {
     this.openChange.emit(false);
   }
 
-  @HostListener('cancel', ['$event'])
   handleCancel(event: Event): void {
     event.preventDefault();
     this.setOpen(false);

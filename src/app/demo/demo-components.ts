@@ -93,6 +93,7 @@ export const DEMO_COMPONENTS: DemoComponent[] = [
     description:
       'Det er to typer dialoger, en modal og en ikke-modal. En modal dialog tvinger brukerne til å ta stilling til noe før de kan fortsette å bruke siden. En Ikke-modal dialog lar brukerne fortsette å bruke siden, selv om dialogen er åpen.',
     ds: true,
+    codeTested: true,
   },
   {
     id: 'divider',
