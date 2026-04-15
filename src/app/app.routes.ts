@@ -11,6 +11,10 @@ export const routes: Routes = [
         loadComponent: () => import('./demo/pages/home/home').then((m) => m.HomeComponent),
       },
       {
+        path: 'mcp-setup',
+        loadComponent: () => import('./demo/pages/mcp-setup/mcp-setup').then((m) => m.McpSetup),
+      },
+      {
         path: 'komponenter/alert',
         loadComponent: () =>
           import('./demo/pages/components/alert/alert-demo').then((m) => m.AlertDemoComponent),

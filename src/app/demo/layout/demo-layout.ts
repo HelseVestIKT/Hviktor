@@ -1,13 +1,13 @@
 import { Component, inject } from '@angular/core';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
-import { HviButton, HviLogo } from '@helsevestikt/hviktor';
+import { HviButton, HviLink, HviLogo } from '@helsevestikt/hviktor';
 import { DEMO_COMPONENTS } from '../demo-components';
 import { ThemeService } from '../services/theme.service';
 
 @Component({
   selector: 'app-demo-layout',
   standalone: true,
-  imports: [RouterOutlet, RouterLink, RouterLinkActive, HviButton, HviLogo],
+  imports: [RouterOutlet, RouterLink, RouterLinkActive, HviButton, HviLogo, HviLink],
   templateUrl: 'demo-layout.html',
   host: {
     '[attr.data-color-scheme]': 'themeService.colorScheme()',
