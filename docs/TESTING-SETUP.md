@@ -30,6 +30,8 @@ Bruk `setupTestBed()` fra `../testing/test-utils` — den konfigurerer `TestBed`
 
 Bruk `fixture.componentRef.setInput('name', value)` for å sette inputs (unngår `ExpressionChangedAfterItHasBeenCheckedError`).
 
+**Kvalitet foran kvantitet:** Test logikk som faktisk kan feile — ikke én test per enum-verdi, og ikke trivielle smoke-tester (`should create`, statisk host-class). Se [unit-test-conventions.md](../.github/skills/verify-component/references/unit-test-conventions.md).
+
 ```typescript
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { setupTestBed } from '../testing/test-utils';
@@ -46,11 +48,13 @@ describe('HviAlert', () => {
     fixture.detectChanges();
   });
 
-  it('should have ds-alert host class', () => {
-    expect(element.classList.contains('ds-alert')).toBe(true);
+  // ✅ Tester null-state for alle valgfrie inputs i én test
+  it('should not set data attributes when no inputs are provided', () => {
+    expect(element.getAttribute('data-color')).toBeNull();
   });
 
-  it('should set data-color', () => {
+  // ✅ Én representativ verdi bekrefter at bindingen fungerer
+  it('should reflect color input as data-color attribute', () => {
     fixture.componentRef.setInput('color', 'danger');
     fixture.detectChanges();
     expect(element.getAttribute('data-color')).toBe('danger');
@@ -69,7 +73,9 @@ For **content projection**, bruk en testvertskomponent:
 class TestHost {}
 ```
 
-For **direktiver** (f.eks. `HviButton`): `<button hviButton variant="primary">Klikk</button>`.
+For **direktiver** (f.eks. `HviButton`): lag dedikerte host-komponenter per variant, sett verdier i template eller _før_ første `detectChanges()`.
+
+For **logikk** (events, interaktivitet, mapping-regler): se `dialog.directive.spec.ts` og `table.directive.spec.ts` som referanser.
 
 ## E2E-tester (Playwright)
 
@@ -95,15 +101,21 @@ test.describe('Alert', () => {
     await componentPage.goto('alert');
   });
 
-  test('page loads', async () => {
-    await expect(componentPage.heading).toHaveText('Alert');
+  // ✅ Tester komponentens attributter i nettleseren
+  test('renders color variants with correct data-color attribute', async ({ page }) => {
+    const section = page.locator('app-demo-section[title="Varianter"]');
+    await expect(section).toBeVisible();
+    await expect(section.locator('hvi-alert').first()).toHaveAttribute('data-color', 'info');
   });
 
-  test('accessibility', async ({ page }) => {
-    await checkAccessibility(page);
+  // ✅ Alltid sist
+  test('accessibility check', async ({ page }) => {
+    await checkAccessibility(page, ['color-contrast'], 'article');
   });
 });
 ```
+
+**Unngå:** heading/page-load-tester, element-telling i løkke, `toHaveCount` knyttet til antall demo-eksempler. Se [e2e-test-conventions.md](../.github/skills/verify-component/references/e2e-test-conventions.md).
 
 ## Demo-status
 

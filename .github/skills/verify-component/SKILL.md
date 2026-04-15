@@ -213,8 +213,8 @@ Before marking complete, verify:
 - [ ] JSDoc on every exported class with `@summary`, `@example`, `@see`
 - [ ] JSDoc on every `@Input()`
 - [ ] `index.ts` uses named exports
-- [ ] Unit tests cover: host class, default attributes, each input→attribute mapping, content projection, boolean toggles
-- [ ] E2E tests cover: page load, each demo section, accessibility check
+- [ ] Unit tests cover real logic: default null-state, representative passthrough values, custom mapping rules, boolean toggles, events, and interactive behavior — NOT one test per enum value, NOT trivial `should create`
+- [ ] E2E tests cover component behavior in browser: attribute presence, interactive state changes, accessibility — NOT heading/page-load, NOT exact element counts tied to demo layout
 - [ ] `codeTested: true` set in demo-components.ts
 - [ ] `npm test` passes
 - [ ] `npm run lint` passes

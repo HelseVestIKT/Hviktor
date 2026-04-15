@@ -16,18 +16,28 @@
 
 Opprett `projects/hviktor/src/<komponent>/<komponent>.component.spec.ts`.
 
-**Én `it()` per test-case:**
+**Kvalitet foran kvantitet** — én test skal verifisere én ting som faktisk kan gå galt.
 
-| Test                   | Sjekk                                            |
-| ---------------------- | ------------------------------------------------ |
-| Opprettes              | `expect(fixture.componentInstance).toBeTruthy()` |
-| Host class             | `element.classList.contains('ds-komponent')`     |
-| Role (hvis aktuelt)    | `element.getAttribute('role')`                   |
-| Defaults er null       | `element.getAttribute('data-*')` er `null`       |
-| Hver input → attributt | `setInput(...)` → `getAttribute(...)`            |
-| Content projection     | Testvert med innhold → `textContent`             |
+| Test                           | Sjekk                                                                   |
+| ------------------------------ | ----------------------------------------------------------------------- |
+| Defaults er null               | `element.getAttribute('data-*')` er `null` for alle valgfrie inputs     |
+| Én representativ verdi         | Bekrefter at `[attr.x]='x'`-bindingen fungerer — ikke én per enum-verdi |
+| Mapping-regler (custom logikk) | Hver regel som transformerer eller betinget setter en attributt         |
+| Boolean true / false           | `getAttribute('data-flag')` er `''` / `null`                            |
+| ARIA-attributter               | Korrekt verdi eller `null`                                              |
+| Content projection             | Testvert med innhold → `textContent`                                    |
+| Event-emisjon                  | Output emitter korrekt verdi ved forventet handling                     |
+| Interaktivitet / vaktlogikk    | Tilstand endres riktig; blokkeres når det skal blokkeres                |
 
-Se `alert.component.spec.ts` og `avatar.component.spec.ts` som referanser.
+**Unngå:**
+
+- `should create` — TypeScript-kompilering garanterer allerede dette
+- Statisk host-class-test — kan ikke feile uten at komponenten slutter å kompilere
+- Én `it()` per enum-verdi for samme `@Input()` — hvis `'danger'` fungerer, fungerer `'info'` også
+
+Se [unit-test-conventions.md](../.github/skills/verify-component/references/unit-test-conventions.md) for detaljer og mønstre.
+
+Se `dialog.directive.spec.ts` og `table.directive.spec.ts` som referanser på tester med reell logikk.
 
 ## 4. Kjør unit-test
 
@@ -39,7 +49,16 @@ npm test -- --project hviktor --watch=false
 
 Opprett `e2e/components/<komponent>.spec.ts` med `ComponentPage` og `checkAccessibility`.
 
-Se `e2e/components/alert.spec.ts` som referanse.
+Fokuser på **komponentens atferd i nettleseren**, ikke demo-sidens layout:
+
+- Sjekk at forventede `data-*`-attributter er satt på riktig element
+- Test interaktivitet: klikk, toggle, åpne/lukke dialog
+- Verifiser ARIA-attributter der det er relevant
+- Unngå: heading/page-load-test, element-telling i løkke, `toHaveCount` knyttet til antall demo-eksempler
+
+Se [e2e-test-conventions.md](../.github/skills/verify-component/references/e2e-test-conventions.md) for detaljer.
+
+Se `e2e/components/dialog.spec.ts` som referanse.
 
 ## 6. Kjør E2E-test
 
