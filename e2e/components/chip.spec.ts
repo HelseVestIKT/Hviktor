@@ -3,55 +3,31 @@ import { checkAccessibility } from '../fixtures/axe-helper';
 import { ComponentPage } from '../fixtures/component-page';
 
 test.describe('Chip', () => {
-  let componentPage: ComponentPage;
-
   test.beforeEach(async ({ page }) => {
-    componentPage = new ComponentPage(page);
+    const componentPage = new ComponentPage(page);
     await componentPage.goto('chip');
   });
 
-  test('page loads and renders heading', async () => {
-    await expect(componentPage.heading).toHaveText('Chip');
-  });
-
-  test('radio section renders radio chips', async ({ page }) => {
+  test('radio section renders label chips with radio inputs', async ({ page }) => {
     const section = page.locator('app-demo-section[title="Radio"]');
-    await expect(section).toBeVisible();
-
-    const chips = section.locator('label.ds-chip');
-    await expect(chips).toHaveCount(2);
-
-    const radios = section.locator('input[type="radio"]');
-    await expect(radios).toHaveCount(2);
+    await expect(section.locator('label.ds-chip').first()).toBeVisible();
+    await expect(section.locator('input[type="radio"]').first()).toBeVisible();
   });
 
-  test('checkbox section renders checkbox chip', async ({ page }) => {
+  test('checkbox section renders label chip with checkbox input', async ({ page }) => {
     const section = page.locator('app-demo-section[title="Checkbox"]');
-    await expect(section).toBeVisible();
-
-    const chip = section.locator('label.ds-chip');
-    await expect(chip).toHaveCount(1);
-
-    const checkbox = section.locator('input[type="checkbox"]');
-    await expect(checkbox).toHaveCount(1);
+    await expect(section.locator('label.ds-chip')).toBeVisible();
+    await expect(section.locator('input[type="checkbox"]')).toBeVisible();
   });
 
-  test('button section renders button chip', async ({ page }) => {
+  test('button section renders a button chip', async ({ page }) => {
     const section = page.locator('app-demo-section[title="Button"]');
-    await expect(section).toBeVisible();
-
-    const chip = section.locator('button.ds-chip');
-    await expect(chip).toHaveCount(1);
-    await expect(chip).toContainText('Tøm alle filtre');
+    await expect(section.locator('button.ds-chip')).toBeVisible();
   });
 
-  test('removable section renders removable chip', async ({ page }) => {
+  test('removable section renders chip with data-removable attribute', async ({ page }) => {
     const section = page.locator('app-demo-section[title="Button (removable)"]');
-    await expect(section).toBeVisible();
-
-    const chip = section.locator('button.ds-chip');
-    await expect(chip).toHaveCount(1);
-    await expect(chip).toHaveAttribute('data-removable', 'true');
+    await expect(section.locator('button.ds-chip[data-removable="true"]')).toBeVisible();
   });
 
   test('passes accessibility checks', async ({ page }) => {

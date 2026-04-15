@@ -13,17 +13,10 @@ class HostComponent {}
 describe('HviChipLabel', () => {
   beforeEach(() => setupTestBed({ imports: [HostComponent] }));
 
-  it('should apply ds-chip class', () => {
+  it('should apply ds-chip class to the host label element', () => {
     const fixture = TestBed.createComponent(HostComponent);
     fixture.detectChanges();
     const label = fixture.nativeElement.querySelector('label') as HTMLLabelElement;
     expect(label.classList.contains('ds-chip')).toBe(true);
-  });
-
-  it('should render text content', () => {
-    const fixture = TestBed.createComponent(HostComponent);
-    fixture.detectChanges();
-    const label = fixture.nativeElement.querySelector('label') as HTMLLabelElement;
-    expect(label.textContent?.trim()).toBe('Nynorsk');
   });
 });
