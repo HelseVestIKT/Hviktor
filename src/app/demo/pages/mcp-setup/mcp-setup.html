@@ -1,0 +1,84 @@
+<article class="mx-auto max-w-4xl space-y-8">
+  <header class="space-y-3">
+    <div class="flex flex-wrap items-center gap-2">
+      <h1 hviHeading size="xl">Hviktor Angular MCP</h1>
+      <hvi-tag color="info">Eksperimentell</hvi-tag>
+    </div>
+
+    <p hviParagraph>
+      Hviktor Angular MCP er en MCP-server som gir AI-assistenter i VS Code tilgang til
+      dokumentasjon og kodeeksempler for Hviktor Angular-komponentene. Serveren kjører i Azure og er
+      tilgjengelig over HTTPS.
+    </p>
+  </header>
+
+  <section class="space-y-3">
+    <h2 hviHeading size="md">Krav</h2>
+    <ul class="list-disc space-y-1 pl-6">
+      <li><p hviParagraph>VS Code med GitHub Copilot.</p></li>
+    </ul>
+  </section>
+
+  <section class="space-y-3">
+    <h2 hviHeading size="md">1) Konfigurer MCP i VS Code</h2>
+    <ol class="list-decimal space-y-1 pl-6">
+      <li><p hviParagraph>Åpne Command Palette.</p></li>
+      <li>
+        <p hviParagraph>Kjør <strong>MCP: Open User Configuration</strong>.</p>
+      </li>
+      <li>
+        <p hviParagraph>Legg inn konfigurasjonen under i <strong>mcp.json</strong>.</p>
+      </li>
+    </ol>
+
+    <pre
+      class="overflow-x-auto rounded-md border border-neutral-700 bg-neutral-900 p-4 text-neutral-50"
+    ><code class="font-mono text-sm leading-6">&#123;
+  "servers": &#123;
+    "hviktorAngularMcp": &#123;
+      "type": "http",
+      "url": "https://hviktor-angular-mcp.azure.ihelse.net/mcp"
+    &#125;
+  &#125;
+&#125;</code></pre>
+
+    <p hviParagraph>
+      Bruk <strong>mcp.json</strong>, ikke <strong>settings.json</strong>, for MCP-servere.
+    </p>
+  </section>
+
+  <section class="space-y-3">
+    <h2 hviHeading size="md">2) Start og verifiser</h2>
+    <ol class="list-decimal space-y-1 pl-6">
+      <li>
+        <p hviParagraph>Last VS Code på nytt: <strong>Developer: Reload Window</strong>.</p>
+      </li>
+      <li>
+        <p hviParagraph>
+          Kjør <strong>MCP: List Servers</strong> og bekreft at
+          <strong>hviktorAngularMcp</strong> har status <em>Running</em>.
+        </p>
+      </li>
+      <li><p hviParagraph>Test med en av promptene under i GitHub Copilot Chat.</p></li>
+    </ol>
+
+    <pre
+      class="overflow-x-auto rounded-md border border-neutral-700 bg-neutral-900 p-4 text-neutral-50"
+    ><code class="font-mono text-sm leading-6">List alle Hviktor-komponenter fra hviktorAngularMcp.
+Vis API for hvi-alert fra hviktorAngularMcp.
+Vis et kodeeksempel for hvi-button fra hviktorAngularMcp.</code></pre>
+  </section>
+
+  <footer class="pb-8">
+    <p hviParagraph>
+      Les mer om MCP i VS Code i den offisielle dokumentasjonen:
+      <a
+        hviLink
+        href="https://code.visualstudio.com/docs/copilot/customization/mcp-servers"
+        target="_blank"
+        rel="noopener noreferrer"
+        >Add and manage MCP servers</a
+      >.
+    </p>
+  </footer>
+</article>
