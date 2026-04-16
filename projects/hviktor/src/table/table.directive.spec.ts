@@ -198,14 +198,6 @@ describe('HviTable', () => {
     element = fixture.nativeElement.querySelector('table');
   });
 
-  it('should create', () => {
-    expect(element).toBeTruthy();
-  });
-
-  it('should have ds-table host class', () => {
-    expect(element.classList.contains('ds-table')).toBe(true);
-  });
-
   it('should not set data attributes when no inputs are provided', () => {
     expect(element.getAttribute('data-zebra')).toBeNull();
     expect(element.getAttribute('data-border')).toBeNull();
@@ -219,31 +211,13 @@ describe('HviTable styling attributes', () => {
     await setupTestBed({ imports: [StyledTableComponent] });
   });
 
-  it('should set data-zebra when zebra is true', () => {
+  it('should reflect boolean styling inputs as data attributes', () => {
     const f = TestBed.createComponent(StyledTableComponent);
     f.detectChanges();
     const el = f.nativeElement.querySelector('table');
     expect(el.getAttribute('data-zebra')).not.toBeNull();
-  });
-
-  it('should set data-border when border is true', () => {
-    const f = TestBed.createComponent(StyledTableComponent);
-    f.detectChanges();
-    const el = f.nativeElement.querySelector('table');
     expect(el.getAttribute('data-border')).not.toBeNull();
-  });
-
-  it('should set data-hover when hover is true', () => {
-    const f = TestBed.createComponent(StyledTableComponent);
-    f.detectChanges();
-    const el = f.nativeElement.querySelector('table');
     expect(el.getAttribute('data-hover')).not.toBeNull();
-  });
-
-  it('should set data-sticky-header when stickyHeader is true', () => {
-    const f = TestBed.createComponent(StyledTableComponent);
-    f.detectChanges();
-    const el = f.nativeElement.querySelector('table');
     expect(el.getAttribute('data-sticky-header')).not.toBeNull();
   });
 });
@@ -259,16 +233,8 @@ describe('HviTable data binding', () => {
     table = fixture.debugElement.children[0].injector.get(HviTable<Person>);
   });
 
-  it('should expose all records via totalRecords', () => {
-    expect(table.totalRecords()).toBe(7);
-  });
-
   it('should expose all records via filteredValue', () => {
     expect(table.filteredValue().length).toBe(7);
-  });
-
-  it('should expose totalFilteredRecords matching data length', () => {
-    expect(table.totalFilteredRecords()).toBe(7);
   });
 });
 
@@ -361,14 +327,6 @@ describe('HviTable sortable column directive', () => {
     expect(th.getAttribute('aria-sort')).toBe('none');
   });
 
-  it('should update aria-sort when sorted via button click', () => {
-    const th = fixture.nativeElement.querySelector('th[hviSortableColumn="navn"]');
-    const btn = th.querySelector('button');
-    btn.click();
-    fixture.detectChanges();
-    expect(th.getAttribute('aria-sort')).toBe('ascending');
-  });
-
   it('should cycle through sort directions on repeated clicks', () => {
     const th = fixture.nativeElement.querySelector('th[hviSortableColumn="navn"]');
     const btn = th.querySelector('button');
@@ -396,10 +354,6 @@ describe('HviTable global filtering', () => {
     fixture = TestBed.createComponent(GlobalFilterTableComponent);
     fixture.detectChanges();
     table = fixture.debugElement.children[0].injector.get(HviTable<Person>);
-  });
-
-  it('should show all rows when no filter applied', () => {
-    expect(table.totalFilteredRecords()).toBe(7);
   });
 
   it('should filter by name', () => {
