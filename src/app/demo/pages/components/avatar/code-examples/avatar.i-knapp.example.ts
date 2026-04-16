@@ -8,7 +8,7 @@ import { HviAvatar, HviButton } from '@helsevestikt/hviktor';
   template: `
     <div class="flex items-center gap-4">
       <button hviButton variant="secondary">
-        <hvi-avatar initials="EJ" ariaLabel="Erlend Johnsen" size="sm" />
+        <hvi-avatar initials="EJ" aria-label="Erlend Johnsen" size="sm" />
         Button with Avatar
       </button>
     </div>

@@ -7,10 +7,10 @@ import { HviAvatar } from '@helsevestikt/hviktor';
   imports: [HviAvatar],
   template: `
     <div class="flex items-center gap-4">
-      <hvi-avatar initials="xs" ariaLabel="Erlend Johnsen" size="xs" />
-      <hvi-avatar initials="sm" ariaLabel="Erlend Johnsen" size="sm" />
-      <hvi-avatar initials="md" ariaLabel="Erlend Johnsen" size="md" />
-      <hvi-avatar initials="lg" ariaLabel="Erlend Johnsen" size="lg" />
+      <hvi-avatar initials="xs" aria-label="Erlend Johnsen" size="xs" />
+      <hvi-avatar initials="sm" aria-label="Erlend Johnsen" size="sm" />
+      <hvi-avatar initials="md" aria-label="Erlend Johnsen" size="md" />
+      <hvi-avatar initials="lg" aria-label="Erlend Johnsen" size="lg" />
     </div>
   `,
 })
