@@ -10,8 +10,8 @@ test.describe('Details', () => {
 
   test('varianter section renders tinted and default data-variant attributes', async ({ page }) => {
     const section = page.locator('app-demo-section[title="Varianter"]');
-    await expect(section.locator('u-details[data-variant="tinted"]')).toBeVisible();
-    await expect(section.locator('u-details[data-variant="default"]')).toBeVisible();
+    await expect(section.locator('u-details[data-variant="tinted"]').first()).toBeVisible();
+    await expect(section.locator('u-details[data-variant="default"]').first()).toBeVisible();
   });
 
   test('varianter section details expand on click', async ({ page }) => {

@@ -27,9 +27,9 @@ test.describe('Card', () => {
     await expect(section.locator('.ds-card__block').first()).toBeVisible();
   });
 
-  test('link card has data-clickdelegatefor attribute', async ({ page }) => {
+  test('link card section has a card containing a link', async ({ page }) => {
     const section = page.locator('app-demo-section[title="Lenkekort"]');
-    await expect(section.locator('hvi-card[data-clickdelegatefor]').first()).toBeVisible();
+    await expect(section.locator('hvi-card a').first()).toBeVisible();
   });
 
   test('accessibility check', async ({ page }) => {

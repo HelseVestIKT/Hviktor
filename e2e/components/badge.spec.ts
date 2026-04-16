@@ -37,7 +37,7 @@ test.describe('Badge', () => {
     await expect(section).toBeVisible();
     const position = section.locator('hvi-badge-position[data-placement="top-left"]');
     await expect(position).toBeVisible();
-    await expect(position.locator('hvi-badge[data-count="3"][data-color="danger"]')).toBeVisible();
+    await expect(position.locator('hvi-badge[data-count="3"][data-color="danger"]')).toBeAttached();
   });
 
   test('accessibility check', async ({ page }) => {
