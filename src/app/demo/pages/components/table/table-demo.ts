@@ -226,25 +226,26 @@ import { TableZebrastriperOgBorderExampleSource } from './code-examples/table.ze
               <th>
                 <hvi-multi-select
                   [options]="navnOptions"
-                  size="sm"
                   placeholder="Alle"
                   searchPlaceholder="Søk navn..."
                   (selectionChange)="colFilterTable.setColumnFilter('navn', $event)"
                 />
               </th>
               <th>
-                <hvi-multi-select
-                  [options]="avdelingOptions"
-                  size="sm"
-                  placeholder="Alle"
-                  searchPlaceholder="Søk avdeling..."
-                  (selectionChange)="colFilterTable.setColumnFilter('avdeling', $event)"
-                />
+                <select
+                  hviSelect
+                  aria-label="Filtrer på avdeling"
+                  (change)="fullTable.setColumnFilter('avdeling', $any($event.target).value)"
+                >
+                  <option value="">Alle</option>
+                  @for (avdeling of avdelinger; track avdeling) {
+                    <option [value]="avdeling">{{ avdeling }}</option>
+                  }
+                </select>
               </th>
               <th>
                 <hvi-multi-select
                   [options]="stillingOptions"
-                  size="sm"
                   placeholder="Alle"
                   searchPlaceholder="Søk stilling..."
                   (selectionChange)="colFilterTable.setColumnFilter('stilling', $event)"

@@ -85,7 +85,7 @@ let nextId = 0;
           <span class="ds-combobox__placeholder">{{ placeholder }}</span>
         }
       </div>
-      <span class="ds-combobox__arrow">
+      <span class="ds-combobox__arrow" [class.ds-combobox__arrow--open]="isOpen()">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="1em"
@@ -162,12 +162,32 @@ let nextId = 0;
   styles: `
     :host {
       position: relative;
+      width: 100%;
     }
 
     .ds-combobox__input__wrapper {
-      border: 1px solid var(--ds-color-neutral-border-default);
+      border: var(--ds-border-width-default) solid var(--ds-color-neutral-border-default);
       background: var(--ds-color-neutral-surface-default);
+      border-radius: var(--ds-border-radius-md);
       cursor: pointer;
+    }
+
+    .ds-combobox__input__wrapper:focus {
+      box-shadow: 0 0 0 var(--ds-border-width-focus) var(--ds-color-focus-inner);
+      outline: var(--ds-border-width-focus) solid var(--ds-color-focus-outer);
+      outline-offset: var(--ds-border-width-focus);
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+      .ds-combobox__input__wrapper:not(:focus, :disabled):hover {
+        border-color: var(--ds-color-border-strong);
+        box-shadow: inset 0 0 0 1px var(--ds-color-border-strong);
+      }
+    }
+
+    .ds-combobox__chip-and-input {
+      overflow: hidden;
+      min-width: 0;
     }
 
     .ds-combobox__options-wrapper {
@@ -179,8 +199,33 @@ let nextId = 0;
     }
 
     .ds-combobox__placeholder {
-      color: var(--ds-color-neutral-text-subtle);
+      color: var(--ds-color-neutral-text-default);
       user-select: none;
+    }
+
+    .ds-combobox__arrow {
+      color: var(--ds-color-neutral-text-default);
+      transition: transform 0.15s ease;
+      flex-shrink: 0;
+      font-size: 1.5em;
+    }
+
+    .ds-combobox__arrow--open {
+      transform: rotate(180deg);
+    }
+
+    .ds-combobox__option:hover {
+      background: var(--ds-color-base-default);
+      color: var(--ds-color-base-contrast-default);
+    }
+
+    .ds-combobox__option:hover .ds-combobox__option__label {
+      color: var(--ds-color-base-contrast-default);
+    }
+
+    .ds-combobox__option:active {
+      background: var(--ds-color-base-active);
+      color: var(--ds-color-base-contrast-default);
     }
 
     .hvi-multi-select__search {
