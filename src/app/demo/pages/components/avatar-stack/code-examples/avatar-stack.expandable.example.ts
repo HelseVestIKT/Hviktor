@@ -8,15 +8,15 @@ import { HviAvatar, HviAvatarStack } from '@helsevestikt/hviktor';
   template: `
     <div class="flex flex-wrap gap-2">
       <figure hviAvatarStack tabindex="-1" expandable="true">
-        <hvi-avatar ariaLabel="Ola Nordmann" variant="circle" color="brand1"></hvi-avatar>
+        <hvi-avatar aria-label="Ola Nordmann" variant="circle" color="brand1"></hvi-avatar>
         <hvi-avatar
-          ariaLabel="Kari Nordmann"
+          aria-label="Kari Nordmann"
           variant="circle"
           initials="KN"
           color="brand2"
         ></hvi-avatar>
         <hvi-avatar
-          ariaLabel="Per Hansen"
+          aria-label="Per Hansen"
           variant="circle"
           initials="PH"
           color="brand3"

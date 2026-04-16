@@ -23,6 +23,7 @@ Inline SVG logo component for Helse Vest and its subsidiaries.
 | dots    | Just the five dots (no text)                     |
 | hve     | Helse Vest                                       |
 | hvikt   | Helse Vest IKT                                   |
+| hviktor | Hviktor (symbol only)                            |
 | hbe     | Helse Bergen                                     |
 | hbe-hus | Helse Bergen – Haukeland universitetssjukehus    |
 | hfd     | Helse Førde                                      |

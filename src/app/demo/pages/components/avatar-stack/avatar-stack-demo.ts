@@ -26,20 +26,20 @@ import { AvatarStackStandardAvatarStackExampleSource } from './code-examples/ava
         <div class="flex flex-wrap gap-2">
           <figure hviAvatarStack tabindex="-1">
             <hvi-avatar
-              ariaLabel="Ola Nordmann"
+              aria-label="Ola Nordmann"
               variant="circle"
               size="md"
               color="brand1"
             ></hvi-avatar>
             <hvi-avatar
-              ariaLabel="Kari Nordmann"
+              aria-label="Kari Nordmann"
               variant="circle"
               initials="KN"
               size="md"
               color="brand2"
             ></hvi-avatar>
             <hvi-avatar
-              ariaLabel="Per Hansen"
+              aria-label="Per Hansen"
               variant="circle"
               initials="PH"
               size="md"
@@ -53,20 +53,20 @@ import { AvatarStackStandardAvatarStackExampleSource } from './code-examples/ava
         <div class="flex flex-wrap gap-2">
           <figure hviAvatarStack tabindex="-1" suffix="+4">
             <hvi-avatar
-              ariaLabel="Ola Nordmann"
+              aria-label="Ola Nordmann"
               variant="circle"
               size="md"
               color="brand1"
             ></hvi-avatar>
             <hvi-avatar
-              ariaLabel="Kari Nordmann"
+              aria-label="Kari Nordmann"
               variant="circle"
               initials="KN"
               size="md"
               color="brand2"
             ></hvi-avatar>
             <hvi-avatar
-              ariaLabel="Per Hansen"
+              aria-label="Per Hansen"
               variant="circle"
               initials="PH"
               size="md"
@@ -79,15 +79,15 @@ import { AvatarStackStandardAvatarStackExampleSource } from './code-examples/ava
       <app-demo-section title="Expandable" [code]="expandableCode">
         <div class="flex flex-wrap gap-2">
           <figure hviAvatarStack tabindex="-1" expandable="true">
-            <hvi-avatar ariaLabel="Ola Nordmann" variant="circle" color="brand1"></hvi-avatar>
+            <hvi-avatar aria-label="Ola Nordmann" variant="circle" color="brand1"></hvi-avatar>
             <hvi-avatar
-              ariaLabel="Kari Nordmann"
+              aria-label="Kari Nordmann"
               variant="circle"
               initials="KN"
               color="brand2"
             ></hvi-avatar>
             <hvi-avatar
-              ariaLabel="Per Hansen"
+              aria-label="Per Hansen"
               variant="circle"
               initials="PH"
               color="brand3"

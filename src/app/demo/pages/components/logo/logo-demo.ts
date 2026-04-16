@@ -47,6 +47,10 @@ import { LogoVarianterExampleSource } from './code-examples/logo.varianter.examp
             <hvi-logo company="hvikt" [size]="selectedSize()" />
           </div>
           <div class="grid gap-2">
+            <h3 hviHeading>hviktor</h3>
+            <hvi-logo company="hviktor" [size]="selectedSize()" />
+          </div>
+          <div class="grid gap-2">
             <h3 hviHeading>hbe</h3>
             <hvi-logo company="hbe" [size]="selectedSize()" />
           </div>

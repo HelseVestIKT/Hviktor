@@ -10,20 +10,20 @@ import { HviAvatar, HviAvatarStack } from '@helsevestikt/hviktor';
     <div class="flex flex-wrap gap-2">
       <figure hviAvatarStack tabindex="-1">
         <hvi-avatar
-          ariaLabel="Ola Nordmann"
+          aria-label="Ola Nordmann"
           variant="circle"
           size="md"
           color="brand1"
         ></hvi-avatar>
         <hvi-avatar
-          ariaLabel="Kari Nordmann"
+          aria-label="Kari Nordmann"
           variant="circle"
           initials="KN"
           size="md"
           color="brand2"
         ></hvi-avatar>
         <hvi-avatar
-          ariaLabel="Per Hansen"
+          aria-label="Per Hansen"
           variant="circle"
           initials="PH"
           size="md"

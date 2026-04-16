@@ -8,6 +8,7 @@ import { LOGO_HST } from './logos/logo-hst';
 import { LOGO_HST_SUS } from './logos/logo-hst-sus';
 import { LOGO_HVE } from './logos/logo-hve';
 import { LOGO_HVIKT } from './logos/logo-hvikt';
+import { LOGO_HVIKTOR } from './logos/logo-hviktor';
 import { LOGO_SAV } from './logos/logo-sav';
 
 /** Available company identifiers for the logo component */
@@ -22,6 +23,7 @@ export type LogoCompany = keyof typeof LOGOS;
 export const LOGOS = {
   dots: LOGO_DOTS,
   hvikt: LOGO_HVIKT,
+  hviktor: LOGO_HVIKTOR,
   hve: LOGO_HVE,
   hbe: LOGO_HBE,
   'hbe-hus': LOGO_HBE_HUS,
