@@ -223,7 +223,7 @@ import { TableZebrastriperOgBorderExampleSource } from './code-examples/table.ze
               <th>Stilling</th>
             </tr>
             <tr>
-              <th>
+              <th width="30%">
                 <hvi-multi-select
                   [options]="navnOptions"
                   placeholder="Alle"
@@ -231,7 +231,7 @@ import { TableZebrastriperOgBorderExampleSource } from './code-examples/table.ze
                   (selectionChange)="colFilterTable.setColumnFilter('navn', $event)"
                 />
               </th>
-              <th>
+              <th width="30%">
                 <select
                   hviSelect
                   aria-label="Filtrer på avdeling"
@@ -243,7 +243,7 @@ import { TableZebrastriperOgBorderExampleSource } from './code-examples/table.ze
                   }
                 </select>
               </th>
-              <th>
+              <th width="30%">
                 <hvi-multi-select
                   [options]="stillingOptions"
                   placeholder="Alle"

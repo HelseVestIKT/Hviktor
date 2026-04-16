@@ -180,8 +180,9 @@ let nextId = 0;
 
     @media (hover: hover) and (pointer: fine) {
       .ds-combobox__input__wrapper:not(:focus, :disabled):hover {
-        border-color: var(--ds-color-border-strong);
-        box-shadow: inset 0 0 0 1px var(--ds-color-border-strong);
+        outline-color: var(--ds-color-neutral-border-default);
+        outline-style: solid;
+        outline-width: var(--ds-border-width-default);
       }
     }
 
@@ -215,17 +216,13 @@ let nextId = 0;
     }
 
     .ds-combobox__option:hover {
-      background: var(--ds-color-base-default);
-      color: var(--ds-color-base-contrast-default);
+      outline-color: var(--ds-color-neutral-border-default);
+      outline-style: solid;
+      outline-width: var(--ds-border-width-default);
     }
 
-    .ds-combobox__option:hover .ds-combobox__option__label {
-      color: var(--ds-color-base-contrast-default);
-    }
-
-    .ds-combobox__option:active {
-      background: var(--ds-color-base-active);
-      color: var(--ds-color-base-contrast-default);
+    .ds-combobox__option[aria-selected='true'] {
+      background: var(--ds-color-surface-hover);
     }
 
     .hvi-multi-select__search {
@@ -388,6 +385,7 @@ export class HviMultiSelect implements ControlValueAccessor {
       return next;
     });
     this.emitChange();
+    this.triggerRef()?.nativeElement.focus();
   }
 
   removeChip(event: Event, value: string): void {
