@@ -4,6 +4,18 @@ Alle vesentlige endringer i `@helsevestikt/hviktor-angular` dokumenteres her.
 
 Formatet følger [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) og prosjektet bruker [Semantic Versioning](https://semver.org/).
 
+## [0.1.4] – 2026-04-16
+
+### Added
+
+- Added js docs, unit test and e2e test for details- and dialog component
+- Added drawer to dialog component
+- Added HVIKTOR logo
+
+### Changed
+
+- Enhanced tests
+
 ## [0.1.3] – 2026-04-13
 
 ### Added
