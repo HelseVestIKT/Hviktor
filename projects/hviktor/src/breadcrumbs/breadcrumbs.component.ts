@@ -1,4 +1,4 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, Input } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import '@digdir/designsystemet-web';
 
 /**
@@ -11,9 +11,13 @@ import '@digdir/designsystemet-web';
  * Supports three content patterns: back-link + ordered list (responsive),
  * back-link only, or ordered list only (always visible).
  *
+ * The `<ds-breadcrumbs>` web component automatically sets `aria-label` from the
+ * CSS variable `--dsc-breadcrumbs-label` (defaults to `"Du er her:"`). Override
+ * the CSS variable to customize the accessible name.
+ *
  * @example Responsive with back-link and list
  * ```html
- * <hvi-breadcrumbs ariaLabel="You are here:">
+ * <hvi-breadcrumbs>
  *   <a class="ds-link" href="#" aria-label="Back to Level 3">Level 3</a>
  *   <ol>
  *     <li><a class="ds-link" href="#">Level 1</a></li>
@@ -26,14 +30,14 @@ import '@digdir/designsystemet-web';
  *
  * @example Back-link only
  * ```html
- * <hvi-breadcrumbs ariaLabel="Breadcrumb">
+ * <hvi-breadcrumbs>
  *   <a class="ds-link" href="#" aria-label="Back to Level 3">Level 3</a>
  * </hvi-breadcrumbs>
  * ```
  *
  * @example List only (always visible)
  * ```html
- * <hvi-breadcrumbs ariaLabel="You are here:">
+ * <hvi-breadcrumbs>
  *   <ol>
  *     <li><a class="ds-link" href="#">Level 1</a></li>
  *     <li><a class="ds-link" href="#">Level 2</a></li>
@@ -49,12 +53,9 @@ import '@digdir/designsystemet-web';
   standalone: true,
   styles: [':host { display: contents; }'],
   template: `
-    <ds-breadcrumbs class="ds-breadcrumbs" [attr.aria-label]="ariaLabel">
+    <ds-breadcrumbs class="ds-breadcrumbs">
       <ng-content />
     </ds-breadcrumbs>
   `,
 })
-export class HviBreadcrumbs {
-  /** Accessible label for the breadcrumb navigation */
-  @Input() ariaLabel = 'Du er her:';
-}
+export class HviBreadcrumbs {}
