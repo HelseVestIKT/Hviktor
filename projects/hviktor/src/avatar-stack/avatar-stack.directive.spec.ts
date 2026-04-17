@@ -16,8 +16,8 @@ class BasicStackComponent {}
   imports: [HviAvatarStack, HviAvatar],
   template: `
     <figure hviAvatarStack suffix="+4">
-      <hvi-avatar ariaLabel="Ola Nordmann" initials="ON"></hvi-avatar>
-      <hvi-avatar ariaLabel="Kari Nordmann" initials="KN"></hvi-avatar>
+      <hvi-avatar aria-label="Ola Nordmann" initials="ON"></hvi-avatar>
+      <hvi-avatar aria-label="Kari Nordmann" initials="KN"></hvi-avatar>
     </figure>
   `,
 })
@@ -28,7 +28,7 @@ class StackWithSuffixComponent {}
   imports: [HviAvatarStack, HviAvatar],
   template: `
     <figure hviAvatarStack expandable="true">
-      <hvi-avatar ariaLabel="Ola Nordmann" initials="ON"></hvi-avatar>
+      <hvi-avatar aria-label="Ola Nordmann" initials="ON"></hvi-avatar>
     </figure>
   `,
 })
@@ -39,7 +39,7 @@ class StackExpandableComponent {}
   imports: [HviAvatarStack, HviAvatar],
   template: `
     <figure hviAvatarStack variant="square">
-      <hvi-avatar ariaLabel="Ola" variant="square" initials="ON"></hvi-avatar>
+      <hvi-avatar aria-label="Ola" variant="square" initials="ON"></hvi-avatar>
     </figure>
   `,
 })
