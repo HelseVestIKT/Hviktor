@@ -1,14 +1,14 @@
 name: 🐛 Bug
 description: Rapporter ein feil i Hviktor
 type: Bug
-projects: ["HelseVestIKT/37"]
+projects: ['HelseVestIKT/37']
 body:
   - type: textarea
     id: description
     attributes:
-      label: Skildring
+      label: Beskrivelse
       description: Forklar kva som er feil, og kva du forventar skulle skje. Legg gjerne ved skjermbilete eller lenkje til Figma-design.
-      placeholder: Kort skildring av feilen og kva du forventar skulle skje.
+      placeholder: Kort beskrivelse av feilen og kva du forventar skulle skje.
     validations:
       required: true
 

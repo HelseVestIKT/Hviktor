@@ -42,7 +42,7 @@ export interface PageChangeEvent {
   selector: 'hvi-pagination',
   standalone: true,
   template: `
-    <nav [attr.aria-label]="ariaLabel" class="ds-pagination">
+    <nav [attr.aria-label]="'Sidenavigering'" class="ds-pagination">
       <ul>
         <!-- Forrige -->
         <li>
@@ -125,9 +125,6 @@ export class HviPagination {
 
   /** Vis "Forrige" og "Neste" tekst på knappene */
   @Input({ transform: booleanAttribute }) showPreviousNextLabels = true;
-
-  /** Aria-label for hele navigasjonen */
-  @Input() ariaLabel = 'Sidenavigering';
 
   /** Tekst for forrige-knappen */
   @Input() previousLabel = 'Forrige';

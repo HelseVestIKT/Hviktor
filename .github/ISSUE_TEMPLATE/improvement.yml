@@ -1,0 +1,20 @@
+name: 🛠️ Forbedring
+description: Foreslå ein forbedring til Hviktor
+type: Improvement
+projects: ['HelseVestIKT/37']
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: Beskrivelse
+      description: Forklar kva som kan forbedrast, og kva du forventar skulle skje. Legg gjerne ved skjermbilete eller lenkje til Figma-design.
+      placeholder: Kort beskrivelse av forbedringen og kva du forventar skulle skje.
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps-to-reproduce
+    attributes:
+      label: Steg for å gjenskape problemet
+      description: Beskriv steg for steg korleis problemet kan gjenskapes. Dette hjelper utviklarane å forstå og fikse problemet.
+      placeholder: 1. Gå til ... 2. Klikk på ... 3. Se problemet ...

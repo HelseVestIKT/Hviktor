@@ -19,7 +19,7 @@ import { Component, Input } from '@angular/core';
  * ```html
  * <hvi-badge-position overlap="circle" placement="top-left">
  *   <hvi-badge color="info" count="1"></hvi-badge>
- *   <hvi-avatar ariaLabel="User" initials="UN"></hvi-avatar>
+ *   <hvi-avatar aria-label="User" initials="UN"></hvi-avatar>
  * </hvi-badge-position>
  * ```
  *

@@ -26,12 +26,6 @@ describe('HviAvatar', () => {
     expect(element.getAttribute('data-color')).toBeNull();
   });
 
-  it('should reflect ariaLabel input as aria-label attribute', () => {
-    fixture.componentRef.setInput('ariaLabel', 'Ola Nordmann');
-    fixture.detectChanges();
-    expect(element.getAttribute('aria-label')).toBe('Ola Nordmann');
-  });
-
   it('should reflect variant input as data-variant attribute', () => {
     fixture.componentRef.setInput('variant', 'square');
     fixture.detectChanges();
@@ -60,7 +54,7 @@ describe('HviAvatar', () => {
 @Component({
   standalone: true,
   imports: [HviAvatar],
-  template: '<hvi-avatar ariaLabel="Ola Nordmann"><img src="avatar.jpg" alt="" /></hvi-avatar>',
+  template: '<hvi-avatar aria-label="Ola Nordmann"><img src="avatar.jpg" alt="" /></hvi-avatar>',
 })
 class AvatarWithImageComponent {}
 

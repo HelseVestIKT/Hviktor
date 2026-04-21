@@ -38,7 +38,7 @@ jobs:
         run: npm install --ignore-scripts
 
       - name: Build Angular app
-        run: npx ng build --configuration production --base-href ./
+        run: npx ng build --configuration production --base-href /hviktor/
 
       - name: Copy index.html to 404.html (SPA routing)
         run: cp dist/hviktor-demoapp/browser/index.html dist/hviktor-demoapp/browser/404.html

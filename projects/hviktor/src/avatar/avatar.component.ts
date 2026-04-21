@@ -6,16 +6,17 @@ import { Component, Input } from '@angular/core';
  * Has `role="img"` by default. Supports projecting an `<img>` element, text initials,
  * or no content (falls back to a default icon via CSS).
  * When used alongside visible text, set `aria-hidden="true"` on the avatar to avoid redundancy.
+ * Use aria-label to provide a descriptive label for screen readers when the avatar is used without visible text.
  *
  * @example With initials
  * ```html
- * <hvi-avatar ariaLabel="Ola Nordmann" variant="circle" initials="ON" size="md" color="brand1">
+ * <hvi-avatar aria-label="Ola Nordmann" variant="circle" initials="ON" size="md" color="brand1">
  * </hvi-avatar>
  * ```
  *
  * @example With image
  * ```html
- * <hvi-avatar ariaLabel="Ola Nordmann">
+ * <hvi-avatar aria-label="Ola Nordmann">
  *   <img src="avatar.jpg" alt="" />
  * </hvi-avatar>
  * ```
@@ -35,7 +36,6 @@ import { Component, Input } from '@angular/core';
   host: {
     class: 'ds-avatar',
     role: 'img',
-    '[attr.aria-label]': 'ariaLabel ?? null',
     '[attr.data-variant]': 'variant ?? null',
     '[attr.data-initials]': 'initials ?? null',
     '[attr.data-size]': 'size ?? null',
@@ -43,9 +43,6 @@ import { Component, Input } from '@angular/core';
   },
 })
 export class HviAvatar {
-  /** The name of the person the avatar represents */
-  @Input() ariaLabel?: string;
-
   /** The shape of the avatar */
   @Input() variant?: 'circle' | 'square';
 

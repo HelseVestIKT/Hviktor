@@ -4,6 +4,30 @@ Alle vesentlige endringer i `@helsevestikt/hviktor-angular` dokumenteres her.
 
 Formatet følger [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) og prosjektet bruker [Semantic Versioning](https://semver.org/).
 
+## [0.1.6] – 2026-04-21
+
+### Changed
+
+- Updates @digdir/designsystemet-css and @digdir/designsystemet-web to 1.13.2.
+
+## [0.1.5] – 2026-04-21
+
+### Changed
+
+- Fjernet ariaLabel som input fra flere komponenter. Aria-attributter brukes som vanlig ved å sette `aria-label` direkte på komponenten i HTML, for mer fleksibilitet og enklere tilpasning.
+
+## [0.1.4] – 2026-04-16
+
+### Added
+
+- Added js docs, unit test and e2e test for details- and dialog component
+- Added drawer to dialog component
+- Added HVIKTOR logo
+
+### Changed
+
+- Enhanced tests
+
 ## [0.1.3] – 2026-04-13
 
 ### Added

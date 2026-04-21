@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-04-14T12:23:16.605Z",
+  "generatedAt": "2026-04-21T07:43:09.150Z",
   "package": {
     "name": "@helsevestikt/hviktor-angular",
-    "version": "0.1.3"
+    "version": "0.1.4"
   },
   "sources": {
     "npm": "projects/hviktor/src",
@@ -55,18 +55,11 @@
       "kind": "component",
       "symbol": "HviAvatar",
       "selector": "hvi-avatar",
-      "summary": "Avatar displays an image, initials, or icon representing a person, entity, or profile.\nHas `role=\"img\"` by default. Supports projecting an `<img>` element, text initials,\nor no content (falls back to a default icon via CSS).\nWhen used alongside visible text, set `aria-hidden=\"true\"` on the avatar to avoid redundancy.",
+      "summary": "Avatar displays an image, initials, or icon representing a person, entity, or profile.\nHas `role=\"img\"` by default. Supports projecting an `<img>` element, text initials,\nor no content (falls back to a default icon via CSS).\nWhen used alongside visible text, set `aria-hidden=\"true\"` on the avatar to avoid redundancy.\nUse aria-label to provide a descriptive label for screen readers when the avatar is used without visible text.",
       "see": "https://designsystemet.no/en/components/docs/avatar/code/",
       "sourceFile": "projects/hviktor/src/avatar/avatar.component.ts",
       "sourceOfTruth": "npm",
       "inputs": [
-        {
-          "name": "ariaLabel",
-          "type": "string",
-          "required": false,
-          "default": "",
-          "transform": ""
-        },
         {
           "name": "variant",
           "type": "'circle' | 'square'",
@@ -100,7 +93,6 @@
       "hostBindings": [
         "class",
         "role",
-        "[attr.aria-label]",
         "[attr.data-variant]",
         "[attr.data-initials]",
         "[attr.data-size]",
@@ -112,21 +104,21 @@
           "title": "avatar i-knapp",
           "source": "demo",
           "sourceFile": "src/app/demo/pages/components/avatar/code-examples/avatar.i-knapp.example.ts",
-          "template": "<div class=\"flex items-center gap-4\">\n      <button hviButton variant=\"secondary\">\n        <hvi-avatar initials=\"EJ\" ariaLabel=\"Erlend Johnsen\" size=\"sm\" />\n        Button with Avatar\n      </button>\n    </div>"
+          "template": "<div class=\"flex items-center gap-4\">\n      <button hviButton variant=\"secondary\">\n        <hvi-avatar initials=\"EJ\" aria-label=\"Erlend Johnsen\" size=\"sm\" />\n        Button with Avatar\n      </button>\n    </div>"
         },
         {
           "id": "avatar.storrelser",
           "title": "avatar storrelser",
           "source": "demo",
           "sourceFile": "src/app/demo/pages/components/avatar/code-examples/avatar.storrelser.example.ts",
-          "template": "<div class=\"flex items-center gap-4\">\n      <hvi-avatar initials=\"xs\" ariaLabel=\"Erlend Johnsen\" size=\"xs\" />\n      <hvi-avatar initials=\"sm\" ariaLabel=\"Erlend Johnsen\" size=\"sm\" />\n      <hvi-avatar initials=\"md\" ariaLabel=\"Erlend Johnsen\" size=\"md\" />\n      <hvi-avatar initials=\"lg\" ariaLabel=\"Erlend Johnsen\" size=\"lg\" />\n    </div>"
+          "template": "<div class=\"flex items-center gap-4\">\n      <hvi-avatar initials=\"xs\" aria-label=\"Erlend Johnsen\" size=\"xs\" />\n      <hvi-avatar initials=\"sm\" aria-label=\"Erlend Johnsen\" size=\"sm\" />\n      <hvi-avatar initials=\"md\" aria-label=\"Erlend Johnsen\" size=\"md\" />\n      <hvi-avatar initials=\"lg\" aria-label=\"Erlend Johnsen\" size=\"lg\" />\n    </div>"
         },
         {
           "id": "avatar.varianter",
           "title": "avatar varianter",
           "source": "demo",
           "sourceFile": "src/app/demo/pages/components/avatar/code-examples/avatar.varianter.example.ts",
-          "template": "<div class=\"flex items-center gap-4\">\n      <hvi-avatar ariaLabel=\"Erlend Johnsen\" />\n      <hvi-avatar variant=\"square\" ariaLabel=\"Erlend Johnsen\" />\n      <hvi-avatar initials=\"EJ\" ariaLabel=\"Erlend Johnsen\" />\n    </div>"
+          "template": "<div class=\"flex items-center gap-4\">\n      <hvi-avatar aria-label=\"Erlend Johnsen\" />\n      <hvi-avatar variant=\"square\" aria-label=\"Erlend Johnsen\" />\n      <hvi-avatar initials=\"EJ\" aria-label=\"Erlend Johnsen\" />\n    </div>"
         }
       ]
     },
@@ -183,21 +175,21 @@
           "title": "avatar-stack expandable",
           "source": "demo",
           "sourceFile": "src/app/demo/pages/components/avatar-stack/code-examples/avatar-stack.expandable.example.ts",
-          "template": "<div class=\"flex flex-wrap gap-2\">\n      <figure hviAvatarStack tabindex=\"-1\" expandable=\"true\">\n        <hvi-avatar ariaLabel=\"Ola Nordmann\" variant=\"circle\" color=\"brand1\"></hvi-avatar>\n        <hvi-avatar\n          ariaLabel=\"Kari Nordmann\"\n          variant=\"circle\"\n          initials=\"KN\"\n          color=\"brand2\"\n        ></hvi-avatar>\n        <hvi-avatar\n          ariaLabel=\"Per Hansen\"\n          variant=\"circle\"\n          initials=\"PH\"\n          color=\"brand3\"\n        ></hvi-avatar>\n      </figure>\n    </div>"
+          "template": "<div class=\"flex flex-wrap gap-2\">\n      <figure hviAvatarStack tabindex=\"-1\" expandable=\"true\">\n        <hvi-avatar aria-label=\"Ola Nordmann\" variant=\"circle\" color=\"brand1\"></hvi-avatar>\n        <hvi-avatar\n          aria-label=\"Kari Nordmann\"\n          variant=\"circle\"\n          initials=\"KN\"\n          color=\"brand2\"\n        ></hvi-avatar>\n        <hvi-avatar\n          aria-label=\"Per Hansen\"\n          variant=\"circle\"\n          initials=\"PH\"\n          color=\"brand3\"\n        ></hvi-avatar>\n      </figure>\n    </div>"
         },
         {
           "id": "avatar-stack.med-suffix",
           "title": "avatar-stack med-suffix",
           "source": "demo",
           "sourceFile": "src/app/demo/pages/components/avatar-stack/code-examples/avatar-stack.med-suffix.example.ts",
-          "template": "<div class=\"flex flex-wrap gap-2\">\n      <figure hviAvatarStack tabindex=\"-1\" suffix=\"+4\">\n        <hvi-avatar ariaLabel=\"Ola Nordmann\" variant=\"circle\" size=\"md\" color=\"brand1\"></hvi-avatar>\n        <hvi-avatar\n          ariaLabel=\"Kari Nordmann\"\n          variant=\"circle\"\n          initials=\"KN\"\n          size=\"md\"\n          color=\"brand2\"\n        ></hvi-avatar>\n        <hvi-avatar\n          ariaLabel=\"Per Hansen\"\n          variant=\"circle\"\n          initials=\"PH\"\n          size=\"md\"\n          color=\"brand3\"\n        ></hvi-avatar>\n      </figure>\n    </div>"
+          "template": "<div class=\"flex flex-wrap gap-2\">\n      <figure hviAvatarStack tabindex=\"-1\" suffix=\"+4\">\n        <hvi-avatar\n          aria-label=\"Ola Nordmann\"\n          variant=\"circle\"\n          size=\"md\"\n          color=\"brand1\"\n        ></hvi-avatar>\n        <hvi-avatar\n          aria-label=\"Kari Nordmann\"\n          variant=\"circle\"\n          initials=\"KN\"\n          size=\"md\"\n          color=\"brand2\"\n        ></hvi-avatar>\n        <hvi-avatar\n          aria-label=\"Per Hansen\"\n          variant=\"circle\"\n          initials=\"PH\"\n          size=\"md\"\n          color=\"brand3\"\n        ></hvi-avatar>\n      </figure>\n    </div>"
         },
         {
           "id": "avatar-stack.standard-avatar-stack",
           "title": "avatar-stack standard-avatar-stack",
           "source": "demo",
           "sourceFile": "src/app/demo/pages/components/avatar-stack/code-examples/avatar-stack.standard-avatar-stack.example.ts",
-          "template": "<div class=\"flex flex-wrap gap-2\">\n      <figure hviAvatarStack tabindex=\"-1\">\n        <hvi-avatar ariaLabel=\"Ola Nordmann\" variant=\"circle\" size=\"md\" color=\"brand1\"></hvi-avatar>\n        <hvi-avatar\n          ariaLabel=\"Kari Nordmann\"\n          variant=\"circle\"\n          initials=\"KN\"\n          size=\"md\"\n          color=\"brand2\"\n        ></hvi-avatar>\n        <hvi-avatar\n          ariaLabel=\"Per Hansen\"\n          variant=\"circle\"\n          initials=\"PH\"\n          size=\"md\"\n          color=\"brand3\"\n        ></hvi-avatar>\n      </figure>\n    </div>"
+          "template": "<div class=\"flex flex-wrap gap-2\">\n      <figure hviAvatarStack tabindex=\"-1\">\n        <hvi-avatar\n          aria-label=\"Ola Nordmann\"\n          variant=\"circle\"\n          size=\"md\"\n          color=\"brand1\"\n        ></hvi-avatar>\n        <hvi-avatar\n          aria-label=\"Kari Nordmann\"\n          variant=\"circle\"\n          initials=\"KN\"\n          size=\"md\"\n          color=\"brand2\"\n        ></hvi-avatar>\n        <hvi-avatar\n          aria-label=\"Per Hansen\"\n          variant=\"circle\"\n          initials=\"PH\"\n          size=\"md\"\n          color=\"brand3\"\n        ></hvi-avatar>\n      </figure>\n    </div>"
         }
       ]
     },
@@ -322,19 +314,11 @@
       "kind": "component",
       "symbol": "HviBreadcrumbs",
       "selector": "hvi-breadcrumbs",
-      "summary": "Breadcrumbs help users understand their location within a hierarchy and\nnavigate back to higher levels. Wraps the `<ds-breadcrumbs>` web component,\nwhich automatically sets `aria-current=\"page\"` on the last link and renders\nresponsively (back-link on narrow screens, full path on wide screens).\n\nSupports three content patterns: back-link + ordered list (responsive),\nback-link only, or ordered list only (always visible).",
+      "summary": "Breadcrumbs help users understand their location within a hierarchy and\nnavigate back to higher levels. Wraps the `<ds-breadcrumbs>` web component,\nwhich automatically sets `aria-current=\"page\"` on the last link and renders\nresponsively (back-link on narrow screens, full path on wide screens).\n\nSupports three content patterns: back-link + ordered list (responsive),\nback-link only, or ordered list only (always visible).\n\nThe `<ds-breadcrumbs>` web component automatically sets `aria-label` from the\nCSS variable `--dsc-breadcrumbs-label` (defaults to `\"Du er her:\"`). Override\nthe CSS variable to customize the accessible name.",
       "see": "https://designsystemet.no/en/components/docs/breadcrumbs/code/",
       "sourceFile": "projects/hviktor/src/breadcrumbs/breadcrumbs.component.ts",
       "sourceOfTruth": "npm",
-      "inputs": [
-        {
-          "name": "ariaLabel",
-          "type": "string",
-          "required": false,
-          "default": "'Du er her:'",
-          "transform": ""
-        }
-      ],
+      "inputs": [],
       "outputs": [],
       "hostBindings": [],
       "examples": [
@@ -343,7 +327,7 @@
           "title": "breadcrumbs standard",
           "source": "demo",
           "sourceFile": "src/app/demo/pages/components/breadcrumbs/code-examples/breadcrumbs.standard.example.ts",
-          "template": "<div class=\"flex items-center gap-2\">\n      <hvi-breadcrumbs ariaLabel=\"Du er her:\">\n        <a hviLink href=\"#\" aria-label=\"Tilbake til Nivå 3\">Nivå 3</a>\n        <ol>\n          <li><a hviLink href=\"#\">Nivå 1</a></li>\n          <li><a hviLink href=\"#\">Nivå 2</a></li>\n          <li><a hviLink href=\"#\">Nivå 3</a></li>\n          <li><a hviLink href=\"#\">Nivå 4</a></li>\n        </ol>\n      </hvi-breadcrumbs>\n    </div>"
+          "template": "<div class=\"flex items-center gap-2\">\n      <hvi-breadcrumbs>\n        <a hviLink href=\"#\" aria-label=\"Tilbake til Nivå 3\">Nivå 3</a>\n        <ol>\n          <li><a hviLink href=\"#\">Nivå 1</a></li>\n          <li><a hviLink href=\"#\">Nivå 2</a></li>\n          <li><a hviLink href=\"#\">Nivå 3</a></li>\n          <li><a hviLink href=\"#\">Nivå 4</a></li>\n        </ol>\n      </hvi-breadcrumbs>\n    </div>"
         }
       ]
     },
@@ -669,8 +653,8 @@
       "kind": "component",
       "symbol": "HviDetails",
       "selector": "hvi-details",
-      "summary": "",
-      "see": "",
+      "summary": "Collapsible component that lets the user show or hide content.\nWraps the native `<details>` element via the `@u-elements/u-details` polyfill.",
+      "see": "https://designsystemet.no/no/components/docs/details/overview",
       "sourceFile": "projects/hviktor/src/details/details.component.ts",
       "sourceOfTruth": "npm",
       "inputs": [
@@ -683,27 +667,26 @@
         },
         {
           "name": "open",
-          "type": "true | false",
+          "type": "boolean",
           "required": false,
           "default": "false",
-          "transform": ""
+          "transform": "booleanAttribute"
         },
         {
           "name": "defaultOpen",
-          "type": "true | false",
+          "type": "boolean",
           "required": false,
           "default": "false",
-          "transform": ""
-        },
-        {
-          "name": "onToggle",
-          "type": "(event: Event)",
-          "required": false,
-          "default": "> void = () => {}",
-          "transform": ""
+          "transform": "booleanAttribute"
         }
       ],
-      "outputs": [],
+      "outputs": [
+        {
+          "name": "toggled",
+          "alias": "",
+          "type": ""
+        }
+      ],
       "hostBindings": [],
       "examples": [
         {
@@ -727,8 +710,8 @@
       "kind": "component",
       "symbol": "HviDetailsContent",
       "selector": "hvi-details-content",
-      "summary": "",
-      "see": "",
+      "summary": "Content area of a `hvi-details` panel. Shown when the panel is expanded.",
+      "see": "https://designsystemet.no/no/components/docs/details/overview",
       "sourceFile": "projects/hviktor/src/details/details-content.component.ts",
       "sourceOfTruth": "npm",
       "inputs": [],
@@ -756,8 +739,8 @@
       "kind": "component",
       "symbol": "HviDetailsSummary",
       "selector": "hvi-details-summary",
-      "summary": "",
-      "see": "",
+      "summary": "Summary (heading) row of a `hvi-details` panel. The user clicks this to\nexpand or collapse the panel.",
+      "see": "https://designsystemet.no/no/components/docs/details/overview",
       "sourceFile": "projects/hviktor/src/details/details-summary.component.ts",
       "sourceOfTruth": "npm",
       "inputs": [],
@@ -783,10 +766,10 @@
     {
       "id": "dialog",
       "kind": "directive",
-      "symbol": "DialogExampleComponent",
+      "symbol": "HviDialog",
       "selector": "dialog[hviDialog]",
-      "summary": "Dialog allows you to create both modal and non-modal dialogs based on the HTML dialog element.\nYou have to connect the <dialog> element to a trigger yourself, and handle opening and closing the dialog with JavaScript.",
-      "see": "",
+      "summary": "Dialog wraps the native HTML `<dialog>` element with Angular bindings for opening, closing,\nand placement. Supports both modal and non-modal modes.",
+      "see": "https://designsystemet.no/no/components/docs/dialog/code",
       "sourceFile": "projects/hviktor/src/dialog/dialog.directive.ts",
       "sourceOfTruth": "npm",
       "inputs": [
@@ -803,6 +786,13 @@
           "required": false,
           "default": "true",
           "transform": ""
+        },
+        {
+          "name": "placement",
+          "type": "'center' | 'left' | 'right' | 'top' | 'bottom'",
+          "required": false,
+          "default": "",
+          "transform": ""
         }
       ],
       "outputs": [
@@ -812,7 +802,7 @@
           "type": ""
         }
       ],
-      "hostBindings": ["class", "id"],
+      "hostBindings": ["class", "[attr.id]", "[attr.data-placement]", "(close)", "(cancel)"],
       "examples": [
         {
           "id": "dialog.standard",
@@ -828,8 +818,8 @@
       "kind": "directive",
       "symbol": "HviDialogBlock",
       "selector": "[hviDialogBlock]",
-      "summary": "",
-      "see": "",
+      "summary": "Wraps a section inside a `dialog[hviDialog]` with padding and a dividing border above it.\nUse multiple blocks to divide the dialog into header, body, and footer areas.",
+      "see": "https://designsystemet.no/no/components/docs/dialog/code",
       "sourceFile": "projects/hviktor/src/dialog/dialog-block.directive.ts",
       "sourceOfTruth": "npm",
       "inputs": [],
@@ -1685,7 +1675,7 @@
           "title": "logo varianter",
           "source": "demo",
           "sourceFile": "src/app/demo/pages/components/logo/code-examples/logo.varianter.example.ts",
-          "template": "<div class=\"flex flex-col gap-8\">\n      <p hviParagraph>Variant endres med <code>company</code>-attributtet.</p>\n      <div class=\"grid gap-2\">\n        <h3 hviHeading>dots</h3>\n        <hvi-logo company=\"dots\" />\n      </div>\n      <div class=\"grid gap-2\">\n        <h3 hviHeading>hve</h3>\n        <hvi-logo company=\"hve\" />\n      </div>\n      <div class=\"grid gap-2\">\n        <h3 hviHeading>hvikt</h3>\n        <hvi-logo company=\"hvikt\" />\n      </div>\n      <div class=\"grid gap-2\">\n        <h3 hviHeading>hbe</h3>\n        <hvi-logo company=\"hbe\" />\n      </div>\n      <div class=\"grid gap-2\">\n        <h3 hviHeading>hbe-hus</h3>\n        <hvi-logo company=\"hbe-hus\" />\n      </div>\n      <div class=\"grid gap-2\">\n        <h3 hviHeading>hfd</h3>\n        <hvi-logo company=\"hfd\" />\n      </div>\n      <div class=\"grid gap-2\">\n        <h3 hviHeading>hfo</h3>\n        <hvi-logo company=\"hfo\" />\n      </div>\n      <div class=\"grid gap-2\">\n        <h3 hviHeading>hst</h3>\n        <hvi-logo company=\"hst\" />\n      </div>\n      <div class=\"grid gap-2\">\n        <h3 hviHeading>hst-sus</h3>\n        <hvi-logo company=\"hst-sus\" />\n      </div>\n      <div class=\"grid gap-2\">\n        <h3 hviHeading>sav</h3>\n        <hvi-logo company=\"sav\" />\n      </div>\n    </div>"
+          "template": "<div class=\"flex flex-col gap-8\">\n      <p hviParagraph>Variant endres med <code>company</code>-attributtet.</p>\n      <div class=\"grid gap-2\">\n        <h3 hviHeading>dots</h3>\n        <hvi-logo company=\"dots\" [size]=\"selectedSize()\" />\n      </div>\n      <div class=\"grid gap-2\">\n        <h3 hviHeading>hve</h3>\n        <hvi-logo company=\"hve\" [size]=\"selectedSize()\" />\n      </div>\n      <div class=\"grid gap-2\">\n        <h3 hviHeading>hvikt</h3>\n        <hvi-logo company=\"hvikt\" [size]=\"selectedSize()\" />\n      </div>\n      <div class=\"grid gap-2\">\n        <h3 hviHeading>hviktor</h3>\n        <hvi-logo company=\"hviktor\" [size]=\"selectedSize()\" />\n      </div>\n      <div class=\"grid gap-2\">\n        <h3 hviHeading>hbe</h3>\n        <hvi-logo company=\"hbe\" [size]=\"selectedSize()\" />\n      </div>\n      <div class=\"grid gap-2\">\n        <h3 hviHeading>hbe-hus</h3>\n        <hvi-logo company=\"hbe-hus\" [size]=\"selectedSize()\" />\n      </div>\n      <div class=\"grid gap-2\">\n        <h3 hviHeading>hfd</h3>\n        <hvi-logo company=\"hfd\" [size]=\"selectedSize()\" />\n      </div>\n      <div class=\"grid gap-2\">\n        <h3 hviHeading>hfo</h3>\n        <hvi-logo company=\"hfo\" [size]=\"selectedSize()\" />\n      </div>\n      <div class=\"grid gap-2\">\n        <h3 hviHeading>hst</h3>\n        <hvi-logo company=\"hst\" [size]=\"selectedSize()\" />\n      </div>\n      <div class=\"grid gap-2\">\n        <h3 hviHeading>hst-sus</h3>\n        <hvi-logo company=\"hst-sus\" [size]=\"selectedSize()\" />\n      </div>\n      <div class=\"grid gap-2\">\n        <h3 hviHeading>sav</h3>\n        <hvi-logo company=\"sav\" [size]=\"selectedSize()\" />\n      </div>\n    </div>"
         }
       ]
     },
@@ -1719,13 +1709,6 @@
           "required": false,
           "default": "true",
           "transform": "booleanAttribute"
-        },
-        {
-          "name": "ariaLabel",
-          "type": "string",
-          "required": false,
-          "default": "'Sidenavigering'",
-          "transform": ""
         },
         {
           "name": "previousLabel",

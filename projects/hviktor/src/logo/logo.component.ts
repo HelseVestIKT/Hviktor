@@ -11,6 +11,10 @@ import { LogoDefinition, LogoSize } from './logo-types';
  * The component automatically responds to `data-color-scheme` set by the application
  * (via Designsystemet), so no manual mode switching is needed.
  *
+ * The SVG uses `role="img"` with an `aria-label` derived from the logo definition
+ * (e.g. "Helse Vest logo"). If the logo is purely decorative (e.g. next to a
+ * text heading), add `aria-hidden="true"` on the host element.
+ *
  * @example
  * ```html
  * <hvi-logo company="hve" />
@@ -23,7 +27,7 @@ import { LogoDefinition, LogoSize } from './logo-types';
   template: `
     <svg
       [attr.viewBox]="logo().viewBox"
-      [attr.aria-label]="ariaLabel() ?? logo().label"
+      [attr.aria-label]="logo().label"
       role="img"
       xmlns="http://www.w3.org/2000/svg"
     >
@@ -73,9 +77,6 @@ export class HviLogo {
 
   /** Logo size — sm (40px), md (65px, default), lg (82px) height */
   readonly size = input<LogoSize>('md');
-
-  /** Override the default accessible label */
-  readonly ariaLabel = input<string | undefined>(undefined);
 
   protected readonly logo = computed<LogoDefinition>(() => LOGOS[this.company()]);
 }

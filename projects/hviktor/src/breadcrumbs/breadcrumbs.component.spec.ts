@@ -17,25 +17,13 @@ describe('HviBreadcrumbs', () => {
   it('should render a ds-breadcrumbs element', () => {
     expect(element.querySelector('ds-breadcrumbs')).toBeTruthy();
   });
-
-  it('should set default aria-label to "Du er her:"', () => {
-    const dsBreadcrumbs = element.querySelector('ds-breadcrumbs');
-    expect(dsBreadcrumbs?.getAttribute('aria-label')).toBe('Du er her:');
-  });
-
-  it('should update aria-label when input changes', () => {
-    fixture.componentRef.setInput('ariaLabel', 'Brødsmulesti');
-    fixture.detectChanges();
-    const dsBreadcrumbs = element.querySelector('ds-breadcrumbs');
-    expect(dsBreadcrumbs?.getAttribute('aria-label')).toBe('Brødsmulesti');
-  });
 });
 
 @Component({
   standalone: true,
   imports: [HviBreadcrumbs],
   template: `
-    <hvi-breadcrumbs ariaLabel="Du er her:">
+    <hvi-breadcrumbs>
       <a class="ds-link" href="#" aria-label="Tilbake til Nivå 3">Nivå 3</a>
       <ol>
         <li><a class="ds-link" href="#">Nivå 1</a></li>
@@ -52,7 +40,7 @@ class BreadcrumbsWithBackLinkAndListComponent {}
   standalone: true,
   imports: [HviBreadcrumbs],
   template: `
-    <hvi-breadcrumbs ariaLabel="Brødsmulesti">
+    <hvi-breadcrumbs>
       <a class="ds-link" href="#" aria-label="Tilbake til Nivå 3">Nivå 3</a>
     </hvi-breadcrumbs>
   `,

@@ -11,7 +11,7 @@ import { BreadcrumbsStandardExampleSource } from './code-examples/breadcrumbs.st
     <app-demo-page componentId="breadcrumbs">
       <app-demo-section title="Standard" [code]="standardCode">
         <div class="flex items-center gap-2">
-          <hvi-breadcrumbs ariaLabel="Du er her:">
+          <hvi-breadcrumbs>
             <a hviLink href="#" aria-label="Tilbake til Nivå 3">Nivå 3</a>
             <ol>
               <li><a hviLink href="#">Nivå 1</a></li>
