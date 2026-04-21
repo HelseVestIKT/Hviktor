@@ -1,7 +1,14 @@
 import { JsonPipe } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
-import { HviField, HviLabel, HviMultiSelect, HviMultiSelectOption } from '@helsevestikt/hviktor';
+import { RouterLink } from '@angular/router';
+import {
+  HviField,
+  HviLabel,
+  HviLink,
+  HviMultiSelect,
+  HviMultiSelectOption,
+} from '@helsevestikt/hviktor';
 import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
 
 @Component({
@@ -15,9 +22,26 @@ import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
     HviLabel,
     ReactiveFormsModule,
     JsonPipe,
+    RouterLink,
+    HviLink,
   ],
   template: `
     <app-demo-page componentId="multi-select">
+      <div class="ds-alert ds-alert--info mb-6" data-color="info">
+        <p class="ds-paragraph">
+          <strong>MultiSelect</strong> er laget for bruk som kolonnefilter i tabeller. Se
+          <a hviLink routerLink="/komponenter/table" fragment="kolonnefiltrering">
+            kolonnefiltrering i tabell-demoen
+          </a>
+          for eksempler.
+        </p>
+        <p class="ds-paragraph mt-2">
+          For generelle flervalgsscenarioer (f.eks. skjemaer), bruk
+          <a hviLink routerLink="/komponenter/suggestion">Suggestion</a>
+          i stedet.
+        </p>
+      </div>
+
       <app-demo-section title="Standard">
         <div class="flex max-w-sm flex-col gap-4">
           <hvi-field>

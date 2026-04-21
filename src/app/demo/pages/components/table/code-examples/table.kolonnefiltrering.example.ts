@@ -20,28 +20,25 @@ import { HviButton, HviMultiSelect, HviTable } from '@helsevestikt/hviktor';
           <th>Stilling</th>
         </tr>
         <tr>
-          <th>
+          <th width="30%">
             <hvi-multi-select
               [options]="navnOptions"
-              size="sm"
               placeholder="Alle"
               searchPlaceholder="Søk navn..."
               (selectionChange)="colFilterTable.setColumnFilter('navn', $event)"
             />
           </th>
-          <th>
+          <th width="30%">
             <hvi-multi-select
               [options]="avdelingOptions"
-              size="sm"
               placeholder="Alle"
               searchPlaceholder="Søk avdeling..."
               (selectionChange)="colFilterTable.setColumnFilter('avdeling', $event)"
             />
           </th>
-          <th>
+          <th width="30%">
             <hvi-multi-select
               [options]="stillingOptions"
-              size="sm"
               placeholder="Alle"
               searchPlaceholder="Søk stilling..."
               (selectionChange)="colFilterTable.setColumnFilter('stilling', $event)"
