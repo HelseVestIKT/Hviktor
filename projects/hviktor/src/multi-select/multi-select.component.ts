@@ -156,7 +156,6 @@ let nextId = 0;
       position: relative;
       width: 100%;
       min-width: 0;
-      overflow: hidden;
     }
 
     .ds-combobox__input__wrapper {
@@ -164,6 +163,7 @@ let nextId = 0;
       background: var(--ds-color-neutral-surface-default);
       border-radius: var(--ds-border-radius-md);
       cursor: pointer;
+      overflow: hidden;
     }
 
     .ds-combobox__input__wrapper:focus {
