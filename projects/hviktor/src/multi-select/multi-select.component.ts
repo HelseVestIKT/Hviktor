@@ -164,6 +164,7 @@ let nextId = 0;
       border-radius: var(--ds-border-radius-md);
       cursor: pointer;
       overflow: hidden;
+      font-weight: normal;
     }
 
     .ds-combobox__input__wrapper:focus {
