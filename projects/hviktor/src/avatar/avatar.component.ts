@@ -6,6 +6,7 @@ import { Component, Input } from '@angular/core';
  * Has `role="img"` by default. Supports projecting an `<img>` element, text initials,
  * or no content (falls back to a default icon via CSS).
  * When used alongside visible text, set `aria-hidden="true"` on the avatar to avoid redundancy.
+ * Use aria-label to provide a descriptive label for screen readers when the avatar is used without visible text.
  *
  * @example With initials
  * ```html

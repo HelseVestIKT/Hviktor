@@ -8,7 +8,7 @@ import { HviBreadcrumbs, HviLink } from '@helsevestikt/hviktor';
   imports: [HviBreadcrumbs, HviLink],
   template: \`
     <div class="flex items-center gap-2">
-      <hvi-breadcrumbs ariaLabel="Du er her:">
+      <hvi-breadcrumbs>
         <a hviLink href="#" aria-label="Tilbake til Nivå 3">Nivå 3</a>
         <ol>
           <li><a hviLink href="#">Nivå 1</a></li>

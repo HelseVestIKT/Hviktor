@@ -9,16 +9,16 @@ import { Directive, Input } from '@angular/core';
  * @example Stacked avatars with suffix
  * ```html
  * <figure hviAvatarStack suffix="+4">
- *   <hvi-avatar ariaLabel="Ola Nordmann" initials="ON"></hvi-avatar>
- *   <hvi-avatar ariaLabel="Kari Nordmann" initials="KN"></hvi-avatar>
+ *   <hvi-avatar aria-label="Ola Nordmann" initials="ON"></hvi-avatar>
+ *   <hvi-avatar aria-label="Kari Nordmann" initials="KN"></hvi-avatar>
  * </figure>
  * ```
  *
  * @example Square variant
  * ```html
  * <figure hviAvatarStack variant="square">
- *   <hvi-avatar ariaLabel="Ola Nordmann" variant="square" initials="ON"></hvi-avatar>
- *   <hvi-avatar ariaLabel="Kari Nordmann" variant="square" initials="KN"></hvi-avatar>
+ *   <hvi-avatar aria-label="Ola Nordmann" variant="square" initials="ON"></hvi-avatar>
+ *   <hvi-avatar aria-label="Kari Nordmann" variant="square" initials="KN"></hvi-avatar>
  * </figure>
  * ```
  *

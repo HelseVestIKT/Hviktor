@@ -8,10 +8,10 @@ test.describe('Breadcrumbs', () => {
     await componentPage.goto('breadcrumbs');
   });
 
-  test('renders with correct default aria-label', async ({ page }) => {
+  test('renders as navigation landmark', async ({ page }) => {
     const breadcrumbs = page.locator('ds-breadcrumbs').first();
     await expect(breadcrumbs).toBeVisible();
-    await expect(breadcrumbs).toHaveAttribute('aria-label', 'Du er her:');
+    await expect(breadcrumbs).toHaveAttribute('role', 'navigation');
   });
 
   test('renders back link on narrow viewport', async ({ page }) => {

@@ -10,11 +10,12 @@ Inline SVG logo component for Helse Vest and its subsidiaries.
 
 ## Inputs
 
-| Input     | Type          | Default | Description                              |
-| --------- | ------------- | ------- | ---------------------------------------- |
-| company   | `LogoCompany` | —       | **Required.** Which logo to display.     |
-| size      | `LogoSize`    | `'md'`  | Height: sm 40 px, md 65 px, lg 82 px.    |
-| ariaLabel | `string`      | —       | Overrides the built-in accessible label. |
+| Input   | Type          | Default | Description                           |
+| ------- | ------------- | ------- | ------------------------------------- |
+| company | `LogoCompany` | —       | **Required.** Which logo to display.  |
+| size    | `LogoSize`    | `'md'`  | Height: sm 40 px, md 65 px, lg 82 px. |
+
+The SVG automatically gets `aria-label` from the logo definition (e.g. "Helse Vest logo"). If the logo is decorative, add `aria-hidden="true"` on the host element.
 
 ### Available companies
 
