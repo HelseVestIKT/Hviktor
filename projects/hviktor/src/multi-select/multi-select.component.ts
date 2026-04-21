@@ -220,6 +220,7 @@ let nextId = 0;
       gap: 2px;
       overflow-y: auto;
       max-height: calc(300px - 3em);
+      padding: 2px;
     }
 
     .ds-combobox__placeholder {
