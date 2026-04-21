@@ -14,7 +14,6 @@ import {
   viewChild,
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { HviChipButton } from '../chip';
 
 /** A single option for the multi-select component. */
 export interface HviMultiSelectOption {
@@ -27,7 +26,7 @@ let nextId = 0;
 /**
  * @summary
  * MultiSelect allows users to choose one or more options from a searchable dropdown list.
- * Selected items are displayed as removable chips inside the trigger.
+ * Selected items are displayed as comma-separated text, collapsing to a count when space is limited.
  *
  * @example
  * ```html
@@ -56,7 +55,6 @@ let nextId = 0;
 @Component({
   selector: 'hvi-multi-select',
   standalone: true,
-  imports: [HviChipButton],
   template: `
     <div
       class="ds-combobox__input__wrapper"
@@ -69,20 +67,14 @@ let nextId = 0;
       [attr.aria-controls]="listboxId"
       aria-haspopup="listbox"
     >
-      <div class="ds-combobox__chip-and-input">
-        @for (chip of selectedOptions(); track chip.value) {
-          <button
-            hviChip
-            removable
-            type="button"
-            [attr.aria-label]="'Fjern ' + chip.label"
-            (click)="removeChip($event, chip.value)"
-          >
-            {{ chip.label }}
-          </button>
-        }
+      <div class="hvi-multi-select__display">
         @if (selectedOptions().length === 0) {
           <span class="ds-combobox__placeholder">{{ placeholder }}</span>
+        } @else {
+          <span class="hvi-multi-select__text" [title]="commaText()">{{ displayLabel() }}</span>
+          <span class="hvi-multi-select__measure" #measure aria-hidden="true">{{
+            commaText()
+          }}</span>
         }
       </div>
       <span class="ds-combobox__arrow" [class.ds-combobox__arrow--open]="isOpen()">
@@ -163,6 +155,8 @@ let nextId = 0;
     :host {
       position: relative;
       width: 100%;
+      min-width: 0;
+      overflow: hidden;
     }
 
     .ds-combobox__input__wrapper {
@@ -186,9 +180,26 @@ let nextId = 0;
       }
     }
 
-    .ds-combobox__chip-and-input {
+    .hvi-multi-select__display {
       overflow: hidden;
       min-width: 0;
+      position: relative;
+    }
+
+    .hvi-multi-select__text {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: block;
+    }
+
+    .hvi-multi-select__measure {
+      position: absolute;
+      visibility: hidden;
+      white-space: nowrap;
+      pointer-events: none;
+      height: 0;
+      overflow: hidden;
     }
 
     .ds-combobox__options-wrapper {
@@ -255,6 +266,7 @@ export class HviMultiSelect implements ControlValueAccessor {
 
   private readonly searchInputRef = viewChild<ElementRef<HTMLInputElement>>('searchInput');
   private readonly triggerRef = viewChild<ElementRef<HTMLElement>>('trigger');
+  private readonly measureRef = viewChild<ElementRef<HTMLElement>>('measure');
 
   /** Options to display in the dropdown. */
   @Input() options: HviMultiSelectOption[] = [];
@@ -298,6 +310,23 @@ export class HviMultiSelect implements ControlValueAccessor {
     return this.options.filter((o) => selected.has(o.value));
   });
 
+  readonly commaText = computed(() =>
+    this.selectedOptions()
+      .map((o) => o.label)
+      .join(', '),
+  );
+
+  private readonly showCount = signal(false);
+
+  readonly displayLabel = computed(() => {
+    const selected = this.selectedOptions();
+    if (selected.length === 0) return '';
+    if (this.showCount()) {
+      return selected.length === 1 ? '1 element valgt' : `${selected.length} elementer valgt`;
+    }
+    return this.commaText();
+  });
+
   // --- CVA ---
   private onChange: (value: string[]) => void = () => {};
   private onTouched: () => void = () => {};
@@ -332,14 +361,17 @@ export class HviMultiSelect implements ControlValueAccessor {
     afterNextRender(() => {
       document.addEventListener('click', onClickOutside);
       this.destroyRef.onDestroy(() => document.removeEventListener('click', onClickOutside));
+
+      const ro = new ResizeObserver(() => this.checkOverflow());
+      ro.observe(this.elementRef.nativeElement);
+      this.destroyRef.onDestroy(() => ro.disconnect());
     });
   }
 
   // --- Event handlers ---
   onTriggerClick(event: Event): void {
     if (this._disabled) return;
-    // Don't toggle if a chip button was clicked
-    if ((event.target as HTMLElement).closest('button[hvichip]')) return;
+
     this.isOpen.update((open) => !open);
     if (this.isOpen()) {
       this.searchText.set('');
@@ -388,16 +420,6 @@ export class HviMultiSelect implements ControlValueAccessor {
     this.triggerRef()?.nativeElement.focus();
   }
 
-  removeChip(event: Event, value: string): void {
-    event.stopPropagation();
-    this.selectedValues.update((prev) => {
-      const next = new Set(prev);
-      next.delete(value);
-      return next;
-    });
-    this.emitChange();
-  }
-
   isSelected(value: string): boolean {
     return this.selectedValues().has(value);
   }
@@ -418,5 +440,15 @@ export class HviMultiSelect implements ControlValueAccessor {
     const values = [...this.selectedValues()];
     this.selectionChange.emit(values);
     this.onChange(values);
+    queueMicrotask(() => this.checkOverflow());
+  }
+
+  private checkOverflow(): void {
+    const el = this.measureRef()?.nativeElement;
+    if (!el) {
+      this.showCount.set(false);
+      return;
+    }
+    this.showCount.set(el.scrollWidth > el.parentElement!.clientWidth);
   }
 }
