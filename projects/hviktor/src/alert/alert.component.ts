@@ -28,8 +28,8 @@ type HviAlertAriaLive = 'off' | 'polite' | 'assertive';
  *
  * @example Explicit role override for special cases
  * ```html
- * <hvi-alert color="danger" role="status" aria-live="polite">
- *   This danger alert is intentionally announced as a status message.
+ * <hvi-alert color="warning" role="alert">
+ *   This warning alert is intentionally announced as an alert message.
  * </hvi-alert>
  * ```
  *

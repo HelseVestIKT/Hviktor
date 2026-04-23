@@ -41,7 +41,7 @@ import { AlertTilgjengelighetStandardOgOverstyringExampleSource } from './code-e
           <hvi-alert color="danger">
             Danger bruker role="alert" uten aria-live som standard.
           </hvi-alert>
-          <hvi-alert color="danger" role="status" aria-live="polite">
+          <hvi-alert color="warning" role="alert">
             Ved behov kan du overstyre role og aria-live eksplisitt.
           </hvi-alert>
         </div>

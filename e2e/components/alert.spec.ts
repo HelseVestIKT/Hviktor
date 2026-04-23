@@ -53,8 +53,7 @@ test.describe('Alert', () => {
     const a11ySection = page.locator(
       'app-demo-section[title="Tilgjengelighet (standard og overstyring)"]',
     );
-    await expect(a11ySection.locator('hvi-alert').nth(2)).toHaveAttribute('role', 'status');
-    await expect(a11ySection.locator('hvi-alert').nth(2)).toHaveAttribute('aria-live', 'polite');
+    await expect(a11ySection.locator('hvi-alert').nth(2)).toHaveAttribute('role', 'alert');
   });
 
   test('accessibility check', async ({ page }) => {
