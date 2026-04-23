@@ -12,6 +12,7 @@ import {
   type ColumnDef,
   type ColumnFiltersState,
   type ExpandedState,
+  type FilterFn,
   type Row,
   type SortingFn,
   type SortingState,
@@ -207,6 +208,21 @@ export class HviTable<T = unknown> {
     return String(a).localeCompare(String(b), 'nb');
   };
 
+  /** Filterfunksjon som støtter både enkeltverdi og array (flervalg). */
+  private multiValueFilterFn: FilterFn<T> = (
+    row: Row<T>,
+    columnId: string,
+    filterValue: unknown,
+  ): boolean => {
+    if (Array.isArray(filterValue)) {
+      if (filterValue.length === 0) return true;
+      const cellValue = String(row.getValue(columnId) ?? '');
+      return filterValue.some((v) => String(v) === cellValue);
+    }
+    const cellValue = String(row.getValue(columnId) ?? '').toLowerCase();
+    return cellValue.includes(String(filterValue).toLowerCase());
+  };
+
   /** Auto-detekterte eller eksplisitte feltnavn */
   private _fields = computed(() => {
     const explicit = this._explicitColumns();
@@ -229,6 +245,7 @@ export class HviTable<T = unknown> {
       accessorFn: (row: T) => this.getFieldValue(row, field),
       enableGlobalFilter: !hasGlobalFields || globalFields.includes(field),
       sortingFn: this.norwegianSortFn,
+      filterFn: this.multiValueFilterFn,
     }));
   });
 
@@ -363,11 +380,16 @@ export class HviTable<T = unknown> {
 
   // ========== Column filtering ==========
 
-  /** Sett filter for en spesifikk kolonne */
+  /** Sett filter for en spesifikk kolonne. Støtter enkeltverdi (string) og flervalg (string[]). */
   setColumnFilter(field: string, value: unknown): void {
     this._columnFilters.update((prev) => {
       const next = prev.filter((f) => f.id !== field);
-      if (value !== undefined && value !== null && value !== '') {
+      const isEmpty =
+        value === undefined ||
+        value === null ||
+        value === '' ||
+        (Array.isArray(value) && value.length === 0);
+      if (!isEmpty) {
         next.push({ id: field, value });
       }
       return next;

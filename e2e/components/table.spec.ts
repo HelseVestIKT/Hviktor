@@ -78,15 +78,26 @@ test.describe('Table', () => {
 
   test('column filter narrows table rows', async ({ page }) => {
     const section = page.locator('app-demo-section[title="Kolonnefiltrering"]');
-    await section.locator('thead select[aria-label="Filtrer på avdeling"]').selectOption('IT');
+    const avdelingMultiSelect = section.locator('hvi-multi-select', {
+      has: page.locator('[role="combobox"][aria-label="Filtrer p\u00e5 avdeling"]'),
+    });
+
+    await avdelingMultiSelect.locator('[role="combobox"]').click();
+    await avdelingMultiSelect.locator('button[role="option"]', { hasText: 'IT' }).click();
+    // Close dropdown by clicking the trigger again
+    await avdelingMultiSelect.locator('[role="combobox"]').click();
     await expect(section.locator('tbody tr').first().locator('td').nth(1)).toContainText('IT');
   });
 
   test('nullstill filtre button resets all column filters', async ({ page }) => {
     const section = page.locator('app-demo-section[title="Kolonnefiltrering"]');
-    const avdelingSelect = section.locator('thead select[aria-label="Filtrer på avdeling"]');
+    const avdelingMultiSelect = section.locator('hvi-multi-select', {
+      has: page.locator('[role="combobox"][aria-label="Filtrer p\u00e5 avdeling"]'),
+    });
 
-    await avdelingSelect.selectOption('HR');
+    await avdelingMultiSelect.locator('[role="combobox"]').click();
+    await avdelingMultiSelect.locator('button[role="option"]', { hasText: 'HR' }).click();
+    await avdelingMultiSelect.locator('[role="combobox"]').click();
     const filteredCount = await section.locator('tbody tr').count();
 
     await section.locator('button', { hasText: 'Nullstill filtre' }).click({ force: true });

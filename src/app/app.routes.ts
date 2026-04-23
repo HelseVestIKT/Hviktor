@@ -266,6 +266,13 @@ export const routes: Routes = [
             (m) => m.RequiredTagDemoComponent,
           ),
       },
+      {
+        path: 'komponenter/multi-select',
+        loadComponent: () =>
+          import('./demo/pages/components/multi-select/multi-select-demo').then(
+            (m) => m.MultiSelectDemoComponent,
+          ),
+      },
     ],
   },
 ];

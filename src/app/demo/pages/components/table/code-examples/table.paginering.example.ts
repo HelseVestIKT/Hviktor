@@ -148,5 +148,10 @@ export class TablePagineringExampleComponent {
     'Revisor',
     'Rekrutterer',
   ];
+
+  navnOptions = this.data.map((p) => ({ label: p.navn, value: p.navn }));
+  avdelingOptions = this.avdelinger.map((a) => ({ label: a, value: a }));
+  stillingOptions = this.stillinger.map((s) => ({ label: s, value: s }));
+
   rowsPerPage = signal(5);
 }

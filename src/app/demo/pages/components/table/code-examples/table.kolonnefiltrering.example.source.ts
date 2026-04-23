@@ -1,11 +1,11 @@
 // Auto-generated - do not edit manually
 export const TableKolonnefiltreringExampleSource = `import { Component, signal } from '@angular/core';
-import { HviButton, HviSelect, HviTable } from '@helsevestikt/hviktor';
+import { HviButton, HviMultiSelect, HviTable } from '@helsevestikt/hviktor';
 
 @Component({
   selector: 'app-table-kolonnefiltrering-example',
   standalone: true,
-  imports: [HviButton, HviSelect, HviTable],
+  imports: [HviButton, HviMultiSelect, HviTable],
   template: \`
     <table
       hviTable
@@ -21,41 +21,35 @@ import { HviButton, HviSelect, HviTable } from '@helsevestikt/hviktor';
           <th>Stilling</th>
         </tr>
         <tr>
-          <th>
-            <select
-              hviSelect
+          <th width="30%">
+            <span class="sr-only">Filtrer på navn</span>
+            <hvi-multi-select
+              [options]="navnOptions"
+              placeholder="Alle"
+              searchPlaceholder="Søk navn..."
               aria-label="Filtrer på navn"
-              (change)="colFilterTable.setColumnFilter('navn', $any($event.target).value)"
-            >
-              <option value="">Alle</option>
-              @for (person of data; track person.id) {
-                <option [value]="person.navn">{{ person.navn }}</option>
-              }
-            </select>
+              (selectionChange)="colFilterTable.setColumnFilter('navn', $event)"
+            />
           </th>
-          <th>
-            <select
-              hviSelect
+          <th width="30%">
+            <span class="sr-only">Filtrer på avdeling</span>
+            <hvi-multi-select
+              [options]="avdelingOptions"
+              placeholder="Alle"
+              searchPlaceholder="Søk avdeling..."
               aria-label="Filtrer på avdeling"
-              (change)="colFilterTable.setColumnFilter('avdeling', $any($event.target).value)"
-            >
-              <option value="">Alle</option>
-              @for (avdeling of avdelinger; track avdeling) {
-                <option [value]="avdeling">{{ avdeling }}</option>
-              }
-            </select>
+              (selectionChange)="colFilterTable.setColumnFilter('avdeling', $event)"
+            />
           </th>
-          <th>
-            <select
-              hviSelect
+          <th width="30%">
+            <span class="sr-only">Filtrer på stilling</span>
+            <hvi-multi-select
+              [options]="stillingOptions"
+              placeholder="Alle"
+              searchPlaceholder="Søk stilling..."
               aria-label="Filtrer på stilling"
-              (change)="colFilterTable.setColumnFilter('stilling', $any($event.target).value)"
-            >
-              <option value="">Alle</option>
-              @for (stilling of stillinger; track stilling) {
-                <option [value]="stilling">{{ stilling }}</option>
-              }
-            </select>
+              (selectionChange)="colFilterTable.setColumnFilter('stilling', $event)"
+            />
           </th>
         </tr>
       </thead>
@@ -197,6 +191,11 @@ export class TableKolonnefiltreringExampleComponent {
     'Revisor',
     'Rekrutterer',
   ];
+  
+  navnOptions = this.data.map((p) => ({ label: p.navn, value: p.navn }));
+  avdelingOptions = this.avdelinger.map((a) => ({ label: a, value: a }));
+  stillingOptions = this.stillinger.map((s) => ({ label: s, value: s }));
+  
   rowsPerPage = signal(5);
 }
 `;

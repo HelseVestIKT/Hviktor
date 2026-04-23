@@ -322,4 +322,10 @@ export const DEMO_COMPONENTS: DemoComponent[] = [
       'RequiredTag kan brukes sammen med labels i et skjema for å indikere om et felt er påkrevd, valgfritt eller om alle felt må fylles ut.',
     hvi: true,
   },
+  {
+    id: 'multi-select',
+    name: 'MultiSelect',
+    description: 'MultiSelect med søk og flervalg',
+    hvi: true,
+  },
 ].sort((a, b) => a.name.localeCompare(b.name, 'nb'));

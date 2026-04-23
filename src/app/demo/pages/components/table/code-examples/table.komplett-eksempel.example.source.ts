@@ -1,6 +1,6 @@
 // Auto-generated - do not edit manually
 export const TableKomplettEksempelExampleSource = `import { Component, signal, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { HviButton, HviInput, HviLabel, HviPagination, HviSearch, HviSearchClear, HviSelect, HviSortableColumn, HviTable } from '@helsevestikt/hviktor';
+import { HviButton, HviInput, HviLabel, HviMultiSelect, HviPagination, HviSearch, HviSearchClear, HviSortableColumn, HviTable } from '@helsevestikt/hviktor';
 import '@helsevestikt/hviktor-icons/icon-chevron-down.webcomponent';
 import '@helsevestikt/hviktor-icons/icon-chevron-right.webcomponent';
 import '@helsevestikt/hviktor-icons/icon-envelope-closed.webcomponent';
@@ -9,7 +9,7 @@ import '@helsevestikt/hviktor-icons/icon-phone.webcomponent';
 @Component({
   selector: 'app-table-komplett-eksempel-example',
   standalone: true,
-  imports: [HviButton, HviInput, HviLabel, HviPagination, HviSearch, HviSearchClear, HviSelect, HviSortableColumn, HviTable],
+  imports: [HviButton, HviInput, HviLabel, HviMultiSelect, HviPagination, HviSearch, HviSearchClear, HviSortableColumn, HviTable],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   template: \`
     <div class="mb-4">
@@ -52,41 +52,35 @@ import '@helsevestikt/hviktor-icons/icon-phone.webcomponent';
         </tr>
         <tr>
           <th><span class="sr-only">Filter</span></th>
-          <th>
-            <select
-              hviSelect
+          <th width="30%">
+            <span class="sr-only">Filtrer på navn</span>
+            <hvi-multi-select
+              [options]="navnOptions"
+              placeholder="Alle"
+              searchPlaceholder="Søk navn..."
               aria-label="Filtrer på navn"
-              (change)="fullTable.setColumnFilter('navn', $any($event.target).value)"
-            >
-              <option value="">Alle</option>
-              @for (person of data; track person.id) {
-                <option [value]="person.navn">{{ person.navn }}</option>
-              }
-            </select>
+              (selectionChange)="fullTable.setColumnFilter('navn', $event)"
+            />
           </th>
-          <th>
-            <select
-              hviSelect
+          <th width="30%">
+            <span class="sr-only">Filtrer på avdeling</span>
+            <hvi-multi-select
+              [options]="avdelingOptions"
+              placeholder="Alle"
+              searchPlaceholder="Søk avdeling..."
               aria-label="Filtrer på avdeling"
-              (change)="fullTable.setColumnFilter('avdeling', $any($event.target).value)"
-            >
-              <option value="">Alle</option>
-              @for (avdeling of avdelinger; track avdeling) {
-                <option [value]="avdeling">{{ avdeling }}</option>
-              }
-            </select>
+              (selectionChange)="fullTable.setColumnFilter('avdeling', $event)"
+            />
           </th>
-          <th>
-            <select
-              hviSelect
+          <th width="30%">
+            <span class="sr-only">Filtrer på stilling</span>
+            <hvi-multi-select
+              [options]="stillingOptions"
+              placeholder="Alle"
+              searchPlaceholder="Søk stilling..."
               aria-label="Filtrer på stilling"
-              (change)="fullTable.setColumnFilter('stilling', $any($event.target).value)"
-            >
-              <option value="">Alle</option>
-              @for (stilling of stillinger; track stilling) {
-                <option [value]="stilling">{{ stilling }}</option>
-              }
-            </select>
+              (selectionChange)="fullTable.setColumnFilter('stilling', $event)"
+            />
           </th>
         </tr>
       </thead>
@@ -264,6 +258,11 @@ export class TableKomplettEksempelExampleComponent {
     'Revisor',
     'Rekrutterer',
   ];
+  
+  navnOptions = this.data.map((p) => ({ label: p.navn, value: p.navn }));
+  avdelingOptions = this.avdelinger.map((a) => ({ label: a, value: a }));
+  stillingOptions = this.stillinger.map((s) => ({ label: s, value: s }));
+  
   rowsPerPage = signal(5);
 }
 `;
