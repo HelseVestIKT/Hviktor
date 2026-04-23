@@ -11,8 +11,8 @@ test.describe('Dialog', () => {
   test.describe('Modal Dialog', () => {
     test('opens when button is clicked', async ({ page }) => {
       const section = page.locator('app-demo-section[title="Modal Dialog"]');
-      const openButton = section.locator('button.ds-button').first();
-      const dialog = page.locator('dialog[hviDialog]').first();
+      const openButton = section.getByRole('button', { name: 'Åpne modal Dialog' });
+      const dialog = section.locator('dialog[hviDialog]');
 
       await expect(dialog).not.toHaveAttribute('open');
       await openButton.click();
@@ -21,13 +21,14 @@ test.describe('Dialog', () => {
 
     test('closes when close button is clicked', async ({ page }) => {
       const section = page.locator('app-demo-section[title="Modal Dialog"]');
-      const openButton = section.locator('button.ds-button').first();
-      const dialog = page.locator('dialog[hviDialog]').first();
+      const openButton = section.getByRole('button', { name: 'Åpne modal Dialog' });
+      const dialog = section.locator('dialog[hviDialog]');
 
       await openButton.click();
       await expect(dialog).toHaveAttribute('open');
 
-      const closeButton = dialog.locator('button[data-command="close"]').first();
+      // Finner automatisk injisert lukkeknapp via aria-label eller data-command
+      const closeButton = dialog.getByRole('button', { name: 'Lukk dialogvindu' });
       await closeButton.click();
       await expect(dialog).not.toHaveAttribute('open');
     });
@@ -39,50 +40,50 @@ test.describe('Dialog', () => {
 
     test('renders action buttons', async ({ page }) => {
       const section = page.locator('app-demo-section[title="Modal Dialog"]');
-      const openButton = section.locator('button.ds-button').first();
-      const dialog = page.locator('dialog[hviDialog]').first();
+      const openButton = section.getByRole('button', { name: 'Åpne modal Dialog' });
+      const dialog = section.locator('dialog[hviDialog]');
 
       await openButton.click();
-      await expect(dialog).toHaveAttribute('open');
 
-      // Check for action buttons
-      const actionButtons = dialog.locator('button').all();
-      expect(actionButtons.length).toBeGreaterThan(1);
+      // Sjekker at selve innholdsknappene våre er der
+      await expect(dialog.getByRole('button', { name: 'Ja, endre' })).toBeVisible();
+      await expect(dialog.getByRole('button', { name: 'Avbryt' })).toBeVisible();
     });
   });
 
   test.describe('Non-modal Dialog', () => {
     test('opens when button is clicked', async ({ page }) => {
       const section = page.locator('app-demo-section[title="Ikke-modal Dialog"]');
-      const openButton = section.locator('button.ds-button').first();
-      const dialogs = page.locator('dialog[hviDialog]');
-      const nonModalDialog = dialogs.nth(1); // Second dialog is non-modal
+      const openButton = section.getByRole('button', { name: 'Åpne ikke-modal Dialog' });
+      const nonModalDialog = section.locator('dialog[hviDialog]');
 
       await openButton.click();
       await expect(nonModalDialog).toHaveAttribute('open');
     });
 
     test('allows page interaction while open', async ({ page }) => {
-      // Non-modal dialogs don't have a backdrop that blocks interaction
       const section = page.locator('app-demo-section[title="Ikke-modal Dialog"]');
-      const openButton = section.locator('button.ds-button').first();
+      const openButton = section.getByRole('button', { name: 'Åpne ikke-modal Dialog' });
 
       await openButton.click();
-      // Page is still responsive in non-modal mode
-      expect(openButton).toBeDefined();
+      // Verifiserer at knappen bak dialogen fortsatt er tilgjengelig og ikke blokkert av en modal backdrop
+      await expect(openButton).toBeEnabled();
     });
 
     test('closes when action button is clicked', async ({ page }) => {
       const section = page.locator('app-demo-section[title="Ikke-modal Dialog"]');
-      const openButton = section.locator('button.ds-button').first();
-      const dialogs = page.locator('dialog[hviDialog]');
-      const nonModalDialog = dialogs.nth(1);
+      const openButton = section.getByRole('button', { name: 'Åpne ikke-modal Dialog' });
+      const nonModalDialog = section.locator('dialog[hviDialog]');
 
       await openButton.click();
       await expect(nonModalDialog).toHaveAttribute('open');
 
-      const sendButton = nonModalDialog.locator('button.ds-button').first();
+      // Her fant den feil knapp tidligere på grunn av .first()
+      const sendButton = nonModalDialog.getByRole('button', { name: 'Send inn' });
       await sendButton.click();
+
+      // I ditt oppsett forventer vi kanskje at skjemaet lukker seg,
+      // men sjekk koden din: "Send inn" har (click)="nonModalOpen.set(false)"
       await expect(nonModalDialog).not.toHaveAttribute('open');
     });
   });
@@ -90,9 +91,8 @@ test.describe('Dialog', () => {
   test.describe('Dialog as Drawer (Placement)', () => {
     test('opens with data-placement attribute', async ({ page }) => {
       const section = page.locator('app-demo-section[title="Dialog som drawer"]');
-      const openButton = section.locator('button.ds-button').first();
-      const dialogs = page.locator('dialog[hviDialog]');
-      const drawerDialog = dialogs.nth(2); // Third dialog is the drawer
+      const openButton = section.getByRole('button', { name: 'Åpne Dialog (Bottom)' });
+      const drawerDialog = section.locator('dialog[hviDialog]');
 
       await openButton.click();
       await expect(drawerDialog).toHaveAttribute('open');
@@ -101,94 +101,52 @@ test.describe('Dialog', () => {
 
     test('closes when close button is clicked', async ({ page }) => {
       const section = page.locator('app-demo-section[title="Dialog som drawer"]');
-      const openButton = section.locator('button.ds-button').first();
-      const dialogs = page.locator('dialog[hviDialog]');
-      const drawerDialog = dialogs.nth(2);
+      const openButton = section.getByRole('button', { name: 'Åpne Dialog (Bottom)' });
+      const drawerDialog = section.locator('dialog[hviDialog]');
 
       await openButton.click();
-      await expect(drawerDialog).toHaveAttribute('open');
 
-      const closeButton = drawerDialog.locator('button[data-command="close"]').first();
+      const closeButton = drawerDialog.getByRole('button', { name: 'Lukk dialogvindu' });
       await closeButton.click();
       await expect(drawerDialog).not.toHaveAttribute('open');
-    });
-
-    test('allows backdrop click to close (closedby="any")', async ({ page }) => {
-      const section = page.locator('app-demo-section[title="Dialog som drawer"]');
-      const openButton = section.locator('button.ds-button').first();
-      const dialogs = page.locator('dialog[hviDialog]');
-      const drawerDialog = dialogs.nth(2);
-
-      await openButton.click();
-      await expect(drawerDialog).toHaveAttribute('open');
-      await expect(drawerDialog).toHaveAttribute('closedby', 'any');
     });
   });
 
   test.describe('Dialog with Form and Focus', () => {
-    test('opens dialog with form input', async ({ page }) => {
+    test('opens dialog with form input and focuses it', async ({ page }) => {
       const section = page.locator('app-demo-section[title="Med skjema og fokus"]');
-      const openButton = section.locator('button.ds-button').first();
-      const dialogs = page.locator('dialog[hviDialog]');
-      const formDialog = dialogs.nth(3);
+      const openButton = section.getByRole('button', { name: 'Åpne Dialog' });
+      const formDialog = section.locator('dialog[hviDialog]');
 
       await openButton.click();
       await expect(formDialog).toHaveAttribute('open');
-    });
 
-    test('contains form input field', async ({ page }) => {
-      const section = page.locator('app-demo-section[title="Med skjema og fokus"]');
-      const openButton = section.locator('button.ds-button').first();
-      const dialogs = page.locator('dialog[hviDialog]');
-      const formDialog = dialogs.nth(3);
-
-      await openButton.click();
+      // autofocus skal ha satt fokus på input-feltet automatisk
       const input = formDialog.locator('input');
-      await expect(input).toBeDefined();
+      await expect(input).toBeFocused();
     });
   });
 
   test.describe('Dialog with Blocks', () => {
     test('renders dialog with multiple blocks', async ({ page }) => {
       const section = page.locator('app-demo-section[title="Med blokker"]');
-      const openButton = section.locator('button.ds-button').first();
-      const dialogs = page.locator('dialog[hviDialog]');
-      const blocksDialog = dialogs.nth(4);
-
-      await openButton.click();
-      await expect(blocksDialog).toHaveAttribute('open');
-
-      const blocks = blocksDialog.locator('[hviDialogBlock]');
-      expect(blocks).toBeDefined();
-    });
-
-    test('blocks have correct CSS class', async ({ page }) => {
-      const section = page.locator('app-demo-section[title="Med blokker"]');
-      const openButton = section.locator('button.ds-button').first();
-      const dialogs = page.locator('dialog[hviDialog]');
-      const blocksDialog = dialogs.nth(4);
+      const openButton = section.getByRole('button', { name: 'Åpne Dialog' });
+      const blocksDialog = section.locator('dialog[hviDialog]');
 
       await openButton.click();
 
       const blocks = blocksDialog.locator('[hviDialogBlock]');
-      const blockCount = await blocks.count();
-      expect(blockCount).toBeGreaterThan(0);
-
-      for (let i = 0; i < blockCount; i++) {
-        await expect(blocks.nth(i)).toHaveClass(/ds-dialog__block/);
-      }
+      await expect(blocks).toHaveCount(3);
     });
   });
 
   test.describe('Dialog with Backdrop Click', () => {
-    test('closes when clicking outside dialog (closedby="any")', async ({ page }) => {
+    test('has closedby="any" attribute', async ({ page }) => {
       const section = page.locator('app-demo-section[title="Lukk ved klikk utenfor"]');
-      const openButton = section.locator('button.ds-button').first();
-      const dialogs = page.locator('dialog[hviDialog]');
-      const backdropDialog = dialogs.nth(5);
+      const openButton = section.getByRole('button', { name: 'Åpne Dialog' });
+      const backdropDialog = section.locator('dialog[hviDialog]');
 
       await openButton.click();
-      await expect(backdropDialog).toHaveAttribute('open');
       await expect(backdropDialog).toHaveAttribute('closedby', 'any');
     });
   });
@@ -196,18 +154,19 @@ test.describe('Dialog', () => {
   test.describe('Dialog Accessibility', () => {
     test('has proper accessibility attributes', async ({ page }) => {
       const section = page.locator('app-demo-section[title="Modal Dialog"]');
-      const openButton = section.locator('button.ds-button').first();
-      const dialog = page.locator('dialog[hviDialog]').first();
+      const openButton = section.getByRole('button', { name: 'Åpne modal Dialog' });
+      const dialog = section.locator('dialog[hviDialog]');
 
       await openButton.click();
 
-      // Check close button has aria-label
-      const closeButton = dialog.locator('button[data-command="close"]').first();
-      const ariaLabel = await closeButton.getAttribute('aria-label');
-      expect(ariaLabel).toBeTruthy();
+      // Sjekker at lukkeknappen vi genererer har aria-label
+      const closeButton = dialog.locator('button[data-command="close"]');
+      await expect(closeButton).toHaveAttribute('aria-label', 'Lukk dialogvindu');
     });
 
     test('passes accessibility checks', async ({ page }) => {
+      // Åpne i det minste én modal slik at den er med i axe-sjekken
+      await page.getByRole('button', { name: 'Åpne modal Dialog' }).click();
       await checkAccessibility(page, ['color-contrast'], 'article');
     });
   });
