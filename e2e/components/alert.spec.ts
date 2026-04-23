@@ -47,7 +47,6 @@ test.describe('Alert', () => {
     );
     await expect(variantsSection.locator('hvi-alert[data-color="danger"]')).not.toHaveAttribute(
       'aria-live',
-      /.+/,
     );
 
     const a11ySection = page.locator(
