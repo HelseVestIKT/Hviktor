@@ -24,7 +24,7 @@ import { AvatarStackStandardAvatarStackExampleSource } from './code-examples/ava
       >
       <app-demo-section title="Standard Avatar Stack" [code]="standardAvatarStackCode">
         <div class="flex flex-wrap gap-2">
-          <figure hviAvatarStack tabindex="-1">
+          <hvi-avatar-stack>
             <hvi-avatar
               aria-label="Ola Nordmann"
               variant="circle"
@@ -45,13 +45,13 @@ import { AvatarStackStandardAvatarStackExampleSource } from './code-examples/ava
               size="md"
               color="brand3"
             ></hvi-avatar>
-          </figure>
+          </hvi-avatar-stack>
         </div>
       </app-demo-section>
 
       <app-demo-section title="Med suffix" [code]="medSuffixCode">
         <div class="flex flex-wrap gap-2">
-          <figure hviAvatarStack tabindex="-1" suffix="+4">
+          <hvi-avatar-stack suffix="+4">
             <hvi-avatar
               aria-label="Ola Nordmann"
               variant="circle"
@@ -72,13 +72,13 @@ import { AvatarStackStandardAvatarStackExampleSource } from './code-examples/ava
               size="md"
               color="brand3"
             ></hvi-avatar>
-          </figure>
+          </hvi-avatar-stack>
         </div>
       </app-demo-section>
 
       <app-demo-section title="Expandable" [code]="expandableCode">
         <div class="flex flex-wrap gap-2">
-          <figure hviAvatarStack tabindex="-1" expandable="true">
+          <hvi-avatar-stack expandable="true">
             <hvi-avatar aria-label="Ola Nordmann" variant="circle" color="brand1"></hvi-avatar>
             <hvi-avatar
               aria-label="Kari Nordmann"
@@ -92,7 +92,7 @@ import { AvatarStackStandardAvatarStackExampleSource } from './code-examples/ava
               initials="PH"
               color="brand3"
             ></hvi-avatar>
-          </figure>
+          </hvi-avatar-stack>
         </div>
       </app-demo-section>
     </app-demo-page>

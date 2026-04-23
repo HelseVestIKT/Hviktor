@@ -11,19 +11,19 @@ test.describe('AvatarStack', () => {
   test('renders stack with avatars', async ({ page }) => {
     const section = page.locator('app-demo-section[title="Standard Avatar Stack"]');
     await expect(section).toBeVisible();
-    await expect(section.locator('figure[hviavatarstack]')).toBeVisible();
+    await expect(section.locator('hvi-avatar-stack')).toBeVisible();
   });
 
   test('reflects suffix input as data-suffix attribute in browser', async ({ page }) => {
     const section = page.locator('app-demo-section[title="Med suffix"]');
     await expect(section).toBeVisible();
-    await expect(section.locator('figure[hviavatarstack][data-suffix="+4"]')).toBeVisible();
+    await expect(section.locator('hvi-avatar-stack[data-suffix="+4"]')).toBeVisible();
   });
 
   test('reflects expandable input as data-expandable attribute in browser', async ({ page }) => {
     const section = page.locator('app-demo-section[title="Expandable"]');
     await expect(section).toBeVisible();
-    await expect(section.locator('figure[hviavatarstack][data-expandable="true"]')).toBeVisible();
+    await expect(section.locator('hvi-avatar-stack[data-expandable="true"]')).toBeVisible();
   });
 
   test('accessibility check', async ({ page }) => {

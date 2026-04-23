@@ -2,12 +2,12 @@ import { Component } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { HviAvatar } from '../avatar/avatar.component';
 import { setupTestBed } from '../testing/test-utils';
-import { HviAvatarStack } from './avatar-stack.directive';
+import { HviAvatarStack } from './avatar-stack.component';
 
 @Component({
   standalone: true,
   imports: [HviAvatarStack],
-  template: '<figure hviAvatarStack></figure>',
+  template: '<hvi-avatar-stack></hvi-avatar-stack>',
 })
 class BasicStackComponent {}
 
@@ -15,10 +15,10 @@ class BasicStackComponent {}
   standalone: true,
   imports: [HviAvatarStack, HviAvatar],
   template: `
-    <figure hviAvatarStack suffix="+4">
+    <hvi-avatar-stack suffix="+4">
       <hvi-avatar aria-label="Ola Nordmann" initials="ON"></hvi-avatar>
       <hvi-avatar aria-label="Kari Nordmann" initials="KN"></hvi-avatar>
-    </figure>
+    </hvi-avatar-stack>
   `,
 })
 class StackWithSuffixComponent {}
@@ -27,9 +27,9 @@ class StackWithSuffixComponent {}
   standalone: true,
   imports: [HviAvatarStack, HviAvatar],
   template: `
-    <figure hviAvatarStack expandable="true">
+    <hvi-avatar-stack expandable="true">
       <hvi-avatar aria-label="Ola Nordmann" initials="ON"></hvi-avatar>
-    </figure>
+    </hvi-avatar-stack>
   `,
 })
 class StackExpandableComponent {}
@@ -38,9 +38,9 @@ class StackExpandableComponent {}
   standalone: true,
   imports: [HviAvatarStack, HviAvatar],
   template: `
-    <figure hviAvatarStack variant="square">
+    <hvi-avatar-stack variant="square">
       <hvi-avatar aria-label="Ola" variant="square" initials="ON"></hvi-avatar>
-    </figure>
+    </hvi-avatar-stack>
   `,
 })
 class StackSquareVariantComponent {}
@@ -60,7 +60,7 @@ describe('HviAvatarStack', () => {
   it('should not set data attributes when no inputs are provided', () => {
     const fixture = TestBed.createComponent(BasicStackComponent);
     fixture.detectChanges();
-    const element = fixture.nativeElement.querySelector('figure');
+    const element = fixture.nativeElement.querySelector('hvi-avatar-stack');
     expect(element.getAttribute('data-variant')).toBeNull();
     expect(element.getAttribute('data-expandable')).toBeNull();
     expect(element.getAttribute('data-suffix')).toBeNull();
@@ -70,19 +70,37 @@ describe('HviAvatarStack', () => {
   it('should reflect variant input as data-variant attribute', () => {
     const f = TestBed.createComponent(StackSquareVariantComponent);
     f.detectChanges();
-    expect(f.nativeElement.querySelector('figure').getAttribute('data-variant')).toBe('square');
+    expect(f.nativeElement.querySelector('hvi-avatar-stack').getAttribute('data-variant')).toBe(
+      'square',
+    );
   });
 
   it('should reflect suffix input as data-suffix attribute', () => {
     const f = TestBed.createComponent(StackWithSuffixComponent);
     f.detectChanges();
-    expect(f.nativeElement.querySelector('figure').getAttribute('data-suffix')).toBe('+4');
+    expect(f.nativeElement.querySelector('hvi-avatar-stack').getAttribute('data-suffix')).toBe(
+      '+4',
+    );
   });
 
   it('should reflect expandable input as data-expandable attribute', () => {
     const f = TestBed.createComponent(StackExpandableComponent);
     f.detectChanges();
-    expect(f.nativeElement.querySelector('figure').getAttribute('data-expandable')).toBe('true');
+    expect(f.nativeElement.querySelector('hvi-avatar-stack').getAttribute('data-expandable')).toBe(
+      'true',
+    );
+  });
+
+  it('should set tabindex="0" when expandable is set', () => {
+    const f = TestBed.createComponent(StackExpandableComponent);
+    f.detectChanges();
+    expect(f.nativeElement.querySelector('hvi-avatar-stack').getAttribute('tabindex')).toBe('0');
+  });
+
+  it('should not set tabindex when expandable is not set', () => {
+    const f = TestBed.createComponent(BasicStackComponent);
+    f.detectChanges();
+    expect(f.nativeElement.querySelector('hvi-avatar-stack').getAttribute('tabindex')).toBeNull();
   });
 
   it('should project avatar children', () => {

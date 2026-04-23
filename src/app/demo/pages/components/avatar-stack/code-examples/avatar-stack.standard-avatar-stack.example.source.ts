@@ -8,7 +8,7 @@ import { HviAvatar, HviAvatarStack } from '@helsevestikt/hviktor';
   imports: [HviAvatar, HviAvatarStack],
   template: \`
     <div class="flex flex-wrap gap-2">
-      <figure hviAvatarStack tabindex="-1">
+      <hvi-avatar-stack>
         <hvi-avatar
           aria-label="Ola Nordmann"
           variant="circle"
@@ -29,7 +29,7 @@ import { HviAvatar, HviAvatarStack } from '@helsevestikt/hviktor';
           size="md"
           color="brand3"
         ></hvi-avatar>
-      </figure>
+      </hvi-avatar-stack>
     </div>
   \`,
 })
