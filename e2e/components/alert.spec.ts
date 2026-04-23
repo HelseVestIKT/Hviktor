@@ -24,6 +24,39 @@ test.describe('Alert', () => {
     await expect(alert.locator('p')).toBeVisible();
   });
 
+  test('applies accessibility defaults and allows override', async ({ page }) => {
+    const variantsSection = page.locator('app-demo-section[title="Varianter"]');
+    await expect(variantsSection.locator('hvi-alert').first()).toHaveAttribute('role', 'status');
+    await expect(variantsSection.locator('hvi-alert').first()).toHaveAttribute(
+      'aria-live',
+      'polite',
+    );
+
+    await expect(variantsSection.locator('hvi-alert[data-color="warning"]')).toHaveAttribute(
+      'role',
+      'status',
+    );
+    await expect(variantsSection.locator('hvi-alert[data-color="warning"]')).toHaveAttribute(
+      'aria-live',
+      'polite',
+    );
+
+    await expect(variantsSection.locator('hvi-alert[data-color="danger"]')).toHaveAttribute(
+      'role',
+      'alert',
+    );
+    await expect(variantsSection.locator('hvi-alert[data-color="danger"]')).not.toHaveAttribute(
+      'aria-live',
+      /.+/,
+    );
+
+    const a11ySection = page.locator(
+      'app-demo-section[title="Tilgjengelighet (standard og overstyring)"]',
+    );
+    await expect(a11ySection.locator('hvi-alert').nth(2)).toHaveAttribute('role', 'status');
+    await expect(a11ySection.locator('hvi-alert').nth(2)).toHaveAttribute('aria-live', 'polite');
+  });
+
   test('accessibility check', async ({ page }) => {
     await checkAccessibility(page, ['color-contrast'], 'article');
   });
