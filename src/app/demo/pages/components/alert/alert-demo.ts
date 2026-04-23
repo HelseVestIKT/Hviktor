@@ -4,6 +4,7 @@ import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
 import { AlertVarianterExampleSource } from './code-examples/alert.varianter.example.source';
 
 import { AlertHeadingOgParagraphExampleSource } from './code-examples/alert.heading-og-paragraph.example.source';
+import { AlertTilgjengelighetStandardOgOverstyringExampleSource } from './code-examples/alert.tilgjengelighet-standard-og-overstyring.example.source';
 @Component({
   selector: 'app-alert-demo',
   standalone: true,
@@ -28,10 +29,30 @@ import { AlertHeadingOgParagraphExampleSource } from './code-examples/alert.head
           </hvi-alert>
         </div>
       </app-demo-section>
+
+      <app-demo-section
+        title="Tilgjengelighet (standard og overstyring)"
+        [code]="tilgjengelighetStandardOgOverstyringCode"
+      >
+        <div class="flex flex-wrap gap-2">
+          <hvi-alert>
+            Info/success/warning bruker role="status" og aria-live="polite" som standard.
+          </hvi-alert>
+          <hvi-alert color="danger">
+            Danger bruker role="alert" uten aria-live som standard.
+          </hvi-alert>
+          <hvi-alert color="warning" role="alert">
+            Ved behov kan du overstyre role og aria-live eksplisitt.
+          </hvi-alert>
+        </div>
+      </app-demo-section>
     </app-demo-page>
   `,
 })
 export class AlertDemoComponent {
+  readonly tilgjengelighetStandardOgOverstyringCode =
+    AlertTilgjengelighetStandardOgOverstyringExampleSource;
+
   readonly headingOgParagraphCode = AlertHeadingOgParagraphExampleSource;
 
   readonly varianterCode = AlertVarianterExampleSource;

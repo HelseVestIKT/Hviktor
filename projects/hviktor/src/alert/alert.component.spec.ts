@@ -18,10 +18,38 @@ describe('HviAlert', () => {
     expect(element.getAttribute('data-color')).toBeNull();
   });
 
+  it('should set status role and polite aria-live by default', () => {
+    expect(element.getAttribute('role')).toBe('status');
+    expect(element.getAttribute('aria-live')).toBe('polite');
+  });
+
   it('should reflect color input as data-color attribute', () => {
     fixture.componentRef.setInput('color', 'danger');
     fixture.detectChanges();
     expect(element.getAttribute('data-color')).toBe('danger');
+  });
+
+  it('should map danger color to role alert and omit aria-live', () => {
+    fixture.componentRef.setInput('color', 'danger');
+    fixture.detectChanges();
+    expect(element.getAttribute('role')).toBe('alert');
+    expect(element.getAttribute('aria-live')).toBeNull();
+  });
+
+  it('should respect explicit role override', () => {
+    fixture.componentRef.setInput('color', 'danger');
+    fixture.componentRef.setInput('role', 'status');
+    fixture.detectChanges();
+    expect(element.getAttribute('role')).toBe('status');
+    expect(element.getAttribute('aria-live')).toBe('polite');
+  });
+
+  it('should respect explicit aria-live override', () => {
+    fixture.componentRef.setInput('color', 'danger');
+    fixture.componentRef.setInput('aria-live', 'assertive');
+    fixture.detectChanges();
+    expect(element.getAttribute('role')).toBe('alert');
+    expect(element.getAttribute('aria-live')).toBe('assertive');
   });
 });
 

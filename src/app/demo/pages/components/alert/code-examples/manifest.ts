@@ -12,6 +12,15 @@ export const AlertExamplesManifest = [
     className: 'AlertHeadingOgParagraphExampleComponent',
     sourceExport: 'AlertHeadingOgParagraphExampleSource',
   },
+  {
+    slug: 'tilgjengelighet-standard-og-overstyring',
+    title: 'Tilgjengelighet (standard og overstyring)',
+    className: 'AlertTilgjengelighetStandardOgOverstyringExampleComponent',
+    sourceExport: 'AlertTilgjengelighetStandardOgOverstyringExampleSource',
+  },
 ] as const;
 
-export type AlertExampleSlug = 'varianter' | 'heading-og-paragraph';
+export type AlertExampleSlug =
+  | 'varianter'
+  | 'heading-og-paragraph'
+  | 'tilgjengelighet-standard-og-overstyring';
