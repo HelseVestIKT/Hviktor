@@ -13,6 +13,12 @@ import {
 } from '@helsevestikt/hviktor';
 import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
 
+import { DialogDialogSomDrawerExampleSource } from './code-examples/dialog.dialog-som-drawer.example.source';
+import { DialogIkkeModalDialogExampleSource } from './code-examples/dialog.ikke-modal-dialog.example.source';
+import { DialogLukkVedKlikkUtenforExampleSource } from './code-examples/dialog.lukk-ved-klikk-utenfor.example.source';
+import { DialogMedBlokkerExampleSource } from './code-examples/dialog.med-blokker.example.source';
+import { DialogMedSkjemaOgFokusExampleSource } from './code-examples/dialog.med-skjema-og-fokus.example.source';
+import { DialogModalDialogExampleSource } from './code-examples/dialog.modal-dialog.example.source';
 @Component({
   selector: 'app-dialog-demo',
   standalone: true,
@@ -31,7 +37,7 @@ import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
   ],
   template: `
     <app-demo-page componentId="dialog">
-      <app-demo-section title="Modal Dialog">
+      <app-demo-section title="Modal Dialog" [code]="modalDialogCode">
         <button hviButton (click)="modalOpen.set(true)">Åpne modal Dialog</button>
 
         <dialog hviDialog [open]="modalOpen()" (openChange)="modalOpen.set($event)">
@@ -57,7 +63,7 @@ import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
         </dialog>
       </app-demo-section>
 
-      <app-demo-section title="Ikke-modal Dialog">
+      <app-demo-section title="Ikke-modal Dialog" [code]="ikkeModalDialogCode">
         <button hviButton (click)="nonModalOpen.set(true)">Åpne ikke-modal Dialog</button>
 
         <dialog
@@ -76,7 +82,7 @@ import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
         </dialog>
       </app-demo-section>
 
-      <app-demo-section title="Dialog som drawer">
+      <app-demo-section title="Dialog som drawer" [code]="dialogSomDrawerCode">
         <button hviButton (click)="drawerOpen.set(true)">Åpne Dialog (Bottom)</button>
 
         <dialog
@@ -92,7 +98,7 @@ import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
         </dialog>
       </app-demo-section>
 
-      <app-demo-section title="Med skjema og fokus">
+      <app-demo-section title="Med skjema og fokus" [code]="medSkjemaOgFokusCode">
         <button hviButton (click)="formOpen.set(true)">Åpne Dialog</button>
 
         <dialog hviDialog closedby="any" [open]="formOpen()" (openChange)="formOpen.set($event)">
@@ -112,7 +118,7 @@ import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
         </dialog>
       </app-demo-section>
 
-      <app-demo-section title="Med blokker">
+      <app-demo-section title="Med blokker" [code]="medBlokkerCode">
         <button hviButton (click)="blocksOpen.set(true)">Åpne Dialog</button>
 
         <dialog hviDialog [open]="blocksOpen()" (openChange)="blocksOpen.set($event)">
@@ -131,7 +137,7 @@ import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
         </dialog>
       </app-demo-section>
 
-      <app-demo-section title="Lukk ved klikk utenfor">
+      <app-demo-section title="Lukk ved klikk utenfor" [code]="lukkVedKlikkUtenforCode">
         <button hviButton (click)="backdropOpen.set(true)">Åpne Dialog</button>
 
         <dialog
@@ -147,6 +153,13 @@ import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
   `,
 })
 export class DialogDemoComponent {
+  readonly modalDialogCode = DialogModalDialogExampleSource;
+  readonly ikkeModalDialogCode = DialogIkkeModalDialogExampleSource;
+  readonly dialogSomDrawerCode = DialogDialogSomDrawerExampleSource;
+  readonly medSkjemaOgFokusCode = DialogMedSkjemaOgFokusExampleSource;
+  readonly medBlokkerCode = DialogMedBlokkerExampleSource;
+  readonly lukkVedKlikkUtenforCode = DialogLukkVedKlikkUtenforExampleSource;
+
   readonly modalOpen = signal(false);
   readonly nonModalOpen = signal(false);
   readonly drawerOpen = signal(false);
