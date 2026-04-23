@@ -78,9 +78,9 @@ test.describe('Table', () => {
 
   test('column filter narrows table rows', async ({ page }) => {
     const section = page.locator('app-demo-section[title="Kolonnefiltrering"]');
-    const avdelingMultiSelect = section.locator(
-      'hvi-multi-select[aria-label="Filtrer p\u00e5 avdeling"]',
-    );
+    const avdelingMultiSelect = section.locator('hvi-multi-select', {
+      has: page.locator('[role="combobox"][aria-label="Filtrer p\u00e5 avdeling"]'),
+    });
 
     await avdelingMultiSelect.locator('[role="combobox"]').click();
     await avdelingMultiSelect.locator('button[role="option"]', { hasText: 'IT' }).click();
@@ -91,9 +91,9 @@ test.describe('Table', () => {
 
   test('nullstill filtre button resets all column filters', async ({ page }) => {
     const section = page.locator('app-demo-section[title="Kolonnefiltrering"]');
-    const avdelingMultiSelect = section.locator(
-      'hvi-multi-select[aria-label="Filtrer p\u00e5 avdeling"]',
-    );
+    const avdelingMultiSelect = section.locator('hvi-multi-select', {
+      has: page.locator('[role="combobox"][aria-label="Filtrer p\u00e5 avdeling"]'),
+    });
 
     await avdelingMultiSelect.locator('[role="combobox"]').click();
     await avdelingMultiSelect.locator('button[role="option"]', { hasText: 'HR' }).click();
