@@ -1,1 +1,1 @@
-export * from './divider.directive';
+export { HviDivider } from './divider.directive';

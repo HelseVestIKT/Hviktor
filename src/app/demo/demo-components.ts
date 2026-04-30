@@ -101,6 +101,7 @@ export const DEMO_COMPONENTS: DemoComponent[] = [
     description:
       'Divider brukes for å skape et visuelt skille mellom innhold. Det er en enkel horisontal linje som strekker seg over tilgjengelig bredde.',
     ds: true,
+    codeTested: true,
   },
   {
     id: 'form',

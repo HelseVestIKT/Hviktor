@@ -1,14 +1,19 @@
 import { Directive } from '@angular/core';
 
 /**
- * Info
+ * @summary Adds Designsystemet Divider styling to an `hr` element.
  *
- * Eksempel på bruk:
+ * @example Basic divider between content blocks
  * ```html
  * <hr hviDivider />
  * ```
  *
- * Dokumentasjon: https://designsystemet.no/no/components/docs/divider/overview
+ * @example Decorative divider hidden from assistive technology
+ * ```html
+ * <hr hviDivider aria-hidden="true" />
+ * ```
+ *
+ * @see {@link https://designsystemet.no/komponenter/divider}
  */
 
 @Directive({
