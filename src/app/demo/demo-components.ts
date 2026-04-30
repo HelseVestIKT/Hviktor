@@ -185,6 +185,7 @@ export const DEMO_COMPONENTS: DemoComponent[] = [
     description:
       'ErrorSummary er en oppsummering av feil. Den gir brukeren oversikt over feil eller mangler som må rettes på en side eller trinn, for å komme videre.',
     ds: true,
+    codeTested: true,
   },
   {
     id: 'field',

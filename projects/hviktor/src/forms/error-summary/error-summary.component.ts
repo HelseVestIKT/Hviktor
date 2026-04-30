@@ -41,8 +41,7 @@ const DEFAULT_ERROR_PRIORITY = [
  *
  * Each item link must point to a field id (e.g. `href="#firstName"`). Prefer `id === formControlName`.
  *
- * @example
- * Manual mode:
+ * @example Manual mode with explicit errors
  * ```html
  * <hvi-error-summary
  *   [errors]="[
@@ -52,11 +51,8 @@ const DEFAULT_ERROR_PRIORITY = [
  * />
  * ```
  *
- * @example
- * Auto mode (HTML + TS):
- *
+ * @example Auto mode with reactive form mapping
  * ```html
- * HTML:
  * <form hviForm [formGroup]="form" [focusOnInvalid]="summary">
  *   <hvi-error-summary #summary [form]="form" [messages]="messages" showWhen="submitted" />
  *
@@ -77,7 +73,6 @@ const DEFAULT_ERROR_PRIORITY = [
  * ```
  *
  * ```ts
- * TS:
  * form = new FormGroup({
  *   firstName: new FormControl('', [Validators.required, Validators.minLength(2)]),
  *   phone: new FormControl('', [Validators.required, Validators.pattern(/^\d+$/)]),
@@ -89,7 +84,7 @@ const DEFAULT_ERROR_PRIORITY = [
  * } as const;
  * ```
  *
- * Documentation: https://designsystemet.no/en/components/docs/error-summary/code
+ * @see {@link https://designsystemet.no/no/components/docs/error-summary/overview}
  */
 @Component({
   selector: 'hvi-error-summary',
