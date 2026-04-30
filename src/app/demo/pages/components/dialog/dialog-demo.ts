@@ -6,7 +6,6 @@ import {
   HviDialogBlock,
   HviField,
   HviFieldAffixes,
-  HviHeading,
   HviInput,
   HviLabel,
   HviParagraph,
@@ -29,7 +28,6 @@ import { DialogModalDialogExampleSource } from './code-examples/dialog.modal-dia
     HviDialog,
     HviDialogBlock,
     HviParagraph,
-    HviHeading,
     HviLabel,
     HviInput,
     HviField,
@@ -40,20 +38,14 @@ import { DialogModalDialogExampleSource } from './code-examples/dialog.modal-dia
       <app-demo-section title="Modal Dialog" [code]="modalDialogCode">
         <button hviButton (click)="modalOpen.set(true)">Åpne modal Dialog</button>
 
-        <p hviParagraph>
-          For modal dialog anbefaler vi <code>aria-labelledby</code> på <code>dialog</code> som
-          peker til <code>id</code> på headingen.
-        </p>
-
         <dialog
           hviDialog
-          aria-labelledby="modal-title"
+          title="Er du sikker på at du vil endre søknaden?"
           [open]="modalOpen()"
           (openChange)="modalOpen.set($event)"
         >
           <div hviDialogBlock>
             <p hviParagraph size="sm">Bekreft endring</p>
-            <h2 hviHeading id="modal-title">Er du sikker på at du vil endre søknaden?</h2>
           </div>
           <div hviDialogBlock>
             <p hviParagraph>
@@ -76,20 +68,14 @@ import { DialogModalDialogExampleSource } from './code-examples/dialog.modal-dia
       <app-demo-section title="Ikke-modal Dialog" [code]="ikkeModalDialogCode">
         <button hviButton (click)="nonModalOpen.set(true)">Åpne ikke-modal Dialog</button>
 
-        <p hviParagraph>
-          Ikke-modale dialoger bør også ha et tilgjengelig navn via
-          <code>aria-labelledby</code> + heading med <code>id</code>.
-        </p>
-
         <dialog
           hviDialog
+          title="Vi ønsker din mening"
           [modal]="false"
-          aria-labelledby="non-modal-title"
           [open]="nonModalOpen()"
           (openChange)="nonModalOpen.set($event)"
           style="z-index:10;top:calc(100vh - 400px);left:calc(100vw - 385px);margin:0;max-width:350px"
         >
-          <h2 hviHeading id="non-modal-title">Vi ønsker din mening</h2>
           <label hviLabel for="my-textarea">Hvordan var din opplevelse?</label>
           <textarea hviInput id="my-textarea"></textarea>
           <button hviButton variant="primary" (click)="nonModalOpen.set(false)" class="mt-2">
@@ -101,15 +87,10 @@ import { DialogModalDialogExampleSource } from './code-examples/dialog.modal-dia
       <app-demo-section title="Dialog som drawer" [code]="dialogSomDrawerCode">
         <button hviButton (click)="drawerOpen.set(true)">Åpne Dialog (Bottom)</button>
 
-        <p hviParagraph>
-          Drawer får automatisk <code>aria-label="Informasjonspanel"</code> når du bruker
-          <code>placement</code> ulik <code>center</code>, men du kan fortsatt overstyre med egne
-          aria-attributter ved behov.
-        </p>
-
         <dialog
           hviDialog
           placement="bottom"
+          title="Informasjonspanel"
           closedby="any"
           [open]="drawerOpen()"
           (openChange)="drawerOpen.set($event)"
@@ -129,12 +110,11 @@ import { DialogModalDialogExampleSource } from './code-examples/dialog.modal-dia
 
         <dialog
           hviDialog
-          closedby="any"
           title="Dialog med skjema"
+          closedby="any"
           [open]="formOpen()"
           (openChange)="formOpen.set($event)"
         >
-          <h2 hviHeading>Dialog med skjema</h2>
           <hvi-field>
             <label hviLabel>Navn</label>
             <hvi-field-affixes>
@@ -153,10 +133,14 @@ import { DialogModalDialogExampleSource } from './code-examples/dialog.modal-dia
       <app-demo-section title="Med blokker" [code]="medBlokkerCode">
         <button hviButton (click)="blocksOpen.set(true)">Åpne Dialog</button>
 
-        <dialog hviDialog [open]="blocksOpen()" (openChange)="blocksOpen.set($event)">
+        <dialog
+          hviDialog
+          title="Dialog med blokker"
+          [open]="blocksOpen()"
+          (openChange)="blocksOpen.set($event)"
+        >
           <div hviDialogBlock>
             <p hviParagraph size="sm">Dialog subtitle</p>
-            <h2 hviHeading>Dialog with dividers</h2>
           </div>
           <div hviDialogBlock>
             <p hviParagraph>
@@ -174,11 +158,12 @@ import { DialogModalDialogExampleSource } from './code-examples/dialog.modal-dia
 
         <dialog
           hviDialog
+          title="Klikk utenfor dialogen for å lukke"
           closedby="any"
           [open]="backdropOpen()"
           (openChange)="backdropOpen.set($event)"
         >
-          <h2 hviHeading>Klikk utenfor dialogen for å lukke</h2>
+          <p hviParagraph>Klikk utenfor denne dialogen for å lukke den.</p>
         </dialog>
       </app-demo-section>
     </app-demo-page>

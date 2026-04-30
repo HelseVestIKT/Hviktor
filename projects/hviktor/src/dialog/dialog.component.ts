@@ -1,13 +1,6 @@
-import {
-  AfterViewInit,
-  Component,
-  ElementRef,
-  EventEmitter,
-  Input,
-  Output,
-  inject,
-} from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, Output, inject } from '@angular/core';
 import { HviButton } from '../button';
+import { HviHeading } from '../heading';
 
 /**
  * @summary
@@ -19,16 +12,16 @@ import { HviButton } from '../button';
  * - **Modal**: Overlays the entire page with a backdrop and prevents interaction with the rest of the page
  * - **Non-modal**: Displays above content but allows interaction with the rest of the page
  *
+ * Use `title` to set a visible heading and accessible name at the same time.
+ * When no `title` is set, the dialog falls back to `aria-label="Dialogboks"`.
+ *
  * Use `placement` to display the dialog as a drawer from any side (left, right, top, bottom) instead of centered.
  * Use `closedby="any"` to allow closing by clicking outside the dialog.
  *
- * @example Modal dialog with accessible name
+ * @example Modal dialog with title
  * ```html
  * <button hviButton (click)="openDialog()">Open Dialog</button>
- * <dialog hviDialog aria-labelledby="confirm-title" [open]="dialogOpen()" (openChange)="dialogOpen.set($event)">
- *   <div hviDialogBlock>
- *     <h2 hviHeading id="confirm-title">Confirm Action</h2>
- *   </div>
+ * <dialog hviDialog title="Confirm Action" [open]="dialogOpen()" (openChange)="dialogOpen.set($event)">
  *   <div hviDialogBlock>
  *     <p hviParagraph>Are you sure?</p>
  *   </div>
@@ -39,17 +32,16 @@ import { HviButton } from '../button';
  * </dialog>
  * ```
  *
- * @example Non-modal dialog with accessible name
+ * @example Non-modal dialog with title
  * ```html
  * <button hviButton (click)="openDialog()">Open Dialog</button>
- * <dialog hviDialog [modal]="false" aria-labelledby="feedback-title" [open]="dialogOpen()" (openChange)="dialogOpen.set($event)">
- *   <h2 hviHeading id="feedback-title">Feedback</h2>
+ * <dialog hviDialog title="Feedback" [modal]="false" [open]="dialogOpen()" (openChange)="dialogOpen.set($event)">
  *   <textarea hviInput></textarea>
  *   <button hviButton (click)="dialogOpen.set(false)">Send</button>
  * </dialog>
  * ```
  *
- * @example Drawer placement (uses default accessible name)
+ * @example Drawer placement
  * ```html
  * <button hviButton (click)="drawerOpen.set(true)">Open Drawer</button>
  * <dialog hviDialog placement="bottom" [open]="drawerOpen()" (openChange)="drawerOpen.set($event)">
@@ -59,10 +51,6 @@ import { HviButton } from '../button';
  * </dialog>
  * ```
  *
- * The dialog sets `aria-label="Informasjonspanel"` by default for drawer placements
- * (`left`, `right`, `top`, `bottom`) only when no `aria-label`/`aria-labelledby`
- * has been provided by the consumer.
- *
  * @see {@link https://designsystemet.no/no/components/docs/dialog/overview}
  */
 @Component({
@@ -71,6 +59,7 @@ import { HviButton } from '../button';
   host: {
     class: 'ds-dialog',
     '[attr.id]': 'id',
+    '[attr.aria-label]': 'title || "Dialogboks"',
     '[attr.data-placement]': 'placement === "center" ? null : placement',
     '[attr.data-modal]': 'modal',
     '[attr.closedby]': 'closedby',
@@ -91,11 +80,14 @@ import { HviButton } from '../button';
         (click)="close()"
       ></button>
     }
+    @if (title) {
+      <h2 hviHeading>{{ title }}</h2>
+    }
     <ng-content></ng-content>
   `,
-  imports: [HviButton],
+  imports: [HviButton, HviHeading],
 })
-export class HviDialog implements AfterViewInit {
+export class HviDialog {
   /**
    * Optional `id` attribute for the dialog element.
    * Use this when triggering the dialog from external controls or for accessibility.
@@ -103,6 +95,15 @@ export class HviDialog implements AfterViewInit {
    * @type {string | undefined}
    */
   @Input() id?: string;
+
+  /**
+   * Visible title rendered as an `<h2>` inside the dialog, and used as the accessible name
+   * (`aria-label`) for the dialog element. When omitted, `aria-label="Dialogboks"` is used
+   * as a fallback and no heading is rendered.
+   *
+   * @type {string | undefined}
+   */
+  @Input() title?: string;
 
   /**
    * Whether the dialog is open (`true`) or closed (`false`).
@@ -138,15 +139,7 @@ export class HviDialog implements AfterViewInit {
    * @type {'center' | 'left' | 'right' | 'top' | 'bottom'}
    * @default 'center'
    */
-  @Input()
-  set placement(value: 'center' | 'left' | 'right' | 'top' | 'bottom') {
-    this._placement = value;
-    this.syncDefaultDrawerAriaLabel();
-  }
-
-  get placement(): 'center' | 'left' | 'right' | 'top' | 'bottom' {
-    return this._placement;
-  }
+  @Input() placement: 'center' | 'left' | 'right' | 'top' | 'bottom' = 'center';
 
   /**
    * Light dismiss behavior — controls how the dialog can be closed.
@@ -178,15 +171,9 @@ export class HviDialog implements AfterViewInit {
   @Output() readonly openChange = new EventEmitter<boolean>();
 
   private readonly element = inject(ElementRef<HTMLDialogElement>).nativeElement;
-  private _placement: 'center' | 'left' | 'right' | 'top' | 'bottom' = 'center';
-  private hasAppliedDefaultDrawerAriaLabel = false;
 
   get closeButtonAriaLabel(): string {
     return typeof this.closeButton === 'string' ? this.closeButton : 'Lukk dialogvindu';
-  }
-
-  ngAfterViewInit(): void {
-    this.syncDefaultDrawerAriaLabel();
   }
 
   /**
@@ -238,33 +225,6 @@ export class HviDialog implements AfterViewInit {
         }
       }
     }
-  }
-
-  private syncDefaultDrawerAriaLabel(): void {
-    const hasAriaLabelledby = this.element.hasAttribute('aria-labelledby');
-    const currentAriaLabel = this.element.getAttribute('aria-label');
-    const hasAuthorAriaLabel =
-      currentAriaLabel !== null &&
-      (!this.hasAppliedDefaultDrawerAriaLabel || currentAriaLabel !== 'Informasjonspanel');
-
-    if (hasAriaLabelledby || hasAuthorAriaLabel) {
-      if (this.hasAppliedDefaultDrawerAriaLabel) {
-        this.element.removeAttribute('aria-label');
-        this.hasAppliedDefaultDrawerAriaLabel = false;
-      }
-      return;
-    }
-
-    if (this.placement === 'center') {
-      if (this.hasAppliedDefaultDrawerAriaLabel) {
-        this.element.removeAttribute('aria-label');
-        this.hasAppliedDefaultDrawerAriaLabel = false;
-      }
-      return;
-    }
-
-    this.element.setAttribute('aria-label', 'Informasjonspanel');
-    this.hasAppliedDefaultDrawerAriaLabel = true;
   }
 
   private setOpen(shouldOpen: boolean): void {

@@ -6,16 +6,12 @@ import { HviButton, HviDialog, HviDialogBlock, HviParagraph } from '@helsevestik
   standalone: true,
   imports: [HviButton, HviDialog, HviDialogBlock, HviParagraph],
   template: `
-    <p hviParagraph size="sm">
-      Drawer får automatisk <code>aria-label="Informasjonspanel"</code> når du bruker
-      <code>placement</code> ulik <code>center</code>, men du kan fortsatt overstyre med egne
-      aria-attributter ved behov.
-    </p>
     <button hviButton (click)="drawerOpen.set(true)">Åpne Dialog (Bottom)</button>
 
     <dialog
       hviDialog
       placement="bottom"
+      title="Informasjonspanel"
       closedby="any"
       [open]="drawerOpen()"
       (openChange)="drawerOpen.set($event)"

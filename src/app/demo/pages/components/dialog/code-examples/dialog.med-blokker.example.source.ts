@@ -1,18 +1,22 @@
 // Auto-generated - do not edit manually
 export const DialogMedBlokkerExampleSource = `import { Component, signal } from '@angular/core';
-import { HviButton, HviDialog, HviDialogBlock, HviHeading, HviParagraph } from '@helsevestikt/hviktor';
+import { HviButton, HviDialog, HviDialogBlock, HviParagraph } from '@helsevestikt/hviktor';
 
 @Component({
   selector: 'app-dialog-med-blokker-example',
   standalone: true,
-  imports: [HviButton, HviDialog, HviDialogBlock, HviHeading, HviParagraph],
+  imports: [HviButton, HviDialog, HviDialogBlock, HviParagraph],
   template: \`
     <button hviButton (click)="blocksOpen.set(true)">Åpne Dialog</button>
     
-    <dialog hviDialog [open]="blocksOpen()" (openChange)="blocksOpen.set($event)">
+    <dialog
+      hviDialog
+      title="Dialog med blokker"
+      [open]="blocksOpen()"
+      (openChange)="blocksOpen.set($event)"
+    >
       <div hviDialogBlock>
         <p hviParagraph size="sm">Dialog subtitle</p>
-        <h2 hviHeading>Dialog with dividers</h2>
       </div>
       <div hviDialogBlock>
         <p hviParagraph>

@@ -4,7 +4,6 @@ import {
   HviDialog,
   HviField,
   HviFieldAffixes,
-  HviHeading,
   HviInput,
   HviLabel,
 } from '@helsevestikt/hviktor';
@@ -12,12 +11,17 @@ import {
 @Component({
   selector: 'app-dialog-med-skjema-og-fokus-example',
   standalone: true,
-  imports: [HviButton, HviDialog, HviField, HviFieldAffixes, HviHeading, HviInput, HviLabel],
+  imports: [HviButton, HviDialog, HviField, HviFieldAffixes, HviInput, HviLabel],
   template: `
     <button hviButton (click)="formOpen.set(true)">Åpne Dialog</button>
 
-    <dialog hviDialog closedby="any" [open]="formOpen()" (openChange)="formOpen.set($event)">
-      <h2 hviHeading>Dialog med skjema</h2>
+    <dialog
+      hviDialog
+      title="Dialog med skjema"
+      closedby="any"
+      [open]="formOpen()"
+      (openChange)="formOpen.set($event)"
+    >
       <hvi-field>
         <label hviLabel>Navn</label>
         <hvi-field-affixes>

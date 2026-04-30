@@ -1,32 +1,21 @@
 import { Component, signal } from '@angular/core';
-import {
-  HviButton,
-  HviDialog,
-  HviDialogBlock,
-  HviHeading,
-  HviParagraph,
-} from '@helsevestikt/hviktor';
+import { HviButton, HviDialog, HviDialogBlock, HviParagraph } from '@helsevestikt/hviktor';
 
 @Component({
   selector: 'app-dialog-modal-dialog-example',
   standalone: true,
-  imports: [HviButton, HviDialog, HviDialogBlock, HviHeading, HviParagraph],
+  imports: [HviButton, HviDialog, HviDialogBlock, HviParagraph],
   template: `
-    <p hviParagraph size="sm">
-      For modal dialog anbefaler vi <code>aria-labelledby</code> på <code>dialog</code> som peker
-      til <code>id</code> på headingen.
-    </p>
     <button hviButton (click)="modalOpen.set(true)">Åpne modal Dialog</button>
 
     <dialog
       hviDialog
-      aria-labelledby="modal-title"
+      title="Er du sikker på at du vil endre søknaden?"
       [open]="modalOpen()"
       (openChange)="modalOpen.set($event)"
     >
       <div hviDialogBlock>
         <p hviParagraph size="sm">Bekreft endring</p>
-        <h2 hviHeading id="modal-title">Er du sikker på at du vil endre søknaden?</h2>
       </div>
       <div hviDialogBlock>
         <p hviParagraph>

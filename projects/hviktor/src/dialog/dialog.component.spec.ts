@@ -70,16 +70,16 @@ class DrawerDefaultA11yNameHost {}
 @Component({
   standalone: true,
   imports: [HviDialog],
-  template: '<dialog hviDialog placement="bottom" aria-label="Tilpasset panel">Content</dialog>',
+  template: '<dialog hviDialog title="Bekreft sletting">Content</dialog>',
 })
-class DrawerCustomA11yNameHost {}
+class TitleDialogHost {}
 
 @Component({
   standalone: true,
   imports: [HviDialog],
-  template: '<dialog hviDialog placement="bottom" aria-labelledby="drawer-title">Content</dialog>',
+  template: '<dialog hviDialog>Content</dialog>',
 })
-class DrawerLabelledbyHost {}
+class NoTitleDialogHost {}
 
 @Component({
   standalone: true,
@@ -167,12 +167,7 @@ describe('HviDialog — Host bindings', () => {
 describe('HviDialog — Placement', () => {
   beforeEach(async () => {
     await setupTestBed({
-      imports: [
-        PlacementDialogHost,
-        DrawerDefaultA11yNameHost,
-        DrawerCustomA11yNameHost,
-        DrawerLabelledbyHost,
-      ],
+      imports: [PlacementDialogHost, DrawerDefaultA11yNameHost],
     });
   });
 
@@ -195,29 +190,43 @@ describe('HviDialog — Placement', () => {
       f.destroy();
     });
   });
+});
 
-  it('should set default aria-label for drawer placements', () => {
-    const f = TestBed.createComponent(DrawerDefaultA11yNameHost);
+// ---------------------------------------------------------------------------
+// HviDialog — Title and accessible name
+// ---------------------------------------------------------------------------
+
+describe('HviDialog — Title and accessible name', () => {
+  beforeEach(async () => {
+    await setupTestBed({ imports: [TitleDialogHost, NoTitleDialogHost] });
+  });
+
+  it('should render an h2 with the title when title is set', () => {
+    const f = TestBed.createComponent(TitleDialogHost);
+    f.detectChanges();
+    const h2 = f.nativeElement.querySelector('dialog h2');
+    expect(h2).toBeTruthy();
+    expect(h2.textContent.trim()).toBe('Bekreft sletting');
+  });
+
+  it('should set aria-label to the title value when title is set', () => {
+    const f = TestBed.createComponent(TitleDialogHost);
     f.detectChanges();
     expect(f.nativeElement.querySelector('dialog').getAttribute('aria-label')).toBe(
-      'Informasjonspanel',
+      'Bekreft sletting',
     );
   });
 
-  it('should preserve consumer-provided aria-label on drawer', () => {
-    const f = TestBed.createComponent(DrawerCustomA11yNameHost);
+  it('should not render an h2 when no title is set', () => {
+    const f = TestBed.createComponent(NoTitleDialogHost);
     f.detectChanges();
-    expect(f.nativeElement.querySelector('dialog').getAttribute('aria-label')).toBe(
-      'Tilpasset panel',
-    );
+    expect(f.nativeElement.querySelector('dialog h2')).toBeFalsy();
   });
 
-  it('should not set default aria-label when aria-labelledby is provided', () => {
-    const f = TestBed.createComponent(DrawerLabelledbyHost);
+  it('should set aria-label to "Dialogboks" when no title is set', () => {
+    const f = TestBed.createComponent(NoTitleDialogHost);
     f.detectChanges();
-    const dialog = f.nativeElement.querySelector('dialog');
-    expect(dialog.getAttribute('aria-labelledby')).toBe('drawer-title');
-    expect(dialog.getAttribute('aria-label')).toBeNull();
+    expect(f.nativeElement.querySelector('dialog').getAttribute('aria-label')).toBe('Dialogboks');
   });
 });
 
