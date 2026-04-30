@@ -1,26 +1,39 @@
-import { Component, EventEmitter, HostListener, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import '@digdir/designsystemet-web';
 
 /**
- * @summary
- * Dropdown er en generisk nedtrekksliste. Den legger grunnmuren for å bygge menyer og lister.
+ * @summary Renders a Designsystemet dropdown popover container for grouped actions or navigation links.
  *
- * @example
+ * @example Basic dropdown connected with popovertarget
  * ```html
- * <button hviButton popovertarget="myDropdown">Åpne dropdown</button>
+ * <button hviButton popovertarget="myDropdown">Open dropdown</button>
  * <hvi-dropdown id="myDropdown">
  *  <ul>
  *    <li>
- *     <button hviButton variant="tertiary">Menylenke</button>
+ *     <button hviButton variant="tertiary">Menu item</button>
  *   </li>
  *   <li>
- *    <button hviButton variant="tertiary">Menylenke</button>
+ *    <button hviButton variant="tertiary">Menu item</button>
  *  </li>
  * </ul>
  * </hvi-dropdown>
  * ```
  *
- * @see {@link https://designsystemet.no/en/components/docs/dropdown/code}
+ * @example Dropdown with explicit floating placement and overscroll behavior
+ * ```html
+ * <hvi-dropdown
+ *   id="myDropdown"
+ *   dropdownPlacement="top"
+ *   floating="top"
+ *   overscroll="contain"
+ * >
+ *   <ul>
+ *     <li><button hviButton variant="tertiary">Menu item</button></li>
+ *   </ul>
+ * </hvi-dropdown>
+ * ```
+ *
+ * @see {@link https://designsystemet.no/komponenter/dropdown}
  */
 
 @Component({
@@ -33,32 +46,40 @@ import '@digdir/designsystemet-web';
     '[attr.popover]': 'type',
     '[attr.data-variant]': 'variant',
     '[attr.data-placement]': 'dropdownPlacement',
+    '[attr.data-floating]': 'floating',
+    '[attr.data-overscroll]': 'overscroll',
     '[attr.data-autoplacement]': 'autoPlacement ? "" : null',
+    '(toggle)': 'onToggle($event)',
   },
 })
 export class HviDropdown {
-  /** ID to target the popover */
+  /** Sets the element id used by a trigger with popovertarget. */
   @Input() id?: string;
 
-  /** Popover type - 'auto' lukkes ved klikk utenfor, 'manual' krever manuell lukking */
+  /** Sets the popover mode. Use manual when close behavior is handled explicitly. */
   @Input() type: 'auto' | 'manual' = 'auto';
 
-  /** Variant */
+  /** Sets the dropdown visual variant. */
   @Input() variant?: 'default' | 'tertiary';
 
-  /** Plassering av dropdown relativt til trigger */
+  /** Sets preferred dropdown placement relative to the trigger element. */
   @Input() dropdownPlacement: 'top' | 'right' | 'bottom' | 'left' = 'bottom';
 
-  /** Aktiver automatisk repositjonering hvis det ikke er plass */
+  /** Sets the floating side used by the Designsystemet floating-ui integration. */
+  @Input() floating?: 'top' | 'right' | 'bottom' | 'left';
+
+  /** Sets overscroll strategy for the dropdown container. */
+  @Input() overscroll?: 'contain';
+
+  /** Enables automatic repositioning when there is not enough space. */
   @Input() autoPlacement = true;
 
-  /** Event når dropdown åpnes */
+  /** Emits when the dropdown is opened. */
   @Output() opened = new EventEmitter<void>();
 
-  /** Event når dropdown lukkes */
+  /** Emits when the dropdown is closed. */
   @Output() closed = new EventEmitter<void>();
 
-  @HostListener('toggle', ['$event'])
   onToggle(event: ToggleEvent) {
     if (event.newState === 'open') {
       this.opened.emit();

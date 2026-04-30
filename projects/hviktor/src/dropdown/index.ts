@@ -1,1 +1,1 @@
-export * from './dropdown.component';
+export { HviDropdown } from './dropdown.component';
