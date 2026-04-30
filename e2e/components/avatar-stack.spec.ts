@@ -26,6 +26,12 @@ test.describe('AvatarStack', () => {
     await expect(section.locator('hvi-avatar-stack[data-expandable="true"]')).toBeVisible();
   });
 
+  test('has aria-label on avatar stack', async ({ page }) => {
+    const section = page.locator('app-demo-section[title="Standard Avatar Stack"]');
+    const stack = section.locator('hvi-avatar-stack');
+    await expect(stack).toHaveAttribute('aria-label', 'Topp 3 ansatte i bedriften');
+  });
+
   test('accessibility check', async ({ page }) => {
     await checkAccessibility(page, ['color-contrast'], 'article');
   });

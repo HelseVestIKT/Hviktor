@@ -45,6 +45,17 @@ class StackExpandableComponent {}
 })
 class StackSquareVariantComponent {}
 
+@Component({
+  standalone: true,
+  imports: [HviAvatarStack, HviAvatar],
+  template: `
+    <hvi-avatar-stack aria-label="Teammedlemmer">
+      <hvi-avatar aria-label="Ola" initials="ON"></hvi-avatar>
+    </hvi-avatar-stack>
+  `,
+})
+class StackCustomAriaLabelComponent {}
+
 describe('HviAvatarStack', () => {
   beforeEach(async () => {
     await setupTestBed({
@@ -53,6 +64,7 @@ describe('HviAvatarStack', () => {
         StackSquareVariantComponent,
         StackWithSuffixComponent,
         StackExpandableComponent,
+        StackCustomAriaLabelComponent,
       ],
     });
   });
@@ -101,6 +113,22 @@ describe('HviAvatarStack', () => {
     const f = TestBed.createComponent(BasicStackComponent);
     f.detectChanges();
     expect(f.nativeElement.querySelector('hvi-avatar-stack').getAttribute('tabindex')).toBeNull();
+  });
+
+  it('should have default aria-label "Gruppe med avatarer"', () => {
+    const f = TestBed.createComponent(BasicStackComponent);
+    f.detectChanges();
+    expect(f.nativeElement.querySelector('hvi-avatar-stack').getAttribute('aria-label')).toBe(
+      'Gruppe med avatarer',
+    );
+  });
+
+  it('should allow overriding aria-label', () => {
+    const f = TestBed.createComponent(StackCustomAriaLabelComponent);
+    f.detectChanges();
+    expect(f.nativeElement.querySelector('hvi-avatar-stack').getAttribute('aria-label')).toBe(
+      'Teammedlemmer',
+    );
   });
 
   it('should project avatar children', () => {
