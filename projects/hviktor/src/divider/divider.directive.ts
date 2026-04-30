@@ -8,9 +8,9 @@ import { Directive } from '@angular/core';
  * <hr hviDivider />
  * ```
  *
- * @example Decorative divider hidden from assistive technology
+ * @example Decorative divider hidden from assistive technology (`hviDivider` applies `aria-hidden="true"` automatically)
  * ```html
- * <hr hviDivider aria-hidden="true" />
+ * <hr hviDivider />
  * ```
  *
  * @see {@link https://designsystemet.no/komponenter/divider}
