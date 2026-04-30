@@ -1,4 +1,6 @@
 // Auto-generated - do not edit manually
+export * from './card.card-som-er-en-knapp.example';
+export * from './card.card-som-er-en-knapp.example.source';
 export * from './card.farger-og-varianter.example';
 export * from './card.farger-og-varianter.example.source';
 export * from './card.lenkekort.example';

@@ -24,6 +24,17 @@ export const CardExamplesManifest = [
     className: 'CardLenkekortExampleComponent',
     sourceExport: 'CardLenkekortExampleSource',
   },
+  {
+    slug: 'card-som-er-en-knapp',
+    title: 'Card som er en knapp',
+    className: 'CardCardSomErEnKnappExampleComponent',
+    sourceExport: 'CardCardSomErEnKnappExampleSource',
+  },
 ] as const;
 
-export type CardExampleSlug = 'standard' | 'farger-og-varianter' | 'med-inndeling' | 'lenkekort';
+export type CardExampleSlug =
+  | 'standard'
+  | 'farger-og-varianter'
+  | 'med-inndeling'
+  | 'lenkekort'
+  | 'card-som-er-en-knapp';

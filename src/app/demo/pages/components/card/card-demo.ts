@@ -3,12 +3,14 @@ import {
   HviButton,
   HviCard,
   HviCardBlock,
+  HviCardButton,
   HviHeading,
   HviLink,
   HviParagraph,
 } from '@helsevestikt/hviktor';
 import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
 
+import { CardCardSomErEnKnappExampleSource } from './code-examples/card.card-som-er-en-knapp.example.source';
 import { CardFargerOgVarianterExampleSource } from './code-examples/card.farger-og-varianter.example.source';
 import { CardLenkekortExampleSource } from './code-examples/card.lenkekort.example.source';
 import { CardMedInndelingExampleSource } from './code-examples/card.med-inndeling.example.source';
@@ -25,6 +27,7 @@ import { CardStandardExampleSource } from './code-examples/card.standard.example
     HviParagraph,
     DemoPageComponent,
     DemoSectionComponent,
+    HviCardButton,
   ],
   template: `
     <app-demo-page componentId="card">
@@ -112,10 +115,27 @@ import { CardStandardExampleSource } from './code-examples/card.standard.example
           </hvi-card>
         </div>
       </app-demo-section>
+
+      <app-demo-section title="Card som er en knapp" [code]="cardSomErEnKnappCode">
+        <div class="flex flex-wrap gap-4">
+          <button hviCardButton maxWidth="420px">
+            <div hviCardBlock>
+              <h2 hviHeading>Innstillinger og personvern</h2>
+              <p hviParagraph>
+                Dette åpner en dialog der du kan oppdatere personvernvalg, justere innstillinger og
+                tilpasse hvordan tjenesten behandler informasjonen din. Du kan se gjennom endringene
+                før du lagrer.
+              </p>
+              <p hviParagraph size="sm">Innstillinger og personvern</p>
+            </div>
+          </button>
+        </div>
+      </app-demo-section>
     </app-demo-page>
   `,
 })
 export class CardDemoComponent {
+  readonly cardSomErEnKnappCode = CardCardSomErEnKnappExampleSource;
   readonly standardCode = CardStandardExampleSource;
   readonly fargerOgVarianterCode = CardFargerOgVarianterExampleSource;
   readonly medInndelingCode = CardMedInndelingExampleSource;
