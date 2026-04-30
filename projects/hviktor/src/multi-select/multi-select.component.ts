@@ -214,6 +214,7 @@ let nextId = 0;
       left: 0;
       right: 0;
       max-height: 300px;
+      overflow: hidden;
     }
 
     .hvi-multi-select__listbox {
