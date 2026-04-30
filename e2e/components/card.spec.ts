@@ -32,6 +32,19 @@ test.describe('Card', () => {
     await expect(section.locator('hvi-card a').first()).toBeVisible();
   });
 
+  test('card button section renders a button with ds-card class', async ({ page }) => {
+    const section = page.locator('app-demo-section[title="Card som er en knapp"]');
+    const button = section.locator('button.ds-card');
+    await expect(button).toBeVisible();
+  });
+
+  test('card button has hardcoded data-variant and data-color attributes', async ({ page }) => {
+    const section = page.locator('app-demo-section[title="Card som er en knapp"]');
+    const button = section.locator('button.ds-card');
+    await expect(button).toHaveAttribute('data-variant', 'default');
+    await expect(button).toHaveAttribute('data-color', 'neutral');
+  });
+
   test('accessibility check', async ({ page }) => {
     await checkAccessibility(page, ['color-contrast'], 'article');
   });
