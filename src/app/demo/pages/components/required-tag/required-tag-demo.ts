@@ -22,7 +22,7 @@ import { RequiredTagModesExampleSource } from './code-examples/required-tag.mode
 
         <div class="my-4">
           <p hviParagraph>
-            Se siden om <a href="/hviktor/komponenter/form" hviLink>Form</a> for flere eksempler.
+            Se siden om <a href="/hviktor/komponenter/form" hviLink>Form</a> for enda flere eksempler.
           </p>
         </div>
       </app-demo-section>
