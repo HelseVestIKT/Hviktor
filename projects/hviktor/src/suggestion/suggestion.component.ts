@@ -148,9 +148,8 @@ let nextId = 0;
       }
     </ds-field>
   `,
-  host: {
-    style: 'display: contents;',
-  },
+  styles: [':host { display: block; margin-block-end: var(--ds-size-2); }'],
+  host: {},
 })
 export class HviSuggestion<T = unknown> implements ControlValueAccessor {
   private readonly comboboxRef = viewChild<ElementRef<ComboboxElement>>('combobox');
