@@ -2,12 +2,7 @@
 export const SuggestionEgenMalExampleSource = `import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HviSuggestion, HviSuggestionCompleteEvent } from '@helsevestikt/hviktor-angular';
-
-interface Kommando {
-  id: number;
-  navn: string;
-  hurtigtast: string;
-}
+import { Kommando } from '../suggestion-demo';
 
 @Component({
   selector: 'app-suggestion-egen-mal-example',

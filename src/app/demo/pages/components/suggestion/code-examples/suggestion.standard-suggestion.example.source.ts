@@ -14,11 +14,13 @@ import { HviSuggestion } from '@helsevestikt/hviktor-angular';
       [(ngModel)]="kommune"
       [suggestions]="kommuner"
     />
+    <p>Valgt: {{ kommune ?? 'ingen' }}</p>
   \`,
 })
 export class SuggestionStandardSuggestionExampleComponent {
   readonly kommuner = ['Sogndal', 'Bergen', 'Oslo', 'Stavanger', 'Trondheim'];
 
   kommune: string | null = 'Bergen';
+  valgteKommuner: string[] = ['Bergen'];
 }
 `;

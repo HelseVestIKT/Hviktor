@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormsModule } from '@angular/forms';
 import {
   HviAlert,
@@ -6,17 +7,25 @@ import {
   HviSuggestion,
   HviSuggestionCompleteEvent,
 } from '@helsevestikt/hviktor-angular';
+import { debounceTime, delay, distinctUntilChanged, of, Subject, switchMap } from 'rxjs';
 import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
 
 import { SuggestionEgenMalExampleSource } from './code-examples/suggestion.egen-mal.example.source';
 import { SuggestionFlervalgExampleSource } from './code-examples/suggestion.flervalg.example.source';
 import { SuggestionStandardSuggestionExampleSource } from './code-examples/suggestion.standard-suggestion.example.source';
 
-import { SuggestionEgenMalOgEgetSokExampleSource } from './code-examples/suggestion.egen-mal-og-eget-sok.example.source';
-interface Kommando {
+import { SuggestionEgenMalForAlternativeneExampleSource } from './code-examples/suggestion.egen-mal-for-alternativene.example.source';
+import { SuggestionSokIBackendExampleSource } from './code-examples/suggestion.sok-i-backend.example.source';
+
+export interface Kommando {
   id: number;
   navn: string;
   hurtigtast: string;
+}
+
+export interface Kommune {
+  nummer: string;
+  navn: string;
 }
 
 @Component({
@@ -59,7 +68,23 @@ interface Kommando {
         <p>Valgt: {{ valgteKommuner.join(', ') || 'ingen' }}</p>
       </app-demo-section>
 
-      <app-demo-section title="Egen mal og eget søk" [code]="egenMalCode">
+      <app-demo-section title="Søk i backend" [code]="backendSokCode">
+        <hvi-suggestion
+          label="Søk etter kommune"
+          description="Søket kjøres mot et API. Skriv minst to tegn."
+          placeholder="Skriv for å søke..."
+          optionLabel="navn"
+          dataKey="nummer"
+          [filter]="false"
+          [loading]="laster()"
+          [(ngModel)]="valgtKommuneFraApi"
+          [suggestions]="apiTreff()"
+          (completeMethod)="sokIApi($event)"
+        />
+        <p>Valgt: {{ valgtKommuneFraApi?.navn ?? 'ingen' }}</p>
+      </app-demo-section>
+
+      <app-demo-section title="Egen mal for alternativene" [code]="egenMalCode">
         <hvi-suggestion
           label="Velg kommando"
           description="Søket kjøres mot en egen liste"
@@ -83,16 +108,29 @@ interface Kommando {
   `,
 })
 export class SuggestionDemoComponent {
-  readonly egenMalOgEgetSokCode = SuggestionEgenMalOgEgetSokExampleSource;
+  readonly sokIBackendCode = SuggestionSokIBackendExampleSource;
+  readonly egenMalForAlternativeneCode = SuggestionEgenMalForAlternativeneExampleSource;
 
   readonly standardSuggestionCode = SuggestionStandardSuggestionExampleSource;
   readonly flervalgCode = SuggestionFlervalgExampleSource;
+  readonly backendSokCode = SuggestionSokIBackendExampleSource;
   readonly egenMalCode = SuggestionEgenMalExampleSource;
 
   readonly kommuner = ['Sogndal', 'Bergen', 'Oslo', 'Stavanger', 'Trondheim'];
 
   kommune: string | null = 'Bergen';
   valgteKommuner: string[] = ['Bergen'];
+
+  /**
+   * Forhåndsvalgt verdi selv om `apiTreff` er tom — komponenten trenger ikke
+   * at verdien finnes i forslagslista for å vise den.
+   */
+  valgtKommuneFraApi: Kommune | null = { nummer: '4601', navn: 'Bergen' };
+
+  readonly apiTreff = signal<Kommune[]>([]);
+  readonly laster = signal(false);
+
+  private readonly query = new Subject<string>();
 
   readonly kommandoer: Kommando[] = [
     { id: 1, navn: 'Nytt dokument', hurtigtast: '⌘N' },
@@ -105,10 +143,53 @@ export class SuggestionDemoComponent {
   filtrerteKommandoer: Kommando[] = [];
   valgtKommando: Kommando | null = null;
 
+  constructor() {
+    this.query
+      .pipe(
+        debounceTime(300),
+        distinctUntilChanged(),
+        switchMap((query) => this.hentKommuner(query)),
+        takeUntilDestroyed(),
+      )
+      .subscribe((kommuner) => {
+        this.apiTreff.set(kommuner);
+        this.laster.set(false);
+      });
+  }
+
+  sokIApi(event: HviSuggestionCompleteEvent): void {
+    if (event.query.length < 2) {
+      this.apiTreff.set([]);
+      this.laster.set(false);
+      return;
+    }
+
+    this.laster.set(true);
+    this.query.next(event.query);
+  }
+
   sokKommandoer(event: HviSuggestionCompleteEvent): void {
     const query = event.query.toLowerCase();
     this.filtrerteKommandoer = query
       ? this.kommandoer.filter((k) => k.navn.toLowerCase().includes(query))
       : [...this.kommandoer];
+  }
+
+  /** Simulert API-kall. I en ekte app ville dette vært en `HttpClient`-forespørsel. */
+  private hentKommuner(query: string) {
+    const alle: Kommune[] = [
+      { nummer: '4601', navn: 'Bergen' },
+      { nummer: '4640', navn: 'Sogndal' },
+      { nummer: '0301', navn: 'Oslo' },
+      { nummer: '1103', navn: 'Stavanger' },
+      { nummer: '5001', navn: 'Trondheim' },
+      { nummer: '5501', navn: 'Tromsø' },
+      { nummer: '4204', navn: 'Kristiansand' },
+      { nummer: '3005', navn: 'Drammen' },
+    ];
+
+    const treff = alle.filter((k) => k.navn.toLowerCase().includes(query.toLowerCase()));
+
+    return of(treff).pipe(delay(400));
   }
 }

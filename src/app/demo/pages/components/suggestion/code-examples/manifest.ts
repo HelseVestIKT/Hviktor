@@ -12,6 +12,22 @@ export const SuggestionExamplesManifest = [
     className: 'SuggestionFlervalgExampleComponent',
     sourceExport: 'SuggestionFlervalgExampleSource',
   },
+  {
+    slug: 'sok-i-backend',
+    title: 'Søk i backend',
+    className: 'SuggestionSokIBackendExampleComponent',
+    sourceExport: 'SuggestionSokIBackendExampleSource',
+  },
+  {
+    slug: 'egen-mal-for-alternativene',
+    title: 'Egen mal for alternativene',
+    className: 'SuggestionEgenMalForAlternativeneExampleComponent',
+    sourceExport: 'SuggestionEgenMalForAlternativeneExampleSource',
+  },
 ] as const;
 
-export type SuggestionExampleSlug = 'standard-suggestion' | 'flervalg';
+export type SuggestionExampleSlug =
+  | 'standard-suggestion'
+  | 'flervalg'
+  | 'sok-i-backend'
+  | 'egen-mal-for-alternativene';
