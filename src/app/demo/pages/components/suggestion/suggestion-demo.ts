@@ -12,6 +12,7 @@ import { SuggestionEgenMalExampleSource } from './code-examples/suggestion.egen-
 import { SuggestionFlervalgExampleSource } from './code-examples/suggestion.flervalg.example.source';
 import { SuggestionStandardSuggestionExampleSource } from './code-examples/suggestion.standard-suggestion.example.source';
 
+import { SuggestionEgenMalOgEgetSokExampleSource } from './code-examples/suggestion.egen-mal-og-eget-sok.example.source';
 interface Kommando {
   id: number;
   navn: string;
@@ -82,6 +83,8 @@ interface Kommando {
   `,
 })
 export class SuggestionDemoComponent {
+  readonly egenMalOgEgetSokCode = SuggestionEgenMalOgEgetSokExampleSource;
+
   readonly standardSuggestionCode = SuggestionStandardSuggestionExampleSource;
   readonly flervalgCode = SuggestionFlervalgExampleSource;
   readonly egenMalCode = SuggestionEgenMalExampleSource;
