@@ -26,23 +26,24 @@ import { HviField, HviLabel, HviSelect, HviTextfield } from '@helsevestikt/hvikt
   \`,
 })
 export class TextfieldTypeExampleComponent {
-  types = [
-    'text',
+  readonly types: HviTextfieldType[] = [
+    'number',
+    'hidden',
     'color',
     'date',
     'datetime-local',
     'email',
     'file',
     'month',
-    'hidden',
-    'number',
     'password',
     'search',
     'tel',
+    'text',
     'time',
     'url',
     'week',
   ];
-  selectedType: any = 'text';
+
+  selectedType: HviTextfieldType = 'text';
 }
 `;

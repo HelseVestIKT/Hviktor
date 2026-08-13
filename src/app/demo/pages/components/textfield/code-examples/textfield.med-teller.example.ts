@@ -12,23 +12,4 @@ import { HviTextfield } from '@helsevestikt/hviktor-angular';
     ></hvi-textfield>
   `,
 })
-export class TextfieldMedTellerExampleComponent {
-  types = [
-    'text',
-    'color',
-    'date',
-    'datetime-local',
-    'email',
-    'file',
-    'month',
-    'hidden',
-    'number',
-    'password',
-    'search',
-    'tel',
-    'time',
-    'url',
-    'week',
-  ];
-  selectedType: any = 'text';
-}
+export class TextfieldMedTellerExampleComponent {}
