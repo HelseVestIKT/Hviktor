@@ -13,6 +13,7 @@ import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
 import { SuggestionFlervalgExampleSource } from './code-examples/suggestion.flervalg.example.source';
 import { SuggestionStandardSuggestionExampleSource } from './code-examples/suggestion.standard-suggestion.example.source';
 
+import { SuggestionLangeListerExampleSource } from './code-examples';
 import { SuggestionEgenMalForAlternativeneExampleSource } from './code-examples/suggestion.egen-mal-for-alternativene.example.source';
 import { SuggestionSokIBackendExampleSource } from './code-examples/suggestion.sok-i-backend.example.source';
 
@@ -88,7 +89,7 @@ export interface Sensor {
         <p>Valgt: {{ valgtKommuneFraApi?.navn ?? 'ingen' }}</p>
       </app-demo-section>
 
-      <app-demo-section title="Lange lister">
+      <app-demo-section title="Lange lister" [code]="langeListerCode">
         <hvi-suggestion
           label="Velg sensorer"
           description="Lista inneholder 3000 sensorer, men bare 50 rendres av gangen. Skriv for å snevre inn."
@@ -130,6 +131,7 @@ export class SuggestionDemoComponent {
   readonly standardSuggestionCode = SuggestionStandardSuggestionExampleSource;
   readonly flervalgCode = SuggestionFlervalgExampleSource;
   readonly backendSokCode = SuggestionSokIBackendExampleSource;
+  readonly langeListerCode = SuggestionLangeListerExampleSource;
   readonly egenMalForAlternativeneCode = SuggestionEgenMalForAlternativeneExampleSource;
 
   readonly kommuner = ['Sogndal', 'Bergen', 'Oslo', 'Stavanger', 'Trondheim'];

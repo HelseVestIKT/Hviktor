@@ -19,6 +19,12 @@ export const SuggestionExamplesManifest = [
     sourceExport: 'SuggestionSokIBackendExampleSource',
   },
   {
+    slug: 'lange-lister',
+    title: 'Lange lister',
+    className: 'SuggestionLangeListerExampleComponent',
+    sourceExport: 'SuggestionLangeListerExampleSource',
+  },
+  {
     slug: 'egen-mal-for-alternativene',
     title: 'Egen mal for alternativene',
     className: 'SuggestionEgenMalForAlternativeneExampleComponent',
@@ -30,4 +36,5 @@ export type SuggestionExampleSlug =
   | 'standard-suggestion'
   | 'flervalg'
   | 'sok-i-backend'
+  | 'lange-lister'
   | 'egen-mal-for-alternativene';
