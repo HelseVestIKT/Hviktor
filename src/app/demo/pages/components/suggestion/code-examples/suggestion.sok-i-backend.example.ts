@@ -3,7 +3,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormsModule } from '@angular/forms';
 import { HviSuggestion, HviSuggestionCompleteEvent } from '@helsevestikt/hviktor-angular';
 import { Subject, debounceTime, delay, distinctUntilChanged, of, switchMap } from 'rxjs';
-import { Kommando, Kommune } from '../suggestion-demo';
+import { Kommune } from '../suggestion-demo';
 
 @Component({
   selector: 'app-suggestion-sok-i-backend-example',
