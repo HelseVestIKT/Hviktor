@@ -10,7 +10,6 @@ import {
 import { debounceTime, delay, distinctUntilChanged, of, Subject, switchMap } from 'rxjs';
 import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
 
-import { SuggestionEgenMalExampleSource } from './code-examples/suggestion.egen-mal.example.source';
 import { SuggestionFlervalgExampleSource } from './code-examples/suggestion.flervalg.example.source';
 import { SuggestionStandardSuggestionExampleSource } from './code-examples/suggestion.standard-suggestion.example.source';
 
