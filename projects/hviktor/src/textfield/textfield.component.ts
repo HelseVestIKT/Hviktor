@@ -1,4 +1,13 @@
-import { booleanAttribute, Component, forwardRef, inject, Input } from '@angular/core';
+import {
+  booleanAttribute,
+  Component,
+  computed,
+  forwardRef,
+  inject,
+  input,
+  model,
+  numberAttribute,
+} from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { HviFieldAffix } from '../forms/field/field-affix.component';
 import { HviFieldAffixes } from '../forms/field/field-affixes.component';
@@ -11,6 +20,23 @@ import { HviInput } from '../forms/input/input.directive';
 import { HviLabel } from '../label/label.directive';
 import { HviRequiredTag, RequiredTagMode } from '../required-tag/required-tag.component';
 
+export type HviTextfieldType =
+  | 'number'
+  | 'hidden'
+  | 'color'
+  | 'date'
+  | 'datetime-local'
+  | 'email'
+  | 'file'
+  | 'month'
+  | 'password'
+  | 'search'
+  | 'tel'
+  | 'text'
+  | 'time'
+  | 'url'
+  | 'week';
+
 let nextId = 0;
 
 /**
@@ -18,6 +44,9 @@ let nextId = 0;
  *
  * Dette er en sammensatt komponent som bruker Field, Input/Textarea og Label under panseret.
  * Bruk `multiline` for å bytte mellom input og textarea.
+ *
+ * Komponenten er signalbasert og fungerer derfor også i soneløse applikasjoner
+ * og sammen med signalbaserte skjemaer.
  *
  * @example
  * ```html
@@ -60,86 +89,89 @@ let nextId = 0;
   ],
   template: `
     <hvi-field>
-      <label hviLabel [attr.for]="inputId">
-        {{ label }}
-        @if (effectiveRequiredMode; as mode) {
+      <label hviLabel [attr.for]="inputId()">
+        {{ label() }}
+        @if (effectiveRequiredMode(); as mode) {
           <hvi-required-tag [mode]="mode" />
         }
       </label>
-      @if (description) {
-        <span hviFieldDescription>{{ description }}</span>
+      @if (description()) {
+        <span hviFieldDescription>{{ description() }}</span>
       }
       <hvi-field-affixes>
-        @if (prefix) {
-          <hvi-field-affix>{{ prefix }}</hvi-field-affix>
+        @if (prefix()) {
+          <hvi-field-affix>{{ prefix() }}</hvi-field-affix>
         }
-        @if (multiline) {
+        @if (multiline()) {
           <textarea
             hviInput
-            [id]="inputId"
-            [attr.name]="name ?? null"
-            [attr.rows]="rows ?? null"
-            [attr.placeholder]="placeholder ?? null"
-            [disabled]="_disabled"
-            [readOnly]="_readOnly"
-            [attr.maxlength]="maxLength ?? null"
-            [attr.aria-invalid]="error ? 'true' : null"
-            [attr.required]="_required ? '' : null"
-            [attr.autocomplete]="autocomplete ?? null"
-            [value]="_value"
-            (input)="_handleInput($event)"
-            (blur)="_onTouched()"
+            [id]="inputId()"
+            [attr.name]="name() ?? null"
+            [attr.rows]="rows() ?? null"
+            [attr.placeholder]="placeholder() ?? null"
+            [disabled]="disabled()"
+            [readOnly]="readOnly()"
+            [attr.maxlength]="maxLength() ?? null"
+            [attr.aria-invalid]="error() ? 'true' : null"
+            [attr.required]="required() ? '' : null"
+            [attr.autocomplete]="autocomplete() ?? null"
+            [value]="value()"
+            (input)="handleInput($event)"
+            (blur)="onTouched()"
           ></textarea>
         } @else {
           <input
             hviInput
-            [id]="inputId"
-            [type]="type"
-            [attr.name]="name ?? null"
-            [attr.size]="size ?? null"
-            [attr.placeholder]="placeholder ?? null"
-            [disabled]="_disabled"
-            [readOnly]="_readOnly"
-            [attr.maxlength]="maxLength ?? null"
-            [attr.aria-invalid]="error ? 'true' : null"
-            [attr.required]="_required ? '' : null"
-            [attr.autocomplete]="autocomplete ?? null"
-            [value]="_value"
-            (input)="_handleInput($event)"
-            (blur)="_onTouched()"
+            [id]="inputId()"
+            [type]="type()"
+            [attr.name]="name() ?? null"
+            [attr.size]="size() ?? null"
+            [attr.placeholder]="placeholder() ?? null"
+            [disabled]="disabled()"
+            [readOnly]="readOnly()"
+            [attr.maxlength]="maxLength() ?? null"
+            [attr.aria-invalid]="error() ? 'true' : null"
+            [attr.required]="required() ? '' : null"
+            [attr.autocomplete]="autocomplete() ?? null"
+            [value]="value()"
+            (input)="handleInput($event)"
+            (blur)="onTouched()"
           />
         }
-        @if (suffix) {
-          <hvi-field-affix>{{ suffix }}</hvi-field-affix>
+        @if (suffix()) {
+          <hvi-field-affix>{{ suffix() }}</hvi-field-affix>
         }
       </hvi-field-affixes>
-      @if (counterLimit) {
-        <hvi-field-counter [limit]="counterLimit" />
+      @if (counterLimit(); as limit) {
+        <hvi-field-counter [limit]="limit" />
       }
-      @if (error) {
-        <p hviFieldValidation>{{ error }}</p>
+      @if (error()) {
+        <p hviFieldValidation>{{ error() }}</p>
       }
     </hvi-field>
   `,
 })
 export class HviTextfield implements ControlValueAccessor {
-  /** Label for the textfield */
-  @Input() label!: string;
+  /** Ledetekst for feltet. */
+  readonly label = input<string>('');
 
-  /** Description text below the label */
-  @Input() description?: string;
+  /** Hjelpetekst under ledeteksten. */
+  readonly description = input<string>();
 
-  /** Prefix text displayed before the input */
-  @Input() prefix?: string;
+  /** Dekorativ tekst foran inputfeltet. Leses ikke av skjermlesere. */
+  readonly prefix = input<string>();
 
-  /** Suffix text displayed after the input */
-  @Input() suffix?: string;
+  /** Dekorativ tekst etter inputfeltet. Leses ikke av skjermlesere. */
+  readonly suffix = input<string>();
 
-  /** Error message for the field */
-  @Input() error?: string;
+  /** Feilmelding for feltet. */
+  readonly error = input<string>();
 
-  /** Character counter limit. Displays a counter below the field. */
-  @Input() counterLimit?: number;
+  /** Tegngrense. Viser en teller under feltet. */
+  readonly counterLimit = input<number | undefined>(undefined, { transform: numberAttribute });
+
+  /** Input-typen for feltet. */
+  readonly type = input<HviTextfieldType>('text');
 
   /**
    * Manuell overstyring av required-tag-mode.
@@ -152,134 +184,99 @@ export class HviTextfield implements ControlValueAccessor {
    * - Form er `'mixed'` → `'required'` hvis feltet er required, `'optional'` hvis ikke
    * - Form er `'none'` → ingen tag
    */
-  @Input() requiredMode?: RequiredTagMode;
+  readonly requiredMode = input<RequiredTagMode>();
 
-  /** Autocomplete attribute for the input, e.g. 'given-name', 'email'. */
-  @Input() autocomplete?: string;
+  /** Autocomplete-attributt for inputfeltet, f.eks. 'given-name' eller 'email'. */
+  readonly autocomplete = input<string>();
 
-  /** Injisert HviForm for automatisk required-tag-beregning */
+  /** Render en textarea i stedet for input, for flerlinjet tekst. */
+  readonly multiline = input(false, { transform: booleanAttribute });
+
+  /** Antall rader i textarea. */
+  readonly rows = input<number | undefined>(undefined, { transform: numberAttribute });
+
+  /** Bredden på inputfeltet målt i antall tegn. */
+  readonly size = input<number | undefined>(undefined, { transform: numberAttribute });
+
+  /** Plassholdertekst. Unngå å bruke dette i stedet for ledetekst. */
+  readonly placeholder = input<string>();
+
+  /** `name`-attributt på inputfeltet. */
+  readonly name = input<string>();
+
+  /** `id` på inputfeltet. Genereres automatisk hvis den ikke settes. */
+  readonly id = input<string>();
+
+  /** Maks antall tegn. */
+  readonly maxLength = input<number | undefined>(undefined, { transform: numberAttribute });
+
+  /** Verdien i feltet. Toveisbinding, og settes også av `ngModel`/`formControlName`. */
+  readonly value = model<string>('');
+
+  /** Marker feltet som påkrevd. */
+  readonly required = input(false, { transform: booleanAttribute });
+
+  /** Deaktiverer feltet. Settes også av `formControlName`. */
+  readonly disabled = model(false);
+
+  /** Gjør feltet skrivebeskyttet. Foretrekkes framfor `disabled`. */
+  readonly readOnly = model(false);
+
+  /** Injisert HviForm for automatisk required-tag-beregning. */
   private readonly hviForm = inject(HviForm, { optional: true });
+
+  private readonly uniqueId = nextId++;
+
+  readonly inputId = computed(() => this.id() ?? `hvi-textfield-${this.uniqueId}`);
 
   /**
    * Beregnet required-tag-mode basert på manuell overstyring eller HviForm-kontekst.
-   * Returnerer `null` hvis ingen tag skal vises.
+   * Er `null` når ingen tag skal vises.
    */
-  get effectiveRequiredMode(): RequiredTagMode | null {
+  readonly effectiveRequiredMode = computed<RequiredTagMode | null>(() => {
     // Manuell overstyring vinner alltid
-    if (this.requiredMode) return this.requiredMode;
+    const override = this.requiredMode();
+    if (override) return override;
 
     // Uten HviForm-kontekst eller med tags skrudd av: ingen automatikk
     const form = this.hviForm;
     if (!form || !form.showRequiredTags) return null;
 
-    const formMode = form.requiredMode();
-
-    switch (formMode) {
+    switch (form.requiredMode()) {
       case 'all-required':
         // Alle er required – vis ingen tag per felt (all-required vises øverst i form)
         return null;
       case 'mixed':
         // Blanding – vis required eller optional basert på feltets required-state
-        return this._required ? 'required' : 'optional';
+        return this.required() ? 'required' : 'optional';
       case 'none':
       default:
         return null;
     }
-  }
+  });
 
-  /** Render a textarea instead of input for multiline support */
-  @Input({ transform: booleanAttribute }) multiline = false;
+  private onChange: (value: string) => void = () => undefined;
+  protected onTouched: () => void = () => undefined;
 
-  /** Supported input types */
-  @Input() type:
-    | 'number'
-    | 'hidden'
-    | 'color'
-    | 'date'
-    | 'datetime-local'
-    | 'email'
-    | 'file'
-    | 'month'
-    | 'password'
-    | 'search'
-    | 'tel'
-    | 'text'
-    | 'time'
-    | 'url'
-    | 'week' = 'text';
-
-  /** Number of rows for textarea (multiline mode) */
-  @Input() rows?: number;
-
-  /** Width of input in character count */
-  @Input() size?: number;
-
-  /** Placeholder text */
-  @Input() placeholder?: string;
-
-  /** Name attribute for the input */
-  @Input() name?: string;
-
-  /** Id attribute for the input. Auto-generated if not provided. */
-  @Input() id?: string;
-
-  /** Max length attribute for the input */
-  @Input() maxLength?: number;
-
-  /** Initial value for the input */
-  @Input()
-  set value(v: string) {
-    this._value = v ?? '';
-  }
-
-  _value = '';
-  _disabled = false;
-  _readOnly = false;
-  _required = false;
-
-  @Input({ transform: booleanAttribute })
-  set required(value: boolean) {
-    this._required = value;
-  }
-
-  @Input({ transform: booleanAttribute })
-  set disabled(value: boolean) {
-    this._disabled = value;
-  }
-
-  @Input({ transform: booleanAttribute })
-  set readOnly(value: boolean) {
-    this._readOnly = value;
-  }
-
-  private readonly _uniqueId = nextId++;
-  private _onChange: (value: string) => void = () => {};
-  _onTouched: () => void = () => {};
-
-  get inputId(): string {
-    return this.id ?? `hvi-textfield-${this._uniqueId}`;
-  }
-
-  _handleInput(event: Event): void {
+  protected handleInput(event: Event): void {
     const target = event.target as HTMLInputElement | HTMLTextAreaElement;
-    this._value = target.value;
-    this._onChange(this._value);
+    this.value.set(target.value);
+    this.onChange(target.value);
   }
 
-  // ControlValueAccessor
-  writeValue(value: string): void {
-    this._value = value ?? '';
+  writeValue(value: string | null): void {
+    this.value.set(value ?? '');
   }
 
   registerOnChange(fn: (value: string) => void): void {
-    this._onChange = fn;
+    this.onChange = fn;
   }
 
   registerOnTouched(fn: () => void): void {
-    this._onTouched = fn;
+    this.onTouched = fn;
   }
 
   setDisabledState(isDisabled: boolean): void {
-    this._disabled = isDisabled;
+    this.disabled.set(isDisabled);
   }
 }
