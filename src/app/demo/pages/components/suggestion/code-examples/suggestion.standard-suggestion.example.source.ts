@@ -21,6 +21,5 @@ export class SuggestionStandardSuggestionExampleComponent {
   readonly kommuner = ['Sogndal', 'Bergen', 'Oslo', 'Stavanger', 'Trondheim'];
 
   kommune: string | null = 'Bergen';
-  valgteKommuner: string[] = ['Bergen'];
 }
 `;
