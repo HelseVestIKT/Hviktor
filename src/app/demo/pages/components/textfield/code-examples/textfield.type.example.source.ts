@@ -1,7 +1,7 @@
 // Auto-generated - do not edit manually
 export const TextfieldTypeExampleSource = `import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HviField, HviLabel, HviSelect, HviTextfield } from '@helsevestikt/hviktor-angular';
+import { HviField, HviLabel, HviSelect, HviTextfield, HviTextfieldType, } from '@helsevestikt/hviktor-angular';
 
 @Component({
   selector: 'app-textfield-type-example',

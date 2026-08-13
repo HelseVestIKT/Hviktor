@@ -7,6 +7,7 @@ import {
   input,
   model,
   numberAttribute,
+  signal,
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { HviFieldAffix } from '../forms/field/field-affix.component';
@@ -109,7 +110,7 @@ let nextId = 0;
             [attr.name]="name() ?? null"
             [attr.rows]="rows() ?? null"
             [attr.placeholder]="placeholder() ?? null"
-            [disabled]="disabled()"
+            [disabled]="isDisabled()"
             [readOnly]="readOnly()"
             [attr.maxlength]="maxLength() ?? null"
             [attr.aria-invalid]="error() ? 'true' : null"
@@ -127,7 +128,7 @@ let nextId = 0;
             [attr.name]="name() ?? null"
             [attr.size]="size() ?? null"
             [attr.placeholder]="placeholder() ?? null"
-            [disabled]="disabled()"
+            [disabled]="isDisabled()"
             [readOnly]="readOnly()"
             [attr.maxlength]="maxLength() ?? null"
             [attr.aria-invalid]="error() ? 'true' : null"
@@ -216,11 +217,17 @@ export class HviTextfield implements ControlValueAccessor {
   /** Marker feltet som påkrevd. */
   readonly required = input(false, { transform: booleanAttribute });
 
-  /** Deaktiverer feltet. Settes også av `formControlName`. */
-  readonly disabled = model(false);
+  /** Deaktiverer feltet. Unngå om mulig — vurder `readOnly` i stedet. */
+  readonly disabled = input(false, { transform: booleanAttribute });
+
+  /** Satt av `setDisabledState` fra reactive forms. */
+  private readonly disabledByForm = signal(false);
+
+  /** Feltet er deaktivert hvis enten input-et eller skjemaet sier det. */
+  protected readonly isDisabled = computed(() => this.disabled() || this.disabledByForm());
 
   /** Gjør feltet skrivebeskyttet. Foretrekkes framfor `disabled`. */
-  readonly readOnly = model(false);
+  readonly readOnly = input(false, { transform: booleanAttribute });
 
   /** Injisert HviForm for automatisk required-tag-beregning. */
   private readonly hviForm = inject(HviForm, { optional: true });
@@ -277,6 +284,6 @@ export class HviTextfield implements ControlValueAccessor {
   }
 
   setDisabledState(isDisabled: boolean): void {
-    this.disabled.set(isDisabled);
+    this.disabledByForm.set(isDisabled);
   }
 }

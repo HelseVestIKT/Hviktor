@@ -14,6 +14,7 @@ import { TextfieldMedPrefiksOgSuffiksExampleSource } from './code-examples/textf
 import { TextfieldMedTellerExampleSource } from './code-examples/textfield.med-teller.example.source';
 import { TextfieldMultilineExampleSource } from './code-examples/textfield.multiline.example.source';
 import { TextfieldPakrevdeOgValgfrieFeltExampleSource } from './code-examples/textfield.pakrevde-og-valgfrie-felt.example.source';
+import { TextfieldToveisbindingExampleSource } from './code-examples/textfield.toveisbinding.example.source';
 import { TextfieldTypeExampleSource } from './code-examples/textfield.type.example.source';
 
 export type HviTextfieldType =
@@ -129,6 +130,7 @@ export type HviTextfieldType =
       <!-- Toveisbinding -->
       <app-demo-section
         title="Toveisbinding"
+        [code]="toveisbindingCode"
         description="Verdien kan bindes med ngModel, formControlName eller [(value)]. Feltet oppdateres også når verdien settes programmatisk."
       >
         <div class="space-y-4">
@@ -149,6 +151,7 @@ export class TextfieldDemoComponent {
   readonly medTellerCode = TextfieldMedTellerExampleSource;
   readonly pakrevdeOgValgfrieFeltCode = TextfieldPakrevdeOgValgfrieFeltExampleSource;
   readonly typeCode = TextfieldTypeExampleSource;
+  readonly toveisbindingCode = TextfieldToveisbindingExampleSource;
 
   readonly navn = signal('');
 
