@@ -29,9 +29,9 @@ import { Kommando } from '../suggestion-demo';
 })
 export class SuggestionEgenMalExampleComponent {
   readonly kommandoer: Kommando[] = [
-    { id: 1, navn: 'Kommando 1', hurtigtast: 'Ctrl+1' },
-    { id: 2, navn: 'Kommando 2', hurtigtast: 'Ctrl+2' },
-    { id: 3, navn: 'Kommando 3', hurtigtast: 'Ctrl+3' },
+    { id: 1, navn: 'Nytt dokument', hurtigtast: '⌘N' },
+    { id: 2, navn: 'Åpne', hurtigtast: '⌘O' },
+    { id: 3, navn: 'Lagre', hurtigtast: '⌘S' },
   ];
 
   filtrerteKommandoer: Kommando[] = [];
