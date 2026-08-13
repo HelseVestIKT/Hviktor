@@ -11,8 +11,10 @@ import {
   inject,
   input,
   model,
+  numberAttribute,
   output,
   PLATFORM_ID,
+  signal,
   TemplateRef,
   viewChild,
 } from '@angular/core';
@@ -63,6 +65,9 @@ let nextId = 0;
  * @summary
  * Søkbart inputfelt med forslagsliste. Verdien settes med `ngModel`,
  * `formControlName` eller `[(value)]`, og lista fylles via `suggestions`.
+ *
+ * Bare de `maxVisible` første treffene rendres, slik at lange lister ikke
+ * legger tusenvis av noder i DOM.
  *
  * @example
  * ```html
@@ -128,8 +133,8 @@ let nextId = 0;
           (blur)="onTouched()"
         />
         <button type="reset" [attr.aria-label]="clearLabel()"></button>
-        <u-datalist [attr.data-nofilter]="filter() ? undefined : ''">
-          @for (option of suggestions(); track keyOf(option)) {
+        <u-datalist data-nofilter>
+          @for (option of visible(); track keyOf(option)) {
             <u-option [attr.value]="keyOf(option)" [attr.label]="labelOf(option)">
               @if (itemTemplate(); as template) {
                 <ng-container
@@ -141,6 +146,11 @@ let nextId = 0;
               }
             </u-option>
           }
+          @if (hiddenCount(); as hidden) {
+            <div data-suggestion-truncated aria-hidden="true">
+              {{ truncatedText().replace('%d', hidden.toString()) }}
+            </div>
+          }
         </u-datalist>
       </ds-suggestion>
       @if (error()) {
@@ -148,8 +158,20 @@ let nextId = 0;
       }
     </ds-field>
   `,
-  styles: [':host { display: block; margin-block-end: var(--ds-size-2); }'],
-  host: {},
+  styles: [
+    `
+      :host {
+        display: block;
+        margin-block-end: var(--ds-size-2);
+      }
+
+      [data-suggestion-truncated] {
+        padding: var(--dsc-suggestion-option-padding, var(--ds-size-3));
+        font-size: var(--ds-body-sm-font-size);
+        color: var(--ds-color-neutral-text-subtle);
+      }
+    `,
+  ],
 })
 export class HviSuggestion<T = unknown> implements ControlValueAccessor {
   private readonly comboboxRef = viewChild<ElementRef<ComboboxElement>>('combobox');
@@ -170,7 +192,7 @@ export class HviSuggestion<T = unknown> implements ControlValueAccessor {
   /** Feilmelding. Markerer samtidig feltet som ugyldig. */
   readonly error = input<string>();
 
-  /** Alternativene som vises i lista. */
+  /** Alternativene som kan velges. */
   readonly suggestions = input<readonly T[]>([]);
 
   /** Valgt verdi. Array når `multiple` er satt. */
@@ -188,8 +210,20 @@ export class HviSuggestion<T = unknown> implements ControlValueAccessor {
   /** Lar brukeren legge til verdier som ikke finnes i lista. */
   readonly creatable = input(false, { transform: booleanAttribute });
 
-  /** Innebygd filtrering. Sett `false` når `suggestions` alt er filtrert. */
+  /**
+   * Filtrer `suggestions` på det brukeren skriver. Sett `false` når lista
+   * allerede er filtrert, for eksempel av et backend-søk i `completeMethod`.
+   */
   readonly filter = input(true, { transform: booleanAttribute });
+
+  /**
+   * Maks antall alternativer som rendres samtidig. Resten nås ved å skrive.
+   * Holder DOM liten selv når `suggestions` inneholder tusenvis av elementer.
+   */
+  readonly maxVisible = input(100, { transform: numberAttribute });
+
+  /** Tekst som vises når lista er avkortet. `%d` erstattes med antall skjulte. */
+  readonly truncatedText = input('Viser de første treffene. Skriv for å søke blant %d til.');
 
   /** Send `completeMethod` allerede ved fokus, som Prime sin `dropdown`. */
   readonly completeOnFocus = input(false, { transform: booleanAttribute });
@@ -222,6 +256,30 @@ export class HviSuggestion<T = unknown> implements ControlValueAccessor {
     ...HVI_SUGGESTION_SR_TEXT,
     ...this.srText(),
   }));
+
+  /** Teksten brukeren har skrevet. Styrer den interne filtreringen. */
+  private readonly query = signal('');
+
+  /** Alternativene som matcher det brukeren har skrevet. */
+  private readonly matching = computed<readonly T[]>(() => {
+    const options = this.suggestions();
+    if (!this.filter()) return options;
+
+    const query = this.query().trim().toLowerCase();
+    if (!query) return options;
+
+    return options.filter((option) => this.labelOf(option).toLowerCase().includes(query));
+  });
+
+  /** Alternativene som faktisk rendres. */
+  protected readonly visible = computed<readonly T[]>(() =>
+    this.matching().slice(0, this.maxVisible()),
+  );
+
+  /** Antall treff som ikke rendres. */
+  protected readonly hiddenCount = computed(() =>
+    Math.max(0, this.matching().length - this.maxVisible()),
+  );
 
   /** Valgt verdi som flat liste, uavhengig av `multiple`. */
   private readonly selected = computed<readonly T[]>(() => {
@@ -262,7 +320,9 @@ export class HviSuggestion<T = unknown> implements ControlValueAccessor {
   }
 
   protected complete(event: Event): void {
-    this.completeMethod.emit({ query: (event.target as HTMLInputElement).value });
+    const query = (event.target as HTMLInputElement).value;
+    this.query.set(query);
+    this.completeMethod.emit({ query });
   }
 
   protected onFocus(event: Event): void {
@@ -311,6 +371,10 @@ export class HviSuggestion<T = unknown> implements ControlValueAccessor {
 
     const value = this.multiple() ? options : (options[0] ?? null);
     this.value.set(value);
+
+    // u-combobox skriver selv i inputfeltet ved valg, uten å sende `input`.
+    this.query.set(combobox.control?.value ?? '');
+
     this.onChange(value);
     this.onTouched();
   }

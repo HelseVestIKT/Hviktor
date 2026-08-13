@@ -27,6 +27,11 @@ export interface Kommune {
   navn: string;
 }
 
+export interface Sensor {
+  id: number;
+  navn: string;
+}
+
 @Component({
   selector: 'app-suggestion-demo',
   standalone: true,
@@ -83,6 +88,21 @@ export interface Kommune {
         <p>Valgt: {{ valgtKommuneFraApi?.navn ?? 'ingen' }}</p>
       </app-demo-section>
 
+      <app-demo-section title="Lange lister">
+        <hvi-suggestion
+          label="Velg sensorer"
+          description="Lista inneholder 3000 sensorer, men bare 50 rendres av gangen. Skriv for å snevre inn."
+          placeholder="Skriv for å søke..."
+          optionLabel="navn"
+          dataKey="id"
+          [multiple]="true"
+          [maxVisible]="50"
+          [(ngModel)]="valgteSensorer"
+          [suggestions]="sensorer"
+        />
+        <p>Valgt: {{ valgteSensorer.length }} av {{ sensorer.length }}</p>
+      </app-demo-section>
+
       <app-demo-section title="Egen mal for alternativene" [code]="egenMalForAlternativeneCode">
         <hvi-suggestion
           label="Velg kommando"
@@ -127,6 +147,14 @@ export class SuggestionDemoComponent {
   readonly laster = signal(false);
 
   private readonly query = new Subject<string>();
+
+  /** Stor liste for å vise at bare `maxVisible` alternativer havner i DOM. */
+  readonly sensorer: Sensor[] = Array.from({ length: 3000 }, (_, i) => ({
+    id: i + 1,
+    navn: `Sensor ${String(i + 1).padStart(4, '0')}`,
+  }));
+
+  valgteSensorer: Sensor[] = [];
 
   readonly kommandoer: Kommando[] = [
     { id: 1, navn: 'Nytt dokument', hurtigtast: '⌘N' },

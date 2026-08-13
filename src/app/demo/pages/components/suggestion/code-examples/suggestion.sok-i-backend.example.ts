@@ -37,14 +37,6 @@ export class SuggestionSokIBackendExampleComponent {
 
   private readonly query = new Subject<string>();
 
-  readonly kommandoer: Kommando[] = [
-    { id: 1, navn: 'Nytt dokument', hurtigtast: '⌘N' },
-    { id: 2, navn: 'Åpne', hurtigtast: '⌘O' },
-    { id: 3, navn: 'Lagre', hurtigtast: '⌘S' },
-    { id: 4, navn: 'Lagre som', hurtigtast: '⇧⌘S' },
-    { id: 5, navn: 'Søk', hurtigtast: '⌘F' },
-  ];
-
   constructor() {
     this.query
       .pipe(
