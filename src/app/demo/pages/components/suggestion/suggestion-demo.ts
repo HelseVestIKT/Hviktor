@@ -10,7 +10,6 @@ import {
 import { debounceTime, delay, distinctUntilChanged, of, Subject, switchMap } from 'rxjs';
 import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
 
-import { SuggestionEgenMalExampleSource } from './code-examples/suggestion.egen-mal.example.source';
 import { SuggestionFlervalgExampleSource } from './code-examples/suggestion.flervalg.example.source';
 import { SuggestionStandardSuggestionExampleSource } from './code-examples/suggestion.standard-suggestion.example.source';
 
@@ -84,7 +83,7 @@ export interface Kommune {
         <p>Valgt: {{ valgtKommuneFraApi?.navn ?? 'ingen' }}</p>
       </app-demo-section>
 
-      <app-demo-section title="Egen mal for alternativene" [code]="egenMalCode">
+      <app-demo-section title="Egen mal for alternativene" [code]="egenMalForAlternativeneCode">
         <hvi-suggestion
           label="Velg kommando"
           description="Søket kjøres mot en egen liste"
@@ -108,13 +107,10 @@ export interface Kommune {
   `,
 })
 export class SuggestionDemoComponent {
-  readonly sokIBackendCode = SuggestionSokIBackendExampleSource;
-  readonly egenMalForAlternativeneCode = SuggestionEgenMalForAlternativeneExampleSource;
-
   readonly standardSuggestionCode = SuggestionStandardSuggestionExampleSource;
   readonly flervalgCode = SuggestionFlervalgExampleSource;
   readonly backendSokCode = SuggestionSokIBackendExampleSource;
-  readonly egenMalCode = SuggestionEgenMalExampleSource;
+  readonly egenMalForAlternativeneCode = SuggestionEgenMalForAlternativeneExampleSource;
 
   readonly kommuner = ['Sogndal', 'Bergen', 'Oslo', 'Stavanger', 'Trondheim'];
 
