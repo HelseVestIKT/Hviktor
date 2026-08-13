@@ -35,9 +35,10 @@ form[hviForm] > * + * {
   margin-block-start: var(--ds-size-4);
 }
 
-/* ds-suggestion: gi chips luft over seg i flervalgsmodus */
-ds-suggestion[data-multiple]::part(items) {
-  padding-block-start: var(--ds-size-2);
+/* ds-suggestion: gi chips luft i flervalgsmodus */
+.ds-suggestion[data-multiple]::part(items) {
+  padding-block: var(--ds-size-2);
+  padding-inline: var(--ds-size-2);
 }
 
 /* adding styling to lists that tailwind has removed */
