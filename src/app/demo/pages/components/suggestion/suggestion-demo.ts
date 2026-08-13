@@ -108,13 +108,10 @@ export interface Kommune {
   `,
 })
 export class SuggestionDemoComponent {
-  readonly sokIBackendCode = SuggestionSokIBackendExampleSource;
-  readonly egenMalForAlternativeneCode = SuggestionEgenMalForAlternativeneExampleSource;
-
   readonly standardSuggestionCode = SuggestionStandardSuggestionExampleSource;
   readonly flervalgCode = SuggestionFlervalgExampleSource;
   readonly backendSokCode = SuggestionSokIBackendExampleSource;
-  readonly egenMalCode = SuggestionEgenMalExampleSource;
+  readonly egenMalForAlternativeneCode = SuggestionEgenMalForAlternativeneExampleSource;
 
   readonly kommuner = ['Sogndal', 'Bergen', 'Oslo', 'Stavanger', 'Trondheim'];
 
