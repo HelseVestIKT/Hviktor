@@ -1,6 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HviField, HviLabel, HviSelect, HviTextfield } from '@helsevestikt/hviktor-angular';
+import {
+  HviButton,
+  HviField,
+  HviLabel,
+  HviSelect,
+  HviTextfield,
+} from '@helsevestikt/hviktor-angular';
 import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
 
 import { TextfieldGrunnleggendeExampleSource } from './code-examples/textfield.grunnleggende.example.source';
@@ -8,7 +14,26 @@ import { TextfieldMedPrefiksOgSuffiksExampleSource } from './code-examples/textf
 import { TextfieldMedTellerExampleSource } from './code-examples/textfield.med-teller.example.source';
 import { TextfieldMultilineExampleSource } from './code-examples/textfield.multiline.example.source';
 import { TextfieldPakrevdeOgValgfrieFeltExampleSource } from './code-examples/textfield.pakrevde-og-valgfrie-felt.example.source';
+import { TextfieldToveisbindingExampleSource } from './code-examples/textfield.toveisbinding.example.source';
 import { TextfieldTypeExampleSource } from './code-examples/textfield.type.example.source';
+
+export type HviTextfieldType =
+  | 'number'
+  | 'hidden'
+  | 'color'
+  | 'date'
+  | 'datetime-local'
+  | 'email'
+  | 'file'
+  | 'month'
+  | 'password'
+  | 'search'
+  | 'tel'
+  | 'text'
+  | 'time'
+  | 'url'
+  | 'week';
+
 @Component({
   selector: 'app-textfield-demo',
   standalone: true,
@@ -20,6 +45,7 @@ import { TextfieldTypeExampleSource } from './code-examples/textfield.type.examp
     HviLabel,
     FormsModule,
     HviSelect,
+    HviButton,
   ],
   template: `
     <app-demo-page componentId="textfield">
@@ -100,6 +126,21 @@ import { TextfieldTypeExampleSource } from './code-examples/textfield.type.examp
           ></hvi-textfield>
         </div>
       </app-demo-section>
+
+      <!-- Toveisbinding -->
+      <app-demo-section
+        title="Toveisbinding"
+        [code]="toveisbindingCode"
+        description="Verdien kan bindes med ngModel, formControlName eller [(value)]. Feltet oppdateres også når verdien settes programmatisk."
+      >
+        <div class="space-y-4">
+          <hvi-textfield label="Navn" [(value)]="navn" />
+          <p>Verdi: {{ navn() || 'tom' }}</p>
+          <button hviButton variant="secondary" (click)="navn.set('Kari Nordmann')">
+            Sett verdi utenfra
+          </button>
+        </div>
+      </app-demo-section>
     </app-demo-page>
   `,
 })
@@ -110,23 +151,27 @@ export class TextfieldDemoComponent {
   readonly medTellerCode = TextfieldMedTellerExampleSource;
   readonly pakrevdeOgValgfrieFeltCode = TextfieldPakrevdeOgValgfrieFeltExampleSource;
   readonly typeCode = TextfieldTypeExampleSource;
+  readonly toveisbindingCode = TextfieldToveisbindingExampleSource;
 
-  types = [
-    'text',
+  readonly navn = signal('');
+
+  readonly types: HviTextfieldType[] = [
+    'number',
+    'hidden',
     'color',
     'date',
     'datetime-local',
     'email',
     'file',
     'month',
-    'hidden',
-    'number',
     'password',
     'search',
     'tel',
+    'text',
     'time',
     'url',
     'week',
   ];
-  selectedType: any = 'text';
+
+  selectedType: HviTextfieldType = 'text';
 }

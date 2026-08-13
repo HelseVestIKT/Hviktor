@@ -1,7 +1,7 @@
 // Auto-generated - do not edit manually
 export const TextfieldTypeExampleSource = `import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HviField, HviLabel, HviSelect, HviTextfield } from '@helsevestikt/hviktor-angular';
+import { HviField, HviLabel, HviSelect, HviTextfield, HviTextfieldType, } from '@helsevestikt/hviktor-angular';
 
 @Component({
   selector: 'app-textfield-type-example',
@@ -26,23 +26,24 @@ import { HviField, HviLabel, HviSelect, HviTextfield } from '@helsevestikt/hvikt
   \`,
 })
 export class TextfieldTypeExampleComponent {
-  types = [
-    'text',
+  readonly types: HviTextfieldType[] = [
+    'number',
+    'hidden',
     'color',
     'date',
     'datetime-local',
     'email',
     'file',
     'month',
-    'hidden',
-    'number',
     'password',
     'search',
     'tel',
+    'text',
     'time',
     'url',
     'week',
   ];
-  selectedType: any = 'text';
+
+  selectedType: HviTextfieldType = 'text';
 }
 `;
