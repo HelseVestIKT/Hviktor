@@ -83,7 +83,7 @@ export interface Kommune {
         <p>Valgt: {{ valgtKommuneFraApi?.navn ?? 'ingen' }}</p>
       </app-demo-section>
 
-      <app-demo-section title="Egen mal for alternativene" [code]="egenMalCode">
+      <app-demo-section title="Egen mal for alternativene" [code]="egenMalForAlternativeneCode">
         <hvi-suggestion
           label="Velg kommando"
           description="Søket kjøres mot en egen liste"
