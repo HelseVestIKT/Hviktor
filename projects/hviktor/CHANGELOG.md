@@ -4,6 +4,47 @@ Alle vesentlige endringer i `@helsevestikt/hviktor-angular` dokumenteres her.
 
 Formatet følger [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) og prosjektet bruker [Semantic Versioning](https://semver.org/).
 
+## [0.3.2] – 2026-08-13
+
+Suggestion: Breaking changes. Alle beskrevne endringer under gjelder Suggestion.
+
+hvi-suggestion er skrevet om til én komponent med et API som ligner PrimeNG sin Autocomplete. hvi-suggestion-datalist og hvi-suggestion-option er fjernet.
+
+Komponenten rendrer nå ds-field, label, input, tøm-knapp og forslagsliste selv. Alternativene sendes inn med suggestions, og verdien settes med ngModel, formControlName eller [(value)].
+
+```html
+<hvi-suggestion
+  label="Velg en kommune"
+  [(ngModel)]="kommune"
+  [suggestions]="treff"
+  (completeMethod)="sok($event)"
+  optionLabel="navn"
+/>
+```
+
+### Added
+
+- Støtte for ngModel og formControlName via ControlValueAccessor
+- Forhåndsvalgt verdi — verdien trenger ikke ligge i forslagslista
+- completeMethod for å fylle lista fra backend, med filter og loading
+- optionLabel og dataKey for objekter, og <ng-template #item> for egen visning. Verdien du får ut er hele objektet, ikke en streng
+- maxVisible (standard 100) begrenser hvor mange alternativer som rendres samtidig. Filtreringen skjer nå i komponenten, så lange lister legger ikke tusenvis av noder i DOM. Er lista avkortet, vises en diskret melding nederst med hvor mange treff som gjenstår, overstyrbar med truncatedText
+- label, description og error med automatisk kobling til inputfeltet
+- Norske skjermlesertekster som standard, overstyrbart med srText
+
+### Fixed
+
+- Alternativene fikk aldri satt value og label, så ingen valg lot seg matche
+- Tøm-knappen brukte <del>, som er faset ut i u-combobox
+
+### Fortsatt kjente begrensinger
+
+Forslagslista kan åpne over inputfeltet ved første åpning, og flytte seg når innholdet rundt endrer størrelse. Dette styres av Designsystemet og u-elements, og er meldt videre.
+
+### Migrering
+
+Erstatt hvi-suggestion-datalist og hvi-suggestion-option med [suggestions], og `<input hviInput>` med label-attributtet. Se demosiden for eksempler.
+
 ## [0.3.1] – 2026-07-02
 
 ### Changed
