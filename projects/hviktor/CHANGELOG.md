@@ -4,6 +4,25 @@ Alle vesentlige endringer i `@helsevestikt/hviktor-angular` dokumenteres her.
 
 Formatet følger [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) og prosjektet bruker [Semantic Versioning](https://semver.org/).
 
+## [0.3.3] – 2026-08-13
+
+### Added
+
+- HviTextfieldType er eksportert fra pakken, så konsumenter kan typebinde variabler som holder en input-type
+- [(value)] for toveisbinding direkte mot et signal, i tillegg til ngModel og formControlName
+- Ny demoseksjon som viser toveisbinding og at feltet oppdateres når verdien settes programmatisk
+
+### Changed
+
+- hvi-textfield er skrevet om fra @Input-dekoratorer til signalbaserte inputs. Ingen endring i API-et — eksisterende bruk fungerer som før
+- counterLimit, rows, size og maxLength konverteres nå til tall når de settes som attributter
+- disabled fra input-et og disabled fra reactive forms kombineres nå med OR i stedet for å overskrive hverandre
+
+### Fixed
+
+- Verdien i feltet oppdaterte seg ikke når den ble satt utenfra i soneløse applikasjoner eller signalbaserte skjemaer. Komponenten skrev til vanlige felt, som ikke utløser change detection uten zone.js (#346)
+- Required-taggen fulgte ikke med når requiredMode endret seg på `<form hviForm>`, fordi skjemaets signal ble lest fra en getter uten avhengighetssporing
+
 ## [0.3.2] – 2026-08-13
 
 Suggestion: Breaking changes. Alle beskrevne endringer under gjelder Suggestion.
