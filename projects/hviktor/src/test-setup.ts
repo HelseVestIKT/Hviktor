@@ -77,16 +77,30 @@ if (typeof globalThis.CSS === 'undefined') {
 }
 
 /**
- * Stub native popover API so @oddbird/popover-polyfill skips activation in jsdom.
- * Without this, the polyfill sets up MutationObservers and adoptedStyleSheets
- * that crash the Vitest worker process during teardown in CI.
+ * Stub the native popover API so @oddbird/popover-polyfill's isSupported() returns true
+ * and the polyfill skips activation in jsdom. Without this, the polyfill patches
+ * querySelector/matches and sets up MutationObservers and adoptedStyleSheets that crash
+ * the Vitest worker process in CI. isSupported() checks both `popover` and `showPopover`.
  */
-if (typeof HTMLElement !== 'undefined' && !('popover' in HTMLElement.prototype)) {
-  Object.defineProperty(HTMLElement.prototype, 'popover', {
-    value: null,
-    writable: true,
-    configurable: true,
-  });
+if (typeof HTMLElement !== 'undefined') {
+  const popoverStubs: Record<string, unknown> = {
+    popover: null,
+    showPopover: function () {},
+    hidePopover: function () {},
+    togglePopover: function () {
+      return false;
+    },
+  };
+
+  for (const [name, value] of Object.entries(popoverStubs)) {
+    if (!(name in HTMLElement.prototype)) {
+      Object.defineProperty(HTMLElement.prototype, name, {
+        value,
+        writable: true,
+        configurable: true,
+      });
+    }
+  }
 }
 
 /**
