@@ -70,7 +70,7 @@ export interface PageChangeEvent {
                 data-variant="tertiary"
                 type="button"
                 [attr.aria-label]="'Side ' + item.page"
-                [attr.aria-current]="item.page === _currentPage() ? 'true' : null"
+                [attr.aria-current]="item.page === _currentPage() ? 'page' : null"
                 (click)="goToPage(item.page)"
               >
                 {{ item.page }}
