@@ -1,22 +1,106 @@
 /**
- * Polyfill for CSS.supports() which is not available in jsdom.
- * Required because @digdir/designsystemet-web calls CSS.supports() on import.
+ * Minimal CSS.escape implementation following the CSSOM "serialize an identifier" algorithm.
  */
-if (typeof globalThis.CSS === 'undefined') {
-  Object.defineProperty(globalThis, 'CSS', { value: { supports: () => false } });
+function cssEscape(value: string): string {
+  const str = String(value);
+  const { length } = str;
+  const firstCodeUnit = str.charCodeAt(0);
+  let result = '';
+
+  for (let index = 0; index < length; index++) {
+    const codeUnit = str.charCodeAt(index);
+
+    if (codeUnit === 0x0000) {
+      result += '\uFFFD';
+      continue;
+    }
+
+    if (
+      (codeUnit >= 0x0001 && codeUnit <= 0x001f) ||
+      codeUnit === 0x007f ||
+      (index === 0 && codeUnit >= 0x0030 && codeUnit <= 0x0039) ||
+      (index === 1 && codeUnit >= 0x0030 && codeUnit <= 0x0039 && firstCodeUnit === 0x002d)
+    ) {
+      result += `\\${codeUnit.toString(16)} `;
+      continue;
+    }
+
+    if (index === 0 && length === 1 && codeUnit === 0x002d) {
+      result += `\\${str.charAt(index)}`;
+      continue;
+    }
+
+    if (
+      codeUnit >= 0x0080 ||
+      codeUnit === 0x002d ||
+      codeUnit === 0x005f ||
+      (codeUnit >= 0x0030 && codeUnit <= 0x0039) ||
+      (codeUnit >= 0x0041 && codeUnit <= 0x005a) ||
+      (codeUnit >= 0x0061 && codeUnit <= 0x007a)
+    ) {
+      result += str.charAt(index);
+      continue;
+    }
+
+    result += `\\${str.charAt(index)}`;
+  }
+
+  return result;
 }
 
 /**
- * Stub native popover API so @oddbird/popover-polyfill skips activation in jsdom.
- * Without this, the polyfill sets up MutationObservers and adoptedStyleSheets
- * that crash the Vitest worker process during teardown in CI.
+ * Polyfill for CSS.supports() and CSS.escape() which are not available in jsdom.
+ * Required because @digdir/designsystemet-web and @oddbird/popover-polyfill call
+ * both on import.
  */
-if (typeof HTMLElement !== 'undefined' && !('popover' in HTMLElement.prototype)) {
-  Object.defineProperty(HTMLElement.prototype, 'popover', {
-    value: null,
+if (typeof globalThis.CSS === 'undefined') {
+  Object.defineProperty(globalThis, 'CSS', {
+    value: { supports: () => false, escape: cssEscape },
     writable: true,
     configurable: true,
   });
+} else {
+  if (typeof globalThis.CSS.escape !== 'function') {
+    Object.defineProperty(globalThis.CSS, 'escape', {
+      value: cssEscape,
+      writable: true,
+      configurable: true,
+    });
+  }
+  if (typeof globalThis.CSS.supports !== 'function') {
+    Object.defineProperty(globalThis.CSS, 'supports', {
+      value: () => false,
+      writable: true,
+      configurable: true,
+    });
+  }
+}
+
+/**
+ * Stub the native popover API so @oddbird/popover-polyfill's isSupported() returns true
+ * and the polyfill skips activation in jsdom. Without this, the polyfill patches
+ * querySelector/matches and sets up MutationObservers and adoptedStyleSheets that crash
+ * the Vitest worker process in CI. isSupported() checks both `popover` and `showPopover`.
+ */
+if (typeof HTMLElement !== 'undefined') {
+  const popoverStubs: Record<string, unknown> = {
+    popover: null,
+    showPopover: function () {},
+    hidePopover: function () {},
+    togglePopover: function () {
+      return false;
+    },
+  };
+
+  for (const [name, value] of Object.entries(popoverStubs)) {
+    if (!(name in HTMLElement.prototype)) {
+      Object.defineProperty(HTMLElement.prototype, name, {
+        value,
+        writable: true,
+        configurable: true,
+      });
+    }
+  }
 }
 
 /**
