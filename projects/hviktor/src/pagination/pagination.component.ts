@@ -2,12 +2,14 @@ import {
   booleanAttribute,
   Component,
   computed,
+  CUSTOM_ELEMENTS_SCHEMA,
   EventEmitter,
   Input,
   numberAttribute,
   Output,
   signal,
 } from '@angular/core';
+import '@digdir/designsystemet-web';
 
 /** Type for hvert element i pagineringslisten */
 export type PaginationItem =
@@ -41,8 +43,9 @@ export interface PageChangeEvent {
 @Component({
   selector: 'hvi-pagination',
   standalone: true,
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   template: `
-    <nav [attr.aria-label]="'Sidenavigering'" class="ds-pagination">
+    <ds-pagination [attr.aria-label]="'Sidenavigering'" class="ds-pagination">
       <ul>
         <!-- Forrige -->
         <li>
@@ -64,7 +67,7 @@ export interface PageChangeEvent {
             <li>
               <button
                 class="ds-button"
-                [attr.data-variant]="item.page === _currentPage() ? 'primary' : 'tertiary'"
+                data-variant="tertiary"
                 type="button"
                 [attr.aria-label]="'Side ' + item.page"
                 [attr.aria-current]="item.page === _currentPage() ? 'page' : null"
@@ -92,7 +95,7 @@ export interface PageChangeEvent {
           </button>
         </li>
       </ul>
-    </nav>
+    </ds-pagination>
   `,
   host: {
     class: 'hvi-pagination',
@@ -164,33 +167,71 @@ export class HviPagination {
 
     const items: PaginationItem[] = [];
 
-    // Beregn range rundt nåværende side
-    const leftSibling = Math.max(current - siblings, 1);
-    const rightSibling = Math.min(current + siblings, total);
-
-    const showLeftEllipsis = this.showEdges && leftSibling > 2;
-    const showRightEllipsis = this.showEdges && rightSibling < total - 1;
-
-    // Første side (hvis showEdges)
-    if (this.showEdges && leftSibling > 1) {
-      items.push({ type: 'page', page: 1 });
-      if (showLeftEllipsis) {
-        items.push({ type: 'ellipsis' });
+    const addPageRange = (start: number, end: number): void => {
+      for (let page = start; page <= end; page++) {
+        items.push({ type: 'page', page });
       }
+    };
+
+    if (!this.showEdges) {
+      // Hold samme antall synlige sider uten kanter ved å flytte vinduet nær start/slutt.
+      const visibleCount = Math.min(total, siblings * 2 + 1);
+      let start = current - siblings;
+      let end = current + siblings;
+
+      if (start < 1) {
+        end = Math.min(total, end + (1 - start));
+        start = 1;
+      }
+      if (end > total) {
+        start = Math.max(1, start - (end - total));
+        end = total;
+      }
+
+      const currentCount = end - start + 1;
+      if (currentCount < visibleCount) {
+        const missing = visibleCount - currentCount;
+        start = Math.max(1, start - missing);
+      }
+
+      addPageRange(start, end);
+      return items;
     }
 
-    // Sider rundt nåværende
-    for (let page = leftSibling; page <= rightSibling; page++) {
-      items.push({ type: 'page', page });
+    const totalPageNumbers = siblings * 2 + 5;
+    if (total <= totalPageNumbers) {
+      addPageRange(1, total);
+      return items;
     }
 
-    // Siste side (hvis showEdges)
-    if (this.showEdges && rightSibling < total) {
-      if (showRightEllipsis) {
-        items.push({ type: 'ellipsis' });
-      }
+    const leftSiblingIndex = Math.max(current - siblings, 2);
+    const rightSiblingIndex = Math.min(current + siblings, total - 1);
+
+    const showLeftDots = leftSiblingIndex > 2;
+    const showRightDots = rightSiblingIndex < total - 1;
+
+    if (!showLeftDots && showRightDots) {
+      const leftItemCount = 3 + siblings * 2;
+      addPageRange(1, leftItemCount);
+      items.push({ type: 'ellipsis' });
       items.push({ type: 'page', page: total });
+      return items;
     }
+
+    if (showLeftDots && !showRightDots) {
+      const rightItemCount = 3 + siblings * 2;
+      const start = total - rightItemCount + 1;
+      items.push({ type: 'page', page: 1 });
+      items.push({ type: 'ellipsis' });
+      addPageRange(start, total);
+      return items;
+    }
+
+    items.push({ type: 'page', page: 1 });
+    items.push({ type: 'ellipsis' });
+    addPageRange(leftSiblingIndex, rightSiblingIndex);
+    items.push({ type: 'ellipsis' });
+    items.push({ type: 'page', page: total });
 
     return items;
   });
