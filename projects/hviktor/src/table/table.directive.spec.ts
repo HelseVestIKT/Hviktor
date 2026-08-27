@@ -146,6 +146,25 @@ class PaginatedTableComponent {
 @Component({
   standalone: true,
   imports: [HviTable],
+  template: `
+    <table hviTable [value]="data" paginator [rows]="3" [autoResetPageIndex]="false" #t="hviTable">
+      <tbody>
+        @for (item of t.paginatedValue(); track item.id) {
+          <tr>
+            <td>{{ item.navn }}</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  `,
+})
+class PaginatedNoAutoResetTableComponent {
+  data = TEST_DATA;
+}
+
+@Component({
+  standalone: true,
+  imports: [HviTable],
   selector: 'test-expandable-table',
   template: `
     <table hviTable [value]="data" #t="hviTable">
@@ -617,6 +636,28 @@ describe('HviTable pagination', () => {
     table.filterGlobal('Ola');
     fixture.detectChanges();
     expect(table.currentPage()).toBe(1);
+  });
+});
+
+describe('HviTable pagination autoResetPageIndex', () => {
+  let fixture: ComponentFixture<PaginatedNoAutoResetTableComponent>;
+  let table: HviTable<Person>;
+
+  beforeEach(async () => {
+    await setupTestBed({ imports: [PaginatedNoAutoResetTableComponent] });
+    fixture = TestBed.createComponent(PaginatedNoAutoResetTableComponent);
+    fixture.detectChanges();
+    table = fixture.debugElement.children[0].injector.get(HviTable<Person>);
+  });
+
+  it('should keep current page on global filter when autoResetPageIndex is false', () => {
+    table.goToPage(2);
+    fixture.detectChanges();
+    expect(table.currentPage()).toBe(2);
+
+    table.filterGlobal('test.no');
+    fixture.detectChanges();
+    expect(table.currentPage()).toBe(2);
   });
 });
 
