@@ -374,7 +374,8 @@ import { TableZebrastriperOgBorderExampleSource } from './code-examples/table.ze
       <app-demo-section
         title="Paginering"
         [code]="pagineringCode"
-        description="Aktiver paginering med paginator-attributtet og sett antall rader med rows. Bruk HviPagination for navigasjon."
+        description="Aktiver paginering med paginator-attributtet og sett antall rader med rows. Bruk HviPagination for navigasjon.
+        Som standard er [autoResetPageIndex] satt til true. Dette gjør at tabellen automatisk går tilbake til første side ved f. eks. filtrering av tabellen. Dersom du har en tabell som oppdaterer sine verdier svært hyppig kan du sette [autoResetPageIndex] til false på tabellen. Dette forhindrer at tabellen hopper tilbake til første side ved hver oppdatering, som kan være forstyrrende for brukeren."
       >
         <table
           hviTable

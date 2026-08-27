@@ -111,6 +111,12 @@ export class HviTable<T = unknown> {
   /** Aktiver paginering */
   @Input({ transform: booleanAttribute }) paginator = false;
 
+  /**
+   * Nullstill sidetall til første side når data som påvirker radsettet endres
+   * (f.eks. globalt søk og kolonnefiltre).
+   */
+  @Input({ transform: booleanAttribute }) autoResetPageIndex = true;
+
   /** Data som skal vises i tabellen */
   @Input()
   set value(data: T[] | null | undefined) {
@@ -302,6 +308,7 @@ export class HviTable<T = unknown> {
     onExpandedChange: (updater: Updater<ExpandedState>) => {
       this._expanded.update((prev) => (typeof updater === 'function' ? updater(prev) : updater));
     },
+    autoResetPageIndex: this.autoResetPageIndex,
     getRowCanExpand: () => true,
     paginateExpandedRows: false,
     getCoreRowModel: getCoreRowModel(),
@@ -363,7 +370,7 @@ export class HviTable<T = unknown> {
   readonly currentGlobalFilter = computed(() => this._globalFilter());
 
   private resetToFirstPage(): void {
-    if (this._pageIndex() === 0) {
+    if (!this.autoResetPageIndex || this._pageIndex() === 0) {
       return;
     }
 
@@ -410,13 +417,13 @@ export class HviTable<T = unknown> {
   /** Fjern filter for en spesifikk kolonne */
   clearColumnFilter(field: string): void {
     this._columnFilters.update((prev) => prev.filter((f) => f.id !== field));
-    this._pageIndex.set(0);
+    this.resetToFirstPage();
   }
 
   /** Fjern alle kolonnefiltre */
   clearAllColumnFilters(): void {
     this._columnFilters.set([]);
-    this._pageIndex.set(0);
+    this.resetToFirstPage();
   }
 
   /** Hent nåværende filterverdi for en kolonne */
