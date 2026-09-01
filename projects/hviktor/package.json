@@ -41,8 +41,8 @@
     "save": "dependencies"
   },
   "dependencies": {
-    "@digdir/designsystemet-css": "^1.20.0",
-    "@digdir/designsystemet-web": "^1.20.0",
+    "@digdir/designsystemet-css": "^1.21.0",
+    "@digdir/designsystemet-web": "^1.21.0",
     "@tanstack/angular-table": "^8.21.4",
     "@u-elements/u-combobox": "^2.0.4",
     "@u-elements/u-details": "^1.0.0",
