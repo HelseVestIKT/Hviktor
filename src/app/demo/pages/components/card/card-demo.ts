@@ -14,7 +14,8 @@ import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
 
 import { CardCardSomErEnKnappExampleSource } from './code-examples/card.card-som-er-en-knapp.example.source';
 import { CardFargerOgVarianterExampleSource } from './code-examples/card.farger-og-varianter.example.source';
-import { CardLenkekortExampleSource } from './code-examples/card.lenkekort.example.source';
+import { CardKortMedLenkendeElementerExampleSource } from './code-examples/card.kort-med-lenkende-elementer.example.source';
+import { CardKortSomErEnLenkeExampleSource } from './code-examples/card.kort-som-er-en-lenke.example.source';
 import { CardMedInndelingExampleSource } from './code-examples/card.med-inndeling.example.source';
 import { CardStandardExampleSource } from './code-examples/card.standard.example.source';
 @Component({
@@ -98,7 +99,7 @@ import { CardStandardExampleSource } from './code-examples/card.standard.example
 
       <app-demo-section
         title="Kort med lenkende elementer"
-        [code]="lenkekortCode"
+        [code]="kortMedLenkendeElementerCode"
         description="Har du et kort med flere interaktive elementer, som lenker eller knapper, kan du bruke data-clickdelegatefor for å gjøre hele kortet klikkbart, samtidig som det beholder semantikken til de interaktive elementene."
       >
         <div class="flex flex-wrap gap-4">
@@ -120,25 +121,12 @@ import { CardStandardExampleSource } from './code-examples/card.standard.example
               <p hviParagraph size="sm">Helse Bergen</p>
             </div>
           </hvi-card>
-          <hvi-card color="neutral" maxWidth="420px" clickDelegateFor="target2">
-            <div hviCardBlock>
-              <h2 hviHeading>
-                <a
-                  id="target2"
-                  hviLink
-                  href="https://helsevestikt.github.io/hviktor/komponenter/fieldset"
-                  rel="noopener noreferrer"
-                  >Fieldset</a
-                >
-              </h2>
-              <p hviParagraph>Dette er et lenkekort som lenker til en intern side.</p>
-            </div>
-          </hvi-card>
         </div>
       </app-demo-section>
 
       <app-demo-section
         title="Kort som er en lenke"
+        [code]="kortSomErEnLenkeCode"
         description="Hele kortet kan brukes som en lenke ved å bruke <a> som ytterst element. Dette er nyttig når du ønsker at all tekst og innhold i Card blir lest opp av skjermlesere som én sammenhengende lenke."
       >
         <div class="flex flex-wrap gap-4">
@@ -182,9 +170,11 @@ import { CardStandardExampleSource } from './code-examples/card.standard.example
   `,
 })
 export class CardDemoComponent {
+  readonly kortMedLenkendeElementerCode = CardKortMedLenkendeElementerExampleSource;
+  readonly kortSomErEnLenkeCode = CardKortSomErEnLenkeExampleSource;
+
   readonly cardSomErEnKnappCode = CardCardSomErEnKnappExampleSource;
   readonly standardCode = CardStandardExampleSource;
   readonly fargerOgVarianterCode = CardFargerOgVarianterExampleSource;
   readonly medInndelingCode = CardMedInndelingExampleSource;
-  readonly lenkekortCode = CardLenkekortExampleSource;
 }

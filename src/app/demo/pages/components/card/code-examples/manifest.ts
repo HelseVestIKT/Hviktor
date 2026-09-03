@@ -19,10 +19,16 @@ export const CardExamplesManifest = [
     sourceExport: 'CardMedInndelingExampleSource',
   },
   {
-    slug: 'lenkekort',
-    title: 'Lenkekort',
-    className: 'CardLenkekortExampleComponent',
-    sourceExport: 'CardLenkekortExampleSource',
+    slug: 'kort-med-lenkende-elementer',
+    title: 'Kort med lenkende elementer',
+    className: 'CardKortMedLenkendeElementerExampleComponent',
+    sourceExport: 'CardKortMedLenkendeElementerExampleSource',
+  },
+  {
+    slug: 'kort-som-er-en-lenke',
+    title: 'Kort som er en lenke',
+    className: 'CardKortSomErEnLenkeExampleComponent',
+    sourceExport: 'CardKortSomErEnLenkeExampleSource',
   },
   {
     slug: 'card-som-er-en-knapp',
@@ -36,5 +42,6 @@ export type CardExampleSlug =
   | 'standard'
   | 'farger-og-varianter'
   | 'med-inndeling'
-  | 'lenkekort'
+  | 'kort-med-lenkende-elementer'
+  | 'kort-som-er-en-lenke'
   | 'card-som-er-en-knapp';
