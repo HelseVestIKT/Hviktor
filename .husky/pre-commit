@@ -1,3 +1,3 @@
 #!/bin/sh
 echo "ℹ️  Running pre-commit checks (lint-staged) 🐶"
-npm run -s lint-staged
+./node_modules/.bin/lint-staged

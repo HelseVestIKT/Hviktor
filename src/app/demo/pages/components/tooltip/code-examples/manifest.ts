@@ -7,10 +7,10 @@ export const TooltipExamplesManifest = [
     sourceExport: 'TooltipIkonKnappMedTooltipExampleSource',
   },
   {
-    slug: 'tekst-med-tooltip',
-    title: 'Tekst med tooltip',
-    className: 'TooltipTekstMedTooltipExampleComponent',
-    sourceExport: 'TooltipTekstMedTooltipExampleSource',
+    slug: 'med-tekst',
+    title: 'Med tekst',
+    className: 'TooltipMedTekstExampleComponent',
+    sourceExport: 'TooltipMedTekstExampleSource',
   },
   {
     slug: 'plassering',
@@ -18,6 +18,16 @@ export const TooltipExamplesManifest = [
     className: 'TooltipPlasseringExampleComponent',
     sourceExport: 'TooltipPlasseringExampleSource',
   },
+  {
+    slug: 'betinget-tooltip',
+    title: 'Betinget tooltip',
+    className: 'TooltipBetingetTooltipExampleComponent',
+    sourceExport: 'TooltipBetingetTooltipExampleSource',
+  },
 ] as const;
 
-export type TooltipExampleSlug = 'ikon-knapp-med-tooltip' | 'tekst-med-tooltip' | 'plassering';
+export type TooltipExampleSlug =
+  | 'ikon-knapp-med-tooltip'
+  | 'med-tekst'
+  | 'plassering'
+  | 'betinget-tooltip';

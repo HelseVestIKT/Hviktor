@@ -1,5 +1,11 @@
 import { Component } from '@angular/core';
-import { HviField, HviInput, HviLabel } from '@helsevestikt/hviktor-angular';
+import {
+  HviField,
+  HviFieldDescription,
+  HviFieldValidation,
+  HviInput,
+  HviLabel,
+} from '@helsevestikt/hviktor-angular';
 import { DemoPageComponent, DemoSectionComponent } from '../../../shared';
 
 import { InputDisabledExampleSource } from './code-examples/input.disabled.example.source';
@@ -11,7 +17,15 @@ import { InputUlikeTyperExampleSource } from './code-examples/input.ulike-typer.
 @Component({
   selector: 'app-input-demo',
   standalone: true,
-  imports: [DemoPageComponent, DemoSectionComponent, HviInput, HviField, HviLabel],
+  imports: [
+    DemoPageComponent,
+    DemoSectionComponent,
+    HviInput,
+    HviField,
+    HviLabel,
+    HviFieldValidation,
+    HviFieldDescription,
+  ],
   template: `
     <app-demo-page componentId="input">
       <!-- Grunnleggende -->
@@ -43,7 +57,17 @@ import { InputUlikeTyperExampleSource } from './code-examples/input.ulike-typer.
       >
         <hvi-field>
           <label hviLabel for="fnr-error" weight="medium">Fødselsnummer</label>
-          <input hviInput type="text" id="fnr-error" aria-invalid="true" />
+          <p hviFieldDescription>Fødselsnummer må inneholde 11 siffer</p>
+          <input
+            hviInput
+            type="text"
+            id="fnr-error"
+            [attr.aria-invalid]="hasFodselsnummerError ? 'true' : null"
+            (input)="validerFodselsnummer($any($event.target).value)"
+          />
+          @if (hasFodselsnummerError) {
+            <p hviFieldValidation>Fødselsnummeret må inneholde 11 siffer</p>
+          }
         </hvi-field>
       </app-demo-section>
 
@@ -108,6 +132,12 @@ import { InputUlikeTyperExampleSource } from './code-examples/input.ulike-typer.
   `,
 })
 export class InputDemoComponent {
+  hasFodselsnummerError = true;
+
+  validerFodselsnummer(value: string): void {
+    this.hasFodselsnummerError = !/^\d{11}$/.test(value);
+  }
+
   readonly grunnleggendeCode = InputGrunnleggendeExampleSource;
   readonly medLabelCode = InputMedLabelExampleSource;
   readonly medFeilCode = InputMedFeilExampleSource;

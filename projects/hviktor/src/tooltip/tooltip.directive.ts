@@ -11,6 +11,9 @@ import '@digdir/designsystemet-web';
  * ```html
  * <button hviButton hviTooltip="Kopier">📋</button>
  * <span hviTooltip="Organisasjonsnummer">Org.nr.</span>
+ *
+ * <!-- Tom verdi fjerner tooltipen helt -->
+ * <span [hviTooltip]="erLaast() ? 'Feltet er låst' : ''">Status</span>
  * ```
  *
  * @see {@link https://designsystemet.no/en/components/docs/tooltip/code}
@@ -19,18 +22,22 @@ import '@digdir/designsystemet-web';
   selector: '[hviTooltip]',
   standalone: true,
   host: {
-    '[attr.data-tooltip]': 'hviTooltip',
-    '[attr.data-placement]': 'tooltipPlacement',
-    '[attr.data-autoplacement]': 'tooltipAutoPlacement ? "true" : null',
+    '[attr.data-tooltip]': 'hasTooltip ? hviTooltip : null',
+    '[attr.data-placement]': 'hasTooltip ? tooltipPlacement : null',
+    '[attr.data-autoplacement]': 'hasTooltip && tooltipAutoPlacement ? "true" : null',
   },
 })
 export class HviTooltip {
-  /** Tooltip content */
-  @Input({ required: true }) hviTooltip = '';
+  /** Tooltip content. Empty, null or undefined removes the tooltip entirely. */
+  @Input({ required: true }) hviTooltip: string | null | undefined = '';
 
   /** Placement of the tooltip relative to the trigger */
   @Input() tooltipPlacement: 'top' | 'right' | 'bottom' | 'left' = 'top';
 
   /** Enable auto placement when there's not enough space */
   @Input() tooltipAutoPlacement = true;
+
+  get hasTooltip(): boolean {
+    return !!this.hviTooltip?.trim();
+  }
 }

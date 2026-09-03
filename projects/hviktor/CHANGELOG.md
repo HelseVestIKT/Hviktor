@@ -4,6 +4,20 @@ Alle vesentlige endringer i `@helsevestikt/hviktor-angular` dokumenteres her.
 
 Formatet følger [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) og prosjektet bruker [Semantic Versioning](https://semver.org/).
 
+## [0.3.4] – 2026-09-01
+
+### Added
+
+- Table: autoResetPageIndex tilgjengelig som input
+
+### Changed
+
+- Oppdatert @digdir-pakker til 1.20.0
+
+### Fixed
+
+- Paginator: forbedringer ved å unngå store hopp ved sidebytte
+
 ## [0.3.3] – 2026-08-13
 
 ### Added

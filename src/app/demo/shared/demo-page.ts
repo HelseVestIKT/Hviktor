@@ -8,6 +8,7 @@ import {
 } from '@angular/core';
 import {
   HviButton,
+  HviDivider,
   HviHeading,
   HviLink,
   HviLogo,
@@ -19,6 +20,7 @@ import { DemoSectionComponent } from './demo-section';
 
 import '@helsevestikt/hviktor-icons/icon-clipboard-checkmark.webcomponent';
 import '@helsevestikt/hviktor-icons/icon-clipboard.webcomponent';
+import '@helsevestikt/hviktor-icons/icon-external-link.webcomponent';
 
 /**
  * Wrapper-komponent for demo-sider.
@@ -27,7 +29,7 @@ import '@helsevestikt/hviktor-icons/icon-clipboard.webcomponent';
 @Component({
   selector: 'app-demo-page',
   standalone: true,
-  imports: [HviButton, HviHeading, HviParagraph, HviLink, HviLogo, HviTag],
+  imports: [HviButton, HviHeading, HviParagraph, HviLink, HviLogo, HviTag, HviDivider],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   template: `
     <div class="xl:flex xl:gap-8">
@@ -80,11 +82,15 @@ import '@helsevestikt/hviktor-icons/icon-clipboard.webcomponent';
         <ng-content />
       </article>
 
-      @if (sections().length) {
-        <nav class="hidden xl:block xl:w-48 xl:shrink-0" aria-label="På denne siden">
-          <div class="sticky top-24">
-            <p hviHeading>På denne siden</p>
-            <ul class="list-none space-y-1">
+      <aside
+        aria-labelledby="demo-page-aside-heading"
+        class="hidden xl:sticky xl:top-24 xl:block xl:max-h-[calc(100vh-7rem)] xl:w-48 xl:shrink-0 xl:self-start xl:overflow-y-auto"
+      >
+        <h2 id="demo-page-aside-heading" class="sr-only">Sidepanel</h2>
+        @if (sections().length) {
+          <nav aria-labelledby="demo-page-toc-heading">
+            <h3 id="demo-page-toc-heading" hviHeading size="xs">På denne siden</h3>
+            <ul role="list" class="list-none space-y-1">
               @for (section of sections(); track section.sectionId()) {
                 <li>
                   <a
@@ -99,9 +105,38 @@ import '@helsevestikt/hviktor-icons/icon-clipboard.webcomponent';
                 </li>
               }
             </ul>
-          </div>
-        </nav>
-      }
+          </nav>
+          <hr hviDivider />
+        }
+
+        <section aria-labelledby="demo-page-contribute-heading" class="grid gap-2">
+          <h3 id="demo-page-contribute-heading" hviHeading size="xs">Bidra på GitHub</h3>
+          <p hviParagraph>Fant du en feil, eller har du et forslag?</p>
+          <a
+            hviButton
+            size="sm"
+            variant="secondary"
+            href="https://github.com/HelseVestIKT/hviktor/issues"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <hvi-icon-external-link aria-hidden="true" />
+            Opprett en sak<span class="sr-only"> på GitHub (åpnes i ny fane)</span>
+          </a>
+          <p hviParagraph>Har du et spørsmål eller en idé du vil lufte?</p>
+          <a
+            hviButton
+            size="sm"
+            variant="secondary"
+            href="https://github.com/HelseVestIKT/hviktor/discussions"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <hvi-icon-external-link aria-hidden="true" />
+            Start en diskusjon<span class="sr-only"> på GitHub (åpnes i ny fane)</span>
+          </a>
+        </section>
+      </aside>
     </div>
   `,
 })
