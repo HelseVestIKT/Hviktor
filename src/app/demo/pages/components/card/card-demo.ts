@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import {
   HviButton,
   HviCard,
   HviCardBlock,
   HviCardButton,
+  HviCardLink,
   HviHeading,
   HviLink,
   HviParagraph,
@@ -28,6 +30,8 @@ import { CardStandardExampleSource } from './code-examples/card.standard.example
     DemoPageComponent,
     DemoSectionComponent,
     HviCardButton,
+    HviCardLink,
+    RouterLink,
   ],
   template: `
     <app-demo-page componentId="card">
@@ -92,7 +96,11 @@ import { CardStandardExampleSource } from './code-examples/card.standard.example
         </div>
       </app-demo-section>
 
-      <app-demo-section title="Lenkekort" [code]="lenkekortCode">
+      <app-demo-section
+        title="Kort med lenkende elementer"
+        [code]="lenkekortCode"
+        description="Har du et kort med flere interaktive elementer, som lenker eller knapper, kan du bruke data-clickdelegatefor for å gjøre hele kortet klikkbart, samtidig som det beholder semantikken til de interaktive elementene."
+      >
         <div class="flex flex-wrap gap-4">
           <hvi-card color="neutral" maxWidth="420px" clickDelegateFor="target1">
             <div hviCardBlock>
@@ -108,6 +116,7 @@ import { CardStandardExampleSource } from './code-examples/card.standard.example
               <p hviParagraph>
                 Hvis du skal lenke til en ekstern side, så bør det informeres om til brukeren.
               </p>
+              <button hviButton variant="primary" color="accent">Legg til som favoritt</button>
               <p hviParagraph size="sm">Helse Bergen</p>
             </div>
           </hvi-card>
@@ -125,6 +134,32 @@ import { CardStandardExampleSource } from './code-examples/card.standard.example
               <p hviParagraph>Dette er et lenkekort som lenker til en intern side.</p>
             </div>
           </hvi-card>
+        </div>
+      </app-demo-section>
+
+      <app-demo-section
+        title="Kort som er en lenke"
+        description="Hele kortet kan brukes som en lenke ved å bruke <a> som ytterst element. Dette er nyttig når du ønsker at all tekst og innhold i Card blir lest opp av skjermlesere som én sammenhengende lenke."
+      >
+        <div class="flex flex-wrap gap-4">
+          <a
+            hviCardLink
+            href="https://www.helse-bergen.no/"
+            maxWidth="420px"
+            rel="noopener noreferrer"
+          >
+            <div hviCardBlock>
+              <h2 hviHeading>Helse Bergen</h2>
+              <p hviParagraph>Hele kortet er klikkbart og navigerer brukeren til en ny URL.</p>
+              <p hviParagraph size="sm">helse-bergen.no</p>
+            </div>
+          </a>
+          <a hviCardLink routerLink="/komponenter/button" maxWidth="420px">
+            <div hviCardBlock>
+              <h2 hviHeading>Button-komponenten</h2>
+              <p hviParagraph>Internt lenkekort som navigerer til en annen side i appen.</p>
+            </div>
+          </a>
         </div>
       </app-demo-section>
 
