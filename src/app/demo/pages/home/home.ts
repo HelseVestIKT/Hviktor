@@ -14,7 +14,7 @@ import { DEMO_COMPONENTS } from '../../demo-components';
   standalone: true,
   imports: [RouterLink, HviCard, HviCardBlock, HviHeading, HviParagraph, HviLink],
   template: `
-    <header class="mb-8 max-w-lg">
+    <header class="mb-8 max-w-xl">
       <h1 hviHeading size="xl">Hviktor Angular Demo</h1>
       <p hviParagraph>
         Demo av komponenter fra
@@ -37,7 +37,14 @@ import { DEMO_COMPONENTS } from '../../demo-components';
         >
       </p>
       <p hviParagraph>
-        Vi har foreløpig laget <span class="font-bold">{{ components.length }}</span> komponenter 🎉
+        Koden til denne siden og til hviktor-angular er tilgjengelig på
+        <a
+          hviLink
+          href="https://github.com/HelseVestIKT/hviktor"
+          target="_blank"
+          rel="noopener noreferrer"
+          >GitHub</a
+        >
       </p>
     </header>
 
