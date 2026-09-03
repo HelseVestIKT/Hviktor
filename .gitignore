@@ -6,6 +6,9 @@
 /out-tsc
 /bazel-out
 
+# Byggeartefakt fra `npm run tokens:build` – design-tokens/ er kilden
+/projects/hviktor/src/design-tokens-build
+
 # Node
 /node_modules
 /projects/icons/node_modules

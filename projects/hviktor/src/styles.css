@@ -1,14 +1,6 @@
 @import '@digdir/designsystemet-css';
-@import '@digdir/designsystemet-css/theme';
-
-@layer ds.theme.typography.primary {
-  :root,
-  [data-typography='primary'] {
-    --ds-font-family:
-      'Albert Sans', system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial,
-      'Noto Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-  }
-}
+/* Temaet må importeres etter designsystemet-css. Genereres av `npm run tokens:build`. */
+@import './design-tokens-build/hvikt.css';
 
 :root,
 :host,
