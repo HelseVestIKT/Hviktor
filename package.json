@@ -8,7 +8,7 @@
     "build": "ng build",
     "tokens": "npm run tokens:create && npm run tokens:build",
     "tokens:create": "designsystemet tokens create",
-    "tokens:build": "designsystemet tokens build --tokens ./design-tokens --out-dir ./projects/hviktor/src/design-tokens-build --clean",
+    "tokens:build": "designsystemet tokens build --tokens ./design-tokens --out-dir ./projects/hviktor/src/design-tokens-build --clean && node ./scripts/strip-charset.js",
     "prebuild:lib": "npm run tokens:build",
     "build:lib": "ng build hviktor-lib",
     "build:icons": "cd projects/icons && npm run build",

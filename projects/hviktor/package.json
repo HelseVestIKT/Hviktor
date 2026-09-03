@@ -42,6 +42,7 @@
   },
   "dependencies": {
     "@digdir/designsystemet-css": "^1.21.0",
+    "@digdir/designsystemet-types": "^1.21.0",
     "@digdir/designsystemet-web": "^1.21.0",
     "@tanstack/angular-table": "^8.21.4",
     "@u-elements/u-combobox": "^2.0.4",
@@ -50,12 +51,15 @@
     "tslib": "^2.3.0"
   },
   "exports": {
-    "./styles.css": "./styles.css"
+    "./styles.css": "./styles.css",
+    "./theme.css": "./design-tokens-build/hvikt.css",
+    "./theme-types": "./design-tokens-build/types.d.ts"
   },
   "files": [
     "fesm2022/",
     "schematics/",
     "types/",
+    "design-tokens-build/",
     "index.d.ts",
     "styles.css",
     "README.md",
