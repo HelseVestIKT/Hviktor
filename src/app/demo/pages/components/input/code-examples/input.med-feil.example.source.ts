@@ -20,7 +20,7 @@ import {
         hviInput
         type="text"
         id="fnr-error"
-        [aria-invalid]="hasFodselsnummerError"
+        [attr.aria-invalid]="hasFodselsnummerError ? 'true' : null"
         (input)="validerFodselsnummer($any($event.target).value)"
       />
       @if (hasFodselsnummerError) {
