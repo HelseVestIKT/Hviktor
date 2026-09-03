@@ -4,3 +4,7 @@ node_modules
 .angular
 *.min.*
 package-lock.json
+
+# Genereres av @digdir/designsystemet CLI – formattering gir kun diff-støy
+design-tokens
+projects/hviktor/src/design-tokens-build
