@@ -16,7 +16,6 @@ import { DEMO_COMPONENTS } from '../../demo-components';
   template: `
     <header class="mb-8 max-w-xl">
       <h1 hviHeading size="xl">Hviktor Angular Demo</h1>
-      <button>Klikk meg</button>
       <p hviParagraph>
         Demo av komponenter fra
         <a
