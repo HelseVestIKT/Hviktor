@@ -28,10 +28,10 @@
     "generate:register": "node ./scripts/generate-register-elements.js",
     "import:nav-icons": "node ./scripts/import-nav-icons-from-svg.js",
     "lint": "eslint . --ext .ts,.html",
-    "lint:staged": "eslint --fix --cache --cache-location .cache/eslint/",
+    "lint:staged": "eslint --fix --cache --cache-strategy content --cache-location .cache/eslint/",
     "lint-staged": "lint-staged",
-    "format": "prettier --write .",
-    "format:staged": "prettier --write --log-level warn",
+    "format": "prettier --write --cache --cache-strategy content .",
+    "format:staged": "prettier --write --cache --cache-strategy content --log-level warn",
     "prepare": "husky"
   },
   "private": true,
@@ -81,7 +81,10 @@
     "minimatch": ">=10.0.3"
   },
   "lint-staged": {
-    "*.{ts,html,css,md,json}": "npm run -s format:staged --",
-    "*.ts": "npm run -s lint:staged --"
+    "*.ts": [
+      "prettier --write --cache --cache-strategy content --log-level warn",
+      "eslint --fix --cache --cache-strategy content --cache-location .cache/eslint/"
+    ],
+    "*.{html,css,md,json}": "prettier --write --cache --cache-strategy content --log-level warn"
   }
 }
