@@ -1,11 +1,11 @@
 // Auto-generated - do not edit manually
 export const CardStandardExampleSource = `import { Component } from '@angular/core';
-import { HviCard, HviHeading, HviParagraph } from '@helsevestikt/hviktor-angular';
+import { HviCard } from '@helsevestikt/hviktor-angular';
 
 @Component({
   selector: 'app-card-standard-example',
   standalone: true,
-  imports: [HviCard, HviHeading, HviParagraph],
+  imports: [HviCard],
   template: \`
     <div class="flex flex-wrap gap-4">
       <hvi-card maxWidth="320px">

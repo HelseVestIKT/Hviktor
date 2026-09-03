@@ -1,15 +1,8 @@
 import { Component } from '@angular/core';
-import {
-  HviCardBlock,
-  HviCardButton,
-  HviHeading,
-  HviParagraph,
-} from '@helsevestikt/hviktor-angular';
 
 @Component({
   selector: 'app-card-card-som-er-en-knapp-example',
   standalone: true,
-  imports: [HviCardBlock, HviCardButton, HviHeading, HviParagraph],
   template: `
     <div class="flex flex-wrap gap-4">
       <button hviCardButton maxWidth="420px">

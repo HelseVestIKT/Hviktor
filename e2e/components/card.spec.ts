@@ -28,7 +28,7 @@ test.describe('Card', () => {
   });
 
   test('link card section has a card containing a link', async ({ page }) => {
-    const section = page.locator('app-demo-section[title="Lenkekort"]');
+    const section = page.locator('app-demo-section[title="Kort med lenkende elementer"]');
     await expect(section.locator('hvi-card a').first()).toBeVisible();
   });
 
