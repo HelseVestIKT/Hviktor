@@ -120,6 +120,32 @@ docs: update README with new examples
 - **Style:** Se `.prettierrc.cjs` og `.editorconfig` for innstillinger
 - Single quotes, semicolons, 100 char print width, trailing commas
 
+## Tema og design tokens
+
+Temaet «hvikt» er bygget med [Designsystemets Temabygger](https://theme.designsystemet.no/) og følger med npm-pakken.
+
+| Sti                                         | Rolle                                                                      |
+| ------------------------------------------- | -------------------------------------------------------------------------- |
+| `designsystemet.config.json`                | Kilden til temaet. Farger, `borderRadius` og `fontFamily`.                 |
+| `design-tokens/`                            | Genererte design tokens. Dette er mappen Tokens Studio i Figma synker mot. |
+| `projects/hviktor/src/design-tokens-build/` | Generert CSS og typer. Byggeartefakt — gitignored og skal ikke redigeres.  |
+
+### Endre temaet
+
+1. Generer et nytt tema i Temabyggeren og lim config-en inn i `designsystemet.config.json`.
+2. Kjør `npm run tokens` (kjører både `tokens:create` og `tokens:build`).
+3. Commit endringene i `designsystemet.config.json` og `design-tokens/`.
+
+`tokens:build` kjøres automatisk før `build:lib`, så CSS-en er alltid i sync med tokens.
+
+Design tokens og generert CSS skal **aldri** redigeres direkte — Digdir regner dem som implementasjonsdetaljer, og endringene forsvinner ved neste `npm run tokens`. Alle tilpasninger gjøres i config-fila. Av samme grunn ligger begge mappene i `.prettierignore`.
+
+CLI-en `@digdir/designsystemet` er pinnet til samme minor-versjon som `@digdir/designsystemet-css` og `-web`. Oppgraderes den ene, må alle tre følge med, og tokens må regenereres.
+
+### Tokens Studio
+
+Designerne synker mot `design-tokens/` via Tokens Studio. Sett «token storage location» til `design-tokens`. Endringer bør ikke pushes fra Tokens Studio — bruk Temabyggeren og config-fila, ellers overskrives de ved neste regenerering.
+
 ## Release
 
 Se [RELEASE.md](RELEASE.md) for prosedyre for publisering til npm.
@@ -136,6 +162,8 @@ Bruk GitHub Issues med riktig template:
 
 ```
 hviktor/
+├── designsystemet.config.json  # Temakonfigurasjon (Temabyggeren)
+├── design-tokens/           # Genererte design tokens (Tokens Studio)
 ├── projects/hviktor/        # Biblioteket (publiseres til npm)
 │   ├── src/                 # Komponentkildekode
 │   └── schematics/          # ng-add schematic
