@@ -132,6 +132,14 @@
     "group": "Color"
   },
   {
+    "id": "ab30b4d4ac3520dec96763c7a0aa3bdcd5eb12fb",
+    "name": "brand3",
+    "selectedTokenSets": {
+      "semantic/color/brand3": "enabled"
+    },
+    "group": "Color"
+  },
+  {
     "id": "59bd0a3ff43b32849b319e645d4798d8a5d1e889",
     "name": "info",
     "selectedTokenSets": {

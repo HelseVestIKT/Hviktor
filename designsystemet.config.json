@@ -1,18 +1,14 @@
 {
   "$schema": "https://designsystemet.no/schemas/config/latest.json",
   "outDir": "./design-tokens",
-  "clean": true,
   "themes": {
     "hvikt": {
       "colors": {
         "accent": "#0062BA",
         "brand1": "#0D7A5F",
         "brand2": "#5B3FA0",
-        "neutral": "#24272B"
-      },
-      "borderRadius": 4,
-      "typography": {
-        "fontFamily": "Albert Sans"
+        "neutral": "#24272B",
+        "brand3": "#FF671F"
       },
       "overrides": {
         "colors": {

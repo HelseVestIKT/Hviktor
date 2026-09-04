@@ -17,6 +17,7 @@
     "@digdir/designsystemet-css",
     "@digdir/designsystemet-types",
     "@digdir/designsystemet-web",
+    "@fontsource-variable/albert-sans",
     "@u-elements/u-tabs",
     "@u-elements/u-details",
     "@u-elements/u-combobox",

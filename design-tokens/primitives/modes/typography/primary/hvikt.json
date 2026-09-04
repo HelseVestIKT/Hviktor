@@ -2,7 +2,7 @@
   "hvikt": {
     "font-family": {
       "$type": "fontFamilies",
-      "$value": "Albert Sans"
+      "$value": "Inter"
     },
     "font-weight": {
       "medium": {

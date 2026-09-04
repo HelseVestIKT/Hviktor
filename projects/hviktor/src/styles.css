@@ -1,13 +1,28 @@
 @import '@digdir/designsystemet-css';
 /* Temaet må importeres etter designsystemet-css. Genereres av `npm run tokens:build`. */
 @import './design-tokens-build/hvikt.css';
+/* Variabel woff2 som dekker alle vektene, slik at konsumenter ikke må laste fonten selv. */
+@import '@fontsource-variable/albert-sans';
+
+/* Overstyrer temaets font. Settes her, ikke i designsystemet.config.json, som skal
+   kunne limes inn uredigert fra Temabyggeren.
+   'Albert Sans' står etter variabelfonten som fallback til lokalt installert font. */
+@layer ds.theme.typography.primary {
+  :root,
+  [data-typography='primary'] {
+    --ds-font-family:
+      'Albert Sans Variable', 'Albert Sans', system-ui, -apple-system, Segoe UI, Roboto,
+      'Helvetica Neue', Arial, 'Noto Sans', 'Apple Color Emoji', 'Segoe UI Emoji',
+      'Segoe UI Symbol', 'Noto Color Emoji';
+  }
+}
 
 :root,
 :host,
 html,
 body {
   font-family:
-    var(--ds-font-family, 'Albert Sans'),
+    var(--ds-font-family, 'Albert Sans Variable'),
     system-ui,
     -apple-system,
     'Segoe UI',

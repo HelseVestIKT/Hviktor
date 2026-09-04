@@ -37,20 +37,11 @@ Importer stylesheet i `src/styles.css`:
 
 Pakken leveres med Helse Vest IKT sitt eget tema, bygget med [Designsystemets Temabygger](https://theme.designsystemet.no/). Temaet følger med `styles.css` — du trenger ikke gjøre noe ekstra.
 
-Fonten må lastes av applikasjonen. Legg til i `index.html`:
-
-```html
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link
-  rel="stylesheet"
-  href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600&display=swap"
-/>
-```
+Fonten **Albert Sans** følger også med pakken som webfont, så du trenger verken å installere den lokalt eller laste den fra et CDN.
 
 ### Farger og størrelser
 
-Temaet definerer fargene `accent`, `brand1`, `brand2` og `neutral`, i tillegg til systemfargene `info`, `success`, `warning` og `danger`.
+Temaet definerer fargene `accent`, `brand1`, `brand2`, `brand3` og `neutral`, i tillegg til systemfargene `info`, `success`, `warning` og `danger`.
 
 ```html
 <button hviButton color="brand1">Knapp i merkevarefarge</button>
