@@ -33,6 +33,39 @@ Importer stylesheet i `src/styles.css`:
 @import '@helsevestikt/hviktor-angular/styles.css';
 ```
 
+## Tema
+
+Pakken leveres med Helse Vest IKT sitt eget tema, bygget med [Designsystemets Temabygger](https://theme.designsystemet.no/). Temaet følger med `styles.css` — du trenger ikke gjøre noe ekstra.
+
+Fonten **Albert Sans** følger også med pakken som webfont, så du trenger verken å installere den lokalt eller laste den fra et CDN.
+
+### Farger og størrelser
+
+Temaet definerer fargene `accent`, `brand1`, `brand2`, `brand3` og `neutral`, i tillegg til systemfargene `info`, `success`, `warning` og `danger`.
+
+```html
+<button hviButton color="brand1">Knapp i merkevarefarge</button>
+
+<div data-color-scheme="dark">
+  <!-- Mørk fargemodus. Verdier: light | dark | auto -->
+</div>
+
+<div data-size="sm">
+  <!-- Størrelsesmodus for elementet og alle etterkommere. Verdier: sm | md | lg -->
+</div>
+```
+
+Merk at `data-color` arves nedover, men må settes på nytt dersom du endrer `data-color-scheme`. Komponenter som `HviAlert`, `HviValidationMessage` og `HviErrorSummary` bruker alltid sine egne systemfarger.
+
+### Bruke temaet uten resten av pakken
+
+Temaets CSS-variabler er også tilgjengelig alene, for eksempel hvis du bruker `@digdir/designsystemet-css` direkte. Temaet må importeres **etter** Designsystemets CSS:
+
+```css
+@import '@digdir/designsystemet-css';
+@import '@helsevestikt/hviktor-angular/theme.css';
+```
+
 ## Bruk
 
 Importer komponentene du trenger direkte i standalone-komponenter:
