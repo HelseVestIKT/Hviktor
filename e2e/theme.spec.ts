@@ -18,6 +18,8 @@ test.describe('Tema', () => {
 
     expect(loadedFonts).toContain('Albert Sans Variable');
     expect(fontRequests.length).toBeGreaterThan(0);
-    expect(fontRequests.filter((url) => /googleapis|gstatic/.test(url))).toEqual([]);
+
+    const appOrigin = new URL(page.url()).origin;
+    expect(fontRequests.filter((url) => new URL(url).origin !== appOrigin)).toEqual([]);
   });
 });
