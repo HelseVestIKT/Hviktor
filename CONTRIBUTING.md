@@ -126,7 +126,7 @@ Temaet «hvikt» er bygget med [Designsystemets Temabygger](https://theme.design
 
 | Sti                                         | Rolle                                                                      |
 | ------------------------------------------- | -------------------------------------------------------------------------- |
-| `designsystemet.config.json`                | Kilden til temaet. Farger, `borderRadius` og `fontFamily`.                 |
+| `designsystemet.config.json`                | Kilden til temaets farger og `borderRadius`; fonten overstyres i `styles.css`. |
 | `design-tokens/`                            | Genererte design tokens. Dette er mappen Tokens Studio i Figma synker mot. |
 | `projects/hviktor/src/design-tokens-build/` | Generert CSS og typer. Byggeartefakt — gitignored og skal ikke redigeres.  |
 
